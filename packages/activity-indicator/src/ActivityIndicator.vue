@@ -1,8 +1,10 @@
 <template>
     <div class="activity-indicator" :class="classes" :style="style">
-        <component :is="type" />
-        <div v-if="label" class="activity-indicator-label">
-            {{ label }}
+        <div class="activity-indicator-content">
+            <component :is="type" :class="{['activity-indicator-center']: center}" />
+            <div v-if="label" class="activity-indicator-label">
+                {{ label }}
+            </div>
         </div>
     </div>
 </template>
@@ -34,6 +36,8 @@ export default {
     },
 
     props: {
+
+        absolute: Boolean,
 
         center: Boolean,
 
@@ -87,6 +91,8 @@ export default {
 
         classes() {
             return {
+                'activity-indicator-center': this.center,
+                'activity-indicator-absolute': this.absolute,
                 [prefix(this.size, 'activity-indicator')]: true
             };
         },
@@ -132,8 +138,26 @@ export default {
 .activity-indicator-xl {
     font-size: 1.75rem;
 }
-
+.activity-indicator-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.activity-indicator-absolute {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 /*
+.activity-indicator-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 .center-wrapper {
     position: absolute;
     top: 0;

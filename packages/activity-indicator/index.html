@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>ActivityIndicator</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./dist/ActivityIndicator.css">
     </head>
     <body>
         <div id="app" class="container">
@@ -148,6 +149,16 @@
                 <div class="col-sm-2">
                     <activity-indicator type="facebook" size="xl"></activity-indicator>
                 </div>
+            </div>
+
+            <h3>Center Indicator</h3>
+
+            <activity-indicator :min-height="500" style="background-color: rgba(0, 0, 0, .1);" center></activity-indicator>
+
+            <h3 class="mt-3">Absolute Inside Parent</h3>
+
+            <div style="min-height: 500px;background-color: rgba(0, 0, 0, .1); position: relative;">
+                <activity-indicator center absolute></activity-indicator>
             </div>
         </div>
 
