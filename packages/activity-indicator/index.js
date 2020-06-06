@@ -1,5 +1,2 @@
-import FormControl from './src/FormControl';
-
-export {
-    FormControl
-};
+import ActivityIndicator from './src/ActivityIndicator';
+export default ActivityIndicator;
