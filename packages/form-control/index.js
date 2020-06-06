@@ -1,5 +1,2 @@
 import FormControl from './src/FormControl';
-
-export {
-    FormControl
-};
+export default FormControl;
