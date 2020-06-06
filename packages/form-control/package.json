@@ -1,0 +1,60 @@
+{
+  "name": "@vue-interface/form-control",
+  "version": "0.8.0",
+  "description": "An abstract form control Vue mixin.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npm run serve",
+    "serve": "vue-cli-service build --target lib --name=FormControl ./index.js --watch",
+    "build": "vue-cli-service build --target lib --name=FormControl ./main.vue",
+    "lint": "vue-cli-service lint",
+    "fix": "vue-cli-service lint --fix",
+    "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
+    "release-patch": "npm run pre-release && npm version patch -m \"%s\" && npm run release;",
+    "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
+    "release-major": "npm run pre-release && npm version major -m \"%s\" && npm run release;",
+    "release": "git add . -A; git commit; git push --tags origin; npm publish;",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "./node_modules/.bin/vuepress dev docs",
+    "docs:build": "./node_modules/.bin/vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/form-control.git"
+  },
+  "keywords": [
+    "Form",
+    "Control",
+    "Vue",
+    "Mixin",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/form-control/issues"
+  },
+  "homepage": "https://github.com/vue-interface/form-control/docs#readme",
+  "dependencies": {
+    "@vue-interface/merge-classes": "^1.0.2",
+    "@vue-interface/utils": "^0.9.2",
+    "core-js": "^3.6.4",
+    "lodash-es": "^4.17.15",
+    "postcss-nested": "^4.2.1",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "@vuepress/plugin-register-components": "^1.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "markdown-it-meta": "0.0.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.0",
+    "vuepress-plugin-template-constants": "^0.2.1"
+  }
+}
