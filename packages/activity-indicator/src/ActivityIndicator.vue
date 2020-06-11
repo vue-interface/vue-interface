@@ -1,7 +1,7 @@
 <template>
     <div class="activity-indicator" :class="classes" :style="style">
         <div class="activity-indicator-content">
-            <component :is="type" :class="{['activity-indicator-center']: center}" />
+            <component :is="type" class="mx-auto" />
             <div v-if="label" class="activity-indicator-label">
                 {{ label }}
             </div>
@@ -134,12 +134,14 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style>
+.activity-indicator-center {
+    background: red;
+}
 .activity-indicator-label {
     margin-top: .75rem;
     text-align: center;
 }
-
 .activity-indicator-xs {
     font-size: .5rem;
 }
