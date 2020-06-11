@@ -1,60 +1,60 @@
 <template>
-    <div class="sk-cube-grid">
-        <div class="sk-cube sk-cube1" />
-        <div class="sk-cube sk-cube2" />
-        <div class="sk-cube sk-cube3" />
-        <div class="sk-cube sk-cube4" />
-        <div class="sk-cube sk-cube5" />
-        <div class="sk-cube sk-cube6" />
-        <div class="sk-cube sk-cube7" />
-        <div class="sk-cube sk-cube8" />
-        <div class="sk-cube sk-cube9" />
+    <div class="activity-indicator-grid">
+        <div class="activity-indicator-grid activity-indicator-grid1" />
+        <div class="activity-indicator-grid activity-indicator-grid2" />
+        <div class="activity-indicator-grid activity-indicator-grid3" />
+        <div class="activity-indicator-grid activity-indicator-grid4" />
+        <div class="activity-indicator-grid activity-indicator-grid5" />
+        <div class="activity-indicator-grid activity-indicator-grid6" />
+        <div class="activity-indicator-grid activity-indicator-grid7" />
+        <div class="activity-indicator-grid activity-indicator-grid8" />
+        <div class="activity-indicator-grid activity-indicator-grid9" />
     </div>
 </template>
 
 <style lang="postcss">
-.sk-cube-grid {
+.activity-indicator-grid {
   width: 2.5em;
   height: 2.5em;
 }
 
-.sk-cube-grid .sk-cube {
+.activity-indicator-grid .activity-indicator-grid {
   width: 33%;
   height: 33%;
   background-color: currentColor;
   float: left;
-  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-          animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+  -webkit-animation: activity-indicator-grid 1.3s infinite ease-in-out;
+          animation: activity-indicator-grid 1.3s infinite ease-in-out; 
 }
-.sk-cube-grid .sk-cube1 {
+.activity-indicator-grid .activity-indicator-grid1 {
   -webkit-animation-delay: 0.2s;
           animation-delay: 0.2s; }
-.sk-cube-grid .sk-cube2 {
+.activity-indicator-grid .activity-indicator-grid2 {
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s; }
-.sk-cube-grid .sk-cube3 {
+.activity-indicator-grid .activity-indicator-grid3 {
   -webkit-animation-delay: 0.4s;
           animation-delay: 0.4s; }
-.sk-cube-grid .sk-cube4 {
+.activity-indicator-grid .activity-indicator-grid4 {
   -webkit-animation-delay: 0.1s;
           animation-delay: 0.1s; }
-.sk-cube-grid .sk-cube5 {
+.activity-indicator-grid .activity-indicator-grid5 {
   -webkit-animation-delay: 0.2s;
           animation-delay: 0.2s; }
-.sk-cube-grid .sk-cube6 {
+.activity-indicator-grid .activity-indicator-grid6 {
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s; }
-.sk-cube-grid .sk-cube7 {
+.activity-indicator-grid .activity-indicator-grid7 {
   -webkit-animation-delay: 0s;
           animation-delay: 0s; }
-.sk-cube-grid .sk-cube8 {
+.activity-indicator-grid .activity-indicator-grid8 {
   -webkit-animation-delay: 0.1s;
           animation-delay: 0.1s; }
-.sk-cube-grid .sk-cube9 {
+.activity-indicator-grid .activity-indicator-grid9 {
   -webkit-animation-delay: 0.2s;
           animation-delay: 0.2s; }
 
-@-webkit-keyframes sk-cubeGridScaleDelay {
+@-webkit-keyframes activity-indicator-grid {
   0%, 70%, 100% {
     -webkit-transform: scale3D(1, 1, 1);
             transform: scale3D(1, 1, 1);
@@ -64,7 +64,7 @@
   }
 }
 
-@keyframes sk-cubeGridScaleDelay {
+@keyframes activity-indicator-grid {
   0%, 70%, 100% {
     -webkit-transform: scale3D(1, 1, 1);
             transform: scale3D(1, 1, 1);

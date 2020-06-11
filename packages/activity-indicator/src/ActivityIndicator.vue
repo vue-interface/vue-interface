@@ -14,12 +14,18 @@ import { kebabCase } from 'lodash-es';
 import { unit, prefix } from '@vue-interface/utils';
 
 import Chase from './types/Chase';
-import CircleFade from './types/Circle';
+import CircleFade from './types/CircleFade';
+import CircleOrbit from './types/CircleOrbit';
+import CircleTrail from './types/CircleTrail';
 import Dots from './types/Dots';
+import DoublePulse from './types/DoublePulse';
 import Facebook from './types/Facebook';
 import Grid from './types/Grid';
+import Pulse from './types/Pulse';
 import Spinner from './types/Spinner';
 import Square from './types/Square';
+import SquareFold from './types/SquareFold';
+import SquareOrbit from './types/SquareOrbit';
 
 export default {
 
@@ -28,11 +34,17 @@ export default {
     components: {
         Chase,
         CircleFade,
+        CircleOrbit,
+        CircleTrail,
         Dots,
+        DoublePulse,
         Facebook,
         Grid,
+        Pulse,
         Spinner,
-        Square
+        Square,
+        SquareFold,
+        SquareOrbit
     },
 
     props: {
@@ -64,11 +76,17 @@ export default {
                 return [
                     'activity-indicator-chase',
                     'activity-indicator-circle-fade',
+                    'activity-indicator-circle-orbit',
+                    'activity-indicator-circle-trail',
                     'activity-indicator-dots',
+                    'activity-indicator-double-pulse',
                     'activity-indicator-facebook',
                     'activity-indicator-grid',
+                    'activity-indicator-pulse',
                     'activity-indicator-spinner',
                     'activity-indicator-square',
+                    'activity-indicator-square-fold',
+                    'activity-indicator-square-orbit',
                 ].indexOf(prefix(value, 'activity-indicator')) > -1;
             }
         },
@@ -150,27 +168,4 @@ export default {
     top: 0;
     left: 0;
 }
-/*
-.activity-indicator-center {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.center-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    .center-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-*/
 </style>

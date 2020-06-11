@@ -7,17 +7,17 @@
   width: 2.5em;
   height: 2.5em;
   background-color: currentColor;
-  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-  animation: sk-rotateplane 1.2s infinite ease-in-out;
+  -webkit-animation: activity-indicator-square 1.2s infinite ease-in-out;
+  animation: activity-indicator-square 1.2s infinite ease-in-out;
 }
 
-@-webkit-keyframes sk-rotateplane {
+@-webkit-keyframes activity-indicator-square {
   0% { -webkit-transform: perspective(120px) }
   50% { -webkit-transform: perspective(120px) rotateY(180deg) }
   100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
 }
 
-@keyframes sk-rotateplane {
+@keyframes activity-indicator-square {
   0% { 
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
     -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
