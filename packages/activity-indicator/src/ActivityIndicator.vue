@@ -160,6 +160,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 .activity-indicator-absolute {
     position: absolute;
