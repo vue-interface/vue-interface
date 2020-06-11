@@ -135,9 +135,6 @@ export default {
 </script>
 
 <style>
-.activity-indicator-center {
-    background: red;
-}
 .activity-indicator-label {
     margin-top: .75rem;
     text-align: center;
