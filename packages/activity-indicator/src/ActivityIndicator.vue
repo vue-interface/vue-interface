@@ -136,7 +136,7 @@ export default {
 
 <style lang="postcss">
 .activity-indicator-label {
-    margin-top: 1rem;
+    margin-top: .75rem;
     text-align: center;
 }
 
