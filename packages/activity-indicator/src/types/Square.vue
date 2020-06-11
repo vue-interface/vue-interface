@@ -2,7 +2,7 @@
     <div class="activity-indicator-square" />
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-square {
   width: 2.5em;
   height: 2.5em;

@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-dots {
     font-size: 1em;
     position: relative;

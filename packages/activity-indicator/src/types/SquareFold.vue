@@ -6,7 +6,7 @@
         <div class="activity-indicator-square-fold-square3 activity-indicator-square-fold-square" />
     </div>
 </template>
-<style lang="postcss">
+<style>
 .activity-indicator-square-fold {
   margin: 20px auto;
   width: 2.5em;

@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-circle-orbit {
   width: 2.5em;
   height: 2.5em;

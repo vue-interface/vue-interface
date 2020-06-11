@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-square-orbit {
   margin: 100px auto;
   width: 40px;

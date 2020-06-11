@@ -2,7 +2,7 @@
     <div class="activity-indicator-pulse" />
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-pulse {
   width: 2.5em;
   height: 2.5em;

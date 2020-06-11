@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<style lang="postcss">
+<style>
 .activity-indicator-facebook {
   height: 4em;
 }
