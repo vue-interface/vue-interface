@@ -10,8 +10,7 @@
 </template>
 
 <script>
-import { kebabCase } from 'lodash-es';
-import { unit, prefix } from '@vue-interface/utils';
+import { unit, prefix, kebabCase } from '@vue-interface/utils';
 
 import Chase from './types/Chase';
 import CircleFade from './types/CircleFade';

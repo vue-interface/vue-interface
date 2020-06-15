@@ -1,13 +1,18 @@
-var ManifestPlugin = require('webpack-manifest-plugin');
-
+const ManifestPlugin = require('webpack-manifest-plugin');
+const ModuleConcatenationPlugin = require('webpack').optimize.ModuleConcatenationPlugin;
+ 
 // vue.config.js
 module.exports = {
+    pluginOptions: {
+        webpackBundleAnalyzer: false
+    },
     configureWebpack: {
         output: {
             libraryExport: 'default'
         },
         plugins:[
-            new ManifestPlugin()
+            new ManifestPlugin(),
+            new ModuleConcatenationPlugin()
         ]
     },
     pages: {
