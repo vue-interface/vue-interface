@@ -374,6 +374,7 @@ export default {
             const name = prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
 
             return this.mergeClasses(name, prefix(this.size, name), {
+                'form-group': this.group,
                 'has-activity': this.activity,
                 'is-valid': !!(this.valid || this.validFeedback),
                 'is-invalid': !!(this.invalid || this.invalidFeedback)
@@ -411,6 +412,10 @@ export default {
         },
 
         shadowClassName() {
+            if(!this.shadow) {
+                return;
+            }
+
             return this.shadow === true ? 'shadow' : `shadow-${this.shadow}`;
         },
 

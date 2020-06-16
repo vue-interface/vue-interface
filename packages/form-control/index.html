@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>FormControl</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="./dist/FormControl.css">
+    </head>
+    <body>
+        <form id="app" class="container">
+            <h1>Text Inputs</h1>
+
+            <h2>Basic Styles</h2>
+
+            <div class="form-group">
+                <label for="control" class="form-label">Some Label</label>
+                <input type="text" id="control" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Placeholder</label>
+                <input type="text" id="control" class="form-control" placeholder="Placeholder" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Disabled</label>
+                <input type="text" id="control" class="form-control" placeholder="Disabled" disabled />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Readonly</label>
+                <input type="text" id="control" class="form-control" placeholder="Readonly" readonly />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Plaintext</label>
+                <input type="text" id="control" class="form-control form-control-plaintext" placeholder="Plain Text" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="control" class="form-label">Color</label>
+                <input type="color" id="control" class="form-control form-control-color" />
+            </div>
+
+            <h2>Sizes</h2>
+            
+            <div class="form-group">
+                <label for="control" class="form-label">Small</label>
+                <input type="text" id="control" class="form-control form-control-sm" placeholder="form-control-sm" />
+            </div>
+            
+            <div class="form-group">
+                <label for="control" class="form-label">Medium</label>
+                <input type="text" id="control" class="form-control form-control-md" placeholder="form-control-md" />
+            </div>
+            
+            <div class="form-group">
+                <label for="control" class="form-label">Large</label>
+                <input type="text" id="control" class="form-control form-control-lg" placeholder="form-control-lg" />
+            </div>
+
+            <h1>Checkboxes and Radios</h1>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" type="checkbox" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck2" disabled checked>
+                <label class="form-check-label" for="defaultCheck2">
+                    Disabled checkbox
+                </label>
+            </div>
+            <hr>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="defaultRadio1" name="radio">
+                <label class="form-check-label" for="defaultRadio1">
+                    Default radio
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="defaultRadio2" name="radio">
+                <label class="form-check-label" for="defaultRadio2">
+                    Second radio
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="defaultRadio3" disabled checked>
+                <label class="form-check-label" for="defaultRadio3">
+                    Disabled radio
+                </label>
+            </div>
+            <h2>Inline</h2>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" type="checkbox" id="inlineCheck1">
+                <label class="form-check-label" for="inlineCheck1">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheck2" disabled checked>
+                <label class="form-check-label" for="inlineCheck2">
+                    Disabled checkbox
+                </label>
+            </div>
+            <hr>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio1" name="radio">
+                <label class="form-check-label" for="inlineRadio1">
+                    Default radio
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio2" name="radio">
+                <label class="form-check-label" for="inlineRadio2">
+                    Second radio
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineRadio3" disabled checked>
+                <label class="form-check-label" for="inlineRadio3">
+                    Disabled radio
+                </label>
+            </div>
+            <h1>Switch</h1>
+            <div class="form-switch">
+                <input class="form-check-input" type="checkbox" id="defaultSwitch" checked>
+                <label class="form-check-label" for="defaultSwitch">
+                    On by default
+                </label>
+            </div>
+            <div class="form-switch">
+                <input class="form-check-input" type="checkbox" id="defaultSwitch">
+                <label class="form-check-label" for="defaultSwitch">
+                    Off by default
+                </label>
+            </div>
+        </form>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+        <script type="text/javascript" src="./dist/FormControl.umd.js"></script>
+        <script type="text/javascript">
+            const vue = new Vue({
+                el: '#app'
+            });
+        </script>
+    </body>
+</html>
