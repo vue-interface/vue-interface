@@ -3,27 +3,33 @@ const { colors } = require('tailwindcss/defaultTheme');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
+        ':root': {
+            '--form-text-margin-top': theme('formText.marginTop'),
+            '--form-text-font-size': theme('formText.fontSize'),
+            '--form-text-font-style': theme('formText.fontStyle'),
+            '--form-text-font-weight': theme('formText.fontWeight'),
+            '--form-text-color': theme('formText.color'),
+        },
+
         '.form-text': {
-            marginTop: theme('form.text.marginTop'),
-            fontSize: theme('form.text.fontSize'),
-            fontStyle: theme('form.text.fontStyle'),
-            fontWeight: theme('form.text.fontWeight'),
-            color: theme('form.text.color')
+            marginTop: 'var(--form-text-margin-top)',
+            fontSize: 'var(--form-text-font-size)',
+            fontStyle: 'var(--form-text-font-style)',
+            fontWeight: 'var(--form-text-font-weight)',
+            color: 'var(--form-text-color)'
         }
     };
 
     addComponents(component);
 }, {
     theme: {
-        form: {
-            text: ({ theme }) => ({
-                marginTop: '.25rem',
-                fontSize: '.875em',
-                fontStyle: null,
-                fontWeight: null,
-                color: theme('colors.gray.600', colors.gray['600']),
-            })
-        }
+        formText: theme => ({
+            marginTop: '.25rem',
+            fontSize: '.875em',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            color: theme('colors.gray.600', colors.gray['600']),
+        })
     }
 });
   

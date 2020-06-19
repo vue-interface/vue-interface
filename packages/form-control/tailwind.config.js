@@ -16,6 +16,11 @@ module.exports = {
     plugins: [
         require('@vue-interface/variant/tailwindcss'),
         require('./tailwindcss/form-control'),
-        require('./tailwindcss/form-check')
+        require('./tailwindcss/form-check'),
+        require('./tailwindcss/form-select'),
+        require('./tailwindcss/form-file'),
+        require('./tailwindcss/form-text'),
+        require('./tailwindcss/form-labels'),
+        require('./tailwindcss/input-group')
     ]
 };

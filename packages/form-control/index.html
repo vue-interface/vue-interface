@@ -12,8 +12,6 @@
         <form id="app" class="container">
             <h1>Text Inputs</h1>
 
-            <h2>Basic Styles</h2>
-
             <div class="form-group">
                 <label for="control" class="form-label">Some Label</label>
                 <input type="text" id="control" class="form-control" />
@@ -40,28 +38,96 @@
             </div>
 
             <div class="form-group">
-                <label for="control" class="form-label">Color</label>
+                <label class="form-label">Color</label>
                 <input type="color" id="control" class="form-control form-control-color" />
             </div>
 
             <h2>Sizes</h2>
             
             <div class="form-group">
-                <label for="control" class="form-label">Small</label>
-                <input type="text" id="control" class="form-control form-control-sm" placeholder="form-control-sm" />
+                <label class="form-label">Small</label>
+                <input type="text" class="form-control form-control-sm" placeholder="form-control-sm" />
             </div>
             
             <div class="form-group">
-                <label for="control" class="form-label">Medium</label>
-                <input type="text" id="control" class="form-control form-control-md" placeholder="form-control-md" />
+                <label class="form-label">Medium</label>
+                <input type="text" class="form-control form-control-md" placeholder="form-control-md" />
             </div>
             
             <div class="form-group">
-                <label for="control" class="form-label">Large</label>
-                <input type="text" id="control" class="form-control form-control-lg" placeholder="form-control-lg" />
+                <label class="form-label">Large</label>
+                <input type="text" class="form-control form-control-lg" placeholder="form-control-lg" />
+            </div>
+
+            <h1>Select Dropdowns</h1>
+
+            <div class="form-group">
+                <label class="form-label">Some Label</label>
+                <select type="text"class="form-control">
+                    <option>Option A</option>
+                    <option selected>Option B</option>
+                    <option>Option C</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Disabled</label>
+                <select type="text"class="form-control" disabled>
+                    <option>Option A</option>
+                    <option selected>Option B</option>
+                    <option>Option C</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Readonly</label>
+                <select type="text"class="form-control" readonly>
+                    <option disabled>Option A</option>
+                    <option selected>Option B</option>
+                    <option disabled>Option C</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Plaintext</label>
+                <select type="text"class="form-control form-control-plaintext" disabled readonly>
+                    <option disabled>Option A</option>
+                    <option disabled selected>Option B</option>
+                    <option disabled>Option C</option>
+                </select>
+            </div>
+
+            <h2>Sizes</h2>
+
+            <div class="form-group">
+                <label class="form-label">Small</label>
+                <select type="text"class="form-control form-control-sm">
+                    <option>Option A</option>
+                    <option selected>Option B</option>
+                    <option>Option C</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Medium</label>
+                <select type="text"class="form-control form-control">
+                    <option>Option A</option>
+                    <option selected>Option B</option>
+                    <option>Option C</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Large</label>
+                <select type="text"class="form-control form-control-lg">
+                    <option>Option A</option>
+                    <option selected>Option B</option>
+                    <option>Option C</option>
+                </select>
             </div>
 
             <h1>Checkboxes and Radios</h1>
+
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" type="checkbox" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
@@ -93,7 +159,9 @@
                     Disabled radio
                 </label>
             </div>
+
             <h2>Inline</h2>
+
             <div class="form-check form-check-inline">
                 <input type="checkbox" class="form-check-input" type="checkbox" id="inlineCheck1">
                 <label class="form-check-label" for="inlineCheck1">
@@ -125,18 +193,54 @@
                     Disabled radio
                 </label>
             </div>
-            <h1>Switch</h1>
-            <div class="form-switch">
-                <input class="form-check-input" type="checkbox" id="defaultSwitch" checked>
-                <label class="form-check-label" for="defaultSwitch">
-                    On by default
-                </label>
+
+            <h1>Switches</h1>
+
+            <div class="form-group">
+                <div class="form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch" checked>
+                    <label class="form-check-label" for="defaultSwitch">
+                        On by default
+                    </label>
+                </div>
             </div>
-            <div class="form-switch">
-                <input class="form-check-input" type="checkbox" id="defaultSwitch">
-                <label class="form-check-label" for="defaultSwitch">
-                    Off by default
-                </label>
+
+            <div class="form-group">
+                <div class="form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch2">
+                    <label class="form-check-label" for="defaultSwitch2">
+                        Off by default
+                    </label>
+                </div>
+            </div>
+
+            <h2>Sizes</h2>
+
+            <div class="form-group">
+                <div class="form-switch form-switch-sm">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch3">
+                    <label class="form-check-label" for="defaultSwitch3">
+                        Small
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch4">
+                    <label class="form-check-label" for="defaultSwitch4">
+                        Medium
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-switch form-switch-lg">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch5">
+                    <label class="form-check-label" for="defaultSwitch5">
+                        Large
+                    </label>
+                </div>
             </div>
         </form>
 

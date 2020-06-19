@@ -4,11 +4,12 @@ module.exports = {
     plugins: [
         require('postcss-nested'),
         require('tailwindcss'),
+        require('postcss-hexrgba'),
+        require('postcss-encode-background-svgs'),
         require('postcss-css-variables')({
             preserve: 'computed'
         }),
         require('postcss-calc'),
-        require('postcss-hexrgba'),
         require('postcss-functions')({
             functions: {
                 darken(color, ...args) {
@@ -19,6 +20,6 @@ module.exports = {
                 }
             }
         }),
-        require('autoprefixer')
+        require('autoprefixer'),
     ]
 };

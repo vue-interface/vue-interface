@@ -60,82 +60,75 @@ module.exports = plugin(function({ addComponents, theme }) {
         '.input-group-text': {
             display: 'flex',
             alignItems: 'center',
-            padding: $input-padding-y $input-padding-x;
-            @include font-size($input-font-size); // Match inputs
-            fontWeight: $font-weight-normal;
-            lineHeight: $input-line-height;
-            color: $input-group-addon-color;
-            textAlign: 'center';
-            whiteSpace: 'nowrap';
-            backgroundColor: $input-group-addon-bg;
-            border: $input-border-width solid $input-group-addon-border-color;
-            @include border-radius($input-border-radius);
+            padding: 'var(--form-control-padding-y) var(--form-control-padding-x)',
+            fontSize: 'var(--form-control-font-size)',
+            fontWeight: 'var(--form-control-font-weight)',
+            lineHeight: 'var(--form-control-line-height)',
+            color: 'var(--form-control-color)',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            backgroundColor: 'var(--form-control-background-color)',
+            border: 'var(--form-control-border-width) var(--form-control-border-style) var(--form-control-border-color)',
+            borderRadius: 'var(--form-control-border-radius)'
         },
           
-          
-          // Sizing
-          //
-          // Remix the default form control sizing classes into new ones for easier
-          // manipulation.
-          
-          '.input-group-lg > .form-control': {
-            minHeight: $input-height-lg
-          }
-          
-          '.input-group-lg > .form-select': {
-            height: $input-height-lg
-          }
-          
-          .input-group-lg > .form-control,
-          .input-group-lg > .form-select,
-          .input-group-lg > .input-group-text,
-          .input-group-lg > .btn {
-            padding: $input-padding-y-lg $input-padding-x-lg;
-            @include font-size($input-font-size-lg);
-            @include border-radius($input-border-radius-lg);
-          }
-          
-          .input-group-sm > .form-control {
-            minHeight: $input-height-sm;
-          }
-          
-          .input-group-sm > .form-select {
-            height: $input-height-sm;
-          }
-          
-          .input-group-sm > .form-control,
-          .input-group-sm > .form-select,
-          .input-group-sm > .input-group-text,
-          .input-group-sm > .btn {
-            padding: $input-padding-y-sm $input-padding-x-sm;
-            @include font-size($input-font-size-sm);
-            @include border-radius($input-border-radius-sm);
-          }
-          
-          .input-group-lg > .form-select,
-          .input-group-sm > .form-select {
-            paddingRight: $form-select-padding-x + $form-select-indicator-padding;
-          }
-          
-          
-          // Rounded corners
-          //
-          // These rulesets must come after the sizing ones to properly override sm and lg
-          // border-radius values when extending. They're more specific than we'd like
-          // with the `.input-group >` part, but without it, we cannot override the sizing.
-          
-          // stylelint-disable-next-line no-duplicate-selectors
-          .input-group {
-            > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
-            > .dropdown-toggle:nth-last-child(n + 3) {
-              @include border-right-radius(0);
+        
+        // Sizing
+        //
+        // Remix the default form control sizing classes into new ones for easier
+        // manipulation.
+        
+        '.input-group-lg > .form-control': {
+            minHeight: 'calc(var(--form-control-line-height) * 1em + var(--form-control-lg-padding-y) * 2 + var(--form-control-border-width) * 2)'
+        },
+        
+        '.input-group-lg > .form-select': {
+            height: 'calc(var(--form-control-line-height) * 1em + var(--form-control-lg-padding-y) * 2 + var(--form-control-border-width) * 2)'
+        },
+        
+        '.input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text, .input-group-lg > .btn': {
+            padding: 'var(--form-control-lg-padding-y) var(--form-control-lg-padding-x)',
+            fontSize: 'var(--form-control-lg-font-size)',
+            fontSize: 'var(--form-control-lg-border-radius)'
+        },
+        
+        '.input-group-sm > .form-control': {
+            minHeight: 'calc(var(--form-control-line-height) * 1em + var(--form-control-sm-padding-y) * 2 + var(--form-control-border-width) * 2)'
+        },
+        
+        '.input-group-sm > .form-select': {
+            height: 'calc(var(--form-control-line-height) * 1em + var(--form-control-sm-padding-y) * 2 + var(--form-control-border-width) * 2)'
+        },
+        
+        '.input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text, .input-group-sm > .btn': {
+            padding: 'var(--form-control-sm-padding-y) var(--form-control-sm-padding-x)',
+            fontSize: 'var(--form-control-sm-font-size)',
+            fontSize: 'var(--form-control-sm-border-radius)'
+        },
+        
+        '.input-group-lg > .form-select, .input-group-sm > .form-select': {
+            paddingRight: 'var(--form-select-padding-x) + var(--form-select-indicator-padding-y)'
+        },          
+        
+        // Rounded corners
+        //
+        // These rulesets must come after the sizing ones to properly override sm and lg
+        // border-radius values when extending. They're more specific than we'd like
+        // with the `.input-group >` part, but without it, we cannot override the sizing.
+        
+        // stylelint-disable-next-line no-duplicate-selectors
+        '.input-group': {
+            '> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), > .dropdown-toggle:nth-last-child(n + 3)': {
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0
+            },
+        
+            '> :not(:first-child):not(.dropdown-menu)': {
+                marginLeft: 'calc(var(--form-control-border-width) * -1)',
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0
             }
-          
-            > :not(:first-child):not(.dropdown-menu) {
-              margin-left: -$input-border-width;
-              @include border-left-radius(0);
-            }
-          }
+        }
     };
 
     addComponents(component);
@@ -143,7 +136,7 @@ module.exports = plugin(function({ addComponents, theme }) {
     theme: {
         form: {
             inputGroup: ({ theme }) => ({
-                
+                //
             })
         }
     }
