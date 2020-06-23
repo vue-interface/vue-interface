@@ -12,20 +12,6 @@
 <script>
 import { unit, prefix, kebabCase } from '@vue-interface/utils';
 
-import Chase from './types/Chase';
-import CircleFade from './types/CircleFade';
-import CircleOrbit from './types/CircleOrbit';
-import CircleTrail from './types/CircleTrail';
-import Dots from './types/Dots';
-import DoublePulse from './types/DoublePulse';
-import Facebook from './types/Facebook';
-import Grid from './types/Grid';
-import Pulse from './types/Pulse';
-import Spinner from './types/Spinner';
-import Square from './types/Square';
-import SquareFold from './types/SquareFold';
-import SquareOrbit from './types/SquareOrbit';
-
 export default {
 
     name: 'ActivityIndicator',
