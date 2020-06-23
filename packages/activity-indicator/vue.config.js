@@ -3,9 +3,6 @@ const ModuleConcatenationPlugin = require('webpack').optimize.ModuleConcatenatio
  
 // vue.config.js
 module.exports = {
-    pluginOptions: {
-        webpackBundleAnalyzer: false
-    },
     configureWebpack: {
         output: {
             libraryExport: 'default'

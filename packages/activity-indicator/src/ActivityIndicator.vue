@@ -31,19 +31,19 @@ export default {
     name: 'ActivityIndicator',
 
     components: {
-        Chase,
-        CircleFade,
-        CircleOrbit,
-        CircleTrail,
-        Dots,
-        DoublePulse,
-        Facebook,
-        Grid,
-        Pulse,
-        Spinner,
-        Square,
-        SquareFold,
-        SquareOrbit
+        Chase: () => import(/* webpackChunkName: 'activity-indicator-chase' */ './types/Chase'),
+        CircleFade: () => import(/* webpackChunkName: 'activity-indicator-circle-fade' */ './types/CircleFade'),
+        CircleOrbit: () => import(/* webpackChunkName: 'activity-indicator-circle-orbit' */ './types/CircleOrbit'),
+        CircleTrail: () => import(/* webpackChunkName: 'activity-indicator-circle-trail' */ './types/CircleTrail'),
+        Dots: () => import(/* webpackChunkName: 'activity-indicator-dots' */ './types/Dots'),
+        DoublePulse: () => import(/* webpackChunkName: 'activity-indicator-double-pulse' */ './types/DoublePulse'),
+        Facebook: () => import(/* webpackChunkName: 'activity-indicator-facebook' */ './types/Facebook'),
+        Grid: () => import(/* webpackChunkName: 'activity-indicator-grid' */ './types/Grid'),
+        Pulse: () => import(/* webpackChunkName: 'activity-indicator-pulse' */ './types/Pulse'),
+        Spinner: () => import(/* webpackChunkName: 'activity-indicator-spinner' */ './types/Spinner'),
+        Square: () => import(/* webpackChunkName: 'activity-indicator-square' */ './types/Square'),
+        SquareFold: () => import(/* webpackChunkName: 'activity-indicator-square-fold' */ './types/SquareFold'),
+        SquareOrbit: () => import(/* webpackChunkName: 'activity-indicator-square-orbit' */ './types/SquareOrbit')
     },
 
     props: {
