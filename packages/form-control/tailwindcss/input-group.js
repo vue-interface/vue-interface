@@ -3,13 +3,17 @@ const { colors } = require('tailwindcss/defaultTheme');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
+        ':root': {
+            '--input-group-text-color': theme('inputGroup.color'),
+            '--input-group-text-background-color': theme('inputGroup.backgroundColor')
+        },
         '.input-group': {
             position: 'relative',
             display: 'flex',
             flexWrap: 'wrap', // For form validation feedback
             alignItems: 'stretch',
-            width: '100%',
-          
+            width: '100%',          
+                  
             '> .form-control, > .form-select, > .form-file': {
                 position: 'relative', // For focus state's z-index
                 flex: '1 1 auto',
@@ -64,10 +68,10 @@ module.exports = plugin(function({ addComponents, theme }) {
             fontSize: 'var(--form-control-font-size)',
             fontWeight: 'var(--form-control-font-weight)',
             lineHeight: 'var(--form-control-line-height)',
-            color: 'var(--form-control-color)',
+            color: 'var(--input-group-text-color)',
             textAlign: 'center',
             whiteSpace: 'nowrap',
-            backgroundColor: 'var(--form-control-background-color)',
+            backgroundColor: 'var(--input-group-text-background-color)',
             border: 'var(--form-control-border-width) var(--form-control-border-style) var(--form-control-border-color)',
             borderRadius: 'var(--form-control-border-radius)'
         },
@@ -89,7 +93,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         '.input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text, .input-group-lg > .btn': {
             padding: 'var(--form-control-lg-padding-y) var(--form-control-lg-padding-x)',
             fontSize: 'var(--form-control-lg-font-size)',
-            fontSize: 'var(--form-control-lg-border-radius)'
+            borderRadius: 'var(--form-control-lg-border-radius)'
         },
         
         '.input-group-sm > .form-control': {
@@ -103,42 +107,37 @@ module.exports = plugin(function({ addComponents, theme }) {
         '.input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text, .input-group-sm > .btn': {
             padding: 'var(--form-control-sm-padding-y) var(--form-control-sm-padding-x)',
             fontSize: 'var(--form-control-sm-font-size)',
-            fontSize: 'var(--form-control-sm-border-radius)'
+            borderRadius: 'var(--form-control-sm-border-radius)'
         },
         
         '.input-group-lg > .form-select, .input-group-sm > .form-select': {
             paddingRight: 'var(--form-select-padding-x) + var(--form-select-indicator-padding-y)'
-        },          
-        
+        },
+
         // Rounded corners
         //
         // These rulesets must come after the sizing ones to properly override sm and lg
         // border-radius values when extending. They're more specific than we'd like
         // with the `.input-group >` part, but without it, we cannot override the sizing.
+        '.input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group > .dropdown-toggle:nth-last-child(n + 3)': {
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0
+        },
         
-        // stylelint-disable-next-line no-duplicate-selectors
-        '.input-group': {
-            '> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), > .dropdown-toggle:nth-last-child(n + 3)': {
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 0
-            },
-        
-            '> :not(:first-child):not(.dropdown-menu)': {
-                marginLeft: 'calc(var(--form-control-border-width) * -1)',
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0
-            }
+        '.input-group > :not(:first-child):not(.dropdown-menu)': {
+            marginLeft: 'calc(var(--form-control-border-width) * -1)',
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0
         }
     };
 
     addComponents(component);
 }, {
     theme: {
-        form: {
-            inputGroup: ({ theme }) => ({
-                //
-            })
-        }
+        inputGroup: theme => ({
+            color: theme('formControl.color', colors.gray[400]),
+            backgroundColor: theme('colors.gray.200', colors.gray[200])
+        })
     }
 });
   

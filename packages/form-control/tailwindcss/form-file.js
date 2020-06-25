@@ -5,19 +5,19 @@ module.exports = plugin(function({ addComponents, theme }) {
     const component = {
         ':root': {
             '--form-file-display': theme('formFile.display'),
-            '--form-file-line-height': theme('formFile.lineHeight'),
+            '--form-file-line-height': `${theme('formFile.lineHeight')}`,
             '--form-file-padding-y': theme('formFile.paddingY'),
             '--form-file-padding-x': theme('formFile.paddingX'),
             '--form-file-border-radius': theme('formFile.borderRadius'),
             '--form-file-border-width': theme('formFile.borderWidth'),
             '--form-file-position': theme('formFile.position'),
-            '--form-file-z-index': theme('formFile.zIndex'),
+            '--form-file-z-index': `${theme('formFile.zIndex')}`,
             '--form-file-color': theme('formFile.color'),
             '--form-file-width': theme('formFile.width'),
             '--form-file-height': theme('formFile.height'),
             '--form-file-margin': theme('formFile.margin'),
             '--form-file-opacity': theme('formFile.margin'),
-            '--form-file-font-weight': theme('formFile.fontWeight'),
+            '--form-file-font-weight': `${theme('formFile.fontWeight')}`,
             '--form-file-background-color': theme('formFile.backgroundColor'),
             '--form-file-border-color': theme('formFile.borderColor'),
             '--form-file-border-style': theme('formFile.borderStyle'),
@@ -35,15 +35,16 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-file-label-top': theme('formFile.label.top'),
             '--form-file-label-right': theme('formFile.label.right'),
             '--form-file-label-left': theme('formFile.label.left'),
-            '--form-file-label-z-index': theme('formFile.label.zIndex'),
+            '--form-file-label-z-index': `${theme('formFile.label.zIndex')}`,
+            '--form-file-label-display': theme('formFile.label.display'),
 
             '--form-file-text-display': theme('formFile.text.display'),
-            '--form-file-text-flex-grow': theme('formFile.text.flexGrow'),
+            '--form-file-text-flex-grow': `${theme('formFile.text.flexGrow')}`,
             '--form-file-text-padding': theme('formFile.text.padding'),
             '--form-file-text-overflow': theme('formFile.text.overflow'),
             '--form-file-text-font-family': theme('formFile.fontFamily'),
-            '--form-file-text-font-weight': theme('formFile.fontWeight'),
-            '--form-file-text-line-height': theme('formFile.lineHeight'),
+            '--form-file-text-font-weight': `${theme('formFile.fontWeight')}`,
+            '--form-file-text-line-height': `${theme('formFile.lineHeight')}`,
             '--form-file-text-color': theme('formFile.text.color'),
             '--form-file-text-text-overflow': theme('formFile.text.textOverflow'),
             '--form-file-text-white-space': theme('formFile.text.whiteSpace'),
@@ -51,8 +52,8 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-file-text-border-color': theme('formFile.borderColor'),
             '--form-file-text-border-style': theme('formFile.borderStyle'),
             '--form-file-text-border-width': theme('formFile.borderWidth'),
-            '--form-file-text-border-left-top-radius': theme('formFile.text.borderLeftRadius'),
-            '--form-file-text-border-left-bottom-radius': theme('formFile.text.borderLeftRadius'),
+            '--form-file-text-border-top-left-radius': theme('formFile.text.borderTopLeftRadius'),
+            '--form-file-text-border-bottom-left-radius': theme('formFile.text.borderBottomLeftRadius'),
 
             '--form-file-button-display': theme('formFile.button.display'),
             '--form-file-button-flex-shrink': theme('formFile.button.flexShrink'),
@@ -60,12 +61,12 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-file-button-margin-left': theme('formFile.borderWidth'),
             '--form-file-button-line-height': theme('formFile.lineHeight'),
             '--form-file-button-color': theme('formFile.button.color'),
-            '--form-file-button-background-color': theme('formFile.backgroundColor'),
+            '--form-file-button-background-color': theme('formFile.button.backgroundColor'),
             '--form-file-button-border-color': theme('formFile.borderColor'),
             '--form-file-button-border-style': theme('formFile.borderStyle'),
             '--form-file-button-border-width': theme('formFile.borderWidth'),
-            '--form-file-button-border-right-top-radius': theme('formFile.button.borderRightRadius'),
-            '--form-file-button-border-right-bottom-radius': theme('formFile.button.borderRightRadius'),
+            '--form-file-button-border-top-right-radius': theme('formFile.button.borderTopRightRadius'),
+            '--form-file-button-border-bottom-right-radius': theme('formFile.button.borderBottomRightRadius'),
 
             '--form-file-sm-font-size': theme('formFile.sm.fontSize'),
             '--form-file-sm-padding-y': theme('formFile.sm.paddingY'),
@@ -79,13 +80,15 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.form-file': {
-            position: 'var(--form-file-position)'
+            position: 'var(--form-file-position)',
+            height: 'var(--form-file-height)'
         },
           
         '.form-file-input': {
             position: 'var(--form-file-position)',
             zIndex: 'var(--form-file-z-index)',
             width: 'var(--form-file-width)',
+            height: 'var(--form-file-height)',
             margin: 'var(--form-file-margin)',
             opacity: 'var(--form-file-opacity)',
           
@@ -108,8 +111,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             right: 'var(--form-file-label-right)',
             left: 'var(--form-file-label-left)',
             zIndex: 'var(--form-file-label-z-index)',
-            display: 'var(--form-file-display)',
-            height: 'var(--form-file-height)',
+            display: 'var(--form-file-label-display)',
             borderColor: 'var(--form-file-border-color)',
             borderRadius: 'var(--form-file-border-radius)',
             boxShadow: 'var(--form-file-box-shadow)',
@@ -130,8 +132,8 @@ module.exports = plugin(function({ addComponents, theme }) {
             borderColor: 'var(--form-file-text-border-color)',
             borderStyle: 'var(--form-file-text-border-style)',
             borderWidth: 'var(--form-file-text-border-width)',
-            borderLeftTopRadius: 'var(--form-file-text-border-left-top-radius)',
-            borderLeftBottomRadius: 'var(--form-file-text-border-left-bottom-radius)'
+            borderTopLeftRadius: 'var(--form-file-text-border-top-left-radius)',
+            borderBottomLeftRadius: 'var(--form-file-text-border-bottom-left-radius)'
         },
           
         '.form-file-button': {
@@ -145,8 +147,8 @@ module.exports = plugin(function({ addComponents, theme }) {
             borderColor: 'var(--form-file-button-border-color)',
             borderStyle: 'var(--form-file-button-border-style)',
             borderWidth: 'var(--form-file-button-border-width)',
-            borderLeftTopRadius: 'var(--form-file-button-border-right-top-radius)',
-            borderLeftBottomRadius: 'var(--form-file-button-border-right-bottom-radius)'
+            borderTopRightRadius: 'var(--form-file-button-border-top-right-radius)',
+            borderBottomRightRadius: 'var(--form-file-button-border-bottom-right-radius)'
         },
           
         '.form-file-sm': {
@@ -218,17 +220,19 @@ module.exports = plugin(function({ addComponents, theme }) {
                 borderWidth: 'var(--form-file-border-width)',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
-                borderLeftRadius: 'inherit'
+                borderTopLeftRadius: 'inherit',
+                borderBottomLeftRadius: 'inherit'
             },
             button: {
                 display: 'block',
                 flexShrink: 0,
                 padding: 'var(--form-file-padding-y) var(--form-file-padding-x)',
-                color: theme('colors.gray.400', colors.gray['400']),
-                background: theme('colors.gray.200', colors.gray['200']),
+                color: theme('formControl.color', colors.gray['600']),
+                backgroundColor: theme('formControl.disabled.backgroundColor', colors.gray['200']),
                 borderColor: 'inherit',
                 borderStyle: 'var(--form-file-border-style)',
-                borderRightRadius: 'inherit'
+                borderTopRightRadius: 'inherit',
+                borderBottomRightRadius: 'inherit',
             },
             sm: {
                 paddingY: theme('formControl.sm.paddingY', '.25rem'),
