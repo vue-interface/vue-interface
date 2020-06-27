@@ -18,7 +18,7 @@ module.exports = {
                     return Color(color).lighten(...args);
                 },
                 contrast(color, light, dark) {
-                    return Color(color).luminosity() > .5 ? dark : light;
+                    return Color(color).luminosity() > .5 ? (dark || 'black') : (light || 'white');
                 }
             }
         }),
