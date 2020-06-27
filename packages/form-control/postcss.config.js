@@ -4,12 +4,11 @@ module.exports = {
     plugins: [
         require('postcss-nested'),
         require('tailwindcss'),
-        require('postcss-hexrgba'),
         require('postcss-encode-background-svgs'),
         require('postcss-css-variables')({
             preserve: 'computed'
         }),
-        require('postcss-calc'),
+        require('postcss-hexrgba'),
         require('postcss-functions')({
             functions: {
                 darken(color, ...args) {
@@ -17,9 +16,13 @@ module.exports = {
                 },
                 lighten(color, ...args) {
                     return Color(color).lighten(...args);
+                },
+                contrast(color, light, dark) {
+                    return Color(color).luminosity() > .5 ? dark : light;
                 }
             }
         }),
+        require('postcss-calc'),
         require('autoprefixer'),
     ]
 };

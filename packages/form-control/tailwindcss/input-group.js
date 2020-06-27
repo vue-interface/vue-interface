@@ -119,12 +119,12 @@ module.exports = plugin(function({ addComponents, theme }) {
         // These rulesets must come after the sizing ones to properly override sm and lg
         // border-radius values when extending. They're more specific than we'd like
         // with the `.input-group >` part, but without it, we cannot override the sizing.
-        '.input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group > .dropdown-toggle:nth-last-child(n + 3)': {
+        '.input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-control), .input-group > .dropdown-toggle:nth-last-child(n + 3)': {
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0
         },
         
-        '.input-group > :not(:first-child):not(.dropdown-menu)': {
+        '.input-group > :not(:first-child):not(.dropdown-menu):not(.invalid-tooltip):not(.valid-tooltip)': {
             marginLeft: 'calc(var(--form-control-border-width) * -1)',
             borderTopLeftRadius: 0,
             borderBottomLeftRadius: 0

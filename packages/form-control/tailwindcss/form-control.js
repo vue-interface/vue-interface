@@ -25,9 +25,15 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-control-transition': theme('formControl.transition'),
             '--form-control-focus-color': theme('formControl.focus.color'),
 
+            '--form-control-height-inner': 'calc(var(--form-control-line-height) * 1em + var(--form-control-padding-y) * 2)',
+            '--form-control-height-inner-half': 'calc(var(--form-control-height-inner) / 2)',
+            '--form-control-height-inner-quarter': 'calc(var(--form-control-height-inner) / 4)',
+
+            '--form-control-focus-width': theme('formControl.focus.width'),
+            '--form-control-focus-opacity': `${theme('formControl.focus.opacity')}`,
             '--form-control-focus-background-color': theme('formControl.focus.backgroundColor'),
             '--form-control-focus-border-color': theme('formControl.focus.borderColor'),
-            '--form-control-focus-outline': theme('formControl.focus.outline'),
+            '--form-control-focus-outline': `${theme('formControl.focus.outline')}`,
             '--form-control-focus-box-shadow': `${theme('formControl.focus.boxShadow')}${theme('formControl.enableShadows') ? ', var(--form-control-box-shadow)' : ''}`,
             
             '--form-control-placeholder-opacity': theme('formControl.placeholder.opacity'),
@@ -74,7 +80,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             fontSize: 'var(--form-control-font-size)',
             fontWeight: 'var(--form-control-font-weight)',
             lineHeight: 'var(--form-control-line-height)',
-            color: 'var(--form-control-color)',
             backgroundColor: 'var(--form-control-background-color)',
             backgroundClip: 'var(--form-control-background-clip)',
             border: 'var(--form-control-border-width) var(--form-control-border-style) var(--form-control-border-color)',
@@ -82,6 +87,10 @@ module.exports = plugin(function({ addComponents, theme }) {
             boxShadow: theme('formControl.enableShadows') && 'var(--form-control-box-shadow)',
             transition: 'var(--form-control-transition)',
             appearance: 'var(--form-control-appearance)',
+
+            '&:not(.form-switch)': {
+                color: 'var(--form-control-color)',
+            },
 
             // Customize the `:focus` state to imitate native WebKit styles.
             '&:focus': {
@@ -176,7 +185,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             display: 'block',
             width: '100%',
             lineHeight: '1.5',
-            color: theme('colors.gray.600', colors.gray['600']),
+            color: theme('colors.gray.700', colors.gray['700']),
             paddingY: '.375rem',
             paddingX: '.75rem',
             borderWidth: '1px',
@@ -190,7 +199,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             appearance: 'none',
             boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, .075)',
             borderRadius: '.25rem',
-            transition: 'all .15s ease-in-out',
+            transition: 'border-color .15s ease-in-out, box-shadow .15s ease-in-out',
             enableShadows: true,
             colorControl: {
                 maxWidth: '3rem',
@@ -201,7 +210,9 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundColor: theme('colors.white', colors.white),
                 borderColor: theme('colors.blue.400', colors.blue['400']),
                 outline: 0,
-                boxShadow: `0 0 0 .2rem rgba(${theme('colors.blue.500', colors.blue['500'])}, .25)`
+                width: '.2rem',
+                opacity: '.25',
+                boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${theme('colors.blue.500', colors.blue['500'])}, var(--form-control-focus-opacity))`
             },
             placeholder: {
                 opacity: '1',

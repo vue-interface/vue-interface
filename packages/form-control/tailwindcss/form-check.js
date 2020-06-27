@@ -61,28 +61,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-check-label-color': theme('formCheck.label.color'),
             '--form-check-label-cursor': theme('formCheck.label.cursor'),
 
-            '--form-switch-display': theme('formCheck.switch.display'),
-            '--form-switch-align-items': theme('formCheck.switch.alignItems'),
-            '--form-switch-height': theme('formCheck.switch.height'),
-            '--form-switch-width': theme('formCheck.switch.width'),
-            '--form-switch-margin-top': theme('formCheck.switch.marginTop'),
-            '--form-switch-padding-left': theme('formCheck.switch.paddingLeft'),
-            '--form-switch-margin-left': theme('formCheck.switch.marginLeft'),
-            '--form-switch-label-margin-bottom': theme('formCheck.switch.label.marginBottom'),
-            '--form-switch-background-image': theme('formCheck.switch.backgroundImage'),
-            '--form-switch-background-repeat': theme('formCheck.switch.backgroundRepeat'),
-            '--form-switch-background-position': theme('formCheck.switch.backgroundPosition'),
-            '--form-switch-border-radius': theme('formCheck.switch.borderRadius'),
-            '--form-switch-focus-background-image': theme('formCheck.switch.focus.backgroundImage'),
-            '--form-switch-checked-background-position': theme('formCheck.switch.checked.backgroundPosition'),
-            '--form-switch-checked-background-image': theme('formCheck.switch.checked.backgroundImage'),
-
-            '--form-switch-sm-height': theme('formCheck.switch.sm.height'),
-            '--form-switch-sm-width': theme('formCheck.switch.sm.width'),
-
-            '--form-switch-lg-height': theme('formCheck.switch.lg.height'),
-            '--form-switch-lg-width': theme('formCheck.switch.lg.width'),
-
             '--form-check-inline-display': theme('formCheck.inline.display'),
             '--form-check-inline-margin-right': theme('formCheck.inline.marginRight'),
         },
@@ -179,55 +157,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             color: 'var(--form-check-label-color)',
             cursor: 'var(--form-check-label-cursor)',
         },
-
-        //
-        // Switch
-        //
-        '.form-switch': {
-            display: 'var(--form-switch-display)',
-            alignItems: 'var(--form-switch-align-items)',
-            paddingLeft: 'var(--form-switch-padding-left)',
-
-            '.form-check-label': {
-                paddingLeft: 'calc(var(--form-switch-padding-left) / 6)',
-                marginBottom: 'var(--form-switch-label-margin-bottom)'
-            },
-
-            '.form-check-input': {
-                width: 'var(--form-switch-width)',
-                height: 'var(--form-switch-height)',
-                marginTop: 'var(--form-switch-margin-top)',
-                marginLeft: 'var(--form-switch-margin-left)',
-                backgroundRepeat: 'var(--form-switch-background-repeat)',
-                backgroundImage: 'var(--form-switch-background-image)',
-                backgroundPosition: 'var(--form-switch-background-position)',
-                borderRadius: 'var(--form-switch-border-radius)',
-            
-                '&:focus': {
-                    backgroundImage: 'var(--form-switch-focus-background-image)',
-                },
-            
-                '&:checked': {
-                    backgroundPosition: 'var(--form-switch-checked-background-position)',
-                    backgroundImage: 'var(--form-switch-checked-background-image)'
-                }
-            }
-        },
-
-        '.form-switch-sm': {
-            '.form-check-input': {
-                width: 'var(--form-switch-sm-width)',
-                height: 'var(--form-switch-sm-height)'
-            }
-        },
-
-        '.form-switch-lg': {
-            '.form-check-input': {
-                width: 'var(--form-switch-lg-width)',
-                height: 'var(--form-switch-lg-height)'
-            }
-        },
-
+        
         '.form-check-inline': {
             display: 'var(--form-check-inline-display)',
             marginRight: 'var(--form-check-inline-margin-right)',
@@ -306,43 +236,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             label: {
                 color: 'inherit',
                 cursor: 'inherit'
-            },
-            switch: {
-                display: 'flex',
-                alignItems: 'center',
-                height: '2.375em',
-                width: 'calc(var(--form-switch-height) * 1.666)',
-                marginTop: 0,
-                paddingLeft: 'calc(var(--form-switch-width) + .5em)',
-                marginLeft: 'calc(var(--form-switch-padding-left) * -1)',
-                backgroundRepeat: 'no-repeat',
-                backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`,
-                backgroundPosition: 'left center',
-                borderRadius: 'var(--form-switch-width)',
-
-                label: {
-                    paddingLeft: '.5em',
-                    marginBottom: 0
-                },
-
-                focus: {
-                    backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.primary')}'/></svg>")`,
-                },
-                                        
-                checked: {
-                    backgroundPosition: 'right center',
-                    backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>")`
-                },
-
-                sm: {
-                    height: '1.938em',
-                    width: 'calc(var(--form-switch-sm-height) * 1.5)',
-                },
-
-                lg: {
-                    height: '3em',
-                    width: 'calc(var(--form-switch-lg-height) * 1.75)',
-                }
             },
             inline: {
                 display: 'inline-block',

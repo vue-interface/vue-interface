@@ -85,10 +85,10 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
           
         '.form-file-input': {
+            height: 'inherit',
             position: 'var(--form-file-position)',
             zIndex: 'var(--form-file-z-index)',
             width: 'var(--form-file-width)',
-            height: 'var(--form-file-height)',
             margin: 'var(--form-file-margin)',
             opacity: 'var(--form-file-opacity)',
           

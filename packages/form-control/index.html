@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./dist/FormControl.css">
     </head>
     <body>
-        <form id="app" class="container">
+        <div id="app" class="container">
             <h1>Text Inputs</h1>
 
             <div class="form-group">
@@ -196,7 +196,7 @@
 
             <h1>File browser</h1>
 
-            <div class="form-file">
+            <div class="form-file form-group">
                 <input type="file" class="form-file-input" id="customFile">
                 <label class="form-file-label" for="customFile">
                   <span class="form-file-text">Choose file...</span>
@@ -204,7 +204,7 @@
                 </label>
             </div>
 
-            <div class="form-file">
+            <div class="form-file form-group">
                 <input type="file" class="form-file-input" id="customFileDisabled" disabled>
                 <label class="form-file-label" for="customFileDisabled">
                   <span class="form-file-text">Choose file...</span>
@@ -212,7 +212,7 @@
                 </label>
             </div>
 
-            <div class="form-file">
+            <div class="form-file form-group">
                 <input type="file" class="form-file-input" id="customFileLong">
                 <label class="form-file-label" for="customFileLong">
                   <span class="form-file-text">Lorem ipsum posuere consectetur est at lobortis nulla vitae elit libero a pharetra augue fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa justo sit amet risus cras mattis consectetur purus sit amet fermentum</span>
@@ -222,7 +222,7 @@
               
             <h2>Sizes</h2>
 
-            <div class="form-file form-file-sm">
+            <div class="form-file form-file-sm form-group">
                 <input type="file" class="form-file-input" id="customFile">
                 <label class="form-file-label" for="customFile">
                   <span class="form-file-text">Choose file...</span>
@@ -230,7 +230,7 @@
                 </label>
             </div>
 
-            <div class="form-file">
+            <div class="form-file form-group">
                 <input type="file" class="form-file-input" id="customFile">
                 <label class="form-file-label" for="customFile">
                   <span class="form-file-text">Choose file...</span>
@@ -238,7 +238,7 @@
                 </label>
             </div>
 
-            <div class="form-file form-file-lg">
+            <div class="form-file form-file-lg form-group">
                 <input type="file" class="form-file-input" id="customFile">
                 <label class="form-file-label" for="customFile">
                   <span class="form-file-text">Choose file...</span>
@@ -267,10 +267,24 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultSwitch3" disabled>
+                    <label class="form-check-label" for="defaultSwitch3">
+                        Disabled
+                    </label>
+                </div>
+            </div>
+
             <h2>Sizes</h2>
 
+            <p>
+                These sizes don't conform to the Bootstrap 5 standard, but make
+                the height comparable to textual inputs, vs checkboxes.
+            </p>
+
             <div class="form-group">
-                <div class="form-switch form-switch-sm">
+                <div class="form-switch form-control-sm">
                     <input class="form-check-input" type="checkbox" id="defaultSwitch3">
                     <label class="form-check-label" for="defaultSwitch3">
                         Small
@@ -279,7 +293,7 @@
             </div>
 
             <div class="form-group">
-                <div class="form-switch">
+                <div class="form-switch form-control">
                     <input class="form-check-input" type="checkbox" id="defaultSwitch4">
                     <label class="form-check-label" for="defaultSwitch4">
                         Medium
@@ -288,7 +302,7 @@
             </div>
 
             <div class="form-group">
-                <div class="form-switch form-switch-lg">
+                <div class="form-switch form-control-lg">
                     <input class="form-check-input" type="checkbox" id="defaultSwitch5">
                     <label class="form-check-label" for="defaultSwitch5">
                         Large
@@ -326,6 +340,7 @@
             </div>
 
             <h2>Sizing</h2>
+            
             <p>Add the relative form sizing classes to the .input-group itself and contents within will automatically resize—no need for repeating the form control size classes on each element.</p>
             
             <p>Sizing on the individual input group elements isn’t supported.</p>
@@ -480,7 +495,74 @@
                 </div>
                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
             </div>
-        </form>
+            
+            <h1>Validation</h1>
+
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustomUsername" class="form-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-tooltip">
+                            Please choose a username.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">City</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-tooltip">
+                        Please provide a valid city.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="validationCustom04" class="form-label">State</label>
+                    <select class="form-select" id="validationCustom04" required>
+                        <option selected="" disabled="" value="">Choose...</option>
+                        <option>...</option>
+                    </select>
+                    <div class="invalid-tooltip">
+                        Please select a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="validationCustom05" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-tooltip">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-tooltip">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
         <script type="text/javascript" src="./dist/FormControl.umd.js"></script>
@@ -488,6 +570,26 @@
             const vue = new Vue({
                 el: '#app'
             });
+
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict'
+            
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
+            
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms).forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
         </script>
     </body>
 </html>
