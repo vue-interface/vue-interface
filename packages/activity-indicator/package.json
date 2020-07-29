@@ -38,10 +38,9 @@
   "homepage": "https://github.com/vue-interface/activity-indicator/docs#readme",
   "dependencies": {
     "@vue-interface/component-registry": "^0.1.0",
-    "@vue-interface/utils": "^0.9.7",
+    "@vue-interface/utils": "^0.9.10",
+    "animate.css": "^4.1.0",
     "core-js": "^3.6.4",
-    "lodash-es": "^4.17.15",
-    "lodash.kebabcase": "^4.1.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
