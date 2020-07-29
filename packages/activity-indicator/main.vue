@@ -1,4 +1,9 @@
 <script>
 import ActivityIndicator from './src/ActivityIndicator';
-export default ActivityIndicator;
+import registry from './src/registry';
+
+export {
+    registry,
+    ActivityIndicator
+};
 </script>

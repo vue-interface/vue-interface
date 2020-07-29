@@ -1,7 +1,7 @@
 <template>
     <div class="activity-indicator" :class="classes" :style="style">
         <div class="activity-indicator-content">
-            <component :is="type" class="mx-auto" />
+            <component :is="component" class="mx-auto" />
             <div v-if="label" class="activity-indicator-label">
                 {{ label }}
             </div>
@@ -10,27 +10,13 @@
 </template>
 
 <script>
+import ComponentRegistry from '@vue-interface/component-registry';
 import { unit, prefix, kebabCase } from '@vue-interface/utils';
+import registry from './registry';
 
 export default {
 
     name: 'ActivityIndicator',
-
-    components: {
-        Chase: () => import(/* webpackChunkName: 'activity-indicator-chase' */ './types/Chase'),
-        CircleFade: () => import(/* webpackChunkName: 'activity-indicator-circle-fade' */ './types/CircleFade'),
-        CircleOrbit: () => import(/* webpackChunkName: 'activity-indicator-circle-orbit' */ './types/CircleOrbit'),
-        CircleTrail: () => import(/* webpackChunkName: 'activity-indicator-circle-trail' */ './types/CircleTrail'),
-        Dots: () => import(/* webpackChunkName: 'activity-indicator-dots' */ './types/Dots'),
-        DoublePulse: () => import(/* webpackChunkName: 'activity-indicator-double-pulse' */ './types/DoublePulse'),
-        Facebook: () => import(/* webpackChunkName: 'activity-indicator-facebook' */ './types/Facebook'),
-        Grid: () => import(/* webpackChunkName: 'activity-indicator-grid' */ './types/Grid'),
-        Pulse: () => import(/* webpackChunkName: 'activity-indicator-pulse' */ './types/Pulse'),
-        Spinner: () => import(/* webpackChunkName: 'activity-indicator-spinner' */ './types/Spinner'),
-        Square: () => import(/* webpackChunkName: 'activity-indicator-square' */ './types/Square'),
-        SquareFold: () => import(/* webpackChunkName: 'activity-indicator-square-fold' */ './types/SquareFold'),
-        SquareOrbit: () => import(/* webpackChunkName: 'activity-indicator-square-orbit' */ './types/SquareOrbit')
-    },
 
     props: {
 
@@ -54,26 +40,16 @@ export default {
             }
         },
 
+        registry: {
+            type: ComponentRegistry,
+            default() {
+                return registry;
+            }
+        },
+
         type: {
             type: String,
-            default: 'dots',
-            validator(value) {
-                return [
-                    'activity-indicator-chase',
-                    'activity-indicator-circle-fade',
-                    'activity-indicator-circle-orbit',
-                    'activity-indicator-circle-trail',
-                    'activity-indicator-dots',
-                    'activity-indicator-double-pulse',
-                    'activity-indicator-facebook',
-                    'activity-indicator-grid',
-                    'activity-indicator-pulse',
-                    'activity-indicator-spinner',
-                    'activity-indicator-square',
-                    'activity-indicator-square-fold',
-                    'activity-indicator-square-orbit',
-                ].indexOf(prefix(value, 'activity-indicator')) > -1;
-            }
+            required: true
         },
 
         height: [String, Number],
@@ -112,7 +88,11 @@ export default {
         },
 
         component() {
-            return kebabCase(this.prefix + this.type.replace(this.prefix, ''));
+            return () => {
+                const component = registry.get(kebabCase(this.type));
+            
+                return component instanceof Promise ? component : Promise.resolve(component);
+            };
         }
     }
 

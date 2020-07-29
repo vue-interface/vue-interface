@@ -4,9 +4,6 @@ const ModuleConcatenationPlugin = require('webpack').optimize.ModuleConcatenatio
 // vue.config.js
 module.exports = {
     configureWebpack: {
-        output: {
-            libraryExport: 'default'
-        },
         plugins:[
             new ManifestPlugin(),
             new ModuleConcatenationPlugin()
