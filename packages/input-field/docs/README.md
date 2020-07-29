@@ -1,4 +1,4 @@
-# Alert
+# InputField
 
 [[toc]]
 
@@ -6,18 +6,12 @@
 
 NPM
 
-    npm i @vue-interface/alert --save
+    npm i <%= pgk.name %> --save
 
 Yarn
 
-    yard add @vue-interface/alert
+    yard add <%= pgk.name %>
 
 CDN
 
-    https://cdn.jsdelivr.net/npm/@vue-interface/alert@<%= pkg.version %>/dist/Alert.min.js
-
-## Syntax
-
-``` html
-<alert>This is an alert.</alert>
-```
+    https://cdn.jsdelivr.net/npm/<%= pgk.name %>@<%= pkg.version %>/dist/InputField.min.js

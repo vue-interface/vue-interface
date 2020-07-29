@@ -14,8 +14,6 @@ module.exports = {
         container: false,
     },
     plugins: [
-        require('@vue-interface/variant/tailwindcss'),
-        require('@vue-interface/progress-bar/tailwindcss'),
-        require('./tailwindcss')
+        require('@vue-interface/form-control/tailwindcss'),
     ]
 };

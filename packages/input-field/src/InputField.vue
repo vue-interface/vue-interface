@@ -19,7 +19,7 @@
 
             <slot name="activity">
                 <transition name="slide-fade">
-                    <activity-indicator v-if="activity" key="test" ref="activity" type="dots" :size="size" />
+                    <activity-indicator v-if="activity" key="activity" ref="activity" type="dots" :size="size" />
                 </transition>
             </slot>
         </div>
@@ -47,7 +47,12 @@
 
 <script>
 import FormControl from '@vue-interface/form-control';
-import ActivityIndicator from '@vue-interface/activity-indicator';
+import { ActivityIndicator, register } from '@vue-interface/activity-indicator';
+import Dots from '@vue-interface/activity-indicator/src/types/Dots';
+
+register({
+    dots: Dots
+});
 
 export default {
 
