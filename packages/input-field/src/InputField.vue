@@ -40,7 +40,9 @@
         </slot>
 
         <slot name="help">
-            <small v-if="helpText" ref="help" v-html="helpText" />
+            <small v-if="helpText" ref="help">
+                {{ helpText }}
+            </small>
         </slot>
     </div>
 </template>
