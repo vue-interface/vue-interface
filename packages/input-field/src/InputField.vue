@@ -76,53 +76,51 @@ export default {
 @import '../../scss/custom-fields';
 */
 
-.input-field {
-    &, .form-group-inner {
-        position: relative;
-    }
+.input-field,
+.input-field .form-group-inner {
+    position: relative;
+}
 
-    .activity-indicator {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translate(-1rem, -50%);
-        transition: all .25s ease-in;
-    }
+.input-field .activity-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-1rem, -50%);
+    transition: all .25s ease-in;
+}
 
+.input-field .activity-indicator-xs {
+    font-size: .5em;
+}
 
-    .activity-indicator-xs {
-        font-size: .5em;
-    }
+.input-field .activity-indicator-sm {
+    font-size: .5em;
+}
 
-    .activity-indicator-sm {
-        font-size: .5em;
-    }
+.input-field .activity-indicator-md {
+    font-size: .666em;
+}
 
-    .activity-indicator-md {
-        font-size: .666em;
-    }
+.input-field .activity-indicator-lg {
+    font-size: .75em;
+}
 
-    .activity-indicator-lg {
-        font-size: .75em;
-    }
+.input-field .activity-indicator-xl {
+    font-size: 1em;
+}
 
-    .activity-indicator-xl {
-        font-size: 1em;
-    }
+.input-field .slide-fade-enter,
+.input-field .slide-fade-leave-to {
+    opacity: 1;
+    transform: translate(25%, -50%);
+}
 
-    .slide-fade-enter,
-    .slide-fade-leave-to {
-        opacity: 1;
-        transform: translate(25%, -50%);
-    }
+.input-field.is-valid .valid-feedback,
+.input-field.is-invalid .invalid-feedback {
+    display: flex;
+}
 
-    &.is-valid .valid-feedback,
-    &.is-invalid .invalid-feedback {
-        display: flex;
-    }
-    
-    .form-control-icon {
-        padding-left: 2em;
-    }
+.input-field .form-control-icon {
+    padding-left: 2em;
 }
 </style>
