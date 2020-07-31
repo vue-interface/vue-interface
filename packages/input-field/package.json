@@ -37,19 +37,10 @@
   },
   "homepage": "https://github.com/vue-interface/input-field/docs#readme",
   "dependencies": {
-    "@vue-interface/activity-indicator": "^0.10.1",
-    "@vue-interface/form-control": "^0.9.1",
-    "@vue-interface/merge-classes": "^1.0.2",
-    "@vue-interface/progress-bar": "^0.9.3",
-    "@vue-interface/utils": "^0.9.2",
-    "@vue-interface/variant": "^1.0.7",
-    "autoprefixer": "^9.8.0",
-    "color": "^3.1.2",
+    "@vue-interface/activity-indicator": "^0.10.4",
+    "@vue-interface/form-control": "^0.9.4",
     "core-js": "^3.6.4",
-    "postcss-nested": "^4.2.1",
-    "tailwindcss": "^1.4.6",
-    "vue": "^2.6.11",
-    "vue-interface": "^0.4.58"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -61,6 +52,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "markdown-it-meta": "0.0.1",
     "postcss-cli": "^7.1.1",
+    "postcss-nested": "^4.2.3",
+    "tailwindcss": "^1.6.0",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.0",
     "vuepress-plugin-template-constants": "^0.2.1"

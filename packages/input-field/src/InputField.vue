@@ -76,7 +76,7 @@ export default {
 @import '../../scss/custom-fields';
 */
 
-.form-group {
+.input-field {
     &, .form-group-inner {
         position: relative;
     }
@@ -109,9 +109,7 @@ export default {
     .activity-indicator-xl {
         font-size: 1em;
     }
-}
 
-.input-field {
     .slide-fade-enter,
     .slide-fade-leave-to {
         opacity: 1;
