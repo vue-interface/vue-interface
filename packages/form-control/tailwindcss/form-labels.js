@@ -22,35 +22,35 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.form-label': {
-            marginBottom: 'var(--form-label-margin-bottom)',
-            fontSize: 'var(--form-label-font-size)',
-            fontStyle: 'var(--form-label-font-style)',
-            fontWeight: 'var(--form-label-font-weight)',
-            color: 'var(--form-label-color)'
+            marginBottom: theme('formLabel.marginBottom'),
+            fontSize: theme('formLabel.fontSize'),
+            fontStyle: theme('formLabel.fontStyle'),
+            fontWeight: theme('formLabel.fontWeight'),
+            color: theme('formLabel.color'),
         },
         
         // For use with horizontal and inline forms, when you need the label (or legend)
         // text to align with the form controls.
         '.col-form-label': {
-            paddingTop: 'calc(var(--form-label-padding-y) + var(--form-label-border-width)',
-            paddingBotton: 'calc(var(--form-label-padding-y) + var(--form-label-border-width)',
-            marginBottom: 'var(--form-label-col-margin-bottom)', // Override the `<legend>` default
-            fontSize: 'var(--form-label-font-size)',
-            fontStyle: 'var(--form-label-font-style)',
-            fontWeight: 'var(--form-label-font-weight)',
-            color: 'var(--form-label-color)'
+            paddingTop: `calc(${theme('formLabel.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBotton: `calc(${theme('formLabel.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            marginBottom: theme('formLabel.marginBottom'), // Override the `<legend>` default
+            fontSize: theme('formLabel.fontSize'),
+            fontStyle: theme('formLabel.fontStyle'),
+            fontWeight: theme('formLabel.fontWeight'),
+            color: theme('formLabel.color')
         },
         
         '.col-form-label-lg': {
-            paddingTop: 'calc(var(--form-label-lg-padding-y) + var(--form-label-border-width)',
-            paddingBotton: 'calc(var(--form-label-lg-padding-y) + var(--form-label-border-width)',
-            fontSize: 'var(--form-label-lg-padding-y)'
+            paddingTop: `calc(${theme('formLabel.lg.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBotton: `calc(${theme('formLabel.lg.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            fontSize: theme('formLabel.lg.fontSize')
         },
         
         '.col-form-label-sm': {
-            paddingTop: 'calc(var(--form-label-sm-padding-y) + var(--form-label-border-width)',
-            paddingBotton: 'calc(var(--form-label-sm-padding-y) + var(--form-label-border-width)',
-            fontSize: 'var(--form-label-sm-padding-y)'
+            paddingTop: `calc(${theme('formLabel.sm.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBotton: `calc(${theme('formLabel.sm.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            fontSize: theme('formLabel.sm.fontSize')
         },
     };
 

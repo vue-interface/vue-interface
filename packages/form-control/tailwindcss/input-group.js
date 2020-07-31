@@ -64,16 +64,16 @@ module.exports = plugin(function({ addComponents, theme }) {
         '.input-group-text': {
             display: 'flex',
             alignItems: 'center',
-            padding: 'var(--form-control-padding-y) var(--form-control-padding-x)',
-            fontSize: 'var(--form-control-font-size)',
-            fontWeight: 'var(--form-control-font-weight)',
-            lineHeight: 'var(--form-control-line-height)',
-            color: 'var(--input-group-text-color)',
+            padding: `${theme('formControl.paddingY')} ${theme('formControl.paddingX')}`,
+            fontSize: theme('formControl.fontSize'),
+            fontWeight: theme('formControl.fontWeight'),
+            lineHeight: theme('formControl.lineHeight'),
+            color: theme('inputGroup.color'),
             textAlign: 'center',
             whiteSpace: 'nowrap',
-            backgroundColor: 'var(--input-group-text-background-color)',
-            border: 'var(--form-control-border-width) var(--form-control-border-style) var(--form-control-border-color)',
-            borderRadius: 'var(--form-control-border-radius)'
+            backgroundColor: theme('inputGroup.backgroundColor'),
+            border: `${theme('formControl.borderWidth')} ${theme('formControl.borderStyle')} ${theme('formControl.borderColor')}`,
+            borderRadius: theme('formControl.borderRadius')
         },
           
         
@@ -83,35 +83,35 @@ module.exports = plugin(function({ addComponents, theme }) {
         // manipulation.
         
         '.input-group-lg > .form-control': {
-            minHeight: 'calc(var(--form-control-line-height) * 1em + var(--form-control-lg-padding-y) * 2 + var(--form-control-border-width) * 2)'
+            minHeight: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.lg.paddingY')} * 2 + ${theme('formControl.borderWidth')} * 2)`
         },
         
         '.input-group-lg > .form-select': {
-            height: 'calc(var(--form-control-line-height) * 1em + var(--form-control-lg-padding-y) * 2 + var(--form-control-border-width) * 2)'
+            height: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.lg.paddingY')} * 2 + ${theme('formControl.borderWidth')} * 2)`
         },
         
         '.input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text, .input-group-lg > .btn': {
-            padding: 'var(--form-control-lg-padding-y) var(--form-control-lg-padding-x)',
-            fontSize: 'var(--form-control-lg-font-size)',
-            borderRadius: 'var(--form-control-lg-border-radius)'
+            padding: `${theme('formControl.lg.paddingY')} ${theme('formControl.lg.paddingX')}`,
+            fontSize: theme('formControl.lg.fontSize'),
+            borderRadius: theme('formControl.lg.borderRadius')
         },
         
         '.input-group-sm > .form-control': {
-            minHeight: 'calc(var(--form-control-line-height) * 1em + var(--form-control-sm-padding-y) * 2 + var(--form-control-border-width) * 2)'
+            minHeight: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.sm.paddingY')} * 2 + ${theme('formControl.borderWidth')} * 2)`
         },
         
         '.input-group-sm > .form-select': {
-            height: 'calc(var(--form-control-line-height) * 1em + var(--form-control-sm-padding-y) * 2 + var(--form-control-border-width) * 2)'
+            height: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.sm.paddingY')} * 2 + ${theme('formControl.borderWidth')} * 2)`
         },
         
         '.input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text, .input-group-sm > .btn': {
-            padding: 'var(--form-control-sm-padding-y) var(--form-control-sm-padding-x)',
-            fontSize: 'var(--form-control-sm-font-size)',
-            borderRadius: 'var(--form-control-sm-border-radius)'
+            padding: `${theme('formControl.sm.paddingY')} ${theme('formControl.sm.paddingX')}`,
+            fontSize: theme('formControl.sm.fontSize'),
+            borderRadius: theme('formControl.sm.borderRadius')
         },
         
         '.input-group-lg > .form-select, .input-group-sm > .form-select': {
-            paddingRight: 'var(--form-select-padding-x) + var(--form-select-indicator-padding-y)'
+            paddingRight: `${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')}`
         },
 
         // Rounded corners
@@ -119,13 +119,13 @@ module.exports = plugin(function({ addComponents, theme }) {
         // These rulesets must come after the sizing ones to properly override sm and lg
         // border-radius values when extending. They're more specific than we'd like
         // with the `.input-group >` part, but without it, we cannot override the sizing.
-        '.input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-control), .input-group > .dropdown-toggle:nth-last-child(n + 3)': {
+        '.input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group > .dropdown-toggle:nth-last-child(n + 3)': {
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0
         },
         
         '.input-group > :not(:first-child):not(.dropdown-menu):not(.invalid-tooltip):not(.valid-tooltip)': {
-            marginLeft: 'calc(var(--form-control-border-width) * -1)',
+            marginLeft: `calc(${theme('formControl.borderWidth')} * -1)`,
             borderTopLeftRadius: 0,
             borderBottomLeftRadius: 0
         }

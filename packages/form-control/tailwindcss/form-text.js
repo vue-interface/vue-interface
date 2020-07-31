@@ -12,11 +12,11 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.form-text': {
-            marginTop: 'var(--form-text-margin-top)',
-            fontSize: 'var(--form-text-font-size)',
-            fontStyle: 'var(--form-text-font-style)',
-            fontWeight: 'var(--form-text-font-weight)',
-            color: 'var(--form-text-color)'
+            marginTop: theme('formText.marginTop'),
+            fontSize: theme('formText.fontSize'),
+            fontStyle: theme('formText.fontStyle'),
+            fontWeight: theme('formText.fontWeight'),
+            color: theme('formText.color')
         }
     };
 

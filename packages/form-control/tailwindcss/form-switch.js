@@ -1,6 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 const { colors, translate } = require('tailwindcss/defaultTheme'); 
 const { white } = colors;
+const encodeSVG = require('./encode-svg');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -32,39 +33,39 @@ module.exports = plugin(function({ addComponents, theme }) {
         // Switch
         //
         '.form-switch, .form-switch.form-control': {
-            display: 'var(--form-switch-display)',
-            alignItems: 'var(--form-switch-align-items)',
-            paddingLeft: 'var(--form-switch-padding-left)',
+            display: theme('formSwitch.display'),
+            alignItems: theme('formSwitch.alignItems'),
+            paddingLeft: theme('formSwitch.paddingLeft'),
 
             '.form-check-label': {
-                paddingLeft: 'calc(var(--form-switch-padding-left) / 6)',
-                marginBottom: 'var(--form-switch-label-margin-bottom)'
+                paddingLeft: `calc(${theme('formSwitch.paddingLeft')} / 6)`,
+                marginBottom: theme('formSwitch.label.marginBottom')
             },
 
             '.form-check-input': {
-                width: 'var(--form-switch-width)',
-                marginTop: 'var(--form-switch-margin-top)',
-                marginLeft: 'var(--form-switch-margin-left)',
-                backgroundRepeat: 'var(--form-switch-background-repeat)',
-                backgroundImage: 'var(--form-switch-background-image)',
-                backgroundPosition: 'var(--form-switch-background-position)',
-                borderRadius: 'var(--form-switch-border-radius)',
+                width: theme('formSwitch.width'),
+                marginTop: theme('formSwitch.marginTop'),
+                marginLeft: theme('formSwitch.marginLeft'),
+                backgroundRepeat: theme('formSwitch.backgroundRepeat'),
+                backgroundImage: theme('formSwitch.backgroundImage'),
+                backgroundPosition: theme('formSwitch.backgroundPosition'),
+                borderRadius: theme('formSwitch.borderRadius'),
             
                 '&:focus': {
-                    backgroundImage: 'var(--form-switch-focus-background-image)',
+                    backgroundImage: theme('formSwitch.focus.backgroundImage'),
                 },
             
                 '&:checked': {
-                    backgroundPosition: 'var(--form-switch-checked-background-position)',
-                    backgroundImage: 'var(--form-switch-checked-background-image)'
+                    backgroundPosition: theme('formSwitch.checked.backgroundPosition'),
+                    backgroundImage: theme('formSwitch.checked.backgroundImage')
                 }
             }
         },
 
         '.form-switch.form-control-sm': {
             '.form-check-input': {
-                width: 'var(--form-switch-sm-width)',
-                height: 'var(--form-switch-sm-height)'
+                width: theme('formSwitch.sm.width'),
+                height: theme('formSwitch.sm.height')
             }
         },
 
@@ -73,15 +74,15 @@ module.exports = plugin(function({ addComponents, theme }) {
             boxShadow: 'none',
 
             '.form-check-input': {
-                width: 'calc(var(--form-switch-width) * 1.666)',
-                height: 'var(--form-switch-height)',
+                width: `calc(${theme('formSwitch.width')} * 1.666)`,
+                height: theme('formSwitch.sm.height'),
             }
         },
 
         '.form-switch.form-control-lg': {
             '.form-check-input': {
-                width: 'var(--form-switch-lg-width)',
-                height: 'var(--form-switch-lg-height)'
+                width: theme('formSwitch.lg.width'),
+                height: theme('formSwitch.lg.height')
             }
         }
     };
@@ -89,42 +90,44 @@ module.exports = plugin(function({ addComponents, theme }) {
     addComponents(component);
 }, {
     theme: {
-        formSwitch: theme => ({
-            display: 'flex',
-            alignItems: 'center',
-            height: '2.375em',
-            width: '2rem',
-            marginTop: 0,
-            paddingLeft: 'calc(var(--form-switch-width) + .5em)',
-            marginLeft: 'calc(var(--form-switch-padding-left) * -1)',
-            backgroundRepeat: 'no-repeat',
-            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`,
-            backgroundPosition: 'left center',
-            borderRadius: 'var(--form-switch-width)',
+        formSwitch: theme => {
+            return {
+                display: 'flex',
+                alignItems: 'center',
+                height: '2.375em',
+                width: '2rem',
+                marginTop: 0,
+                paddingLeft: `calc(2rem + .5em)`,
+                marginLeft: `calc((2rem + .5em) * -1)`,
+                backgroundRepeat: 'no-repeat',
+                backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`),
+                backgroundPosition: 'left center',
+                borderRadius: '2rem',
 
-            label: {
-                paddingLeft: '.5em',
-                marginBottom: 0
-            },
+                label: {
+                    paddingLeft: '.5em',
+                    marginBottom: 0
+                },
 
-            focus: {
-                backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.primary')}'/></svg>")`,
-            },
-                                        
-            checked: {
-                backgroundPosition: 'right center',
-                backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>")`
-            },
+                focus: {
+                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.primary')}'/></svg>")`),
+                },
+                                            
+                checked: {
+                    backgroundPosition: 'right center',
+                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>")`)
+                },
 
-            sm: {
-                height: '2.215em',
-                width: 'calc(var(--form-switch-sm-height) * 1.5)',
-            },
+                sm: {
+                    height: '2.215em',
+                    width: `calc(2.215em * 1.5)`,
+                },
 
-            lg: {
-                height: '2.4em',
-                width: 'calc(var(--form-switch-lg-height) * 1.75)',
-            }
-        })
+                lg: {
+                    height: '2.4em',
+                    width: `calc(2.4em * 1.75)`,
+                }
+            };
+        }
     }
 });

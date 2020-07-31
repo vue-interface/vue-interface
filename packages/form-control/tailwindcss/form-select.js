@@ -1,5 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
+const rgba = require('./rgba');
+const encodeSVG = require('./encode-svg');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -14,10 +16,10 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-select-font-weight': theme('formSelect.fontWeight'),
             '--form-select-box-shadow': theme('formSelect.boxShadow'),
             '--form-select-color': theme('formSelect.color'),
-            '--form-select-verticalAlign': theme('formSelect.verticalAlign'),
+            '--form-select-vertical-align': theme('formSelect.verticalAlign'),
             '--form-select-background-color': theme('formSelect.backgroundColor'),
             '--form-select-background-image': theme('formSelect.backgroundImage'),
-            '--form-select-background-pepeat': theme('formSelect.backgroundRepeat'),
+            '--form-select-background-repeat': theme('formSelect.backgroundRepeat'),
             '--form-select-background-position': theme('formSelect.backgroundPosition'),
             '--form-select-background-repeat': theme('formSelect.backgroundRepeat'),
             '--form-select-background-size': theme('formSelect.backgroundSize'),
@@ -34,7 +36,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-select-focus-background-color': theme('formSelect.focus.backgroundColor'),
             '--form-select-focus-border-color': theme('formSelect.focus.borderColor'),
             '--form-select-focus-outline': theme('formSelect.focus.outline'),
-            '--form-select-focus-box-shadow': `${theme('formSelect.focus.boxShadow')}${theme('formSelect.enableShadows') ? ', var(--form-control-box-shadow)' : ''}`,
+            '--form-select-focus-box-shadow': `${theme('formSelect.focus.boxShadow')}${theme('formSelect.enableShadows') ? `, ${theme('formSelect.boxShadow')}` : ''}`,
 
             '--form-select-placeholder-color': theme('formSelect.placeholder.color'),
 
@@ -54,32 +56,34 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
         
         '.form-select': {
-            display: 'var(--form-select-display)',
-            width: 'var(--form-select-width)',
-            height: 'calc(var(--form-select-line-height) * 1em + var(--form-select-padding-y) * 2 + var(--form-select-border-width) * 2)',
-            padding: `var(--form-select-padding-y) var(--form-select-padding-x)`,
-            fontFamily: 'var(--form-select-font-family)',
-            fontSize: 'var(--form-select-font-size)',
-            fontWeight: 'var(--form-select-font-weight)',
-            lineHeight: 'var(--form-select-line-height)',
-            color: 'var(--form-select-color)',
-            verticalAlign: 'var(--form-select-vertical-align)',
-            backgroundColor: 'var(--form-select-background-color)',
-            backgroundImage: 'var(--form-select-background-image)',
-            backgroundRepeat: 'var(--form-select-background-repeat)',
-            backgroundPosition: 'var(--form-select-background-position)',
-            backgroundSize: 'var(--form-select-background-size)',
-            border: 'var(--form-select-border-width) var(--form-select-border-style) var(--form-select-border-color)',
-            borderRadius: 'var(--form-select-border-radius)',
-            boxShadow: theme('formSelect.enableShadows') && 'var(--form-select-box-shadow)',         
-            appearance: 'var(--form-select-appearance)',
+            display: theme('formSelect.display'),
+            width: theme('formSelect.width'),
+            height: `calc(${theme('formSelect.lineHeight')} * 1em + ${theme('formSelect.paddingY')} * 2 + ${theme('formSelect.borderWidth')} * 2)`,
+            padding: `${theme('formSelect.paddingY')} ${theme('formSelect.paddingX')}`,
+            fontFamily: theme('formSelect.fontFamily'),
+            fontSize: theme('formSelect.fontSize'),
+            fontWeight: theme('formSelect.fontWeight'),
+            lineHeight: theme('formSelect.lineHeight'),
+            color: theme('formSelect.color'),
+            verticalAlign: theme('formSelect.verticalAlign'),
+            backgroundColor: theme('formSelect.backgroundColor'),
+            backgroundImage: theme('formSelect.backgroundImage'),
+            backgroundRepeat: theme('formSelect.backgroundRepeat'),
+            backgroundPosition: theme('formSelect.backgroundPosition'),
+            backgroundSize: theme('formSelect.backgroundSize'),
+            border: `${theme('formSelect.borderWidth')} ${theme('formSelect.borderStyle')} ${theme('formSelect.borderColor')}`,
+            borderRadius: theme('formSelect.borderRadius'),
+            boxShadow: theme('formSelect.enableShadows') && theme('formSelect.boxShadow'),
 
+            '-webkit-appearance': theme('formSelect.appearance'),
+            appearance: theme('formSelect.appearance'),
+            
             '&:focus': {
-                color: 'var(--form-select-focus-color)',
-                backgroundColor: 'var(--form-select-focus-background-color)',
-                borderColor: 'var(--form-select-focus-border-color)',
-                outline: 'var(--form-select-focus-outline)',
-                boxShadow: `var(--form-select-focus-box-shadow)`,
+                color: theme('formSelect.focus.color'),
+                backgroundColor: theme('formSelect.focus.backgroundColor'),
+                borderColor: theme('formSelect.focus.borderColor'),
+                outline: theme('formSelect.focus.outline'),
+                boxShadow: `${theme('formSelect.focus.boxShadow')}${theme('formSelect.enableShadows') ? `, ${theme('formSelect.boxShadow')}` : ''}`,
             
 
                 '&::-ms-value': {
@@ -95,39 +99,39 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             '&[multiple], &[size]:not([size="1"])': {
                 height: 'auto',
-                paddingRight: 'var(--form-select-padding-x)',
+                paddingRight: theme('formSelect.paddingX'),
                 backgroundImage: 'none'
             },
 
             '&:disabled': {
-                color: 'var(--form-select-disabled-color)',
-                backgroundColor: 'var(--form-select-disabled-background-color)',
-                borderColor: 'var(--form-select-disabled-border-color)',
+                color: theme('formSelect.disabled.color'),
+                backgroundColor: theme('formSelect.disabled.backgroundColor'),
+                borderColor: theme('formSelect.disabled.borderColor'),
             },
 
             // Remove outline from select box in FF
             '&:-moz-focusring': {
                 color: 'transparent',
-                textShadow: `0 0 0 var(--form-select-color)`
+                textShadow: `0 0 0 ${theme('formSelect.color')}`
             }
         },
 
         '.form-select-sm': {
-            height: `calc(var(--form-select-line-height) * 1em + var(--form-select-sm-padding-y) * 2 + var(--form-select-border-width) * 2)`,
-            paddingTop: 'var(--form-select-sm-padding-y)',
-            paddingBottom: 'var(--form-select-sm-padding-y)',
-            paddingLeft: 'var(--form-select-sm-padding-x)',
-            fontSize: 'var(--form-select-sm-font-size)',
-            borderRadius: 'var(--form-select-sm-border-radius)',
+            height: `calc(${theme('formSelect.lineHeight')} * 1em + ${theme('formSelect.sm.paddingY')} * 2 + ${theme('formSelect.borderWidth')} * 2)`,
+            paddingTop: theme('formSelect.sm.paddingY'),
+            paddingBottom: theme('formSelect.sm.paddingY'),
+            paddingLeft: theme('formSelect.sm.paddingX'),
+            fontSize: theme('formSelect.sm.fontSize'),
+            borderRadius: theme('formSelect.sm.borderRadius'),
         },
         
         '.form-select-lg': {
-            height: `calc(var(--form-select-line-height) * 1em + var(--form-select-lg-padding-y) * 2 + var(--form-select-border-width) * 2)`,
-            paddingTop: 'var(--form-select-lg-padding-y)',
-            paddingBottom: 'var(--form-select-lg-padding-y)',
-            paddingLeft: 'var(--form-select-lg-padding-x)',
-            fontSize: 'var(--form-select-lg-font-size)',
-            borderRadius: 'var(--form-select-lg-border-radius)',
+            height: `calc(${theme('formSelect.lineHeight')} * 1em + ${theme('formSelect.lg.paddingY')} * 2 + ${theme('formSelect.borderWidth')} * 2)`,
+            paddingTop: theme('formSelect.lg.paddingY'),
+            paddingBottom: theme('formSelect.lg.paddingY'),
+            paddingLeft: theme('formSelect.lg.paddingX'),
+            fontSize: theme('formSelect.lg.fontSize'),
+            borderRadius: theme('formSelect.lg.borderRadius'),
         }
     };
 
@@ -149,9 +153,9 @@ module.exports = plugin(function({ addComponents, theme }) {
             color: theme('colors.gray.400', colors.gray['400']),
             verticalAlign: 'middle',
             backgroundColor: theme('colors.white', colors.white),
-            backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='${theme('colors.gray.700', colors.gray['700'])}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>")`,
+            backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='${theme('colors.gray.700', colors.gray['700'])}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>")`),
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'right var(--form-select-padding-y) center',
+            backgroundPosition: `right ${theme('formControl.paddingY', '.375rem')} center`,
             backgroundSize: '16px 12px',
             borderWidth: theme('formControl.borderWidth', '1px'),
             borderStyle: theme('formControl.borderStyle', 'solid'),
@@ -166,7 +170,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundColor: theme('formControl.backgroundColor', theme('colors.white', colors.white)),
                 borderColor: theme('formControl.borderColor', theme('colors.blue.400', colors.blue['400'])),
                 outline: theme('formControl.outline', 0),
-                boxShadow: theme('formControl.boxShadow', `0 0 0 .2rem rgba(${theme('colors.blue.500', colors.blue['500'])}, .25)`)
+                boxShadow: theme('formControl.boxShadow', `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`)
             },
             placeholder: {
                 color: theme('formControl.placeholder.color', theme('colors.gray.500', colors.gray['500']))

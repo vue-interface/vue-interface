@@ -1,3 +1,4 @@
+const rgba = require('./rgba');
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
 
@@ -23,18 +24,18 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-control-box-shadow': theme('formControl.boxShadow'),
             '--form-control-border-radius': theme('formControl.borderRadius'),
             '--form-control-transition': theme('formControl.transition'),
+
+            '--form-control-height-inner': `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2)`,
+            '--form-control-height-inner-half': `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`,
+            '--form-control-height-inner-quarter': `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`,
+
             '--form-control-focus-color': theme('formControl.focus.color'),
-
-            '--form-control-height-inner': 'calc(var(--form-control-line-height) * 1em + var(--form-control-padding-y) * 2)',
-            '--form-control-height-inner-half': 'calc(var(--form-control-height-inner) / 2)',
-            '--form-control-height-inner-quarter': 'calc(var(--form-control-height-inner) / 4)',
-
             '--form-control-focus-width': theme('formControl.focus.width'),
             '--form-control-focus-opacity': `${theme('formControl.focus.opacity')}`,
             '--form-control-focus-background-color': theme('formControl.focus.backgroundColor'),
             '--form-control-focus-border-color': theme('formControl.focus.borderColor'),
             '--form-control-focus-outline': `${theme('formControl.focus.outline')}`,
-            '--form-control-focus-box-shadow': `${theme('formControl.focus.boxShadow')}${theme('formControl.enableShadows') ? ', var(--form-control-box-shadow)' : ''}`,
+            '--form-control-focus-box-shadow': `${theme('formControl.focus.boxShadow')}${theme('formControl.enableShadows') ? `, ${theme('formControl.boxShadow')}` : ''}`,
             
             '--form-control-placeholder-opacity': theme('formControl.placeholder.opacity'),
             '--form-control-placeholder-color': theme('formControl.placeholder.color'),
@@ -72,40 +73,43 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.form-control': {
-            display: 'var(--form-control-display)',
-            width: 'var(--form-control-width)',
-            minHeight: 'var(--form-control-min-height)',
-            padding: 'var(--form-control-padding-y) var(--form-control-padding-x)',
-            fontFamily: 'var(--form-control-font-family)',
-            fontSize: 'var(--form-control-font-size)',
-            fontWeight: 'var(--form-control-font-weight)',
-            lineHeight: 'var(--form-control-line-height)',
-            backgroundColor: 'var(--form-control-background-color)',
-            backgroundClip: 'var(--form-control-background-clip)',
-            border: 'var(--form-control-border-width) var(--form-control-border-style) var(--form-control-border-color)',
-            borderRadius: 'var(--form-control-border-radius)',
-            boxShadow: theme('formControl.enableShadows') && 'var(--form-control-box-shadow)',
-            transition: 'var(--form-control-transition)',
-            appearance: 'var(--form-control-appearance)',
+            display: theme('formControl.display'),
+            width: theme('formControl.width'),
+            minHeight: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2 + 1px * 2)`,
+            padding: `${theme('formControl.paddingY')} ${theme('formControl.paddingX')}`,
+            fontFamily: theme('formControl.fontFamily'),
+            fontSize: theme('formControl.fontSize'),
+            fontWeight: theme('formControl.fontWeight'),
+            lineHeight: theme('formControl.lineHeight'),
+            backgroundColor: theme('formControl.backgroundColor'),
+            backgroundClip: theme('formControl.backgroundClip'),
+            border: `${theme('formControl.borderWidth')} ${theme('formControl.borderStyle')} ${theme('formControl.borderColor')}`,
+            borderRadius: theme('formControl.borderRadius'),
+            boxShadow: theme('formControl.enableShadows') &&  theme('formControl.boxShadow'),
+            transition: theme('formControl.transition'),
+            appearance: theme('formControl.appearance'),
+
+            '-webkit-appearance': theme('formControl.appearance'),
+            appearance: theme('formControl.appearance'),
 
             '&:not(.form-switch)': {
-                color: 'var(--form-control-color)',
+                color: theme('formControl.color'),
             },
 
             // Customize the `:focus` state to imitate native WebKit styles.
             '&:focus': {
-                color: 'var(--form-control-focus-color)',
-                backgroundColor: 'var(--form-control-focus-background-color)',
-                borderColor: 'var(--form-control-focus-border-color)',
-                outline: 'var(--form-control-focus-outline)',
-                boxShadow: 'var(--form-control-focus-box-shadow)'
+                color: theme('formControl.focus.color'),
+                backgroundColor: theme('formControl.focus.backgroundColor'),
+                borderColor: theme('formControl.focus.borderColor'),
+                outline: theme('formControl.focus.outline'),
+                boxShadow: `${theme('formControl.focus.boxShadow')}${theme('formControl.enableShadows') ? `, ${theme('formControl.boxShadow')}` : ''}`
             },
         
             // Placeholder
             '&::placeholder': {
-                color: 'var(--form-control-placeholder-color)',
+                color: theme('formControl.placeholder.color'),
                 // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
-                opacity: 'var(--form-control-placeholder-opacity)',
+                opacity: theme('formControl.placeholder.opacity'),
             },
         
             // Disabled and read-only inputs
@@ -114,10 +118,10 @@ module.exports = plugin(function({ addComponents, theme }) {
             // disabled if the fieldset is disabled. Due to implementation difficulty, we
             // don't honor that edge case; we style them as disabled anyway.
             '&:disabled, &[readonly]': {
-                backgroundColor: 'var(--form-control-disabled-background-color)',
-                borderColor: 'var(--form-control-disabled-border-color)',
+                backgroundColor: theme('formControl.disabled.backgroundColor'),
+                borderColor: theme('formControl.disabled.borderColor'),
                 // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
-                opacity: 'var(--form-control-disabled-opacity)'
+                opacity: theme('formControl.disabled.opacity')
             }
         },
         
@@ -127,21 +131,21 @@ module.exports = plugin(function({ addComponents, theme }) {
         // text (without any border, background color, focus indicator)
         
         '.form-control-plaintext, .form-control-plaintext[readonly]': {
-            display: 'var(--form-control-plaintext-display)',
-            width: 'var(--form-control-plaintext-width)',
-            padding: 'var(--form-control-plaintext-padding-y) var(--form-control-plaintext-padding-x)',
-            marginBottom: 'var(--form-control-plaintext-margin-bottom)', // match inputs if this class comes on inputs with default margins
-            lineHeight: 'var(--form-control-plaintext-line-height)',
-            color: 'var(--form-control-plaintext-color)',
-            backgroundColor: 'var(--form-control-plaintext-background-color)',
-            borderStyle: 'var(--form-control-plaintext-border-style)',
-            borderColor: 'var(--form-control-plaintext-border-color)',
-            borderWidth: 'var(--form-control-plaintext-border-width)',
+            display: theme('formControl.plaintext.display'),
+            width: theme('formControl.plaintext.width'),
+            padding: `${theme('formControl.plaintext.paddingY')} ${theme('formControl.plaintext.paddingX')}`,
+            marginBottom: theme('formControl.plaintext.marginBottom'), // match inputs if this class comes on inputs with default margins
+            lineHeight: theme('formControl.plaintext.lineHeight'),
+            color: theme('formControl.plaintext.color'),
+            backgroundColor: theme('formControl.plaintext.backgroundColor'),
+            borderStyle: theme('formControl.plaintext.borderStyle'),
+            borderColor: theme('formControl.plaintext.borderColor'),
+            borderWidth: theme('formControl.plaintext.borderWidth'),
             boxShadow: 'none',
 
             '&.form-control-sm, &.form-control-lg': {
-                paddingRight: 'var(--form-control-plaintext-padding-x)',
-                paddingLeft: 'var(--form-control-plaintext-padding-x)',
+                paddingRight: theme('formControl.plaintext.paddingX'),
+                paddingLeft: theme('formControl.plaintext.paddingY'),
             }
         },
         
@@ -151,30 +155,30 @@ module.exports = plugin(function({ addComponents, theme }) {
         // height and font-size of form controls.
 
         '.form-control-sm': {
-            minHeight: 'var(--form-control-sm-min-height)',
-            padding: 'var(--form-control-sm-padding-y) var(--form-control-sm-padding-x)',
-            fontSize: 'var(--form-control-sm-font-size)',
-            borderRadius: 'var(--form-control-sm-border-radius)',
+            minHeight: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.sm.paddingY')} * 2 + 1px * 2)`,
+            padding: `${theme('formControl.sm.paddingY')} ${theme('formControl.sm.paddingX')}`,
+            fontSize: theme('formControl.sm.fontSize'),
+            borderRadius: theme('formControl.sm.borderRadius'),
         },
         
         '.form-control-lg': {
-            minHeight: 'var(--form-control-lg-min-height)',
-            padding: 'var(--form-control-lg-padding-y) var(--form-control-lg-padding-x)',
-            fontSize: 'var(--form-control-lg-font-size)',
-            borderRadius: 'var(--form-control-lg-border-radius)',
+            minHeight: `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.lg.paddingY')} * 2 + 1px * 2)`,
+            padding: `${theme('formControl.lg.paddingY')} ${theme('formControl.lg.paddingX')}`,
+            fontSize: theme('formControl.lg.fontSize'),
+            borderRadius: theme('formControl.lg.borderRadius'),
         },
         
         '.form-control-color': {
-            maxWidth: 'var(--form-control-color-control-max-width)',
-            padding: 'var(--form-control-color-control-padding)',
+            maxWidth:theme('formControl.colorControl.maxWidth'),
+            padding: theme('formControl.colorControl.padding'),
         },
         
         '.form-control-color::-moz-color-swatch': {
-            borderRadius: 'var(--form-control-border-radius)',
+            borderRadius: theme('formControl.borderRadius'),
         },
         
         '.form-control-color::-webkit-color-swatch': {
-            borderRadius: 'var(--form-control-border-radius)'
+            borderRadius: theme('formControl.borderRadius')
         }
     };
 
@@ -212,7 +216,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 outline: 0,
                 width: '.2rem',
                 opacity: '.25',
-                boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${theme('colors.blue.500', colors.blue['500'])}, var(--form-control-focus-opacity))`
+                boxShadow: `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`
             },
             placeholder: {
                 opacity: '1',

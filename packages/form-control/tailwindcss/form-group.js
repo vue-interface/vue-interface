@@ -7,7 +7,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.form-group': {
-            marginBottom: 'var(--form-group-margin-bottom)'
+            marginBottom: theme('formGroup.marginBottom')
         }
     };
 
@@ -15,7 +15,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 }, {
     theme: {
         formGroup: theme => ({
-            marginBottom: theme('margin.3', '0.75rem')
+            marginBottom: '0.75rem'
         })
     }
 });

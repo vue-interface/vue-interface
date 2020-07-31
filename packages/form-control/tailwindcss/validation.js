@@ -1,6 +1,12 @@
+const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
-const { theme } = require('tailwindcss/stubs/defaultConfig.stub');
+const rgba = require('./rgba');
+const encodeSVG = require('./encode-svg');
+
+function contrast(color, light, dark) {
+    return Color(color).luminosity() > .5 ? (dark || 'black') : (light || 'white');
+}
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -11,9 +17,9 @@ module.exports = plugin(function({ addComponents, theme }) {
             '--form-feedback-font-size': theme('formFeedback.fontSize'),
             '--form-feedback-font-style': `${theme('formFeedback.fontStyle')}`,
 
-            '--form-select-feedback-icon-padding-right': 'calc(1em * .75 + (2 * var(--form-select-padding-y) * .75) + var(--form-select-padding-x) + var(--form-select-indicator-padding-x))',
-            '--form-select-feedback-icon-position': 'center right calc(var(--form-select-padding-x) + var(--form-select-indicator-padding-x))',
-            '--form-select-feedback-icon-size': 'var(--form-control-height-inner-half) var(--form-control-height-inner-half)',
+            '--form-select-feedback-icon-padding-right': `calc(1em * .75 + (2 * ${theme('formSelect.paddingY')} * .75) + ${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
+            '--form-select-feedback-icon-position': `center right calc(${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
+            '--form-select-feedback-icon-size': `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2) calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`,
             
             '--form-tooltip-position': theme('formTooltip.position'),
             '--form-tooltip-top': theme('formTooltip.top'),
@@ -38,26 +44,26 @@ module.exports = plugin(function({ addComponents, theme }) {
         Object.assign(component, {
             [`.${state}-feedback`]: {
                 color,
-                display: 'var(--form-feedback-display)',
-                width: 'var(--form-feedback-width)',
-                marginTop: 'var(--form-feedback-margin-top)',
-                fontSize: 'var(--form-feedback-font-size)',
-                fontStyle: 'var(--form-feedback-font-style)',
+                display: theme('formFeedback.display'),
+                width: theme('formFeedback.width'),
+                marginTop: theme('formFeedback.marginTop'),
+                fontSize: theme('formFeedback.fontSize'),
+                fontStyle: theme('formFeedback.fontStyle'),
             },
 
             [`.${state}-tooltip`]: {
-                position: 'var(--form-tooltip-position)',
-                top: 'var(--form-tooltip-top)',
-                zIndex: 'var(--form-tooltip-z-index)',
-                display: 'var(--form-tooltip-display)',
-                maxWidth: 'var(--form-tooltip-max-width)', // Contain to parent when possible
-                padding: 'var(--form-tooltip-padding-y) var(--form-tooltip-padding-x)',
-                marginTop: 'var(--form-tooltip-margin-top)',
-                fontSize: 'var(--form-tooltip-font-size)',
-                lineHeight: 'var(--form-tooltip-line-height)',
-                color: `contrast(${color}, ${colors.white}, ${colors.black})`,
-                backgroundColor: `rgba(${color}, var(--form-tooltip-opacity))`,
-                borderRadius: 'var(--form-tooltip-border-radius)',
+                position: theme('formTooltip.position'),
+                top: theme('formTooltip.top'),
+                zIndex: theme('formTooltip.zIndex'),
+                display: theme('formTooltip.display'),
+                maxWidth: theme('formTooltip.maxWidth'), // Contain to parent when possible
+                padding: `${theme('formTooltip.paddingY')} ${theme('formTooltip.paddingX')}`,
+                marginTop: theme('formTooltip.marginTop'),
+                fontSize: theme('formTooltip.fontSize'),
+                lineHeight: theme('formTooltip.lineHeight'),
+                color: contrast(color, colors.white, colors.black),
+                backgroundColor: rgba(color, theme('formTooltip.opacity')),
+                borderRadius: theme('formTooltip.borderRadius'),
             },
 
             [`.is-${state}~.${state}-feedback, .is-${state}~.${state}-tooltip, .was-validated :${state}~.${state}-feedback, .was-validated :${state}~.${state}-tooltip`]: {
@@ -66,33 +72,33 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             [`.was-validated .form-control:${state}, .was-validated .form-control.is-${state}`]: {
                 borderColor: color,
-                paddingRight: theme('validation.enableIcons') ? 'var(--form-control-height-inner)' : null,
-                backgroundImage: theme('validation.enableIcons') ? `var(--form-feedback-${state}-icon)` : null,
+                paddingRight: theme('validation.enableIcons') ? `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2)` : null,
+                backgroundImage: theme('validation.enableIcons') ? icon : null,
                 backgroundRepeat: theme('validation.enableIcons') ? 'no-repeat' : null,
-                backgroundPosition: theme('validation.enableIcons') ? 'right var(--form-control-height-inner-quarter) center' : null,
-                backgroundSize: theme('validation.enableIcons') ? 'var(--form-control-height-inner-half) var(--form-control-height-inner-half)' : null,
+                backgroundPosition: theme('validation.enableIcons') ? `right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) center` : null,
+                backgroundSize: theme('validation.enableIcons') ? component[':root']['--form-select-feedback-icon-size'] : null,
     
                 '&:focus': {
                     borderColor: color,
-                    boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${color}, var(--form-control-focus-opacity))`
+                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, theme('formControl.focus.opacity'))}`
                 }
             },
                 
             [`.was-validated textarea.form-control:${state}, .was-validated textarea.form-control.is-${state}`]: {
-                paddingRight: theme('validation.enableIcons') ? 'var(--form-control-height-inner)' : null,
-                backgroundPosition: theme('validation.enableIcons') ? 'top var(--form-control-height-inner-quarter) right var(--form-control-height-inner-quarter)' : null
+                paddingRight: theme('validation.enableIcons') ? `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2)` : null,
+                backgroundPosition: theme('validation.enableIcons') ? `top calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4)` : null
             },
                 
             [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}`]: {
                 borderColor: color,
-                paddingRight: theme('validation.enableIcons') ? 'var(--form-select-feedback-icon-padding-right)' : null,
-                backgroundImage: theme('validation.enableIcons') ? `var(--form-feedback-${state}-icon), var(--form-select-background-image)` : null,
-                backgroundPosition: theme('validation.enableIcons') ? 'var(--form-select-feedback-icon-position), var(--form-select-background-position)' : null,
-                backgroundSize: theme('validation.enableIcons') ? 'var(--form-control-height-inner-half) var(--form-control-height-inner-half), var(--form-select-background-size), var(--form-select-background-size)' : null,
+                paddingRight: theme('validation.enableIcons') ? component[':root']['--form-select-feedback-icon-padding-right'] : null,
+                backgroundImage: theme('validation.enableIcons') ? `${icon}, ${theme('formSelect.backgroundImage')}` : null,
+                backgroundPosition: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-position']}, ${theme('formSelect.backgroundPosition')}` : null,
+                backgroundSize: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-size']}, ${theme('formSelect.backgroundSize')}, ${theme('formSelect.backgroundSize')}` : null,
                                 
                 '&:focus': {
                     borderColor: color,
-                    boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${color}, .25)`
+                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
                 }
             },
     
@@ -104,7 +110,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
                 
                 '&:focus': {
-                    boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${color}, .25)`
+                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
                 },
                 
                 '~ .form-check-label': {
@@ -127,14 +133,14 @@ module.exports = plugin(function({ addComponents, theme }) {
                 '&:focus': {
                     '~ .form-file-label': {
                         borderColor: color,
-                        boxShadow: `0 0 0 var(--form-control-focus-width) rgba(${color}, .25)`
+                        boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
                     }
                 }
             }       
         });
     }
 
-    const defaultValidIcon = `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='${theme('formFeedback.valid.color')}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>")`;
+    const defaultValidIcon = encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='${theme('formFeedback.valid.color')}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>")`);
     
     validationStateSelector(
         'valid',
@@ -142,7 +148,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         theme('formFeedback.valid.icon.backgroundImage', defaultValidIcon)
     );
     
-    const defaultInvalidIcon = `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='${theme('formFeedback.invalid.color')}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='${theme('formFeedback.invalid.color')}' stroke='none'/></svg>")`;
+    const defaultInvalidIcon = encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='${theme('formFeedback.invalid.color')}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='${theme('formFeedback.invalid.color')}' stroke='none'/></svg>")`);
 
     validationStateSelector(
         'invalid',
