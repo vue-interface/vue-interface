@@ -1,5 +1,4 @@
-import { prefix } from '@vue-interface/utils';
-import { isEmpty, isObject, kebabCase } from 'lodash-es';
+import { prefix, isObject, kebabCase } from '@vue-interface/utils';
 import MergeClasses from '@vue-interface/merge-classes';
 
 const EMPTY_CLASS = 'is-empty';
@@ -16,7 +15,7 @@ function removeClass(el, vnode, css) {
 }
 
 function addEmptyClass(el, vnode) {
-    if(isEmpty(el.value) || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
+    if(!!el.value || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
         addClass(el, vnode, EMPTY_CLASS);
     }
 }
@@ -240,7 +239,7 @@ export default {
                 function changedValue(el, value) {
                     addClass(el, vnode, CHANGED_CLASS);
 
-                    if(!isEmpty(value) || (el.selectedIndex && el.selectedIndex > -1)) {
+                    if(!!el.value || (el.selectedIndex && el.selectedIndex > -1)) {
                         removeClass(el, vnode, EMPTY_CLASS);
                     }
                     else if(!el.classList.contains(CHANGED_CLASS)) {
