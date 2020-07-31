@@ -39,7 +39,6 @@
   "dependencies": {
     "@vue-interface/component-registry": "^0.1.0",
     "@vue-interface/utils": "^0.9.10",
-    "animate.css": "^4.1.0",
     "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },
