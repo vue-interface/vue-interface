@@ -71,7 +71,7 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style>
 /*
 @import '../../scss/custom-fields';
 */
