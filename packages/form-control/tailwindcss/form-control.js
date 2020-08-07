@@ -85,7 +85,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             backgroundClip: theme('formControl.backgroundClip'),
             border: `${theme('formControl.borderWidth')} ${theme('formControl.borderStyle')} ${theme('formControl.borderColor')}`,
             borderRadius: theme('formControl.borderRadius'),
-            boxShadow: theme('formControl.enableShadows') &&  theme('formControl.boxShadow'),
+            boxShadow: theme('formControl.enableShadows') && theme('formControl.boxShadow'),
             transition: theme('formControl.transition'),
             appearance: theme('formControl.appearance'),
 
