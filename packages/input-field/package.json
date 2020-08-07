@@ -39,7 +39,10 @@
   "dependencies": {
     "@vue-interface/activity-indicator": "^0.10.4",
     "@vue-interface/form-control": "^0.9.4",
+    "bootstrap": "^4.5.2",
     "core-js": "^3.6.4",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "vue": "^2.6.11"
   },
   "devDependencies": {
