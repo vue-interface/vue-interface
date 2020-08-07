@@ -2339,7 +2339,7 @@ function removeClass(el, vnode, css) {
 }
 
 function addEmptyClass(el, vnode) {
-  if (!!el.value || el.tagName === 'SELECT' && el.selectedIndex === -1) {
+  if (!el.value || el.tagName === 'SELECT' && el.selectedIndex === -1) {
     addClass(el, vnode, EMPTY_CLASS);
   }
 }
@@ -2576,12 +2576,9 @@ function addEmptyClass(el, vnode) {
 
           removeClass(el, vnode, FOCUS_CLASS);
         });
-        /*                
-        el.addEventListener('input', event => {
-            changedValue(event.target, event.target.value);
+        el.addEventListener('input', function (event) {
+          changedValue(event.target, event.target.value);
         });
-        */
-
         el.addEventListener('change', function (event) {
           changedValue(event.target, event.target.value);
         }); // Add/remove the has-focus class from the form control
@@ -2603,7 +2600,8 @@ function addEmptyClass(el, vnode) {
       inserted: function inserted(el, binding, vnode) {
         addEmptyClass(el, vnode);
 
-        if (typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {// addClass(el, vnode, CHANGED_CLASS);
+        if (typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {
+          addClass(el, vnode, CHANGED_CLASS);
         }
       },
       update: function update(el, binding, vnode) {

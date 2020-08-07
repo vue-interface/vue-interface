@@ -15,7 +15,7 @@ function removeClass(el, vnode, css) {
 }
 
 function addEmptyClass(el, vnode) {
-    if(!!el.value || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
+    if(!el.value || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
         addClass(el, vnode, EMPTY_CLASS);
     }
 }
@@ -262,12 +262,10 @@ export default {
 
                     removeClass(el, vnode, FOCUS_CLASS);
                 });
-
-                /*                
+             
                 el.addEventListener('input', event => {
                     changedValue(event.target, event.target.value);
                 });
-                */
                 
                 el.addEventListener('change', event => {
                     changedValue(event.target, event.target.value);
@@ -293,7 +291,7 @@ export default {
                 addEmptyClass(el, vnode);
 
                 if(typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {
-                    // addClass(el, vnode, CHANGED_CLASS);
+                    addClass(el, vnode, CHANGED_CLASS);
                 }
             },
             update(el, binding, vnode) {
