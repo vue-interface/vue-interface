@@ -90,8 +90,16 @@ export default {
         component() {
             return () => {
                 const component = registry.get(kebabCase(this.type));
+                
+                if(component instanceof Promise) {
+                    return component;
+                }
+
+                if(typeof component === 'function') {
+                    return component();
+                }
             
-                return component instanceof Promise ? component : Promise.resolve(component);
+                return Promise.resolve(component);
             };
         }
     }
