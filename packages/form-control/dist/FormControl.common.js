@@ -917,6 +917,22 @@ module.exports = [
 
 /***/ }),
 
+/***/ "7a82":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var DESCRIPTORS = __webpack_require__("83ab");
+var objectDefinePropertyModile = __webpack_require__("9bf2");
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+$({ target: 'Object', stat: true, forced: !DESCRIPTORS, sham: !DESCRIPTORS }, {
+  defineProperty: objectDefinePropertyModile.f
+});
+
+
+/***/ }),
+
 /***/ "7b0b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2128,6 +2144,25 @@ var es_object_keys = __webpack_require__("b64b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.define-property.js
+var es_object_define_property = __webpack_require__("7a82");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
 // CONCATENATED MODULE: ./node_modules/@vue-interface/utils/src/camelCase.js
 function camelCase(string) {
     if(!string) {
@@ -2316,6 +2351,7 @@ function isObject_isObject(value) {
 
 
 
+
 var EMPTY_CLASS = 'is-empty';
 var FOCUS_CLASS = 'has-focus';
 var CHANGED_CLASS = 'has-changed';
@@ -2485,14 +2521,21 @@ function addEmptyClass(el, vnode) {
     labelClass: [Object, String],
 
     /**
-     * Should the input look like a pill.
+     * Should the control look like a pill.
      *
-     * @param {String}
+     * @param {Boolean}
      */
     pill: Boolean,
 
     /**
-     * Adds a shadow class to the form input.
+     * Should the control look like plaintext.
+     *
+     * @param {Boolean}
+     */
+    plaintext: Boolean,
+
+    /**
+     * Adds a shadow class to the control.
      *
      * @param {String|Boolean}
      */
@@ -2642,13 +2685,16 @@ function addEmptyClass(el, vnode) {
       }, {});
     },
     controlClass: function controlClass() {
-      return this.custom ? this.customControlClass : this.defaultControlClass + (this.plaintext ? '-plaintext' : '');
+      return this.custom ? this.customControlClass : this.defaultControlClass;
     },
     controlSizeClass: function controlSizeClass() {
       return prefix_prefix(this.size, this.controlClass);
     },
     customControlClass: function customControlClass() {
       return 'custom-control';
+    },
+    fileControlClass: function fileControlClass() {
+      return 'form-control-file';
     },
     formGroupClasses: function formGroupClasses() {
       var name = prefix_prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
@@ -2660,7 +2706,11 @@ function addEmptyClass(el, vnode) {
       }, this.shadowClassName);
     },
     controlClasses: function controlClasses() {
-      return this.mergeClasses(this.icon ? 'form-control-icon' : null, this.controlClass, this.colorableClasses, this.controlSizeClass, this.pill ? 'rounded rounded-pill' : null, this.spacing || '', this.valid || this.validFeedback ? 'is-valid' : '', this.invalid || this.invalidFeedback ? 'is-invalid' : '', this.shadowClassName);
+      var _ref;
+
+      return _ref = {
+        'form-control-icon': !!this.icon
+      }, _defineProperty(_ref, this.controlClass, this.$attrs.type !== 'file'), _defineProperty(_ref, this.controlSizeClass, this.$attrs.type !== 'file'), _defineProperty(_ref, this.fileControlClass, this.$attrs.type === 'file'), _defineProperty(_ref, this.pillClasses, this.pill), _defineProperty(_ref, this.plaintextClass, this.plaintext), _defineProperty(_ref, this.spacing, !!this.spacing), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, this.shadowClassName, !!this.shadowClassName), _ref;
     },
     hasDefaultSlot: function hasDefaultSlot() {
       return !!this.$slots["default"];
@@ -2674,6 +2724,12 @@ function addEmptyClass(el, vnode) {
       return Array.isArray(errors) ? errors.filter(function (error) {
         return error && typeof error === 'string';
       }).join('<br>') : errors;
+    },
+    pillClasses: function pillClasses() {
+      return 'rounded rounded-pill';
+    },
+    plaintextClass: function plaintextClass() {
+      return 'form-control-plaintext';
     },
     shadowClassName: function shadowClassName() {
       if (!this.shadow) {

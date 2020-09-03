@@ -176,14 +176,21 @@ export default {
         labelClass: [Object, String],
 
         /**
-         * Should the input look like a pill.
+         * Should the control look like a pill.
          *
-         * @param {String}
+         * @param {Boolean}
          */
         pill: Boolean,
+
+        /**
+         * Should the control look like plaintext.
+         *
+         * @param {Boolean}
+         */
+        plaintext: Boolean,
         
         /**
-         * Adds a shadow class to the form input.
+         * Adds a shadow class to the control.
          *
          * @param {String|Boolean}
          */
@@ -354,9 +361,7 @@ export default {
         },
 
         controlClass() {
-            return this.custom ? this.customControlClass : (
-                this.defaultControlClass + (this.plaintext ? '-plaintext' : '')
-            );
+            return this.custom ? this.customControlClass : this.defaultControlClass;
         },
 
         controlSizeClass() {
@@ -365,6 +370,10 @@ export default {
 
         customControlClass() {
             return 'custom-control';
+        },
+
+        fileControlClass() {
+            return 'form-control-file';
         },
 
         formGroupClasses() {
@@ -379,17 +388,18 @@ export default {
         },
 
         controlClasses() {
-            return this.mergeClasses(
-                this.icon ? 'form-control-icon' : null,
-                this.controlClass,
-                this.colorableClasses,
-                this.controlSizeClass,
-                this.pill ? 'rounded rounded-pill' : null,
-                (this.spacing || ''),
-                ((this.valid || this.validFeedback) ? 'is-valid' : ''),
-                ((this.invalid || this.invalidFeedback) ? 'is-invalid' : ''),
-                this.shadowClassName
-            );
+            return {
+                'form-control-icon': !!this.icon,
+                [this.controlClass]: this.$attrs.type !== 'file',
+                [this.controlSizeClass]: this.$attrs.type !== 'file',
+                [this.fileControlClass]: this.$attrs.type === 'file',
+                [this.pillClasses]: this.pill,
+                [this.plaintextClass]: this.plaintext,
+                [this.spacing]: !!this.spacing,
+                ['is-valid']: !!(this.valid || this.validFeedback),
+                ['is-invalid']: !!(this.invalid || this.invalidFeedback),
+                [this.shadowClassName]: !!this.shadowClassName
+            };
         },
 
         hasDefaultSlot() {
@@ -406,6 +416,14 @@ export default {
             return Array.isArray(errors) ? errors.filter(error => {
                 return error && typeof error === 'string';
             }).join('<br>') : errors;
+        },
+
+        pillClasses() {
+            return 'rounded rounded-pill';
+        },
+
+        plaintextClass() {
+            return 'form-control-plaintext';
         },
 
         shadowClassName() {
