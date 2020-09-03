@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/form-control",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "An abstract form control Vue mixin.",
   "main": "index.js",
   "scripts": {
