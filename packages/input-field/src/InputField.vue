@@ -72,10 +72,6 @@ export default {
 </script>
 
 <style>
-/*
-@import '../../scss/custom-fields';
-*/
-
 .input-field,
 .input-field .form-group-inner {
     position: relative;
