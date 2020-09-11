@@ -69,6 +69,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 .custom-select-field,
 .custom-input-field,
 .custom-textarea-field {
+    position: relative;
     
     label {
         margin: 0;
@@ -193,7 +194,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 // Custom Select
 
 .custom-select-field {
-
+    
     & > label {
         left: 0;
         margin: 0;
@@ -268,11 +269,11 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
             transform: none;
             line-height: 1em;
             font-size: $custom-control-shrink-font-size-base;
-            padding: $custom-control-padding-y $custom-control-padding-x + ($custom-control-label-font-size - $custom-control-shrink-font-size-base / 1.05) 0;
+            padding: $custom-control-padding-y $custom-control-padding-x + ($custom-control-label-font-size - $custom-control-shrink-font-size-base) 0;
         }
 
         .custom-select {
-            padding-top: $custom-control-font-size-base;
+            padding-top: $custom-control-font-size-base * .8;
         }
     }
 
@@ -424,7 +425,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     &.custom-textarea-field:not(.is-empty) textarea,
     &.custom-textarea-field.has-changed textarea,
     &.custom-textarea-field.is-empty.has-changed textarea {
-        padding-top: $custom-control-padding-y * 2.5;
+        padding-top: $custom-control-padding-y * 2;
     }
 
     &.custom-input-field-sm,
