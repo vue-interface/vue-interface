@@ -269,7 +269,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
             transform: none;
             line-height: 1em;
             font-size: $custom-control-shrink-font-size-base;
-            padding: $custom-control-padding-y $custom-control-padding-x + ($custom-control-label-font-size - $custom-control-shrink-font-size-base) 0;
+            padding: $custom-control-padding-y $custom-control-padding-x + ($custom-control-label-font-size - $custom-control-shrink-font-size-base * 1.1) 0;
         }
 
         .custom-select {
