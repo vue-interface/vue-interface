@@ -2705,7 +2705,7 @@ var InputField = __webpack_require__("c177");
 // EXTERNAL MODULE: ./node_modules/@vue-interface/form-control/src/scss/CustomFields.scss
 var CustomFields = __webpack_require__("c7c5");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60345204-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/InputField.vue?vue&type=template&id=2b83ee2e&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6bc4eb22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/InputField.vue?vue&type=template&id=2b83ee2e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.formGroupClasses},[_vm._t("label",[(_vm.label)?_c('label',{ref:"label",class:_vm.labelClass,attrs:{"for":_vm.$attrs.id},domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()]),_c('div',{staticClass:"form-group-inner"},[_vm._t("control",[(_vm.$slots.icon)?_c('div',{staticClass:"form-group-inner-icon",on:{"click":function($event){return _vm.$refs.field.focus()}}},[_vm._t("icon")],2):_vm._e(),_c('input',_vm._b({directives:[{name:"bind-events",rawName:"v-bind-events"}],ref:"field",domProps:{"value":_vm.currentValue},on:{"input":_vm.onInput}},'input',_vm.controlAttributes,false))]),_vm._t("activity",[_c('transition',{attrs:{"name":"input-field-fade"}},[(_vm.activity)?_c('activity-indicator',{key:"activity",ref:"activity",attrs:{"type":_vm.indicator,"size":_vm.indicatorSize || _vm.size}}):_vm._e()],1)])],2),_vm._t("feedback",[(_vm.validFeedback)?_c('div',{staticClass:"valid-feedback",attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):(_vm.invalidFeedback)?_c('div',{staticClass:"invalid-feedback",attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):_vm._e()]),_vm._t("help",[(_vm.helpText)?_c('small',{ref:"help"},[_vm._v(" "+_vm._s(_vm.helpText)+" ")]):_vm._e()])],2)}
 var staticRenderFns = []
 
@@ -3356,101 +3356,15 @@ function transition(el, defaultValue) {
 
 
 
-// CONCATENATED MODULE: ./node_modules/lodash-es/isObject.js
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject_isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-/* harmony default export */ var lodash_es_isObject = (isObject_isObject);
-
-// CONCATENATED MODULE: ./node_modules/@vue-interface/merge-classes/src/MergeClasses.js
-
-
-/* harmony default export */ var MergeClasses = ({
-
-    methods: {
-
-        mergeClasses(...args) {
-            return args.reduce((carry, arg) => {
-                if(lodash_es_isObject(arg)) {
-                    Object.assign(carry, arg);
-                }
-                else if(Array.isArray(arg)) {
-                    carry = carry.concat(arg);
-                }
-                else if(arg) {
-                    carry[arg] = true;
-                }
-
-                return carry;
-            }, {});
-        }
-
-    }
-
-});
-
-// CONCATENATED MODULE: ./node_modules/@vue-interface/merge-classes/index.js
-
-/* harmony default export */ var merge_classes = (MergeClasses);
-
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/src/FormControl.js
 
 
-
-const EMPTY_CLASS = 'is-empty';
-const FOCUS_CLASS = 'has-focus';
-const CHANGED_CLASS = 'has-changed';
 const CUSTOM_PREFIX = 'custom';
-
-function addClass(el, vnode, css) {
-    vnode.context.$el.classList.add(css);
-}
-
-function removeClass(el, vnode, css) {
-    vnode.context.$el.classList.remove(css);
-}
-
-function addEmptyClass(el, vnode) {
-    if(!el.value || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
-        addClass(el, vnode, EMPTY_CLASS);
-    }
-}
 
 /* harmony default export */ var FormControl = ({
 
     inheritAttrs: false,
 
-    mixins: [
-        merge_classes
-    ],
-    
     props: {
 
         /**
@@ -3676,45 +3590,34 @@ function addEmptyClass(el, vnode) {
     directives: {
         bindEvents: {
             bind(el, binding, vnode) {
-                function changedValue(el, value) {
-                    addClass(el, vnode, CHANGED_CLASS);
-
-                    if(!!el.value || (el.selectedIndex && el.selectedIndex > -1)) {
-                        removeClass(el, vnode, EMPTY_CLASS);
-                    }
-                    else if(!el.classList.contains(CHANGED_CLASS)) {
-                        addClass(el, vnode, EMPTY_CLASS);
-                    }
+                function onInput() {
+                    vnode.context.hasChanged = true;
+                    vnode.context.isEmpty = !el.value;
 
                     if(el.tagName === 'SELECT' && el.querySelector('[value=""]')) {
-                        el.querySelector('[value=""]').selected = !value;
+                        el.querySelector('[value=""]').selected = !el.value;
                     }
                 }
 
-                vnode.context.$watch('value', (value) => {
-                    changedValue(vnode.context.$el, value);
-                });
+                el.addEventListener('input', onInput);
+                el.addEventListener('change', onInput);
 
-                el.addEventListener('blur', event => {
-                    if(el.classList.contains(EMPTY_CLASS)) {
-                        removeClass(el, vnode, CHANGED_CLASS);
-                    }
-
-                    removeClass(el, vnode, FOCUS_CLASS);
-                });
-             
-                el.addEventListener('input', event => {
-                    changedValue(event.target, event.target.value);
-                });
-                
-                el.addEventListener('change', event => {
-                    changedValue(event.target, event.target.value);
+                el.addEventListener('focus', () => {
+                    vnode.context.hasFocus = true;
                 });
 
                 // Add/remove the has-focus class from the form control
-                el.addEventListener('focus', event => {
-                    addClass(el, vnode, FOCUS_CLASS);
+                el.addEventListener('blur', () => {
+                    vnode.context.hasFocus = false;
                 });
+
+                // Set the data-selected-index attribute if necessary.
+                if(el.selectedIndex >= 0) {
+                    el.setAttribute('data-selected-index', el.selectedIndex);
+                }
+
+                vnode.context.$watch('value', onInput);
+                vnode.context.isEmpty = !el.value;
 
                 // Bubble the native events up to the vue component.
                 vnode.context.bindEvents.forEach(name => {
@@ -3722,20 +3625,6 @@ function addEmptyClass(el, vnode) {
                         vnode.context.$emit(name, event);
                     });
                 });
-
-                if(el.selectedIndex >= 0) {
-                    el.setAttribute('data-selected-index', el.selectedIndex);
-                }
-            },
-            inserted(el, binding, vnode) {
-                addEmptyClass(el, vnode);
-
-                if(typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {
-                    addClass(el, vnode, CHANGED_CLASS);
-                }
-            },
-            update(el, binding, vnode) {
-                addEmptyClass(el, vnode);
             }
         }
     },
@@ -3812,26 +3701,31 @@ function addEmptyClass(el, vnode) {
         formGroupClasses() {
             const name = prefix_prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
 
-            return this.mergeClasses(name, prefix_prefix(this.size, name), {
+            return {
+                [name]: true,
+                [prefix_prefix(this.size, name)]: !!this.size,
                 'form-group': this.group,
                 'has-activity': this.activity,
+                'has-changed': this.hasChanged,
+                'has-focus': this.hasFocus,
+                'is-empty': this.isEmpty,
+                'is-invalid': !!(this.invalid || this.invalidFeedback),
                 'is-valid': !!(this.valid || this.validFeedback),
-                'is-invalid': !!(this.invalid || this.invalidFeedback)
-            }, this.shadowClassName);
+            };
         },
 
         controlClasses() {
             return {
-                'form-control-icon': !!this.$slots.icon,
                 [this.controlClass]: this.$attrs.type !== 'file',
                 [this.controlSizeClass]: this.$attrs.type !== 'file',
                 [this.fileControlClass]: this.$attrs.type === 'file',
+                'form-control-icon': !!this.$slots.icon,
+                'is-valid': !!(this.valid || this.validFeedback),
+                'is-invalid': !!(this.invalid || this.invalidFeedback),
                 [this.pillClasses]: this.pill,
                 [this.plaintextClass]: this.plaintext,
                 [this.spacing]: !!this.spacing,
-                ['is-valid']: !!(this.valid || this.validFeedback),
-                ['is-invalid']: !!(this.invalid || this.invalidFeedback),
-                [this.shadowClassName]: !!this.shadowClassName
+                [this.shadowableClassName]: !!this.shadow
             };
         },
 
@@ -3859,14 +3753,6 @@ function addEmptyClass(el, vnode) {
             return 'form-control-plaintext';
         },
 
-        shadowClassName() {
-            if(!this.shadow) {
-                return;
-            }
-
-            return this.shadow === true ? 'shadow' : `shadow-${this.shadow}`;
-        },
-
         validFeedback() {
             return Array.isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
         }
@@ -3881,7 +3767,10 @@ function addEmptyClass(el, vnode) {
 
     data() {
         return {
-            currentValue: this.value || this.defaultValue
+            currentValue: this.value || this.defaultValue,
+            hasChanged: false,
+            hasFocus: false,
+            isEmpty: false,
         };
     }
 
@@ -3892,7 +3781,7 @@ function addEmptyClass(el, vnode) {
 
 /* harmony default export */ var form_control = (FormControl);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60345204-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/ActivityIndicator.vue?vue&type=template&id=30f2e7f0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6bc4eb22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/ActivityIndicator.vue?vue&type=template&id=30f2e7f0&
 var ActivityIndicatorvue_type_template_id_30f2e7f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes,style:(_vm.style)},[_c('div',{staticClass:"activity-indicator-content"},[_c(_vm.component,{tag:"component",staticClass:"mx-auto"}),(_vm.label)?_c('div',{staticClass:"activity-indicator-label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e()],1)])}
 var ActivityIndicatorvue_type_template_id_30f2e7f0_staticRenderFns = []
 
@@ -4005,7 +3894,7 @@ function isArray_isArray(value) {
 }
 
 // CONCATENATED MODULE: ./node_modules/@vue-interface/utils/src/isObject.js
-function src_isObject_isObject(subject) {
+function isObject_isObject(subject) {
     return (!!subject) && (subject.constructor === Object);
 };
 // CONCATENATED MODULE: ./node_modules/@vue-interface/utils/src/matches.js
@@ -4014,7 +3903,7 @@ function src_isObject_isObject(subject) {
 function matches_matches(properties) {
     return subject => {
         for(const i in properties) {
-            if(src_isObject_isObject(properties[i])) {
+            if(isObject_isObject(properties[i])) {
                 return subject[i] ? matches_matches(properties[i])(subject[i]) : false;
             }
             else if(!subject || subject[i] !== properties[i]) {
@@ -4071,7 +3960,7 @@ function matchesProperty_matchesProperty(path, value) {
 
 
 function predicate_predicate(value) {
-    if(src_isObject_isObject(value)) {
+    if(isObject_isObject(value)) {
         value = matches_matches(value);
     }
     else if(isArray_isArray(value)) {
@@ -4166,7 +4055,7 @@ function src_prefix_prefix(subject, prefix, delimeter = '-') {
         return subject;
     }
 
-    if(src_isObject_isObject(subject)) {
+    if(isObject_isObject(subject)) {
         return Object.fromEntries(
             Object.entries(subject).map(([key, value]) => [prefixer(key), value])
         );
@@ -4549,7 +4438,7 @@ var ActivityIndicator_component = normalizeComponent(
 
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60345204-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/types/Spinner.vue?vue&type=template&id=2ee21020&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6bc4eb22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/types/Spinner.vue?vue&type=template&id=2ee21020&
 var Spinnervue_type_template_id_2ee21020_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
 var Spinnervue_type_template_id_2ee21020_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator-spinner"},[_c('div',{staticClass:"activity-indicator-spinner1 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner2 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner3 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner4 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner5 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner6 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner7 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner8 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner9 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner10 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner11 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner12 activity-indicator-spinner"})])}]
 
