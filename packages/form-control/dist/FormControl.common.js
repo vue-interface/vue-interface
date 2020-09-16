@@ -2519,70 +2519,6 @@ function transition(el, defaultValue) {
 
 
 
-// CONCATENATED MODULE: ./node_modules/lodash-es/isObject.js
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject_isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-/* harmony default export */ var lodash_es_isObject = (isObject_isObject);
-
-// CONCATENATED MODULE: ./node_modules/@vue-interface/merge-classes/src/MergeClasses.js
-
-
-/* harmony default export */ var MergeClasses = ({
-
-    methods: {
-
-        mergeClasses(...args) {
-            return args.reduce((carry, arg) => {
-                if(lodash_es_isObject(arg)) {
-                    Object.assign(carry, arg);
-                }
-                else if(Array.isArray(arg)) {
-                    carry = carry.concat(arg);
-                }
-                else if(arg) {
-                    carry[arg] = true;
-                }
-
-                return carry;
-            }, {});
-        }
-
-    }
-
-});
-
-// CONCATENATED MODULE: ./node_modules/@vue-interface/merge-classes/index.js
-
-/* harmony default export */ var merge_classes = (MergeClasses);
-
 // CONCATENATED MODULE: ./src/FormControl.js
 
 
@@ -2597,29 +2533,9 @@ function isObject_isObject(value) {
 
 
 
-
-var EMPTY_CLASS = 'is-empty';
-var FOCUS_CLASS = 'has-focus';
-var CHANGED_CLASS = 'has-changed';
 var CUSTOM_PREFIX = 'custom';
-
-function addClass(el, vnode, css) {
-  vnode.context.$el.classList.add(css);
-}
-
-function removeClass(el, vnode, css) {
-  vnode.context.$el.classList.remove(css);
-}
-
-function addEmptyClass(el, vnode) {
-  if (!el.value || el.tagName === 'SELECT' && el.selectedIndex === -1) {
-    addClass(el, vnode, EMPTY_CLASS);
-  }
-}
-
 /* harmony default export */ var src_FormControl = ({
   inheritAttrs: false,
-  mixins: [merge_classes],
   props: {
     /**
      * Show type activity indicator.
@@ -2732,11 +2648,21 @@ function addEmptyClass(el, vnode) {
     hideLabel: Boolean,
 
     /**
-     * The icon that should be used in the field.
+     * The activity indicator type.
      *
-     * @param {Array|String}
+     * @param {String}
      */
-    icon: [Array, String],
+    indicator: {
+      type: String,
+      "default": 'spinner'
+    },
+
+    /**
+     * The activity indicator size.
+     *
+     * @param {String}
+     */
+    indicatorSize: String,
 
     /**
      * Display the form field inline
@@ -2832,60 +2758,37 @@ function addEmptyClass(el, vnode) {
   directives: {
     bindEvents: {
       bind: function bind(el, binding, vnode) {
-        function changedValue(el, value) {
-          addClass(el, vnode, CHANGED_CLASS);
-
-          if (!!el.value || el.selectedIndex && el.selectedIndex > -1) {
-            removeClass(el, vnode, EMPTY_CLASS);
-          } else if (!el.classList.contains(CHANGED_CLASS)) {
-            addClass(el, vnode, EMPTY_CLASS);
-          }
+        function onInput() {
+          vnode.context.hasChanged = true;
+          vnode.context.isEmpty = !el.value;
 
           if (el.tagName === 'SELECT' && el.querySelector('[value=""]')) {
-            el.querySelector('[value=""]').selected = !value;
+            el.querySelector('[value=""]').selected = !el.value;
           }
         }
 
-        vnode.context.$watch('value', function (value) {
-          changedValue(vnode.context.$el, value);
-        });
-        el.addEventListener('blur', function (event) {
-          if (el.classList.contains(EMPTY_CLASS)) {
-            removeClass(el, vnode, CHANGED_CLASS);
-          }
-
-          removeClass(el, vnode, FOCUS_CLASS);
-        });
-        el.addEventListener('input', function (event) {
-          changedValue(event.target, event.target.value);
-        });
-        el.addEventListener('change', function (event) {
-          changedValue(event.target, event.target.value);
+        el.addEventListener('input', onInput);
+        el.addEventListener('change', onInput);
+        el.addEventListener('focus', function () {
+          vnode.context.hasFocus = true;
         }); // Add/remove the has-focus class from the form control
 
-        el.addEventListener('focus', function (event) {
-          addClass(el, vnode, FOCUS_CLASS);
-        }); // Bubble the native events up to the vue component.
+        el.addEventListener('blur', function () {
+          vnode.context.hasFocus = false;
+        }); // Set the data-selected-index attribute if necessary.
+
+        if (el.selectedIndex >= 0) {
+          el.setAttribute('data-selected-index', el.selectedIndex);
+        }
+
+        vnode.context.$watch('value', onInput);
+        vnode.context.isEmpty = !el.value; // Bubble the native events up to the vue component.
 
         vnode.context.bindEvents.forEach(function (name) {
           el.addEventListener(name, function (event) {
             vnode.context.$emit(name, event);
           });
         });
-
-        if (el.selectedIndex >= 0) {
-          el.setAttribute('data-selected-index', el.selectedIndex);
-        }
-      },
-      inserted: function inserted(el, binding, vnode) {
-        addEmptyClass(el, vnode);
-
-        if (typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {
-          addClass(el, vnode, CHANGED_CLASS);
-        }
-      },
-      update: function update(el, binding, vnode) {
-        addEmptyClass(el, vnode);
       }
     }
   },
@@ -2943,20 +2846,15 @@ function addEmptyClass(el, vnode) {
       return 'form-control-file';
     },
     formGroupClasses: function formGroupClasses() {
-      var name = prefix_prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
-      return this.mergeClasses(name, prefix_prefix(this.size, name), {
-        'form-group': this.group,
-        'has-activity': this.activity,
-        'is-valid': !!(this.valid || this.validFeedback),
-        'is-invalid': !!(this.invalid || this.invalidFeedback)
-      }, this.shadowClassName);
-    },
-    controlClasses: function controlClasses() {
       var _ref;
 
-      return _ref = {
-        'form-control-icon': !!this.icon
-      }, _defineProperty(_ref, this.controlClass, this.$attrs.type !== 'file'), _defineProperty(_ref, this.controlSizeClass, this.$attrs.type !== 'file'), _defineProperty(_ref, this.fileControlClass, this.$attrs.type === 'file'), _defineProperty(_ref, this.pillClasses, this.pill), _defineProperty(_ref, this.plaintextClass, this.plaintext), _defineProperty(_ref, this.spacing, !!this.spacing), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, this.shadowClassName, !!this.shadowClassName), _ref;
+      var name = prefix_prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
+      return _ref = {}, _defineProperty(_ref, name, true), _defineProperty(_ref, prefix_prefix(this.size, name), !!this.size), _defineProperty(_ref, 'form-group', this.group), _defineProperty(_ref, 'has-activity', this.activity), _defineProperty(_ref, 'has-changed', this.hasChanged), _defineProperty(_ref, 'has-focus', this.hasFocus), _defineProperty(_ref, 'is-empty', this.isEmpty), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _ref;
+    },
+    controlClasses: function controlClasses() {
+      var _ref2;
+
+      return _ref2 = {}, _defineProperty(_ref2, this.controlClass, this.$attrs.type !== 'file'), _defineProperty(_ref2, this.controlSizeClass, this.$attrs.type !== 'file'), _defineProperty(_ref2, this.fileControlClass, this.$attrs.type === 'file'), _defineProperty(_ref2, 'form-control-icon', !!this.$slots.icon), _defineProperty(_ref2, 'is-valid', !!(this.valid || this.validFeedback)), _defineProperty(_ref2, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref2, this.pillClasses, this.pill), _defineProperty(_ref2, this.plaintextClass, this.plaintext), _defineProperty(_ref2, this.spacing, !!this.spacing), _defineProperty(_ref2, this.shadowableClassName, !!this.shadow), _ref2;
     },
     hasDefaultSlot: function hasDefaultSlot() {
       return !!this.$slots["default"];
@@ -2977,13 +2875,6 @@ function addEmptyClass(el, vnode) {
     plaintextClass: function plaintextClass() {
       return 'form-control-plaintext';
     },
-    shadowClassName: function shadowClassName() {
-      if (!this.shadow) {
-        return;
-      }
-
-      return this.shadow === true ? 'shadow' : "shadow-".concat(this.shadow);
-    },
     validFeedback: function validFeedback() {
       return Array.isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
     }
@@ -2995,7 +2886,10 @@ function addEmptyClass(el, vnode) {
   },
   data: function data() {
     return {
-      currentValue: this.value || this.defaultValue
+      currentValue: this.value || this.defaultValue,
+      hasChanged: false,
+      hasFocus: false,
+      isEmpty: false
     };
   }
 });

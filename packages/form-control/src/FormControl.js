@@ -1,33 +1,11 @@
 import { prefix, isObject, kebabCase } from '@vue-interface/utils';
-import MergeClasses from '@vue-interface/merge-classes';
 
-const EMPTY_CLASS = 'is-empty';
-const FOCUS_CLASS = 'has-focus';
-const CHANGED_CLASS = 'has-changed';
 const CUSTOM_PREFIX = 'custom';
-
-function addClass(el, vnode, css) {
-    vnode.context.$el.classList.add(css);
-}
-
-function removeClass(el, vnode, css) {
-    vnode.context.$el.classList.remove(css);
-}
-
-function addEmptyClass(el, vnode) {
-    if(!el.value || (el.tagName === 'SELECT' && el.selectedIndex === -1)) {
-        addClass(el, vnode, EMPTY_CLASS);
-    }
-}
 
 export default {
 
     inheritAttrs: false,
 
-    mixins: [
-        MergeClasses
-    ],
-    
     props: {
 
         /**
@@ -253,45 +231,34 @@ export default {
     directives: {
         bindEvents: {
             bind(el, binding, vnode) {
-                function changedValue(el, value) {
-                    addClass(el, vnode, CHANGED_CLASS);
-
-                    if(!!el.value || (el.selectedIndex && el.selectedIndex > -1)) {
-                        removeClass(el, vnode, EMPTY_CLASS);
-                    }
-                    else if(!el.classList.contains(CHANGED_CLASS)) {
-                        addClass(el, vnode, EMPTY_CLASS);
-                    }
+                function onInput() {
+                    vnode.context.hasChanged = true;
+                    vnode.context.isEmpty = !el.value;
 
                     if(el.tagName === 'SELECT' && el.querySelector('[value=""]')) {
-                        el.querySelector('[value=""]').selected = !value;
+                        el.querySelector('[value=""]').selected = !el.value;
                     }
                 }
 
-                vnode.context.$watch('value', (value) => {
-                    changedValue(vnode.context.$el, value);
-                });
+                el.addEventListener('input', onInput);
+                el.addEventListener('change', onInput);
 
-                el.addEventListener('blur', event => {
-                    if(el.classList.contains(EMPTY_CLASS)) {
-                        removeClass(el, vnode, CHANGED_CLASS);
-                    }
-
-                    removeClass(el, vnode, FOCUS_CLASS);
-                });
-             
-                el.addEventListener('input', event => {
-                    changedValue(event.target, event.target.value);
-                });
-                
-                el.addEventListener('change', event => {
-                    changedValue(event.target, event.target.value);
+                el.addEventListener('focus', () => {
+                    vnode.context.hasFocus = true;
                 });
 
                 // Add/remove the has-focus class from the form control
-                el.addEventListener('focus', event => {
-                    addClass(el, vnode, FOCUS_CLASS);
+                el.addEventListener('blur', () => {
+                    vnode.context.hasFocus = false;
                 });
+
+                // Set the data-selected-index attribute if necessary.
+                if(el.selectedIndex >= 0) {
+                    el.setAttribute('data-selected-index', el.selectedIndex);
+                }
+
+                vnode.context.$watch('value', onInput);
+                vnode.context.isEmpty = !el.value;
 
                 // Bubble the native events up to the vue component.
                 vnode.context.bindEvents.forEach(name => {
@@ -299,20 +266,6 @@ export default {
                         vnode.context.$emit(name, event);
                     });
                 });
-
-                if(el.selectedIndex >= 0) {
-                    el.setAttribute('data-selected-index', el.selectedIndex);
-                }
-            },
-            inserted(el, binding, vnode) {
-                addEmptyClass(el, vnode);
-
-                if(typeof el.selectedIndex === 'number' && el.selectedIndex > -1) {
-                    addClass(el, vnode, CHANGED_CLASS);
-                }
-            },
-            update(el, binding, vnode) {
-                addEmptyClass(el, vnode);
             }
         }
     },
@@ -389,26 +342,31 @@ export default {
         formGroupClasses() {
             const name = prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
 
-            return this.mergeClasses(name, prefix(this.size, name), {
+            return {
+                [name]: true,
+                [prefix(this.size, name)]: !!this.size,
                 'form-group': this.group,
                 'has-activity': this.activity,
+                'has-changed': this.hasChanged,
+                'has-focus': this.hasFocus,
+                'is-empty': this.isEmpty,
+                'is-invalid': !!(this.invalid || this.invalidFeedback),
                 'is-valid': !!(this.valid || this.validFeedback),
-                'is-invalid': !!(this.invalid || this.invalidFeedback)
-            }, this.shadowClassName);
+            };
         },
 
         controlClasses() {
             return {
-                'form-control-icon': !!this.$slots.icon,
                 [this.controlClass]: this.$attrs.type !== 'file',
                 [this.controlSizeClass]: this.$attrs.type !== 'file',
                 [this.fileControlClass]: this.$attrs.type === 'file',
+                'form-control-icon': !!this.$slots.icon,
+                'is-valid': !!(this.valid || this.validFeedback),
+                'is-invalid': !!(this.invalid || this.invalidFeedback),
                 [this.pillClasses]: this.pill,
                 [this.plaintextClass]: this.plaintext,
                 [this.spacing]: !!this.spacing,
-                ['is-valid']: !!(this.valid || this.validFeedback),
-                ['is-invalid']: !!(this.invalid || this.invalidFeedback),
-                [this.shadowClassName]: !!this.shadowClassName
+                [this.shadowableClassName]: !!this.shadow
             };
         },
 
@@ -436,14 +394,6 @@ export default {
             return 'form-control-plaintext';
         },
 
-        shadowClassName() {
-            if(!this.shadow) {
-                return;
-            }
-
-            return this.shadow === true ? 'shadow' : `shadow-${this.shadow}`;
-        },
-
         validFeedback() {
             return Array.isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
         }
@@ -458,7 +408,10 @@ export default {
 
     data() {
         return {
-            currentValue: this.value || this.defaultValue
+            currentValue: this.value || this.defaultValue,
+            hasChanged: false,
+            hasFocus: false,
+            isEmpty: false,
         };
     }
 
