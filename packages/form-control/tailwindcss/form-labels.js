@@ -33,7 +33,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         // text to align with the form controls.
         '.col-form-label': {
             paddingTop: `calc(${theme('formLabel.paddingY')} + ${theme('formLabel.borderWidth')})`,
-            paddingBotton: `calc(${theme('formLabel.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBottom: `calc(${theme('formLabel.paddingY')} + ${theme('formLabel.borderWidth')})`,
             marginBottom: theme('formLabel.marginBottom'), // Override the `<legend>` default
             fontSize: theme('formLabel.fontSize'),
             fontStyle: theme('formLabel.fontStyle'),
@@ -43,13 +43,13 @@ module.exports = plugin(function({ addComponents, theme }) {
         
         '.col-form-label-lg': {
             paddingTop: `calc(${theme('formLabel.lg.paddingY')} + ${theme('formLabel.borderWidth')})`,
-            paddingBotton: `calc(${theme('formLabel.lg.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBottom: `calc(${theme('formLabel.lg.paddingY')} + ${theme('formLabel.borderWidth')})`,
             fontSize: theme('formLabel.lg.fontSize')
         },
         
         '.col-form-label-sm': {
             paddingTop: `calc(${theme('formLabel.sm.paddingY')} + ${theme('formLabel.borderWidth')})`,
-            paddingBotton: `calc(${theme('formLabel.sm.paddingY')} + ${theme('formLabel.borderWidth')})`,
+            paddingBottom: `calc(${theme('formLabel.sm.paddingY')} + ${theme('formLabel.borderWidth')})`,
             fontSize: theme('formLabel.sm.fontSize')
         },
     };
