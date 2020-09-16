@@ -53,6 +53,8 @@
     "markdown-it-meta": "0.0.1",
     "postcss-cli": "^7.1.2",
     "postcss-nested": "^4.2.3",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
     "tailwindcss": "^1.8.10",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.5.4",
