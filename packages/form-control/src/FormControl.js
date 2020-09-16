@@ -141,6 +141,23 @@ export default {
         hideLabel: Boolean,
 
         /**
+         * The activity indicator type.
+         *
+         * @param {String}
+         */
+        indicator: {
+            type: String,
+            default: 'spinner'
+        },
+
+        /**
+         * The activity indicator size.
+         *
+         * @param {String}
+         */
+        indicatorSize: String,
+
+        /**
          * Display the form field inline
          *
          * @param {Boolean}
