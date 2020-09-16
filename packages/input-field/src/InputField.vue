@@ -78,6 +78,7 @@ export default {
 .input-field,
 .input-field .form-group-inner {
     position: relative;
+    transition: all .25s ease-in-out;
 }
 
 .input-field .activity-indicator {
