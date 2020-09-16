@@ -6,7 +6,7 @@
 
         <div class="form-group-inner">
             <slot name="control">
-                <div v-if="$slots.icon" class="mx-2 pl-1">
+                <div v-if="$slots.icon" class="form-group-inner-icon" @click="$refs.field.focus()">
                     <slot name="icon" />
                 </div>
                 <input
@@ -18,8 +18,13 @@
             </slot>
 
             <slot name="activity">
-                <transition name="slide-fade">
-                    <activity-indicator v-if="activity" key="activity" ref="activity" type="dots" :size="size" />
+                <transition name="input-field-fade">
+                    <activity-indicator
+                        v-if="activity"
+                        key="activity"
+                        ref="activity"
+                        :type="indicator"
+                        :size="indicatorSize || size" />
                 </transition>
             </slot>
         </div>
@@ -48,10 +53,10 @@
 <script>
 import FormControl from '@vue-interface/form-control';
 import { ActivityIndicator, register } from '@vue-interface/activity-indicator';
-import Dots from '@vue-interface/activity-indicator/src/types/Dots';
+import Spinner from '@vue-interface/activity-indicator/src/types/Spinner';
 
 register({
-    dots: Dots
+    spinner: Spinner
 });
 
 export default {
@@ -80,7 +85,7 @@ export default {
     right: 0;
     top: 50%;
     transform: translate(-1rem, -50%);
-    transition: all .25s ease-in;
+    transition: all .15s ease-in;
 }
 
 .input-field .activity-indicator-xs {
@@ -103,10 +108,13 @@ export default {
     font-size: 1em;
 }
 
-.input-field .slide-fade-enter,
-.input-field .slide-fade-leave-to {
+.input-field .activity-indicator {
     opacity: 1;
-    transform: translate(25%, -50%);
+}
+
+.input-field .input-field-fade-enter,
+.input-field .input-field-fade-leave-to {
+    opacity: 0;
 }
 
 .input-field.is-valid .valid-feedback,
@@ -116,5 +124,17 @@ export default {
 
 .input-field .form-control-icon {
     padding-left: 2em;
+}
+
+.input-field .form-group-inner-icon {
+    position: absolute;
+    top: 50%;
+    left: .666rem;
+    width: 1rem;
+    font-size: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
