@@ -141,13 +141,6 @@ export default {
         hideLabel: Boolean,
 
         /**
-         * The icon that should be used in the field.
-         *
-         * @param {Array|String}
-         */
-        icon: [Array, String],
-
-        /**
          * Display the form field inline
          *
          * @param {Boolean}
@@ -389,7 +382,7 @@ export default {
 
         controlClasses() {
             return {
-                'form-control-icon': !!this.icon,
+                'form-control-icon': !!this.$slots.icon,
                 [this.controlClass]: this.$attrs.type !== 'file',
                 [this.controlSizeClass]: this.$attrs.type !== 'file',
                 [this.fileControlClass]: this.$attrs.type === 'file',
