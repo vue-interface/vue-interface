@@ -315,6 +315,10 @@ export default {
 
     computed: {
 
+        componentName() {
+            return this.$options.name;
+        },
+
         controlAttributes() {
             return Object.keys(this.$attrs)
                 .concat([['class', this.controlClasses]])
@@ -343,11 +347,11 @@ export default {
         },
 
         formGroupClasses() {
-            const name = prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
+            const name = prefix(kebabCase(this.componentName), this.custom ? CUSTOM_PREFIX : '');
 
             return {
-                [name]: true,
-                [prefix(this.size, name)]: !!this.size,
+                [name]: !!name,
+                [prefix(this.size, name)]: !!(name && this.size),
                 'form-group': this.group,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
