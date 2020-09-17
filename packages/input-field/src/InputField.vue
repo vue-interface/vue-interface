@@ -31,15 +31,15 @@
 
         <slot name="feedback">
             <div 
-                v-if="validFeedback"
-                class="valid-feedback"
-                valid
-                v-html="invalidFeedback" />
-            <div 
-                v-else-if="invalidFeedback"
+                v-if="invalidFeedback"
                 class="invalid-feedback"
                 invalid
                 v-html="invalidFeedback" />
+            <div 
+                v-else-if="validFeedback"
+                class="valid-feedback"
+                valid
+                v-html="validFeedback" />
         </slot>
 
         <slot name="help">
