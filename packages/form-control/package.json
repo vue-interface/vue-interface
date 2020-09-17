@@ -38,6 +38,7 @@
   "homepage": "https://github.com/vue-interface/form-control/docs#readme",
   "dependencies": {
     "@vue-interface/shadowable": "^0.9.1",
+    "@vue-interface/tailwindcss": "^0.2.8",
     "@vue-interface/utils": "^0.9.19",
     "@vue-interface/variant": "^1.0.12",
     "color": "^3.1.2",

@@ -15,7 +15,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 }, {
     theme: {
         formGroup: theme => ({
-            marginBottom: '0.75rem'
+            marginBottom: '.75rem'
         })
     }
 });

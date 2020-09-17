@@ -150,6 +150,13 @@ export default {
         invalid: Boolean,
 
         /**
+         * Use the legacy (Bootstrap 4) classes (if applicable).
+         *
+         * @param Boolean
+         */
+        legacy: Boolean,
+
+        /**
          * The value of label element. If no value, no label will appear.
          *
          * @param {Number|String}
@@ -335,10 +342,6 @@ export default {
             return 'custom-control';
         },
 
-        fileControlClass() {
-            return 'form-control-file';
-        },
-
         formGroupClasses() {
             const name = prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
 
@@ -357,9 +360,8 @@ export default {
 
         controlClasses() {
             return {
-                [this.controlClass]: this.$attrs.type !== 'file',
-                [this.controlSizeClass]: this.$attrs.type !== 'file',
-                [this.fileControlClass]: this.$attrs.type === 'file',
+                [this.controlClass]: !!this.controlClass,
+                [this.controlSizeClass]: !!this.controlSizeClass,
                 'form-control-icon': !!this.$slots.icon,
                 'is-valid': !!(this.valid || this.validFeedback),
                 'is-invalid': !!(this.invalid || this.invalidFeedback),

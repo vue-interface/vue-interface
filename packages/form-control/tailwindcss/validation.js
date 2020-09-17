@@ -77,11 +77,11 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundRepeat: theme('validation.enableIcons') ? 'no-repeat' : null,
                 backgroundPosition: theme('validation.enableIcons') ? `right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) center` : null,
                 backgroundSize: theme('validation.enableIcons') ? component[':root']['--form-select-feedback-icon-size'] : null,
-    
-                '&:focus': {
-                    borderColor: color,
-                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, theme('formControl.focus.opacity'))}`
-                }
+            },
+
+            [`.was-validated .form-control:${state}, .was-validated .form-control.is-${state}:focus`]: {
+                borderColor: color,
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, theme('formControl.focus.opacity'))}`
             },
                 
             [`.was-validated textarea.form-control:${state}, .was-validated textarea.form-control.is-${state}`]: {
@@ -95,48 +95,42 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundImage: theme('validation.enableIcons') ? `${icon}, ${theme('formSelect.backgroundImage')}` : null,
                 backgroundPosition: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-position']}, ${theme('formSelect.backgroundPosition')}` : null,
                 backgroundSize: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-size']}, ${theme('formSelect.backgroundSize')}, ${theme('formSelect.backgroundSize')}` : null,
-                                
-                '&:focus': {
-                    borderColor: color,
-                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
-                }
+            },
+
+            [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}:focus`]: {
+                borderColor: color,
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
             },
     
             [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}`]: {
                 borderColor: color,
+            },
                 
-                '&:checked': {
-                    backgroundColor: color
-                },
+            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}:checked`]: {
+                backgroundColor: color
+            },
                 
-                '&:focus': {
-                    boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
-                },
+            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}:focus`]: {
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
+            },
                 
-                '~ .form-check-label': {
-                    color: color
-                }
+            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state} ~ .form-check-label`]: {
+                color
             },
     
-            [`.was-validated .form-check-inline .form-check-input:${state}, .was-validated .form-check-inline .form-check-input.is-${state}`]: {
-                [`~ .${state}-feedback`]: {
-                    marginLeft: '.5em'
-                }
+            [`.was-validated .form-check-inline .form-check-input:${state} ~ .${state}-feedback, .was-validated .form-check-inline .form-check-input.is-${state} ~ .${state}-feedback`]: {
+                marginLeft: '.5em'
             },
                 
             // custom file
-            [`.was-validated .form-file-input:${state}, .was-validated .form-file-input.is-${state}`]: {
-                '~ .form-file-label': {
-                    borderColor: color
-                },
-                
-                '&:focus': {
-                    '~ .form-file-label': {
-                        borderColor: color,
-                        boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
-                    }
-                }
-            }       
+            [`.was-validated .form-file-input:${state} ~ .form-file-label, .was-validated .form-file-input.is-${state} ~ .form-file-label`]: {
+                borderColor: color
+            },
+
+            [`.was-validated .form-file-input:${state}:focus ~ .form-file-label, .was-validated .form-file-input.is-${state}:focus ~ .form-file-label`]: {
+                borderColor: color,
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
+            },     
         });
     }
 

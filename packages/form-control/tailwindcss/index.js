@@ -1,8 +1,12 @@
-module.formCheck = require('./form-check');
-module.formControl = require('./form-control');
-module.formFile = require('./form-file');
-module.formGroup = require('./form-group');
-module.formLabels = require('./form-labels');
-module.formSelect = require('./form-select');
-module.formText = require('./form-text');
-module.inputGroup = require('./input-group');
+module.exports = [
+    require('./form-control'),
+    require('./form-check'),
+    require('./form-switch'),
+    require('./form-select'),
+    require('./form-file'),
+    require('./form-text'),
+    require('./form-labels'),
+    require('./form-group'),
+    require('./input-group'),
+    require('./validation')
+];
