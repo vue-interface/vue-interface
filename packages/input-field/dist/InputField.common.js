@@ -2690,9 +2690,9 @@ if (typeof window !== 'undefined') {
     }
   }
 
-  var src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
-  if (src) {
-    __webpack_require__.p = src[1] // eslint-disable-line
+  var setPublicPath_src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
+  if (setPublicPath_src) {
+    __webpack_require__.p = setPublicPath_src[1] // eslint-disable-line
   }
 }
 
@@ -2705,7 +2705,7 @@ var InputField = __webpack_require__("c177");
 // EXTERNAL MODULE: ./node_modules/@vue-interface/form-control/src/scss/CustomFields.scss
 var CustomFields = __webpack_require__("c7c5");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1a8bcb08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/InputField.vue?vue&type=template&id=3d015d06&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7fa63ba1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/InputField.vue?vue&type=template&id=3d015d06&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.formGroupClasses},[_vm._t("label",[(_vm.label)?_c('label',{ref:"label",class:_vm.labelClass,attrs:{"for":_vm.$attrs.id},domProps:{"innerHTML":_vm._s(_vm.label)}}):_vm._e()]),_c('div',{staticClass:"form-group-inner"},[_vm._t("control",[(_vm.$slots.icon)?_c('div',{staticClass:"form-group-inner-icon",on:{"click":function($event){return _vm.$refs.field.focus()}}},[_vm._t("icon")],2):_vm._e(),_c('input',_vm._b({directives:[{name:"bind-events",rawName:"v-bind-events"}],ref:"field",domProps:{"value":_vm.currentValue},on:{"input":_vm.onInput}},'input',_vm.controlAttributes,false))]),_vm._t("activity",[_c('transition',{attrs:{"name":"input-field-fade"}},[(_vm.activity)?_c('activity-indicator',{key:"activity",ref:"activity",attrs:{"type":_vm.indicator,"size":_vm.indicatorSize || _vm.size}}):_vm._e()],1)])],2),_vm._t("feedback",[(_vm.invalidFeedback)?_c('div',{staticClass:"invalid-feedback",attrs:{"invalid":""},domProps:{"innerHTML":_vm._s(_vm.invalidFeedback)}}):(_vm.validFeedback)?_c('div',{staticClass:"valid-feedback",attrs:{"valid":""},domProps:{"innerHTML":_vm._s(_vm.validFeedback)}}):_vm._e()]),_vm._t("help",[(_vm.helpText)?_c('small',{ref:"help"},[_vm._v(" "+_vm._s(_vm.helpText)+" ")]):_vm._e()])],2)}
 var staticRenderFns = []
 
@@ -2723,6 +2723,13 @@ function camelCase(string) {
     });
 
     return string.charAt(0).toLowerCase() + string.substring(1);
+}
+
+// CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/capitalize.js
+function capitalize(string) {
+    return string.split(' ').map(value => {
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    }).join(' ');
 }
 
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/isObject.js
@@ -3069,17 +3076,35 @@ function matches(properties) {
     };
 }
 
+// CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/isNull.js
+function isNull(value) {
+    return value === null;
+}
+
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/isString.js
 function isString(value) {
     return typeof value === 'string';
+}
+
+// CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/isUndefined.js
+function isUndefined(value) {
+    return typeof value === 'undefined';
 }
 
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/get.js
 
 
 
-function get(object, path) {
-    return (isString(path) ? path.split('.') : (!isArray(path) ? [path] : path)).reduce((a, b) => a[b], object);
+
+
+function get(object, path, defaultValue) {
+    const value = (isString(path) ? path.split('.') : (
+        !isArray(path) ? [path] : path)
+    ).reduce((a, b) => a[b], object);
+
+    return !isUndefined(value) && !isNull(value) ? value : (
+        !isUndefined(defaultValue) ? defaultValue : value
+    );
 }
 
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/property.js
@@ -3181,11 +3206,6 @@ function isBoolean(subject) {
             && typeof subject.valueOf() === 'boolean'
     );
 }
-// CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/isUndefined.js
-function isUndefined(value) {
-    return typeof value === 'undefined';
-}
-
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/kebabCase.js
 function kebabCase(str) {
     return str && str.replace ?
@@ -3218,6 +3238,27 @@ function prefix_prefix(subject, prefix, delimeter = '-') {
     return subject && prefixer(subject);
 }
 
+// CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/readFile.js
+
+
+function readFile(src, progress) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+            
+        if(isFunction(progress)) {
+            reader.onprogress = e => {
+                if(e.lengthComputable) {
+                    progress(parseInt((e.loaded / e.total) * 100, 10));
+                }
+            };
+        }
+
+        reader.onload = resolve;            
+        reader.onerror = reject;
+        reader.onabort = reject;
+        reader.readAsDataURL(src);
+    });
+}
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/src/script.js
 const LOADED_SCRIPTS = {};
 
@@ -3323,6 +3364,9 @@ function transition(el, defaultValue) {
         && isFinite(value) ? `${value}${uom}` : value;
 });
 // CONCATENATED MODULE: ./node_modules/@vue-interface/form-control/node_modules/@vue-interface/utils/index.js
+
+
+
 
 
 
@@ -3509,6 +3553,13 @@ const CUSTOM_PREFIX = 'custom';
         invalid: Boolean,
 
         /**
+         * Use the legacy (Bootstrap 4) classes (if applicable).
+         *
+         * @param Boolean
+         */
+        legacy: Boolean,
+
+        /**
          * The value of label element. If no value, no label will appear.
          *
          * @param {Number|String}
@@ -3667,6 +3718,10 @@ const CUSTOM_PREFIX = 'custom';
 
     computed: {
 
+        componentName() {
+            return this.$options.name;
+        },
+
         controlAttributes() {
             return Object.keys(this.$attrs)
                 .concat([['class', this.controlClasses]])
@@ -3694,16 +3749,12 @@ const CUSTOM_PREFIX = 'custom';
             return 'custom-control';
         },
 
-        fileControlClass() {
-            return 'form-control-file';
-        },
-
         formGroupClasses() {
-            const name = prefix_prefix(kebabCase(this.$options.name), this.custom ? CUSTOM_PREFIX : '');
+            const name = prefix_prefix(kebabCase(this.componentName), this.custom ? CUSTOM_PREFIX : '');
 
             return {
-                [name]: true,
-                [prefix_prefix(this.size, name)]: !!this.size,
+                [name]: !!name,
+                [prefix_prefix(this.size, name)]: !!(name && this.size),
                 'form-group': this.group,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
@@ -3716,9 +3767,8 @@ const CUSTOM_PREFIX = 'custom';
 
         controlClasses() {
             return {
-                [this.controlClass]: this.$attrs.type !== 'file',
-                [this.controlSizeClass]: this.$attrs.type !== 'file',
-                [this.fileControlClass]: this.$attrs.type === 'file',
+                [this.controlClass]: !!this.controlClass,
+                [this.controlSizeClass]: !!this.controlSizeClass,
                 'form-control-icon': !!this.$slots.icon,
                 'is-valid': !!(this.valid || this.validFeedback),
                 'is-invalid': !!(this.invalid || this.invalidFeedback),
@@ -3781,7 +3831,7 @@ const CUSTOM_PREFIX = 'custom';
 
 /* harmony default export */ var form_control = (FormControl);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1a8bcb08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/ActivityIndicator.vue?vue&type=template&id=30f2e7f0&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7fa63ba1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/ActivityIndicator.vue?vue&type=template&id=30f2e7f0&
 var ActivityIndicatorvue_type_template_id_30f2e7f0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator",class:_vm.classes,style:(_vm.style)},[_c('div',{staticClass:"activity-indicator-content"},[_c(_vm.component,{tag:"component",staticClass:"mx-auto"}),(_vm.label)?_c('div',{staticClass:"activity-indicator-label"},[_vm._v(" "+_vm._s(_vm.label)+" ")]):_vm._e()],1)])}
 var ActivityIndicatorvue_type_template_id_30f2e7f0_staticRenderFns = []
 
@@ -4438,7 +4488,7 @@ var ActivityIndicator_component = normalizeComponent(
 
 
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1a8bcb08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/types/Spinner.vue?vue&type=template&id=2ee21020&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7fa63ba1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@vue-interface/activity-indicator/src/types/Spinner.vue?vue&type=template&id=2ee21020&
 var Spinnervue_type_template_id_2ee21020_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
 var Spinnervue_type_template_id_2ee21020_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"activity-indicator-spinner"},[_c('div',{staticClass:"activity-indicator-spinner1 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner2 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner3 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner4 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner5 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner6 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner7 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner8 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner9 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner10 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner11 activity-indicator-spinner"}),_c('div',{staticClass:"activity-indicator-spinner12 activity-indicator-spinner"})])}]
 

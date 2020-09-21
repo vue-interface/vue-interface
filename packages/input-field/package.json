@@ -38,7 +38,7 @@
   "homepage": "https://github.com/vue-interface/input-field/docs#readme",
   "dependencies": {
     "@vue-interface/activity-indicator": "^0.10.6",
-    "@vue-interface/form-control": "^0.9.14",
+    "@vue-interface/form-control": "^0.9.16",
     "core-js": "^3.6.0",
     "vue": "^2.6.12"
   },
@@ -52,8 +52,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "markdown-it-meta": "0.0.1",
     "postcss-cli": "^7.1.2",
-    "postcss-nested": "^4.2.3",
-    "sass": "^1.26.10",
+    "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "tailwindcss": "^1.8.10",
     "vue-template-compiler": "^2.6.12",
