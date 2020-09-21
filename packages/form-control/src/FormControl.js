@@ -347,11 +347,12 @@ export default {
         },
 
         formGroupClasses() {
-            const name = prefix(kebabCase(this.componentName), this.custom ? CUSTOM_PREFIX : '');
+            const name = kebabCase(this.componentName);
 
             return {
                 [name]: !!name,
-                [prefix(this.size, name)]: !!(name && this.size),
+                [prefix(kebabCase(this.componentName), CUSTOM_PREFIX)]: this.custom,
+                [prefix(this.size, name)]: !!this.size,
                 'form-group': this.group,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
