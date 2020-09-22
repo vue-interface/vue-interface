@@ -264,8 +264,19 @@ export default {
                     el.setAttribute('data-selected-index', el.selectedIndex);
                 }
 
-                vnode.context.$watch('value', onInput);
+                // vnode.context.$watch('value', onInput);
                 vnode.context.isEmpty = !el.value;
+
+                // Watch the value prop and if value is different than the
+                // element, update the element and dispatch an input event.
+                vnode.context.$watch(
+                    () => vnode.context.value, value => {
+                        if(el.value !== value) {
+                            el.value = value;
+                            el.dispatchEvent(new Event('input'));
+                        }
+                    }
+                );
 
                 // Bubble the native events up to the vue component.
                 vnode.context.bindEvents.forEach(name => {
@@ -276,7 +287,7 @@ export default {
             }
         }
     },
-
+    
     methods: {
 
         blur() {
