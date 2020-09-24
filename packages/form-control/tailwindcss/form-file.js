@@ -1,7 +1,6 @@
-const rgba = require('./rgba');
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
-const { flatten } = require('@vue-interface/tailwindcss/utils');
+const { flatten, rgba } = require('@vue-interface/tailwindcss/utils');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {

@@ -17,6 +17,7 @@ module.exports = {
         require('./tailwindcss/form-labels'),
         require('./tailwindcss/form-group'),
         require('./tailwindcss/input-group'),
-        require('./tailwindcss/validation')
+        require('./tailwindcss/custom-fields'),
+        require('./tailwindcss/validation'),
     ]
 };

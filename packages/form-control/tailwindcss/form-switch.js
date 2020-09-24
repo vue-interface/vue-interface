@@ -1,7 +1,6 @@
 const plugin = require('tailwindcss/plugin');
-const { colors, translate } = require('tailwindcss/defaultTheme'); 
-const { white } = colors;
-const encodeSVG = require('./encode-svg');
+const { colors } = require('tailwindcss/defaultTheme'); 
+const { escapeSvg } = require('@vue-interface/tailwindcss/utils');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -100,7 +99,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 paddingLeft: `calc(2rem + .5em)`,
                 marginLeft: `calc((2rem + .5em) * -1)`,
                 backgroundRepeat: 'no-repeat',
-                backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`),
+                backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`),
                 backgroundPosition: 'left center',
                 borderRadius: '2rem',
 
@@ -110,12 +109,12 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 focus: {
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.primary')}'/></svg>")`),
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.primary')}'/></svg>")`),
                 },
                                             
                 checked: {
                     backgroundPosition: 'right center',
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='white'/></svg>")`)
                 },
 
                 sm: {

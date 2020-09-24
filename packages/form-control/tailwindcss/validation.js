@@ -1,8 +1,7 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
-const rgba = require('./rgba');
-const encodeSVG = require('./encode-svg');
+const { escapeSvg, rgba } = require('@vue-interface/tailwindcss/utils');
 
 function contrast(color, light, dark) {
     return Color(color).luminosity() > .5 ? (dark || 'black') : (light || 'white');
@@ -134,7 +133,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         });
     }
 
-    const defaultValidIcon = encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='${theme('formFeedback.valid.color')}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>")`);
+    const defaultValidIcon = escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='${theme('formFeedback.valid.color')}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>")`);
     
     validationStateSelector(
         'valid',
@@ -142,7 +141,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         theme('formFeedback.valid.icon.backgroundImage', defaultValidIcon)
     );
     
-    const defaultInvalidIcon = encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='${theme('formFeedback.invalid.color')}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='${theme('formFeedback.invalid.color')}' stroke='none'/></svg>")`);
+    const defaultInvalidIcon = escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='${theme('formFeedback.invalid.color')}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='${theme('formFeedback.invalid.color')}' stroke='none'/></svg>")`);
 
     validationStateSelector(
         'invalid',

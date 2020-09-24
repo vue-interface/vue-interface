@@ -1,7 +1,7 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const { colors, translate } = require('tailwindcss/defaultTheme'); 
-const encodeSVG = require('./encode-svg');
+const { escapeSvg } = require('@vue-interface/tailwindcss/utils');
 const { white } = colors;
 
 function lighten(color, ...args) {
@@ -194,7 +194,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
-            backgroundImage: encodeSVG(`url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, .25)'/></svg>")`),
+            backgroundImage: escapeSvg(`url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba(0, 0, 0, .25)'/></svg>")`),
             borderWidth: theme('formControl.borderWidth', '1px'),
             borderStyle: theme('formControl.borderStyle', 'solid'),
             borderColor: theme('formControl.borderColor', theme('colors.gray.400', colors.gray['400'])),
@@ -220,20 +220,20 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundColor: theme('variations.primary'),
                 borderColor: theme('variations.primary'),
                 checkbox: {
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>")`)
                 },
                 radio: {
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='white'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='white'/></svg>")`)
                 }
             },
             indeterminate: {
                 backgroundColor: theme('variations.primary'),
                 borderColor: theme('variations.primary'),
                 checkbox: {
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>")`)
                 },
                 radio: {
-                    backgroundImage: encodeSVG(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>")`)
                 }
             },
             disabled: {

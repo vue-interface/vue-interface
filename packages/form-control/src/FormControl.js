@@ -238,37 +238,48 @@ export default {
     directives: {
         bindEvents: {
             bind(el, binding, vnode) {
-                function onInput() {
+                function onInput(e) {
                     vnode.context.hasChanged = true;
                     vnode.context.isEmpty = !el.value;
 
-                    if(el.tagName === 'SELECT' && el.querySelector('[value=""]')) {
-                        el.querySelector('[value=""]').selected = !el.value;
+                    // Set the data-selected-index attribute if necessary.
+                    if(el.selectedIndex >= 0) {
+                        el.setAttribute('data-selected-index', el.selectedIndex);
+                    }
+                    else {
+                        el.removeAttribute('data-selected-index');
+                    }
+
+                    if(el.tagName === 'SELECT') {
+                        const opt = el.querySelector('[value=""]');
+                        
+                        if(opt) {
+                            opt.selected = !el.value;
+                        }
                     }
                 }
 
-                el.addEventListener('input', onInput);
-                el.addEventListener('change', onInput);
+                // Watch for the input event
+                // el.addEventListener('input', onInput);
 
+                // Add the has-focus class from the form control
+                /*
                 el.addEventListener('focus', () => {
                     vnode.context.hasFocus = true;
                 });
 
-                // Add/remove the has-focus class from the form control
+                // Remove the has-focus class from the form control
                 el.addEventListener('blur', () => {
                     vnode.context.hasFocus = false;
                 });
-
-                // Set the data-selected-index attribute if necessary.
-                if(el.selectedIndex >= 0) {
-                    el.setAttribute('data-selected-index', el.selectedIndex);
-                }
+                */
 
                 // vnode.context.$watch('value', onInput);
-                vnode.context.isEmpty = !el.value;
+                // vnode.context.isEmpty = !el.value;
 
                 // Watch the value prop and if value is different than the
                 // element, update the element and dispatch an input event.
+                /*
                 vnode.context.$watch(
                     () => vnode.context.value, value => {
                         if(el.value !== value) {
@@ -277,13 +288,16 @@ export default {
                         }
                     }
                 );
+                */
 
                 // Bubble the native events up to the vue component.
+                /*
                 vnode.context.bindEvents.forEach(name => {
                     el.addEventListener(name, event => {
                         vnode.context.$emit(name, event);
                     });
                 });
+                */
             }
         }
     },
