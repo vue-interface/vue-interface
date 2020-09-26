@@ -2,8 +2,6 @@ const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
 const { escapeSvg, flatten, rgba } = require('@vue-interface/tailwindcss/utils');
 
-console.log(escapeSvg(`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='red' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>`));
-
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
         ':root': flatten(theme('formSelect'), '--form-select-'),
