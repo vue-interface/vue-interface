@@ -38,7 +38,7 @@
   "homepage": "https://github.com/vue-interface/form-control/docs#readme",
   "dependencies": {
     "@vue-interface/shadowable": "^0.9.2",
-    "@vue-interface/tailwindcss": "^0.2.8",
+    "@vue-interface/tailwindcss": "^0.2.10",
     "@vue-interface/utils": "^0.9.23",
     "@vue-interface/variant": "^1.0.14",
     "color": "^3.1.2",
@@ -51,14 +51,14 @@
     "@vue/cli-plugin-babel": "^4.5.6",
     "@vue/cli-plugin-eslint": "^4.5.6",
     "@vue/cli-service": "^4.5.6",
-    "@vuepress/plugin-register-components": "^1.5.4",
+    "@vuepress/plugin-register-components": "^1.6.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.9.0",
     "eslint-plugin-vue": "^6.2.2",
     "markdown-it-meta": "0.0.1",
     "postcss-cli": "^8.0.0",
     "vue-template-compiler": "^2.6.12",
-    "vuepress": "^1.5.4",
+    "vuepress": "^1.6.0",
     "vuepress-plugin-template-constants": "^0.2.1"
   }
 }

@@ -186,6 +186,49 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
 
 /***/ }),
 
+/***/ "159b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var DOMIterables = __webpack_require__("fdbc");
+var forEach = __webpack_require__("17c2");
+var createNonEnumerableProperty = __webpack_require__("9112");
+
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
+  // some Chrome versions have non-configurable methods on DOMTokenList
+  if (CollectionPrototype && CollectionPrototype.forEach !== forEach) try {
+    createNonEnumerableProperty(CollectionPrototype, 'forEach', forEach);
+  } catch (error) {
+    CollectionPrototype.forEach = forEach;
+  }
+}
+
+
+/***/ }),
+
+/***/ "17c2":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $forEach = __webpack_require__("b727").forEach;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var STRICT_METHOD = arrayMethodIsStrict('forEach');
+var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
+
+// `Array.prototype.forEach` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
+  return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+} : [].forEach;
+
+
+/***/ }),
+
 /***/ "1be4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -429,6 +472,23 @@ module.exports = function (it) {
     throw TypeError("Can't set " + String(it) + ' as a prototype');
   } return it;
 };
+
+
+/***/ }),
+
+/***/ "4160":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var forEach = __webpack_require__("17c2");
+
+// `Array.prototype.forEach` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+$({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
+  forEach: forEach
+});
 
 
 /***/ }),
@@ -2057,6 +2117,9 @@ var es_array_concat = __webpack_require__("99af");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
+var es_array_for_each = __webpack_require__("4160");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
 
@@ -2077,6 +2140,9 @@ var es_number_constructor = __webpack_require__("a9e3");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__("159b");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.define-property.js
 var es_object_define_property = __webpack_require__("7a82");
@@ -2785,6 +2851,51 @@ function transition(el, defaultValue) {
 
 
 
+// CONCATENATED MODULE: ./node_modules/@vue-interface/shadowable/index.js
+
+
+/* harmony default export */ var shadowable = ({
+
+    props: {
+
+        /**
+         * The shadow size.
+         *
+         * @property {Boolean|String}
+         */
+        shadow: {
+            type: [Boolean, String],
+            validate(value) {
+                return value === true || [
+                    'shadow-sm',
+                    'shadow-lg'
+                ].indexOf(prefix_prefix(value, this.shadowableClassPrefix)) !== -1;
+            }
+        },
+        
+        /**
+         * The shadow class prefix.
+         *
+         * @property {String}
+         */
+        shadowableClassPrefix: {
+            type: String,
+            default: 'shadow'
+        }
+    },
+
+    computed: {
+
+        shadowableClass() {
+            return this.shadow === true
+                ? this.shadowableClassPrefix
+                : prefix_prefix(this.shadow, this.shadowableClassPrefix);
+        }
+
+    }
+
+});
+
 // CONCATENATED MODULE: ./src/FormControl.js
 
 
@@ -2797,9 +2908,12 @@ function transition(el, defaultValue) {
 
 
 
-var CUSTOM_PREFIX = 'custom';
+
+
+
 /* harmony default export */ var src_FormControl = ({
   inheritAttrs: false,
+  mixins: [shadowable],
   props: {
     /**
      * Show type activity indicator.
@@ -2978,19 +3092,6 @@ var CUSTOM_PREFIX = 'custom';
     plaintext: Boolean,
 
     /**
-     * Adds a shadow class to the control.
-     *
-     * @param {String|Boolean}
-     */
-    shadow: {
-      type: [String, Boolean],
-      "default": false,
-      validate: function validate(value) {
-        return value === true || ['shadow-sm', 'shadow', 'shadow-lg'].indexOf("shadow-".concat(value)) > -1;
-      }
-    },
-
-    /**
      * The size of the form control
      *
      * @param {String}
@@ -3046,44 +3147,37 @@ var CUSTOM_PREFIX = 'custom';
               opt.selected = !el.value;
             }
           }
-        } // Watch for the input event
-        // el.addEventListener('input', onInput);
-        // Add the has-focus class from the form control
 
-        /*
-        el.addEventListener('focus', () => {
-            vnode.context.hasFocus = true;
-        });
-         // Remove the has-focus class from the form control
-        el.addEventListener('blur', () => {
-            vnode.context.hasFocus = false;
-        });
-        */
-        // vnode.context.$watch('value', onInput);
-        // vnode.context.isEmpty = !el.value;
+          return this;
+        } // Watch for the input event
+
+
+        el.addEventListener('input', onInput()); // Add the has-focus class from the form control
+
+        el.addEventListener('focus', function () {
+          vnode.context.hasFocus = true;
+        }); // Remove the has-focus class from the form control
+
+        el.addEventListener('blur', function () {
+          vnode.context.hasFocus = false;
+        }); // vnode.context.$watch('value', onInput());
         // Watch the value prop and if value is different than the
         // element, update the element and dispatch an input event.
 
-        /*
-        vnode.context.$watch(
-            () => vnode.context.value, value => {
-                if(el.value !== value) {
-                    el.value = value;
-                    el.dispatchEvent(new Event('input'));
-                }
-            }
-        );
-        */
-        // Bubble the native events up to the vue component.
+        vnode.context.$watch(function () {
+          return vnode.context.value;
+        }, function (value) {
+          if (el.value !== value) {
+            el.value = value;
+            el.dispatchEvent(new Event('input'));
+          }
+        }); // Bubble the native events up to the vue component.
 
-        /*
-        vnode.context.bindEvents.forEach(name => {
-            el.addEventListener(name, event => {
-                vnode.context.$emit(name, event);
-            });
+        vnode.context.bindEvents.forEach(function (name) {
+          el.addEventListener(name, function (event) {
+            vnode.context.$emit(name, event);
+          });
         });
-        */
-
       }
     }
   },
@@ -3144,7 +3238,7 @@ var CUSTOM_PREFIX = 'custom';
       var _ref;
 
       var name = kebabCase(this.componentName);
-      return _ref = {}, _defineProperty(_ref, name, !!name), _defineProperty(_ref, prefix_prefix(kebabCase(this.componentName), CUSTOM_PREFIX), this.custom), _defineProperty(_ref, prefix_prefix(this.size, name), !!this.size), _defineProperty(_ref, 'form-group', this.group), _defineProperty(_ref, 'has-activity', this.activity), _defineProperty(_ref, 'has-changed', this.hasChanged), _defineProperty(_ref, 'has-focus', this.hasFocus), _defineProperty(_ref, 'is-empty', this.isEmpty), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _ref;
+      return _ref = {}, _defineProperty(_ref, name, !!name), _defineProperty(_ref, prefix_prefix(this.size, name), !!this.size), _defineProperty(_ref, prefix_prefix(kebabCase(this.componentName), 'custom'), this.custom), _defineProperty(_ref, 'form-group', this.group), _defineProperty(_ref, 'has-activity', this.activity), _defineProperty(_ref, 'has-changed', this.hasChanged), _defineProperty(_ref, 'has-focus', this.hasFocus), _defineProperty(_ref, 'is-empty', this.isEmpty), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _ref;
     },
     controlClasses: function controlClasses() {
       var _ref2;
@@ -3332,6 +3426,48 @@ var requireObjectCoercible = __webpack_require__("1d80");
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
+};
+
+
+/***/ }),
+
+/***/ "fdbc":
+/***/ (function(module, exports) {
+
+// iterable DOM collections
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+module.exports = {
+  CSSRuleList: 0,
+  CSSStyleDeclaration: 0,
+  CSSValueList: 0,
+  ClientRectList: 0,
+  DOMRectList: 0,
+  DOMStringList: 0,
+  DOMTokenList: 1,
+  DataTransferItemList: 0,
+  FileList: 0,
+  HTMLAllCollection: 0,
+  HTMLCollection: 0,
+  HTMLFormElement: 0,
+  HTMLSelectElement: 0,
+  MediaList: 0,
+  MimeTypeArray: 0,
+  NamedNodeMap: 0,
+  NodeList: 1,
+  PaintRequestList: 0,
+  Plugin: 0,
+  PluginArray: 0,
+  SVGLengthList: 0,
+  SVGNumberList: 0,
+  SVGPathSegList: 0,
+  SVGPointList: 0,
+  SVGStringList: 0,
+  SVGTransformList: 0,
+  SourceBufferList: 0,
+  StyleSheetList: 0,
+  TextTrackCueList: 0,
+  TextTrackList: 0,
+  TouchList: 0
 };
 
 

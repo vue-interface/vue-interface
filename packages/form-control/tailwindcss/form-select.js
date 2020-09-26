@@ -2,6 +2,8 @@ const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
 const { escapeSvg, flatten, rgba } = require('@vue-interface/tailwindcss/utils');
 
+console.log(escapeSvg(`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='red' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>`));
+
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
         ':root': flatten(theme('formSelect'), '--form-select-'),
@@ -88,7 +90,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 }, {
     theme: {
         formSelect: theme => ({
-            // enableShadows: theme('formControl.enableShadows'),
+            enableShadows: theme('formControl.enableShadows'),
             paddingY: theme('formControl.paddingY', '.375rem'),
             paddingX: theme('formControl.paddingX', '.75rem'),
             fontSize: theme('formControl.fontSize', '1rem'),
@@ -114,7 +116,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundColor: theme('formControl.backgroundColor', theme('colors.white', colors.white)),
                 borderColor: theme('formControl.borderColor', theme('colors.blue.400', colors.blue['400'])),
                 outline: theme('formControl.outline', 0),
-                boxShadow: theme('formControl.boxShadow', `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`)
+                boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`)
             },
             placeholder: {
                 color: theme('formControl.placeholder.color', theme('colors.gray.500', colors.gray['500']))

@@ -1,10 +1,13 @@
+import Shadowable from '@vue-interface/shadowable';
 import { prefix, isObject, kebabCase } from '@vue-interface/utils';
-
-const CUSTOM_PREFIX = 'custom';
 
 export default {
 
     inheritAttrs: false,
+
+    mixins: [
+        Shadowable
+    ],
 
     props: {
 
@@ -185,21 +188,6 @@ export default {
         plaintext: Boolean,
         
         /**
-         * Adds a shadow class to the control.
-         *
-         * @param {String|Boolean}
-         */
-        shadow: {
-            type: [String, Boolean],
-            default: false,
-            validate(value) {
-                return value === true || [
-                    'shadow-sm', 'shadow', 'shadow-lg'
-                ].indexOf(`shadow-${value}`) > -1;
-            }
-        },
-
-        /**
          * The size of the form control
          *
          * @param {String}
@@ -257,13 +245,14 @@ export default {
                             opt.selected = !el.value;
                         }
                     }
+
+                    return this;
                 }
 
                 // Watch for the input event
-                // el.addEventListener('input', onInput);
+                el.addEventListener('input', onInput());
 
                 // Add the has-focus class from the form control
-                /*
                 el.addEventListener('focus', () => {
                     vnode.context.hasFocus = true;
                 });
@@ -272,14 +261,11 @@ export default {
                 el.addEventListener('blur', () => {
                     vnode.context.hasFocus = false;
                 });
-                */
 
-                // vnode.context.$watch('value', onInput);
-                // vnode.context.isEmpty = !el.value;
+                // vnode.context.$watch('value', onInput());
 
                 // Watch the value prop and if value is different than the
                 // element, update the element and dispatch an input event.
-                /*
                 vnode.context.$watch(
                     () => vnode.context.value, value => {
                         if(el.value !== value) {
@@ -288,16 +274,13 @@ export default {
                         }
                     }
                 );
-                */
 
                 // Bubble the native events up to the vue component.
-                /*
                 vnode.context.bindEvents.forEach(name => {
                     el.addEventListener(name, event => {
                         vnode.context.$emit(name, event);
                     });
                 });
-                */
             }
         }
     },
@@ -376,8 +359,8 @@ export default {
 
             return {
                 [name]: !!name,
-                [prefix(kebabCase(this.componentName), CUSTOM_PREFIX)]: this.custom,
                 [prefix(this.size, name)]: !!this.size,
+                [prefix(kebabCase(this.componentName), 'custom')]: this.custom,
                 'form-group': this.group,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
