@@ -367,7 +367,7 @@ export default {
                 [name]: !!name,
                 [prefix(this.size, name)]: !!this.size,
                 [prefix(name, 'custom')]: this.custom,
-                [prefix(this.size, prefix(name, 'custom'))]: !!this.size,
+                [prefix(this.size, prefix(name, 'custom'))]: this.custom && this.size,
                 'default-empty': this.defaultEmpty,
                 'form-group': this.group,
                 'has-activity': this.activity,
