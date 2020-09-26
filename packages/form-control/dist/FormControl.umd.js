@@ -3139,29 +3139,26 @@ function transition(el, defaultValue) {
   directives: {
     bindEvents: {
       bind: function bind(el, binding, vnode) {
-        function onInput(e) {
-          vnode.context.hasChanged = true;
-          vnode.context.isEmpty = !el.value; // Set the data-selected-index attribute if necessary.
-
-          if (el.selectedIndex >= 0) {
+        function setSelectedIndex() {
+          // Set the data-selected-index attribute if necessary.
+          if (el.selectedIndex >= -1) {
             el.setAttribute('data-selected-index', el.selectedIndex);
           } else {
             el.removeAttribute('data-selected-index');
           }
+        }
+        /*
+        function onInput(e) {
+            vnode.context.hasChanged = true;
+            
+            setEmpty();
+            setSelectedIndex();
+            
+             return this;
+        }
+        */
+        // Add the has-focus class from the form control
 
-          if (el.tagName === 'SELECT') {
-            var opt = el.querySelector('[value=""]');
-
-            if (opt) {
-              opt.selected = !el.value;
-            }
-          }
-
-          return this;
-        } // Watch for the input event
-
-
-        el.addEventListener('input', onInput()); // Add the has-focus class from the form control
 
         el.addEventListener('focus', function () {
           vnode.context.hasFocus = true;
@@ -3169,24 +3166,32 @@ function transition(el, defaultValue) {
 
         el.addEventListener('blur', function () {
           vnode.context.hasFocus = false;
-        }); // vnode.context.$watch('value', onInput());
-        // Watch the value prop and if value is different than the
-        // element, update the element and dispatch an input event.
+        }); // Watch the value change
 
         vnode.context.$watch(function () {
           return vnode.context.value;
         }, function (value) {
-          if (el.value !== value) {
-            el.value = value;
-            el.dispatchEvent(new Event('input'));
-          }
+          vnode.context.hasChanged = true;
+          vnode.context.isEmpty = !el.value;
+          setSelectedIndex();
         }); // Bubble the native events up to the vue component.
 
         vnode.context.bindEvents.forEach(function (name) {
           el.addEventListener(name, function (event) {
             vnode.context.$emit(name, event);
           });
-        });
+        }); // Set the initial isEmpty context
+
+        vnode.context.isEmpty = !el.value;
+        setSelectedIndex();
+
+        if (el.tagName === 'SELECT') {
+          var opt = el.querySelector('[value=""]');
+
+          if (opt && opt.value === el.value) {
+            vnode.context.defaultEmpty = true;
+          }
+        }
       }
     }
   },
@@ -3247,7 +3252,7 @@ function transition(el, defaultValue) {
       var _ref;
 
       var name = kebabCase(this.componentName);
-      return _ref = {}, _defineProperty(_ref, name, !!name), _defineProperty(_ref, prefix_prefix(this.size, name), !!this.size), _defineProperty(_ref, prefix_prefix(kebabCase(this.componentName), 'custom'), this.custom), _defineProperty(_ref, 'form-group', this.group), _defineProperty(_ref, 'has-activity', this.activity), _defineProperty(_ref, 'has-changed', this.hasChanged), _defineProperty(_ref, 'has-focus', this.hasFocus), _defineProperty(_ref, 'is-empty', this.isEmpty), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _ref;
+      return _ref = {}, _defineProperty(_ref, name, !!name), _defineProperty(_ref, prefix_prefix(this.size, name), !!this.size), _defineProperty(_ref, prefix_prefix(name, 'custom'), this.custom), _defineProperty(_ref, prefix_prefix(this.size, prefix_prefix(name, 'custom')), !!this.size), _defineProperty(_ref, 'default-empty', this.defaultEmpty), _defineProperty(_ref, 'form-group', this.group), _defineProperty(_ref, 'has-activity', this.activity), _defineProperty(_ref, 'has-changed', this.hasChanged), _defineProperty(_ref, 'has-focus', this.hasFocus), _defineProperty(_ref, 'is-empty', this.isEmpty), _defineProperty(_ref, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref, 'is-valid', !!(this.valid || this.validFeedback)), _ref;
     },
     controlClasses: function controlClasses() {
       var _ref2;
@@ -3285,6 +3290,7 @@ function transition(el, defaultValue) {
   data: function data() {
     return {
       currentValue: this.value || this.defaultValue,
+      defaultEmpty: false,
       hasChanged: false,
       hasFocus: false,
       isEmpty: false

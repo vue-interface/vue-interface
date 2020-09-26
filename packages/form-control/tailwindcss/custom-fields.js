@@ -1,67 +1,35 @@
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
 const { success, danger } = require('@vue-interface/variant/tailwindcss/defaultVariations');
-const { rgba } = require('@vue-interface/tailwindcss/utils');
+const { flatten, multiply, rgba } = require('@vue-interface/tailwindcss/utils');
 
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': {
-            '--custom-field-color': theme('customField.color'),
-            '--custom-field-background-color': theme('customField.backgroundColor'),
-            '--custom-field-fontSize': theme('customField.fontSize'),
-            '--custom-field-box-shadow': theme('customField.boxShadow'),
-            '--custom-field-padding-y': theme('customField.paddingY'),
-            '--custom-field-padding-x': theme('customField.paddingX'),
-            '--custom-field-line-height': theme('customField.lineHeight'),
-            '--custom-field-border-width': theme('customField.borderWidth'),
-            '--custom-field-border-color': theme('customField.borderColor'),
-            '--custom-field-border-radius': theme('customField.borderRadius'),
-            '--custom-field-transition': theme('customField.transition'),
-            '--custom-field-height': `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
-            '--custom-field-height-inner': `calc(${theme('customField.fontSize')} + (${theme('customField.lineHeight')} / 2) + (${theme('customField.paddingY')} * 2))`,
-            
-            '--custom-field-focus-border-width': theme('customField.focus.borderWidth'),
-            
-            '--custom-field-disabled-border-color': theme('customField.disabled.borderColor'),
-            '--custom-field-disabled-background-color': theme('customField.disabled.backgroundColor'),
-
-            '--custom-field-sm-fontSize': theme('customField.sm.fontSize'),
-            '--custom-field-sm-padding-y': theme('customField.sm.paddingY'),
-            '--custom-field-sm-padding-x': theme('customField.sm.paddingX'),
-            '--custom-field-sm-border-radius': theme('customField.sm.borderRadius'),
-            '--custom-field-sm-height': `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.sm.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
-            '--custom-field-sm-height-inner': `calc(${theme('customField.sm.fontSize')} + (${theme('customField.lineHeight')} / 2) + (${theme('customField.sm.paddingY')} * 2))`,
-
-            '--custom-field-lg-fontSize': theme('customField.lg.fontSize'),
-            '--custom-field-lg-padding-y': theme('customField.lg.paddingY'),
-            '--custom-field-lg-padding-x': theme('customField.lg.paddingX'),
-            '--custom-field-lg-border-radius': theme('customField.lg.borderRadius'),
-            '--custom-field-lg-height': `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.lg.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
-            '--custom-field-lg-height-inner': `calc(${theme('customField.lg.fontSize')} + (${theme('customField.lineHeight')} / 2) + (${theme('customField.lg.paddingY')} * 2))`,
-           
-            '--custom-field-label-color': theme('customField.label.color'),
-            '--custom-field-label-font-weight': theme('customField.label.fontWeight'),
-            '--custom-field-label-fontSize': theme('customField.label.fontSize'),
-            
-            '--custom-field-label-sm-font-size': theme('customField.label.sm.fontSize'),
-            '--custom-field-label-lg-font-size': theme('customField.label.lg.fontSize'),
-            
-            '--custom-field-shrink-font-size-base': theme('customField.shrink.fontSize'),
-            
-            //'--custom-field-shrink-font-size-sm': theme('customField.label.sm.fontSize') * .8;
-            //'--custom-field-shrink-font-size-lg': theme('customField.label.lg.fontSize') * .85;
-            
-            '--custom-field-placeholder-color': theme('customField.placeholder.color'),
-        },
+        ':root': flatten(theme('customField'), '--custom-field-'),
 
         '.custom-select-field, .custom-input-field, .custom-textarea-field': {
             position: 'relative',
 
-            'label': {
+            '> label': {
                 margin: 0,
                 fontWeight: theme('customField.label.fontWeight'),
                 color: theme('customField.label.color'),
+                padding: `${theme('customField.paddingY')} ${theme('customField.paddingX')}`,
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                position: 'absolute',
+                zIndex: 1,
+            },
+
+            '&.default-empty.is-empty:not(.has-changed) > label': {
+                opacity: 0
+            },
+
+            '&.has-changed > label': {
+                alignItems: 'start',
+                marginTop: `-${theme('customField.paddingY')}`
             },
 
             '&.is-invalid': {
@@ -100,15 +68,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 '.invalid-feedback':  {
                     display: 'block'
                 }
-            }
-        },
-
-        '.custom-select-field .form-group-inner, .custom-input-field .custom-control': {
-            minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
-        },
-
-        '.custom-textarea-field .custom-control': {
-            minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
+            },
         },
 
         '.custom-select-field .form-group-inner, .custom-input-field .custom-control, .custom-textarea-field .custom-control': {
@@ -125,6 +85,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             borderRadius: theme('customField.borderRadius'),
             boxShadow: theme('customField.boxShadow'),
             transition: theme('customField.transition'),
+            height: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
 
             // Unstyle the caret on `<select>`s in IE10+.
             '&::-ms-expand': {
@@ -165,25 +126,50 @@ module.exports = plugin(function({ addComponents, theme }) {
             }
         },
 
+        /*
+
+$input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+*/
+
+        /*
+        '.custom-select-field .form-group-inner, .custom-input-field .custom-control': {
+            minHeight: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
+        },
+
+        '.custom-textarea-field .custom-control': {
+            minHeight: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
+        },
+        */
+
+        '.custom-select-field-sm .form-group-inner, .custom-input-field-sm .custom-control, .custom-textarea-field-sm .custom-control': {
+            padding: `${theme('customField.sm.paddingY')} ${theme('customField.sm.paddingX')}`,
+            height: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.sm.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
+        },
+
+        '.custom-select-field-lg .form-group-inner, .custom-input-field-lg .custom-control, .custom-textarea-field-lg .custom-control': {
+            padding: `${theme('customField.lg.paddingY')} ${theme('customField.lg.paddingX')}`,
+            height: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.lg.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
+        },
+
         // Custom Select
         '.custom-select-field': {
-
+            /*
             '& > label': {
                 left: 0,
                 margin: 0,
                 zIndex: 1,
                 position: 'absolute',
-                lineHeight: theme('customField.minHeight'),
                 fontSize: theme('customField.fontSize'),
                 transition: 'all .15s ease-out',
                 padding: `0 ${theme('customField.paddingX')} 0`
             },
-            
-            '&.is-empty > label': {
-                lineHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`
-            },
+            */
             
             '.form-group-inner': {
+                position: 'relative',
+                
                 '&::after': {
                     position: 'absolute',
                     top: 0,
@@ -228,6 +214,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     zIndex: 0
                 },
 
+                /*
                 '& > label': {
                     top: 0,
                     opacity: 1,
@@ -235,11 +222,12 @@ module.exports = plugin(function({ addComponents, theme }) {
                     transform: 'none',
                     lineHeight: '1em',
                     fontSize: theme('customField.shrink.fontSize'),
-                    padding: `${theme('customField.paddingY')} * .75 ${theme('customField.paddingX')} + (${theme('customField.label.fontSize')} - ${theme('customField.shrink.fontSize')} / 1.05) 0`
+                    padding: `${multiply(theme('customField.paddingY'), .75)} calc(${theme('customField.paddingX')} + (${theme('customField.label.fontSize')} - ${theme('customField.shrink.fontSize')})) 0`
                 },
+                */
 
                 '.custom-select': {
-                    paddingTop: theme('customField.fontSize')
+                    paddingTop: `calc(${theme('customField.fontSize')} - 2px)`
                 }
             },
 
@@ -250,26 +238,21 @@ module.exports = plugin(function({ addComponents, theme }) {
             '&.custom-select-field-sm': {
                 '& > label': {
                     fontSize: theme('customField.sm.fontSize'),
-                    paddingLeft: `${theme('customField.sm.paddingX')}`
+                    paddingLeft: theme('customField.sm.paddingX')
                 },
                 
                 '&:not(.is-empty), &.has-changed, &.has-changed.is-empty': {
                     '& > label': {
-                        fontSize: '.5em',
-                        padding: `${theme('customField.sm.paddingY')} ${theme('customField.sm.paddingX')} + (${theme('customField.label.sm.fontSize')} - .5em / 1.15) 0`
+                        fontSize: theme('customField.sm.shrink.fontSize'),
+                        // padding: `${theme('customField.sm.paddingY')} ${theme('customField.sm.paddingX')} + (${theme('customField.sm.label.fontSize')} - .5em / 1.15) 0`
                     },
 
                     '.custom-select': {
-                        paddingTop: `${theme('customField.fontSize')} + ${theme('customField.fontSize')} - ${theme('customField.sm.fontSize')}`
+                        paddingTop: `calc(${theme('customField.sm.fontSize')} - 2px)`
                     }
                 },
 
-                '&.is-empty > label, &.has-changed.is-empty > label': {
-                    lineHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.sm.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2) + .5em`
-                },
-
                 '.form-group-inner': {
-                    minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.sm.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
                     padding: `${theme('customField.sm.paddingY')} ${theme('customField.sm.paddingX')}`,
 
                     '&::after': {
@@ -285,27 +268,24 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             '&.custom-select-field-lg': {
                 '& > label': {
-                    fontSize: theme('customField.lg.fontSize')
+                    fontSize: theme('customField.lg.fontSize'),
+                    paddingLeft: theme('customField.lg.paddingX')
                 },
                     
                 '&:not(.is-empty), &.has-changed, &.has-changed.is-empty': {
                     '& > label': {
-                        fontSize: '.5em',
-                        padding: `${theme('customField.lg.paddingY')} / 1.15 ${theme('customField.lg.paddingX')} + (${theme('customField.label.lg.fontSize')} - .5em) 0`
+                        fontSize: theme('customField.lg.shrink.fontSize'),
+                        // padding: `${theme('customField.lg.paddingY')} / 1.15 ${theme('customField.lg.paddingX')} + (${theme('customField.lg.label.fontSize')} - .5em) 0`
                     },
 
                     '.custom-select': {
-                        paddingTop: `${theme('customField.fontSize')} - (${theme('customField.lg.fontSize')} - ${theme('customField.fontSize')})`
+                        paddingTop: `calc(${theme('customField.lg.fontSize')} - 2px)`
                     }
                 },
 
-                '&.is-empty > label, &.has-changed.is-empty > label': { 
-                    lineHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.lg.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2) + .5em`
-                },
-
                 '.form-group-inner': {
-                    minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.lg.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
-                    fontSize: theme('customField.label.lg.fontSize'),
+                    // minHeight: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.lg.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
+                    fontSize: theme('customField.lg.label.fontSize'),
                     
                     '&::after': {
                         width: '2.8em',
@@ -344,6 +324,7 @@ module.exports = plugin(function({ addComponents, theme }) {
         },
 
         '.custom-input-field, .custom-textarea-field': {
+            /*
             '& > label': {
                 left: 0,
                 margin: 0,
@@ -356,6 +337,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 fontSize: theme('customField.label.fontSize'),
                 padding: `${theme('customField.paddingY')} ${theme('customField.paddingX')} 0`
             },
+            */
 
             '&:not(.is-empty), &.has-changed, &.has-changed.is-empty': {
                 '.custom-control::placeholder': {
@@ -363,12 +345,13 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 '& > label': {
+                    /*
                     zIndex: 2,
                     opacity: 1,
                     transform: 'none',
-                    lineHeight: '1em',
                     fontSize: theme('customField.shrink.fontSize'),
-                    padding: `${theme('customField.paddingY')} * .75 ${theme('customField.paddingX')} + (${theme('customField.label.fontSize')} - ${theme('customField.shrink.fontSize')} / 1.05) 0`,
+                    padding: `${multiply(theme('customField.paddingY'), .75)} ${theme('customField.paddingX')} + (${theme('customField.label.fontSize')} - ${theme('customField.shrink.fontSize')} / 1.05) 0`,
+                    */
 
                     '& + .form-group-inner .custom-control': {
                         paddingTop: `${theme('customField.fontSize')} + ${theme('customField.paddingY')}`
@@ -377,7 +360,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             },
 
             '&.custom-textarea-field:not(.is-empty) textarea, &.custom-textarea-field.has-changed textarea, &.custom-textarea-field.is-empty.has-changed textarea': {
-                paddingTop: `${theme('customField.paddingY')} * 2.5`
+                paddingTop: multiply(theme('customField.paddingY'), 2.5)
             },
 
             '&.custom-input-field-sm, &.custom-textarea-field-sm': {
@@ -388,7 +371,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     },
             
                     '.form-group-inner .custom-control': {
-                        paddingTop: theme('customField.label.sm.fontSize') * 1.5
+                        paddingTop: multiply(theme('customField.sm.label.fontSize'), 1.5)
                     }
                 }
             },
@@ -416,18 +399,15 @@ module.exports = plugin(function({ addComponents, theme }) {
                 // Build on `.form-control` with modifier classes to decrease or increase the
                 // height and font-size of form controls
                 '&.custom-control-sm': {
-                    minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.sm.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
+                    // minHeight: `calc(${multiply('1em', theme('customField.lineHeight'))} + ${multiply(theme('customField.sm.paddingY'), 2)} + ${multiply(theme('customField.borderWidth'), 2)})`,
                     padding: `${theme('customField.sm.paddingY')} ${theme('customField.sm.paddingX')}`,
-                    fontSize: theme('customField.label.sm.fontSize'),
-                    lineHeight: theme('customField.sm.lineHeight'),
+                    fontSize: theme('customField.sm.abel.fontSize'),
                     borderRadius: theme('customField.sm.borderRadius')
                 },
 
                 '&.custom-control-lg': {
-                    minHeight: `calc(${theme('customField.lineHeight')} * 1em + ${theme('customField.lg.paddingY')} * 2 + ${theme('customField.borderWidth')} * 2)`,
                     padding: `${theme('customField.lg.paddingY')} ${theme('customField.lg.paddingX')}`,
-                    fontSize: theme('customField.label.lg.fontSize'),
-                    lineHeight: theme('customField.lg.lineHeight'),
+                    fontSize: theme('customField.lg.label.fontSize'),
                     borderRadius: theme('customField.lg.borderRadius')
                 }
             }
@@ -510,7 +490,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             boxShadow: theme('formControl.boxShadow', 'inset 0 1px 2px rgba(0, 0, 0, .075)'),
             fontSize: '1em',
             paddingY: theme('formControl.paddingY', '.375rem'),
-            paddingX: theme('formControl.paddingX', '.75em'),
+            paddingX: theme('formControl.paddingX', '.75rem'),
             lineHeight: theme('formControl.lineHeight', 1.5),
             borderWidth: theme('formControl.borderWidth', '1px'),
             borderColor: theme('formControl.borderColor', theme('colors.gray.400', colors.gray['400'])),
@@ -534,28 +514,38 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             label: {
                 fontWeight: 'normal',
-                fontSize: theme('formControl.fontSize'),
+                fontSize: theme('formControl.fontSize', '1rem'),
                 opacity: theme('formControl.placeholder.opacity', 1),
                 color: theme('formControl.placeholder.color', theme('colors.gray.500', colors.gray['500'])),
             },
+
+            shrink: {
+                fontSize: '.85rem',
+            },
             
             sm: {
-                paddingY: theme('formControl.paddingY', '.25rem'),
-                paddingX: theme('formControl.paddingX', '.5em'),
+                paddingY: theme('formControl.sm.paddingY', '.25rem'),
+                paddingX: theme('formControl.sm.paddingX', '.5em'),
                 fontSize: theme('formControl.sm.fontSize', '.875em'),
-                borderRadius: theme('formContro.sm.borderRadius', '.2rem'),
+                borderRadius: theme('formControl.sm.borderRadius', '.2rem'),
                 label: {
-                    fontSize: theme('formControl.sm.fontSize'),
+                    fontSize: theme('formControl.sm.fontSize', '.875rem')
+                },
+                shrink: {
+                    fontSize: '.75rem',
                 }
             },
 
             lg: {
-                paddingY: theme('formControl.paddingY', '.5rem'),
-                paddingX: theme('formControl.paddingX', '1em'),
+                paddingY: theme('formControl.lg.paddingY', '.5rem'),
+                paddingX: theme('formControl.lg.paddingX', '1em'),
                 fontSize:  theme('formControl.lg.fontSize', '1.25em'),
-                borderRadius: theme('formContro.sm.borderRadius', '.3rem'),
+                borderRadius: theme('formControl.lg.borderRadius', '.3rem'),
                 label: {
-                    fontSize: theme('formControl.sm.fontSize'),
+                    fontSize: theme('formControl.lg.fontSize', '1.25rem'),
+                },
+                shrink: {
+                    fontSize: '.75rem',
                 }
             },            
         })

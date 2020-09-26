@@ -226,31 +226,27 @@ export default {
     directives: {
         bindEvents: {
             bind(el, binding, vnode) {
-                function onInput(e) {
-                    vnode.context.hasChanged = true;
-                    vnode.context.isEmpty = !el.value;
-
+                function setSelectedIndex() {
                     // Set the data-selected-index attribute if necessary.
-                    if(el.selectedIndex >= 0) {
+                    if(el.selectedIndex >= -1) {
                         el.setAttribute('data-selected-index', el.selectedIndex);
                     }
                     else {
                         el.removeAttribute('data-selected-index');
                     }
+                }
 
-                    if(el.tagName === 'SELECT') {
-                        const opt = el.querySelector('[value=""]');
-                        
-                        if(opt) {
-                            opt.selected = !el.value;
-                        }
-                    }
+                /*
+                function onInput(e) {
+                    vnode.context.hasChanged = true;
+                    
+                    setEmpty();
+                    setSelectedIndex();
+                    
 
                     return this;
                 }
-
-                // Watch for the input event
-                el.addEventListener('input', onInput());
+                */
 
                 // Add the has-focus class from the form control
                 el.addEventListener('focus', () => {
@@ -262,16 +258,13 @@ export default {
                     vnode.context.hasFocus = false;
                 });
 
-                // vnode.context.$watch('value', onInput());
-
-                // Watch the value prop and if value is different than the
-                // element, update the element and dispatch an input event.
+                // Watch the value change
                 vnode.context.$watch(
                     () => vnode.context.value, value => {
-                        if(el.value !== value) {
-                            el.value = value;
-                            el.dispatchEvent(new Event('input'));
-                        }
+                        vnode.context.hasChanged = true;
+                        vnode.context.isEmpty = !el.value;
+                
+                        setSelectedIndex();    
                     }
                 );
 
@@ -281,6 +274,19 @@ export default {
                         vnode.context.$emit(name, event);
                     });
                 });
+
+                // Set the initial isEmpty context
+                vnode.context.isEmpty = !el.value;
+
+                setSelectedIndex();
+
+                if(el.tagName === 'SELECT') {
+                    const opt = el.querySelector('[value=""]');
+                
+                    if(opt && opt.value === el.value) {
+                        vnode.context.defaultEmpty = true;
+                    }
+                }
             }
         }
     },
@@ -360,7 +366,9 @@ export default {
             return {
                 [name]: !!name,
                 [prefix(this.size, name)]: !!this.size,
-                [prefix(kebabCase(this.componentName), 'custom')]: this.custom,
+                [prefix(name, 'custom')]: this.custom,
+                [prefix(this.size, prefix(name, 'custom'))]: !!this.size,
+                'default-empty': this.defaultEmpty,
                 'form-group': this.group,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
@@ -424,6 +432,7 @@ export default {
     data() {
         return {
             currentValue: this.value || this.defaultValue,
+            defaultEmpty: false,
             hasChanged: false,
             hasFocus: false,
             isEmpty: false,
