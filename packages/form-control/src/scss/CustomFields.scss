@@ -77,6 +77,9 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         color: $input-placeholder-color;
     }
 
+    &.default-empty.is-empty:not(.has-changed) > label {
+        opacity: 0
+    }
 
     &.is-invalid {
         &.custom-input-field .custom-control,
