@@ -1,7 +1,11 @@
 module.exports = {
     presets: [
-        ['@vue/cli-plugin-babel/preset', {
-            "modules": false
+        ['@vue/app', {
+            targets: {
+                node: "current",
+                browsers: "> 0.25%, not dead"
+            }
         }]
-    ]
+    ],
+    exclude: /node_modules\/(?!@vue-interface\/.*)/
 };
