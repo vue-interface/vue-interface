@@ -2,7 +2,7 @@
   "name": "@vue-interface/activity-indicator",
   "version": "0.10.10",
   "description": "An Vue activity indicator component.",
-  "main": "./dist/ActivityIndicator.umd.js",
+  "main": "./index.js",
   "scripts": {
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=ActivityIndicator ./index.js --watch",
