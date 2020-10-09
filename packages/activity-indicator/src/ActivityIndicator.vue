@@ -11,7 +11,7 @@
 
 <script>
 import 'core-js/features/promise';
-import registry from './registry';
+import { registry } from './registry';
 import ComponentRegistry from '@vue-interface/component-registry';
 import { unit, prefix, kebabCase } from '@vue-interface/utils';
 
