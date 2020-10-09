@@ -2,7 +2,7 @@
   "name": "@vue-interface/input-field",
   "version": "0.9.20",
   "description": "A Vue input field component.",
-  "main": "./dist/InputField.umd.js",
+  "main": "./index.js",
   "scripts": {
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=InputField ./main.vue --watch",
@@ -37,8 +37,8 @@
   },
   "homepage": "https://github.com/vue-interface/input-field/docs#readme",
   "dependencies": {
-    "@vue-interface/activity-indicator": "^0.10.9",
-    "@vue-interface/form-control": "^0.9.25",
+    "@vue-interface/activity-indicator": "^0.10.12",
+    "@vue-interface/form-control": "^0.9.26",
     "core-js": "^3.6.0",
     "vue": "^2.6.12"
   },
