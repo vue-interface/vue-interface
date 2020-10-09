@@ -2,7 +2,7 @@
   "name": "@vue-interface/activity-indicator",
   "version": "0.10.7",
   "description": "An Vue activity indicator component.",
-  "main": "index.js",
+  "main": "./dist/ActivityIndicator.umd.js",
   "scripts": {
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=ActivityIndicator ./index.js --watch",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@vue-interface/component-registry": "^0.1.4",
     "@vue-interface/utils": "^0.9.24",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "vue": "^2.6.12"
   },
   "devDependencies": {
@@ -55,5 +55,10 @@
     "vuepress": "^1.6.0",
     "vuepress-plugin-template-constants": "^0.2.1",
     "webpack-manifest-plugin": "^2.2.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

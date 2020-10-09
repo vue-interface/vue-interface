@@ -2,20 +2,26 @@ import ComponentRegistry from '@vue-interface/component-registry';
 
 const registry = new ComponentRegistry;
 
-export function get(...args) {
+function get(...args) {
     return registry.get(...args);
 }
 
-export function register(...args) {
+function register(...args) {
     return registry.register(...args);
 }
 
-export function remove(...args) {
+function remove(...args) {
     return registry.register(...args);
 }
 
-export function reset(...args) {
+function reset(...args) {
     return registry.reset(...args);
 }
 
-export default registry;
+export {
+    get,
+    register,
+    registry,
+    remove,
+    reset
+};
