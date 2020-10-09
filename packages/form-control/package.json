@@ -2,7 +2,7 @@
   "name": "@vue-interface/form-control",
   "version": "0.9.25",
   "description": "An abstract form control Vue mixin.",
-  "main": "./dist/FormControl.umd.js",
+  "main": "./index.js",
   "scripts": {
     "watch": "npm run serve",
     "serve": "vue-cli-service build --target lib --name=FormControl ./main.vue --watch",
