@@ -396,21 +396,6 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "277d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var isArray = __webpack_require__("e8b5");
-
-// `Array.isArray` method
-// https://tc39.github.io/ecma262/#sec-array.isarray
-$({ target: 'Array', stat: true }, {
-  isArray: isArray
-});
-
-
-/***/ }),
-
 /***/ "2d00":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -922,22 +907,6 @@ module.exports = [
   'toString',
   'valueOf'
 ];
-
-
-/***/ }),
-
-/***/ "7a82":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var DESCRIPTORS = __webpack_require__("83ab");
-var objectDefinePropertyModile = __webpack_require__("9bf2");
-
-// `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
-$({ target: 'Object', stat: true, forced: !DESCRIPTORS, sham: !DESCRIPTORS }, {
-  defineProperty: objectDefinePropertyModile.f
-});
 
 
 /***/ }),
@@ -2132,9 +2101,6 @@ var es_array_for_each = __webpack_require__("4160");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.is-array.js
-var es_array_is_array = __webpack_require__("277d");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
 var es_array_join = __webpack_require__("a15b");
 
@@ -2153,11 +2119,7 @@ var es_object_keys = __webpack_require__("b64b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.define-property.js
-var es_object_define_property = __webpack_require__("7a82");
-
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -2919,7 +2881,6 @@ function transition(el, defaultValue) {
 
 
 
-
 /* harmony default export */ var src_FormControl = ({
   inheritAttrs: false,
   mixins: [shadowable],
@@ -2931,7 +2892,7 @@ function transition(el, defaultValue) {
      */
     activity: {
       type: Boolean,
-      "default": false
+      default: false
     },
 
     /**
@@ -2942,7 +2903,7 @@ function transition(el, defaultValue) {
      */
     bindEvents: {
       type: Array,
-      "default": function _default() {
+      default: function _default() {
         return ['focus', 'blur', 'change', 'click', 'keypress', 'keyup', 'keydown', 'progress', 'paste'];
       }
     },
@@ -2955,7 +2916,7 @@ function transition(el, defaultValue) {
      */
     custom: {
       type: Boolean,
-      "default": false
+      default: false
     },
 
     /**
@@ -2966,7 +2927,7 @@ function transition(el, defaultValue) {
      */
     defaultControlClass: {
       type: String,
-      "default": 'form-control'
+      default: 'form-control'
     },
 
     /**
@@ -2976,7 +2937,7 @@ function transition(el, defaultValue) {
      * @default null
      */
     defaultValue: {
-      "default": null
+      default: null
     },
 
     /**
@@ -2996,7 +2957,7 @@ function transition(el, defaultValue) {
      */
     errors: {
       type: Object,
-      "default": function _default() {
+      default: function _default() {
         return {};
       }
     },
@@ -3017,7 +2978,7 @@ function transition(el, defaultValue) {
      */
     group: {
       type: Boolean,
-      "default": true
+      default: true
     },
 
     /**
@@ -3041,7 +3002,7 @@ function transition(el, defaultValue) {
      */
     indicator: {
       type: String,
-      "default": 'spinner'
+      default: 'spinner'
     },
 
     /**
@@ -3107,7 +3068,7 @@ function transition(el, defaultValue) {
      */
     size: {
       type: String,
-      "default": 'md',
+      default: 'md',
       validate: function validate(value) {
         return ['sm', 'md', 'lg'].indexOf(value) !== -1;
       }
@@ -3133,7 +3094,7 @@ function transition(el, defaultValue) {
      * @property Mixed
      */
     value: {
-      "default": null
+      default: null
     }
   },
   directives: {
@@ -3260,7 +3221,7 @@ function transition(el, defaultValue) {
       return _ref2 = {}, _defineProperty(_ref2, this.controlClass, !!this.controlClass), _defineProperty(_ref2, this.controlSizeClass, !!this.controlSizeClass), _defineProperty(_ref2, 'form-control-icon', !!this.$slots.icon), _defineProperty(_ref2, 'is-valid', !!(this.valid || this.validFeedback)), _defineProperty(_ref2, 'is-invalid', !!(this.invalid || this.invalidFeedback)), _defineProperty(_ref2, this.pillClasses, this.pill), _defineProperty(_ref2, this.plaintextClass, this.plaintext), _defineProperty(_ref2, this.spacing, !!this.spacing), _defineProperty(_ref2, this.shadowableClassName, !!this.shadow), _ref2;
     },
     hasDefaultSlot: function hasDefaultSlot() {
-      return !!this.$slots["default"];
+      return !!this.$slots.default;
     },
     invalidFeedback: function invalidFeedback() {
       if (this.error) {
