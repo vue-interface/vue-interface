@@ -38,7 +38,7 @@
   "homepage": "https://github.com/vue-interface/activity-indicator/docs#readme",
   "dependencies": {
     "@vue-interface/component-registry": "^0.1.4",
-    "@vue-interface/utils": "^0.9.24",
+    "@vue-interface/utils": "^0.9.25",
     "core-js": "^3.6.5",
     "vue": "^2.6.12"
   },
