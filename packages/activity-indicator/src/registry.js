@@ -1,6 +1,6 @@
 import { factory } from '@vue-interface/component-registry';
 
-const registry = factory();
+var registry = factory();
 
 function get() {
     return registry.get.apply(registry, arguments);
