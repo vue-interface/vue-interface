@@ -4,8 +4,9 @@
   "description": "An Vue activity indicator component.",
   "main": "./index.js",
   "scripts": {
-    "watch": "npm run serve",
-    "serve": "vue-cli-service build --target lib --name=ActivityIndicator ./index.js --watch",
+    "serve": "vue-cli-service serve",
+    "watch": "npm run dev",
+    "dev": "vue-cli-service build --target lib --name=ActivityIndicator ./index.js --watch",
     "build": "vue-cli-service build --target lib --name=ActivityIndicator ./index.js",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
