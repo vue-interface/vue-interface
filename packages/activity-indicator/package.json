@@ -56,10 +56,5 @@
     "vuepress": "^1.6.0",
     "vuepress-plugin-template-constants": "^0.2.1",
     "webpack-manifest-plugin": "^2.2.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
