@@ -226,6 +226,18 @@ export default {
     directives: {
         bindEvents: {
             bind(el, binding, vnode) {
+                function onInput() {
+                    vnode.context.isEmpty = !el.value;
+
+                    if(el.value) {
+                        vnode.context.currentValue = el.value;
+                    }
+
+                    setSelectedIndex();
+
+                    return onInput;
+                }
+
                 function setSelectedIndex() {
                     // Set the data-selected-index attribute if necessary.
                     if(el.selectedIndex >= -1) {
@@ -235,18 +247,6 @@ export default {
                         el.removeAttribute('data-selected-index');
                     }
                 }
-
-                /*
-                function onInput(e) {
-                    vnode.context.hasChanged = true;
-                    
-                    setEmpty();
-                    setSelectedIndex();
-                    
-
-                    return this;
-                }
-                */
 
                 // Add the has-focus class from the form control
                 el.addEventListener('focus', () => {
@@ -258,15 +258,10 @@ export default {
                     vnode.context.hasFocus = false;
                 });
 
-                // Watch the value change
-                vnode.context.$watch(
-                    () => vnode.context.value, value => {
-                        vnode.context.hasChanged = true;
-                        vnode.context.isEmpty = !el.value;
-                
-                        setSelectedIndex();    
-                    }
-                );
+                // Remove the has-focus class from the form control
+                el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
+
+                vnode.context.hasChanged = !!el.value;
 
                 // Bubble the native events up to the vue component.
                 vnode.context.bindEvents.forEach(name => {
@@ -274,11 +269,6 @@ export default {
                         vnode.context.$emit(name, event);
                     });
                 });
-
-                // Set the initial isEmpty context
-                vnode.context.isEmpty = !el.value;
-
-                setSelectedIndex();
 
                 if(el.tagName === 'SELECT') {
                     const opt = el.querySelector('[value=""]');
@@ -322,12 +312,17 @@ export default {
         },
 
         onInput(e) {
-            this.$emit('input', this.currentValue = e.target.value);
+            this.$emit('input', e.target.value);
+            this.$emit('update:value', e.target.value);
         }
 
     },
 
     computed: {
+
+        id() {
+            return this.$attrs.id || Math.random().toString(36).substring(2, 15);
+        },
 
         componentName() {
             return this.$options.name;
@@ -335,7 +330,10 @@ export default {
 
         controlAttributes() {
             return Object.keys(this.$attrs)
-                .concat([['class', this.controlClasses]])
+                .concat([
+                    ['id', this.id],
+                    ['class', this.controlClasses]
+                ])
                 .reduce((carry, key) => {
                     if(Array.isArray(key)) {
                         carry[key[0]] = key[1];
@@ -421,6 +419,15 @@ export default {
             return Array.isArray(this.feedback) ? this.feedback.join('<br>') : this.feedback;
         }
 
+    },
+
+    watch: {
+        value(value) {
+            this.currentValue = value;
+        },
+        currentValue() {
+            this.hasChanged = true;
+        }
     },
 
     mounted() {

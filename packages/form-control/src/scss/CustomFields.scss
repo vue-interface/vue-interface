@@ -48,16 +48,16 @@ $custom-control-label-font-size: $custom-control-font-size-base;
 $custom-control-label-font-size-sm: $custom-control-font-size-sm;
 $custom-control-label-font-size-lg: $custom-control-font-size-lg;
 
-$custom-control-shrink-font-size-base: $custom-control-label-font-size * .85;
-$custom-control-shrink-font-size-sm: $custom-control-label-font-size-sm * .75;
-$custom-control-shrink-font-size-lg: $custom-control-label-font-size-lg * .75;
+$custom-control-shrink-font-size-base: $custom-control-label-font-size;
+$custom-control-shrink-font-size-sm: $custom-control-label-font-size-sm;
+$custom-control-shrink-font-size-lg: $custom-control-label-font-size-lg;
 
 $custom-control-placeholder-color: $input-placeholder-color;
 
 $custom-control-transition: $input-transition, padding .15s ease-out;
 
 @function parseInt($n) {
-    @return $n / ($n * 0 + 1); /* 2 */
+    @return $n / ($n * 0 + 1);
 }
 
 @function px($value, $font-size: 16) {
@@ -71,14 +71,52 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 .custom-textarea-field {
     position: relative;
     
-    label {
+    .custom-control::placeholder {
+        color: transparent;
+    }
+
+    .custom-control {
+        z-index: 0;
+    }
+    
+    > label {
         margin: 0;
         font-weight: normal;
         color: $input-placeholder-color;
+        padding: $custom-control-padding-y $custom-control-padding-x;
+        left: 1px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        z-index: 2;
+        transition: all .15s ease-out;
+    }
+    
+    ::-ms-clear {
+        display: none;
     }
 
+
+    /*
+    &.has-changed,
+    &.has-changed.is-empty {
+        .custom-control,
+        .custom-select {
+            padding-bottom: 0;
+        }
+    }
+    */
+
+    /*
+    &.is-empty:not(.has-changed):not(.custom-select-field) > label,
     &.default-empty.is-empty:not(.has-changed) > label {
-        opacity: 0
+        z-index: -1;
+    }
+    */
+
+    &.has-changed > label {
+        margin-top: -$custom-control-padding-y * 1.5;
     }
 
     &.is-invalid {
@@ -127,20 +165,10 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 }
 
 .custom-select-field .form-group-inner,
-.custom-input-field .custom-control {
-    height: $custom-control-height;
-}
-
-.custom-textarea-field .custom-control {
-    min-height: $custom-control-height;
-}
-
-.custom-select-field .form-group-inner,
 .custom-input-field .custom-control,
 .custom-textarea-field .custom-control {
     display: block;
     width: 100%;
-    transition: padding .15s ease-out;
     padding: $custom-control-padding-y $custom-control-padding-x;
     font-size: $custom-control-font-size-base;
     line-height: $custom-control-line-height;
@@ -148,6 +176,10 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     background-color: $custom-control-bg;
     background-clip: padding-box;
     border: $custom-control-border-width solid $custom-control-border-color;
+    height: $custom-control-height;
+
+    @include box-shadow($custom-control-box-shadow);
+    @include transition($custom-control-transition);
 
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
     @if $enable-rounded {
@@ -157,9 +189,6 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         // Otherwise undo the iOS default
         border-radius: 0;
     }
-
-    @include box-shadow($custom-control-box-shadow);
-    @include transition($custom-control-transition);
 
     // Unstyle the caret on `<select>`s in IE10+.
     &::-ms-expand {
@@ -171,15 +200,16 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     @include form-control-focus();
 
     // Placeholder
+    /*
     &::placeholder {
-        transition: opacity .15s ease-out;
-        // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
         opacity: 1;
+        transition: opacity .15s ease-out;
     }
 
     &.is-invalid::placeholder {
         color: $danger;
     }
+    */
 
     // Disabled and read-only inputs
     //
@@ -194,26 +224,29 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     }
 }
 
+.custom-select-field-sm .form-group-inner, 
+.custom-input-field-sm .custom-control, 
+.custom-textarea-field-sm .custom-control {
+    padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
+    height: $custom-control-height-sm;
+    font-size: $custom-control-font-size-sm;
+}
+
+.custom-select-field-lg .form-group-inner,
+.custom-input-field-lg .custom-control,
+.custom-textarea-field-lg .custom-control {
+    padding: $custom-control-padding-y-lg $custom-control-padding-x-lg;
+    height: $custom-control-height-lg;
+    font-size: $custom-control-font-size-lg;
+}
+
 // Custom Select
 
 .custom-select-field {
     
-    & > label {
-        left: 0;
-        margin: 0;
-        z-index: 1;
-        position: absolute;
-        line-height: $custom-control-height;
-        font-size: $custom-control-font-size-base;
-        transition: all .15s ease-out;
-        padding: 0 $custom-control-padding-x 0;
-    }
-    
-    &.is-empty > label {
-        line-height: calc(#{$custom-control-height-inner} + #{$custom-control-height-border});
-    }
-    
     .form-group-inner {
+        position: relative;
+        
         &::after {
             position: absolute;
             top: 0;
@@ -223,22 +256,21 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
             width: 2.3em;
             height: 66.6666%;
             transform: translateY(25%);
-            border-left: $custom-control-border-color 1px solid;
             background-size: .666em .666em;
             background-position: center center;
             background-repeat: no-repeat;
-            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxNi42IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMCAxNi42Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzZjNzU3ZCIgZD0iTTMwIDBMMTUgMTYuNiAwIDBoMzB6Ii8+PC9zdmc+);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
         }
     }
 
     &.is-invalid .form-group-inner::after {
         border-color: $danger;
-        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxNi42IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMCAxNi42Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2RjMzU0NSIgZD0iTTMwIDBMMTUgMTYuNiAwIDBoMzB6Ii8+PC9zdmc+);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='#{$danger}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     }
 
     &.is-valid .form-group-inner::after {
         border-color: $success;
-        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAxNi42IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMCAxNi42Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzI4YTc0NSIgZD0iTTMwIDBMMTUgMTYuNiAwIDBoMzB6Ii8+PC9zdmc+);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='#{$success}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     }
 
     &.is-invalid .custom-select {
@@ -261,22 +293,13 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     &:not(.is-empty),
     &.has-changed,
     &.has-changed.is-empty {
-        &:not(.has-focus) {
-            z-index: 0;
-        }
-
         & > label {
-            top: 0;
-            opacity: 1;
-            z-index: 2;
-            transform: none;
-            line-height: 1em;
-            font-size: $custom-control-shrink-font-size-base;
-            padding: add($custom-control-padding-y, -$custom-control-border-width) add($custom-control-padding-x, $custom-control-border-width);
+            font-size: $custom-control-label-font-size;
+            margin-top: -$custom-control-padding-y;
         }
 
         .custom-select {
-            padding-top: $custom-control-padding-y * 2;
+            padding-top: $custom-control-label-font-size;
         }
     }
 
@@ -295,22 +318,16 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-sm;
-                padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
+                margin-top: -$custom-control-padding-y * 1.25;
             }
 
             .custom-select {
-                padding-top: #{$custom-control-font-size-base + $custom-control-font-size-base - $custom-control-font-size-sm};
+                padding-top: $custom-control-label-font-size-sm;
             }
         }
 
-        &.is-empty > label,
-        &.has-changed.is-empty > label {
-            line-height: $custom-control-height;
-        }
-
         .form-group-inner {
-            height: $custom-control-height-sm;
-            padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
+            // padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
 
             &::after {
                 width: 2em;
@@ -326,6 +343,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     &.custom-select-field-lg {
         & > label {
             font-size: $custom-control-font-size-lg;
+            padding-left: $custom-control-padding-x-lg;
         }
             
         &:not(.is-empty),
@@ -333,21 +351,15 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-lg;
-                padding: $custom-control-padding-y-lg $custom-control-padding-x-lg;
+                margin-top: -$custom-control-padding-y * 1.5;
             }
 
             .custom-select {
-                padding-top: #{$custom-control-font-size-base - ($custom-control-font-size-lg - $custom-control-font-size-base)};
+                padding-top: $custom-control-label-font-size-lg;
             }
         }
 
-        &.is-empty > label,
-        &.has-changed.is-empty > label {
-            line-height: calc(#{$custom-control-height-inner-lg} + #{$custom-control-height-border} + .5em);
-        }
-
         .form-group-inner {
-            height: $custom-control-height-lg;
             font-size: $custom-control-label-font-size-lg;
             
             &::after {
@@ -365,13 +377,14 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
         width: 100%;
+        height: 100%;
         background: none;
         margin: 0;
         padding: 0 $custom-control-padding-x;
         border: 0;
         z-index: 1;
+        line-height: 1;
         transition: all .15s ease-out;
         -webkit-appearance: none; 
         -moz-appearance: none;
@@ -390,55 +403,30 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 
 .custom-input-field,
 .custom-textarea-field {
-    position: relative;
-
-    & > label {
-        left: 0;
-        margin: 0;
-        opacity: 0;
-        z-index: -1;
-        line-height: 1.5;
-        position: absolute;
-        transition: all .15s ease-out;
-        font-size: $custom-control-label-font-size;
-        padding: $custom-control-padding-y $custom-control-padding-x 0;
-    }
-
-    &:not(.is-empty),
     &.has-changed,
     &.has-changed.is-empty {
-        .custom-control::placeholder {
-            opacity: 0;
-        }
-
         & > label {
-            z-index: 2;
-            opacity: 1;
-            transform: none;
-            line-height: 1em;
-            font-size: $custom-control-shrink-font-size-base;
-            padding: add($custom-control-padding-y, -$custom-control-border-width) add($custom-control-padding-x, $custom-control-border-width);
-
             & + .form-group-inner .custom-control {
-                padding-top: $custom-control-font-size-base + $custom-control-padding-y;
+                padding-top: $custom-control-label-font-size;
+                padding-bottom: 0;
             }
         }
     }
 
-    &.custom-textarea-field:not(.is-empty) textarea,
-    &.custom-textarea-field.has-changed textarea,
-    &.custom-textarea-field.is-empty.has-changed textarea {
-        padding-top: $custom-control-padding-y * 2;
-    }
-
     &.custom-input-field-sm,
     &.custom-textarea-field-sm {
+        font-size: $custom-control-font-size-sm;
+
+        & > label {
+            padding-left: $custom-control-padding-x-sm
+        }
+
         &:not(.is-empty),
         &.has-changed,
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-sm;
-                padding: add($custom-control-padding-y-sm, -$custom-control-border-width) add($custom-control-padding-x-sm, $custom-control-border-width);
+                margin-top: -$custom-control-padding-y * 1.25;
             }
     
             .form-group-inner .custom-control {
@@ -449,19 +437,27 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 
     &.custom-input-field-lg,
     &.custom-textarea-field-lg {
+        font-size: $custom-control-font-size-sm;
+
+        & > label {
+            font-size: $custom-control-shrink-font-size-lg;
+            padding-left: $custom-control-padding-x-lg
+        }
+
         &:not(.is-empty),
         &.has-changed,
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-lg;
-                padding: add($custom-control-padding-y-lg, -$custom-control-border-width * 3) add($custom-control-padding-x-lg, $custom-control-border-width);
+                margin-top: -$custom-control-padding-y * 1.5;
             }
             
             .form-group-inner .custom-control {
-                padding-top: $custom-control-font-size-lg;
+                padding-top: $custom-control-label-font-size-lg;
             }
         }
     }
+
 
     &.is-valid .valid-feedback,
     &.is-invalid .invalid-feedback  {
@@ -474,22 +470,19 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         // Build on `.form-control` with modifier classes to decrease or increase the
         // height and font-size of form controls
         &.custom-control-sm {
-            height: $custom-control-height-sm;
-            padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
+            // padding: $custom-control-padding-y-sm $custom-control-padding-x-sm;
             font-size: $custom-control-label-font-size-sm;
-            line-height: $custom-control-line-height-sm;
             @include border-radius($custom-control-border-radius-sm);
         }
 
         &.custom-control-lg {
-            height: $custom-control-height-lg;
-            padding: $custom-control-padding-y-lg $custom-control-padding-x-lg;
+            // padding: $custom-control-padding-y-lg $custom-control-padding-x-lg;
             font-size: $custom-control-label-font-size-lg;
-            line-height: $custom-control-line-height-lg;
             @include border-radius($custom-control-border-radius-lg);
         }
     }
 }
+
 
 .input-group {
 
@@ -507,9 +500,11 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     &.is-invalid .form-control,
     &.is-invalid .custom-select,
     &.is-invalid .custom-control {
+        /*
         &::placeholder {
             color: $form-feedback-invalid-color;
         }
+        */
     }
 
     & > div:not(.input-group-prepend):not(.input-group-append):not(:last-child) .form-control,
