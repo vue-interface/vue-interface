@@ -1,7 +1,7 @@
 <template>
     <div :class="formGroupClasses">
         <slot name="label">
-            <label v-if="label" ref="label" :for="$attrs.id" :class="labelClass" v-html="label" />
+            <label v-if="label" ref="label" :for="id" :class="labelClass" v-html="label" />
         </slot>
 
         <div class="form-group-inner">
@@ -52,8 +52,7 @@
 
 <script>
 import FormControl from '@vue-interface/form-control';
-import { ActivityIndicator, register } from '@vue-interface/activity-indicator';
-import Spinner from '@vue-interface/activity-indicator/src/types/Spinner';
+import { ActivityIndicator, register, Spinner } from '@vue-interface/activity-indicator';
 
 register({
     spinner: Spinner

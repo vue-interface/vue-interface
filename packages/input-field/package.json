@@ -2,10 +2,13 @@
   "name": "@vue-interface/input-field",
   "version": "0.9.21",
   "description": "A Vue input field component.",
-  "main": "./index.js",
+  "module": "./index.js",
+  "main": "./dist/FormControl.umd.js",
+  "unpkg": "./dist/FormControl.umd.min.js",
   "scripts": {
-    "watch": "npm run serve",
-    "serve": "vue-cli-service build --target lib --name=InputField ./main.vue --watch",
+    "serve": "vue-cli-service serve",
+    "watch": "npm run dev",
+    "dev": "vue-cli-service build --target lib --name=InputField ./main.vue --watch",
     "build": "vue-cli-service build --target lib --name=InputField ./main.vue",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
@@ -38,13 +41,12 @@
   "homepage": "https://github.com/vue-interface/input-field/docs#readme",
   "dependencies": {
     "@vue-interface/activity-indicator": "^0.10.12",
-    "@vue-interface/form-control": "^0.9.26",
+    "@vue-interface/form-control": "^0.10.0",
     "core-js": "^3.6.0",
     "vue": "^2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.7",
-    "@vue/cli-plugin-eslint": "^4.5.7",
     "@vue/cli-service": "^4.5.7",
     "@vuepress/plugin-register-components": "^1.6.0",
     "babel-eslint": "^10.1.0",
@@ -58,10 +60,5 @@
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.6.0",
     "vuepress-plugin-template-constants": "^0.2.1"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
