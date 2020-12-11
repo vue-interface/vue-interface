@@ -11,7 +11,7 @@
 
 <script>
 import { registry } from './registry';
-import ComponentRegistry from '@vue-interface/component-registry';
+import { ComponentRegistry } from '@vue-interface/component-registry';
 import { unit, prefix, kebabCase } from '@vue-interface/utils';
 
 export default {
