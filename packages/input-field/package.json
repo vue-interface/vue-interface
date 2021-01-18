@@ -59,6 +59,7 @@
     "tailwindcss": "^1.8.12",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.6.0",
-    "vuepress-plugin-template-constants": "^0.2.1"
+    "vuepress-plugin-template-constants": "^0.2.1",
+    "webpack": "^4.0.0"
   }
 }
