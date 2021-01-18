@@ -2,10 +2,10 @@
     <div class="m-3">
         <div class="d-flex">
             <div class="w-50">
-                <input-field custom label="test" placeholder="test" size="sm" />
+                <input-field custom label="test" placeholder="test" size="sm" error="test" />
             </div>
             <div class="w-50">
-                <select-field custom label="test" placeholder="test" size="sm">
+                <select-field custom label="test" placeholder="test" size="sm" error="test">
                     <option value="a">
                         A
                     </option>
@@ -20,10 +20,10 @@
         </div>
         <div class="d-flex">
             <div class="w-50">
-                <input-field custom label="test" placeholder="test" size="md" />
+                <input-field custom label="test" placeholder="test" size="md" error="test" />
             </div>
             <div class="w-50">
-                <select-field custom label="test" placeholder="test" size="md">
+                <select-field custom label="test" placeholder="test" size="md" error="test">
                     <option value="a">
                         A
                     </option>
@@ -38,10 +38,22 @@
         </div>
         <div class="d-flex">
             <div class="w-50">
-                <input-field v-model="value" custom label="test" placeholder="test" size="lg" />
+                <input-field
+                    v-model="value"
+                    custom
+                    label="test"
+                    placeholder="test"
+                    size="lg"
+                    error="test" />
             </div>
             <div class="w-50">
-                <select-field v-model="value" custom label="test" placeholder="test" size="lg">
+                <select-field
+                    v-model="value"
+                    custom
+                    label="test"
+                    placeholder="test"
+                    size="lg"
+                    error="test">
                     <option value="a">
                         A
                     </option>

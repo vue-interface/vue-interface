@@ -16,7 +16,7 @@ $custom-control-disabled-bg: $input-disabled-bg !default;
 
 $custom-control-padding-y: .375rem !default;
 $custom-control-padding-x: .75rem !default;
-$custom-control-line-height: 1.5 !default;
+$custom-control-line-height: 1.25 !default;
 
 $custom-control-padding-y-sm: .25rem !default;
 $custom-control-padding-x-sm: .5rem !default;
@@ -85,12 +85,13 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         color: $input-placeholder-color;
         padding: $custom-control-padding-y $custom-control-padding-x;
         left: 1px;
-        height: 100%;
+        // height: 100%;
         display: flex;
         align-items: center;
         position: absolute;
         z-index: 2;
         transition: all .15s ease-out;
+        height: $custom-control-height;
     }
     
     ::-ms-clear {
@@ -116,7 +117,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     */
 
     &.has-changed > label {
-        margin-top: -$custom-control-padding-y * 1.5;
+        margin-top: -$custom-control-padding-y * 1.333;
     }
 
     &.is-invalid {
@@ -295,7 +296,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     &.has-changed.is-empty {
         & > label {
             font-size: $custom-control-label-font-size;
-            margin-top: -$custom-control-padding-y;
+            height: $custom-control-height;
         }
 
         .custom-select {
@@ -311,6 +312,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         & > label {
             font-size: $custom-control-font-size-sm;
             padding-left: $custom-control-padding-x-sm;
+            height: $custom-control-height-sm;
         }
         
         &:not(.is-empty),
@@ -318,7 +320,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-sm;
-                margin-top: -$custom-control-padding-y * 1.25;
+                margin-top: -$custom-control-padding-y-sm * 1.75;
             }
 
             .custom-select {
@@ -344,6 +346,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         & > label {
             font-size: $custom-control-font-size-lg;
             padding-left: $custom-control-padding-x-lg;
+            height: $custom-control-height-lg;
         }
             
         &:not(.is-empty),
@@ -351,7 +354,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-lg;
-                margin-top: -$custom-control-padding-y * 1.5;
+                margin-top: -$custom-control-padding-y-lg * 1.333;
             }
 
             .custom-select {
@@ -418,7 +421,9 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         font-size: $custom-control-font-size-sm;
 
         & > label {
-            padding-left: $custom-control-padding-x-sm
+            font-size: $custom-control-shrink-font-size-sm;
+            padding-left: $custom-control-padding-x-sm;
+            height: $custom-control-height-sm;
         }
 
         &:not(.is-empty),
@@ -426,7 +431,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-sm;
-                margin-top: -$custom-control-padding-y * 1.25;
+                margin-top: -$custom-control-padding-y-sm * 1.75;
             }
     
             .form-group-inner .custom-control {
@@ -441,7 +446,8 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
 
         & > label {
             font-size: $custom-control-shrink-font-size-lg;
-            padding-left: $custom-control-padding-x-lg
+            padding-left: $custom-control-padding-x-lg;
+            height: $custom-control-height-lg;
         }
 
         &:not(.is-empty),
@@ -449,7 +455,7 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
         &.has-changed.is-empty {
             & > label {
                 font-size: $custom-control-shrink-font-size-lg;
-                margin-top: -$custom-control-padding-y * 1.5;
+                margin-top: -$custom-control-padding-y-lg * 1.333;
             }
             
             .form-group-inner .custom-control {
