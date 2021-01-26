@@ -109,12 +109,11 @@ $custom-control-transition: $input-transition, padding .15s ease-out;
     }
     */
 
-    /*
-    &.is-empty:not(.has-changed):not(.custom-select-field) > label,
+    // &.is-empty:not(.has-changed):not(.custom-select-field) > label,
+    
     &.default-empty.is-empty:not(.has-changed) > label {
         z-index: -1;
     }
-    */
 
     &.has-changed > label {
         margin-top: -$custom-control-padding-y * 1.333;
