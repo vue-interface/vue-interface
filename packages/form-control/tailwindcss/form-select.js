@@ -1,11 +1,10 @@
 const plugin = require('tailwindcss/plugin');
-const { colors } = require('tailwindcss/defaultTheme');
-const { escapeSvg, flatten, rgba } = require('@vue-interface/tailwindcss/utils');
+const colors = require('tailwindcss/colors');
+const escapeSvg = require('./utils/escapeSvg');
+const Color = require('color');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': flatten(theme('formSelect'), '--form-select-'),
-        
         '.form-select': {
             display: 'block',
             width: '100%',
@@ -114,7 +113,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundColor: theme('formControl.backgroundColor', theme('colors.white', colors.white)),
                 borderColor: theme('formControl.borderColor', theme('colors.blue.400', colors.blue['400'])),
                 outline: theme('formControl.outline', 0),
-                boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`)
+                boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${Color(theme('colors.blue.500', colors.blue['500'])).fade(.25)}`)
             },
             placeholder: {
                 color: theme('formControl.placeholder.color', theme('colors.gray.500', colors.gray['500']))

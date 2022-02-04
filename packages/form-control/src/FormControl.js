@@ -1,5 +1,16 @@
-import Shadowable from '@vue-interface/shadowable';
-import { prefix, isObject, kebabCase } from '@vue-interface/utils';
+import { Shadowable } from '@vue-interface/shadowable';
+
+function prefix(value, key) {
+    const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), '');
+
+    return [
+        prefix, string
+    ].filter(value => !!value).join(delimeter);
+}
+
+function isObject(subject) {
+    return !Array.isArray(subject) && typeof subject === 'object';
+}
 
 export default {
 
@@ -31,6 +42,18 @@ export default {
             type: Array,
             default() {
                 return ['focus', 'blur', 'change', 'click', 'keypress', 'keyup', 'keydown', 'progress', 'paste'];
+            }
+        },
+
+        /**
+         * The component name.
+         * 
+         * @param {String}
+         */
+        componentName: {
+            type: String,
+            default() {
+                return this.$options.name;
             }
         },
 
@@ -324,10 +347,6 @@ export default {
             return this.$attrs.id || Math.random().toString(36).substring(2, 15);
         },
 
-        componentName() {
-            return this.$options.name;
-        },
-
         controlAttributes() {
             return Object.keys(this.$attrs)
                 .concat([
@@ -359,13 +378,11 @@ export default {
         },
 
         formGroupClasses() {
-            const name = kebabCase(this.componentName);
-
             return {
-                [name]: !!name,
-                [prefix(this.size, name)]: !!this.size,
-                [prefix(name, 'custom')]: this.custom,
-                [prefix(this.size, prefix(name, 'custom'))]: this.custom && this.size,
+                [this.componentName]: !!this.componentName,
+                [prefix(this.size, this.componentName)]: !!this.size,
+                [prefix(this.componentName, 'custom')]: this.custom,
+                [prefix(this.size, prefix(this.componentName, 'custom'))]: this.custom && this.size,
                 'default-empty': this.defaultEmpty,
                 'form-group': this.group,
                 'has-activity': this.activity,
@@ -378,7 +395,7 @@ export default {
         },
 
         controlClasses() {
-            return {
+            return Object.assign({
                 [this.controlClass]: !!this.controlClass,
                 [this.controlSizeClass]: !!this.controlSizeClass,
                 'form-control-icon': !!this.$slots.icon,
@@ -387,8 +404,7 @@ export default {
                 [this.pillClasses]: this.pill,
                 [this.plaintextClass]: this.plaintext,
                 [this.spacing]: !!this.spacing,
-                [this.shadowableClassName]: !!this.shadow
-            };
+            }, this.shadowableClass);
         },
 
         hasDefaultSlot() {

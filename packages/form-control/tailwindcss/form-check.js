@@ -1,75 +1,69 @@
-const Color = require('color');
 const plugin = require('tailwindcss/plugin');
-const { colors, translate } = require('tailwindcss/defaultTheme'); 
-const { escapeSvg } = require('@vue-interface/tailwindcss/utils');
-const { white } = colors;
-
-function lighten(color, ...args) {
-    return Color(color).lighten(...args);
-}
+const colors = require('tailwindcss/colors'); 
+const escapeSvg = require('./utils/escapeSvg');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': {
-            '--form-check-float': theme('formCheck.float'),
-            '--form-check-width': theme('formCheck.width'),
-            '--form-check-height': theme('formCheck.height'),
-            '--form-check-display': theme('formCheck.display'),
+        // '*, ::before, ::after': {
+        //     '--form-check-float': theme('formCheck.float'),
+        //     '--form-check-width': theme('formCheck.width'),
+        //     '--form-check-height': theme('formCheck.height'),
+        //     '--form-check-display': theme('formCheck.display'),
 
-            '--form-check-font-size': theme('formCheck.fontSize'),
-            '--form-check-font-family': theme('formCheck.fontFamily'),
-            '--form-check-font-weight': theme('formCheck.fontWeight'),
-            '--form-check-line-height': `${theme('formCheck.lineHeight')}`,
-            '--form-check-min-height': theme('formCheck.minHeight'),
-            '--form-check-margin-bottom': theme('formCheck.marginBottom'),
-            '--form-check-padding-left': theme('formCheck.paddingLeft'),
-            '--form-check-border-width': theme('formCheck.borderWidth'),
-            '--form-check-border-style': theme('formCheck.borderStyle'),
-            '--form-check-border-color': theme('formCheck.borderColor'),
+        //     '--form-check-font-size': theme('formCheck.fontSize'),
+        //     '--form-check-font-family': theme('formCheck.fontFamily'),
+        //     '--form-check-font-weight': theme('formCheck.fontWeight'),
+        //     '--form-check-line-height': `${theme('formCheck.lineHeight')}`,
+        //     '--form-check-min-height': theme('formCheck.minHeight'),
+        //     '--form-check-margin-bottom': theme('formCheck.marginBottom'),
+        //     '--form-check-padding-left': theme('formCheck.paddingLeft'),
+        //     '--form-check-border-width': theme('formCheck.borderWidth'),
+        //     '--form-check-border-style': theme('formCheck.borderStyle'),
+        //     '--form-check-border-color': theme('formCheck.borderColor'),
 
-            '--form-check-margin-left': theme('formCheck.marginLeft'),
-            '--form-check-margin-top': theme('formCheck.marginTop'),
-            '--form-check-vertical-align': theme('formCheck.verticalAlign'),
-            '--form-check-background-color': theme('formCheck.backgroundColor'),
-            '--form-check-background-repeat': theme('formCheck.backgroundRepeat'),
-            '--form-check-background-position': theme('formCheck.backgroundPosition'),
-            '--form-check-background-size': theme('formCheck.backgroundSize'),
-            '--form-check-background-image': theme('formCheck.backgroundImage'),
-            '--form-check-border': theme('formCheck.border'),
-            '--form-check-appearance': theme('formCheck.appearance'),
-            '--form-check-color-adjust': theme('formCheck.colorAdjust'),
-            '--form-check-transition': theme('formCheck.transition'),
+        //     '--form-check-margin-left': theme('formCheck.marginLeft'),
+        //     '--form-check-margin-top': theme('formCheck.marginTop'),
+        //     '--form-check-vertical-align': theme('formCheck.verticalAlign'),
+        //     '--form-check-background-color': theme('formCheck.backgroundColor'),
+        //     '--form-check-background-repeat': theme('formCheck.backgroundRepeat'),
+        //     '--form-check-background-position': theme('formCheck.backgroundPosition'),
+        //     '--form-check-background-size': theme('formCheck.backgroundSize'),
+        //     '--form-check-background-image': theme('formCheck.backgroundImage'),
+        //     '--form-check-border': theme('formCheck.border'),
+        //     '--form-check-appearance': theme('formCheck.appearance'),
+        //     '--form-check-color-adjust': theme('formCheck.colorAdjust'),
+        //     '--form-check-transition': theme('formCheck.transition'),
 
-            '--form-check-checkbox-border-radius': theme('formCheck.checkbox.borderRadius'),
+        //     '--form-check-checkbox-border-radius': theme('formCheck.checkbox.borderRadius'),
 
-            '--form-check-radio-border-radius': theme('formCheck.radio.borderRadius'),
+        //     '--form-check-radio-border-radius': theme('formCheck.radio.borderRadius'),
 
-            '--form-check-active-filter': theme('formCheck.active.filter'),
+        //     '--form-check-active-filter': theme('formCheck.active.filter'),
 
-            '--form-check-focus-border-color': theme('formCheck.focus.borderColor'),
-            '--form-check-focus-outline': theme('formCheck.focus.outline'),
-            '--form-check-focus-box-shadow': theme('formCheck.focus.boxShadow'),
+        //     '--form-check-focus-border-color': theme('formCheck.focus.borderColor'),
+        //     '--form-check-focus-outline': theme('formCheck.focus.outline'),
+        //     '--form-check-focus-box-shadow': theme('formCheck.focus.boxShadow'),
 
-            '--form-check-checked-background-color': theme('formCheck.checked.backgroundColor'),
-            '--form-check-checked-border-color': theme('formCheck.checked.borderColor'),
-            '--form-check-checked-checkbox-background-image': theme('formCheck.checked.checkbox.backgroundImage'),
-            '--form-check-checked-radio-background-image': theme('formCheck.checked.radio.backgroundImage'),
+        //     '--form-check-checked-background-color': theme('formCheck.checked.backgroundColor'),
+        //     '--form-check-checked-border-color': theme('formCheck.checked.borderColor'),
+        //     '--form-check-checked-checkbox-background-image': theme('formCheck.checked.checkbox.backgroundImage'),
+        //     '--form-check-checked-radio-background-image': theme('formCheck.checked.radio.backgroundImage'),
 
-            '--form-check-indeterminate-background-color': theme('formCheck.indeterminate.backgroundColor'),
-            '--form-check-indeterminate-border-color': theme('formCheck.indeterminate.borderColor'),
-            '--form-check-indeterminate-checkbox-background-image': theme('formCheck.indeterminate.checkbox.backgroundImage'),
-            '--form-check-indeterminate-radio-background-image': theme('formCheck.indeterminate.radio.backgroundImage'),
+        //     '--form-check-indeterminate-background-color': theme('formCheck.indeterminate.backgroundColor'),
+        //     '--form-check-indeterminate-border-color': theme('formCheck.indeterminate.borderColor'),
+        //     '--form-check-indeterminate-checkbox-background-image': theme('formCheck.indeterminate.checkbox.backgroundImage'),
+        //     '--form-check-indeterminate-radio-background-image': theme('formCheck.indeterminate.radio.backgroundImage'),
 
-            '--form-check-disabled-pointer-events': theme('formCheck.disabled.pointerEvents'),
-            '--form-check-disabled-filter': theme('formCheck.disabled.filter'),
-            '--form-check-disabled-opacity': `${theme('formCheck.disabled.opacity')}`,
+        //     '--form-check-disabled-pointer-events': theme('formCheck.disabled.pointerEvents'),
+        //     '--form-check-disabled-filter': theme('formCheck.disabled.filter'),
+        //     '--form-check-disabled-opacity': `${theme('formCheck.disabled.opacity')}`,
 
-            '--form-check-label-color': theme('formCheck.label.color'),
-            '--form-check-label-cursor': theme('formCheck.label.cursor'),
+        //     '--form-check-label-color': theme('formCheck.label.color'),
+        //     '--form-check-label-cursor': theme('formCheck.label.cursor'),
 
-            '--form-check-inline-display': theme('formCheck.inline.display'),
-            '--form-check-inline-margin-right': theme('formCheck.inline.marginRight'),
-        },
+        //     '--form-check-inline-display': theme('formCheck.inline.display'),
+        //     '--form-check-inline-margin-right': theme('formCheck.inline.marginRight'),
+        // },
 
         '.form-check': {
             display: theme('formCheck.display'),
@@ -98,8 +92,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             border: theme('formCheck.border'),
             colorAdjust: theme('formCheck.colorAdjust'), // Keep themed appearance for print
             transition: theme('formCheck.transition'),
-
-            '-webkit-appearance': theme('formCheck.appearance'),
             appearance: theme('formCheck.appearance'),
           
             '&[type="checkbox"]': {
@@ -190,7 +182,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             marginLeft: `calc((1.25em + .5em) * -1)`,
             marginTop: `calc((${theme('formControl.lineHeight', 1.5)} * 1em - 1.25em) / 2)`, // line-height minus check height
             verticalAlign: 'top',
-            backgroundColor: theme('colors.white', white),
+            backgroundColor: theme('colors.white', colors.white),
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
@@ -212,23 +204,23 @@ module.exports = plugin(function({ addComponents, theme }) {
                 filter: 'brightness(90%)'
             },
             focus: {
-                borderColor: `lighten(${theme('variations.primary')}, .25)`,
+                borderColor: `lighten(${theme('variations.primary', theme('colors.blue.500', colors.blue[500]))}, .25)`,
                 outline: 0,
                 boxShadow: theme('formControl.focus.boxShadow')
             },
             checked: {
-                backgroundColor: theme('variations.primary'),
-                borderColor: theme('variations.primary'),
+                backgroundColor: theme('variations.primary', theme('colors.blue.500', colors.blue[500])),
+                borderColor: theme('variations.primary', theme('colors.blue.500', colors.blue[500])),
                 checkbox: {
                     backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>")`)
                 },
                 radio: {
-                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='white'/></svg>")`)
+                    backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#fff'/></svg>")`)
                 }
             },
             indeterminate: {
-                backgroundColor: theme('variations.primary'),
-                borderColor: theme('variations.primary'),
+                backgroundColor: theme('variations.primary', theme('colors.blue.500', colors.blue[500])),
+                borderColor: theme('variations.primary', theme('colors.blue.500', colors.blue[500])),
                 checkbox: {
                     backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>")`)
                 },

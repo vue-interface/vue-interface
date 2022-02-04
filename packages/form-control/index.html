@@ -4,13 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>FormControl</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="./dist/FormControl.css">
     </head>
     <body>
-        <div id="app" class="container">
-            <h1>Text Inputs</h1>
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-6">Text Inputs</h1>
 
             <div class="form-group">
                 <label for="control" class="form-label">Some Label</label>
@@ -42,7 +39,7 @@
                 <input type="color" id="control" class="form-control form-control-color" />
             </div>
 
-            <h2>Sizes</h2>
+            <h2 class="text-2xl mt-6 mb-3">Input Sizes</h2>
             
             <div class="form-group">
                 <label class="form-label">Small</label>
@@ -59,7 +56,7 @@
                 <input type="text" class="form-control form-control-lg" placeholder="form-control-lg" />
             </div>
 
-            <h1>Select Dropdowns</h1>
+            <h2 class="text-2xl mt-6 mb-3">Select Dropdowns</h2>
 
             <div class="form-group">
                 <label class="form-label">Some Label</label>
@@ -97,7 +94,7 @@
                 </select>
             </div>
 
-            <h2>Sizes</h2>
+            <h2 class="text-2xl mt-6 mb-3">Select Dropdown Sizes</h2>
 
             <div class="form-group">
                 <label class="form-label">Small</label>
@@ -126,75 +123,83 @@
                 </select>
             </div>
 
-            <h1>Checkboxes and Radios</h1>
+            <h2 class="text-2xl mt-6 mb-3">Checkboxes and Radios</h2>
 
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" type="checkbox" id="defaultCheck1">
+                <input type="checkbox" class="form-check-input" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
                     Default checkbox
                 </label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="defaultCheck2" disabled checked>
-                <label class="form-check-label" for="defaultCheck2">
+
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="defaultCheck1" checked disabled>
+                <label class="form-check-label" for="defaultCheck1">
                     Disabled checkbox
                 </label>
             </div>
-            <hr>
+            
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="defaultRadio1" name="radio">
+                <input type="radio" name="radio" class="form-check-input" id="defaultRadio1" checked>
                 <label class="form-check-label" for="defaultRadio1">
                     Default radio
                 </label>
             </div>
+
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="defaultRadio2" name="radio">
+                <input type="radio" name="radio" class="form-check-input" id="defaultRadio2">
                 <label class="form-check-label" for="defaultRadio2">
                     Second radio
                 </label>
             </div>
+
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="defaultRadio3" disabled checked>
+                <input type="radio" class="form-check-input" id="defaultRadio3" disabled checked>
                 <label class="form-check-label" for="defaultRadio3">
                     Disabled radio
                 </label>
             </div>
 
-            <h2>Inline</h2>
+            <h2 class="text-2xl mt-6 mb-3">Inline</h2>
 
             <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" type="checkbox" id="inlineCheck1">
+                <input type="checkbox" class="form-check-input" id="inlineCheck1">
                 <label class="form-check-label" for="inlineCheck1">
                     Default checkbox
                 </label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheck2" disabled checked>
+                <input type="checkbox" class="form-check-input" id="inlineCheck2" disabled>
                 <label class="form-check-label" for="inlineCheck2">
                     Disabled checkbox
                 </label>
             </div>
-            <hr>
+            
+            <div class="mb-3"></div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="inlineRadio1" name="radio">
+                <input type="radio" name="radio2" class="form-check-input" id="inlineRadio1">
                 <label class="form-check-label" for="inlineRadio1">
                     Default radio
                 </label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="inlineRadio2" name="radio">
+                <input type="radio" name="radio2" class="form-check-input" id="inlineRadio2">
                 <label class="form-check-label" for="inlineRadio2">
                     Second radio
                 </label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="inlineRadio3" disabled checked>
+                <input type="radio" class="form-check-input" id="inlineRadio3" disabled>
                 <label class="form-check-label" for="inlineRadio3">
                     Disabled radio
                 </label>
             </div>
 
-            <h1>File browser</h1>
+            <h2 class="text-2xl mt-6 mb-3">File Browser</h2>
 
             <div class="form-file form-group">
                 <input type="file" class="form-file-input" id="customFile">
@@ -220,7 +225,7 @@
                 </label>
             </div>
               
-            <h2>Sizes</h2>
+            <h2 class="text-2xl mt-6 mb-3">File Browser Sizes</h2>
 
             <div class="form-file form-file-sm form-group">
                 <input type="file" class="form-file-input" id="customFile">
@@ -247,11 +252,11 @@
             </div>
             
 
-            <h1>Switches</h1>
+            <h2 class="text-2xl mt-6 mb-3">Switches</h2>
 
             <div class="form-group">
                 <div class="form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch" checked>
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch" checked>
                     <label class="form-check-label" for="defaultSwitch">
                         On by default
                     </label>
@@ -260,7 +265,7 @@
 
             <div class="form-group">
                 <div class="form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch2">
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch2">
                     <label class="form-check-label" for="defaultSwitch2">
                         Off by default
                     </label>
@@ -269,14 +274,14 @@
 
             <div class="form-group">
                 <div class="form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch3" disabled>
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch3" disabled>
                     <label class="form-check-label" for="defaultSwitch3">
                         Disabled
                     </label>
                 </div>
             </div>
 
-            <h2>Sizes</h2>
+            <h2 class="text-2xl mt-6 mb-3">Switch Sizes</h2>
 
             <p>
                 These sizes don't conform to the Bootstrap 5 standard, but make
@@ -285,7 +290,7 @@
 
             <div class="form-group">
                 <div class="form-switch form-control-sm">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch3">
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch3">
                     <label class="form-check-label" for="defaultSwitch3">
                         Small
                     </label>
@@ -294,7 +299,7 @@
 
             <div class="form-group">
                 <div class="form-switch form-control">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch4">
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch4">
                     <label class="form-check-label" for="defaultSwitch4">
                         Medium
                     </label>
@@ -303,14 +308,15 @@
 
             <div class="form-group">
                 <div class="form-switch form-control-lg">
-                    <input class="form-check-input" type="checkbox" id="defaultSwitch5">
+                    <input type="checkbox" class="form-check-input" id="defaultSwitch5">
                     <label class="form-check-label" for="defaultSwitch5">
                         Large
                     </label>
                 </div>
             </div>
 
-            <h1>Input Groups</h1>
+            <!--
+            <h2 class="text-2xl mt-6 mb-3">Input Groups</h2>
 
             <div class="input-group mb-3">
                 <span class="input-group-text">@</span>
@@ -373,7 +379,7 @@
             
             <div class="input-group">
                 <div class="input-group-text">
-                    <input class="form-check-input" type="radio" value="" aria-label="Radio button for following text input">
+                    <input type="radio" class="form-check-input" value="" aria-label="Radio button for following text input">
                 </div>
                 <input type="text" class="form-control" aria-label="Text input with radio button">
             </div>
@@ -495,78 +501,85 @@
                 </div>
                 <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
             </div>
+            -->
             
-            <h1>Validation</h1>
+            <h2 class="text-2xl mt-6 mb-3">Validation</h2>
 
-            <form class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-                    <div class="valid-feedback">
-                        Looks good!
+            <form class="needs-validation" novalidate>
+                <div class="flex mb-3">
+                    <div class="w-1/3 mr-3">
+                        <label for="validationCustom01" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-                    <div class="valid-feedback">
-                        Looks good!
+                    <div class="w-1/3 mr-3">
+                        <label for="validationCustom02" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustomUsername" class="form-label">Username</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                            Please choose a username.
+                    <div class="w-1/3">
+                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">City</label>
-                    <input type="text" class="form-control" id="validationCustom03" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid city.
-                    </div>
-                </div>
-                <div class="col-md-3">
-                  <label for="validationCustom04" class="form-label">State</label>
-                    <select class="form-select" id="validationCustom04" required>
-                        <option selected="" disabled="" value="">Choose...</option>
-                        <option>...</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label for="validationCustom05" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="validationCustom05" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid zip.
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Agree to terms and conditions
-                        </label>
+                <div class="flex mb-3">
+                    <div class="w-1/2 mr-3">
+                        <label for="validationCustom03" class="form-label">City</label>
+                        <input type="text" class="form-control" id="validationCustom03" required>
                         <div class="invalid-feedback">
-                            You must agree before submitting.
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="w-1/4 mr-3">
+                    <label for="validationCustom04" class="form-label">State</label>
+                        <select class="form-select" id="validationCustom04" required>
+                            <option selected="" disabled="" value="">Choose...</option>
+                            <option>...</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                    <div class="w-1/4">
+                        <label for="validationCustom05" class="form-label">Zip</label>
+                        <input type="text" class="form-control" id="validationCustom05" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                <div class="flex mb-3">
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex mb-3">
+                    <div class="col-12">
+                        <button class="bg-blue-500 active:bg-blue-600 active:ring-4 focus:ring-4 ring-blue-500/50 text-white rounded px-3 py-2" type="submit">Submit form</button>
+                    </div>
                 </div>
             </form>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-        <script type="text/javascript" src="./dist/FormControl.umd.js"></script>
-        <script type="text/javascript">
+        <script type="module">
+            import './index.css';
+            import Vue from 'vue/dist/vue';
+
             const vue = new Vue({
                 el: '#app'
             });
@@ -579,7 +592,7 @@
                 var forms = document.querySelectorAll('.needs-validation')
             
                 // Loop over them and prevent submission
-                Array.prototype.slice.call(forms).forEach(function (form) {
+                forms.forEach(function(form) {
                     form.addEventListener('submit', function (event) {
                         if (!form.checkValidity()) {
                             event.preventDefault()

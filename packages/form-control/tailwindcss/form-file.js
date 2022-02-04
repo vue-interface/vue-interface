@@ -1,10 +1,10 @@
 const plugin = require('tailwindcss/plugin');
-const { colors } = require('tailwindcss/defaultTheme');
-const { flatten, rgba } = require('@vue-interface/tailwindcss/utils');
+const colors = require('tailwindcss/colors');
+const Color = require('color');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': flatten(theme('formFile'), '--form-file-'),
+        // ':root': flatten(theme('formFile'), '--form-file-'),
         
         '.form-file': {
             // --bs-form-fileHeight: #{$form-file-height};
@@ -108,25 +108,25 @@ module.exports = plugin(function({ addComponents, theme }) {
             lineHeight: theme('formControl.lineHeight', 1.5),
             fontFamily: theme('formControl.fontFamily', 'inherit'),
             fontWeight: theme('formControl.fontWeight', 400),
-            color: theme('formControl.color', theme('colors.gray.400', colors.gray['400'])),
+            color: theme('formControl.color', theme('colors.gray.400', colors.gray[400])),
             backgroundColor: theme('formControl.backgroundColor', theme('colors.white', colors.white)),
             borderWidth: theme('formControl.borderWidth', '1px'),
-            borderColor: theme('formControl.borderColor', theme('colors.gray.600', colors.gray['600'])),
+            borderColor: theme('formControl.borderColor', theme('colors.gray.600', colors.gray[600])),
             borderRadius: theme('formControl.borderRadius', '.25rem'),
             boxShadow: theme('formControl.boxShadow', 'inset 0 1px 2px rgba(0, 0, 0, .075)'),
 
             focus: {
-                borderColor: theme('formControl.focus.borderColor', theme('colors.blue.400', colors.blue['400'])),
-                boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${rgba(theme('colors.blue.500', colors.blue['500']), .25)}`)
+                borderColor: theme('formControl.focus.borderColor', theme('colors.blue.400', colors.blue[400])),
+                boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${Color(theme('colors.blue.500', colors.blue[500])).fade(.25)}`)
             },
             disabled: {
                 borderColor: theme('formControl.disabled.borderColor', 'inherit'),
-                backgroundColor: theme('formControl.disabled.backgroundColor', theme('colors.gray.200', colors.gray['200']))
+                backgroundColor: theme('formControl.disabled.backgroundColor', theme('colors.gray.200', colors.gray[200]))
             },
 
             button: {
-                color: theme('formControl.color', colors.gray['600']),
-                backgroundColor: theme('formControl.disabled.backgroundColor', colors.gray['200']),
+                color: theme('formControl.color', colors.gray[600]),
+                backgroundColor: theme('formControl.disabled.backgroundColor', colors.gray[200]),
             },
 
             sm: {

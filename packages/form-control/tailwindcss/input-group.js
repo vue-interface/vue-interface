@@ -1,12 +1,12 @@
 const plugin = require('tailwindcss/plugin');
-const { colors } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        ':root': {
-            '--input-group-text-color': theme('inputGroup.color'),
-            '--input-group-text-background-color': theme('inputGroup.backgroundColor')
-        },
+        // ':root': {
+        //     '--input-group-text-color': theme('inputGroup.color'),
+        //     '--input-group-text-background-color': theme('inputGroup.backgroundColor')
+        // },
         '.input-group': {
             position: 'relative',
             display: 'flex',

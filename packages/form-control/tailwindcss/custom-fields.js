@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 const { colors } = require('tailwindcss/defaultTheme');
-const { success, danger } = require('@vue-interface/variant/tailwindcss/defaultVariations');
-const { flatten, divide, multiply, rgba } = require('@vue-interface/tailwindcss/utils');
+const { success, danger } = require('@vue-interface/variant/tailwindcss/variations');
+const { flatten, multiply, rgba } = require('@vue-interface/tailwindcss/utils');
 
 
 module.exports = plugin(function({ addComponents, theme }) {

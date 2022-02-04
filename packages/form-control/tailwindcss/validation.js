@@ -1,44 +1,48 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
-const { colors } = require('tailwindcss/defaultTheme');
-const { escapeSvg, rgba } = require('@vue-interface/tailwindcss/utils');
+const colors = require('tailwindcss/colors');
+const escapeSvg = require('./utils/escapeSvg');
 
 function contrast(color, light, dark) {
     return Color(color).luminosity() > .5 ? (dark || 'black') : (light || 'white');
 }
 
 module.exports = plugin(function({ addComponents, theme }) {
-    const component = {
-        ':root': {
-            '--form-feedback-display': theme('formFeedback.display'),
-            '--form-feedback-width': theme('formFeedback.width'),
-            '--form-feedback-margin-top': theme('formFeedback.marginTop'),
-            '--form-feedback-font-size': theme('formFeedback.fontSize'),
-            '--form-feedback-font-style': `${theme('formFeedback.fontStyle')}`,
+    const selectIconPaddingRight = `calc(1em * .75 + (2 * ${theme('formSelect.paddingY')} * .75) + ${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`;
+    const selectFeedbackIconPosition =`center right calc(${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`;
+    const selectFeedbackIconSize = `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2) calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`;
 
-            '--form-select-feedback-icon-padding-right': `calc(1em * .75 + (2 * ${theme('formSelect.paddingY')} * .75) + ${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
-            '--form-select-feedback-icon-position': `center right calc(${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
-            '--form-select-feedback-icon-size': `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2) calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`,
+    const component = {
+        // '*, ::before, ::after': {
+        //     '--form-feedback-display': theme('formFeedback.display'),
+        //     '--form-feedback-width': theme('formFeedback.width'),
+        //     '--form-feedback-margin-top': theme('formFeedback.marginTop'),
+        //     '--form-feedback-font-size': theme('formFeedback.fontSize'),
+        //     '--form-feedback-font-style': `${theme('formFeedback.fontStyle')}`,
+
+        //     '--form-select-feedback-icon-padding-right': `calc(1em * .75 + (2 * ${theme('formSelect.paddingY')} * .75) + ${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
+        //     '--form-select-feedback-icon-position': `center right calc(${theme('formSelect.paddingX')} + ${theme('formSelect.indicator.paddingX')})`,
+        //     '--form-select-feedback-icon-size': `calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2) calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 2)`,
             
-            '--form-tooltip-position': theme('formTooltip.position'),
-            '--form-tooltip-top': theme('formTooltip.top'),
-            '--form-tooltip-z-index': theme('formTooltip.zIndex'),
-            '--form-tooltip-display': theme('formTooltip.display'),
-            '--form-tooltip-max-width': theme('formTooltip.maxWidth'),
-            '--form-tooltip-margin-top': theme('formTooltip.marginTop'),
-            '--form-tooltip-padding-y': theme('formTooltip.paddingY'),
-            '--form-tooltip-padding-x': theme('formTooltip.paddingX'),
-            '--form-tooltip-font-size': theme('formTooltip.fontSize'),
-            '--form-tooltip-line-height': `${theme('formTooltip.lineHeight')}`,
-            '--form-tooltip-opacity': `${theme('formTooltip.opacity')}`,
-            '--form-tooltip-border-radius': theme('formTooltip.borderRadius'),
-        }
+        //     '--form-tooltip-position': theme('formTooltip.position'),
+        //     '--form-tooltip-top': theme('formTooltip.top'),
+        //     '--form-tooltip-z-index': theme('formTooltip.zIndex'),
+        //     '--form-tooltip-display': theme('formTooltip.display'),
+        //     '--form-tooltip-max-width': theme('formTooltip.maxWidth'),
+        //     '--form-tooltip-margin-top': theme('formTooltip.marginTop'),
+        //     '--form-tooltip-padding-y': theme('formTooltip.paddingY'),
+        //     '--form-tooltip-padding-x': theme('formTooltip.paddingX'),
+        //     '--form-tooltip-font-size': theme('formTooltip.fontSize'),
+        //     '--form-tooltip-line-height': `${theme('formTooltip.lineHeight')}`,
+        //     '--form-tooltip-opacity': `${theme('formTooltip.opacity')}`,
+        //     '--form-tooltip-border-radius': theme('formTooltip.borderRadius'),
+        // }
     };
 
     function validationStateSelector(state, color, icon) {
-        Object.assign(component[':root'], {
-            [`--form-feedback-${state}-icon`]: icon
-        });
+        // Object.assign(component[':root'], {
+        //     [`--form-feedback-${state}-icon`]: icon
+        // });
 
         Object.assign(component, {
             [`.${state}-feedback`]: {
@@ -61,7 +65,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 fontSize: theme('formTooltip.fontSize'),
                 lineHeight: theme('formTooltip.lineHeight'),
                 color: contrast(color, colors.white, colors.black),
-                backgroundColor: rgba(color, theme('formTooltip.opacity')),
+                backgroundColor: Color(color).fade(theme('formTooltip.opacity')),
                 borderRadius: theme('formTooltip.borderRadius'),
             },
 
@@ -75,12 +79,12 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundImage: theme('validation.enableIcons') ? icon : null,
                 backgroundRepeat: theme('validation.enableIcons') ? 'no-repeat' : null,
                 backgroundPosition: theme('validation.enableIcons') ? `right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) center` : null,
-                backgroundSize: theme('validation.enableIcons') ? component[':root']['--form-select-feedback-icon-size'] : null,
+                backgroundSize: theme('validation.enableIcons') ? selectFeedbackIconSize : null,
             },
 
             [`.was-validated .form-control:${state}, .was-validated .form-control.is-${state}:focus`]: {
                 borderColor: color,
-                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, theme('formControl.focus.opacity'))}`
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(theme('formControl.focus.opacity'))}`
             },
                 
             [`.was-validated textarea.form-control:${state}, .was-validated textarea.form-control.is-${state}`]: {
@@ -90,15 +94,15 @@ module.exports = plugin(function({ addComponents, theme }) {
                 
             [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}`]: {
                 borderColor: color,
-                paddingRight: theme('validation.enableIcons') ? component[':root']['--form-select-feedback-icon-padding-right'] : null,
+                paddingRight: theme('validation.enableIcons') ? selectIconPaddingRight : null,
                 backgroundImage: theme('validation.enableIcons') ? `${icon}, ${theme('formSelect.backgroundImage')}` : null,
-                backgroundPosition: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-position']}, ${theme('formSelect.backgroundPosition')}` : null,
-                backgroundSize: theme('validation.enableIcons') ? `${component[':root']['--form-select-feedback-icon-size']}, ${theme('formSelect.backgroundSize')}, ${theme('formSelect.backgroundSize')}` : null,
+                backgroundPosition: theme('validation.enableIcons') ? `${selectFeedbackIconPosition}, ${theme('formSelect.backgroundPosition')}` : null,
+                backgroundSize: theme('validation.enableIcons') ? `${selectFeedbackIconSize}, ${theme('formSelect.backgroundSize')}, ${theme('formSelect.backgroundSize')}` : null,
             },
 
             [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}:focus`]: {
                 borderColor: color,
-                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },
     
             [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}`]: {
@@ -110,7 +114,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             },
                 
             [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}:focus`]: {
-                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },
                 
             [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state} ~ .form-check-label`]: {
@@ -128,7 +132,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             [`.was-validated .form-file-input:${state}:focus ~ .form-file-label, .was-validated .form-file-input.is-${state}:focus ~ .form-file-label`]: {
                 borderColor: color,
-                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${rgba(color, .25)}`
+                boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },     
         });
     }
@@ -195,7 +199,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             paddingX: theme('tooltip.paddingX', '.5rem'),
             fontSize: theme('tooltip.fontSize', '.875rem'),
             lineHeight: theme('tooltip.lineHeight', 1.5),
-            opacity: theme('tooltip.opacity', .9),
+            opacity: theme('tooltip.opacity', .5),
             borderRadius: theme('tooltip.borderRadius', '.25rem'),
         })
     }
