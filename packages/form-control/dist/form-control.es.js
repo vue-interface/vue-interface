@@ -24,7 +24,7 @@ var Shadowable = {
 };
 function prefix(value, key, delimeter = "-") {
   const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), "");
-  return [prefix, string].filter((value2) => !!value2).join(delimeter);
+  return [value, string].filter((value2) => !!value2).join(delimeter);
 }
 function isObject(subject) {
   return !Array.isArray(subject) && typeof subject === "object";

@@ -4,7 +4,7 @@ function prefix(value, key, delimeter = '-') {
     const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), '');
 
     return [
-        prefix, string
+        value, string
     ].filter(value => !!value).join(delimeter);
 }
 
