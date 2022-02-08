@@ -22,7 +22,7 @@ var Shadowable = {
     }
   }
 };
-function prefix(value, key) {
+function prefix(value, key, delimeter = "-") {
   const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), "");
   return [prefix, string].filter((value2) => !!value2).join(delimeter);
 }

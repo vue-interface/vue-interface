@@ -1,6 +1,6 @@
 import { Shadowable } from '@vue-interface/shadowable';
 
-function prefix(value, key) {
+function prefix(value, key, delimeter = '-') {
     const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), '');
 
     return [
