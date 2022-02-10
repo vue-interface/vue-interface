@@ -1,10 +1,11 @@
 import { Shadowable } from '@vue-interface/shadowable';
+import { paramCase } from 'param-case';
 
-function prefix(value, key, delimeter = '-') {
-    const string = (key || value).toString().replace(new RegExp(`^${prefix}${delimeter}?`), '');
+function prefix(key, value, delimeter = '-') {
+    const string = value.toString().replace(new RegExp(`^${key}${delimeter}?`), '');
 
     return [
-        value, string
+        paramCase(string), key
     ].filter(value => !!value).join(delimeter);
 }
 
@@ -14,11 +15,78 @@ function isObject(subject) {
 
 export default {
 
-    inheritAttrs: false,
+    directives: {
+        bindEvents: {
+            bind(el, binding, vnode) {
+                // function onInput() {
+                //     vnode.context.isEmpty = !el.value;
+
+                //     if(el.value) {
+                //         vnode.context.currentValue = el.value;
+                //     }
+
+                //     setSelectedIndex();
+
+                //     return onInput;
+                // }
+
+                // function setSelectedIndex() {
+                //     // Set the data-selected-index attribute if necessary.
+                //     if(el.selectedIndex >= -1) {
+                //         el.setAttribute('data-selected-index', el.selectedIndex);
+                //     }
+                //     else {
+                //         el.removeAttribute('data-selected-index');
+                //     }
+                // }
+
+                // Add the has-focus class from the form control
+                el.addEventListener('focus', () => {
+                    vnode.context.hasFocus = true;
+                });
+
+                // Remove the has-focus class from the form control
+                el.addEventListener('blur', () => {
+                    vnode.context.hasFocus = false;
+                });
+
+                el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', e => {
+                    vnode.context.isEmpty = !el.value;
+                    vnode.context.currentValue = el.value;
+                });
+
+                // Remove the has-focus class from the form control
+                // el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
+
+                vnode.context.hasChanged = !!el.value;
+
+                // Bubble the native events up to the vue component.
+                vnode.context.bindEvents.forEach(name => {
+                    el.addEventListener(name, event => {
+                        vnode.context.$emit(name, event);
+                    });
+                });
+
+                if(el.tagName === 'SELECT') {
+                    const opt = el.querySelector('[value=""]');
+                
+                    if(opt && opt.value === el.value) {
+                        vnode.context.defaultEmpty = true;
+                    }
+                }
+            }
+        }
+    },
 
     mixins: [
         Shadowable
     ],
+
+    inheritAttrs: false,
+
+    // model: {
+    //     prop: 'currentValue'
+    // },
 
     props: {
 
@@ -57,16 +125,16 @@ export default {
             }
         },
 
-        /**
-         * Is the form control a custom styled component.
-         *
-         * @param {Boolean}
-         * @default false
-         */
-        custom: {
-            type: Boolean,
-            default: false
-        },
+        // /**
+        //  * Is the form control a custom styled component.
+        //  *
+        //  * @param {Boolean}
+        //  * @default false
+        //  */
+        // custom: {
+        //     type: Boolean,
+        //     default: false
+        // },
 
         /**
          * The default class name assigned to the control element
@@ -176,13 +244,6 @@ export default {
         invalid: Boolean,
 
         /**
-         * Use the legacy (Bootstrap 4) classes (if applicable).
-         *
-         * @param Boolean
-         */
-        legacy: Boolean,
-
-        /**
          * The value of label element. If no value, no label will appear.
          *
          * @param {Number|String}
@@ -194,7 +255,10 @@ export default {
          *
          * @param {String|Object}
          */
-        labelClass: [Object, String],
+        labelClass: {
+            type: [Object, String],
+            default: 'form-label'
+        },
 
         /**
          * Should the control look like a pill.
@@ -215,11 +279,7 @@ export default {
          *
          * @param {String}
          */
-        size: {
-            type: String,
-            default: 'md',
-            validate: value => ['sm', 'md', 'lg'].indexOf(value) !== -1
-        },
+        size: String,
 
         /**
          * Additional margin/padding classes for fine control of spacing
@@ -246,105 +306,20 @@ export default {
 
     },
 
-    directives: {
-        bindEvents: {
-            bind(el, binding, vnode) {
-                function onInput() {
-                    vnode.context.isEmpty = !el.value;
-
-                    if(el.value) {
-                        vnode.context.currentValue = el.value;
-                    }
-
-                    setSelectedIndex();
-
-                    return onInput;
-                }
-
-                function setSelectedIndex() {
-                    // Set the data-selected-index attribute if necessary.
-                    if(el.selectedIndex >= -1) {
-                        el.setAttribute('data-selected-index', el.selectedIndex);
-                    }
-                    else {
-                        el.removeAttribute('data-selected-index');
-                    }
-                }
-
-                // Add the has-focus class from the form control
-                el.addEventListener('focus', () => {
-                    vnode.context.hasFocus = true;
-                });
-
-                // Remove the has-focus class from the form control
-                el.addEventListener('blur', () => {
-                    vnode.context.hasFocus = false;
-                });
-
-                // Remove the has-focus class from the form control
-                el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
-
-                vnode.context.hasChanged = !!el.value;
-
-                // Bubble the native events up to the vue component.
-                vnode.context.bindEvents.forEach(name => {
-                    el.addEventListener(name, event => {
-                        vnode.context.$emit(name, event);
-                    });
-                });
-
-                if(el.tagName === 'SELECT') {
-                    const opt = el.querySelector('[value=""]');
-                
-                    if(opt && opt.value === el.value) {
-                        vnode.context.defaultEmpty = true;
-                    }
-                }
-            }
-        }
-    },
-    
-    methods: {
-
-        blur() {
-            if(this.getInputField()) {
-                this.getInputField().blur();
-            }
-        },
-
-        focus() {
-            if(this.getInputField()) {
-                this.getInputField().focus();
-            }
-        },
-
-        getInputField() {
-            return this.$el.querySelector(
-                '.form-control, input, select, textarea'
-            );
-        },
-
-        getFieldErrors() {
-            let errors = this.error || this.errors;
-
-            if(isObject(this.errors)) {
-                errors = this.errors[this.$attrs.name || this.$attrs.id];
-            }
-
-            return !errors || Array.isArray(errors) || isObject(errors) ? errors : [errors];
-        },
-
-        onInput(e) {
-            this.$emit('input', e.target.value);
-            this.$emit('update:value', e.target.value);
-        }
-
+    data() {
+        return {
+            currentValue: this.value || this.defaultValue,
+            defaultEmpty: false,
+            hasChanged: false,
+            hasFocus: false,
+            isEmpty: !(this.value || this.defaultValue),
+        };
     },
 
     computed: {
 
         id() {
-            return this.$attrs.id || Math.random().toString(36).substring(2, 15);
+            return this.$attrs.id || this.$attrs.name;
         },
 
         controlAttributes() {
@@ -366,25 +341,27 @@ export default {
         },
 
         controlClass() {
-            return this.custom ? this.customControlClass : this.defaultControlClass;
+            // return this.custom ? this.customControlClass : this.defaultControlClass;
+            return this.defaultControlClass;
         },
 
         controlSizeClass() {
             return prefix(this.size, this.controlClass);
         },
 
-        customControlClass() {
-            return 'custom-control';
-        },
+        // customControlClass() {
+        //     return 'custom-control';
+        // },
 
         formGroupClasses() {
             return {
-                [this.componentName]: !!this.componentName,
-                [prefix(this.size, this.componentName)]: !!this.size,
-                [prefix(this.componentName, 'custom')]: this.custom,
-                [prefix(this.size, prefix(this.componentName, 'custom'))]: this.custom && this.size,
+                [paramCase(this.componentName)]: !!this.componentName,
+                [this.size && prefix(this.size, this.componentName)]: !!this.size,
+                // [prefix(this.componentName, 'custom')]: this.custom,
+                // [prefix(this.size, prefix(this.componentName, 'custom'))]: this.custom && this.size,
                 'default-empty': this.defaultEmpty,
                 'form-group': this.group,
+                [this.size && prefix(this.size, 'form-group')]: !!this.size,
                 'has-activity': this.activity,
                 'has-changed': this.hasChanged,
                 'has-focus': this.hasFocus,
@@ -438,6 +415,11 @@ export default {
     },
 
     watch: {
+        hasFocus() {
+            if(!this.getInputField().readOnly) {
+                this.hasChanged = true;
+            }
+        },
         value(value) {
             this.currentValue = value;
         },
@@ -451,15 +433,42 @@ export default {
             this.$emit('input', this.defaultValue);
         }
     },
+    
+    methods: {
 
-    data() {
-        return {
-            currentValue: this.value || this.defaultValue,
-            defaultEmpty: false,
-            hasChanged: false,
-            hasFocus: false,
-            isEmpty: false,
-        };
+        blur() {
+            if(this.getInputField()) {
+                this.getInputField().blur();
+            }
+        },
+
+        focus() {
+            if(this.getInputField()) {
+                this.getInputField().focus();
+            }
+        },
+
+        getInputField() {
+            return this.$el.querySelector(
+                '.form-control, input, select, textarea'
+            );
+        },
+
+        getFieldErrors() {
+            let errors = this.error || this.errors;
+
+            if(isObject(this.errors)) {
+                errors = this.errors[this.$attrs.name || this.$attrs.id];
+            }
+
+            return !errors || Array.isArray(errors) || isObject(errors) ? errors : [errors];
+        },
+
+        onInput(e) {
+            this.$emit('input', e.target.value);
+            this.$emit('update:value', e.target.value);
+        }
+
     }
 
 };

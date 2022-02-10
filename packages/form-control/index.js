@@ -1,4 +1,4 @@
-import FormControl from './src/FormControl';
+import FormControl from './src/FormControl.js';
 
 export {
     FormControl

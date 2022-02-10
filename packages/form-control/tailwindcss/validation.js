@@ -73,7 +73,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 display: 'block'
             },
 
-            [`.was-validated .form-control:${state}, .was-validated .form-control.is-${state}`]: {
+            [`.was-validated .form-control:${state}, .form-control.is-${state}`]: {
                 borderColor: color,
                 paddingRight: theme('validation.enableIcons') ? `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2)` : null,
                 backgroundImage: theme('validation.enableIcons') ? icon : null,
@@ -81,18 +81,22 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundPosition: theme('validation.enableIcons') ? `right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) center` : null,
                 backgroundSize: theme('validation.enableIcons') ? selectFeedbackIconSize : null,
             },
+                
+            [`.form-group.is-${state} > .form-label`]: {
+                color
+            },
 
-            [`.was-validated .form-control:${state}, .was-validated .form-control.is-${state}:focus`]: {
+            [`.was-validated .form-control:${state}, .form-control.is-${state}:focus`]: {
                 borderColor: color,
                 boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(theme('formControl.focus.opacity'))}`
             },
                 
-            [`.was-validated textarea.form-control:${state}, .was-validated textarea.form-control.is-${state}`]: {
+            [`.was-validated textarea.form-control:${state}, textarea.form-control.is-${state}`]: {
                 paddingRight: theme('validation.enableIcons') ? `calc(${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2)` : null,
                 backgroundPosition: theme('validation.enableIcons') ? `top calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4) right calc((${theme('formControl.lineHeight')} * 1em + ${theme('formControl.paddingY')} * 2) / 4)` : null
             },
                 
-            [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}`]: {
+            [`.was-validated .form-select:${state}, .form-select.is-${state}`]: {
                 borderColor: color,
                 paddingRight: theme('validation.enableIcons') ? selectIconPaddingRight : null,
                 backgroundImage: theme('validation.enableIcons') ? `${icon}, ${theme('formSelect.backgroundImage')}` : null,
@@ -100,37 +104,37 @@ module.exports = plugin(function({ addComponents, theme }) {
                 backgroundSize: theme('validation.enableIcons') ? `${selectFeedbackIconSize}, ${theme('formSelect.backgroundSize')}, ${theme('formSelect.backgroundSize')}` : null,
             },
 
-            [`.was-validated .form-select:${state}, .was-validated .form-select.is-${state}:focus`]: {
+            [`.was-validated .form-select:${state}, .form-select.is-${state}:focus`]: {
                 borderColor: color,
                 boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },
     
-            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}`]: {
+            [`.was-validated .form-check-input:${state}, .form-check-input.is-${state}`]: {
                 borderColor: color,
             },
                 
-            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}:checked`]: {
+            [`.was-validated .form-check-input:${state}, .form-check-input.is-${state}:checked`]: {
                 backgroundColor: color
             },
                 
-            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state}:focus`]: {
+            [`.was-validated .form-check-input:${state}, .form-check-input.is-${state}:focus`]: {
                 boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },
                 
-            [`.was-validated .form-check-input:${state}, .was-validated .form-check-input.is-${state} ~ .form-check-label`]: {
+            [`.was-validated .form-check-input:${state}, .form-check-input.is-${state} ~ .form-check-label`]: {
                 color
             },
     
-            [`.was-validated .form-check-inline .form-check-input:${state} ~ .${state}-feedback, .was-validated .form-check-inline .form-check-input.is-${state} ~ .${state}-feedback`]: {
+            [`.was-validated .form-check-inline .form-check-input:${state} ~ .${state}-feedback, .form-check-inline .form-check-input.is-${state} ~ .${state}-feedback`]: {
                 marginLeft: '.5em'
             },
                 
             // custom file
-            [`.was-validated .form-file-input:${state} ~ .form-file-label, .was-validated .form-file-input.is-${state} ~ .form-file-label`]: {
+            [`.was-validated .form-file-input:${state} ~ .form-file-label, .form-file-input.is-${state} ~ .form-file-label`]: {
                 borderColor: color
             },
 
-            [`.was-validated .form-file-input:${state}:focus ~ .form-file-label, .was-validated .form-file-input.is-${state}:focus ~ .form-file-label`]: {
+            [`.was-validated .form-file-input:${state}:focus ~ .form-file-label, .form-file-input.is-${state}:focus ~ .form-file-label`]: {
                 borderColor: color,
                 boxShadow: `0 0 0 ${theme('formControl.focus.width')} ${Color(color).fade(.5)}`
             },     

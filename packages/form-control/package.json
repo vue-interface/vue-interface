@@ -7,7 +7,7 @@
     "tailwindcss"
   ],
   "main": "./dist/form-control.umd.js",
-  "module": "./dist/form-control.es.js",
+  "module": "./index.js",
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
     "dev": "vite",
@@ -40,6 +40,7 @@
   "dependencies": {
     "@vue-interface/shadowable": "^1.0.0",
     "color": "^4.2.0",
+    "param-case": "^3.0.4",
     "vue": "^2.6.14"
   },
   "devDependencies": {
