@@ -1,9 +1,14 @@
 <template>
     <div :class="formGroupClasses">
         <slot name="label">
-            <label v-if="label" ref="label" :for="id" :class="labelClass" v-html="label" />
+            <label
+                v-if="label || $attrs.placeholder"
+                ref="label"
+                :for="id"
+                :class="labelClass"
+                @click="focus"
+                v-html="label || $attrs.placeholder" />
         </slot>
-
         <div class="form-group-inner">
             <slot name="control">
                 <div v-if="$slots.icon" class="form-group-inner-icon" @click="$refs.field.focus()">
@@ -51,12 +56,8 @@
 </template>
 
 <script>
-import FormControl from '@vue-interface/form-control';
-import { ActivityIndicator, register, Spinner } from '@vue-interface/activity-indicator';
-
-register({
-    spinner: Spinner
-});
+import FormControl from '@vue-interface/form-control/src/FormControl';
+import { ActivityIndicator } from '@vue-interface/activity-indicator';
 
 export default {
 

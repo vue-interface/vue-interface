@@ -4,63 +4,62 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>InputField</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./dist/InputField.css">
     </head>
     <body>
-        <form id="app" class="container">
-            <h1 class="mb-5">input-field</h1>
+        <form id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-5">input-field</h1>
 
-            <h2>Basic Usage</h2>
+            <h2 class="text-2xl mb-3">Basic Usage</h2>
 
-            <input-field type="text" label="Text Field" placeholder="Some placeholder"></input-field>
+            <div class="bg-gray-100 p-3 mb-3">
+                Value: {{ value }}
+            </div>
 
-            <input-field type="password" label="Password Field"></input-field>
-            <input-field type="text" label="Descriptive Text Field" help-text="Some helpful text goes here."></input-field>
-            <input-field type="email" label="Email Field" placeholder="you@example.com"></input-field>
-            <input-field type="text" label="Plain Text" placeholder="Type something here..." plaintext></input-field>
-            <input-field type="text" label="Readonly" placeholder="Type something here..." readonly></input-field>
+            <input-field v-model="value" type="text" label="Text Field" placeholder="Some placeholder" class="mb-3"></input-field>
+            <input-field type="password" label="Password Field" class="mb-3"></input-field>
+            <input-field type="text" label="Descriptive Text Field" help-text="Some helpful text goes here." class="mb-3"></input-field>
+            <input-field type="email" label="Email Field" placeholder="you@example.com" class="mb-3"></input-field>
+            <input-field type="text" label="Plain Text" placeholder="Type something here..." class="mb-3" plaintext></input-field>
+            <input-field type="text" label="Readonly" placeholder="Type something here..." class="mb-3" readonly></input-field>
 
-            <hr>
+            <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
 
-            <h2>Sizes</h2>
+            <input-field type="text" size="sm" label="Small"></input-field>
+            <input-field type="text" size="md" label="Medium"></input-field>
+            <input-field type="text" size="lg" label="Large"></input-field>
 
-            <input-field type="text" size="sm" placeholder="Small"></input-field>
-            <input-field type="text" size="md" placeholder="Medium"></input-field>
-            <input-field type="text" size="lg" placeholder="Large"></input-field>
+            <h2 class="text-2xl mt-6 mb-3">Activity Indicator</h2>
 
-            <hr>
-            
-            <h3>Custom Fields</h3>
-            
-            <input-field type="text" size="sm" label="Small" placeholder="Small" :activity="showActivity" custom></input-field>
-            <input-field type="text" size="md" label="Medium" placeholder="Medium" :activity="showActivity" custom></input-field>
-            <input-field type="text" size="lg" label="Large" placeholder="Large" :activity="showActivity" custom></input-field>
-
-            <hr>
-
-            <h2>Activity Indicator</h2>
-
-            <input-field type="text" size="sm" placeholder="Small" :activity="showActivity"></input-field>
-            <input-field type="text" size="md" placeholder="Medium" :activity="showActivity"></input-field>
-            <input-field type="text" size="lg" placeholder="Large" :activity="showActivity"></input-field>
+            <input-field type="text" size="sm" label="Small" indicator="dots" :activity="showActivity"></input-field>
+            <input-field type="text" size="md" label="Medium" indicator="pulse" :activity="showActivity"></input-field>
+            <input-field type="text" size="lg" label="Large" :activity="showActivity"></input-field>
 
             <button type="button" @click="showActivity = !showActivity">
                 <span v-if="!showActivity">Show</span><span v-else>Hide</span> Activity
             </button>
 
-            <hr>
-
-            <h2>Validation</h2>
+            <h2 class="text-2xl mt-6 mb-3">Validation</h2>
 
             <input-field type="text" label="Single Inline Error" error="This is an inline error."></input-field>
 
             <input-field type="text" name="test" label="Multiple Errors From Object" :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}"></input-field>
         </form>
 
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
-        <script type="text/javascript" src="./dist/InputField.umd.js"></script>
-        <script type="text/javascript">
+        <script type="module">
+            import './index.css';
+            import Vue from 'vue/dist/vue';
+            import { InputField } from './index.js';
+            import { register, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+            
+            register({
+                Dots,
+                Pulse,
+                Spinner
+            });
+            
+            Vue.config.devtools = false;
+            Vue.config.productionTip = false;
+              
             const vue = new Vue({
                 el: '#app',
                 components: {
