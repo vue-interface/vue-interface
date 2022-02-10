@@ -1,5 +1,3 @@
-console.log(123);
-
 module.exports = () => ([
     'form-check-input',
     'form-check-label',
