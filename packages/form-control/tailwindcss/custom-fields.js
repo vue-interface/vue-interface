@@ -31,6 +31,13 @@ module.exports = plugin(function({ addComponents, theme }) {
                 transitionDuration: '300ms',
                 color: theme('colors.gray.600', colors.gray[600]),
                 zIndex: 10,
+                marginBottom: 0,
+            },
+
+            '&.has-icon': {
+                '.form-label': {
+                    marginLeft: '1.5em'
+                }
             },
 
             'input, textarea, select': {
@@ -49,6 +56,12 @@ module.exports = plugin(function({ addComponents, theme }) {
 
             '&.form-group-sm': {
                 fontSize: theme('formControl.sm.fontSize'),
+
+                '&.has-icon': {
+                    '.form-label': {
+                        marginLeft: '1.75em'
+                    }
+                },
 
                 '.form-label': {
                     paddingLeft: theme('formControl.sm.paddingX'),
@@ -100,7 +113,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                     top: '-1px'
                 },
 
-                '& > .form-label ~ .form-group-inner': {    
+                '& > .form-label ~ .form-group-inner': {
                     'input, textarea, select': {
                         '&:not([readonly])': {
                             paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,

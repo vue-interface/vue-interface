@@ -226,6 +226,7 @@ var FormControl = {
         "has-activity": this.activity,
         "has-changed": this.hasChanged,
         "has-focus": this.hasFocus,
+        "has-icon": !!this.$slots.icon,
         "is-empty": this.isEmpty,
         "is-invalid": !!(this.invalid || this.invalidFeedback),
         "is-valid": !!(this.valid || this.validFeedback)
