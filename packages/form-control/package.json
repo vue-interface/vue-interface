@@ -3,7 +3,9 @@
   "version": "0.11.6",
   "description": "An abstract form control Vue mixin.",
   "files": [
+    "index.js",
     "dist",
+    "src",
     "tailwindcss"
   ],
   "main": "./dist/form-control.umd.js",
