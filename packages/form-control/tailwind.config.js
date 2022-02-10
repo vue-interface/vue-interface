@@ -19,6 +19,6 @@ module.exports = {
         require('./tailwindcss/validation')
     ],
     safelist: [
-        
+        ...require('./tailwindcss/safelist')()
     ]
 };
