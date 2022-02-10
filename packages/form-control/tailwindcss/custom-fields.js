@@ -58,10 +58,12 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 '&.has-changed': {
-                    'input, textarea, select': {
-                        '&:not(.is-empty), &:not([readonly])': {
-                            paddingTop: `calc(${theme('formControl.sm.paddingY')} * 2)`,
-                            paddingBottom: `calc(${theme('formControl.sm.paddingY')} * 0)`,
+                    '& > .form-label ~ .form-group-inner': {  
+                        'input, textarea, select': {
+                            '&:not(.is-empty), &:not([readonly])': {
+                                paddingTop: `calc(${theme('formControl.sm.paddingY')} * 2)`,
+                                paddingBottom: `calc(${theme('formControl.sm.paddingY')} * 0)`,
+                            }
                         }
                     }
                 },
@@ -78,10 +80,12 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 '&.has-changed': {
-                    'input, textarea, select': {
-                        '&:not(.is-empty), &:not([readonly])': {
-                            paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
-                            paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
+                    '& > .form-label ~ .form-group-inner': {  
+                        'input, textarea, select': {
+                            '&:not(.is-empty), &:not([readonly])': {
+                                paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
+                                paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
+                            }
                         }
                     }
                 },
@@ -95,11 +99,13 @@ module.exports = plugin(function({ addComponents, theme }) {
                     height: 'auto',
                     top: '-1px'
                 },
-    
-                'input, textarea, select': {
-                    '&:not([readonly])': {
-                        paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
-                        paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
+
+                '& > .form-label ~ .form-group-inner': {    
+                    'input, textarea, select': {
+                        '&:not([readonly])': {
+                            paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
+                            paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
+                        }
                     }
                 }
             }
