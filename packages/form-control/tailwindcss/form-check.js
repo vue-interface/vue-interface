@@ -1,6 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors'); 
 const escapeSvg = require('./utils/escapeSvg');
+const Color = require('color');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
@@ -204,7 +205,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 filter: 'brightness(90%)'
             },
             focus: {
-                borderColor: `lighten(${theme('variations.primary', theme('colors.blue.500', colors.blue[500]))}, .25)`,
+                borderColor: `${Color(theme('variations.primary', theme('colors.blue.500', colors.blue[500]))).lighten(.25)}`,
                 outline: 0,
                 boxShadow: theme('formControl.focus.boxShadow')
             },
