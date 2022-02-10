@@ -12,14 +12,6 @@ module.exports = {
         require('@vue-interface/form-control/tailwindcss/custom-fields')
     ],
     safelist: [
-        'form-control',
-        'form-control-sm',
-        'form-control-lg',
-        'form-group',
-        'has-validated',
-        'valid-feedback',
-        'invalid-feedback',
-        'is-invalid',
-        'is-valid'
+        ...require('@vue-interface/form-control/tailwindcss/safelist')()
     ]
 };
