@@ -32,18 +32,19 @@ module.exports = plugin(function({ addComponents, theme }) {
                 color: theme('colors.gray.600', colors.gray[600]),
                 zIndex: 10,
             },
-            
-            // '.form-control:not(.is-empty)::placeholder': {
-            //     opacity: 0,
-            //     color: theme('colors.gray.400', colors.gray[400])
-            // },
 
-            '.form-control:empty:focus::placeholder, .form-control.has-changed:empty::placeholder': {
-                opacity: 100
+            'input, textarea, select': {
+                '&:empty:focus::placeholder, &.has-changed:empty::placeholder': {
+                    opacity: 100
+                },
             },
 
-            '&.is-empty:not(.has-changed) .form-control::placeholder': {
-                opacity: 0,
+            '&.is-empty:not(.has-changed)': {
+                'input, textarea, select': {
+                    '&::placeholder': {
+                        opacity: 0,
+                    },
+                },
             },
 
             '&.form-group-sm': {
@@ -57,9 +58,11 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 '&.has-changed': {
-                    '.form-control:not(.is-empty), .form-control:not([readonly])': {
-                        paddingTop: `calc(${theme('formControl.sm.paddingY')} * 2)`,
-                        paddingBottom: `calc(${theme('formControl.sm.paddingY')} * 0)`,
+                    'input, textarea, select': {
+                        '&:not(.is-empty), &:not([readonly])': {
+                            paddingTop: `calc(${theme('formControl.sm.paddingY')} * 2)`,
+                            paddingBottom: `calc(${theme('formControl.sm.paddingY')} * 0)`,
+                        }
                     }
                 },
             },
@@ -75,9 +78,11 @@ module.exports = plugin(function({ addComponents, theme }) {
                 },
 
                 '&.has-changed': {
-                    '.form-control:not(.is-empty), .form-control:not([readonly])': {
-                        paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
-                        paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
+                    'input, textarea, select': {
+                        '&:not(.is-empty), &:not([readonly])': {
+                            paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
+                            paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
+                        }
                     }
                 },
             },
@@ -91,27 +96,13 @@ module.exports = plugin(function({ addComponents, theme }) {
                     top: '-1px'
                 },
     
-                '.form-control:not([readonly])': {
-                    paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
-                    paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
+                'input, textarea, select': {
+                    '&:not([readonly])': {
+                        paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
+                        paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
+                    }
                 }
-            },
-
-            // '&.form-group-lg': {
-            //     '.form-label': {
-            //         paddingLeft: theme('formControl.lg.paddingX'),
-            //         paddingTop: theme('formControl.lg.paddingY'),
-            //         paddingBottom: theme('formControl.lg.paddingY'),
-            //         fontSize: theme('formControl.lg.fontSize')
-            //     },
-
-            //     '&.has-changed': {
-            //         '.form-control:not(.is-empty), .form-control:not([readonly])': {
-            //             paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
-            //             paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
-            //         }
-            //     },
-            // }
+            }
         },
     };
 
