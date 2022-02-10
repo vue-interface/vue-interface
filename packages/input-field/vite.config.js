@@ -8,6 +8,9 @@ import { babel } from '@rollup/plugin-babel';
 const filename = name.split('/')[1];
 
 export default defineConfig({
+    optimizeDeps: {
+        exclude: ['@vue-interface/activity-indicator']
+    },
     build: {
         lib: {
             entry: path.resolve(__dirname, 'index.js'),

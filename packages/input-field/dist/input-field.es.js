@@ -669,6 +669,7 @@ const __vue2_script$1 = {
     },
     component() {
       return () => {
+        console.log(registry);
         const component = registry.get(this.type);
         if (component instanceof Promise) {
           return component;
