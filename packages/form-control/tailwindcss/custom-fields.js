@@ -9,7 +9,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             fontSize: theme('formControl.fontSize'),
 
             '*': {
-                transitionProperty: 'all',
+                transitionProperty: 'padding',
                 transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 transitionDuration: '150ms'
             },
