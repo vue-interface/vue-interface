@@ -461,7 +461,7 @@ export default {
         getFieldErrors() {
             let errors = this.error || this.errors;
 
-            if(isObject(this.errors)) {
+            if(this.errors && isObject(this.errors)) {
                 errors = this.errors[this.$attrs.name || this.$attrs.id];
             }
 
