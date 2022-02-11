@@ -249,6 +249,9 @@ var FormControl = {
       return !!this.$slots.default;
     },
     invalidFeedback() {
+      if (this.error === "") {
+        return null;
+      }
       if (this.error) {
         return this.error;
       }

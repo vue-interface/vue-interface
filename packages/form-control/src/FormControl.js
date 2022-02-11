@@ -388,6 +388,10 @@ export default {
         },
 
         invalidFeedback() {
+            if(this.error === '') {
+                return null;
+            }
+
             if(this.error) {
                 return this.error;
             }
