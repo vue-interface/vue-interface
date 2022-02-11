@@ -152,9 +152,9 @@ var FormControl = {
     defaultValue: {
       default: null
     },
-    error: [Boolean, String, Array],
+    error: [String, Array, Boolean],
     errors: {
-      type: Object,
+      type: [Array, Object, Boolean],
       default() {
         return {};
       }

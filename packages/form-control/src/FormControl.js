@@ -156,20 +156,20 @@ export default {
         /**
          * An inline field validation error.
          *
-         * @param {Boolean|String}
+         * @param {Array|String|Boolean}
          */
-        error: [Boolean, String, Array],
+        error: [String, Array, Boolean],
 
         /**
          * An inline field validation errors passed as object with key/value
          * pairs. If errors passed as an object, the form name will be used for
          * the key.
          *
-         * @param {Object|Boolean}
+         * @param {Array|Object|Boolean}
          * @default {}
          */
         errors: {
-            type: Object,
+            type: [Array, Object, Boolean],
             default() {
                 return {};
             }
