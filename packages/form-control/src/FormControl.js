@@ -84,10 +84,6 @@ export default {
 
     inheritAttrs: false,
 
-    // model: {
-    //     prop: 'currentValue'
-    // },
-
     props: {
 
         /**
@@ -162,7 +158,7 @@ export default {
          *
          * @param {Boolean|String}
          */
-        error: [Boolean, String],
+        error: [Boolean, String, Array],
 
         /**
          * An inline field validation errors passed as object with key/value
@@ -354,6 +350,8 @@ export default {
         // },
 
         formGroupClasses() {
+            console.log(this.$slots.icon);
+
             return {
                 [paramCase(this.componentName)]: !!this.componentName,
                 [this.size && prefix(this.size, this.componentName)]: !!this.size,
