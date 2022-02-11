@@ -94,7 +94,7 @@ module.exports = plugin(function({ addComponents, theme }) {
 
                 '&.has-changed': {
                     '& > .form-label ~ .form-group-inner': {  
-                        'input, textarea': {
+                        'input, textarea, select': {
                             '&:not(.is-empty), &:not([readonly])': {
                                 paddingTop: `calc(${theme('formControl.lg.paddingY')} * 2)`,
                                 paddingBottom: `calc(${theme('formControl.lg.paddingY')} * 0)`,
@@ -115,10 +115,8 @@ module.exports = plugin(function({ addComponents, theme }) {
 
                 '& > .form-label ~ .form-group-inner': {
                     'input, textarea, select': {
-                        '&:not([readonly])': {
-                            paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
-                            paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
-                        }
+                        paddingTop: `calc(${theme('formControl.paddingY')} * 2)`,
+                        paddingBottom: `calc(${theme('formControl.paddingY')} * 0)`,
                     }
                 }
             }

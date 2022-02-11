@@ -52,7 +52,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             backgroundImage: 'none'
         },
 
-        '.form-select:disabled': {
+        '.form-select:disabled:not([readonly])': {
             color: theme('formSelect.disabled.color'),
             backgroundColor: theme('formSelect.disabled.backgroundColor'),
             borderColor: theme('formSelect.disabled.borderColor'),
