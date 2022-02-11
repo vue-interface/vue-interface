@@ -417,7 +417,7 @@ export default {
 
     watch: {
         hasFocus() {
-            if(!this.getInputField().readOnly) {
+            if(this.shouldChangeOnFocus()) {
                 this.hasChanged = true;
             }
         },
@@ -425,6 +425,9 @@ export default {
             this.currentValue = value;
         },
         currentValue() {
+            this.hasChanged = true;
+        },
+        defaultEmpty() {
             this.hasChanged = true;
         }
     },
@@ -463,6 +466,10 @@ export default {
             }
 
             return !errors || Array.isArray(errors) || isObject(errors) ? errors : [errors];
+        },
+
+        shouldChangeOnFocus() {
+            return !this.getInputField().readOnly;
         },
 
         onInput(e) {

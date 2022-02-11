@@ -35,7 +35,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             outline: theme('formSelect.focus.outline'),
             boxShadow: `${theme('formSelect.focus.boxShadow')}${theme('formSelect.enableShadows') ? `, ${theme('formSelect.boxShadow')}` : ''}`,
         },
-            
+
         '.form-select::-ms-value': {
             // For visual consistency with other platforms/browsers,
             // suppress the default white text on blue background highlight given to
@@ -58,6 +58,12 @@ module.exports = plugin(function({ addComponents, theme }) {
             borderColor: theme('formSelect.disabled.borderColor'),
         },
 
+        // '.form-select[readonly]:disabled': {
+        //     color: theme('formSelect.color'),
+        //     backgroundColor: theme('formSelect.backgroundColor'),
+        //     borderColor: theme('formSelect.borderColor'),
+        // },
+            
         // Remove outline from select box in FF
         '.form-select:-moz-focusring': {
             color: 'transparent',
@@ -111,7 +117,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             focus: {
                 color: theme('formControl.color', theme('colors.gray.700', colors.gray['700'])),
                 backgroundColor: theme('formControl.backgroundColor', theme('colors.white', colors.white)),
-                borderColor: theme('formControl.borderColor', theme('colors.blue.400', colors.blue['400'])),
+                borderColor: theme('formControl.focus.borderColor', theme('colors.blue.400', colors.blue['400'])),
                 outline: theme('formControl.outline', 0),
                 boxShadow: theme('formControl.focus.boxShadow', `0 0 0 .2rem ${Color(theme('colors.blue.500', colors.blue['500'])).fade(.25)}`)
             },

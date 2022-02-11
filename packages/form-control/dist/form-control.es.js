@@ -271,7 +271,7 @@ var FormControl = {
   },
   watch: {
     hasFocus() {
-      if (!this.getInputField().readOnly) {
+      if (this.shouldChangeOnFocus()) {
         this.hasChanged = true;
       }
     },
@@ -279,6 +279,9 @@ var FormControl = {
       this.currentValue = value;
     },
     currentValue() {
+      this.hasChanged = true;
+    },
+    defaultEmpty() {
       this.hasChanged = true;
     }
   },
@@ -307,6 +310,9 @@ var FormControl = {
         errors = this.errors[this.$attrs.name || this.$attrs.id];
       }
       return !errors || Array.isArray(errors) || isObject(errors) ? errors : [errors];
+    },
+    shouldChangeOnFocus() {
+      return !this.getInputField().readOnly;
     },
     onInput(e) {
       this.$emit("input", e.target.value);
