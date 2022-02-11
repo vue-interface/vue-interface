@@ -10,6 +10,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             width: '100%',
             height: `calc(${theme('formSelect.lineHeight')} * 1em + ${theme('formSelect.paddingY')} * 2 + ${theme('formSelect.borderWidth')} * 2)`,
             padding: `${theme('formSelect.paddingY')} ${theme('formSelect.paddingX')}`,
+            paddingRight: `calc(${theme('formSelect.paddingX')} * 2)`,
             fontFamily: theme('formSelect.fontFamily'),
             fontSize: theme('formSelect.fontSize'),
             fontWeight: theme('formSelect.fontWeight'),
