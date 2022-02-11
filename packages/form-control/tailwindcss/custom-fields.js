@@ -8,12 +8,6 @@ module.exports = plugin(function({ addComponents, theme }) {
             position: 'relative',
             fontSize: theme('formControl.fontSize'),
 
-            '*': {
-                transitionProperty: 'padding',
-                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                transitionDuration: '150ms'
-            },
-
             '.form-group-inner': {
                 position: 'relative',
             },
@@ -32,6 +26,9 @@ module.exports = plugin(function({ addComponents, theme }) {
                 color: theme('colors.gray.600', colors.gray[600]),
                 zIndex: 10,
                 marginBottom: 0,
+                transitionProperty: 'padding',
+                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                transitionDuration: '150ms'
             },
 
             '&.has-icon': {
