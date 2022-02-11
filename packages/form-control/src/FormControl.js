@@ -350,8 +350,6 @@ export default {
         // },
 
         formGroupClasses() {
-            console.log(this.$slots.icon);
-
             return {
                 [paramCase(this.componentName)]: !!this.componentName,
                 [this.size && prefix(this.size, this.componentName)]: !!this.size,
