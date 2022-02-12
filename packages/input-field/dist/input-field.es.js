@@ -152,9 +152,9 @@ var FormControl = {
     defaultValue: {
       default: null
     },
-    error: [Boolean, String],
+    error: [String, Array, Boolean],
     errors: {
-      type: Object,
+      type: [Array, Object, Boolean],
       default() {
         return {};
       }
@@ -217,6 +217,7 @@ var FormControl = {
       return prefix(this.size, this.controlClass);
     },
     formGroupClasses() {
+      console.log(this.$slots.icon);
       return {
         [paramCase$1(this.componentName)]: !!this.componentName,
         [this.size && prefix(this.size, this.componentName)]: !!this.size,
@@ -226,6 +227,7 @@ var FormControl = {
         "has-activity": this.activity,
         "has-changed": this.hasChanged,
         "has-focus": this.hasFocus,
+        "has-icon": !!this.$slots.icon,
         "is-empty": this.isEmpty,
         "is-invalid": !!(this.invalid || this.invalidFeedback),
         "is-valid": !!(this.valid || this.validFeedback)
@@ -247,6 +249,9 @@ var FormControl = {
       return !!this.$slots.default;
     },
     invalidFeedback() {
+      if (this.error === "") {
+        return null;
+      }
       if (this.error) {
         return this.error;
       }
@@ -669,7 +674,6 @@ const __vue2_script$1 = {
     },
     component() {
       return () => {
-        console.log(registry);
         const component = registry.get(this.type);
         if (component instanceof Promise) {
           return component;
@@ -711,11 +715,9 @@ var render = function() {
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("div", { class: _vm.formGroupClasses }, [_vm._t("label", function() {
-    return [_vm.label || _vm.$attrs.placeholder ? _c("label", { ref: "label", class: _vm.labelClass, attrs: { "for": _vm.id }, domProps: { "innerHTML": _vm._s(_vm.label || _vm.$attrs.placeholder) }, on: { "click": _vm.focus } }) : _vm._e()];
+    return [_vm.label ? _c("label", { ref: "label", class: _vm.labelClass, attrs: { "for": _vm.id }, domProps: { "innerHTML": _vm._s(_vm.label) }, on: { "click": _vm.focus } }) : _vm._e()];
   }), _c("div", { staticClass: "form-group-inner" }, [_vm._t("control", function() {
-    return [_vm.$slots.icon ? _c("div", { staticClass: "form-group-inner-icon", on: { "click": function($event) {
-      return _vm.$refs.field.focus();
-    } } }, [_vm._t("icon")], 2) : _vm._e(), _c("input", _vm._b({ directives: [{ name: "bind-events", rawName: "v-bind-events" }], ref: "field", domProps: { "value": _vm.currentValue }, on: { "input": _vm.onInput } }, "input", _vm.controlAttributes, false))];
+    return [_vm.$slots.icon ? _c("div", { staticClass: "form-group-inner-icon", on: { "click": _vm.focus } }, [_vm._t("icon")], 2) : _vm._e(), _c("input", _vm._b({ directives: [{ name: "bind-events", rawName: "v-bind-events" }], ref: "field", domProps: { "value": _vm.currentValue }, on: { "input": _vm.onInput } }, "input", _vm.controlAttributes, false))];
   }), _vm._t("activity", function() {
     return [_c("transition", { attrs: { "name": "input-field-fade" } }, [_vm.activity ? _c("activity-indicator", { key: "activity", ref: "activity", attrs: { "type": _vm.indicator, "size": _vm.indicatorSize || _vm.size } }) : _vm._e()], 1)];
   })], 2), _vm._t("feedback", function() {

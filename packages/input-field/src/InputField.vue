@@ -2,16 +2,17 @@
     <div :class="formGroupClasses">
         <slot name="label">
             <label
-                v-if="label || $attrs.placeholder"
+                v-if="label"
                 ref="label"
                 :for="id"
                 :class="labelClass"
                 @click="focus"
-                v-html="label || $attrs.placeholder" />
+                v-html="label" />
         </slot>
+
         <div class="form-group-inner">
             <slot name="control">
-                <div v-if="$slots.icon" class="form-group-inner-icon" @click="$refs.field.focus()">
+                <div v-if="$slots.icon" class="form-group-inner-icon" @click="focus">
                     <slot name="icon" />
                 </div>
                 <input
@@ -93,20 +94,40 @@ export default {
     font-size: .5em;
 }
 
+.input-field.has-activity .form-control-xs {
+    padding-right: 3.75em;
+}
+
 .input-field .activity-indicator-sm {
     font-size: .5em;
+}
+
+.input-field.has-activity .form-control-sm {
+    padding-right: 3em;
 }
 
 .input-field .activity-indicator-md {
     font-size: .666em;
 }
 
+.input-field.has-activity .form-control-md {
+    padding-right: 3em;
+}
+
 .input-field .activity-indicator-lg {
     font-size: .75em;
 }
 
+.input-field.has-activity .form-control-lg {
+    padding-right: 3em;
+}
+
 .input-field .activity-indicator-xl {
     font-size: 1em;
+}
+
+.input-field.has-activity .activity-indicator-xl ~ .form-control-xl {
+    padding-right: 3.75em;
 }
 
 .input-field .activity-indicator {
@@ -130,9 +151,33 @@ export default {
 .input-field .form-group-inner-icon {
     position: absolute;
     top: 50%;
-    left: .666rem;
+    left: .666em;
     width: 1rem;
-    font-size: 1rem;
+    font-size: 1em;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field-sm .form-group-inner-icon {
+    position: absolute;
+    top: 50%;
+    left: .666rem;
+    width: .75em;
+    font-size: 1.5em;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field-lg .form-group-inner-icon {
+    position: absolute;
+    top: 50%;
+    left: .666rem;
+    width: 1.25em;
+    font-size: 1em;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
