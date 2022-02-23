@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/input-field",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "A Vue input field component.",
   "files": [
     "index.js",
