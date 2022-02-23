@@ -90,6 +90,24 @@ function paramCase(input, options) {
     delimiter: "-"
   }, options));
 }
+const global = {};
+function config(...args) {
+  if (!args.length) {
+    return global;
+  }
+  const [key, value] = args;
+  if (typeof key === "string") {
+    return typeof global[key] !== "undefined" ? global[key] : value;
+  }
+  if (Array.isArray(key)) {
+    return key.reduce((carry, key2) => {
+      return Object.assign(carry, {
+        [key2]: global[key2]
+      });
+    }, {});
+  }
+  return Object.assign(global, ...args);
+}
 function prefix(key, value, delimeter = "-") {
   const string = value.toString().replace(new RegExp(`^${key}${delimeter}?`), "");
   return [paramCase(string), key].filter((value2) => !!value2).join(delimeter);
@@ -133,6 +151,10 @@ var FormControl = {
       type: Boolean,
       default: false
     },
+    animated: {
+      type: Boolean,
+      default: () => config("animated", false)
+    },
     bindEvents: {
       type: Array,
       default() {
@@ -147,10 +169,10 @@ var FormControl = {
     },
     defaultControlClass: {
       type: String,
-      default: "form-control"
+      default: () => config("defaultControlClass", "form-control")
     },
     defaultValue: {
-      default: null
+      default: () => config("defaultValue", null)
     },
     error: [String, Array, Boolean],
     errors: {
@@ -162,13 +184,13 @@ var FormControl = {
     feedback: [String, Array],
     group: {
       type: Boolean,
-      default: true
+      default: () => config("group", true)
     },
     helpText: [Number, String],
     hideLabel: Boolean,
     indicator: {
       type: String,
-      default: "spinner"
+      default: () => config("indicator", "spinner")
     },
     indicatorSize: String,
     inline: Boolean,
@@ -176,7 +198,7 @@ var FormControl = {
     label: [Number, String],
     labelClass: {
       type: [Object, String],
-      default: "form-label"
+      default: () => config("labelClass", "form-label")
     },
     pill: Boolean,
     plaintext: Boolean,
@@ -220,6 +242,7 @@ var FormControl = {
       return {
         [paramCase(this.componentName)]: !!this.componentName,
         [this.size && prefix(this.size, this.componentName)]: !!this.size,
+        "animated": this.animated,
         "default-empty": this.defaultEmpty,
         "form-group": this.group,
         [this.size && prefix(this.size, "form-group")]: !!this.size,
@@ -320,4 +343,4 @@ var FormControl = {
     }
   }
 };
-export { FormControl };
+export { FormControl, config };

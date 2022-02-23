@@ -1,5 +1,6 @@
 import { Shadowable } from '@vue-interface/shadowable';
 import { paramCase } from 'param-case';
+import config from './config';
 
 function prefix(key, value, delimeter = '-') {
     const string = value.toString().replace(new RegExp(`^${key}${delimeter}?`), '');
@@ -90,10 +91,22 @@ export default {
          * Show type activity indicator.
          *
          * @param {Boolean}
+         * @default false
          */
         activity: {
             type: Boolean,
             default: false
+        },
+
+        /**
+         * Animate floating labels inside the input.
+         *
+         * @param {Boolean}
+         * @default false
+         */
+        animated: {
+            type: Boolean,
+            default: () => config('animated', false)
         },
 
         /**
@@ -121,17 +134,6 @@ export default {
             }
         },
 
-        // /**
-        //  * Is the form control a custom styled component.
-        //  *
-        //  * @param {Boolean}
-        //  * @default false
-        //  */
-        // custom: {
-        //     type: Boolean,
-        //     default: false
-        // },
-
         /**
          * The default class name assigned to the control element
          *
@@ -140,7 +142,7 @@ export default {
          */
         defaultControlClass: {
             type: String,
-            default: 'form-control'
+            default: () => config('defaultControlClass', 'form-control')                
         },
 
         /**
@@ -150,7 +152,7 @@ export default {
          * @default null
          */
         defaultValue: {
-            default: null
+            default: () => config('defaultValue', null)
         },
 
         /**
@@ -191,7 +193,7 @@ export default {
          */
         group: {
             type: Boolean,
-            default: true
+            default: () => config('group', true)
         },
 
         /**
@@ -215,7 +217,7 @@ export default {
          */
         indicator: {
             type: String,
-            default: 'spinner'
+            default: () => config('indicator', 'spinner')
         },
 
         /**
@@ -253,7 +255,7 @@ export default {
          */
         labelClass: {
             type: [Object, String],
-            default: 'form-label'
+            default: () => config('labelClass', 'form-label')
         },
 
         /**
@@ -345,16 +347,11 @@ export default {
             return prefix(this.size, this.controlClass);
         },
 
-        // customControlClass() {
-        //     return 'custom-control';
-        // },
-
         formGroupClasses() {
             return {
                 [paramCase(this.componentName)]: !!this.componentName,
                 [this.size && prefix(this.size, this.componentName)]: !!this.size,
-                // [prefix(this.componentName, 'custom')]: this.custom,
-                // [prefix(this.size, prefix(this.componentName, 'custom'))]: this.custom && this.size,
+                'animated': this.animated,
                 'default-empty': this.defaultEmpty,
                 'form-group': this.group,
                 [this.size && prefix(this.size, 'form-group')]: !!this.size,

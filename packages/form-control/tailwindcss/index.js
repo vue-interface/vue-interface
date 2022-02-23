@@ -8,5 +8,6 @@ module.exports = [
     require('./form-labels'),
     require('./form-group'),
     require('./input-group'),
-    require('./validation')
+    require('./validation'),
+    require('./animated-fields'),
 ];

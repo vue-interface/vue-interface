@@ -4,7 +4,7 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        '.form-group': {
+        '.form-group.animated': {
             position: 'relative',
             fontSize: theme('formControl.fontSize'),
 
