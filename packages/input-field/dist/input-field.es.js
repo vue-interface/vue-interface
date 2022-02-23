@@ -90,6 +90,24 @@ function paramCase$1(input, options) {
     delimiter: "-"
   }, options));
 }
+const global = {};
+function config(...args) {
+  if (!args.length) {
+    return global;
+  }
+  const [key, value] = args;
+  if (typeof key === "string") {
+    return typeof global[key] !== "undefined" ? global[key] : value;
+  }
+  if (Array.isArray(key)) {
+    return key.reduce((carry, key2) => {
+      return Object.assign(carry, {
+        [key2]: global[key2]
+      });
+    }, {});
+  }
+  return Object.assign(global, ...args);
+}
 function prefix(key, value, delimeter = "-") {
   const string = value.toString().replace(new RegExp(`^${key}${delimeter}?`), "");
   return [paramCase$1(string), key].filter((value2) => !!value2).join(delimeter);
@@ -133,6 +151,10 @@ var FormControl = {
       type: Boolean,
       default: false
     },
+    animated: {
+      type: Boolean,
+      default: () => config("animated", false)
+    },
     bindEvents: {
       type: Array,
       default() {
@@ -147,10 +169,10 @@ var FormControl = {
     },
     defaultControlClass: {
       type: String,
-      default: "form-control"
+      default: () => config("defaultControlClass", "form-control")
     },
     defaultValue: {
-      default: null
+      default: () => config("defaultValue", null)
     },
     error: [String, Array, Boolean],
     errors: {
@@ -162,13 +184,13 @@ var FormControl = {
     feedback: [String, Array],
     group: {
       type: Boolean,
-      default: true
+      default: () => config("group", true)
     },
     helpText: [Number, String],
     hideLabel: Boolean,
     indicator: {
       type: String,
-      default: "spinner"
+      default: () => config("indicator", "spinner")
     },
     indicatorSize: String,
     inline: Boolean,
@@ -176,7 +198,7 @@ var FormControl = {
     label: [Number, String],
     labelClass: {
       type: [Object, String],
-      default: "form-label"
+      default: () => config("labelClass", "form-label")
     },
     pill: Boolean,
     plaintext: Boolean,
@@ -217,10 +239,10 @@ var FormControl = {
       return prefix(this.size, this.controlClass);
     },
     formGroupClasses() {
-      console.log(this.$slots.icon);
       return {
         [paramCase$1(this.componentName)]: !!this.componentName,
         [this.size && prefix(this.size, this.componentName)]: !!this.size,
+        "animated": this.animated,
         "default-empty": this.defaultEmpty,
         "form-group": this.group,
         [this.size && prefix(this.size, "form-group")]: !!this.size,
@@ -272,7 +294,7 @@ var FormControl = {
   },
   watch: {
     hasFocus() {
-      if (!this.getInputField().readOnly) {
+      if (this.shouldChangeOnFocus()) {
         this.hasChanged = true;
       }
     },
@@ -280,6 +302,9 @@ var FormControl = {
       this.currentValue = value;
     },
     currentValue() {
+      this.hasChanged = true;
+    },
+    defaultEmpty() {
       this.hasChanged = true;
     }
   },
@@ -304,10 +329,13 @@ var FormControl = {
     },
     getFieldErrors() {
       let errors = this.error || this.errors;
-      if (isObject(this.errors)) {
+      if (this.errors && isObject(this.errors)) {
         errors = this.errors[this.$attrs.name || this.$attrs.id];
       }
       return !errors || Array.isArray(errors) || isObject(errors) ? errors : [errors];
+    },
+    shouldChangeOnFocus() {
+      return !this.getInputField().readOnly;
     },
     onInput(e) {
       this.$emit("input", e.target.value);

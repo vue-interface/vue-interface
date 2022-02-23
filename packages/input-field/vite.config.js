@@ -19,14 +19,14 @@ export default defineConfig({
         },
         rollupOptions: {
             external: ['vue'],
-            assetFileNames: ({ name }) => {
-                if(name === 'style.css') {
-                    return `${filename}.css`;
-                }
-
-                return name;
-            },
             output: {
+                assetFileNames: ({ name }) => {
+                    if(name === 'style.css') {
+                        return `${filename}.css`;
+                    }
+    
+                    return name;
+                },
                 globals: {
                     vue: 'Vue'
                 },
@@ -37,7 +37,7 @@ export default defineConfig({
                 })
             ]
         },
-        watch: {
+        watch: !process.env.NODE_ENV && {
             include: [
                 './tailwindcss/**/*.js'
             ]

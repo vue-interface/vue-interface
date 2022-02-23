@@ -6,8 +6,7 @@ module.exports = {
         extend: {},
     },
     plugins: [
-        ...require('@vue-interface/form-control/tailwindcss'),
-        require('@vue-interface/form-control/tailwindcss/custom-fields')
+        ...require('@vue-interface/form-control/tailwindcss')
     ],
     safelist: [
         ...require('@vue-interface/form-control/tailwindcss/safelist')()

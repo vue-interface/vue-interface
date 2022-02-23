@@ -22,7 +22,6 @@
             <input-field label="Plain Text" placeholder="Type something here..." class="mb-3" plaintext></input-field>
             <input-field label="Readonly" placeholder="Type something here..." class="mb-3" readonly></input-field>
             <input-field label="Disabled" placeholder="Type something here..." class="mb-3" disabled></input-field>
-            <input-field></input-field>
 
             <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
 
@@ -76,6 +75,11 @@
             import Vue from 'vue/dist/vue';
             import { InputField } from './index.js';
             import { register, registry, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+            import { config } from '@vue-interface/form-control';
+
+            config({
+                animated: true
+            });
             
             register({
                 Dots,
