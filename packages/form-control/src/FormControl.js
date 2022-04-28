@@ -339,7 +339,6 @@ export default {
         },
 
         controlClass() {
-            // return this.custom ? this.customControlClass : this.defaultControlClass;
             return this.defaultControlClass;
         },
 

@@ -1,6 +1,7 @@
 module.exports = () => ([
     'form-check-input',
     'form-check-label',
+    'form-check-inline',
     'form-control',
     'form-control-sm',
     'form-control-lg',
