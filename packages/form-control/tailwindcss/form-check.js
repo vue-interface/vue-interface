@@ -178,9 +178,9 @@ module.exports = plugin(function({ addComponents, theme }) {
             fontFamily: theme('formControl.fontFamily', null),
             fontWeight: theme('formControl.fontWeight', 400),
             minHeight: `calc(${theme('formControl.lineHeight', 1.5)} * ${theme('formControl.fontSize', '1rem')})`,
-            paddingLeft: `calc(1.25em + .5em)`,
+            paddingLeft: `1.5em`,
             marginBottom: '.125rem',
-            marginLeft: `calc((1.25em + .5em) * -1)`,
+            marginLeft: `-1.5em`,
             marginTop: `calc((${theme('formControl.lineHeight', 1.5)} * 1em - 1.25em) / 2)`, // line-height minus check height
             verticalAlign: 'top',
             backgroundColor: theme('colors.white', colors.white),
