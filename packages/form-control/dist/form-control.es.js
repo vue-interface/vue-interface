@@ -125,7 +125,7 @@ var FormControl = {
         el.addEventListener("blur", () => {
           vnode.context.hasFocus = false;
         });
-        el.addEventListener(el.tagName === "SELECT" ? "change" : "input", (e) => {
+        el.addEventListener("input", (e) => {
           vnode.context.isEmpty = !el.value;
           vnode.context.currentValue = el.value;
         });
