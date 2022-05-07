@@ -1,3 +1,21 @@
+const global = {};
+function config(...args) {
+  if (!args.length) {
+    return global;
+  }
+  const [key, value] = args;
+  if (typeof key === "string") {
+    return typeof global[key] !== "undefined" ? global[key] : value;
+  }
+  if (Array.isArray(key)) {
+    return key.reduce((carry, key2) => {
+      return Object.assign(carry, {
+        [key2]: global[key2]
+      });
+    }, {});
+  }
+  return Object.assign(global, ...args);
+}
 var Shadowable = {
   props: {
     dropShadow: [Boolean, String],
@@ -90,24 +108,6 @@ function paramCase(input, options) {
     delimiter: "-"
   }, options));
 }
-const global = {};
-function config(...args) {
-  if (!args.length) {
-    return global;
-  }
-  const [key, value] = args;
-  if (typeof key === "string") {
-    return typeof global[key] !== "undefined" ? global[key] : value;
-  }
-  if (Array.isArray(key)) {
-    return key.reduce((carry, key2) => {
-      return Object.assign(carry, {
-        [key2]: global[key2]
-      });
-    }, {});
-  }
-  return Object.assign(global, ...args);
-}
 function prefix(key, value, delimeter = "-") {
   const string = value.toString().replace(new RegExp(`^${key}${delimeter}?`), "");
   return [paramCase(string), key].filter((value2) => !!value2).join(delimeter);
@@ -140,6 +140,7 @@ var FormControl = {
           if (opt && opt.value === el.value) {
             vnode.context.defaultEmpty = true;
           }
+          vnode.context.isEmpty = !el.querySelector("[selected]") && !el.value;
         }
       }
     }
@@ -309,9 +310,7 @@ var FormControl = {
     }
   },
   mounted() {
-    if (this.value === null && this.defaultValue !== null) {
-      this.$emit("input", this.defaultValue);
-    }
+    this.$emit("input", this.currentValue);
   },
   methods: {
     blur() {

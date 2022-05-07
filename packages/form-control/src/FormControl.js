@@ -74,6 +74,8 @@ export default {
                     if(opt && opt.value === el.value) {
                         vnode.context.defaultEmpty = true;
                     }
+
+                    vnode.context.isEmpty = !el.querySelector('[selected]') && !el.value;
                 }
             }
         }
@@ -429,9 +431,7 @@ export default {
     },
 
     mounted() {
-        if(this.value === null && this.defaultValue !== null) {
-            this.$emit('input', this.defaultValue);
-        }
+        this.$emit('input', this.currentValue);
     },
     
     methods: {
