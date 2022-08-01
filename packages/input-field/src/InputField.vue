@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import FormControl from '@vue-interface/form-control/src/FormControl';
+import { FormControl } from '@vue-interface/form-control';
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 
 export default {
