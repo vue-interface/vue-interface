@@ -5,67 +5,6 @@ const Color = require('color');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        // '*, ::before, ::after': {
-        //     '--form-check-float': theme('formCheck.float'),
-        //     '--form-check-width': theme('formCheck.width'),
-        //     '--form-check-height': theme('formCheck.height'),
-        //     '--form-check-display': theme('formCheck.display'),
-
-        //     '--form-check-font-size': theme('formCheck.fontSize'),
-        //     '--form-check-font-family': theme('formCheck.fontFamily'),
-        //     '--form-check-font-weight': theme('formCheck.fontWeight'),
-        //     '--form-check-line-height': `${theme('formCheck.lineHeight')}`,
-        //     '--form-check-min-height': theme('formCheck.minHeight'),
-        //     '--form-check-margin-bottom': theme('formCheck.marginBottom'),
-        //     '--form-check-padding-left': theme('formCheck.paddingLeft'),
-        //     '--form-check-border-width': theme('formCheck.borderWidth'),
-        //     '--form-check-border-style': theme('formCheck.borderStyle'),
-        //     '--form-check-border-color': theme('formCheck.borderColor'),
-
-        //     '--form-check-margin-left': theme('formCheck.marginLeft'),
-        //     '--form-check-margin-top': theme('formCheck.marginTop'),
-        //     '--form-check-vertical-align': theme('formCheck.verticalAlign'),
-        //     '--form-check-background-color': theme('formCheck.backgroundColor'),
-        //     '--form-check-background-repeat': theme('formCheck.backgroundRepeat'),
-        //     '--form-check-background-position': theme('formCheck.backgroundPosition'),
-        //     '--form-check-background-size': theme('formCheck.backgroundSize'),
-        //     '--form-check-background-image': theme('formCheck.backgroundImage'),
-        //     '--form-check-border': theme('formCheck.border'),
-        //     '--form-check-appearance': theme('formCheck.appearance'),
-        //     '--form-check-color-adjust': theme('formCheck.colorAdjust'),
-        //     '--form-check-transition': theme('formCheck.transition'),
-
-        //     '--form-check-checkbox-border-radius': theme('formCheck.checkbox.borderRadius'),
-
-        //     '--form-check-radio-border-radius': theme('formCheck.radio.borderRadius'),
-
-        //     '--form-check-active-filter': theme('formCheck.active.filter'),
-
-        //     '--form-check-focus-border-color': theme('formCheck.focus.borderColor'),
-        //     '--form-check-focus-outline': theme('formCheck.focus.outline'),
-        //     '--form-check-focus-box-shadow': theme('formCheck.focus.boxShadow'),
-
-        //     '--form-check-checked-background-color': theme('formCheck.checked.backgroundColor'),
-        //     '--form-check-checked-border-color': theme('formCheck.checked.borderColor'),
-        //     '--form-check-checked-checkbox-background-image': theme('formCheck.checked.checkbox.backgroundImage'),
-        //     '--form-check-checked-radio-background-image': theme('formCheck.checked.radio.backgroundImage'),
-
-        //     '--form-check-indeterminate-background-color': theme('formCheck.indeterminate.backgroundColor'),
-        //     '--form-check-indeterminate-border-color': theme('formCheck.indeterminate.borderColor'),
-        //     '--form-check-indeterminate-checkbox-background-image': theme('formCheck.indeterminate.checkbox.backgroundImage'),
-        //     '--form-check-indeterminate-radio-background-image': theme('formCheck.indeterminate.radio.backgroundImage'),
-
-        //     '--form-check-disabled-pointer-events': theme('formCheck.disabled.pointerEvents'),
-        //     '--form-check-disabled-filter': theme('formCheck.disabled.filter'),
-        //     '--form-check-disabled-opacity': `${theme('formCheck.disabled.opacity')}`,
-
-        //     '--form-check-label-color': theme('formCheck.label.color'),
-        //     '--form-check-label-cursor': theme('formCheck.label.cursor'),
-
-        //     '--form-check-inline-display': theme('formCheck.inline.display'),
-        //     '--form-check-inline-margin-right': theme('formCheck.inline.marginRight'),
-        // },
-
         '.form-check': {
             display: theme('formCheck.display'),
             fontSize: theme('formCheck.fontSize'),

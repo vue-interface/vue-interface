@@ -4,30 +4,6 @@ const escapeSvg = require('./utils/escapeSvg');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
-        // '*, ::before, ::after': {
-        //     '--form-switch-display': theme('formSwitch.display'),
-        //     '--form-switch-align-items': theme('formSwitch.alignItems'),
-        //     '--form-switch-height': theme('formSwitch.height'),
-        //     '--form-switch-width': theme('formSwitch.width'),
-        //     '--form-switch-margin-top': theme('formSwitch.marginTop'),
-        //     '--form-switch-padding-left': theme('formSwitch.paddingLeft'),
-        //     '--form-switch-margin-left': theme('formSwitch.marginLeft'),
-        //     '--form-switch-label-margin-bottom': theme('formSwitch.label.marginBottom'),
-        //     '--form-switch-background-image': theme('formSwitch.backgroundImage'),
-        //     '--form-switch-background-repeat': theme('formSwitch.backgroundRepeat'),
-        //     '--form-switch-background-position': theme('formSwitch.backgroundPosition'),
-        //     '--form-switch-border-radius': theme('formSwitch.borderRadius'),
-        //     '--form-switch-focus-background-image': theme('formSwitch.focus.backgroundImage'),
-        //     '--form-switch-checked-background-position': theme('formSwitch.checked.backgroundPosition'),
-        //     '--form-switch-checked-background-image': theme('formSwitch.checked.backgroundImage'),
-
-        //     '--form-switch-sm-height': theme('formSwitch.sm.height'),
-        //     '--form-switch-sm-width': theme('formSwitch.sm.width'),
-
-        //     '--form-switch-lg-height': theme('formSwitch.lg.height'),
-        //     '--form-switch-lg-width': theme('formSwitch.lg.width'),
-        // },
-
         //
         // Switch
         //
@@ -99,7 +75,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 paddingLeft: `calc(2rem + .5em)`,
                 marginLeft: `calc((2rem + .5em) * -1)`,
                 backgroundRepeat: 'no-repeat',
-                backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${colors.gray['500']}'/></svg>")`),
+                backgroundImage: escapeSvg(`url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='${theme('variations.secondary', theme('colors.gray.500', colors.gray[500]))}'/></svg>")`),
                 backgroundPosition: 'left center',
                 borderRadius: '2rem',
 

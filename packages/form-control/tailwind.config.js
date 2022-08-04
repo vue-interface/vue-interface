@@ -3,7 +3,11 @@ module.exports = {
         "./index.html"
     ],
     theme: {
-        extend: {},
+        extend: {
+            variations: {
+                primary: 'red'
+            }
+        },
     },
     plugins: [
         require('./tailwindcss/form-control'),

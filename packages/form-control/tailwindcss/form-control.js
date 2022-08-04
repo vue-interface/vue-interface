@@ -209,11 +209,11 @@ module.exports = plugin(function({ addComponents, theme }) {
             focus: {
                 color: theme('colors.gray.700', colors.gray['700']),
                 backgroundColor: theme('colors.white', colors.white),
-                borderColor: theme('colors.blue.400', colors.blue['400']),
+                borderColor: Color(theme('variations.primary', theme('colors.blue.400', colors.blue['400']))).hex(),
                 outline: 0,
                 width: '.2rem',
                 opacity: .5,
-                boxShadow: `0 0 0 .2rem ${Color(theme('colors.blue.500', colors.blue['500'])).fade(.5)}`
+                boxShadow: `0 0 0 .2rem ${Color(theme('variations.primary', theme('colors.blue.400', colors.blue['400']))).fade(.5)}`
             },
             placeholder: {
                 opacity: 1,
