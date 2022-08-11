@@ -390,12 +390,9 @@
 
         <script type="module">
             import './index.css';
-            import Vue from 'vue/dist/vue';
-            
-            Vue.config.devtools = false;
-            Vue.config.productionTip = false;
+            import { createApp } from 'vue';
 
-            const vue = new Vue({
+            const vue = createApp({
                 el: '#app'
             });
 
