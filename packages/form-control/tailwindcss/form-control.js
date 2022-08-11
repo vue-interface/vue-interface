@@ -217,7 +217,7 @@ module.exports = plugin(function({ addComponents, theme }) {
             },
             placeholder: {
                 opacity: 1,
-                color: theme('colors.gray.500', colors.gray['500'])
+                color: theme('colors.gray.300', colors.gray['300'])
             },
             disabled: {
                 opacity: 1,

@@ -17,66 +17,64 @@ function isObject(subject) {
 export default {
 
     directives: {
-        bindEvents: {
-            bind(el, binding, vnode) {
-                // function onInput() {
-                //     vnode.context.isEmpty = !el.value;
+        bindEvents: (el, binding, vnode) => {
+            // function onInput() {
+            //     binding.instance.isEmpty = !el.value;
 
-                //     if(el.value) {
-                //         vnode.context.currentValue = el.value;
-                //     }
+            //     if(el.value) {
+            //         binding.instance.currentValue = el.value;
+            //     }
 
-                //     setSelectedIndex();
+            //     setSelectedIndex();
 
-                //     return onInput;
-                // }
+            //     return onInput;
+            // }
 
-                // function setSelectedIndex() {
-                //     // Set the data-selected-index attribute if necessary.
-                //     if(el.selectedIndex >= -1) {
-                //         el.setAttribute('data-selected-index', el.selectedIndex);
-                //     }
-                //     else {
-                //         el.removeAttribute('data-selected-index');
-                //     }
-                // }
+            // function setSelectedIndex() {
+            //     // Set the data-selected-index attribute if necessary.
+            //     if(el.selectedIndex >= -1) {
+            //         el.setAttribute('data-selected-index', el.selectedIndex);
+            //     }
+            //     else {
+            //         el.removeAttribute('data-selected-index');
+            //     }
+            // }
 
-                // Add the has-focus class from the form control
-                el.addEventListener('focus', () => {
-                    vnode.context.hasFocus = true;
+            // Add the has-focus class from the form control
+            el.addEventListener('focus', () => {
+                binding.instance.hasFocus = true;
+            });
+
+            // Remove the has-focus class from the form control
+            el.addEventListener('blur', () => {
+                binding.instance.hasFocus = false;
+            });
+
+            el.addEventListener('input', e => {
+                binding.instance.isEmpty = !el.value;
+                binding.instance.currentValue = el.value;
+            });
+
+            // Remove the has-focus class from the form control
+            // el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
+
+            binding.instance.hasChanged = !!el.value;
+
+            // Bubble the native events up to the vue component.
+            binding.instance.bindEvents.forEach(name => {
+                el.addEventListener(name, event => {
+                    binding.instance.$emit(name, event);
                 });
+            });
 
-                // Remove the has-focus class from the form control
-                el.addEventListener('blur', () => {
-                    vnode.context.hasFocus = false;
-                });
-
-                el.addEventListener('input', e => {
-                    vnode.context.isEmpty = !el.value;
-                    vnode.context.currentValue = el.value;
-                });
-
-                // Remove the has-focus class from the form control
-                // el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
-
-                vnode.context.hasChanged = !!el.value;
-
-                // Bubble the native events up to the vue component.
-                vnode.context.bindEvents.forEach(name => {
-                    el.addEventListener(name, event => {
-                        vnode.context.$emit(name, event);
-                    });
-                });
-
-                if(el.tagName === 'SELECT') {
-                    const opt = el.querySelector('[value=""]');
+            if(el.tagName === 'SELECT') {
+                const opt = el.querySelector('[value=""]');
                 
-                    if(opt && opt.value === el.value) {
-                        vnode.context.defaultEmpty = true;
-                    }
-
-                    vnode.context.isEmpty = !el.querySelector('[selected]') && !el.value;
+                if(opt && opt.value === el.value) {
+                    binding.instance.defaultEmpty = true;
                 }
+
+                binding.instance.isEmpty = !el.querySelector('[selected]') && !el.value;
             }
         }
     },
@@ -121,18 +119,6 @@ export default {
             type: Array,
             default() {
                 return ['focus', 'blur', 'change', 'click', 'keypress', 'keyup', 'keydown', 'progress', 'paste'];
-            }
-        },
-
-        /**
-         * The component name.
-         * 
-         * @param {String}
-         */
-        componentName: {
-            type: String,
-            default() {
-                return this.$options.name;
             }
         },
 
@@ -322,6 +308,10 @@ export default {
             return this.$attrs.id || this.$attrs.name;
         },
 
+        componentName() {
+            return this.$options.name;
+        },
+
         controlAttributes() {
             return Object.keys(this.$attrs)
                 .concat([
@@ -330,13 +320,14 @@ export default {
                 ])
                 .reduce((carry, key) => {
                     if(Array.isArray(key)) {
-                        carry[key[0]] = key[1];
+                        return Object.assign(carry, {
+                            [key[0]]: key[1]
+                        });
                     }
-                    else {
-                        carry[key] = this[key] || this.$attrs[key];
-                    }
-
-                    return carry;
+                    
+                    return Object.assign(carry, {
+                        [key]: this.$attrs[key]
+                    });
                 }, {});
         },
 
@@ -363,6 +354,8 @@ export default {
                 'is-empty': this.isEmpty,
                 'is-invalid': !!(this.invalid || this.invalidFeedback),
                 'is-valid': !!(this.valid || this.validFeedback),
+                [this.$attrs.class]: !!this.$attrs.class,
+                [this.$attrs.id]: !!this.$attrs.id
             };
         },
 
