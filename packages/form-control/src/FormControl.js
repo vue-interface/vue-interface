@@ -14,67 +14,24 @@ function isObject(subject) {
     return !Array.isArray(subject) && typeof subject === 'object';
 }
 
+// function isNull(value) {
+//     return value === null;
+// }
+
+function isUndefined(value) {
+    return value === undefined;
+}
+
+// function isNullOrUndefined(value) {
+//     return isNull(value) || isUndefined(value);
+// }
+
 export default {
 
     directives: {
-        bindEvents: (el, binding, vnode) => {
-            // function onInput() {
-            //     binding.instance.isEmpty = !el.value;
-
-            //     if(el.value) {
-            //         binding.instance.currentValue = el.value;
-            //     }
-
-            //     setSelectedIndex();
-
-            //     return onInput;
-            // }
-
-            // function setSelectedIndex() {
-            //     // Set the data-selected-index attribute if necessary.
-            //     if(el.selectedIndex >= -1) {
-            //         el.setAttribute('data-selected-index', el.selectedIndex);
-            //     }
-            //     else {
-            //         el.removeAttribute('data-selected-index');
-            //     }
-            // }
-
-            // Add the has-focus class from the form control
-            el.addEventListener('focus', () => {
-                binding.instance.hasFocus = true;
-            });
-
-            // Remove the has-focus class from the form control
-            el.addEventListener('blur', () => {
-                binding.instance.hasFocus = false;
-            });
-
-            el.addEventListener('input', e => {
-                binding.instance.isEmpty = !el.value;
-                binding.instance.currentValue = el.value;
-            });
-
-            // Remove the has-focus class from the form control
-            // el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', onInput());
-
-            binding.instance.hasChanged = !!el.value;
-
-            // Bubble the native events up to the vue component.
-            binding.instance.bindEvents.forEach(name => {
-                el.addEventListener(name, event => {
-                    binding.instance.$emit(name, event);
-                });
-            });
-
-            if(el.tagName === 'SELECT') {
-                const opt = el.querySelector('[value=""]');
-                
-                if(opt && opt.value === el.value) {
-                    binding.instance.defaultEmpty = true;
-                }
-
-                binding.instance.isEmpty = !el.querySelector('[selected]') && !el.value;
+        bindEvents: {
+            beforeMount(el, binding, vnode) {
+                binding.instance.bindEvents(el);
             }
         }
     },
@@ -115,7 +72,7 @@ export default {
          * @param {Array}
          * @default ['focus', 'blur', 'change', 'click', 'keypress', 'keyup', 'keydown', 'progress', 'paste']
          */
-        bindEvents: {
+        nativeEvents: {
             type: Array,
             default() {
                 return ['focus', 'blur', 'change', 'click', 'keypress', 'keyup', 'keydown', 'progress', 'paste'];
@@ -131,16 +88,6 @@ export default {
         defaultControlClass: {
             type: String,
             default: () => config('defaultControlClass', 'form-control')                
-        },
-
-        /**
-         * The field's default value.
-         *
-         * @param
-         * @default null
-         */
-        defaultValue: {
-            default: () => config('defaultValue', null)
         },
 
         /**
@@ -247,6 +194,16 @@ export default {
         },
 
         /**
+         * The field's default value.
+         *
+         * @param {any}
+         * @default null
+         */
+        modelValue: {
+            default: undefined
+        },
+
+        /**
          * Should the control look like a pill.
          *
          * @param {Boolean}
@@ -277,35 +234,25 @@ export default {
         /**
          * The valid property
          *
-         * @param {String}
+         * @param {string}
          */
-        valid: Boolean,
-
-        /**
-         * The field value.
-         *
-         * @property Mixed
-         */
-        value: {
-            default: null
-        }
+        valid: Boolean
 
     },
 
     data() {
         return {
-            currentValue: this.value || this.defaultValue,
             defaultEmpty: false,
             hasChanged: false,
             hasFocus: false,
-            isEmpty: !(this.value || this.defaultValue),
+            isEmpty: true,
         };
     },
 
     computed: {
 
         id() {
-            return this.$attrs.id || this.$attrs.name;
+            return this.$attrs.id || this.$attrs.name || (Math.random() + 1).toString(36).substring(7);
         },
 
         componentName() {
@@ -313,22 +260,12 @@ export default {
         },
 
         controlAttributes() {
-            return Object.keys(this.$attrs)
-                .concat([
+            return Object.fromEntries(
+                Object.entries(this.$attrs).concat([
                     ['id', this.id],
                     ['class', this.controlClasses]
                 ])
-                .reduce((carry, key) => {
-                    if(Array.isArray(key)) {
-                        return Object.assign(carry, {
-                            [key[0]]: key[1]
-                        });
-                    }
-                    
-                    return Object.assign(carry, {
-                        [key]: this.$attrs[key]
-                    });
-                }, {});
+            );
         },
 
         controlClass() {
@@ -412,22 +349,70 @@ export default {
                 this.hasChanged = true;
             }
         },
-        value(value) {
-            this.currentValue = value;
-        },
-        currentValue() {
-            this.hasChanged = true;
-        },
         defaultEmpty() {
             this.hasChanged = true;
         }
     },
 
-    mounted() {
-        this.$emit('input', this.currentValue);
-    },
-    
     methods: {
+
+        bindEvents(el, fn) {
+            // If no function is defined, the use the default onInput callback.
+            if(!fn) {
+                fn = this.onInput;
+            }
+
+            // Get the option from the selected index.
+            const selected = el.querySelectorAll('option')[el.selectedIndex];
+
+            // Set the element value is the modelValue is not undefined.
+            if(!isUndefined(this.modelValue)) {
+                el.value = this.modelValue;
+            }
+            // If an option is selected, force the default value.
+            else if(!isUndefined(selected)) {
+                el.value = selected.value;
+            }
+            
+            // If the el has a value, trigger the model update.
+            if(el.value) {
+                fn(el.value);
+            }
+
+            // Set the default has changed value
+            this.hasChanged = !!el.value;
+
+            // Set the default has changed value
+            this.isEmpty = !el.value;
+
+            // Add the has-focus class from the form control
+            el.addEventListener('focus', () => {
+                this.hasFocus = true;
+            });
+
+            // Remove the has-focus class from the form control
+            el.addEventListener('blur', () => {
+                this.hasFocus = false;
+            });
+
+            // Watch for input changes.
+            el.addEventListener('input', e => {
+                this.isEmpty = false;
+                this.hasChanged = true;
+            });
+
+            // Trigger the onInput method.
+            el.addEventListener(
+                el.tagName === 'SELECT' ? 'change' : 'input', () => fn(el.value)
+            );
+
+            // Bubble the native events up to the vue component.
+            this.nativeEvents.forEach(name => {
+                el.addEventListener(name, event => {
+                    this.$emit(name, event);
+                });
+            });
+        },
 
         blur() {
             if(this.getInputField()) {
@@ -461,9 +446,8 @@ export default {
             return !this.getInputField().readOnly;
         },
 
-        onInput(e) {
-            this.$emit('input', e.target.value);
-            this.$emit('update:value', e.target.value);
+        onInput(value) {
+            this.$emit('update:modelValue', value);
         }
 
     }

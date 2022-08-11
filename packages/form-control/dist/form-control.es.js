@@ -247,7 +247,7 @@ const F = {
     }
   },
   mounted() {
-    this.$emit("input", this.currentValue);
+    this.$emit("update:value", this.value);
   },
   methods: {
     blur() {
