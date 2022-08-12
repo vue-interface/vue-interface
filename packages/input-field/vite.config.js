@@ -1,6 +1,6 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import { createVuePlugin } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue';
 import { name } from './package.json';
 import { pascalCase } from "change-case";
 import { babel } from '@rollup/plugin-babel';
@@ -44,6 +44,6 @@ export default defineConfig({
         }
     },
     plugins: [
-        createVuePlugin()
+        vue()
     ],
 });

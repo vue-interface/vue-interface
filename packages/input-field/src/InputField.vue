@@ -11,16 +11,11 @@
         </slot>
 
         <div class="form-group-inner">
-            <slot name="control">
+            <slot name="control" :bind-events="bindEvents" :control-attributes="controlAttributes" :focus="focus">
                 <div v-if="$slots.icon" class="form-group-inner-icon" @click="focus">
                     <slot name="icon" />
                 </div>
-                <input
-                    ref="field"
-                    v-bind-events
-                    v-bind="controlAttributes"
-                    :value="currentValue"
-                    @input="onInput">
+                <input ref="field" v-bind-events v-bind="controlAttributes">
             </slot>
 
             <slot name="activity">
@@ -57,7 +52,7 @@
 </template>
 
 <script>
-import { FormControl } from '@vue-interface/form-control';
+import FormControl from '@vue-interface/form-control/src/FormControl';
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 
 export default {
