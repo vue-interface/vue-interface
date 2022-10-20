@@ -41,7 +41,7 @@
   "homepage": "https://github.com/vue-interface/form-control/docs#readme",
   "dependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
-    "@vue-interface/shadowable": "^1.0.0",
+    "@vue-interface/shadowable": "^2.0.0-beta.0",
     "color": "^4.2.0",
     "param-case": "^3.0.4"
   },
