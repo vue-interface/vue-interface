@@ -51,13 +51,12 @@
     </div>
 </template>
 
-<script>
-import FormControl from '@vue-interface/form-control/src/FormControl';
+<script lang="ts">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
+import { FormControl } from '@vue-interface/form-control';
+import { defineComponent } from 'vue';
 
-export default {
-
-    name: 'InputField',
+export default defineComponent({
 
     components: {
         ActivityIndicator
@@ -67,7 +66,7 @@ export default {
         FormControl
     ]
 
-};
+});
 </script>
 
 <style>
