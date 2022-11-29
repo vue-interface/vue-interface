@@ -82,7 +82,6 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     controlClass(): any;
     controlSizeClass(): string;
     formGroupClasses(): {
-        [x: string]: any;
         [x: number]: boolean;
         animated: any;
         'default-empty': any;
@@ -94,7 +93,9 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
         'is-empty': any;
         'is-invalid': boolean;
         'is-valid': boolean;
-    };
+    } & (false | {
+        [x: string]: boolean;
+    });
     controlClasses(): any;
     hasDefaultSlot(): boolean;
     invalidFeedback(): any;

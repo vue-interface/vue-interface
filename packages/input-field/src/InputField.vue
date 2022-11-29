@@ -58,6 +58,8 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
 
+    name: 'InputField',
+    
     components: {
         ActivityIndicator
     },
@@ -159,7 +161,6 @@ export default defineComponent({
     top: 50%;
     left: .666rem;
     width: .75em;
-    font-size: 1.5em;
     transform: translateY(-50%);
     display: flex;
     align-items: center;

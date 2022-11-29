@@ -614,8 +614,7 @@ const Ve = E({
       return F(this.size, this.controlClass);
     },
     formGroupClasses() {
-      return {
-        [et(this.componentName)]: !!this.componentName,
+      return Object.assign({
         [this.size && F(this.size, this.componentName)]: !!this.size,
         animated: this.animated,
         "default-empty": this.defaultEmpty,
@@ -630,7 +629,9 @@ const Ve = E({
         "is-valid": !!(this.valid || this.validFeedback),
         [this.$attrs.class]: !!this.$attrs.class,
         [this.$attrs.id]: !!this.$attrs.id
-      };
+      }, !!this.componentName && {
+        [et(this.componentName)]: !0
+      });
     },
     controlClasses() {
       return Object.assign({
@@ -716,6 +717,7 @@ const Ve = E({
     }
   }
 }), We = E({
+  name: "InputField",
   components: {
     ActivityIndicator: bt
   },
@@ -800,3 +802,4 @@ const Xe = /* @__PURE__ */ Ge(We, [["render", Ke]]);
 export {
   Xe as InputField
 };
+//# sourceMappingURL=input-field.js.map

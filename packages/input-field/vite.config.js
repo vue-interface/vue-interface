@@ -8,10 +8,8 @@ import { name } from './package.json';
 const fileName = name.split('/')[1];
 
 export default defineConfig({
-    optimizeDeps: {
-        exclude: ['@vue-interface/activity-indicator']
-    },
     build: {
+        sourcemap: true,
         lib: {
             entry: path.resolve(__dirname, 'index.ts'),
             name: pascalCase(fileName),
