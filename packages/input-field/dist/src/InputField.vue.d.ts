@@ -37,7 +37,7 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     };
     hideLabel: BooleanConstructor;
     indicator: {
-        type: StringConstructor;
+        type: (BooleanConstructor | StringConstructor)[];
         default: () => any;
     };
     indicatorSize: {
@@ -59,8 +59,14 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     };
     pill: BooleanConstructor;
     plaintext: BooleanConstructor;
-    size: StringConstructor;
-    spacing: StringConstructor;
+    size: {
+        type: StringConstructor;
+        default: undefined;
+    };
+    spacing: {
+        type: StringConstructor;
+        default: undefined;
+    };
     valid: BooleanConstructor;
 }, unknown, {
     defaultEmpty: boolean;
@@ -185,7 +191,7 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     };
     hideLabel: BooleanConstructor;
     indicator: {
-        type: StringConstructor;
+        type: (BooleanConstructor | StringConstructor)[];
         default: () => any;
     };
     indicatorSize: {
@@ -207,8 +213,14 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     };
     pill: BooleanConstructor;
     plaintext: BooleanConstructor;
-    size: StringConstructor;
-    spacing: StringConstructor;
+    size: {
+        type: StringConstructor;
+        default: undefined;
+    };
+    spacing: {
+        type: StringConstructor;
+        default: undefined;
+    };
     valid: BooleanConstructor;
 }>>, {
     activity: boolean;
@@ -221,7 +233,7 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     group: boolean;
     helpText: string | number;
     hideLabel: boolean;
-    indicator: string;
+    indicator: string | boolean;
     indicatorSize: string;
     inline: boolean;
     invalid: boolean;
@@ -230,6 +242,8 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {}, {}, {}, {}, impor
     modelValue: undefined;
     pill: boolean;
     plaintext: boolean;
+    size: string;
+    spacing: string;
     valid: boolean;
 }>, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{}>>, {}>;
 export default _sfc_main;
