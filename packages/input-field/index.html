@@ -73,10 +73,11 @@
         <script type="module">
             import './index.css';
             import { createApp } from 'vue/dist/vue.esm-bundler.js';
-            import { InputField } from './index.js';
-            import { register, registry, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
-            import { config } from '@vue-interface/form-control';
+            import { InputField } from './index';
+            // import { register, registry, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+            // import { config } from '@vue-interface/form-control';
 
+            /*
             config({
                 animated: true
             });
@@ -86,10 +87,11 @@
                 Pulse,
                 Spinner
             });
+            */
             
             const vue = createApp({
                 components: {
-                    InputField
+                   InputField
                 },
                 data() {
                     return {
