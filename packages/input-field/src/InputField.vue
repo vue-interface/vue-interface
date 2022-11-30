@@ -147,9 +147,9 @@ export default defineComponent({
 .input-field .form-group-inner-icon {
     position: absolute;
     top: 50%;
-    left: .666em;
-    width: 1rem;
-    font-size: 1em;
+    left: .5em;
+    width: 1em;
+    font-size: 1.25em;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
@@ -157,25 +157,12 @@ export default defineComponent({
 }
 
 .input-field-sm .form-group-inner-icon {
-    position: absolute;
-    top: 50%;
-    left: .666rem;
-    width: .75em;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1em;
 }
 
 .input-field-lg .form-group-inner-icon {
-    position: absolute;
-    top: 50%;
-    left: .666rem;
-    width: 1.25em;
-    font-size: 1em;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: .4em;
+    font-size: 1.75em;
 }
+
 </style>
