@@ -80,7 +80,7 @@
             import './index.css';
             import { createApp } from 'vue/dist/vue.esm-bundler.js';
             import { InputField } from './index';
-            // import { register, registry, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+            import { ActivityIndicatorPlugin, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
             // import { config } from '@vue-interface/form-control';
 
             /*
@@ -107,6 +107,13 @@
                 }
             });
 
+            vue.use(ActivityIndicatorPlugin, {
+                indicators: {
+                    Dots,
+                    Pulse,
+                    Spinner
+                }
+            })
             vue.mount('#app');
         </script>
     </body>
