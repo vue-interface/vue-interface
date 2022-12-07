@@ -8,13 +8,15 @@
   "type": "module",
   "main": "./dist/input-field.umd.cjs",
   "module": "./dist/input-field.js",
+  "style": "./dist/style.css",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/input-field.js",
       "require": "./dist/input-field.umd.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
