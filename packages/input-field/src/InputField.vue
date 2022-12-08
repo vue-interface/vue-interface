@@ -1,3 +1,23 @@
+<script lang="ts">
+import { ActivityIndicator } from '@vue-interface/activity-indicator';
+import { FormControl } from '@vue-interface/form-control';
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+
+    name: 'InputField',
+    
+    components: {
+        ActivityIndicator
+    },
+
+    mixins: [
+        FormControl
+    ]
+
+});
+</script>
+
 <template>
     <div :class="formGroupClasses">
         <slot name="label">
@@ -50,26 +70,6 @@
         </slot>
     </div>
 </template>
-
-<script lang="ts">
-import { ActivityIndicator } from '@vue-interface/activity-indicator';
-import { FormControl } from '@vue-interface/form-control';
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-
-    name: 'InputField',
-    
-    components: {
-        ActivityIndicator
-    },
-
-    mixins: [
-        FormControl
-    ]
-
-});
-</script>
 
 <style>
 .input-field,
