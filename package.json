@@ -9,9 +9,14 @@
     "build": "lerna run build --parallel --verbose",
     "lint": "lerna run lint --verbose",
     "fix": "lerna run fix --verbose",
-    "graph": "npx nx graph"
+    "graph": "npx nx graph",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "lerna": "^6.4.1"
+    "lerna": "^6.4.1",
+    "vitepress": "1.0.0-alpha.45",
+    "vue": "^3.2.47"
   }
 }
