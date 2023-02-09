@@ -1,0 +1,184 @@
+<script lang="ts" setup>
+import { InputField } from '../../../input-field';
+
+const value = $ref('text');
+const showActivity = $ref(false);
+
+</script>
+
+<template>
+    <h1 class="text-4xl mb-5">
+        input-field
+    </h1>
+
+    <h2 class="text-2xl mb-3">
+        Basic Usage
+    </h2>
+
+    <div class="bg-gray-100 p-3 mb-3">
+        Value: {{ value }}
+    </div>
+
+    <input-field
+        v-model="value"
+        label="Text Field"
+        placeholder="Some placeholder"
+        class="mb-3" />
+    <input-field
+        type="password"
+        label="Password Field"
+        class="mb-3" />
+    <input-field
+        label="Descriptive Text Field"
+        help-text="Some helpful text goes here."
+        class="mb-3" />
+    <input-field
+        type="email"
+        label="Email Field"
+        placeholder="you@example.com"
+        class="mb-3" />
+    <input-field
+        label="Plain Text"
+        placeholder="Type something here..."
+        class="mb-3"
+        plaintext />
+    <input-field
+        label="Readonly"
+        placeholder="Type something here..."
+        class="mb-3"
+        readonly />
+    <input-field
+        label="Disabled"
+        placeholder="Type something here..."
+        class="mb-3"
+        disabled />
+
+    <h2 class="text-2xl mt-6 mb-3">
+        Sizes
+    </h2>
+
+    <input-field
+        size="sm"
+        label="Small"
+        class="mb-3" />
+    <input-field
+        size="md"
+        label="Medium"
+        class="mb-3" />
+    <input-field
+        size="lg"
+        label="Large"
+        class="mb-3" />
+
+    <h2>Icons</h2>
+
+    <input-field
+        label="Small Icon"
+        size="sm"
+        class="mb-3">
+        <template #icon>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+            </svg>                      
+        </template>
+    </input-field>
+
+    <input-field
+        label="Medium Icon"
+        size="md"
+        class="mb-3">
+        <template #icon>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+            </svg>                      
+        </template>
+    </input-field>
+
+    <input-field
+        label="Large Icon"
+        size="lg"
+        class="mb-3">
+        <template #icon>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+            </svg>                      
+        </template>
+    </input-field>
+
+    <h2 class="text-2xl mt-6 mb-3">
+        Activity Indicator
+    </h2>
+
+    <input-field
+        size="sm"
+        label="Small"
+        indicator="dots"
+        :activity="showActivity"
+        class="mb-3" />
+    <input-field
+        size="md"
+        label="Medium"
+        indicator="pulse"
+        :activity="showActivity"
+        class="mb-3" />
+    <input-field
+        size="lg"
+        label="Large"
+        :activity="showActivity"
+        class="mb-3" />
+
+    <button
+        type="button"
+        @click="showActivity = !showActivity">
+        <span v-if="!showActivity">Show</span><span v-else>Hide</span> Activity
+    </button>
+
+    <h2 class="text-2xl mt-6 mb-3">
+        Validation
+    </h2>
+
+    <input-field
+        label="Empty Array of Errors"
+        :errors="[]"
+        class="mb-3" />
+
+    <input-field
+        label="Single Inline Error"
+        error="This is an inline error."
+        class="mb-3" />
+
+    <input-field
+        label="Array of Errors"
+        :errors="['First Error', 'Second Error']"
+        class="mb-3" />
+
+    <input-field
+        name="test"
+        label="Multiple Errors From Object"
+        :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}"
+        class="mb-3" />
+</template>

@@ -1,0 +1,17 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "lerna run dev --parallel --verbose",
+    "build": "lerna run build --parallel --verbose",
+    "lint": "lerna run lint --verbose",
+    "fix": "lerna run fix --verbose",
+    "graph": "npx nx graph"
+  },
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
+}
