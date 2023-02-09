@@ -8,7 +8,7 @@
 </template>
 <style>
 .activity-indicator-square-fold {
-  margin: 20px auto;
+  margin: 1em;
   width: 2.5em;
   height: 2.5em;
   position: relative;

@@ -7,16 +7,16 @@
 
 <style>
 .activity-indicator-square-orbit {
-  margin: 100px auto;
-  width: 40px;
-  height: 40px;
+  margin: .5em;
+  width: 3em;
+  height: 3em;
   position: relative;
 }
 
 .activity-indicator-square-orbit-cube1, .activity-indicator-square-orbit-cube2 {
   background-color: #333;
-  width: 15px;
-  height: 15px;
+  width: 1em;
+  height: 1em;
   position: absolute;
   top: 0;
   left: 0;
@@ -31,25 +31,25 @@
 }
 
 @-webkit-keyframes activity-indicator-square-orbit {
-  25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
-  50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
-  75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+  25% { -webkit-transform: translateX(2em) rotate(-90deg) scale(0.5) }
+  50% { -webkit-transform: translateX(2em) translateY(2em) rotate(-180deg) }
+  75% { -webkit-transform: translateX(0px) translateY(2em) rotate(-270deg) scale(0.5) }
   100% { -webkit-transform: rotate(-360deg) }
 }
 
 @keyframes activity-indicator-square-orbit {
   25% { 
-    transform: translateX(42px) rotate(-90deg) scale(0.5);
-    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    transform: translateX(2em) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(2em) rotate(-90deg) scale(0.5);
   } 50% { 
-    transform: translateX(42px) translateY(42px) rotate(-179deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    transform: translateX(2em) translateY(2em) rotate(-179deg);
+    -webkit-transform: translateX(2em) translateY(2em) rotate(-179deg);
   } 50.1% { 
-    transform: translateX(42px) translateY(42px) rotate(-180deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    transform: translateX(2em) translateY(2em) rotate(-180deg);
+    -webkit-transform: translateX(2em) translateY(2em) rotate(-180deg);
   } 75% { 
-    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    transform: translateX(0px) translateY(2em) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(2em) rotate(-270deg) scale(0.5);
   } 100% { 
     transform: rotate(-360deg);
     -webkit-transform: rotate(-360deg);

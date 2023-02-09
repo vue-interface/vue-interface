@@ -1,0 +1,22 @@
+0 silly argv {
+0 silly argv   _: [ 'run' ],
+0 silly argv   scope: '@vue-interface/input-field',
+0 silly argv   lernaVersion: '6.4.1',
+0 silly argv   '$0': 'node_modules/lerna/cli.js',
+0 silly argv   script: 'dev'
+0 silly argv }
+1 notice cli v6.4.1
+2 verbose rootPath /Users/justinkimbrell/Code/vue-interface
+3 error JSONError: Unexpected token "/" (0x2F) in JSON at position 199 while parsing near "...\"type\": \"module\",\n  // \"main\": \"./dist/f..." in packages/form-control/package.json
+3 error
+3 error [0m [90m  8 |[39m   ][33m,[39m[0m
+3 error [0m [90m  9 |[39m   [32m"type"[39m[33m:[39m [32m"module"[39m[33m,[39m[0m
+3 error [0m[31m[1m>[22m[39m[90m 10 |[39m   [90m// "main": "./dist/form-control.umd.cjs",[39m[0m
+3 error [0m [90m    |[39m   [31m[1m^[22m[39m[0m
+3 error [0m [90m 11 |[39m   [90m// "module": "./dist/form-control.js",[39m[0m
+3 error [0m [90m 12 |[39m   [90m// "types": "./dist/index.d.ts",[39m[0m
+3 error [0m [90m 13 |[39m   [90m// "exports": {[39m[0m
+3 error
+3 error     at parseJson (/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/parse-json@5.2.0/node_modules/parse-json/index.js:29:21)
+3 error     at parse (/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/load-json-file@6.2.0/node_modules/load-json-file/index.js:15:9)
+3 error     at module.exports (/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/load-json-file@6.2.0/node_modules/load-json-file/index.js:18:47)

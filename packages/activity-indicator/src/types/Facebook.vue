@@ -17,7 +17,7 @@
   background-color: #333;
   height: 100%;
   width: 6px;
-  margin-right: 2%;
+  margin-right: 2px;
   display: inline-block;
   
   -webkit-animation: activity-indicator-facebook 1.2s infinite ease-in-out;

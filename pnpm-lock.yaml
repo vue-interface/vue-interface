@@ -5,34 +5,42 @@ importers:
   .:
     specifiers:
       lerna: ^6.4.1
+      vite: ^4.1.1
       vitepress: 1.0.0-alpha.45
       vue: ^3.2.47
     devDependencies:
       lerna: 6.4.1
+      vite: 4.1.1
       vitepress: 1.0.0-alpha.45
       vue: 3.2.47
 
-  packages/demo:
+  packages/activity-indicator:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
-      autoprefixer: ^10.4.13
+      '@vue-interface/component-registry': ^1.3.3
+      '@vue/compiler-sfc': ^3.2.45
+      '@vue/eslint-config-typescript': ^11.0.2
+      autoprefixer: ^10.4.2
       change-case: ^4.1.2
-      eslint: ^8.33.0
-      eslint-plugin-vue: ^9.9.0
-      postcss: ^8.4.21
-      tailwindcss: ^3.2.6
-      vite: ^4.1.1
-      vite-plugin-dts: ^1.7.2
-      vue: ^3.2.47
-      vue-router: ^4.1.6
+      eslint: ^8.27.0
+      eslint-plugin-vue: ^9.7.0
+      pascalcase: ^2.0.0
+      postcss: ^8.4.6
+      tailwindcss: ^3.0.18
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.37
     dependencies:
-      vue-router: 4.1.6_vue@3.2.47
+      '@vue-interface/component-registry': 1.3.3
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
+      '@vue/compiler-sfc': 3.2.47
+      '@vue/eslint-config-typescript': 11.0.2_dnsdyqzhaqvvdyf3zo6uhbvg3a
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
       eslint-plugin-vue: 9.9.0_eslint@8.33.0
+      pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
       vite: 4.1.1
@@ -80,8 +88,8 @@ importers:
     specifiers:
       '@rollup/plugin-babel': ^6.0.3
       '@vitejs/plugin-vue': ^3.0.1
-      '@vue-interface/activity-indicator': ^2.0.0-beta.7
-      '@vue-interface/form-control': ^1.0.0-beta.9
+      '@vue-interface/activity-indicator': '*'
+      '@vue-interface/form-control': '*'
       autoprefixer: ^10.4.2
       babel-eslint: ^10.1.0
       babel-preset-vue: ^2.0.2
@@ -95,7 +103,7 @@ importers:
       vite-plugin-dts: ^1.7.1
       vue: ^3.2.37
     dependencies:
-      '@vue-interface/activity-indicator': 2.0.0-beta.10_vue@3.2.47
+      '@vue-interface/activity-indicator': link:../activity-indicator
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@rollup/plugin-babel': 6.0.3
@@ -342,7 +350,7 @@ packages:
     resolution: {integrity: sha512-2xAv2GFuHzzmG0SSZgf8wHX0qZX8n9Y1ZirKUk5Wrdc+vH9CL837x2hZIUdwcPZI9caBA+/CzxsS68O4waYjUQ==}
     dependencies:
       '@docsearch/react': 3.3.3
-      preact: 10.12.0
+      preact: 10.12.1
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/react'
@@ -2050,15 +2058,6 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@vue-interface/activity-indicator/2.0.0-beta.10_vue@3.2.47:
-    resolution: {integrity: sha512-oG/RGSRi8gCoI4drdZY2w23LUApKivoqlkXohPLbQCtuk210cZzPauh1UgInKxR7ajnNkVV3LOL6zXUhgcmzrQ==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      '@vue-interface/component-registry': 1.3.3
-      vue: 3.2.47
-    dev: false
-
   /@vue-interface/component-registry/1.3.3:
     resolution: {integrity: sha512-aZJyQeMZXELzyzGQw+alwXmccRNFMIjo4ioIAs+j2+NcGTLsqhnEfqY49qsPZVFontQXCfBprTzfthoh8Lkmqw==}
     dependencies:
@@ -2109,6 +2108,7 @@ packages:
 
   /@vue/devtools-api/6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
+    dev: true
 
   /@vue/eslint-config-typescript/11.0.2_dnsdyqzhaqvvdyf3zo6uhbvg3a:
     resolution: {integrity: sha512-EiKud1NqlWmSapBFkeSrE994qpKx7/27uCGnhdqzllYDpQZroyX/O6bwjEpeuyKamvLbsGdO6PMR2faIf+zFnw==}
@@ -4001,7 +4001,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.0.5
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -4065,7 +4065,7 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
       neo-async: 2.6.2
       source-map: 0.6.1
       wordwrap: 1.0.0
@@ -4870,6 +4870,10 @@ packages:
 
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+    dev: true
+
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
   /minipass-collect/1.0.2:
@@ -5677,8 +5681,8 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact/10.12.0:
-    resolution: {integrity: sha512-+w8ix+huD8CNZemheC53IPjMUFk921i02o30u0K6h53spMX41y/QhVDnG/nU2k42/69tvqWmVsgNLIiwRAcmxg==}
+  /preact/10.12.1:
+    resolution: {integrity: sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==}
     dev: true
 
   /prelude-ls/1.2.1:
@@ -6056,8 +6060,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki/0.14.0:
-    resolution: {integrity: sha512-fb9Fg1Yx/ElVJcTqPQIEOSfn7mSZlrT1W3CkymY08lL2Jsi+t7jPcZzKO1lCsQwlSDuyNhHvolnyA2OI4EgJNg==}
+  /shiki/0.14.1:
+    resolution: {integrity: sha512-+Jz4nBkCBe0mEDqo1eKRcCdjRtrCjozmcbTUjbPTX7OOJfEbTZzlUWlZtGe3Gb5oV1/jnojhG//YZc3rs9zSEw==}
     dependencies:
       ansi-sequence-parser: 1.1.0
       jsonc-parser: 3.2.0
@@ -6248,7 +6252,7 @@ packages:
     hasBin: true
     dependencies:
       duplexer: 0.1.2
-      minimist: 1.2.7
+      minimist: 1.2.8
       through: 2.3.8
     dev: true
 
@@ -6414,7 +6418,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       json5: 2.2.3
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-bom: 3.0.0
     dev: true
 
@@ -6719,7 +6723,7 @@ packages:
       '@vue/devtools-api': 6.5.0
       '@vueuse/core': 9.12.0_vue@3.2.47
       body-scroll-lock: 4.0.0-beta.0
-      shiki: 0.14.0
+      shiki: 0.14.1
       vite: 4.1.1
       vue: 3.2.47
     transitivePeerDependencies:
@@ -6776,15 +6780,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /vue-router/4.1.6_vue@3.2.47:
-    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      '@vue/devtools-api': 6.5.0
-      vue: 3.2.47
-    dev: false
 
   /vue/3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}

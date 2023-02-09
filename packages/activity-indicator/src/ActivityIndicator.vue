@@ -1,22 +1,34 @@
 <template>
-    <div class="activity-indicator" :class="classes" :style="style">
+    <div
+        class="activity-indicator"
+        :class="classes"
+        :style="style">
         <div class="activity-indicator-content">
-            <component :is="component" class="mx-auto" />
-            <div v-if="label" class="activity-indicator-label">
+            <component
+                :is="component()"
+                class="mx-auto" />
+            <div
+                v-if="label"
+                class="activity-indicator-label">
                 {{ label }}
-            </div>
+            </div> 
         </div>
     </div>
 </template>
 
-<script>
-import { registry } from './registry';
+<script lang="ts">
 import { ComponentRegistry } from '@vue-interface/component-registry';
-import { unit, prefix, kebabCase } from '@vue-interface/utils';
+import { defineComponent, inject, toRaw } from 'vue';
+import { registry } from './registry';
 
-export default {
+function unit(value: any, uom = 'px'): string|undefined {
+    return value !== null
+        && value !== undefined
+        && value !== false
+        && isFinite(value) ? `${value}${uom}` : value;
+}
 
-    name: 'ActivityIndicator',
+export default defineComponent({
 
     props: {
 
@@ -24,47 +36,60 @@ export default {
 
         center: Boolean,
 
-        label: String,
+        label: {
+            type: String,
+            default: undefined
+        },
 
         size: {
             type: String,
-            default: 'md',
-            validator(value) {
-                return [
-                    'activity-indicator-xs',
-                    'activity-indicator-sm',
-                    'activity-indicator-md',
-                    'activity-indicator-lg',
-                    'activity-indicator-xl',
-                ].indexOf(prefix(value, 'activity-indicator')) > -1;
-            }
+            default: 'md'
         },
 
         registry: {
-            type: ComponentRegistry,
-            default() {
-                return registry;
-            }
+            type: String,
+            default: 'indicators'
         },
 
         type: {
-            type: String,
+            type: [Object, String],
             required: true
         },
 
-        height: [String, Number],
+        height: {
+            type: [String, Number],
+            default: undefined
+        },
 
-        maxHeight: [String, Number],
+        maxHeight: {
+            type: [String, Number],
+            default: undefined
+        },
 
-        minHeight: [String, Number],
+        minHeight: {
+            type: [String, Number],
+            default: undefined
+        },
 
-        width: [String, Number],
+        width: {
+            type: [String, Number],
+            default: undefined
+        },
 
-        maxWidth: [String, Number],
+        maxWidth: {
+            type: [String, Number],
+            default: undefined
+        },
 
-        minWidth: [String, Number]
-
+        minWidth: {
+            type: [String, Number],
+            default: undefined
+        }
     },
+
+    data: () => ({
+        is: null
+    }),
 
     computed: {
 
@@ -72,7 +97,7 @@ export default {
             return {
                 'activity-indicator-center': this.center,
                 'activity-indicator-absolute': this.absolute,
-                [prefix(this.size, 'activity-indicator')]: true
+                [this.size && `activity-indicator-${this.size}`]: !!this.size
             };
         },
 
@@ -85,26 +110,35 @@ export default {
                 maxHeight: unit(this.maxHeight),
                 minHeight: unit(this.minHeight)
             };
-        },
-
-        component() {
-            return () => {
-                const component = registry.get(kebabCase(this.type));
-                
-                if(component instanceof Promise) {
-                    return component;
-                }
-
-                if(typeof component === 'function') {
-                    return component();
-                }
-            
-                return Promise.resolve(component);
-            };
         }
-    }
 
-};
+    },
+
+    // async mounted() {
+    //     const component = await this.component();
+
+    //     this.is = () => component;
+    // },
+
+    methods: {
+        componentFromRegistry(key: string) {
+            try {
+                return inject<ComponentRegistry>(this.registry || 'indicators', registry)?.get(key);
+            }
+            catch (e) {
+                // Ignore the error
+            }
+        },
+        component() {
+            if(typeof this.type === 'string') {
+                return this.componentFromRegistry(this.type);
+            }
+
+            return toRaw(this.type);
+        }
+    },
+
+});
 </script>
 
 <style>

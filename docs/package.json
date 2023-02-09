@@ -1,0 +1,6 @@
+{
+  "name": "docs",
+  "dependencies": {
+    "@vue-interface/activity-indicator": "*"
+  }
+}

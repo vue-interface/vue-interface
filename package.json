@@ -2,9 +2,11 @@
   "name": "root",
   "private": true,
   "workspaces": [
+    "docs",
     "packages/*"
   ],
   "scripts": {
+    "watch": "lerna watch",
     "dev": "lerna run dev --parallel --verbose",
     "build": "lerna run build --parallel --verbose",
     "lint": "lerna run lint --verbose",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "lerna": "^6.4.1",
+    "vite": "^4.1.1",
     "vitepress": "1.0.0-alpha.45",
     "vue": "^3.2.47"
   }
