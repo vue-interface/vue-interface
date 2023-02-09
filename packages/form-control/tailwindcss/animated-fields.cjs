@@ -23,7 +23,7 @@ module.exports = plugin(function({ addComponents, theme }) {
                 paddingBottom: theme('formControl.paddingY'),
                 alignItems: 'center',
                 transitionDuration: '300ms',
-                color: theme('colors.gray.600', colors.gray[600]),
+                // color: theme('colors.gray.600', colors.gray[600]),
                 zIndex: 10,
                 marginBottom: 0,
                 transitionProperty: 'padding',

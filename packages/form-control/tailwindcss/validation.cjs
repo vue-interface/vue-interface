@@ -1,7 +1,7 @@
 const Color = require('color');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
-const escapeSvg = require('./utils/escapeSvg');
+const escapeSvg = require('./utils/escapeSvg.cjs');
 
 function contrast(color, light, dark) {
     return Color(color).luminosity() > .5 ? (dark || 'black') : (light || 'white');

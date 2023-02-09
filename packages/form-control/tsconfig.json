@@ -14,6 +14,6 @@
       "allowSyntheticDefaultImports": true,
       "skipLibCheck": true,
       "noImplicitThis": false,
-      "types": ["vite/client", "vue", "vue/ref-macros"]
+      "types": ["node", "vite/client", "vue", "vue/ref-macros"]
   }
 }

@@ -1,6 +1,6 @@
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors'); 
-const escapeSvg = require('./utils/escapeSvg');
+const escapeSvg = require('./utils/escapeSvg.cjs');
 
 module.exports = plugin(function({ addComponents, theme }) {
     const component = {
