@@ -1,6 +1,6 @@
 const global = {};
 
-export default function config(...args) {
+export default function config(...args: any[]) {
     // config() returns the global object.
     if(!args.length) {
         return global;
@@ -11,6 +11,7 @@ export default function config(...args) {
     
     // config('key') returns value assigned to the key
     if(typeof key === 'string') {
+        //@ts-ignore
         return typeof global[key] !== 'undefined' ? global[key] : value;
     }
 
@@ -18,6 +19,7 @@ export default function config(...args) {
     if(Array.isArray(key)) {
         return key.reduce((carry, key) => {
             return Object.assign(carry, {
+                //@ts-ignore
                 [key]: global[key]
             });
         }, {});

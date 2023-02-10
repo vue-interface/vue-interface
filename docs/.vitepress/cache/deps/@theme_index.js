@@ -1,4 +1,4 @@
-// node_modules/.pnpm/vitepress@1.0.0-alpha.45/node_modules/vitepress/dist/client/theme-default/index.js
+// ../node_modules/.pnpm/vitepress@1.0.0-alpha.45/node_modules/vitepress/dist/client/theme-default/index.js
 import "/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/vitepress@1.0.0-alpha.45/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
 import "/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/vitepress@1.0.0-alpha.45/node_modules/vitepress/dist/client/theme-default/styles/vars.css";
 import "/Users/justinkimbrell/Code/vue-interface/node_modules/.pnpm/vitepress@1.0.0-alpha.45/node_modules/vitepress/dist/client/theme-default/styles/base.css";

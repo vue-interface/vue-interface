@@ -1,8 +1,9 @@
 <script setup>
-import { ActivityIndicator, Dots } from '@vue-interface/activity-indicator';
+import { ActivityIndicator, Pulse } from '@vue-interface/activity-indicator'
+import '@vue-interface/activity-indicator/dist/style.css'
 </script>
 
 # Hello VitePress
 
 
-<ActivityIndicator :type="Dots" min-height="100px" center/>
+<ActivityIndicator :type="Pulse" min-height="150px" center/>

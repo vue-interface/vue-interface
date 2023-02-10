@@ -113,13 +113,7 @@ export default defineComponent({
         }
 
     },
-
-    // async mounted() {
-    //     const component = await this.component();
-
-    //     this.is = () => component;
-    // },
-
+    
     methods: {
         componentFromRegistry(key: string) {
             try {

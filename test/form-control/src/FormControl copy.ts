@@ -1,7 +1,7 @@
 import { Shadowable } from '@vue-interface/shadowable';
 import { kebabCase } from 'lodash-es';
 import { defineComponent, DirectiveBinding } from 'vue';
-// import config from './config';
+import config from './config';
 
 function prefix(key: string, value: any, delimeter = '-') {
     const string = String(value).replace(new RegExp(`^${key}${delimeter}?`), '');
@@ -10,6 +10,7 @@ function prefix(key: string, value: any, delimeter = '-') {
         kebabCase(string), key
     ].filter(value => !!value).join(delimeter);
 }
+
 
 function isObject(subject: any) {
     return !Array.isArray(subject) && typeof subject === 'object';
@@ -55,7 +56,7 @@ export default defineComponent({
          */
         animated: {
             type: Boolean,
-            default: false, // () => config('animated', false)
+            default: () => config('animated', false)
         },
 
         /**
@@ -73,7 +74,7 @@ export default defineComponent({
          */
         defaultControlClass: {
             type: String,
-            default: 'form-control', // () => config('defaultControlClass', 'form-control')
+            default: () => config('defaultControlClass', 'form-control')
         },
 
         /**
@@ -110,7 +111,7 @@ export default defineComponent({
          */
         group: {
             type: Boolean,
-            default: true, // () => config('group', true)
+            default: () => config('group', true)
         },
 
         /**
@@ -131,7 +132,7 @@ export default defineComponent({
          */
         indicator: {
             type: [String, Boolean],
-            default: 'spinner', // () => config('indicator', 'spinner')
+            default: () => config('indicator', 'spinner')
         },
 
         /**
@@ -165,7 +166,7 @@ export default defineComponent({
          */
         labelClass: {
             type: [Object, String],
-            default: 'form-label', // () => config('labelClass', 'form-label')
+            default: () => config('labelClass', 'form-label')
         },
 
         /**
@@ -240,6 +241,8 @@ export default defineComponent({
                 ])
             );
 
+            console.log(attrs);
+
             return attrs;
         },
 
@@ -290,11 +293,11 @@ export default defineComponent({
         },
 
         invalidFeedback() {
-            if (this.error === '') {
+            if(this.error === '') {
                 return null;
             }
 
-            if (this.error) {
+            if(this.error) {
                 return this.error;
             }
 
@@ -321,7 +324,7 @@ export default defineComponent({
 
     watch: {
         hasFocus() {
-            if (this.shouldChangeOnFocus()) {
+            if(this.shouldChangeOnFocus()) {
                 this.hasChanged = true;
             }
         },
@@ -346,20 +349,22 @@ export default defineComponent({
                 ? el.querySelectorAll('option')?.[el.selectedIndex]
                 : null;
 
+            console.log(this.modelValue);
+
             // Set the element value is the modelValue is not undefined.
             // if(isUndefined(this.modelValue)) {
             // el.value = this.modelValue;
             // }
 
             // If an option is selected, force the default value.
-            if (selected) {
+            if(selected) {
                 el.value = selected?.value;
             }
 
             // If the el has a value, trigger the model update.
-            // if (el.value) {
-            //     fn(el.value);
-            // }
+            if(el.value) {
+                fn(el.value);
+            }
 
             // Set the default has changed value
             this.hasChanged = !!el.value;
@@ -367,8 +372,6 @@ export default defineComponent({
             // Set the default has changed value
             this.isEmpty = !el.value;
 
-            console.log('2');
-            
             // Add the has-focus class from the form control
             el.addEventListener('focus', () => {
                 this.hasFocus = true;
@@ -399,13 +402,13 @@ export default defineComponent({
         },
 
         blur() {
-            if (this.getInputField()) {
+            if(this.getInputField()) {
                 this.getInputField().blur();
             }
         },
 
         focus() {
-            if (this.getInputField()) {
+            if(this.getInputField()) {
                 this.getInputField().focus();
             }
         },
@@ -419,7 +422,7 @@ export default defineComponent({
         getFieldErrors() {
             let errors = this.error || this.errors;
 
-            if (this.errors && isObject(this.errors)) {
+            if(this.errors && isObject(this.errors)) {
                 errors = this.errors[this.$attrs.name || this.$attrs.id];
             }
 
@@ -431,6 +434,7 @@ export default defineComponent({
         },
 
         onInput(value: any) {
+            console.log('input', value);
             this.$emit('update:modelValue', value);
         }
 

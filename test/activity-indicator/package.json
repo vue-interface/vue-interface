@@ -19,14 +19,8 @@
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "pre-release": "npm run build; git add . -A; git commit -m 'pre-release commit'",
-    "release-patch": "npm run pre-release && npm version patch -m \"%s\" && npm run release;",
-    "release-minor": "npm run pre-release && npm version minor -m \"%s\" && npm run release;",
-    "release-major": "npm run pre-release && npm version major -m \"%s\" && npm run release;",
-    "release": "git add . -A; git commit; git push --tags origin; npm publish;"
+    "dev": "vite build --watch",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -54,17 +48,19 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/compiler-sfc": "^3.2.45",
+    "@vue/compiler-sfc": "^3.2.47",
     "@vue/eslint-config-typescript": "^11.0.2",
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "^10.4.13",
     "change-case": "^4.1.2",
-    "eslint": "^8.27.0",
-    "eslint-plugin-vue": "^9.7.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-vue": "^9.9.0",
     "pascalcase": "^2.0.0",
-    "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18",
-    "vite": "^4.0.0",
-    "vite-plugin-dts": "^1.7.1",
-    "vue": "^3.2.37"
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.6",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-dts": "^1.7.2",
+    "vue": "^3.2.47",
+    "vue-tsc": "^1.0.24"
   }
 }

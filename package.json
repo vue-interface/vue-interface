@@ -2,24 +2,19 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "docs",
-    "packages/*"
+    "packages/*",
+    "docs"
   ],
   "scripts": {
-    "watch": "lerna watch",
-    "dev": "lerna run dev --parallel --verbose",
+    "watch": "npm run build && lerna watch -- lerna run build --scope=$LERNA_PACKAGE_NAME --concurrency 1 --verbose",
+    "dev": "lerna run dev --concurrency 1 --verbose",
     "build": "lerna run build --parallel --verbose",
     "lint": "lerna run lint --verbose",
     "fix": "lerna run fix --verbose",
-    "graph": "npx nx graph",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "graph": "npx nx graph"
   },
   "devDependencies": {
     "lerna": "^6.4.1",
-    "vite": "^4.1.1",
-    "vitepress": "1.0.0-alpha.45",
-    "vue": "^3.2.47"
+    "turbo": "^1.7.4"
   }
 }
