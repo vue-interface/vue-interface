@@ -13,14 +13,10 @@ importers:
   docs:
     specifiers:
       '@vue-interface/activity-indicator': '*'
-      '@vue-interface/form-control': '*'
-      '@vue-interface/input-field': '*'
       vitepress: 1.0.0-alpha.45
       vue: ^3.0.0
     dependencies:
       '@vue-interface/activity-indicator': link:../packages/activity-indicator
-      '@vue-interface/form-control': link:../packages/form-control
-      '@vue-interface/input-field': 1.0.0-beta.7_vue@3.2.47
       vue: 3.2.47
     devDependencies:
       vitepress: 1.0.0-alpha.45
@@ -29,20 +25,19 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/component-registry': ^1.3.3
-      '@vue/compiler-sfc': ^3.2.47
+      '@vue/compiler-sfc': ^3.2.45
       '@vue/eslint-config-typescript': ^11.0.2
-      autoprefixer: ^10.4.13
+      autoprefixer: ^10.4.2
       change-case: ^4.1.2
-      eslint: ^8.33.0
-      eslint-plugin-vue: ^9.9.0
+      eslint: ^8.27.0
+      eslint-plugin-vue: ^9.7.0
       pascalcase: ^2.0.0
-      postcss: ^8.4.21
-      tailwindcss: ^3.2.6
+      postcss: ^8.4.6
+      tailwindcss: ^3.0.18
       typescript: ^4.9.5
-      vite: ^4.1.1
-      vite-plugin-dts: ^1.7.2
-      vue: ^3.2.47
-      vue-tsc: ^1.0.24
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.37
     dependencies:
       '@vue-interface/component-registry': 1.3.3
     devDependencies:
@@ -60,83 +55,6 @@ importers:
       vite: 4.1.1
       vite-plugin-dts: 1.7.2_vite@4.1.1
       vue: 3.2.47
-      vue-tsc: 1.0.24_typescript@4.9.5
-
-  packages/form-control:
-    specifiers:
-      '@types/lodash-es': ^4.17.6
-      '@vitejs/plugin-vue': ^4.0.0
-      '@vue-interface/shadowable': ^2.0.0-beta.2
-      '@vue/eslint-config-typescript': ^11.0.2
-      autoprefixer: ^10.4.2
-      change-case: ^4.1.2
-      color: ^4.2.0
-      eslint: ^8.27.0
-      eslint-plugin-vue: ^9.7.0
-      lodash-es: ^4.17.21
-      pascalcase: ^2.0.0
-      postcss: ^8.4.6
-      tailwindcss: ^3.0.18
-      typescript: ^4.9.5
-      vite: ^4.0.0
-      vite-plugin-dts: ^1.7.1
-      vue: ^3.2.37
-      vue-tsc: ^1.0.24
-    dependencies:
-      '@types/lodash-es': 4.17.6
-      '@vue-interface/shadowable': 2.0.0-beta.4_vue@3.2.47
-      color: 4.2.3
-      lodash-es: 4.17.21
-    devDependencies:
-      '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_tf6rgb5i7kw5m4rbu3ajzgw7l4
-      autoprefixer: 10.4.13_postcss@8.4.21
-      change-case: 4.1.2
-      eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
-      pascalcase: 2.0.0
-      postcss: 8.4.21
-      tailwindcss: 3.2.6_postcss@8.4.21
-      typescript: 4.9.5
-      vite: 4.1.1
-      vite-plugin-dts: 1.7.2_vite@4.1.1
-      vue: 3.2.47
-      vue-tsc: 1.0.24_typescript@4.9.5
-
-  packages/input-field:
-    specifiers:
-      '@vitejs/plugin-vue': ^4.0.0
-      '@vue-interface/activity-indicator': '*'
-      '@vue-interface/form-control': '*'
-      autoprefixer: ^10.4.2
-      change-case: ^4.1.2
-      eslint: ^8.28.0
-      eslint-plugin-vue: ^9.8.0
-      pascalcase: ^2.0.0
-      postcss: ^8.4.6
-      tailwindcss: ^3.0.18
-      typescript: ^4.9.5
-      vite: ^4.0.0
-      vite-plugin-dts: ^1.7.1
-      vue: ^3.2.37
-      vue-tsc: ^1.0.24
-    dependencies:
-      '@vue-interface/activity-indicator': link:../activity-indicator
-      '@vue-interface/form-control': link:../form-control
-    devDependencies:
-      '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      autoprefixer: 10.4.13_postcss@8.4.21
-      change-case: 4.1.2
-      eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
-      pascalcase: 2.0.0
-      postcss: 8.4.21
-      tailwindcss: 3.2.6_postcss@8.4.21
-      typescript: 4.9.5
-      vite: 4.1.1
-      vite-plugin-dts: 1.7.2_vite@4.1.1
-      vue: 3.2.47
-      vue-tsc: 1.0.24_typescript@4.9.5
 
 packages:
 
@@ -1758,16 +1676,6 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
-    dependencies:
-      '@types/lodash': 4.14.191
-    dev: false
-
-  /@types/lodash/4.14.191:
-    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
-    dev: false
-
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
     dev: true
@@ -1933,88 +1841,10 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@volar/language-core/1.0.24:
-    resolution: {integrity: sha512-vTN+alJiWwK0Pax6POqrmevbtFW2dXhjwWiW/MW4f48eDYPLdyURWcr8TixO7EN/nHsUBj2udT7igFKPtjyAKg==}
-    dependencies:
-      '@volar/source-map': 1.0.24
-      muggle-string: 0.1.0
-    dev: true
-
-  /@volar/source-map/1.0.24:
-    resolution: {integrity: sha512-Qsv/tkplx18pgBr8lKAbM1vcDqgkGKQzbChg6NW+v0CZc3G7FLmK+WrqEPzKlN7Cwdc6XVL559Nod8WKAfKr4A==}
-    dependencies:
-      muggle-string: 0.1.0
-    dev: true
-
-  /@volar/typescript/1.0.24:
-    resolution: {integrity: sha512-f8hCSk+PfKR1/RQHxZ79V1NpDImHoivqoizK+mstphm25tn/YJ/JnKNjZHB+o21fuW0yKlI26NV3jkVb2Cc/7A==}
-    dependencies:
-      '@volar/language-core': 1.0.24
-    dev: true
-
-  /@volar/vue-language-core/1.0.24:
-    resolution: {integrity: sha512-2NTJzSgrwKu6uYwPqLiTMuAzi7fAY3yFy5PJ255bGJc82If0Xr+cW8pC80vpjG0D/aVLmlwAdO4+Ya2BI8GdDg==}
-    dependencies:
-      '@volar/language-core': 1.0.24
-      '@volar/source-map': 1.0.24
-      '@vue/compiler-dom': 3.2.47
-      '@vue/compiler-sfc': 3.2.47
-      '@vue/reactivity': 3.2.47
-      '@vue/shared': 3.2.47
-      minimatch: 5.1.6
-      vue-template-compiler: 2.7.14
-    dev: true
-
-  /@volar/vue-typescript/1.0.24:
-    resolution: {integrity: sha512-9a25oHDvGaNC0okRS47uqJI6FxY4hUQZUsxeOUFHcqVxZEv8s17LPuP/pMMXyz7jPygrZubB/qXqHY5jEu/akA==}
-    dependencies:
-      '@volar/typescript': 1.0.24
-      '@volar/vue-language-core': 1.0.24
-    dev: true
-
-  /@vue-interface/activity-indicator/2.0.0-beta.10_vue@3.2.47:
-    resolution: {integrity: sha512-oG/RGSRi8gCoI4drdZY2w23LUApKivoqlkXohPLbQCtuk210cZzPauh1UgInKxR7ajnNkVV3LOL6zXUhgcmzrQ==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      '@vue-interface/component-registry': 1.3.3
-      vue: 3.2.47
-    dev: false
-
   /@vue-interface/component-registry/1.3.3:
     resolution: {integrity: sha512-aZJyQeMZXELzyzGQw+alwXmccRNFMIjo4ioIAs+j2+NcGTLsqhnEfqY49qsPZVFontQXCfBprTzfthoh8Lkmqw==}
     dependencies:
       param-case: 3.0.4
-    dev: false
-
-  /@vue-interface/form-control/1.0.0-beta.10_vue@3.2.47:
-    resolution: {integrity: sha512-LquzWUQZ/lGkelZvT7VEwbL4KCmvrtR2XlL9vn10nnXb9Xi6xTdmmoRbsI+oDlIq7Z8qbaFADE9AL2saW8S/Bw==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      '@types/lodash-es': 4.17.6
-      '@vue-interface/shadowable': 2.0.0-beta.4_vue@3.2.47
-      color: 4.2.3
-      lodash-es: 4.17.21
-      vue: 3.2.47
-    dev: false
-
-  /@vue-interface/input-field/1.0.0-beta.7_vue@3.2.47:
-    resolution: {integrity: sha512-9RtHejMojGX4D6PMQwEMpNf/UiLe36rlrIjLd95FKhUYk/kab4kuMFxHgnYZAd5SFOcllW1Z3A74LPTbN7OlWQ==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      '@vue-interface/activity-indicator': 2.0.0-beta.10_vue@3.2.47
-      '@vue-interface/form-control': 1.0.0-beta.10_vue@3.2.47
-      vue: 3.2.47
-    dev: false
-
-  /@vue-interface/shadowable/2.0.0-beta.4_vue@3.2.47:
-    resolution: {integrity: sha512-/HL2AD0HbreZiPO5UNr90vpMnVidKAo5mLOngaY0+wCorpl0M3eGm9P0u87Z17MqEn5lz/22B+WbfI1VBsm1CA==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      vue: 3.2.47
     dev: false
 
   /@vue/compiler-core/3.2.47:
@@ -2718,6 +2548,7 @@ packages:
     engines: {node: '>=7.0.0'}
     dependencies:
       color-name: 1.1.4
+    dev: true
 
   /color-name/1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
@@ -2725,26 +2556,12 @@ packages:
 
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  /color-string/1.9.1:
-    resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
-    dependencies:
-      color-name: 1.1.4
-      simple-swizzle: 0.2.2
-    dev: false
+    dev: true
 
   /color-support/1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
     hasBin: true
     dev: true
-
-  /color/4.2.3:
-    resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
-    engines: {node: '>=12.5.0'}
-    dependencies:
-      color-convert: 2.0.1
-      color-string: 1.9.1
-    dev: false
 
   /colors/1.2.5:
     resolution: {integrity: sha512-erNRLao/Y3Fv54qUa0LBB+//Uf3YwMUmdJinN20yMXm9zdKKqH9wt7R9IIVZ+K7ShzfpLV/Zg8+VyrBJYB4lpg==}
@@ -2942,10 +2759,6 @@ packages:
 
   /dateformat/3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
-    dev: true
-
-  /de-indent/1.0.2:
-    resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
     dev: true
 
   /debug/4.3.4:
@@ -3771,11 +3584,6 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /he/1.2.0:
-    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
-    hasBin: true
-    dev: true
-
   /header-case/2.0.4:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
     dependencies:
@@ -3967,10 +3775,6 @@ packages:
   /is-arrayish/0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
     dev: true
-
-  /is-arrayish/0.3.2:
-    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
-    dev: false
 
   /is-binary-path/2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
@@ -4346,10 +4150,6 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
-
   /lodash.get/4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
     dev: true
@@ -4630,10 +4430,6 @@ packages:
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
-    dev: true
-
-  /muggle-string/0.1.0:
-    resolution: {integrity: sha512-Tr1knR3d2mKvvWthlk7202rywKbiOm4rVFLsfAaSIhJ6dt9o47W4S+JMtWhd/PW9Wrdew2/S2fSvhz3E2gkfEg==}
     dev: true
 
   /multimatch/5.0.0:
@@ -5725,12 +5521,6 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /simple-swizzle/0.2.2:
-    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
-    dependencies:
-      is-arrayish: 0.3.2
-    dev: false
-
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -6435,24 +6225,6 @@ packages:
       semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /vue-template-compiler/2.7.14:
-    resolution: {integrity: sha512-zyA5Y3ArvVG0NacJDkkzJuPQDF8RFeRlzV2vLeSnhSpieO6LK2OVbdLPi5MPPs09Ii+gMO8nY4S3iKQxBxDmWQ==}
-    dependencies:
-      de-indent: 1.0.2
-      he: 1.2.0
-    dev: true
-
-  /vue-tsc/1.0.24_typescript@4.9.5:
-    resolution: {integrity: sha512-mmU1s5SAqE1nByQAiQnao9oU4vX+mSdsgI8H57SfKH6UVzq/jP9+Dbi2GaV+0b4Cn361d2ln8m6xeU60ApiEXg==}
-    hasBin: true
-    peerDependencies:
-      typescript: '*'
-    dependencies:
-      '@volar/vue-language-core': 1.0.24
-      '@volar/vue-typescript': 1.0.24
-      typescript: 4.9.5
     dev: true
 
   /vue/3.2.47:

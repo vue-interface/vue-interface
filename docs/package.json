@@ -4,7 +4,8 @@
         "dev": "vitepress"
     },
     "dependencies": {
-        "vue": "^3.0.0"
+        "vue": "^3.0.0",
+        "@vue-interface/activity-indicator": "*"
     },
     "devDependencies": {
         "vitepress": "1.0.0-alpha.45"
