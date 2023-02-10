@@ -1,0 +1,3 @@
+[submodule "packages/activity-indicator"]
+	path = packages/activity-indicator
+	url = https://github.com/vue-interface/activity-indicator
