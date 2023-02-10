@@ -1,11 +1,12 @@
 {
     "name": "docs",
     "scripts": {
-        "dev": "vitepress"
+        "build": "vitepress build"
     },
     "dependencies": {
         "vue": "^3.0.0",
-        "@vue-interface/activity-indicator": "*"
+        "@vue-interface/activity-indicator": "*",
+        "@vue-interface/input-field": "*"
     },
     "devDependencies": {
         "vitepress": "1.0.0-alpha.45"

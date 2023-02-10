@@ -4,3 +4,6 @@
 [submodule "packages/input-field"]
 	path = packages/input-field
 	url = https://github.com/vue-interface/input-field
+[submodule "packages/form-control"]
+	path = packages/form-control
+	url = https://github.com/vue-interface/form-control

@@ -6,15 +6,13 @@
     "docs"
   ],
   "scripts": {
-    "watch": "npm run build && lerna watch -- lerna run build --scope=$LERNA_PACKAGE_NAME --concurrency 1 --verbose",
-    "dev": "lerna run dev --concurrency 1 --verbose",
-    "build": "lerna run build --parallel --verbose",
-    "lint": "lerna run lint --verbose",
-    "fix": "lerna run fix --verbose",
+    "test": "pnpm --stream --parallel run dev",
+    "dev": "turbo dev --parallel",
+    "serve": "turbo serve",
+    "build": "turbo build --parallel",
     "graph": "npx nx graph"
   },
   "devDependencies": {
-    "lerna": "^6.4.1",
     "turbo": "^1.7.4"
   }
 }
