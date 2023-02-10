@@ -2,14 +2,14 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "docs"
+    "docs",
+    "packages/*"
   ],
   "scripts": {
     "test": "pnpm --stream --parallel run dev",
     "dev": "turbo dev --parallel",
     "serve": "turbo serve",
-    "build": "turbo build --parallel",
+    "build": "turbo build",
     "graph": "npx nx graph"
   },
   "devDependencies": {
