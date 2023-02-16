@@ -15,11 +15,12 @@ import { ActivityIndicator, Pulse, InputField } from 'vue-interface';
 
 ## Developing
 
+To start developing in the mono repo run the following commands. `pnpm install` only needs to be ran once.
+
 ```bash
+pnpm install
 pnpm start
 ```
-
-*Be sure you have ran `pnpm install` in the repo if you haven't already.*
 
 ## Versioning
 
