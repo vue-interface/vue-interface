@@ -33,7 +33,7 @@ To start developing in the mono repo run the following commands. `pnpm install` 
 
 ```bash
 pnpm install
-pnpm start
+pnpm dev
 ```
 
 ## Building
