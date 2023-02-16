@@ -14,7 +14,16 @@ pnpm i vue-interface
 The monorepo will import all the Vue Interface packages. Vue Interface has full ESM and Typescript support, with tree shaking. Only the components you actually use will end up in your bundle.
 
 ```js
-import { ActivityIndicator, Pulse, InputField } from 'vue-interface';
+import { createApp } from 'vue';
+import { InputField } from 'vue-interface';
+
+const app = createApp({
+    components: {
+        InputField
+    }
+});
+
+app.mount('#app');
 ```
 
 ## Developing
