@@ -33,6 +33,8 @@ program
     .action(async() => {
         const workspace = await selectWorkspace();
 
+        let stdout;
+
         const tasks = new Listr([
             {
                 title: 'Preparing Bundle',
@@ -40,22 +42,17 @@ program
                     return new Promise(resolve => {
                         let output = '';
 
-                        const { stdout } = execa('pnpm', [
+                        stdout = execa('pnpm', [
                             'turbo',
                             'run',
                             'dev',
                             `--filter=${workspace}`
-                        ]);
+                        ]).stdout;
 
                         stdout.on('data', data => {
-                            // task.output = data.toString();
-                            
-                            output = [
-                                output,
-                                data.toString()
-                            ].join('\n');
+                            task.output = data.toString();
 
-                            ctx.matches = output.match(/(https?:\/\/[^\s]+)/);
+                            ctx.matches = task.output.match(/(https?:\/\/[^\s]+)/);
 
                             if(ctx.matches) {
                                 resolve();
@@ -71,9 +68,12 @@ program
                         {
                             title: 'Starting Dev Server',
                             task(ctx, task) {
-                                task.title = 'Server Running:';
-                                task.output = ctx.matches[0];
-                                
+                                task.title = `Server Running: ${ctx.matches[0]}`;
+
+                                stdout.on('data', data => {
+                                    task.output = data.toString();
+                                });
+
                                 return new Promise(() => {
                                     // Do nothing because the dev server is already running...
                                     // This is just for a visual indicator that runs concurrently
