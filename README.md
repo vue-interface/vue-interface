@@ -4,6 +4,8 @@ This is a monorepo for the components of [Vue Interface](https://github.com/vue-
 
 ## Installation
 
+We prefer `pnpm`, but you can use `npm` or `yarn` to install too. 
+
 ```bash
 pnpm i vue-interface
 ```
