@@ -109,20 +109,6 @@ program
         await tasks.run();
 
         process.exit();
-        // pnpm concurrently "pnpm turbo run dev --filter=@vue-interface/input-field"  "pnpm turbo run watch --filter=@vue-interface/input-field^..."
-
-        // await run('pnpm concurrently', [
-        //     `pnpm turbo run dev --filter=${workspace}`,
-        //     `pnpm turbo run watch --filter=${workspace}^...`
-        // ]);
-
-        // await run('pnpm', [
-        //     'concurrently',
-        //     `"pnpm turbo run dev --filter=${workspace}"`,
-        //     `"pnpm turbo run watch --filter=${workspace}^..."`
-        // ], str => {
-        //     console.log(str);
-        // });
     });
 
 program.parse(process.argv);

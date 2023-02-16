@@ -10,9 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "serve": "turbo serve",
-    "build": "turbo build",
-    "graph": "npx nx graph"
+    "dev": "node ./bin/dev.js start"
   },
   "devDependencies": {
     "chalk": "^5.2.0",
