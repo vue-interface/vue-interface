@@ -1,6 +1,6 @@
 # Vue Interface
 
-This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Each component is its own independent repository, and become a workspaces and Git submodule to this monorepo. The purpose of this monorepo is provide a convenient and efficient way to develop UI components that dependent.
+This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Each component is its own independent repository, and becomes a workspaces and Git submodule inside this monorepo. The purpose of this monorepo is provide a convenient and efficient way to develop UI components that are dependent on each other without relying on symlinks and other hacks that provide less than optimal development experiences.
 
 ## Installation
 

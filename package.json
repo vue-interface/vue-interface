@@ -13,13 +13,20 @@
     "dev": "node ./bin/dev.js start"
   },
   "devDependencies": {
-    "chalk": "^5.2.0",
     "commander": "^10.0.0",
-    "concurrently": "^7.6.0",
     "delay": "^5.0.0",
     "execa": "^7.0.0",
     "inquirer": "^9.1.4",
     "listr2": "^5.0.7",
-    "turbo": "^1.7.4"
+    "turbo": "^1.7.4",
+    "vue": "^3.2.47"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/form-control": "workspace:*",
+    "@vue-interface/input-field": "workspace:*"
   }
 }
