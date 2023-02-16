@@ -5,9 +5,13 @@ This is a monorepo for the components of [Vue Interface](https://github.com/vue-
 
 ## Basic Usage
 
+Install the monorepo.
+
 ```bash
 pnpm i vue-interface
 ```
+
+The monorepo will import all the Vue Interface packages. Vue Interface has full ESM and Typescript support, with tree shaking. Only the components you actually use will end up in your bundle.
 
 ```js
 import { ActivityIndicator, Pulse, InputField } from 'vue-interface';
