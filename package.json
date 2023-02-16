@@ -1,18 +1,27 @@
 {
   "name": "root",
   "private": true,
+  "type": "module",
+  "bin": {
+    "dev": "./bin/dev.js"
+  },
   "workspaces": [
     "docs",
     "packages/*"
   ],
   "scripts": {
-    "test": "pnpm --stream --parallel run dev",
-    "dev": "turbo dev --parallel",
     "serve": "turbo serve",
     "build": "turbo build",
     "graph": "npx nx graph"
   },
   "devDependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "concurrently": "^7.6.0",
+    "delay": "^5.0.0",
+    "execa": "^7.0.0",
+    "inquirer": "^9.1.4",
+    "listr2": "^5.0.7",
     "turbo": "^1.7.4"
   }
 }
