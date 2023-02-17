@@ -4,9 +4,10 @@
         "build": "vitepress build"
     },
     "dependencies": {
-        "vue": "^3.0.0",
+        "@algolia/client-search": "^4.14.3",
         "@vue-interface/activity-indicator": "*",
-        "@vue-interface/input-field": "*"
+        "@vue-interface/input-field": "*",
+        "vue": "^3.0.0"
     },
     "devDependencies": {
         "vitepress": "1.0.0-alpha.45"
