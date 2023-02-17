@@ -10,3 +10,6 @@
 [submodule "packages/shadowable"]
 	path = packages/shadowable
 	url = https://github.com/vue-interface/shadowable
+[submodule "packages/input-list"]
+	path = packages/input-list
+	url = https://github.com/vue-interface/input-list

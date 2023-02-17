@@ -29,7 +29,7 @@ app.mount('#app');
 
 ## Developing
 
-To start developing in the mono repo run the following commands. `pnpm install` only needs to be ran once.
+To start developing in the mono repo run the following commands. `pnpm install` should be ran the first time, after anything package.json updates or when adding another submodule.
 
 ```bash
 pnpm install
