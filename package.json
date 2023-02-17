@@ -28,6 +28,7 @@
   "dependencies": {
     "@vue-interface/activity-indicator": "workspace:*",
     "@vue-interface/form-control": "workspace:*",
-    "@vue-interface/input-field": "workspace:*"
+    "@vue-interface/input-field": "workspace:*",
+    "@vue-interface/shadowable": "workspace:*"
   }
 }
