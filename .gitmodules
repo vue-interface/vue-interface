@@ -13,3 +13,15 @@
 [submodule "packages/input-list"]
 	path = packages/input-list
 	url = https://github.com/vue-interface/input-list
+[submodule "packages/select-field"]
+	path = packages/select-field
+	url = https://github.com/vue-interface/select-field
+[submodule "packages/textarea-field"]
+	path = packages/textarea-field
+	url = https://github.com/vue-interface/textarea-field
+[submodule "packages/radio-field"]
+	path = packages/radio-field
+	url = https://github.com/vue-interface/radio-field
+[submodule "packages/checkbox-field"]
+	path = packages/checkbox-field
+	url = https://github.com/vue-interface/checkbox-field
