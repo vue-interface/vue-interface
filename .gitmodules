@@ -25,3 +25,9 @@
 [submodule "packages/checkbox-field"]
 	path = packages/checkbox-field
 	url = https://github.com/vue-interface/checkbox-field
+[submodule "packages/btn"]
+	path = packages/btn
+	url = https://github.com/vue-interface/btn
+[submodule "packages/btn-activity"]
+	path = packages/btn-activity
+	url = https://github.com/vue-interface/btn-activity
