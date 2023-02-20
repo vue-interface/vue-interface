@@ -10,10 +10,18 @@ program
 
 program
     .command('dev')
-    .description('Start a Vite development server on a specified package, and start watchers on its dependencies in parallel.')
-    .option('-p, --package <package>', 'Specify a package to start developing.')
+    .description('Start a Vite development server for a package.')
+    .option('-p, --package <package>', 'The name of a workspace package.')
     .action(async function () {
         start(this.opts().package);
     });
-    
+
+program
+    .command('version')
+    .description('Bump the version for a package.')
+    .option('-p, --package <package>', 'The name of a workspace package.')
+    .action(async function () {
+        console.log(this.opts());
+    });
+
 program.parse(process.argv);

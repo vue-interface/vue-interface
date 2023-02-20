@@ -38,7 +38,12 @@ pnpm dev
 
 ## Building
 
-How to build the monorepo is coming soon.
+To start developing in the mono repo run the following commands. `pnpm install` should be ran the first time, after anything package.json updates or when adding another submodule.
+
+```bash
+pnpm install
+pnpm dev
+```
 
 ## Versioning
 

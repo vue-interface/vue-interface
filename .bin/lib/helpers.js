@@ -14,6 +14,10 @@ const require = createRequire(import.meta.url);
 
 export const version = require('../../package.json').version;
 
+export async function bumpVersion() {
+    
+}
+
 /**
  * List all the available packages.
  * 
