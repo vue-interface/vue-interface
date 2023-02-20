@@ -9,8 +9,8 @@ program
 
 program
     .command('dev')
-    .description('Start a development server for a package and all its dependencies.')
-    .option('-p, --package <package>', 'Specify a package to start developing. Passing a package will by pass the picklist.')
+    .description('Start a Vite development server on a specified package, and runs a watcher on its dependencies in parallel.')
+    .option('-p, --package <package>', 'Specify a package to start developing.')
     .action(async function () {
         start(this.opts().package);
     });
