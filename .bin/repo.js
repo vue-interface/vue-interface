@@ -9,7 +9,7 @@ program
 
 program
     .command('dev')
-    .description('Start a Vite development server on a specified package, and runs a watcher on its dependencies in parallel.')
+    .description('Start a Vite development server on a specified package, and start watchers on its dependencies in parallel.')
     .option('-p, --package <package>', 'Specify a package to start developing.')
     .action(async function () {
         start(this.opts().package);
