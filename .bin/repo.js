@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 import { program } from 'commander';
 import process from 'process';
-import { start } from './lib/helpers.js';
+import { start, version } from './lib/helpers.js';
 
 program
     .name('Vue Interface CLI')
-    .description('This CLI provides the build tools to make development easy in this monorepo.');
+    .description('This CLI provides the build tools to make development easy in this monorepo.')
+    .version(version);
 
 program
     .command('dev')

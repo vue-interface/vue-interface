@@ -2,6 +2,17 @@ import chokidar from 'chokidar';
 import { execa } from 'execa';
 import inquirer from 'inquirer';
 import { debounce } from 'lodash-es';
+import { createRequire } from "module";
+
+/**
+ * Required for Node 16 module to require a .json file and get the version.
+ * Use the following code when Node v17 is available in production envs:
+ * 
+ * `import { version } from '../package.json' assert { type: "json" };`
+ */
+const require = createRequire(import.meta.url);
+
+export const version = require('../../package.json').version;
 
 export async function ls() {
     const { stdout } = await execa('pnpm', [

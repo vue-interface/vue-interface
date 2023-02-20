@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "type": "module",
+  "version": "0.1.0",
   "bin": {
     "repo": ".bin/repo.js"
   },
