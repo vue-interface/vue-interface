@@ -1,12 +1,13 @@
 {
     "name": "docs",
+    "version": "0.1.0",
     "scripts": {
         "build": "vitepress build"
     },
     "dependencies": {
         "@algolia/client-search": "^4.14.3",
-        "@vue-interface/activity-indicator": "*",
-        "@vue-interface/input-field": "*",
+        "@vue-interface/activity-indicator": "^2.0.0-beta.10",
+        "@vue-interface/input-field": "1.0.0-beta.7",
         "vue": "^3.0.0"
     },
     "devDependencies": {

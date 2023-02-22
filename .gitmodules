@@ -31,3 +31,6 @@
 [submodule "packages/btn-activity"]
 	path = packages/btn-activity
 	url = https://github.com/vue-interface/btn-activity
+[submodule "packages/light-switch-field"]
+	path = packages/light-switch-field
+	url = https://github.com/vue-interface/light-switch-field
