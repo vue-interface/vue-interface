@@ -1,17 +1,14 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "vue-interface",
   "type": "module",
   "version": "0.1.0",
   "bin": {
     "repo": ".bin/repo.js"
   },
-  "workspaces": [
-    "docs",
-    "packages/*"
-  ],
   "scripts": {
     "dev": "node .bin/repo.js dev",
+    "status": "node .bin/repo.js status",
+    "bump": "node .bin/repo.js bump",
     "build": "pnpm turbo run build",
     "lint": "eslint"
   },
@@ -21,20 +18,20 @@
     "chokidar": "^3.5.3",
     "commander": "^10.0.0",
     "concurrently": "^7.6.0",
+    "ejs": "^3.1.8",
     "execa": "^7.0.0",
+    "inflection": "^2.0.1",
     "inquirer": "^9.1.4",
+    "inquirer-search-list": "^1.2.6",
     "lodash-es": "^4.17.21",
-    "release-it": "^15.6.0",
-    "turbo": "^1.8.1",
+    "log-symbols": "^5.1.0",
+    "log-update": "^5.0.1",
+    "ora": "^6.1.2",
+    "semver": "^7.3.8",
+    "turbo": "^1.8.2",
     "vue": "^3.2.47"
   },
   "peerDependencies": {
     "vue": "^3.2.47"
-  },
-  "dependencies": {
-    "@vue-interface/activity-indicator": "workspace:*",
-    "@vue-interface/form-control": "workspace:*",
-    "@vue-interface/input-field": "workspace:*",
-    "@vue-interface/shadowable": "workspace:*"
   }
 }

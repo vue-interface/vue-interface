@@ -1,0 +1,6 @@
+<?= status ? (status.outdated ? chalk.red(logSymbols.error): chalk.green(logSymbols.success)) : spinner.frame().trim() ?> <?= workspace.name ?> <?= status && status.outdated ? chalk.yellow(`(${status.newCommits.length} new ${inflect('commits', status.newCommits.length)})`) : '' ?><? 
+if(status && status.outdated && opts.all) {?>
+
+New Commits
+<?=status.newCommits.map(str => `- ${str}`).join('\n')?>
+<? } ?>

@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 import { program } from 'commander';
 import process from 'process';
-import { start, version } from './lib/helpers.js';
+import start from './commands/start.js';
+import status from './commands/status.js';
+import { version } from './lib/helpers.js';
 
 program
     .name('Vue Interface CLI')
@@ -12,16 +14,23 @@ program
     .command('dev')
     .description('Start a Vite development server for a package.')
     .option('-p, --package <package>', 'The name of a workspace package.')
-    .action(async function () {
-        start(this.opts().package);
-    });
+    .action(start);
 
 program
-    .command('version')
+    .command('status')
+    .description('Check the release status of the workspace packages.')
+    .option('-a, --all', 'Show all the information available.')
+    .option('-p, --package <package>', 'The name of a workspace package.')
+    .option('-f, --filter <filter>', 'Filter the workspace using PNPM.')
+    .action(status)
+
+program
+    .command('bump')
     .description('Bump the version for a package.')
     .option('-p, --package <package>', 'The name of a workspace package.')
+    .option('-f, --filter <filter>', 'Filter the workspace using PNPM.')
     .action(async function () {
-        console.log(this.opts());
+        // bumpVersion();
     });
 
 program.parse(process.argv);
