@@ -1,10 +1,16 @@
 import chalk from 'chalk';
 import chokidar from 'chokidar';
+import ejs from 'ejs';
 import { execa } from 'execa';
+import { inflect } from 'inflection';
 import inquirer from 'inquirer';
 import InquirerSearchList from 'inquirer-search-list';
 import { debounce, identity } from 'lodash-es';
+import logUpdate from 'log-update';
 import { createRequire } from "module";
+import ora from 'ora';
+import path from 'path';
+import semver from 'semver';
 
 inquirer.registerPrompt('search-list', InquirerSearchList);
 
@@ -18,88 +24,39 @@ const require = createRequire(import.meta.url);
 
 export const version = require('../../package.json').version;
 
-export async function bumpVersion() {
-    const choices = await ls();
 
-    const workspaces = await inquirer.prompt([
-        {
-            type: 'checkbox',
-            name: 'packages',
-            message: 'Select the packages you want to bump:',
-            choices 
-        }
-    ]).then(({ packages }) => {
-        return packages.map(pkg => choices.find(({ name }) => pkg === name))
-    });
+/**
+ * 
+ */
+const nativePromisePrototype = (async () => { })().constructor.prototype;
 
-    const tasks = new Listr(
-        workspaces.map(({ name }, task) => ({
-            title: `Fetching package: ${name}`,
-            async task(ctx, task) {
-                const packageInfo = await info(
-                    workspaces.find(({ name: pkg }) => pkg === name)
-                );
+/**
+ * 
+ */
+const descriptors = ['then', 'catch', 'finally'].map(property => [
+    property,
+    Reflect.getOwnPropertyDescriptor(nativePromisePrototype, property),
+]);
 
-                return task.newListr([
-                    {
-                        title: 'test',
-                        task() {
-                            return new Promise(() => {
+/**
+ * Merge a spawned process with a promise.
+ * 
+ * @param {*} spawned 
+ * @param {*} promise 
+ * @returns 
+ */
+export function mergePromise(spawned, promise) {
+    for (const [property, descriptor] of descriptors) {
+        // Starting the main `promise` is deferred to avoid consuming streams
+        const value = typeof promise === 'function'
+            ? (...args) => Reflect.apply(descriptor.value, promise(), args)
+            : descriptor.value.bind(promise);
 
-                            })
-                        }
-                    }
-                ])          
-            }
-        })), {
-            ctx: {
-                packages: []
-            }
-        }
-    );
+        Reflect.defineProperty(spawned, property, { ...descriptor, value });
+    }
 
-    const { packages } = await tasks.run();
-
-    // // return await info(workspaces.find(({ name }) => pkg === name))
-    // packages.map((pkg) => ({
-    //     title: `Fetching ${pkg}`
-    // }))
-
-    // const tasks = new Listr([
-    //     {
-    //         title: 'test',
-    //         async task(ctx, task) {
-    //             return new Promise(() => {
-
-    //             })
-    //         }
-    //     }
-    // ], {
-    //     test: 123
-    // });
-
-    // await tasks.run();
-    
-    // 
-    // const infos = await Promise.all(
-    //     packages.map(async(pkg) => {
-    //         return await info(workspaces.find(({ name }) => pkg === name))
-    //     })
-    // );
-
-    // console.log(promises);
-
-
-        // .then(({ packages }) => {
-        //     Promise.all(
-        //         packages.map(async(pkg) => {
-        //             return await info(workspaces.find(({ name }) => pkg === name))
-        //         })
-        //     ).then((workspaces) => {
-        //         console.log(workspaces);
-        //     })
-        // })
-}
+    return spawned;
+};
 
 /**
  * Get the npm info for a workspace.
@@ -122,9 +79,9 @@ export async function info(workspace) {
  * 
  * @returns {array}
  */
-export async function ls(filter = '@vue-interface/*') {
+export async function ls(...args) {
     const { stdout } = await execa('pnpm', [
-        'm', 'ls', '--json', '--depth=-1', filter && `--filter=${filter}`
+        'm', 'ls', '--json', '--depth=-1', ...args
     ].filter(identity));
 
     return stdout ? JSON.parse(stdout) : [];
@@ -155,21 +112,6 @@ export async function findWorkspace(pkg) {
 }
 
 /**
- * Start the main process.
- * 
- * @param {string} pkg 
- */
-export async function start(pkg) {
-    const { workspace, dependencies } = await selectWorkspace(pkg);
-
-    bootServer(workspace);
-
-    for(const workspace of dependencies) {
-        watchWorkspace(workspace);
-    }
-}
-
-/**
  * Get the status of a repo from a given workspace.
  * 
  * @param {Workspace} workspace 
@@ -196,7 +138,7 @@ export async function status(workspace) {
     );
 
     return {
-        info: npm,
+        ...npm,
         version,
         log,
         commits,
@@ -293,6 +235,43 @@ export async function selectWorkspace(pkg) {
         ]).then(({ workspace }) => withDependencies(
             workspaces.find(({ name }) => workspace === name)
         ));
+}
+
+/**
+ * Start a spinner while the promise is running.
+ * 
+ * @param string message 
+ * @param {Promise<ChildProcess>} promise 
+ * @returns {Promise<ChildProcess>}
+ */
+export async function spinner(message, promise) {
+    const render = view('spinner');
+
+    let interval = setInterval(() => {
+        logUpdate(render({ message }))
+    }, 100);
+
+    return promise.finally(() => {
+        logUpdate.clear();
+
+        clearInterval(interval);
+    });
+}
+
+export function view(name) {
+    const spinner = new ora();
+    
+    const render = ejs.compile(`<?-include("${name}")?>`, {
+        delimiter: '?',
+        root: path.resolve('.'),
+        views: [
+            path.resolve('.bin/views')
+        ]
+    });
+
+    return (ctx = {}) => render({ 
+        chalk, inflect, semver, spinner, ...ctx
+    })
 }
 
 /**

@@ -12,7 +12,7 @@ import { ls, status as workspaceStatus } from '../lib/helpers.js';
  * 
  * @returns 
  */
-export default async function status() {
+export default async function status(opts, command) {
     const spinner = new ora();
 
     const parse = ejs.compile('<?-include("status")?>', {
@@ -23,7 +23,9 @@ export default async function status() {
         ]
     });
     
-    const items = (await ls(this.opts().filter)).map(workspace => {
+    const items = (await ls(
+        ...(opts.filter ? opts.filter.map(str => `--filter=${str}`) : [])
+    )).map(workspace => {
         const payload = {
             loaded: false,
             workspace,
@@ -36,7 +38,7 @@ export default async function status() {
 
     const render = () => items.map(item => {
         return parse({
-            opts: this.opts(),
+            opts,
             chalk,
             spinner,
             inflect,

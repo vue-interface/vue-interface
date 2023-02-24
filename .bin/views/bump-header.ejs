@@ -1,0 +1,3 @@
+<?=chalk.bold.cyan(workspace.name)?> [<?=chalk.bold.yellow(workspace.version)?>]
+
+<?=workspace.newCommits.map(str => `- ${str}`).join('\n')?>

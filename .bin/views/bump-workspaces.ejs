@@ -1,0 +1,3 @@
+<?=workspaces.length?> <?=inflect('workspaces', workspaces.length)?> found:
+
+<?=workspaces.map(({ name }) => `- ${name}`).join('\n')?>

@@ -1,0 +1,6 @@
+
+<?=chalk.bold.cyan(workspace.name)?> <?=chalk.yellow(workspace.version)?> to <?=chalk.green(semver.inc(workspace.version, increment))?>
+<? if(commitMessage) {?>
+<?=commitMessage?>
+<? } ?>
+<?=workspace.newCommits.map(str => `- ${str}`).join('\n')?>
