@@ -3,4 +3,4 @@
 <? if(commitMessage) {?>
 <?=commitMessage?>
 <? } ?>
-<?=workspace.newCommits.map(str => `- ${str}`).join('\n')?>
+<?=status.newCommits.map(str => `- ${str}`).join('\n')?>

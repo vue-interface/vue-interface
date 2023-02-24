@@ -3,7 +3,7 @@ import ejs from 'ejs';
 import { inflect } from 'inflection';
 import logSymbols from 'log-symbols';
 import logUpdate from 'log-update';
-import ora from "ora";
+import Ora from "ora";
 import path from 'path';
 import { ls, status as workspaceStatus } from '../lib/helpers.js';
 
@@ -13,7 +13,7 @@ import { ls, status as workspaceStatus } from '../lib/helpers.js';
  * @returns 
  */
 export default async function status(opts, command) {
-    const spinner = new ora();
+    const spinner = new Ora();
 
     const parse = ejs.compile('<?-include("status")?>', {
         delimiter: '?',
@@ -49,7 +49,11 @@ export default async function status(opts, command) {
 
     const interval = setInterval(() => logUpdate(render()), 100);
 
-    return Promise.all(items.map(({ ready }) => ready)).finally(() => {
+    return Promise.all(
+        items.map(async({ ready }) => ready)
+    ).then(() => {
+        return items;
+    }).finally(() => {
         clearInterval(interval);
 
         logUpdate.clear();

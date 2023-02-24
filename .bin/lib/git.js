@@ -1,19 +1,19 @@
 import { execa } from "execa";
 import { mergePromise, spinner } from "./helpers.js";
 
-export function add(options) {
+export async function add(options) {
     return execa('git', ['add', '.'], options);
 }
 
-export function commit(message, options) {
+export async function commit(message, options) {
     return execa('git', ['commit', '-m', message], options);
 }
 
-export function push(options) {
+export async function push(options) {
     return execa('git', ['push', 'origin'], options);
 }
 
-export function status(options) {
+export async function status(options) {
     const spawned = execa('git', ['status', '--porcelain'], options);
 
     return mergePromise(spawned, spinner('Fetching Git status', spawned));
