@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import ejs from 'ejs';
 import { inflect } from 'inflection';
+import { identity } from 'lodash-es';
 import logSymbols from 'log-symbols';
 import logUpdate from 'log-update';
 import Ora from "ora";
@@ -12,7 +13,7 @@ import { ls, status as workspaceStatus } from '../lib/helpers.js';
  * 
  * @returns 
  */
-export default async function status(opts, command) {
+export default async function status(pkg, opts, command) {
     const spinner = new Ora();
 
     const parse = ejs.compile('<?-include("status")?>', {
@@ -22,10 +23,13 @@ export default async function status(opts, command) {
             path.resolve('.bin/views')
         ]
     });
+
+    const args = [
+        opts.filter && opts.filter.map(str => `--filter=${str}`),
+        pkg && `--filter=${pkg}`
+    ].filter(identity);
     
-    const items = (await ls(
-        ...(opts.filter ? opts.filter.map(str => `--filter=${str}`) : [])
-    )).map(workspace => {
+    const items = (await ls(...args)).map(workspace => {
         const payload = {
             loaded: false,
             workspace,

@@ -1,6 +1,7 @@
 {
   "name": "vue-interface",
   "type": "module",
+  "private": true,
   "version": "0.1.0",
   "bin": {
     "repo": ".bin/repo.js"

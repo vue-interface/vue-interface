@@ -1,6 +1,15 @@
 
 <?=chalk.bold.cyan(workspace.name)?> <?=chalk.yellow(workspace.version)?> to <?=chalk.green(semver.inc(workspace.version, increment))?>
 <? if(commitMessage) {?>
-<?=commitMessage?>
+<?=commitMessage?><? } ?>
+<? 
+const newCommits = status.newCommits.map(str => `- ${str}`);
+const remaining = newCommits.length -10;
+
+if(newCommits.length > 10) {
+    newCommits.splice(10, remaining, [`...${remaining} more ${inflect('commits', newCommits.length)}`])
+}
+
+if(newCommits.length) { ?>
+<?=newCommits.join('\n')?>
 <? } ?>
-<?=status.newCommits.map(str => `- ${str}`).join('\n')?>

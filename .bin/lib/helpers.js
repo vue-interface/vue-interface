@@ -11,6 +11,7 @@ import { createRequire } from "module";
 import ora from 'ora';
 import path from 'path';
 import semver from 'semver';
+import { status as gitStatus } from './git.js';
 
 inquirer.registerPrompt('search-list', InquirerSearchList);
 
@@ -143,7 +144,7 @@ export async function status(workspace) {
         log,
         commits,
         newCommits,
-        outdated: newCommits.length > 0
+        outdated: newCommits.length > 0 || await gitStatus({cwd: workspace.path }).then(({ stdout }) => !!stdout)
     }
 }
 

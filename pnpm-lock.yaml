@@ -329,6 +329,49 @@ importers:
       vite-plugin-dts: 1.7.3_vite@4.1.4
       vue: 3.2.47
 
+  packages/modal:
+    specifiers:
+      '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/activity-indicator': ^2.0.0-beta.0
+      '@vue-interface/btn': ^3.0.0-beta.1
+      '@vue/compiler-sfc': ^3.2.45
+      '@vue/eslint-config-typescript': ^11.0.2
+      autoprefixer: ^10.4.2
+      change-case: ^4.1.2
+      color: ^4.2.3
+      css-unit-converter: ^1.1.2
+      eslint: ^8.27.0
+      eslint-plugin-vue: ^9.7.0
+      pascalcase: ^2.0.0
+      pinia: ^2.0.23
+      postcss: ^8.4.6
+      tailwindcss: ^3.0.18
+      typescript: ^4.9.5
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.37
+    dependencies:
+      '@vue-interface/btn': link:../btn
+      color: 4.2.3
+      css-unit-converter: 1.1.2
+    devDependencies:
+      '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue-interface/activity-indicator': link:../activity-indicator
+      '@vue/compiler-sfc': 3.2.47
+      '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
+      autoprefixer: 10.4.13_postcss@8.4.21
+      change-case: 4.1.2
+      eslint: 8.34.0
+      eslint-plugin-vue: 9.9.0_eslint@8.34.0
+      pascalcase: 2.0.0
+      pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
+      postcss: 8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
+      typescript: 4.9.5
+      vite: 4.1.4
+      vite-plugin-dts: 1.7.3_vite@4.1.4
+      vue: 3.2.47
+
   packages/radio-field:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
@@ -2262,6 +2305,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /css-unit-converter/1.1.2:
+    resolution: {integrity: sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==}
+    dev: false
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}

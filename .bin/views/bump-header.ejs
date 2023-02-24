@@ -1,3 +1,11 @@
-<?=chalk.bold.cyan(workspace.name)?> [<?=chalk.bold.yellow(workspace.version)?>]
 
-<?=status.newCommits.map(str => `- ${str}`).join('\n')?>
+<?=chalk.bold.cyan(workspace.name)?> [<?=chalk.bold.yellow(workspace.version)?>]
+<? 
+const newCommits = status.newCommits.map(str => `- ${str}`);
+const remaining = newCommits.length -10;
+
+if(newCommits.length > 10) {
+    newCommits.splice(10, remaining, [`...${remaining} more ${inflect('commits', newCommits.length)}`])
+}?>
+New Commits:
+<?=newCommits.join('\n')?>

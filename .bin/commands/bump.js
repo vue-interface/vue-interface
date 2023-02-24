@@ -10,8 +10,8 @@ import { view } from "../lib/helpers.js";
  * 
  * 
  */
-export default async function bump(opts, command) {
-    const workspaces = (await status(opts, command))
+export default async function bump(pkg, opts, command) {
+    const workspaces = (await status(pkg, opts, command))
         .filter(({ status }) => status.outdated);
 
     for (const { workspace, status } of workspaces) {
@@ -19,11 +19,11 @@ export default async function bump(opts, command) {
         const { prerelease: [ preid, prenum ] } = semver.parse(
             workspace.version || '0.0.0'
         );
-
+        
         console.log(view('bump-header')({ workspace, status }));        
 
         // Ask the user if they want to update the package in this iteration.
-        const { confirmCommit, commitMessage, increment } = await inquirer.prompt([
+        const { confirmCommit, confirmUpdate, commitMessage, increment } = await inquirer.prompt([
             {
                 type: 'confirm',
                 name: 'confirmUpdate',
@@ -35,7 +35,9 @@ export default async function bump(opts, command) {
                 name: 'confirmCommit',
                 message: `${chalk.yellow('The Git directory is not clean.')} Do you want to commit these changes?`,
                 default: true,
-                when: ({ confirmUpdate }) => confirmUpdate && gitStatus(workspace).then(({ stdout }) => !!stdout)
+                when: ({ confirmUpdate }) => confirmUpdate && gitStatus({
+                    cwd: workspace.path
+                }).then(({ stdout }) => !!stdout.trim())
             },
             {
                 type: 'input',
@@ -84,7 +86,7 @@ export default async function bump(opts, command) {
         ]);
 
         // Perform the version bump.
-        if(confirmCommit) {
+        if (confirmUpdate && (confirmCommit || confirmCommit === undefined)) {
             console.log(view('bump-preview')({ commitMessage, workspace, increment, status }));
             
             const { confirmVersion } = await inquirer.prompt([
@@ -101,9 +103,15 @@ export default async function bump(opts, command) {
             }
 
             await add({ cwd: workspace.path });
-            await commit(commitMessage, { cwd: workspace.path });
+
+            if (commitMessage) {
+                await commit(commitMessage, { cwd: workspace.path });
+            }
+            
             await version(increment, { cwd: workspace.path });
-            await push({ cwd: workspace.path });
+            await push(['--follow-tags'], { cwd: workspace.path });
+
+            console.log(`\nPublished ${chalk.bold.cyan(workspace.name)} ${chalk.green(semver.inc(workspace.version, increment)) }!`)
         }
     }
 }

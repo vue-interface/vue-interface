@@ -34,3 +34,6 @@
 [submodule "packages/light-switch-field"]
 	path = packages/light-switch-field
 	url = https://github.com/vue-interface/light-switch-field
+[submodule "packages/modal"]
+	path = packages/modal
+	url = https://github.com/vue-interface/modal

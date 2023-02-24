@@ -5,7 +5,7 @@ import { bootServer, selectWorkspace, watchWorkspace } from "../lib/helpers.js";
  * 
  * @param {string} pkg 
  */
-export default async function start(pkg) {
+export default async function start(pkg, opts, command) {
     const { workspace, dependencies } = await selectWorkspace(pkg);
 
     bootServer(workspace);
