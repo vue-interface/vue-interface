@@ -34,3 +34,6 @@
 [submodule "packages/light-switch-field"]
 	path = packages/light-switch-field
 	url = https://github.com/vue-interface/light-switch-field
+[submodule "packages/eslint-config"]
+	path = packages/eslint-config
+	url = https://mitchellsolomonae@github.com/vue-interface/eslint-config
