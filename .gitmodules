@@ -37,3 +37,6 @@
 [submodule "packages/modal"]
 	path = packages/modal
 	url = https://github.com/vue-interface/modal
+[submodule "packages/eslint-config"]
+	path = packages/eslint-config
+	url = https://mitchellsolomonae@github.com/vue-interface/eslint-config
