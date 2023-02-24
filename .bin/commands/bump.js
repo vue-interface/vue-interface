@@ -109,7 +109,7 @@ export default async function bump(opts, command) {
 
             await add({ cwd: workspace.path });
             await commit(commitMessage, { cwd: workspace.path });
-            await version({ cwd: workspace.path });
+            await version(increment, { cwd: workspace.path });
             // await push({ cwd: workspace.path });
         }
     }
