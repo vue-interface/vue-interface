@@ -2,7 +2,7 @@
 import { program } from 'commander';
 import process from 'process';
 import bump from './commands/bump.js';
-import start from './commands/start.js';
+import dev from './commands/dev.js';
 import status from './commands/status.js';
 import { version } from './lib/helpers.js';
 
@@ -15,7 +15,8 @@ program
     .command('dev')
     .description('Start a Vite development server for a package.')
     .argument('[package]', 'The name of a workspace package.')
-    .action(start);
+    .option('-w, --watch', 'Watch and build files on changes without starting a dev server.')
+    .action(dev);
 
 program
     .command('status')

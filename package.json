@@ -10,6 +10,7 @@
     "dev": "node .bin/repo.js dev",
     "status": "node .bin/repo.js status",
     "bump": "node .bin/repo.js bump",
+    "release": "node .bin/repo.js bump",
     "build": "pnpm turbo run build",
     "lint": "eslint packages/**/*.{js,ts,vue}",
     "fix": "eslint packages/**/*.{js,ts,vue} --fix"
@@ -30,7 +31,7 @@
     "log-update": "^5.0.1",
     "ora": "^6.1.2",
     "semver": "^7.3.8",
-    "turbo": "^1.8.2",
+    "turbo": "^1.8.3",
     "vue": "^3.2.47"
   },
   "peerDependencies": {

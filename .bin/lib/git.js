@@ -5,7 +5,7 @@ export async function add(options) {
 }
 
 export async function commit(message, options) {
-    return execa('git', ['commit', '-m', `"${message.replace(/"/g, '\"')}`], options);
+    return execa('git', ['commit', '-m', `${message.replace(/"/g, '\"')}`], options);
 }
 
 export async function push(args, options) {
