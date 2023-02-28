@@ -13,7 +13,7 @@
     "release": "node .bin/repo.js bump",
     "build": "pnpm turbo run build",
     "lint": "eslint packages/**/*.{js,ts,vue}",
-    "fix": "eslint packages/**/*.{js,ts,vue} --fix"
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
