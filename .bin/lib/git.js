@@ -12,6 +12,10 @@ export async function push(args, options) {
     return execa('git', ['push', 'origin', ...(args || [])], options);
 }
 
+export async function pull(args, options) {
+    return execa('git', ['pull', 'origin', ...(args || [])], options);
+}
+
 export async function status(options) {
     return execa('git', ['status', '--porcelain'], options);
 }

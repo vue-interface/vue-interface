@@ -2,7 +2,7 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 import semver from 'semver';
 import status from '../commands/status.js';
-import { add, commit, push, status as gitStatus, version } from '../lib/git.js';
+import { add, commit, pull, push, status as gitStatus, version } from '../lib/git.js';
 import { view } from "../lib/helpers.js";
 
 /**
@@ -107,6 +107,8 @@ export default async function bump(pkg, opts, command) {
             if (commitMessage) {
                 await commit(commitMessage, { cwd: workspace.path });
             }
+            
+            await pull(['--tags'], { cwd: workspace.path });
             
             await version(increment, { cwd: workspace.path });
             await push(['--follow-tags'], { cwd: workspace.path });
