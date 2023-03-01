@@ -217,7 +217,7 @@ importers:
       lodash-es: 4.17.21
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue-interface/eslint-config': link:../eslint-config
+      '@vue-interface/eslint-config': 1.0.0-beta.4
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
@@ -251,7 +251,7 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue-interface/eslint-config': link:../eslint-config
+      '@vue-interface/eslint-config': 1.0.0-beta.4
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
@@ -342,14 +342,12 @@ importers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/activity-indicator': ^2.0.0-beta.0
       '@vue-interface/btn': ^3.0.0-beta.1
+      '@vue-interface/eslint-config': 1.0.0-beta.1
       '@vue/compiler-sfc': ^3.2.45
-      '@vue/eslint-config-typescript': ^11.0.2
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
       color: ^4.2.3
-      css-unit-converter: ^1.1.2
       eslint: ^8.27.0
-      eslint-plugin-vue: ^9.7.0
       pascalcase: ^2.0.0
       pinia: ^2.0.23
       postcss: ^8.4.6
@@ -361,16 +359,14 @@ importers:
     dependencies:
       '@vue-interface/btn': link:../btn
       color: 4.2.3
-      css-unit-converter: 1.1.2
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
       '@vue-interface/activity-indicator': link:../activity-indicator
+      '@vue-interface/eslint-config': link:../eslint-config
       '@vue/compiler-sfc': 3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
       postcss: 8.4.21
@@ -1755,6 +1751,17 @@ packages:
       param-case: 3.0.4
     dev: false
 
+  /@vue-interface/eslint-config/1.0.0-beta.4:
+    resolution: {integrity: sha512-PPex6MXfXfZdpFWAW55V3iE7erEWjefkivCUALisudxSLhbyWTfeeNePPe3497yXap5uj1ujS98DzqsAX4cTNQ==}
+    dependencies:
+      '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
+      eslint: 8.34.0
+      eslint-plugin-vue: 9.9.0_eslint@8.34.0
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@vue-interface/variant/2.0.0-beta.2_vue@3.2.47:
     resolution: {integrity: sha512-ETmAFh9qzlQpgJcVuzJXxLtMlwN8cHRzVlXfHB4oqARDgka+CjYy6Fb5jIuMkiRtYMyLk+0ZVVJs2abB51EdPw==}
     peerDependencies:
@@ -2425,10 +2432,6 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  /css-unit-converter/1.1.2:
-    resolution: {integrity: sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==}
-    dev: false
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}

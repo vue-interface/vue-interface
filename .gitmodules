@@ -43,3 +43,6 @@
 [submodule "packages/sizeable"]
 	path = packages/sizeable
 	url = https://github.com/vue-interface/sizeable
+[submodule "packages/btn-dropdown"]
+	path = packages/btn-dropdown
+	url = https://github.com/vue-interface/btn-dropdown
