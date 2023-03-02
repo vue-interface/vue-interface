@@ -61,7 +61,7 @@ importers:
       '@vue-interface/component-registry': 1.3.3
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue-interface/eslint-config': link:../eslint-config
+      '@vue-interface/eslint-config': 1.0.0-beta.1
       '@vue/compiler-sfc': 3.2.47
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
@@ -117,11 +117,10 @@ importers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/activity-indicator': ^2.0.0-beta.7
       '@vue-interface/btn': ^3.0.0-beta.4
-      '@vue/eslint-config-typescript': ^11.0.2
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
       eslint: ^8.25.0
-      eslint-plugin-vue: ^9.6.0
       pascalcase: ^2.0.0
       postcss: ^8.4.6
       tailwindcss: ^3.0.18
@@ -134,11 +133,10 @@ importers:
       '@vue-interface/btn': link:../btn
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_tf6rgb5i7kw5m4rbu3ajzgw7l4
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
@@ -147,18 +145,92 @@ importers:
       vite-plugin-dts: 1.7.2_vite@4.1.1
       vue: 3.2.47
 
+  packages/btn-dropdown:
+    specifiers:
+      '@popperjs/core': ^2.11.2
+      '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/btn': ^3.0.0-beta.1
+      '@vue-interface/btn-group': ^2.0.0-beta.4
+      '@vue-interface/dropdown-menu': ^2.0.0-beta.8
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
+      autoprefixer: ^10.4.2
+      change-case: ^4.1.2
+      eslint: ^8.25.0
+      pascalcase: ^2.0.0
+      postcss: ^8.4.6
+      tailwindcss: ^3.1.0
+      typescript: ^4.9.4
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.41
+    dependencies:
+      '@popperjs/core': 2.11.6
+      '@vue-interface/btn': link:../btn
+      '@vue-interface/btn-group': link:../btn-group
+      '@vue-interface/dropdown-menu': link:../dropdown-menu
+    devDependencies:
+      '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
+      autoprefixer: 10.4.13_postcss@8.4.21
+      change-case: 4.1.2
+      eslint: 8.34.0
+      pascalcase: 2.0.0
+      postcss: 8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
+      typescript: 4.9.5
+      vite: 4.1.4
+      vite-plugin-dts: 1.7.3_vite@4.1.4
+      vue: 3.2.47
+
+  packages/btn-group:
+    specifiers:
+      '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/btn': ^3.0.0-beta.0
+      '@vue-interface/sizeable': ^2.0.0-beta.8
+      '@vue-interface/variant': ^2.0.0-beta.0
+      '@vue/eslint-config-typescript': ^11.0.2
+      autoprefixer: ^10.4.2
+      change-case: ^4.1.2
+      eslint: ^8.25.0
+      eslint-plugin-vue: ^9.6.0
+      pascalcase: ^2.0.0
+      postcss: ^8.4.6
+      tailwindcss: ^3.1.0
+      ts-vue: ^0.1.0
+      typescript: ^4.9.4
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.41
+    dependencies:
+      '@vue-interface/btn': link:../btn
+      '@vue-interface/sizeable': link:../sizeable
+      '@vue-interface/variant': 2.0.0-beta.2_vue@3.2.47
+    devDependencies:
+      '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
+      autoprefixer: 10.4.13_postcss@8.4.21
+      change-case: 4.1.2
+      eslint: 8.34.0
+      eslint-plugin-vue: 9.9.0_eslint@8.34.0
+      pascalcase: 2.0.0
+      postcss: 8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
+      ts-vue: 0.1.0
+      typescript: 4.9.5
+      vite: 4.1.4
+      vite-plugin-dts: 1.7.3_vite@4.1.4
+      vue: 3.2.47
+
   packages/checkbox-field:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.16
       autoprefixer: ^10.4.13
       change-case: ^4.1.2
       eslint: ^8.34.0
-      eslint-plugin-vue: ^9.9.0
       pascalcase: ^2.0.0
       postcss: ^8.4.21
-      postcss-functions: ^4.0.2
-      postcss-hexrgba: ^2.1.0
       tailwindcss: ^3.2.7
       vite: ^4.1.4
       vite-plugin-dts: ^1.7.3
@@ -167,15 +239,46 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       postcss: 8.4.21
-      postcss-functions: 4.0.2_postcss@8.4.21
-      postcss-hexrgba: 2.1.0_postcss@8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
+      vite: 4.1.4
+      vite-plugin-dts: 1.7.3_vite@4.1.4
+      vue: 3.2.47
+
+  packages/dropdown-menu:
+    specifiers:
+      '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
+      '@vue-interface/variant': ^2.0.0-beta.0
+      autoprefixer: ^10.4.2
+      change-case: ^4.1.2
+      color: ^4.2.0
+      eslint: ^8.25.0
+      pascalcase: ^2.0.0
+      postcss: ^8.4.6
+      tailwindcss: ^3.1.0
+      typescript: ^4.9.4
+      vite: ^4.0.0
+      vite-plugin-dts: ^1.7.1
+      vue: ^3.2.41
+    dependencies:
+      '@vue-interface/variant': 2.0.0-beta.2_vue@3.2.47
+      color: 4.2.3
+    devDependencies:
+      '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
+      autoprefixer: 10.4.13_postcss@8.4.21
+      change-case: 4.1.2
+      eslint: 8.34.0
+      pascalcase: 2.0.0
+      postcss: 8.4.21
+      tailwindcss: 3.2.7_postcss@8.4.21
+      typescript: 4.9.5
       vite: 4.1.4
       vite-plugin-dts: 1.7.3_vite@4.1.4
       vue: 3.2.47
@@ -196,7 +299,7 @@ importers:
     specifiers:
       '@types/lodash-es': ^4.17.6
       '@vitejs/plugin-vue': ^4.0.0
-      '@vue-interface/eslint-config': ^1.0.0-beta.1
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/shadowable': ^2.0.0-beta.2
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
@@ -217,7 +320,7 @@ importers:
       lodash-es: 4.17.21
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue-interface/eslint-config': 1.0.0-beta.4
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
@@ -233,7 +336,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/activity-indicator': ^2.0.0-beta.15
-      '@vue-interface/eslint-config': ^1.0.0-beta.1
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.20
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
@@ -251,7 +354,7 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
-      '@vue-interface/eslint-config': 1.0.0-beta.4
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
@@ -267,17 +370,14 @@ importers:
   packages/input-list:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/input-field': ^1.0.0-beta.0
-      '@vue/eslint-config-typescript': ^11.0.2
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
       eslint: ^8.26.0
-      eslint-plugin-vue: ^9.7.0
       pascalcase: ^2.0.0
       pinia: ^2.0.23
       postcss: ^8.4.6
-      postcss-functions: ^4.0.2
-      postcss-hexrgba: ^2.0.1
       tailwindcss: ^3.0.18
       typescript: ^4.9.5
       vite: ^4.0.0
@@ -285,17 +385,14 @@ importers:
       vue: ^3.2.41
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
       '@vue-interface/input-field': link:../input-field
-      '@vue/eslint-config-typescript': 11.0.2_tf6rgb5i7kw5m4rbu3ajzgw7l4
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
       pascalcase: 2.0.0
       pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
       postcss: 8.4.21
-      postcss-functions: 4.0.2_postcss@8.4.21
-      postcss-hexrgba: 2.1.0_postcss@8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
       typescript: 4.9.5
       vite: 4.1.1
@@ -305,13 +402,12 @@ importers:
   packages/light-switch-field:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.16
       '@vue/compiler-sfc': ^3.2.47
-      '@vue/eslint-config-typescript': ^11.0.2
       autoprefixer: ^10.4.13
       change-case: ^4.1.2
       eslint: ^8.34.0
-      eslint-plugin-vue: ^9.9.0
       pascalcase: ^2.0.0
       postcss: ^8.4.21
       tailwindcss: ^3.2.7
@@ -323,12 +419,11 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
       '@vue/compiler-sfc': 3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -362,7 +457,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
       '@vue-interface/activity-indicator': link:../activity-indicator
-      '@vue-interface/eslint-config': link:../eslint-config
+      '@vue-interface/eslint-config': 1.0.0-beta.1
       '@vue/compiler-sfc': 3.2.47
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
@@ -379,11 +474,11 @@ importers:
   packages/radio-field:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.10
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
       eslint: ^8.28.0
-      eslint-plugin-vue: ^9.8.0
       pascalcase: ^2.0.0
       postcss: ^8.4.6
       tailwindcss: ^3.0.18
@@ -394,10 +489,10 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
@@ -409,12 +504,11 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/activity-indicator': ^2.0.0-beta.11
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.15
-      '@vue/eslint-config-typescript': ^11.0.2
       autoprefixer: ^10.4.13
       change-case: ^4.1.2
       eslint: ^8.34.0
-      eslint-plugin-vue: ^9.9.0
       pascalcase: ^2.0.0
       postcss: ^8.4.21
       tailwindcss: ^3.2.7
@@ -426,11 +520,10 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_ssyqyy7qoejepdcac2gp6lfu3a
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -441,11 +534,10 @@ importers:
   packages/shadowable:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
-      '@vue/eslint-config-typescript': ^11.0.2
-      autoprefixer: ^10.4.13
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
+      autoprefixer: ^10.4.2
       change-case: ^4.1.2
       eslint: ^8.34.0
-      eslint-plugin-vue: ^9.9.0
       pascalcase: ^2.0.0
       postcss: ^8.4.21
       tailwindcss: ^3.2.7
@@ -454,11 +546,10 @@ importers:
       vue: ^3.2.47
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_ssyqyy7qoejepdcac2gp6lfu3a
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -469,11 +560,10 @@ importers:
   packages/sizeable:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
-      '@vue/eslint-config-typescript': ^11.0.2
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       autoprefixer: ^10.4.13
       change-case: ^4.1.2
       eslint: ^8.34.0
-      eslint-plugin-vue: ^9.9.0
       pascalcase: ^2.0.0
       postcss: ^8.4.21
       tailwindcss: ^3.2.7
@@ -482,11 +572,10 @@ importers:
       vue: ^3.2.47
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.4+vue@3.2.47
-      '@vue/eslint-config-typescript': 11.0.2_ssyqyy7qoejepdcac2gp6lfu3a
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -499,11 +588,11 @@ importers:
       '@vitejs/plugin-vue': ^4.0.0
       '@vue-interface/activity-indicator': ^2.0.0-beta.0
       '@vue-interface/autogrow': ^1.0.0-beta.1
+      '@vue-interface/eslint-config': ^1.0.0-beta.0
       '@vue-interface/form-control': ^1.0.0-beta.10
       autoprefixer: ^10.4.2
       change-case: ^4.1.2
       eslint: ^8.25.0
-      eslint-plugin-vue: ^9.6.0
       pascalcase: ^2.0.0
       postcss: ^8.4.6
       tailwindcss: ^3.0.18
@@ -516,10 +605,10 @@ importers:
       '@vue-interface/form-control': link:../form-control
     devDependencies:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
+      '@vue-interface/eslint-config': link:../eslint-config
       autoprefixer: 10.4.13_postcss@8.4.21
       change-case: 4.1.2
       eslint: 8.33.0
-      eslint-plugin-vue: 9.9.0_eslint@8.33.0
       pascalcase: 2.0.0
       postcss: 8.4.21
       tailwindcss: 3.2.6_postcss@8.4.21
@@ -1287,6 +1376,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@rollup/pluginutils/5.0.2:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
@@ -1389,33 +1482,6 @@ packages:
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
 
-  /@typescript-eslint/eslint-plugin/5.51.0_62tsymtiqxebhmxuag4hg3gx2m:
-    resolution: {integrity: sha512-wcAwhEWm1RgNd7dxD/o+nnLW8oH+6RK1OGnmbmkj/GGoDPV1WWMVP0FXYQBivKHdwM1pwii3bt//RC62EriIUQ==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      '@typescript-eslint/parser': ^5.0.0
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 5.51.0_eslint@8.34.0
-      '@typescript-eslint/scope-manager': 5.51.0
-      '@typescript-eslint/type-utils': 5.51.0_eslint@8.34.0
-      '@typescript-eslint/utils': 5.51.0_eslint@8.34.0
-      debug: 4.3.4
-      eslint: 8.34.0
-      grapheme-splitter: 1.0.4
-      ignore: 5.2.4
-      natural-compare-lite: 1.4.0
-      regexpp: 3.2.0
-      semver: 7.3.8
-      tsutils: 3.21.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@typescript-eslint/eslint-plugin/5.51.0_b635kmla6dsb4frxfihkw4m47e:
     resolution: {integrity: sha512-wcAwhEWm1RgNd7dxD/o+nnLW8oH+6RK1OGnmbmkj/GGoDPV1WWMVP0FXYQBivKHdwM1pwii3bt//RC62EriIUQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1510,25 +1576,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@typescript-eslint/parser/5.51.0_eslint@8.34.0:
-    resolution: {integrity: sha512-fEV0R9gGmfpDeRzJXn+fGQKcl0inIeYobmmUWijZh9zA7bxJ8clPhV9up2ZQzATxAiFAECqPQyMDB4o4B81AaA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/scope-manager': 5.51.0
-      '@typescript-eslint/types': 5.51.0
-      '@typescript-eslint/typescript-estree': 5.51.0
-      debug: 4.3.4
-      eslint: 8.34.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@typescript-eslint/scope-manager/5.51.0:
     resolution: {integrity: sha512-gNpxRdlx5qw3yaHA0SFuTjW4rxeYhpHxt491PEcKF8Z6zpq0kMhe0Tolxt0qjlojS+/wArSDlj/LtE69xUJphQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1575,48 +1622,9 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@typescript-eslint/type-utils/5.51.0_eslint@8.34.0:
-    resolution: {integrity: sha512-QHC5KKyfV8sNSyHqfNa0UbTbJ6caB8uhcx2hYcWVvJAZYJRBo5HyyZfzMdRx8nvS+GyMg56fugMzzWnojREuQQ==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: '*'
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/typescript-estree': 5.51.0
-      '@typescript-eslint/utils': 5.51.0_eslint@8.34.0
-      debug: 4.3.4
-      eslint: 8.34.0
-      tsutils: 3.21.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@typescript-eslint/types/5.51.0:
     resolution: {integrity: sha512-SqOn0ANn/v6hFn0kjvLwiDi4AzR++CBZz0NV5AnusT2/3y32jdc0G4woXPWHCumWtUXZKPAS27/9vziSsC9jnw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  /@typescript-eslint/typescript-estree/5.51.0:
-    resolution: {integrity: sha512-TSkNupHvNRkoH9FMA3w7TazVFcBPveAAmb7Sz+kArY6sLT86PA5Vx80cKlYmd8m3Ha2SwofM1KwraF24lM9FvA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/types': 5.51.0
-      '@typescript-eslint/visitor-keys': 5.51.0
-      debug: 4.3.4
-      globby: 11.1.0
-      is-glob: 4.0.3
-      semver: 7.3.8
-      tsutils: 3.21.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@typescript-eslint/typescript-estree/5.51.0_typescript@4.9.5:
     resolution: {integrity: sha512-TSkNupHvNRkoH9FMA3w7TazVFcBPveAAmb7Sz+kArY6sLT86PA5Vx80cKlYmd8m3Ha2SwofM1KwraF24lM9FvA==}
@@ -1677,26 +1685,6 @@ packages:
       - supports-color
       - typescript
 
-  /@typescript-eslint/utils/5.51.0_eslint@8.34.0:
-    resolution: {integrity: sha512-76qs+5KWcaatmwtwsDJvBk4H76RJQBFe+Gext0EfJdC3Vd2kpY2Pf//OHHzHp84Ciw0/rYoGTDnIAr3uWhhJYw==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      '@types/json-schema': 7.0.11
-      '@types/semver': 7.3.13
-      '@typescript-eslint/scope-manager': 5.51.0
-      '@typescript-eslint/types': 5.51.0
-      '@typescript-eslint/typescript-estree': 5.51.0
-      eslint: 8.34.0
-      eslint-scope: 5.1.1
-      eslint-utils: 3.0.0_eslint@8.34.0
-      semver: 7.3.8
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-    dev: true
-
   /@typescript-eslint/visitor-keys/5.51.0:
     resolution: {integrity: sha512-Oh2+eTdjHjOFjKA27sxESlA87YPSOJafGCR0md5oeMdh1ZcCfAGCIOL216uTBAkAIptvLIfKQhl7lHxMJet4GQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1751,8 +1739,8 @@ packages:
       param-case: 3.0.4
     dev: false
 
-  /@vue-interface/eslint-config/1.0.0-beta.4:
-    resolution: {integrity: sha512-PPex6MXfXfZdpFWAW55V3iE7erEWjefkivCUALisudxSLhbyWTfeeNePPe3497yXap5uj1ujS98DzqsAX4cTNQ==}
+  /@vue-interface/eslint-config/1.0.0-beta.1:
+    resolution: {integrity: sha512-kMTK0rbmUeBP/yE238W50ZfHYk4BN3Zbc7qYfdCVarydYp8hxuy3wY3HL6gGtG+XjxnVU9VreEwz5mPLZM+S1Q==}
     dependencies:
       '@vue/eslint-config-typescript': 11.0.2_h2vevngznqqjsppuxlkfy3oipa
       eslint: 8.34.0
@@ -1828,26 +1816,6 @@ packages:
       vue-eslint-parser: 9.1.0_eslint@8.34.0
     transitivePeerDependencies:
       - supports-color
-
-  /@vue/eslint-config-typescript/11.0.2_ssyqyy7qoejepdcac2gp6lfu3a:
-    resolution: {integrity: sha512-EiKud1NqlWmSapBFkeSrE994qpKx7/27uCGnhdqzllYDpQZroyX/O6bwjEpeuyKamvLbsGdO6PMR2faIf+zFnw==}
-    engines: {node: ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
-      eslint-plugin-vue: ^9.0.0
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 5.51.0_62tsymtiqxebhmxuag4hg3gx2m
-      '@typescript-eslint/parser': 5.51.0_eslint@8.34.0
-      eslint: 8.34.0
-      eslint-plugin-vue: 9.9.0_eslint@8.34.0
-      vue-eslint-parser: 9.1.0_eslint@8.34.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@vue/eslint-config-typescript/11.0.2_tf6rgb5i7kw5m4rbu3ajzgw7l4:
     resolution: {integrity: sha512-EiKud1NqlWmSapBFkeSrE994qpKx7/27uCGnhdqzllYDpQZroyX/O6bwjEpeuyKamvLbsGdO6PMR2faIf+zFnw==}
@@ -4461,24 +4429,6 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /postcss-functions/4.0.2_postcss@8.4.21:
-    resolution: {integrity: sha512-htDZN6t97uW4GBXquTsz/DVaNVAHtHx5tLCALquVM2u58UwHki+RwHbANKiiI0ImA8T7Iml2MnvLUM7aGtlpqA==}
-    peerDependencies:
-      postcss: ^8.0.0
-    dependencies:
-      postcss: 8.4.21
-      postcss-value-parser: 4.2.0
-    dev: true
-
-  /postcss-hexrgba/2.1.0_postcss@8.4.21:
-    resolution: {integrity: sha512-Bb8Ca/vTI/X2Pgq1O3VhOdXE0rg/hz6161MHMu93ebePw8d/I9GSOc+wbd151OGGxSyTz+z196tFeEpSafrJfA==}
-    peerDependencies:
-      postcss: ^8.1.4
-    dependencies:
-      postcss: 8.4.21
-      postcss-value-parser: 4.2.0
-    dev: true
-
   /postcss-import/14.1.0_postcss@8.4.21:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
     engines: {node: '>=10.0.0'}
@@ -5226,6 +5176,10 @@ packages:
       code-block-writer: 11.0.3
     dev: true
 
+  /ts-vue/0.1.0:
+    resolution: {integrity: sha512-wMBKbnfYMAZsEp441zlHC7XqEPBrFAOeOApN1PMQpKG+V3YfAJCuLUlySkjcnG5yvlz6f0A4gSlTR1wIBl+OxA==}
+    dev: true
+
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
@@ -5267,15 +5221,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - ts-node
-    dev: true
-
-  /tsutils/3.21.0:
-    resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
-    engines: {node: '>= 6'}
-    peerDependencies:
-      typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
-    dependencies:
-      tslib: 1.14.1
     dev: true
 
   /tsutils/3.21.0_typescript@4.9.5:

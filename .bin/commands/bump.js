@@ -110,6 +110,9 @@ export default async function bump(pkg, opts, command) {
             
             await pull(['--tags'], { cwd: workspace.path });
             
+            // @todo - Add a check for merge conflicts. If conflict, dont allow
+            // user to continue until the conflict has been fixed.
+            
             await version(increment, { cwd: workspace.path });
             await push(['--follow-tags'], { cwd: workspace.path });
 
