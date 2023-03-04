@@ -46,14 +46,6 @@
 [submodule "packages/btn-dropdown"]
 	path = packages/btn-dropdown
 	url = https://github.com/vue-interface/btn-dropdown
-<<<<<<< HEAD
-[submodule "packages/dropdown-menu"]
-	path = packages/dropdown-menu
-	url = https://github.com/vue-interface/dropdown-menu
-[submodule "packages/btn-group"]
-	path = packages/btn-group
-	url = https://github.com/vue-interface/btn-group
-=======
 [submodule "packages/slide-deck"]
 	path = packages/slide-deck
 	url = https://github.com/vue-interface/slide-deck
