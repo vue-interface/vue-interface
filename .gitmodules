@@ -46,9 +46,32 @@
 [submodule "packages/btn-dropdown"]
 	path = packages/btn-dropdown
 	url = https://github.com/vue-interface/btn-dropdown
+<<<<<<< HEAD
 [submodule "packages/dropdown-menu"]
 	path = packages/dropdown-menu
 	url = https://github.com/vue-interface/dropdown-menu
 [submodule "packages/btn-group"]
 	path = packages/btn-group
 	url = https://github.com/vue-interface/btn-group
+=======
+[submodule "packages/slide-deck"]
+	path = packages/slide-deck
+	url = https://github.com/vue-interface/slide-deck
+[submodule "packages/slide-panel"]
+	path = packages/slide-panel
+	url = https://github.com/vue-interface/slide-panel
+[submodule "packages/dropdown-menu"]
+	path = packages/dropdown-menu
+	url = https://github.com/vue-interface/dropdown-menu
+[submodule "packages/autogrow"]
+	path = packages/autogrow
+	url = https://github.com/vue-interface/autogrow
+[submodule "packages/pagination"]
+	path = packages/pagination
+	url = https://github.com/vue-interface/pagination
+[submodule "packages/progress-bar"]
+	path = packages/progress-bar
+	url = https://github.com/vue-interface/progress-bar
+[submodule "packages/wizard"]
+	path = packages/wizard
+	url = https://github.com/vue-interface/wizard
