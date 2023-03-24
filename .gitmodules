@@ -67,3 +67,9 @@
 [submodule "packages/wizard"]
 	path = packages/wizard
 	url = https://github.com/vue-interface/wizard
+[submodule "packages/btn-group"]
+	path = packages/btn-group
+	url = https://github.com/vue-interface/btn-group
+[submodule "packages/tooltip"]
+	path = packages/tooltip
+	url = https://github.com/vue-interface/tooltip
