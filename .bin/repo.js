@@ -16,6 +16,7 @@ program
     .description('Start a Vite development server for a package.')
     .argument('[package]', 'The name of a workspace package.')
     .option('-w, --watch', 'Watch and build files on changes without starting a dev server.')
+    .option('-o, --server-options <options>', 'Options to pass to the turbo dev command.')
     .action(dev);
 
 program

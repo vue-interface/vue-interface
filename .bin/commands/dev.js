@@ -10,7 +10,7 @@ export default async function start(pkg, opts, command) {
 
     // If there is no --watch flag, then boot this as a dev server.
     if (!opts.watch) {
-        bootServer(workspace, opts.watch);
+        bootServer(workspace, opts.serverOptions, opts.watch);
     }
     // Otherwise watch the workspace as it just another dependency.
     else {

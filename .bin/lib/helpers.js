@@ -155,11 +155,19 @@ export async function status(workspace) {
  * @param {number} waitUntilSilent 
  * @returns {Promise<{stdout}>}
  */
-export function bootServer(workspace, waitUntilSilent = 1000) {
+export function bootServer(workspace, serverOpts = '', waitUntilSilent = 1000) {
     return new Promise(resolve => {
-        const { stdout } = run('dev', [
-            `--filter=${workspace.name}`
-        ]);
+        const args = [
+            `--filter=${workspace.name}`,
+        ];
+
+        if (serverOpts) {
+            args.push(...serverOpts.split(/\s+/));
+        }
+
+        console.log(args);
+
+        const { stdout } = run('dev', ...args);
 
         const listener = debounce(() => {
             stdout.removeListener('data', listener);
