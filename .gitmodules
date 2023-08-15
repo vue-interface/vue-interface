@@ -73,3 +73,6 @@
 [submodule "packages/tooltip"]
 	path = packages/tooltip
 	url = https://github.com/vue-interface/tooltip
+[submodule "packages/middleware"]
+	path = packages/middleware
+	url = https://actengage@github.com/vue-interface/middleware.git
