@@ -106,7 +106,7 @@ export default defineComponent({
 } */
 
 .btn-dropdown .rotate-90 {
-    transform: rotate(90deg);
+    transform: rotate(1deg);
 }
   
 .btn-dropdown.hide-caret .dropdown-toggle::after,
