@@ -1,3 +1,5 @@
 @import "tailwindcss";
-@import "../../packages/btn/index.css";
-@import "../../packages/dropdown-menu/index.css";
+@import "../btn/index.css";
+@import "../dropdown-menu/index.css";
+
+@source '../dropdown-menu/src/**/*'

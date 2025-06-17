@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import { pascalCase } from 'change-case';
 import path from 'path';
@@ -38,11 +39,12 @@ export default ({ command }) => defineConfig({
     },
     resolve: {
         alias: {
-            '@vue-interface/dropdown-menu': path.resolve(__dirname, '../dropdown-menu/index.ts')
+            '@vue-interface/dropdown-menu': path.resolve(__dirname, '../dropdown-menu')
         }
     },
     plugins: [
         vue(),
-        dts()
+        dts(),
+        tailwindcss(),
     ],
 });
