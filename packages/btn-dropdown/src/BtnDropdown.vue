@@ -18,6 +18,11 @@ withDefaults(defineProps<{
                 name="button"
                 v-bind="slot" />
         </template>
+        <template #toggle="slot">
+            <slot
+                name="toggle"
+                v-bind="slot" />
+        </template>
         <template #split="slot">
             <slot
                 name="split"
