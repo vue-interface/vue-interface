@@ -16,7 +16,6 @@ const {
     classes,
     expanded,
     floatingStyles,
-    side,
     onBlur,
     onClickToggle,
     onClickItem

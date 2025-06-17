@@ -7,8 +7,6 @@ const props = withDefaults(defineProps<BtnDropdownProps>(), {
     variant: 'btn-primary'
 });
 
-console.log(props.split);
-
 const emit = defineEmits<BtnDropdownEvents>();
 
 defineOptions({
@@ -22,7 +20,6 @@ const {
     classes,
     expanded,
     floatingStyles,
-    side,
     onBlur,
     onClick,
     onClickToggle,
