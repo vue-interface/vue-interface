@@ -138,7 +138,7 @@
 		}
 	}
 
-	> .dropdown-toggle {
+	> .dropdown-toggle:not(.no-caret) {
 		white-space: var(--dropdown-toggle-whitespace);
 
 		&::after {

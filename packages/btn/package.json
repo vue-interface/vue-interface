@@ -1,5 +1,5 @@
 {
-  "name": "@vue-interface-new/btn",
+  "name": "@vue-interface/btn",
   "version": "1.0.0",
   "description": "A Vue button component.",
   "files": [

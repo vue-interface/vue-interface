@@ -36,6 +36,11 @@ export default ({ command }) => defineConfig({
             ]
         }
     },
+    resolve: {
+        alias: {
+            '@vue-interface/dropdown-menu': path.resolve(__dirname, '../dropdown-menu/index.ts')
+        }
+    },
     plugins: [
         vue(),
         dts()

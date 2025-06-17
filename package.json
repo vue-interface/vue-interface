@@ -1,5 +1,5 @@
 {
-  "name": "vue-interface-new",
+  "name": "vue-interface",
   "private": true,
   "scripts": {
     "build": "pnpm turbo run build",

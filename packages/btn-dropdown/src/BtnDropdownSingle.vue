@@ -1,48 +1,56 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-import DropdownHandler from './DropdownHandler';
+<script setup lang="ts">
+import { DropdownMenu } from '@vue-interface/dropdown-menu';
+import { BtnDropdownEvents, BtnDropdownProps, useDropdownHandler } from './useDropdownHandler';
 
-export default defineComponent({
-
-    mixins: [
-        DropdownHandler
-    ]
-
+const props = withDefaults(defineProps<BtnDropdownProps>(), {
+    caret: true,
+    variant: 'btn-primary'
 });
+
+const emit = defineEmits<BtnDropdownEvents>();
+
+const {
+    target,
+    menu,
+    buttonClasses,
+    classes,
+    expanded,
+    floatingStyles,
+    side,
+    onBlur,
+    onClickToggle,
+    onClickItem
+} = useDropdownHandler(props, emit);
 </script>
 
 <template>
-    <BtnGroup :class="classes">
+    <div
+        class="btn-group"
+        :class="classes">
         <slot
             name="button"
-            v-bind="scope">
-            <BtnDropdownAction
-                :id="$attrs.id"
-                ref="button"
-                :expanded="expanded"
-                :href="href"
-                :to="to"
-                :style="toggleStyle"
-                :class="toggleClasses"
+            v-bind="{ target: (el: HTMLElement) => target = el, expanded, onBlur, onClickToggle }">
+            <button
+                ref="target"
+                type="button"
+                :class="{...buttonClasses, ['dropdown-toggle']: true}"
+                aria-haspopup="true"
+                :aria-expanded="expanded"
                 @blur="onBlur"
                 @click="onClickToggle">
-                <slot name="icon" />
-                <slot name="label">
-                    {{ label }}
-                </slot>
-            </BtnDropdownAction>
+                {{ label }}
+            </button>
         </slot>
         <DropdownMenu
-            :id="$attrs.id"
             ref="menu"
-            :align="align"
-            :show="expanded"
-            :class="{animated: triggerAnimation}"
+            :class="{
+                'show': expanded
+            }"
+            :style="floatingStyles"
             @blur="onBlur"
             @click="onClickItem"
-            @keydown.tab="onKeydown"
-            @mousedown.prevent="">
+            @mousedown.prevent>
             <slot />
         </DropdownMenu>
-    </BtnGroup>
+    </div>
 </template>

@@ -5,164 +5,116 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>BtnDropdown</title>
     </head>
-    <body>
+    <body class="bg-white dark:bg-neutral-900 text-black dark:text-white">
         <div id="app" class="container max-w-screen-lg mx-auto pb-12">
             <h1 class="text-4xl mb-5">btn-dropdown</h1>
 
             <h2 class="text-2xl mb-3">Basic Usage</h2>
 
-            <btn-dropdown variant="btn btn-group btn-primary" label="Dropdown" @click-toggle="onToggle">
+            <btn-dropdown label="Dropdown" class="asdasdasd" @click-toggle="onToggle">
                 <a href="#/test" @click="onClickItem">Action</a>
                 <a href="#">Another Action</a>
+                <hr>
                 <a href="#">Something else here</a>
             </btn-dropdown>
+
+            <h2 class="text-2xl mt-6 mb-3">Split Button</h2>
             
+            <div class="flex items-center gap-2">
+                <btn-dropdown label="Dropdown" split @click="onClick" @click-toggle="onToggle">
+                    <a href="#/test" @click="onClickItem">Action</a>
+                    <a href="#">Another Action</a>
+                    <hr>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
+
             <h2 class="text-2xl mt-6 mb-3">Custom Buttons</h2>
 
-            <btn-dropdown variant="btn-primary" label="Dropdown" button-class="rounded-full" @click-toggle="onToggle">
-                <a href="#/test" @click="onClickItem">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex items-center gap-2">
+                <btn-dropdown :caret="false" label="+" button-class="btn-primary rounded-full p-0 size-8" @click-toggle="onToggle">
+                    <a href="#/test" @click="onClickItem">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown split variant="primary" label="Dropdown" button-class="rounded-full" @click-toggle="onToggle">
-                <a href="#/test" @click="onClickItem">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown class="ml-3">
-                <template #button="{ onBlur, onClickToggle, expanded }">
-                    <button class="bg-gray-100 p-2 rounded-full outline-none active:ring-4 focus:ring-4 ring-blue-500/50" :class="{'rotate-z-90': expanded}" @blur="onBlur" @click="onClickToggle">
-                        <svg version="1.0" class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000" stroke="none">
-                                <path d="M570 3243 c-71 -12 -189 -60 -255 -104 -194 -130 -315 -353 -315
-                                -580 0 -288 202 -567 473 -655 110 -36 263 -44 372 -19 341 76 582 414 536
-                                754 -48 358 -338 615 -690 610 -53 -1 -107 -4 -121 -6z"/>
-                                <path d="M2395 3234 c-243 -59 -452 -270 -509 -514 -20 -83 -20 -237 0 -320
-                                45 -195 188 -372 369 -460 104 -51 187 -70 305 -70 118 0 201 19 305 70 137
-                                66 249 178 315 315 51 104 70 187 70 305 0 118 -19 201 -70 305 -87 180 -253
-                                316 -446 365 -93 24 -249 26 -339 4z"/>
-                                <path d="M4254 3231 c-198 -54 -360 -186 -448 -366 -51 -104 -69 -183 -69
-                                -305 0 -122 18 -201 69 -306 68 -139 186 -253 334 -323 204 -97 472 -77 664
-                                49 190 124 316 355 316 580 0 290 -200 567 -474 656 -111 37 -287 43 -392 15z"/>
-                            </g>
-                        </svg>
-                    </button>
-                </template>
-                <a href="#/test" @click="onClickItem">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown split class="ml-3">
-                <template #button>
-                    <button class="bg-gray-100 px-2 py-1 mr-2 rounded outline-none active:ring-4 focus:ring-4 ring-blue-500/50">
-                        Click Me!
-                    </button>
-                </template>
-                <template #split="{ expanded, onBlur, onClickToggle }">
-                    <button @blur="onBlur" @click="onClickToggle" class="outline-none p-2 rounded-full focus:bg-gray-100">
-                        <svg version="1.0" class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" :fill="expanded ? 'red' : '#000'" stroke="none">
-                                <path d="M570 3243 c-71 -12 -189 -60 -255 -104 -194 -130 -315 -353 -315
-                                -580 0 -288 202 -567 473 -655 110 -36 263 -44 372 -19 341 76 582 414 536
-                                754 -48 358 -338 615 -690 610 -53 -1 -107 -4 -121 -6z"/>
-                                <path d="M2395 3234 c-243 -59 -452 -270 -509 -514 -20 -83 -20 -237 0 -320
-                                45 -195 188 -372 369 -460 104 -51 187 -70 305 -70 118 0 201 19 305 70 137
-                                66 249 178 315 315 51 104 70 187 70 305 0 118 -19 201 -70 305 -87 180 -253
-                                316 -446 365 -93 24 -249 26 -339 4z"/>
-                                <path d="M4254 3231 c-198 -54 -360 -186 -448 -366 -51 -104 -69 -183 -69
-                                -305 0 -122 18 -201 69 -306 68 -139 186 -253 334 -323 204 -97 472 -77 664
-                                49 190 124 316 355 316 580 0 290 -200 567 -474 656 -111 37 -287 43 -392 15z"/>
-                            </g>
-                        </svg>
-                    </button>
-                </template>
-                <a href="https://google.com" @click="onClickItem">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown>
-                <template #button="{ onBlur, onClickToggle, expanded }">
-                    <button
-                        class="flex items-center justify-center rounded-full outline-none focus:ring ring-pink-500 p-0 w-10 h-10 text-center transition-transform"
-                        :class="{'rotate-90': expanded}"
-                        @blur="onBlur"
-                        @click="onClickToggle">
-                        <svg version="1.0" class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" :fill="expanded ? 'red' : '#000'" stroke="none">
-                                <path d="M570 3243 c-71 -12 -189 -60 -255 -104 -194 -130 -315 -353 -315
-                                -580 0 -288 202 -567 473 -655 110 -36 263 -44 372 -19 341 76 582 414 536
-                                754 -48 358 -338 615 -690 610 -53 -1 -107 -4 -121 -6z"/>
-                                <path d="M2395 3234 c-243 -59 -452 -270 -509 -514 -20 -83 -20 -237 0 -320
-                                45 -195 188 -372 369 -460 104 -51 187 -70 305 -70 118 0 201 19 305 70 137
-                                66 249 178 315 315 51 104 70 187 70 305 0 118 -19 201 -70 305 -87 180 -253
-                                316 -446 365 -93 24 -249 26 -339 4z"/>
-                                <path d="M4254 3231 c-198 -54 -360 -186 -448 -366 -51 -104 -69 -183 -69
-                                -305 0 -122 18 -201 69 -306 68 -139 186 -253 334 -323 204 -97 472 -77 664
-                                49 190 124 316 355 316 580 0 290 -200 567 -474 656 -111 37 -287 43 -392 15z"/>
-                            </g>
-                        </svg>
-                    </button>
-                </template>
-                <a href="#" @click="onClickItem">a tag</a>
-                <button @click="onClickItem">button</button>
-            </btn-dropdown>
+                <btn-dropdown>
+                    <template #button="{ target, onBlur, onClickToggle, expanded }">
+                        <button :ref="target" class="bg-gray-100 p-2 rounded-full outline-none active:ring-4 focus:ring-4 ring-blue-500/50" :class="{'rotate-z-90': expanded}" @blur="onBlur" @click="onClickToggle">
+                            <svg version="1.0" class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000" stroke="none">
+                                    <path d="M570 3243 c-71 -12 -189 -60 -255 -104 -194 -130 -315 -353 -315
+                                    -580 0 -288 202 -567 473 -655 110 -36 263 -44 372 -19 341 76 582 414 536
+                                    754 -48 358 -338 615 -690 610 -53 -1 -107 -4 -121 -6z"/>
+                                    <path d="M2395 3234 c-243 -59 -452 -270 -509 -514 -20 -83 -20 -237 0 -320
+                                    45 -195 188 -372 369 -460 104 -51 187 -70 305 -70 118 0 201 19 305 70 137
+                                    66 249 178 315 315 51 104 70 187 70 305 0 118 -19 201 -70 305 -87 180 -253
+                                    316 -446 365 -93 24 -249 26 -339 4z"/>
+                                    <path d="M4254 3231 c-198 -54 -360 -186 -448 -366 -51 -104 -69 -183 -69
+                                    -305 0 -122 18 -201 69 -306 68 -139 186 -253 334 -323 204 -97 472 -77 664
+                                    49 190 124 316 355 316 580 0 290 -200 567 -474 656 -111 37 -287 43 -392 15z"/>
+                                </g>
+                            </svg>
+                        </button>
+                    </template>
+                    <a href="#/test" @click="onClickItem">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
 
             <h2 class="text-2xl mt-6 mb-3">Variants</h2>
 
-            <div class="flex">
-                <btn-dropdown label="Primary" variant="btn-primary" class="mr-1">
+            <div class="flex gap-2">
+                <btn-dropdown label="Primary" variant="btn-primary">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Secondary" variant="btn-secondary" class="mr-1">
+                <btn-dropdown label="Secondary" variant="btn-secondary">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Success" variant="btn-success" class="mr-1">
+                <btn-dropdown label="Success" variant="btn-success">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Info" variant="btn-info" class="mr-1">
+                <btn-dropdown label="Info" variant="btn-info">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Warning" variant="btn-warning" class="mr-1">
+                <btn-dropdown label="Warning" variant="btn-warning">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Danger" variant="btn-danger" class="mr-1">
+                <btn-dropdown label="Danger" variant="btn-danger">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Dark" variant="btn-dark" class="mr-1">
+                <btn-dropdown label="Dark" variant="btn-dark">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Light" variant="btn-light" class="mr-1">
+                <btn-dropdown label="Light" variant="btn-light">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Muted" variant="btn-muted" class="mr-1">
+                <btn-dropdown label="Muted" variant="btn-muted">
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
@@ -171,114 +123,114 @@
 
             <h2 class="text-2xl mt-6 mb-3">Outline Variants</h2>
 
-            <div class="flex">
-                <btn-dropdown label="Primary" variant="btn-outline-primary" outline class="mr-1">
+            <div class="flex gap-2">
+                <btn-dropdown label="Primary" variant="btn-outline-primary" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Secondary" variant="btn-outline-secondary" outline class="mr-1">
+                <btn-dropdown label="Secondary" variant="btn-outline-secondary" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Success" variant="btn-outline-success" outline class="mr-1">
+                <btn-dropdown label="Success" variant="btn-outline-success" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Info" variant="btn-outline-info" outline class="mr-1">
+                <btn-dropdown label="Info" variant="btn-outline-info" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Warning" variant="btn-outline-warning" outline class="mr-1">
+                <btn-dropdown label="Warning" variant="btn-outline-warning" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Danger" variant="btn-outline-danger" outline class="mr-1">
+                <btn-dropdown label="Danger" variant="btn-outline-danger" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Dark" variant="btn-outline-dark" outline class="mr-1">
+                <btn-dropdown label="Dark" variant="btn-outline-dark" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Light" variant="btn-outline-light" outline class="mr-1">
+                <btn-dropdown label="Light" variant="btn-outline-light" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Muted" variant="btn-outline-muted" outline class="mr-1">
+                <btn-dropdown label="Muted" variant="btn-outline-muted" outline>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
             </div>
 
-            <h2 class="text-2xl mt-6 mb-3">Split Buttons</h2>
+            <h2 class="text-2xl mt-6 mb-3">Split Button Variants</h2>
             
-            <div class="flex">
-                <btn-dropdown label="Primary" variant="btn-primary" split class="mr-1">
+            <div class="flex gap-2">
+                <btn-dropdown label="Primary" variant="btn-primary" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Secondary" variant="btn-secondary" split class="mr-1">
+                <btn-dropdown label="Secondary" variant="btn-secondary" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Success" variant="btn-success" split class="mr-1">
+                <btn-dropdown label="Success" variant="btn-success" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Info" variant="btn-info" split class="mr-1">
+                <btn-dropdown label="Info" variant="btn-info" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Warning" variant="btn-warning" split class="mr-1">
+                <btn-dropdown label="Warning" variant="btn-warning" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Danger" variant="btn-danger" split class="mr-1">
+                <btn-dropdown label="Danger" variant="btn-danger" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Dark" variant="btn-dark" split class="mr-1">
+                <btn-dropdown label="Dark" variant="btn-dark" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Light" variant="btn-light" split class="mr-1">
+                <btn-dropdown label="Light" variant="btn-light" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Muted" variant="btn-muted" split class="mr-1">
+                <btn-dropdown label="Muted" variant="btn-muted" split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
@@ -287,50 +239,50 @@
             
             <h2 class="text-2xl mt-6 mb-3">Split Outline Buttons</h2>
             
-            <div class="flex">
-                <btn-dropdown label="Primary" variant="btn-outline-primary" outline split class="mr-1">
+            <div class="flex gap-2">
+                <btn-dropdown label="Primary" variant="btn-outline-primary" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Secondary" variant="btn-outline-secondary" outline split class="mr-1">
+                <btn-dropdown label="Secondary" variant="btn-outline-secondary" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Success" variant="btn-outline-success" outline split class="mr-1">
+                <btn-dropdown label="Success" variant="btn-outline-success" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Info" variant="btn-outline-info" outline split class="mr-1">
+                <btn-dropdown label="Info" variant="btn-outline-info" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Warning" variant="btn-outline-warning" outline split class="mr-1">
+                <btn-dropdown label="Warning" variant="btn-outline-warning" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Danger" variant="btn-outline-danger" outline split class="mr-1">
+                <btn-dropdown label="Danger" variant="btn-outline-danger" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Dark" variant="btn-outline-dark" outline split class="mr-1">
+                <btn-dropdown label="Dark" variant="btn-outline-dark" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
                 </btn-dropdown>
 
-                <btn-dropdown label="Light" variant="btn-outline-light" outline split class="mr-1">
+                <btn-dropdown label="Light" variant="btn-outline-light" outline split>
                     <a href="#">Action</a>
                     <a href="#">Another Action</a>
                     <a href="#">Something else here</a>
@@ -339,194 +291,215 @@
             
             <h2 class="text-2xl mt-6 mb-3">Button Sizes</h2>
             
-            <btn-dropdown label="xs" size="btn-xs" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <div>
+                    <btn-dropdown label="xs" size="btn-xs" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="sm" size="btn-sm" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="sm" size="btn-sm" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="md" size="btn-md" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="md" size="btn-md" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="lg" size="btn-lg" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="lg" size="btn-lg" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="xl" size="btn-xl" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="xl" size="btn-xl" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="2xl" size="btn-2xl" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="2xl" size="btn-2xl" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="3xl" size="btn-3xl" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="3xl" size="btn-3xl" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="4xl" size="btn-4xl" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="4xl" size="btn-4xl" variant="btn-secondary">
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+            </div>
 
             <h2 class="text-2xl mt-6 mb-3">Split Button Sizes</h2>
             
-            <btn-dropdown label="xs" size="btn-xs" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <div>
+                    <btn-dropdown label="xs" size="btn-xs" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
 
-            <btn-dropdown label="sm" size="btn-sm" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="md" size="btn-md" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="lg" size="btn-lg" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="xl" size="btn-xl" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="2xl" size="btn-2xl" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="3xl" size="btn-3xl" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
-
-            <btn-dropdown label="4xl" size="btn-4xl" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <div>
+                    <btn-dropdown label="sm" size="btn-sm" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="md" size="btn-md" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="lg" size="btn-lg" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="xl" size="btn-xl" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="2xl" size="btn-2xl" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="3xl" size="btn-3xl" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+                
+                <div>
+                    <btn-dropdown label="4xl" size="btn-4xl" variant="btn-secondary" split>
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </btn-dropdown>
+                </div>
+            </div>
 
             <h2 class="text-2xl mb-3 mt-6">Menu Alignment</h2>
 
-            <btn-dropdown align="left" label="Align Left" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <btn-dropdown align="end" label="Align Left" variant="btn-secondary">
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown align="left" label="Align Left (Split)" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <btn-dropdown align="end" label="Align Left (Split)" variant="btn-secondary" split>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown align="right" label="Align Right" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <btn-dropdown align="start" label="Align Right" variant="btn-secondary">
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown align="right" label="Align Right (Split)" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <btn-dropdown align="start" label="Align Right (Split)" variant="btn-secondary" split>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
 
             <h2 class="text-2xl mb-3 mt-6">Dropup Variation</h2>
 
-            <btn-dropdown label="Dropup" variant="btn-secondary" dropup>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <btn-dropdown label="Dropup" variant="btn-secondary" dropup>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown label="Dropup (Split)" variant="btn-secondary" dropup split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <btn-dropdown label="Dropup (Split)" variant="btn-secondary" dropup split>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
 
             <h2 class="text-2xl mb-3 mt-6">Dropright Variation</h2>
 
-            <btn-dropdown label="Dropright" variant="btn-secondary" dropright>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <btn-dropdown label="Dropright" variant="btn-secondary" dropright>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown label="Dropright (Split)" variant="btn-secondary" dropright split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+                <btn-dropdown label="Dropright (Split)" variant="btn-secondary" dropright split>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
 
             <h2 class="text-2xl mb-3 mt-6">Dropleft Variation</h2>
 
-            <btn-dropdown label="Dropleft" variant="btn-secondary" dropleft>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>
+            <div class="flex gap-2">
+                <btn-dropdown label="Dropleft" variant="btn-secondary" dropleft>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
 
-            <btn-dropdown label="Dropleft (Split)" variant="btn-secondary" dropleft split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </btn-dropdown>   
-            
-            
-            <h2 class="text-2xl mb-3 mt-6">Testing</h2>
-
-            <btn-dropdown
-                ref="menu"
-                align="right">
-                <template #button="{ onBlur, onClickToggle, expanded }">
-                    <button
-                        class="flex items-center justify-center rounded-full p-0 text-center outline-none ring-pink-500 transition-transform focus:ring"
-                        :class="{'rotate-z-90': expanded}"
-                        @blur="onBlur"
-                        @click="onClickToggle">
-                    asdf
-                    </button>
-                </template>
-                <div v-if="false">
-                    asdf
-                </div>
-                <div v-if="true">
-                    asdf
-                </div>
-            </btn-dropdown>
+                <btn-dropdown label="Dropleft (Split)" variant="btn-secondary" dropleft split>
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </btn-dropdown>
+            </div>
         </div>
 
         <script type="module">
@@ -539,8 +512,13 @@
                     BtnDropdown
                 },
                 methods: {
-                    onClickItem() {
-                        console.log('clicked');
+                    onClickItem(e) {
+                        console.log('clicked', e);
+
+                        e.preventDefault();
+                    },
+                    onClick() {
+                        console.log('action button clicked!');
                     },
                     onToggle() {
                         console.log('toggled');

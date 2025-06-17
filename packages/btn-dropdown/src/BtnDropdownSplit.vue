@@ -1,90 +1,72 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-import DropdownHandler from './DropdownHandler';
+<script setup lang="ts">
+import { DropdownMenu } from '@vue-interface/dropdown-menu';
+import { BtnDropdownEvents, BtnDropdownProps, useDropdownHandler } from './useDropdownHandler';
 
-export default defineComponent({
-
-    mixins: [
-        DropdownHandler
-    ],
-
-    emits: [
-        'click'
-    ]
-
+const props = withDefaults(defineProps<BtnDropdownProps>(), {
+    caret: true,
+    variant: 'btn-primary'
 });
+
+console.log(props.split);
+
+const emit = defineEmits<BtnDropdownEvents>();
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const {
+    target,
+    menu,
+    buttonClasses,
+    classes,
+    expanded,
+    floatingStyles,
+    side,
+    onBlur,
+    onClick,
+    onClickToggle,
+    onClickItem
+} = useDropdownHandler(props, emit);
 </script>
 
 <template>
-    <BtnGroup
-        :class="classes"
-        class="btn-dropdown-split">
+    <div
+        class="btn-group btn-dropdown-split"
+        :class="classes">
         <slot
-            v-if="!dropleft"
             name="button"
-            v-bind="scope">
-            <BtnDropdownAction
-                v-if="!dropleft"
-                :id="$attrs.id"
-                ref="button"
-                :expanded="expanded"
-                :href="href"
-                :to="to"
-                :class="actionClasses"
-                @click="$emit('click', $event)">
-                <slot name="icon" />
-                <slot name="label">
-                    {{ label }}
-                </slot>
-            </BtnDropdownAction>
+            v-bind="{ target: (el: HTMLElement) => target = el, expanded, onBlur, onClickToggle }">
+            <button
+                type="button"
+                :class="buttonClasses"
+                aria-haspopup="true"
+                :aria-expanded="expanded"
+                @blur="onBlur"
+                @click="onClick">
+                {{ label }}
+            </button>
         </slot>
-
-        <BtnGroup ref="split">
-            <slot
-                name="split"
-                v-bind="scope">
-                <button
-                    v-if="split"
-                    :id="$attrs.id"
-                    type="button"
-                    aria-haspopup="true"
-                    :aria-expanded="expanded"
-                    :class="toggleClasses"
-                    @blur="onBlur"
-                    @click="onClickToggle" />
-            </slot>
-            
+        <div class="btn-group">
+            <button
+                ref="target"
+                type="button"
+                aria-haspopup="true"
+                :aria-expanded="expanded"
+                :class="{...buttonClasses, 'dropdown-toggle': true}"
+                @blur="onBlur"
+                @click="onClickToggle" />
             <DropdownMenu
-                :id="$attrs.id"
                 ref="menu"
-                :align="align"
-                :show="expanded"
-                :class="{animated: triggerAnimation}"
+                :class="{
+                    'show': expanded
+                }"
+                :style="floatingStyles"
                 @blur="onBlur"
                 @click="onClickItem"
-                @keydown.tab="onKeydown"
-                @mousedown.prevent="">
+                @mousedown.prevent>
                 <slot />
             </DropdownMenu>
-        </BtnGroup>
-        <slot
-            v-if="dropleft"
-            name="button"
-            v-bind="scope">
-            <BtnDropdownAction
-                v-if="dropleft"
-                :id="$attrs.id"
-                ref="button"
-                :expanded="expanded"
-                :href="href"
-                :to="to"
-                :class="actionClasses"
-                @click="$emit('click', $event)">
-                <slot name="icon" />
-                <slot name="label">
-                    {{ label }}
-                </slot>
-            </BtnDropdownAction>
-        </slot>
-    </BtnGroup>
+        </div>
+    </div>
 </template>

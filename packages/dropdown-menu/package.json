@@ -1,5 +1,5 @@
 {
-  "name": "@vue-interface-new/dropdown-menu",
+  "name": "@vue-interface/dropdown-menu",
   "version": "1.0.0",
   "description": "A Vue dropdown menu component.",
   "files": [
@@ -16,8 +16,7 @@
       "require": "./dist/dropdown-menu.umd.js",
       "types": "./dist/index.d.ts"
     },
-    "./css": "./index.css",
-    "./tailwindcss": "./dropdown-menu.css"
+    "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
@@ -27,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface-new/tree/jsx/packages/dropdown-menu"
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/dropdown-menu"
   },
   "keywords": [
     "Button",
