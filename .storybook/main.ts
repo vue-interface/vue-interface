@@ -1,6 +1,6 @@
+import type { StorybookConfig } from '@storybook/vue3-vite';
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import type { StorybookConfig } from '@storybook/vue3-vite';
 
 const require = createRequire(import.meta.url);
 
@@ -23,9 +23,13 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     // Ensure JSX plugin is configured
+    const vue = (await import('@vitejs/plugin-vue')).default
     const vueJsx = (await import('@vitejs/plugin-vue-jsx')).default
     
+    console.log(config);
+    
     config.plugins = config.plugins || []
+    config.plugins.push(vue())
     config.plugins.push(vueJsx({
       include: /\.(jsx|tsx)$/
     }))

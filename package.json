@@ -17,6 +17,7 @@
     "@storybook/addon-themes": "^9.0.8",
     "@storybook/html-vite": "9.0.8",
     "@tailwindcss/postcss": "^4.1.9",
+    "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^4.2.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
@@ -32,6 +33,7 @@
   "dependencies": {
     "@storybook/vue3": "^9.0.8",
     "@storybook/vue3-vite": "^9.0.8",
-    "eslint": "^8.57.1"
+    "eslint": "^8.57.1",
+    "vue": "^3.3.4"
   }
 }
