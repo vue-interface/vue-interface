@@ -35,8 +35,9 @@ const {
         class="btn-group btn-dropdown-split"
         :class="classes">
         <slot
+            v-if="!dropleft"
             name="button"
-            v-bind="{ target: (el: HTMLElement) => target = el, expanded, onBlur, onClickToggle }">
+            v-bind="{ expanded, onBlur, onClickToggle }">
             <button
                 type="button"
                 :class="buttonClasses"
@@ -48,14 +49,18 @@ const {
             </button>
         </slot>
         <div class="btn-group">
-            <button
-                ref="target"
-                type="button"
-                aria-haspopup="true"
-                :aria-expanded="expanded"
-                :class="{...buttonClasses, 'dropdown-toggle': true}"
-                @blur="onBlur"
-                @click="onClickToggle" />
+            <slot
+                name="toggle"
+                v-bind="{ target: (el: HTMLElement) => target = el, expanded, onBlur, onClickToggle }">
+                <button
+                    ref="target"
+                    type="button"
+                    aria-haspopup="true"
+                    :aria-expanded="expanded"
+                    :class="{...buttonClasses, 'dropdown-toggle': true}"
+                    @blur="onBlur"
+                    @click="onClickToggle" />
+            </slot>
             <DropdownMenu
                 ref="menu"
                 :class="{
@@ -68,5 +73,19 @@ const {
                 <slot />
             </DropdownMenu>
         </div>
+        <slot
+            v-if="dropleft"
+            name="button"
+            v-bind="{ expanded, onBlur, onClickToggle }">
+            <button
+                type="button"
+                :class="buttonClasses"
+                aria-haspopup="true"
+                :aria-expanded="expanded"
+                @blur="onBlur"
+                @click="onClick">
+                {{ label }}
+            </button>
+        </slot>
     </div>
 </template>
