@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import type { Meta, StoryObj } from '@storybook/vue3';
-import './btn.css';
+import './index.css';
 // type PagePropsAndCustomArgs = ComponentPropsAndSlots<typeof Page> & { footer?: string };
  
 const meta = {

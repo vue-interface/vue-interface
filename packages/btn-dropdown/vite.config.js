@@ -13,6 +13,8 @@ const external = [
     ...(pkg.peerDependencies ? Object.keys(pkg.peerDependencies) : [])
 ];
 
+console.log(process.env.NODE_ENV);
+
 export default ({ command }) => defineConfig({
     build: {
         sourcemap: command === 'build',
@@ -38,9 +40,9 @@ export default ({ command }) => defineConfig({
         }
     },
     resolve: {
-        alias: {
-            '@vue-interface/dropdown-menu': path.resolve(__dirname, '../dropdown-menu')
-        }
+        conditions: process.env.NODE_ENV === 'development' 
+            ? ['source', 'import', 'module', 'browser', 'default']
+            : ['import', 'module', 'browser', 'default']
     },
     plugins: [
         vue(),

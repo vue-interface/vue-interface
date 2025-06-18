@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/vue3-vite';
 
+import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -15,6 +17,9 @@ const preview: Preview = {
         { name: 'dark', value: '#1e1e1e' },
       ],
     },
+    viewport: {
+      MINIMAL_VIEWPORTS
+    }
   },
 };
 

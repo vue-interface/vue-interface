@@ -2,20 +2,18 @@
   "name": "@vue-interface/dropdown-menu",
   "version": "1.0.0",
   "description": "A Vue dropdown menu component.",
-  "files": [
-    "dist",
-    "tailwindcss"
-  ],
   "type": "module",
   "main": "./dist/dropdown-menu.umd.cjs",
   "module": "./dist/dropdown-menu.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/dropdown-menu.js",
-      "require": "./dist/dropdown-menu.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/dropdown-menu.umd.js"
     },
+    "./src/DropdownMenu.vue": "./src/DropdownMenu.vue",
     "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",

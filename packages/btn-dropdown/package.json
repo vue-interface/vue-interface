@@ -2,20 +2,17 @@
   "name": "@vue-interface/btn-dropdown",
   "version": "1.0.0",
   "description": "A Vue button dropdown component.",
-  "files": [
-    "dist"
-  ],
   "type": "module",
   "main": "./dist/btn-dropdown.umd.js",
   "module": "./dist/btn-dropdown.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
       "require": "./dist/btn-dropdown.umd.js",
-      "import": "./dist/btn-dropdown.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./dist/style.css": "./dist/style.css"
+      "import": "./dist/btn-dropdown.js"
+    }
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {

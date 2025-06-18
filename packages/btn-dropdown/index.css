@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../btn/index.css";
-@import "../dropdown-menu/index.css";
+@import "@vue-interface/btn";
+@import "@vue-interface/dropdown-menu/css";
 
 @source '../dropdown-menu/src/**/*'

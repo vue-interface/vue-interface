@@ -26,8 +26,13 @@ const config: StorybookConfig = {
     const vue = (await import('@vitejs/plugin-vue')).default
     const vueJsx = (await import('@vitejs/plugin-vue-jsx')).default
     
-    console.log(config);
-    
+    if(config.resolve) {
+      config.resolve.conditions = [
+        'source',
+        ...(config.resolve.conditions ?? [])
+      ]
+    }
+
     config.plugins = config.plugins || []
     config.plugins.push(vue())
     config.plugins.push(vueJsx({

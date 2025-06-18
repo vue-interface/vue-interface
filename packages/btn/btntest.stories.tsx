@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/vue3';
 import { computed, defineComponent } from 'vue';
-import './btn.css';
+import './index.css';
 
  
 const meta = {

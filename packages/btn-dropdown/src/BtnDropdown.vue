@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import BtnDropdownSingle from './BtnDropdownSingle.vue';
 import BtnDropdownSplit from './BtnDropdownSplit.vue';
+import { BtnDropdownProps } from './useDropdownHandler';
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
     split?: boolean
-}>(), {
-    split: false
+} & BtnDropdownProps>(), {
+    split: false,
+    caret: true
 });
 </script>
 
 <template>
     <Component
         :is="!split ? BtnDropdownSingle : BtnDropdownSplit"
-        :split="split">
+        v-bind="props">
         <template #button="slot">
             <slot
                 name="button"

@@ -13,17 +13,15 @@ export default meta;
 type Story = StoryObj<typeof meta>
 
 export const ColorVariants = {
-    name: 'Color Variants',
+    name: 'Basic Usage',
     render: () => (
-        <div class="flex gap-2">
-            <button class="btn btn-primary">Primary</button>
-            <button class="btn btn-secondary">Secondary</button>
-            <button class="btn btn-success">Success</button>
-            <button class="btn btn-danger">Danger</button>
-            <button class="btn btn-warning">Warning</button>
-            <button class="btn btn-info">Info</button>
-            <button class="btn btn-light">Light</button>
-            <button class="btn btn-dark">Dark</button>
+        <div class="min-h-36">
+            <BtnDropdown label="test">
+                <a href="#/test">Action</a>
+                <a href="#">Another Action</a>
+                <hr/>
+                <a href="#">Something else here</a>
+            </BtnDropdown>
         </div>
     ),
 } satisfies Story;

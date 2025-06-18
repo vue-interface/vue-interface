@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 @theme {
     --btn-text-default: var(--color-white);
     

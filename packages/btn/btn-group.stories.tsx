@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import './btn-group.css';
-import './btn.css';
+import './index.css';
  
 const meta = {
     title: 'Example/Button Group',
