@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    "customConditions": ["source"],
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -20,7 +21,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.vue", "vite.config.js",
+    "**/*.vue",
   ],
   "exclude": ["node_modules"]
 }

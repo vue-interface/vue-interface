@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BtnDropdownSingle from './BtnDropdownSingle.vue';
 import BtnDropdownSplit from './BtnDropdownSplit.vue';
-import { BtnDropdownProps } from './useDropdownHandler';
+import { BtnDropdownEvents, BtnDropdownProps } from './useDropdownHandler';
 
 const props = withDefaults(defineProps<{
     split?: boolean
@@ -9,12 +9,18 @@ const props = withDefaults(defineProps<{
     split: false,
     caret: true
 });
+
+const emit = defineEmits<BtnDropdownEvents>();
 </script>
 
 <template>
     <Component
         :is="!split ? BtnDropdownSingle : BtnDropdownSplit"
-        v-bind="props">
+        v-bind="props"
+        @click="(...args) => emit('click', ...args)"
+        @click-toggle="(...args) => emit('clickToggle', ...args)"
+        @show="(...args) => emit('show', ...args)"
+        @hide="(...args) => emit('hide', ...args)">
         <template #button="slot">
             <slot
                 name="button"

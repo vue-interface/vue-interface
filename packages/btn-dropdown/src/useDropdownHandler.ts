@@ -24,8 +24,7 @@ export type BtnDropdownEvents = {
     click: [event: MouseEvent];
     clickToggle: [event: MouseEvent];
     show: [],
-    hide: [],
-    toggle: []
+    hide: []
 }
 
 export function useDropdownHandler(props: BtnDropdownProps, emit: EmitFn<BtnDropdownEvents>) {
@@ -102,12 +101,16 @@ export function useDropdownHandler(props: BtnDropdownProps, emit: EmitFn<BtnDrop
         }
 
         update();
+
+        emit('show');
     }
 
     function hide() {
         expanded.value = false;
 
         target.value?.blur();
+
+        emit('hide');
     }
 
     function toggle() {
