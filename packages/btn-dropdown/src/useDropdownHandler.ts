@@ -18,6 +18,7 @@ export type BtnDropdownProps = {
     size?: string;
     split?: boolean;
     variant?: string;
+    outline?: boolean;
 }
 
 export type BtnDropdownEvents = {
@@ -33,7 +34,7 @@ export function useDropdownHandler(props: BtnDropdownProps, emit: EmitFn<BtnDrop
     const expanded = ref(false);
 
 
-    const alignment = computed<Alignment>(() => props.align ?? 'end');
+    const alignment = computed<Alignment>(() => props.align ?? 'start');
 
     const side = computed<Side>(() => {
         if(props.dropup) {
