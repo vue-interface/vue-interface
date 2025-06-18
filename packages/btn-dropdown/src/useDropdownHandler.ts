@@ -18,7 +18,6 @@ export type BtnDropdownProps = {
     size?: string;
     split?: boolean;
     variant?: string;
-    outline?: boolean;
 }
 
 export type BtnDropdownEvents = {

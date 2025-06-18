@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, /* StoryObj */ StoryFn } from '@storybook/vue3';
 import { ref, withModifiers } from 'vue';
 import './index.css';
 import BtnDropdown from './src/BtnDropdown.vue';
@@ -10,9 +10,97 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>
+/* type Story = StoryObj<typeof meta> */
 
-export const BasicUsage = {
+export const DropdownControl: StoryFn<typeof BtnDropdown> = (args) => {
+    const clicked = ref(0);
+    const visible = ref(false);
+
+    return () => (
+        <div class="min-h-38 flex flex-col gap-2">
+            <div class="flex gap-2">
+                <div>
+                    Counter:
+                    <span class="text-xs rounded px-2 py-1 bg-blue-600 text-white">{clicked.value}</span>
+                </div>
+                <div
+                    class={[
+                        'text-white rounded p-1 text-xs',
+                        visible.value ? 'bg-emerald-500' : 'bg-red-500',
+                    ]}
+                >
+                    {visible.value ? 'Showing' : 'Hidden'}
+                </div>
+            </div>
+
+            <BtnDropdown
+                {...args}
+                onShow={() => {
+                    visible.value = true;
+                    args.onShow?.(); // calls onShow action handler
+                }}
+                onHide={() => {
+                    visible.value = false;
+                    args.onHide?.(); // calls onHide action handler
+                }}
+            >
+                <button onClick={withModifiers(() => clicked.value++, ['prevent'])}>Increment Counter</button>
+                <button>Another Action</button>
+                <hr/>
+                <button>Something else here</button>
+            </BtnDropdown>
+        </div>
+    );
+};
+
+// Default values for controls
+DropdownControl.args = {
+    align: 'start',
+    block: false,
+    buttonClass: 'flex btn-primary rounded',
+    caret: true,
+    dropup: false,
+    dropright: false,
+    dropleft: false,
+    label: 'Dropdown',
+    offset: undefined,
+    middleware: [],
+    side: 'bottom',
+    size: '',
+    split: false,
+    variant: '',
+};
+
+//Full control definition (all props from BtnDropdownProps + actions)
+DropdownControl.argTypes = {
+    align: {
+        control: 'select',
+        options: ['start', 'center', 'end'], // adjust to match your Alignment type
+    },
+    block: { control: 'boolean' },
+    buttonClass: { control: 'text' },
+    caret: { control: 'boolean' },
+    dropup: { control: 'boolean' },
+    dropright: { control: 'boolean' },
+    dropleft: { control: 'boolean' },
+    label: { control: 'text' },
+    offset: { control: 'object' },
+    middleware: { control: 'object' },
+    side: {
+        control: 'select',
+        options: ['top', 'right', 'bottom', 'left'],
+    },
+    size: { control: 'text' },
+    split: { control: 'boolean' },
+    variant: { control: 'text' },
+
+    // Actions
+    onClickToggle: { action: 'toggle clicked' },
+    onShow: { action: 'dropdown shown' },
+    onHide: { action: 'dropdown hidden' }
+};
+
+/* export const BasicUsage = {
     name: 'Basic Usage',
     render: () => ({
         setup() {
@@ -47,6 +135,20 @@ export const BasicUsage = {
         }
     }),
 } satisfies Story;
+*/
+
+//Basic Usage
+export const BasicUsage = {
+    name: 'Basic Usage',
+    render: () => (
+        <BtnDropdown label="Dropdown" >
+            <a href="#/test">Action</a>
+            <a href="#">Another Action</a>
+            <hr/>
+            <a href="#">Something else here</a>
+        </BtnDropdown>
+    ),
+};
 
 //Split Button
 export const SplitButton = {
@@ -203,55 +305,55 @@ export const OutlineVariants = {
     name: 'Outline Variants',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-outline-primary" outline>
+            <BtnDropdown label="Primary" variant="btn-outline-primary" >
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Secondary" variant="btn-outline-secondary" outline>
+            <BtnDropdown label="Secondary" variant="btn-outline-secondary">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Success" variant="btn-outline-success" outline>
+            <BtnDropdown label="Success" variant="btn-outline-success">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Info" variant="btn-outline-info" outline>
+            <BtnDropdown label="Info" variant="btn-outline-info">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Warning" variant="btn-outline-warning" outline>
+            <BtnDropdown label="Warning" variant="btn-outline-warning">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Danger" variant="btn-outline-danger" outline>
+            <BtnDropdown label="Danger" variant="btn-outline-danger">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Dark" variant="btn-outline-dark" outline>
+            <BtnDropdown label="Dark" variant="btn-outline-dark">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Light" variant="btn-outline-light" outline>
+            <BtnDropdown label="Light" variant="btn-outline-light">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Muted" variant="btn-outline-muted" outline>
+            <BtnDropdown label="Muted" variant="btn-outline-muted">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
@@ -327,49 +429,49 @@ export const SplitOutlineButton = {
     name: 'Split Outline Button',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-outline-primary" outline split>
+            <BtnDropdown label="Primary" variant="btn-outline-primary" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Secondary" variant="btn-outline-secondary" outline split>
+            <BtnDropdown label="Secondary" variant="btn-outline-secondary" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Success" variant="btn-outline-success" outline split>
+            <BtnDropdown label="Success" variant="btn-outline-success" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Info" variant="btn-outline-info" outline split>
+            <BtnDropdown label="Info" variant="btn-outline-info"split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Warning" variant="btn-outline-warning" outline split>
+            <BtnDropdown label="Warning" variant="btn-outline-warning"split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Danger" variant="btn-outline-danger" outline split>
+            <BtnDropdown label="Danger" variant="btn-outline-danger"split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Dark" variant="btn-outline-dark" outline split>
+            <BtnDropdown label="Dark" variant="btn-outline-dark"split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown label="Light" variant="btn-outline-light" outline split>
+            <BtnDropdown label="Light" variant="btn-outline-light" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
