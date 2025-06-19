@@ -1,141 +1,107 @@
-import type { Meta, /* StoryObj */ StoryFn } from '@storybook/vue3';
-import { ref, withModifiers, Ref } from 'vue';
+import { flip, offset } from '@floating-ui/dom';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import { ref, Ref, withModifiers } from 'vue';
 import './index.css';
 import BtnDropdown from './src/BtnDropdown.vue';
 
 const meta = {
-    title: 'Example/Button Dropdown',
-    tags: ['autodocs']
+    title: 'Example/Buttons/Button Dropdown',
+    tags: ['autodocs'],
+    component: BtnDropdown,
 } satisfies Meta;
 
 export default meta;
 
-/* type Story = StoryObj<typeof meta> */
+type Story = StoryObj<typeof meta>
 
-export const DropdownControl: StoryFn<typeof BtnDropdown> = (args) => {
-    const clicked = ref(0);
-    const visible = ref(false);
-
-    return () => (
-        <div class="min-h-38 flex flex-col gap-2">
-            <div class="flex gap-2">
-                <div>
-                    Counter:
-                    <span class="text-xs rounded px-2 py-1 bg-blue-600 text-white">{clicked.value}</span>
-                </div>
-                <div
-                    class={[
-                        'text-white rounded p-1 text-xs',
-                        visible.value ? 'bg-emerald-500' : 'bg-red-500',
-                    ]}
-                >
-                    {visible.value ? 'Showing' : 'Hidden'}
-                </div>
-            </div>
-
-            <BtnDropdown
-                {...args}
-                onShow={() => {
-                    visible.value = true;
-                    args.onShow?.(); // calls onShow action handler
-                }}
-                onHide={() => {
-                    visible.value = false;
-                    args.onHide?.(); // calls onHide action handler
-                }}
-            >
-                <button onClick={withModifiers(() => clicked.value++, ['prevent'])}>Increment Counter</button>
-                <button>Another Action</button>
-                <hr/>
-                <button>Something else here</button>
-            </BtnDropdown>
-        </div>
-    );
-};
-
-// Default values for controls
-DropdownControl.args = {
-    align: 'start',
-    block: false,
-    buttonClass: 'flex rounded',
-    caret: true,
-    dropup: false,
-    dropright: false,
-    dropleft: false,
-    label: 'Dropdown',
-    offset: undefined,
-    middleware: [],
-    side: 'bottom',
-    size: '',
-    split: false,
-    variant: 'btn-primary',
-};
-
-//Full control definition (all props from BtnDropdownProps + actions)
-DropdownControl.argTypes = {
-    align: {
-        control: 'select',
-        options: ['start', 'center', 'end'], // adjust to match your Alignment type
+export const DropdownControl = {
+    args: {
+        align: 'start',
+        block: false,
+        buttonClass: 'flex rounded',
+        caret: true,
+        dropup: false,
+        dropright: false,
+        dropleft: false,
+        label: 'Dropdown',
+        offset: undefined,
+        middleware: [
+            flip(),
+            offset(5)
+        ],
+        side: 'bottom',
+        size: '',
+        split: false,
+        variant: 'btn-primary',
     },
-    block: { control: 'boolean' },
-    buttonClass: { control: 'text' },
-    caret: { control: 'boolean' },
-    dropup: { control: 'boolean' },
-    dropright: { control: 'boolean' },
-    dropleft: { control: 'boolean' },
-    label: { control: 'text' },
-    offset: { control: 'object' },
-    middleware: { control: 'object' },
-    side: {
-        control: 'select',
-        options: ['top', 'right', 'bottom', 'left'],
+    argTypes: {
+        align: {
+            control: 'select',
+            options: ['start', 'center', 'end'], // adjust to match your Alignment type
+        },
+        block: { control: 'boolean' },
+        buttonClass: { control: 'text' },
+        caret: { control: 'boolean' },
+        dropup: { control: 'boolean' },
+        dropright: { control: 'boolean' },
+        dropleft: { control: 'boolean' },
+        label: { control: 'text' },
+        offset: { control: 'object' },
+        middleware: { control: 'object' },
+        side: {
+            control: 'select',
+            options: ['top', 'right', 'bottom', 'left'],
+        },
+        size: { control: 'text' },
+        split: { control: 'boolean' },
+        variant: { control: 'text' },
+
+        // Actions
+        onClickToggle: { action: 'toggle clicked' },
+        onShow: { action: 'dropdown shown' },
+        onHide: { action: 'dropdown hidden' }
     },
-    size: { control: 'text' },
-    split: { control: 'boolean' },
-    variant: { control: 'text' },
+    render: (args) => {
+        const clicked = ref(0);
+        const visible = ref(false);
 
-    // Actions
-    onClickToggle: { action: 'toggle clicked' },
-    onShow: { action: 'dropdown shown' },
-    onHide: { action: 'dropdown hidden' }
-};
-
-/* export const BasicUsage = {
-    name: 'Basic Usage',
-    render: () => ({
-        setup() {
-            const clicked = ref(0);
-            const visible = ref(false);
-            
-            return () => (
-                <div class="min-h-38 flex flex-col gap-2">
-                    <div class="flex gap-2">
-                        <div>Counter: <span class="text-xs rounded px-2 py-1 bg-blue-600 text-white">{clicked.value}</span></div>
-                        <div class={{
-                            'text-white rounded p-1 text-xs': true,
-                            'bg-emerald-500': visible.value,
-                            'bg-red-500': !visible.value,
-                        }}>{visible.value ? 'Showing' : 'Hidden'}</div>
-                    </div>
+        return () => (
+            <div class="min-h-38 flex flex-col gap-2">
+                <div class="flex gap-2">
                     <div>
-                        <BtnDropdown
-                            label="Dropdown"
-                            onClickToggle={() => console.log('clicked toggle!')}
-                            onShow={() => visible.value = true}
-                            onHide={() => visible.value = false}
-                        >
-                            <button onClick={withModifiers(() => clicked.value++, ['prevent'])}>Increment Counter</button>
-                            <button>Another Action</button>
-                            <hr/>
-                            <button>Something else here</button>
-                        </BtnDropdown>
+                        Counter:
+                        <span class="text-xs rounded px-2 py-1 bg-blue-600 text-white">{clicked.value}</span>
+                    </div>
+                    <div
+                        class={[
+                            'text-white rounded p-1 text-xs',
+                            visible.value ? 'bg-emerald-500' : 'bg-red-500',
+                        ]}
+                    >
+                        {visible.value ? 'Showing' : 'Hidden'}
                     </div>
                 </div>
-            );
-        }
-    }),
+
+                <BtnDropdown
+                    {...args}
+                    onShow={() => {
+                        visible.value = true;
+                        args.onShow?.(); // calls onShow action handler
+                    }}
+                    onHide={() => {
+                        visible.value = false;
+                        args.onHide?.(); // calls onHide action handler
+                    }}
+                >
+                    <button onClick={withModifiers(() => clicked.value++, ['prevent'])}>Increment Counter</button>
+                    <button>Another Action</button>
+                    <hr/>
+                    <button>Something else here</button>
+                </BtnDropdown>
+            </div>
+        );
+    }
 } satisfies Story;
-*/
 
 //Basic Usage
 export const BasicUsage = {
@@ -148,7 +114,7 @@ export const BasicUsage = {
             <a href="#">Something else here</a>
         </BtnDropdown>
     ),
-};
+} satisfies Story;
 
 //Split Button
 export const SplitButton = {
@@ -166,8 +132,7 @@ export const SplitButton = {
             </BtnDropdown>
         </div>
     ),
-};
-
+} satisfies Story;
 
 type ButtonSlotProps = {
   target: Ref<HTMLElement | null>;
@@ -241,7 +206,7 @@ export const CustomButtons = {
             );
         }
     })
-};
+} satisfies Story;
 
 //Variations
 export const Variants = {
@@ -303,7 +268,7 @@ export const Variants = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Outline Variants
 export const OutlineVariants = {
@@ -365,7 +330,7 @@ export const OutlineVariants = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Split Button Variants
 export const SplitButtonVariants = {
@@ -427,7 +392,7 @@ export const SplitButtonVariants = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Split Outline Button
 export const SplitOutlineButton = {
@@ -483,7 +448,7 @@ export const SplitOutlineButton = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Button Sizes
 export const ButtonSizes = {
@@ -555,7 +520,7 @@ export const ButtonSizes = {
             </div>
         </div>
     ),
-};
+} satisfies Story;
 
 //Split Button Sizes
 export const SplitButtonSizes = {
@@ -627,7 +592,7 @@ export const SplitButtonSizes = {
             </div>
         </div>
     ),
-};
+} satisfies Story;
 
 //Menu Alignment
 export const MenuAlignment = {
@@ -659,7 +624,7 @@ export const MenuAlignment = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Dropup Variation
 export const DropupVariation = {
@@ -679,7 +644,7 @@ export const DropupVariation = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Dropright Variation
 export const DroprightVariation = {
@@ -699,7 +664,7 @@ export const DroprightVariation = {
             </BtnDropdown>
         </div>
     ),
-};
+} satisfies Story;
 
 //Dropleft Variation
 export const DropleftVariation = {
@@ -718,6 +683,5 @@ export const DropleftVariation = {
                 <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
-
     ),
-};
+} satisfies Story;

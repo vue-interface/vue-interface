@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import './index.css';
  
 const meta = {
-    title: 'Example/Button Group',
+    title: 'Example/Buttons/Button Group',
     tags: ['autodocs']
 } satisfies Meta;
 
