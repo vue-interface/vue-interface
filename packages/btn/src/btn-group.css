@@ -96,6 +96,55 @@
 			border-top-left-radius: var(--btn-group-horizontal-border-radius-left);
 			border-bottom-left-radius: var(--btn-group-horizontal-border-radius-left);
 		}
+
+ 		/* Sizes for split button dropdown toggles */
+		.btn-group-xs > .dropdown-toggle.btn,
+		.btn-group > .btn-xs.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-xs);
+    		padding-right: var(--btn-dropdown-toggle-padding-xs);
+		}
+
+		.btn-group-sm > .dropdown-toggle.btn,
+		.btn-group > .btn-sm.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-sm);
+    		padding-right: var(--btn-dropdown-toggle-padding-sm);
+		}
+
+		.btn-group-md > .dropdown-toggle.btn,
+		.btn-group > .btn-md.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-md);
+    		padding-right: var(--btn-dropdown-toggle-padding-md);
+		}
+
+		.btn-group-lg > .dropdown-toggle.btn,
+		.btn-group > .btn-lg.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-lg);
+    		padding-right: var(--btn-dropdown-toggle-padding-lg);
+		}
+
+		.btn-group-xl > .dropdown-toggle.btn,
+		.btn-group > .btn-xl.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-xl);
+    		padding-right: var(--btn-dropdown-toggle-padding-xl);
+		}
+
+		.btn-group-2xl > .dropdown-toggle.btn,
+		.btn-group > .btn-2xl.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-2xl);
+    		padding-right: var(--btn-dropdown-toggle-padding-2xl);
+		}
+
+		.btn-group-3xl > .dropdown-toggle.btn,
+		.btn-group > .btn-3xl.dropdown-toggle {
+    		padding-left: var(--btn-dropdown-toggle-padding-3xl);
+    		padding-right: var(--btn-dropdown-toggle-padding-3xl);
+		}
+
+		.btn-group-4xl > .dropdown-toggle.btn,
+		.btn-group > .btn-4xl.dropdown-toggle {
+   			padding-left: var(--btn-dropdown-toggle-padding-4xl);
+			padding-right: var(--btn-dropdown-toggle-padding-4xl);
+		}
 	}
 
 	&.btn-group-vertical {
