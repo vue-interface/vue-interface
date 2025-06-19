@@ -1,5 +1,5 @@
 import type { Meta, /* StoryObj */ StoryFn } from '@storybook/vue3';
-import { ref, withModifiers } from 'vue';
+import { ref, withModifiers, Ref } from 'vue';
 import './index.css';
 import BtnDropdown from './src/BtnDropdown.vue';
 
@@ -168,22 +168,19 @@ export const SplitButton = {
     ),
 };
 
+
+type ButtonSlotProps = {
+  target: Ref<HTMLElement | null>;
+  onClickToggle: (e: MouseEvent) => void;
+  onBlur: (e: FocusEvent) => void;
+  expanded: boolean;
+};
+
 //Custom Buttons
 export const CustomButtons = {
     name: 'Custom Buttons',
     render: () => ({
         setup() {
-            const expanded = ref(false);
-            const buttonRef = ref<HTMLElement | null>(null);
-
-            const toggleDropdown = () => {
-                expanded.value = !expanded.value;
-            };
-
-            const closeDropdown = () => {
-                expanded.value = false;
-            };
-
             return () => (
                 <div class="flex items-center gap-2">
                     <BtnDropdown 
@@ -196,42 +193,50 @@ export const CustomButtons = {
                         <a href="#">Something else here</a>
                     </BtnDropdown>
 
-                    <div class="relative">
-                        <button
-                            ref={buttonRef}
-                            onClick={toggleDropdown}
-                            onBlur={() => {
-                                setTimeout(() => {
-                                    if(
-                                        buttonRef.value &&
-                                        !buttonRef.value.contains(document.activeElement)
-                                    ) {
-                                        closeDropdown();
-                                    }
-                                }, 100);
-                            }}
-                            class={[
-                                'bg-gray-100 p-2 rounded-full outline-none active:ring-4 focus:ring-4 ring-blue-500/50 transition-transform',
-                                expanded.value ? 'rotate-90' : ''
-                            ]}
-                        >
-                            <svg version="1.0" class="w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000" stroke="none">
-                                    <path d="M570 3243..."/>
-                                    <path d="M2395 3234..."/>
-                                    <path d="M4254 3231..."/>
-                                </g>
-                            </svg>
-                        </button>
-
-                        {expanded.value && (
-                            <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
-                                <a href="#/test" class="block px-4 py-2 hover:bg-gray-100">Action</a>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Another Action</a>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Something else here</a>
-                            </div>
-                        )}
-                    </div>
+                    <BtnDropdown>
+                        {{
+                            button: ({ target, onClickToggle, onBlur, expanded }: ButtonSlotProps) => (
+                                <button
+                                    ref={target}
+                                    onClick={onClickToggle}
+                                    onBlur={onBlur}
+                                    class={[
+                                        'bg-gray-100 p-2 rounded-full outline-none active:ring-4 focus:ring-4 ring-blue-500/50 transition-transform',
+                                        expanded ? 'rotate-90' : ''
+                                    ]}
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"
+                                        preserveAspectRatio="xMidYMid meet"
+                                        fill="currentColor"
+                                    >
+                                        <g transform="translate(0,512) scale(0.1,-0.1)" stroke="none">
+                                            <path d="M570 3243 c-71 -12 -189 -60 -255 -104 -194 -130 -315 -353 -315 
+                                            -580 0 -288 202 -567 473 -655 110 -36 263 -44 372 -19 341 76 582 414 536 
+                                            754 -48 358 -338 615 -690 610 -53 -1 -107 -4 -121 -6z" />
+                                            <path d="M2395 3234 c-243 -59 -452 -270 -509 -514 -20 -83 -20 -237 0 -320 
+                                            45 -195 188 -372 369 -460 104 -51 187 -70 305 -70 118 0 201 19 305 70 137 
+                                            66 249 178 315 315 51 104 70 187 70 305 0 118 -19 201 -70 305 -87 180 -253 
+                                            316 -446 365 -93 24 -249 26 -339 4z" />
+                                            <path d="M4254 3231 c-198 -54 -360 -186 -448 -366 -51 -104 -69 -183 -69 
+                                            -305 0 -122 18 -201 69 -306 68 -139 186 -253 334 -323 204 -97 472 -77 
+                                            664 49 190 124 316 355 316 580 0 290 -200 567 -474 656 -111 37 -287 43 
+                                            -392 15z" />
+                                        </g>
+                                    </svg>
+                                </button>
+                            ),
+                            default: () => (
+                                <>
+                                    <a href="#/test" onClick={(e) => e.stopPropagation()}>Action</a>
+                                    <a href="#">Another Action</a>
+                                    <a href="#">Something else here</a>
+                                </>
+                            )
+                        }}
+                    </BtnDropdown>
                 </div>
             );
         }
