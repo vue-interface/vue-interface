@@ -57,7 +57,7 @@ export const DropdownControl: StoryFn<typeof BtnDropdown> = (args) => {
 DropdownControl.args = {
     align: 'start',
     block: false,
-    buttonClass: 'flex btn-primary rounded',
+    buttonClass: 'flex rounded',
     caret: true,
     dropup: false,
     dropright: false,
@@ -68,7 +68,7 @@ DropdownControl.args = {
     side: 'bottom',
     size: '',
     split: false,
-    variant: '',
+    variant: 'btn-primary',
 };
 
 //Full control definition (all props from BtnDropdownProps + actions)
