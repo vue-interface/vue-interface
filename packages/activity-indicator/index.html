@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>ActivityIndicator</title>
+    </head>
+    <body>
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-5">activity-indicator</h1>
+
+            <h3>Dots</h3>
+            
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="dots" size="xs" color="primary"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="dots" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="dots" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="dots" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="dots" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Chase</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="chase" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="chase" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="chase" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="chase" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="chase" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Spinner</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="spinner" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spinner" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">`
+                    <activity-indicator type="spinner" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spinner" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spinner" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Square</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="square" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Square Orbit</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator :type="SquareOrbit" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator :type="SquareOrbit" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator :type="SquareOrbit" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator :type="SquareOrbit" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator :type="SquareOrbit" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Square Fold</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="square-fold" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square-fold" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square-fold" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square-fold" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="square-fold" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Circle Fade</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="circle-fade" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-fade" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-fade" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-fade" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-fade" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Circle Orbit</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="circle-orbit" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-orbit" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-orbit" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-orbit" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-orbit" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Circle Trail</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="circle-trail" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-trail" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-trail" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-trail" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="circle-trail" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Pulse</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="pulse" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="pulse" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="pulse" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="pulse" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="pulse" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Double Pulse</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="double-pulse" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="double-pulse" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="double-pulse" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="double-pulse" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="double-pulse" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Grid</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="grid" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="grid" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="grid" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="grid" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="grid" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Facebook</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="facebook" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="facebook" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="facebook" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="facebook" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="facebook" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Spotify</h3>
+
+            <div class="flex py-5">
+                <div class="mr-3">
+                    <activity-indicator type="spotify" size="xs"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spotify" size="sm"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spotify" size="md"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spotify" size="lg"></activity-indicator>
+                </div>
+                <div class="mr-3">
+                    <activity-indicator type="spotify" size="xl"></activity-indicator>
+                </div>
+            </div>
+
+            <h3>Center Indicator</h3>
+
+            <activity-indicator type="dots" :min-height="500" style="background-color: rgba(0, 0, 0, .1);" center></activity-indicator>
+
+            <h3 class="mt-3">Absolute Inside Parent</h3>
+
+            <div style="min-height: 500px;background-color: rgba(0, 0, 0, .1); position: relative;">
+                <activity-indicator type="dots" center absolute></activity-indicator>
+            </div>
+        </div>
+
+        <script type="module">
+            import './index.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler.js';
+
+            import {
+                ActivityIndicator,
+                ActivityIndicatorPlugin,
+                Chase,
+                CircleFade,
+                CircleOrbit,
+                CircleTrail,
+                Dots,
+                DoublePulse,
+                Facebook,
+                Grid,
+                Pulse,
+                Spinner,
+                Spotify,
+                Square,
+                SquareFold,
+                SquareOrbit
+            } from './index.ts';
+            
+            const vue = createApp({
+                components: {
+                    ActivityIndicator
+                },
+                data: () => ({
+                    SquareOrbit
+                })
+            });
+
+            vue.use(ActivityIndicatorPlugin, {
+                indicators: {
+                    Chase,
+                    CircleFade,
+                    CircleOrbit,
+                    CircleTrail,
+                    Dots,
+                    DoublePulse,
+                    Facebook,
+                    Grid,
+                    Pulse,
+                    Spinner,
+                    Spotify,
+                    Square,
+                    SquareFold
+                }
+            })
+
+            vue.mount('#app')
+        </script>
+    </body>
+</html>
