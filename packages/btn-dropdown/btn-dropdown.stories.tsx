@@ -599,25 +599,25 @@ export const MenuAlignment = {
     name: 'Menu Alignment',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown align="end" label="Align Left" variant="btn-secondary">
+            <BtnDropdown align="start" label="Align Left" variant="btn-secondary">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown align="end" label="Align Left (Split)" variant="btn-secondary" split>
+            <BtnDropdown align="start" label="Align Left (Split)" variant="btn-secondary" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown align="start" label="Align Right" variant="btn-secondary">
+            <BtnDropdown align="end" label="Align Right" variant="btn-secondary">
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
             </BtnDropdown>
 
-            <BtnDropdown align="start" label="Align Right (Split)" variant="btn-secondary" split>
+            <BtnDropdown align="end" label="Align Right (Split)" variant="btn-secondary" split>
                 <a href="#">Action</a>
                 <a href="#">Another Action</a>
                 <a href="#">Something else here</a>
