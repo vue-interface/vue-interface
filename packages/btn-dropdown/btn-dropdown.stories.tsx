@@ -1,4 +1,4 @@
-import { flip, offset } from '@floating-ui/dom';
+import { Alignment, flip, offset } from '@floating-ui/dom';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref, Ref, withModifiers } from 'vue';
 import './index.css';
@@ -14,6 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>
 
+//Dropdown Control
 export const DropdownControl = {
     args: {
         align: 'start',
@@ -103,6 +104,31 @@ export const DropdownControl = {
     }
 } satisfies Story;
 
+//Color Variants
+const variants = [
+    'primary',
+    'secondary',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'dark',
+    'light',
+    'muted'
+];
+
+//Size Variants
+const sizes = [
+    'btn-xs',
+    'btn-sm',
+    'btn-md',
+    'btn-lg',
+    'btn-xl',
+    'btn-2xl',
+    'btn-3xl',
+    'btn-4xl'
+];
+
 //Basic Usage
 export const BasicUsage = {
     name: 'Basic Usage',
@@ -147,11 +173,11 @@ export const CustomButtons = {
     render: () => ({
         setup() {
             return () => (
-                <div class="flex items-center gap-2">
-                    <BtnDropdown 
-                        label="+" 
-                        caret={false} 
-                        button-class="btn-primary rounded-full p-0 size-8"
+                <div class="flex items-center gap-4">
+                    <BtnDropdown
+                        label="+"
+                        caret={false}
+                        button-class="btn-primary rounded-full p-0 w-9 h-9 text-sm flex items-center justify-center"
                     >
                         <a href="#/test">Action</a>
                         <a href="#">Another Action</a>
@@ -165,8 +191,10 @@ export const CustomButtons = {
                                     ref={target}
                                     onClick={onClickToggle}
                                     onBlur={onBlur}
+                                    aria-expanded={expanded}
                                     class={[
-                                        'bg-gray-100 p-2 rounded-full outline-none active:ring-4 focus:ring-4 ring-blue-500/50 transition-transform',
+                                        'bg-gray-100 w-9 h-9 flex items-center justify-center rounded-full outline-none transition-transform',
+                                        'active:ring-4 focus:ring-4 ring-blue-500/50',
                                         expanded ? 'rotate-90' : ''
                                     ]}
                                 >
@@ -174,7 +202,6 @@ export const CustomButtons = {
                                         class="w-4 h-4"
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
-                                        preserveAspectRatio="xMidYMid meet"
                                         fill="currentColor"
                                     >
                                         <g transform="translate(0,512) scale(0.1,-0.1)" stroke="none">
@@ -199,13 +226,13 @@ export const CustomButtons = {
                                     <a href="#">Another Action</a>
                                     <a href="#">Something else here</a>
                                 </>
-                            )
+                            ),
                         }}
                     </BtnDropdown>
                 </div>
             );
-        }
-    })
+        },
+    }),
 } satisfies Story;
 
 //Variations
@@ -213,61 +240,19 @@ export const Variants = {
     name: 'Variants',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-primary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Secondary" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Success" variant="btn-success">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Info" variant="btn-info">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Warning" variant="btn-warning">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Danger" variant="btn-danger">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Dark" variant="btn-dark">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Light" variant="btn-light">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Muted" variant="btn-muted">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+            {variants.map(v => (
+                <BtnDropdown
+                    label={v.charAt(0).toUpperCase() + v.slice(1)}
+                    variant={`btn-${v}`}
+                >
+                    <a href="#/test">Action</a>
+                    <a href="#">Another Action</a>
+                    <hr/>
+                    <a href="#">Something else here</a>
+                </BtnDropdown>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
 
 //Outline Variants
@@ -275,61 +260,18 @@ export const OutlineVariants = {
     name: 'Outline Variants',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-outline-primary" >
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Secondary" variant="btn-outline-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Success" variant="btn-outline-success">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Info" variant="btn-outline-info">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Warning" variant="btn-outline-warning">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Danger" variant="btn-outline-danger">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Dark" variant="btn-outline-dark">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Light" variant="btn-outline-light">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Muted" variant="btn-outline-muted">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+            {variants.map(v => (
+                <BtnDropdown
+                    label={v.charAt(0).toUpperCase() + v.slice(1)}
+                    variant={`btn-outline-${v}`}
+                >
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </BtnDropdown>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
 
 //Split Button Variants
@@ -337,61 +279,19 @@ export const SplitButtonVariants = {
     name: 'Split Button Variants',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-primary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Secondary" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Success" variant="btn-success" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Info" variant="btn-info" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Warning" variant="btn-warning" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Danger" variant="btn-danger" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Dark" variant="btn-dark" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Light" variant="btn-light" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Muted" variant="btn-muted" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+            {variants.map(v => (
+                <BtnDropdown
+                    label={v.charAt(0).toUpperCase() + v.slice(1)}
+                    variant={`btn-${v}`}
+                    split
+                >
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </BtnDropdown>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
 
 //Split Outline Button
@@ -399,55 +299,19 @@ export const SplitOutlineButton = {
     name: 'Split Outline Button',
     render: () => (
         <div class="flex gap-2">
-            <BtnDropdown label="Primary" variant="btn-outline-primary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Secondary" variant="btn-outline-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Success" variant="btn-outline-success" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Info" variant="btn-outline-info"split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Warning" variant="btn-outline-warning"split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Danger" variant="btn-outline-danger"split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Dark" variant="btn-outline-dark"split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown label="Light" variant="btn-outline-light" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+            {variants.map(v => (
+                <BtnDropdown
+                    label={v.charAt(0).toUpperCase() + v.slice(1)}
+                    variant={`btn-outline-${v}`}
+                    split
+                >
+                    <a href="#">Action</a>
+                    <a href="#">Another Action</a>
+                    <a href="#">Something else here</a>
+                </BtnDropdown>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
 
 //Button Sizes
@@ -455,71 +319,21 @@ export const ButtonSizes = {
     name: 'Button Sizes',
     render: () => (
         <div class="flex gap-2">
-            <div>
-                <BtnDropdown label="xs" size="btn-xs" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="sm" size="btn-sm" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="md" size="btn-md" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="lg" size="btn-lg" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="xl" size="btn-xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="2xl" size="btn-2xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="3xl" size="btn-3xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="4xl" size="btn-4xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
+            {sizes.map(size => (
+                <div>
+                    <BtnDropdown
+                        label={size.replace('btn-', '')}
+                        size={size}
+                        variant="btn-secondary"
+                    >
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </BtnDropdown>
+                </div>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
 
 //Split Button Sizes
@@ -527,161 +341,148 @@ export const SplitButtonSizes = {
     name: 'Split Button Sizes',
     render: () => (
         <div class="flex gap-2">
-            <div>
-                <BtnDropdown label="xs" size="btn-xs" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="sm" size="btn-sm" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="md" size="btn-md" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="lg" size="btn-lg" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="xl" size="btn-xl" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="2xl" size="btn-2xl" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="3xl" size="btn-3xl" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-                
-            <div>
-                <BtnDropdown label="4xl" size="btn-4xl" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
+            {sizes.map(size => (
+                <div>
+                    <BtnDropdown
+                        label={size.replace('btn-', '')}
+                        size={size}
+                        variant="btn-secondary"
+                        split
+                    >
+                        <a href="#">Action</a>
+                        <a href="#">Another Action</a>
+                        <a href="#">Something else here</a>
+                    </BtnDropdown>
+                </div>
+            ))}
         </div>
-    ),
+    )
 } satisfies Story;
+
+type MenuAlignment = {
+    label: string
+    align: Alignment
+    split: boolean
+}
 
 //Menu Alignment
 export const MenuAlignment = {
     name: 'Menu Alignment',
-    render: () => (
-        <div class="flex gap-2">
-            <BtnDropdown align="start" label="Align Left" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+    render: () => {
+        const alignments: MenuAlignment[] = [
+            { label: 'Align Left', align: 'start', split: false },
+            { label: 'Align Left (Split)', align: 'start', split: true },
+            { label: 'Align Right', align: 'end', split: false },
+            { label: 'Align Right (Split)', align: 'end', split: true }
+        ];
 
-            <BtnDropdown align="start" label="Align Left (Split)" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown align="end" label="Align Right" variant="btn-secondary">
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-
-            <BtnDropdown align="end" label="Align Right (Split)" variant="btn-secondary" split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-        </div>
-    ),
+        return (
+            <div class="flex gap-2">
+                {alignments.map(({ label, align, split }) => (
+                    <div>
+                        <BtnDropdown 
+                            label={label} 
+                            align={align} 
+                            variant="btn-secondary" 
+                            split={split}
+                        >
+                            <a href="#">Action</a>
+                            <a href="#">Another Action</a>
+                            <a href="#">Something else here</a>
+                        </BtnDropdown>
+                    </div>
+                ))}
+            </div>
+        );
+    },
 } satisfies Story;
 
 //Dropup Variation
 export const DropupVariation = {
     name: 'Dropup Variation',
-    render: () => (
-        <div class="flex justify-center items-end gap-2 min-h-[150px]">
-            <BtnDropdown label="Dropup" variant="btn-secondary" dropup>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+    render: () => {
+        const items = [
+            { label: 'Dropup', split: false },
+            { label: 'Dropup (Split)', split: true }
+        ];
 
-            <BtnDropdown label="Dropup (Split)" variant="btn-secondary" dropup split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-        </div>
-    ),
+        return (
+            <div class="flex justify-center items-end gap-2 min-h-[150px]">
+                {items.map(({ label, split }) => (
+                    <div>
+                        <BtnDropdown 
+                            label={label} 
+                            variant="btn-secondary" 
+                            dropup 
+                            split={split}
+                        >
+                            <a href="#">Action</a>
+                            <a href="#">Another Action</a>
+                            <a href="#">Something else here</a>
+                        </BtnDropdown>
+                    </div>
+                ))}
+            </div>
+        );
+    },
 } satisfies Story;
 
 //Dropright Variation
 export const DroprightVariation = {
     name: 'Dropright Variation',
-    render: () => (
-        <div class="flex gap-2 items-end min-h-[150px]">
-            <BtnDropdown label="Dropright" variant="btn-secondary" dropright>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+    render: () => {
+        const items = [
+            { label: 'Dropright', split: false },
+            { label: 'Dropright (Split)', split: true }
+        ];
 
-            <BtnDropdown label="Dropright (Split)" variant="btn-secondary" dropright split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-        </div>
-    ),
+        return (
+            <div class="flex gap-2 items-end min-h-[150px]">
+                {items.map(({ label, split }) => (
+                    <div>
+                        <BtnDropdown 
+                            label={label} 
+                            variant="btn-secondary" 
+                            dropright 
+                            split={split}
+                        >
+                            <a href="#">Action</a>
+                            <a href="#">Another Action</a>
+                            <a href="#">Something else here</a>
+                        </BtnDropdown>
+                    </div>
+                ))}
+            </div>
+        );
+    },
 } satisfies Story;
 
 //Dropleft Variation
 export const DropleftVariation = {
     name: 'Dropleft Variation',
-    render: () => (
-        <div class="flex gap-2 justify-center">
-            <BtnDropdown label="Dropleft" variant="btn-secondary" dropleft>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
+    render: () => {
+        const items = [
+            { label: 'Dropleft', split: false },
+            { label: 'Dropleft (Split)', split: true }
+        ];
 
-            <BtnDropdown label="Dropleft (Split)" variant="btn-secondary" dropleft split>
-                <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-        </div>
-    ),
+        return (
+            <div class="flex gap-2 justify-center">
+                {items.map(({ label, split }) => (
+                    <div>
+                        <BtnDropdown 
+                            label={label} 
+                            variant="btn-secondary" 
+                            dropleft 
+                            split={split}
+                        >
+                            <a href="#">Action</a>
+                            <a href="#">Another Action</a>
+                            <a href="#">Something else here</a>
+                        </BtnDropdown>
+                    </div>
+                ))}
+            </div>
+        );
+    },
 } satisfies Story;
