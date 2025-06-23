@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+    --activity-indicator-circle-orbit-width: 2.5em;
+    --activity-indicator-circle-orbit-height: 2.5em;
+    --activity-indicator-circle-orbit-position: relative;
+    --activity-indicator-circle-orbit-text-align: center;
+    --activity-indicator-circle-orbit-animation: activity-indicator-circle-orbit-rotate 2.0s infinite linear;
+
+    --activity-indicator-circle-orbit-dot-width: 60%;
+    --activity-indicator-circle-orbit-dot-height: 60%;
+    --activity-indicator-circle-orbit-dot-display: inline-block;
+    --activity-indicator-circle-orbit-dot-position: absolute;
+    --activity-indicator-circle-orbit-dot-top: 0;
+    --activity-indicator-circle-orbit-dot-bg: currentColor;
+    --activity-indicator-circle-orbit-dot-border-radius: 100%;
+    --activity-indicator-circle-orbit-dot-animation: activity-indicator-circle-orbit-bounce 2.0s infinite ease-in-out;
+
+    --activity-indicator-circle-orbit-dot2-top: auto;
+    --activity-indicator-circle-orbit-dot2-bottom: 0;
+    --activity-indicator-circle-orbit-dot2-delay: -1.0s;
+
+    --activity-indicator-circle-orbit-rotate-transform: rotate(360deg);
+
+    --activity-indicator-circle-orbit-rotate-bounce-scale-start: scale(0.0);
+    --activity-indicator-circle-orbit-rotate-bounce-scale-end: scale(1.0);
+}
+
+@utility activity-indicator-circle-orbit {
+    width: var(--activity-indicator-circle-orbit-width);
+    height: var(--activity-indicator-circle-orbit-height);
+    position: var(--activity-indicator-circle-orbit-position);
+    text-align: var(--activity-indicator-circle-orbit-text-align);
+    animation: var(--activity-indicator-circle-orbit-animation);
+}
+
+@utility activity-indicator-circle-orbit-dot {
+    width: var(--activity-indicator-circle-orbit-dot-width);
+    height: var(--activity-indicator-circle-orbit-dot-height);
+    display: var(--activity-indicator-circle-orbit-dot-display);
+    position: var(--activity-indicator-circle-orbit-dot-position);
+    top: var(--activity-indicator-circle-orbit-dot-top);
+    background-color: var(--activity-indicator-circle-orbit-dot-bg);
+    border-radius: var(--activity-indicator-circle-orbit-dot-border-radius);
+    animation: var(--activity-indicator-circle-orbit-dot-animation);
+
+    &:nth-child(2) {
+        top: var(--activity-indicator-circle-orbit-dot2-top);
+        bottom: var(--activity-indicator-circle-orbit-dot2-bottom);
+        animation-delay: var(--activity-indicator-circle-orbit-dot2-delay);
+    }
+}
+
+@keyframes activity-indicator-circle-orbit-rotate {
+    100% { 
+        transform: var(--activity-indicator-circle-orbit-rotate-transform);
+    }
+}
+
+@keyframes activity-indicator-circle-orbit-bounce {
+    0%, 100% { 
+        transform: var(--activity-indicator-circle-orbit-rotate-bounce-scale-start);
+    } 
+    50% { 
+        transform: var(--activity-indicator-circle-orbit-rotate-bounce-scale-end);
+    }
+}

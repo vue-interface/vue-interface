@@ -2,7 +2,7 @@
     <div class="activity-indicator-spotify" />
 </template>
 
-<style>
+<!-- <style>
     .activity-indicator-spotify {
         width: 2em;
         height: 2em;
@@ -37,4 +37,4 @@
         }
     }
         
-</style>
+</style> -->

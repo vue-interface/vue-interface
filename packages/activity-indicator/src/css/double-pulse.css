@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+    --activity-indicator-double-pulse-width: 2.5em;
+    --activity-indicator-double-pulse-height: 2.5em;
+    --activity-indicator-double-pulse-position: relative;
+
+    --activity-indicator-double-pulse-bounce-width: 100%;
+    --activity-indicator-double-pulse-bounce-height: 100%;
+    --activity-indicator-double-pulse-bounce-border-radius: 50%;
+    --activity-indicator-double-pulse-bounce-bg: currentColor;
+    --activity-indicator-double-pulse-bounce-opacity: 0.66;
+    --activity-indicator-double-pulse-bounce-position: absolute;
+    --activity-indicator-double-pulse-bounce-top: 0;
+    --activity-indicator-double-pulse-bounce-left: 0;
+    --activity-indicator-double-pulse-bounce-animation: activity-indicator-double-pulse 2.0s infinite ease-in-out;
+
+    --double-pulse-delay-2: -1.0s;
+
+    --activity-indicator-double-pulse-scale-0: scale(0.0);
+    --activity-indicator-double-pulse-scale-1: scale(1.0);
+}
+
+@utility activity-indicator-double-pulse {
+    width: var(--activity-indicator-double-pulse-width);
+    height: var(--activity-indicator-double-pulse-height);
+    position: var(--activity-indicator-double-pulse-position);
+}
+
+@utility activity-indicator-double-pulse-bounce1 {
+    width: var(--activity-indicator-double-pulse-bounce-width);
+    height: var(--activity-indicator-double-pulse-bounce-height);
+    border-radius: var(--activity-indicator-double-pulse-bounce-border-radius);
+    background-color: var(--activity-indicator-double-pulse-bounce-bg);
+    opacity: var(--activity-indicator-double-pulse-bounce-opacity);
+    position: var(--activity-indicator-double-pulse-bounce-position);
+    top: var(--activity-indicator-double-pulse-bounce-top);
+    left: var(--activity-indicator-double-pulse-bounce-left);
+    animation: var(--activity-indicator-double-pulse-bounce-animation);
+}
+
+@utility activity-indicator-double-pulse-bounce2 {
+    width: var(--activity-indicator-double-pulse-bounce-width);
+    height: var(--activity-indicator-double-pulse-bounce-height);
+    border-radius: var(--activity-indicator-double-pulse-bounce-border-radius);
+    background-color: var(--activity-indicator-double-pulse-bounce-bg);
+    opacity: var(--activity-indicator-double-pulse-bounce-opacity);
+    position: var(--activity-indicator-double-pulse-bounce-position);
+    top: var(--activity-indicator-double-pulse-bounce-top);
+    left: var(--activity-indicator-double-pulse-bounce-left);
+    animation: var(--activity-indicator-double-pulse-bounce-animation);
+    animation-delay: var(--double-pulse-delay-2);
+}
+
+@keyframes activity-indicator-double-pulse {
+    0%, 100% {
+        transform: var(--activity-indicator-double-pulse-scale-0);
+    }
+    50% {
+        transform: var(--activity-indicator-double-pulse-scale-1);
+    }
+}

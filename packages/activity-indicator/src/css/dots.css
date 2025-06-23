@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+    --activity-indicator-dots-font-size: 1em;
+    --activity-indicator-dots-position: relative;
+
+    --activity-indicator-dots-child-width: 1em;
+    --activity-indicator-dots-child-height: 1em;
+    --activity-indicator-dots-child-bg: currentColor;
+    --activity-indicator-dots-child-border-radius: 100%;
+    --activity-indicator-dots-child-display: inline-block;
+    --activity-indicator-dots-child-animation: activity-indicator-dots 1.4s infinite ease-in-out both;
+    --activity-indicator-dots-child-margin-right: 0.2em;
+
+    --dots-delay-1: -0.32s;
+    --dots-delay-2: -0.16s;
+
+    --activity-indicator-dots-scale-0: scale(0);
+    --activity-indicator-dots-scale-1: scale(1.0);
+}
+
+@utility activity-indicator-dots {
+    font-size: var(--activity-indicator-dots-font-size);
+    position: var(--activity-indicator-dots-position);
+
+    & > div {
+        width: var(--activity-indicator-dots-child-width);
+        height: var(--activity-indicator-dots-child-height);
+        background-color: var(--activity-indicator-dots-child-bg);
+        border-radius: var(--activity-indicator-dots-child-border-radius);
+        display: var(--activity-indicator-dots-child-display);
+
+        &:not(:last-child) {
+            margin-right: var(--activity-indicator-dots-child-margin-right);
+        }
+    }
+}
+
+@utility activity-indicator-dots-bounce1 {
+    animation: var(--activity-indicator-dots-child-animation);
+    animation-delay: var(--dots-delay-1);
+}
+
+@utility activity-indicator-dots-bounce2 {
+    animation: var(--activity-indicator-dots-child-animation);
+    animation-delay: var(--dots-delay-2);
+}
+
+@utility activity-indicator-dots-bounce3 {
+    animation: var(--activity-indicator-dots-child-animation);
+}
+
+@keyframes activity-indicator-dots {
+    0%, 80%, 100% {
+        transform: var(--activity-indicator-dots-scale-0);
+    }
+    40% {
+        transform: var(--activity-indicator-dots-scale-1);
+    }
+}

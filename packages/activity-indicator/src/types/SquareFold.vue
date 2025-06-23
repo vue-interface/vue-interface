@@ -6,7 +6,7 @@
         <div class="activity-indicator-square-fold-square3 activity-indicator-square-fold-square" />
     </div>
 </template>
-<style>
+<!-- <style>
 .activity-indicator-square-fold {
   margin: 1em;
   width: 2.5em;
@@ -94,4 +94,4 @@
     opacity: 0; 
   }
 }
-</style>
+</style> -->

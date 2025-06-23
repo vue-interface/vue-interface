@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme{
+    --activity-indicator-2xs-font-size: .25rem;
+    --activity-indicator-xs-font-size: .5rem;
+    --activity-indicator-sm-font-size: .75rem;
+    --activity-indicator-md-font-size: 1rem;
+    --activity-indicator-lg-font-size: 1.25rem;
+    --activity-indicator-xl-font-size: 1.5rem;
+    --activity-indicator-2xl-font-size: 1.75rem;
+    --activity-indicator-3xl-font-size: 2rem;
+    --activity-indicator-4xl-font-size: 2.25rem;
+
+    --activity-indicator-center-display: flex;
+    --activity-indicator-center-align-items: center;
+    --activity-indicator-center-justify-content: center;
+    --activity-indicator-center-margin: auto;
+
+    --activity-indicator-absolute-position: absolute;
+    --activity-indicator-absolute-width: 100%;
+    --activity-indicator-absolute-height: 100%;
+    --activity-indicator-absolute-top: 0;
+    --activity-indicator-absolute-left: 0;
+}
+
+@utility activity-indicator-xs {
+    font-size: var(--activity-indicator-xs-font-size);
+}
+
+@utility activity-indicator-sm {
+    font-size: var(--activity-indicator-sm-font-size);
+}
+
+@utility activity-indicator-md {
+    font-size: var(--activity-indicator-md-font-size);
+}
+
+@utility activity-indicator-lg {
+    font-size: var(--activity-indicator-lg-font-size);
+}
+
+@utility activity-indicator-xl {
+    font-size: var(--activity-indicator-xl-font-size);
+}
+
+@utility activity-indicator-center {
+    display: var(--activity-indicator-center-display);
+    align-items: var(--activity-indicator-center-align-items);
+    justify-content: var(--activity-indicator-center-justify-content);
+    margin: var(--activity-indicator-center-margin);
+}
+
+@utility activity-indicator-absolute {
+    position: var(--activity-indicator-absolute-position);
+    width: var(--activity-indicator-absolute-width);
+    height: var(--activity-indicator-absolute-height);
+    top: var(--activity-indicator-absolute-top);
+    left: var(--activity-indicator-absolute-left);
+}

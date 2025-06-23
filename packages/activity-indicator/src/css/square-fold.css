@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+    --activity-indicator-square-fold-margin: 1em;
+    --activity-indicator-square-fold-width: 2.5em;
+    --activity-indicator-square-fold-height: 2.5em;
+    --activity-indicator-square-fold-position: relative;
+    --activity-indicator-square-fold-initial-rotateZ: 45deg;
+    --activity-indicator-square-fold-initial-transform: rotateZ(var(--activity-indicator-square-fold-initial-rotateZ));
+
+    --activity-indicator-square-fold-square-float: left;
+    --activity-indicator-square-fold-square-width: 50%;
+    --activity-indicator-square-fold-square-height: 50%;
+    --activity-indicator-square-fold-square-position: relative;
+    --activity-indicator-square-fold-square-scale: 1.1;
+    --activity-indicator-square-fold-square-transform-base: scale(var(--activity-indicator-square-fold-square-scale));
+
+    --activity-indicator-square-fold-before-content: '';
+    --activity-indicator-square-fold-before-position: absolute;
+    --activity-indicator-square-fold-before-top: 0;
+    --activity-indicator-square-fold-before-left: 0;
+    --activity-indicator-square-fold-before-width: 100%;
+    --activity-indicator-square-fold-before-height: 100%;
+    --activity-indicator-square-fold-before-background-color: #333;
+    --activity-indicator-square-fold-before-animation-name: activity-indicator-square-fold;
+    --activity-indicator-square-fold-before-animation-duration: 2.4s;
+    --activity-indicator-square-fold-before-animation-timing-function: linear;
+    --activity-indicator-square-fold-before-animation-iteration-count: infinite;
+    --activity-indicator-square-fold-before-animation-fill-mode: both;
+    --activity-indicator-square-fold-before-animation: var(--activity-indicator-square-fold-before-animation-name) var(--activity-indicator-square-fold-before-animation-duration) var(--activity-indicator-square-fold-before-animation-timing-function) var(--activity-indicator-square-fold-before-animation-iteration-count) var(--activity-indicator-square-fold-before-animation-fill-mode);
+    --activity-indicator-square-fold-before-transform-origin: 100% 100%;
+
+    --activity-indicator-square-fold-square2-rotateZ: 90deg;
+    --activity-indicator-square-fold-square2-transform: var(--activity-indicator-square-fold-square-transform-base) rotateZ(var(--activity-indicator-square-fold-square2-rotateZ));
+
+    --activity-indicator-square-fold-square3-rotateZ: 180deg;
+    --activity-indicator-square-fold-square3-transform: var(--activity-indicator-square-fold-square-transform-base) rotateZ(var(--activity-indicator-square-fold-square3-rotateZ));
+
+    --activity-indicator-square-fold-square4-rotateZ: 270deg;
+    --activity-indicator-square-fold-square4-transform: var(--activity-indicator-square-fold-square-transform-base) rotateZ(var(--activity-indicator-square-fold-square4-rotateZ));
+
+    --activity-indicator-square-fold-square2-delay: 0.3s;
+    --activity-indicator-square-fold-square3-delay: 0.6s;
+    --activity-indicator-square-fold-square4-delay: 0.9s;
+
+    /* Keyframe properties */
+    --activity-indicator-square-fold-keyframe-perspective: 140px;
+
+    /* 0%, 10% */
+    --activity-indicator-square-fold-0-10-rotateX: -180deg;
+    --activity-indicator-square-fold-0-10-transform: perspective(var(--activity-indicator-square-fold-keyframe-perspective)) rotateX(var(--activity-indicator-square-fold-0-10-rotateX));
+    --activity-indicator-square-fold-0-10-opacity: 0;
+
+    /* 25%, 75% */
+    --activity-indicator-square-fold-25-75-rotateX: 0deg;
+    --activity-indicator-square-fold-25-75-transform: perspective(var(--activity-indicator-square-fold-keyframe-perspective)) rotateX(var(--activity-indicator-square-fold-25-75-rotateX));
+    --activity-indicator-square-fold-25-75-opacity: 1;
+
+    /* 90%, 100% */
+    --activity-indicator-square-fold-90-100-rotateY: 180deg;
+    --activity-indicator-square-fold-90-100-transform: perspective(var(--activity-indicator-square-fold-keyframe-perspective)) rotateY(var(--activity-indicator-square-fold-90-100-rotateY));
+    --activity-indicator-square-fold-90-100-opacity: 0;
+}
+
+@utility activity-indicator-square-fold {
+    margin: var(--activity-indicator-square-fold-margin);
+    width: var(--activity-indicator-square-fold-width);
+    height: var(--activity-indicator-square-fold-height);
+    position: var(--activity-indicator-square-fold-position);
+    transform: var(--activity-indicator-square-fold-initial-transform);
+}
+
+@utility activity-indicator-square-fold-square {
+    float: var(--activity-indicator-square-fold-square-float);
+    width: var(--activity-indicator-square-fold-square-width);
+    height: var(--activity-indicator-square-fold-square-height);
+    position: var(--activity-indicator-square-fold-square-position);
+    transform: var(--activity-indicator-square-fold-square-transform-base); /* Base transform for all squares */
+
+    &::before {
+        content: var(--activity-indicator-square-fold-before-content);
+        position: var(--activity-indicator-square-fold-before-position);
+        top: var(--activity-indicator-square-fold-before-top);
+        left: var(--activity-indicator-square-fold-before-left);
+        width: var(--activity-indicator-square-fold-before-width);
+        height: var(--activity-indicator-square-fold-before-height);
+        background-color: var(--activity-indicator-square-fold-before-background-color);
+        animation: var(--activity-indicator-square-fold-before-animation);
+        transform-origin: var(--activity-indicator-square-fold-before-transform-origin);
+    }
+}
+
+@utility activity-indicator-square-fold-square2 {
+    transform: var(--activity-indicator-square-fold-square2-transform);
+
+    &::before {
+        animation-delay: var(--activity-indicator-square-fold-square2-delay);
+    }
+}
+
+@utility activity-indicator-square-fold-square3 {
+    transform: var(--activity-indicator-square-fold-square3-transform);
+
+    &::before {
+        animation-delay: var(--activity-indicator-square-fold-square3-delay);
+    }
+}
+
+@utility activity-indicator-square-fold-square4 {
+    transform: var(--activity-indicator-square-fold-square4-transform);
+
+    &::before {
+        animation-delay: var(--activity-indicator-square-fold-square4-delay);
+    }
+}
+
+@keyframes activity-indicator-square-fold {
+    0%, 10% {
+        transform: var(--activity-indicator-square-fold-0-10-transform);
+        opacity: var(--activity-indicator-square-fold-0-10-opacity);
+    }
+    25%, 75% {
+        transform: var(--activity-indicator-square-fold-25-75-transform);
+        opacity: var(--activity-indicator-square-fold-25-75-opacity);
+    }
+    90%, 100% {
+        transform: var(--activity-indicator-square-fold-90-100-transform);
+        opacity: var(--activity-indicator-square-fold-90-100-opacity);
+    }
+}

@@ -1,5 +1,17 @@
-@import "tailwindcss";
-
 /*CSS Types*/
 @import "./src/css/chase.css";
 @import "./src/css/circle-fade.css";
+@import "./src/css/circle-orbit.css";
+@import "./src/css/circle-trail.css";
+@import "./src/css/dots.css";
+@import "./src/css/double-pulse.css";
+@import "./src/css/facebook.css";
+@import "./src/css/grid.css";
+@import "./src/css/pulse.css";
+@import "./src/css/spinner.css";
+@import "./src/css/spotify.css";
+@import "./src/css/square.css";
+@import "./src/css/square-fold.css";
+@import "./src/css/square-orbit.css";
+
+/* @import "./src/css/activity-indicator.css" */

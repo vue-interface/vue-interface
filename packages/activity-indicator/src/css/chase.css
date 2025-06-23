@@ -27,6 +27,10 @@
     --activity-indicator-chase-delay-4: -0.8s;
     --activity-indicator-chase-delay-5: -0.7s;
     --activity-indicator-chase-delay-6: -0.6s;
+
+    --activity-indicator-chase-transform: rotate(360deg);
+    --activity-indicator-chase-dot-before-scale-50: scale(0.4);
+    --activity-indicator-chase-dot-before-scale-100: scale(1.0);
 }
 
 @utility activity-indicator-chase {
@@ -99,18 +103,18 @@
 }
 
 @keyframes activity-indicator-chase {
-    100% { transform: rotate(360deg); }
+    100% { transform: var(--activity-indicator-chase-transform); }
 }
 
 @keyframes activity-indicator-chase-dot {
-    80%, 100% { transform: rotate(360deg); }
+    80%, 100% { transform: var(--activity-indicator-chase-transform); }
 }
 
 @keyframes activity-indicator-chase-dot-before {
     50% {
-        transform: scale(0.4);
+        transform: var(--activity-indicator-chase-dot-before-scale-50);
     }
     100%, 0% {
-        transform: scale(1.0);
+        transform: var(--activity-indicator-chase-dot-before-scale-100);
     }
 }

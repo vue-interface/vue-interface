@@ -46,6 +46,9 @@
     --activity-indicator-circle-rotate-10: rotate(270deg);
     --activity-indicator-circle-rotate-11: rotate(300deg);
     --activity-indicator-circle-rotate-12: rotate(330deg);
+
+    --activity-indicator-circle-fade-opacity-false: 0;
+    --activity-indicator-circle-fade-opacity-true: 1;
 }
 
 @utility activity-indicator-circle-fade {
@@ -159,6 +162,6 @@
 }
 
 @keyframes activity-indicator-circle-fade {
-    0%, 39%, 100% { opacity: 0; }
-    40% { opacity: 1; }
+    0%, 39%, 100% { opacity: var(--activity-indicator-circle-fade-opacity-false); }
+    40% { opacity: var(--activity-indicator-circle-fade-opacity-true); }
 }

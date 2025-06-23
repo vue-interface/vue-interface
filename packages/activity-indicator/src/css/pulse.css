@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@theme {
+  --activity-indicator-pulse-width: 2.5em;
+  --activity-indicator-pulse-height: 2.5em;
+  --activity-indicator-pulse-bg: currentColor;
+  --activity-indicator-pulse-border-radius: 100%;
+  --activity-indicator-pulse-animation: activity-indicator-pulse 1.0s infinite ease-in-out;
+  
+  --activity-indicator-pulse-scale-start: scale(0);
+  --activity-indicator-pulse-scale-end: scale(1.0);
+  
+  --activity-indicator-pulse-opacity-start: 1;
+  --activity-indicator-pulse-opacity-end: 0;
+}
+
+@utility activity-indicator-pulse {
+  width: var(--activity-indicator-pulse-width);
+  height: var(--activity-indicator-pulse-height);
+  background-color: var(--activity-indicator-pulse-bg);
+  border-radius: var(--activity-indicator-pulse-border-radius);
+  animation: var(--activity-indicator-pulse-animation);
+}
+
+@keyframes activity-indicator-pulse {
+  0% {
+    transform: var(--activity-indicator-pulse-scale-start);
+    opacity: var(--activity-indicator-pulse-opacity-start);
+  }
+  100% {
+    transform: var(--activity-indicator-pulse-scale-end);
+    opacity: var(--activity-indicator-pulse-opacity-end);
+  }
+}
