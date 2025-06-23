@@ -3,7 +3,6 @@
 @theme {
     --activity-indicator-chase-width: 2.5em;
     --activity-indicator-chase-height: 2.5em;
-    --activity-indicator-chase-position: relative;
     --activity-indicator-chase-animation: activity-indicator-chase 2.5s infinite linear both;
     --activity-indicator-chase-display: inline-block;
 
