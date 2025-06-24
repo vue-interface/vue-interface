@@ -1,13 +1,44 @@
 <script setup lang="ts">
-import { computed, inject, toRaw, type Component } from 'vue'
-import type { ComponentRegistry } from '@vue-interface/component-registry'
-import { registry } from './registry'
+import { computed, type Component } from 'vue'
+
+// Import all your indicators directly here
+import Chase from './types/Chase.vue' // adjust paths as needed
+import CircleFade from './types/CircleFade.vue'
+import CircleOrbit from './types/CircleOrbit.vue'
+import CircleTrail from './types/CircleTrail.vue'
+import Dots from './types/Dots.vue'
+import DoublePulse from './types/DoublePulse.vue'
+import Facebook from './types/Facebook.vue'
+import Grid from './types/Grid.vue'
+import Pulse from './types/Pulse.vue'
+import Spinner from './types/Spinner.vue'
+import Spotify from './types/Spotify.vue'
+import Square from './types/Square.vue'
+import SquareFold from './types/SquareFold.vue'
+import SquareOrbit from './types/SquareOrbit.vue'
+
+// Built-in indicator mapping
+const INDICATORS: Record<string, Component> = {
+  'chase': Chase,
+  'circle-fade': CircleFade,
+  'circle-orbit': CircleOrbit,
+  'circle-trail': CircleTrail,
+  'dots': Dots,
+  'double-pulse': DoublePulse,
+  'facebook': Facebook,
+  'grid': Grid,
+  'pulse': Pulse,
+  'spinner': Spinner,
+  'spotify': Spotify,
+  'square': Square,
+  'square-fold': SquareFold,
+  'square-orbit': SquareOrbit
+}
 
 export type ActivityIndicatorProps = {
   absolute?: boolean
   center?: boolean
   size?: string
-  registry?: string
   type: Component | string
   height?: string | number
   maxHeight?: string | number
@@ -41,20 +72,15 @@ const style = computed(() => ({
   minHeight: unit(props.minHeight)
 }))
 
-function componentFromRegistry(key: string): Component | undefined {
-  try {
-    return inject<ComponentRegistry>(props.registry || 'indicators', registry)?.get(key)
-  } catch (e) {
-    // Ignore the error
-    return undefined
-  }
-}
-
 const component = computed((): Component | undefined => {
   if (typeof props.type === 'string') {
-    return componentFromRegistry(props.type)
+    const comp = INDICATORS[props.type]
+    if (!comp) {
+      console.warn(`ActivityIndicator: No component found for type "${props.type}". Available types:`, Object.keys(INDICATORS))
+    }
+    return comp
   }
-  return toRaw(props.type)
+  return props.type
 })
 </script>
 

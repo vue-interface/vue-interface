@@ -42,9 +42,6 @@
     "url": "https://github.com/vue-interface/vue-interface/issues"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
-  "dependencies": {
-    "@vue-interface/component-registry": "^1.3.3"
-  },
   "peerDependencies": {
     "vue": "^3.3.4"
   },
