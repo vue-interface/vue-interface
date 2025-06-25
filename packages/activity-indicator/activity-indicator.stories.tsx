@@ -1,13 +1,13 @@
-import type { Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import * as Indicators from './index';
 import './index.css';
 import ActivityIndicator from './src/ActivityIndicator.vue';
-import * as Indicators from './index';
 
 const meta = {
     title: 'Example/Activity Indicator',
     tags: ['autodocs'],
     component: ActivityIndicator,
-} satisfies Meta<typeof ActivityIndicator>;
+} as Meta<typeof ActivityIndicator>;
 
 export default meta;
 
@@ -25,7 +25,23 @@ export const IndicatorControl = {
         },
         type: {
             control: 'select', // Use radio instead of select for components
-            options: {
+            options: [
+                'Dots',
+                'Chase',
+                'Spinner',
+                'Square',
+                'SquareOrbit',
+                'SquareFold',
+                'CircleFade',
+                'CircleOrbit',
+                'CircleTrail',
+                'Pulse',
+                'DoublePulse',
+                'Grid',
+                'Facebook',
+                'Spotify',
+            ],
+            mapping: {
                 'Dots': Indicators.Dots,
                 'Chase': Indicators.Chase,
                 'Spinner': Indicators.Spinner,
@@ -46,7 +62,7 @@ export const IndicatorControl = {
     render: (args) => {
         return () => (
             <div class="flex py-5">
-                <ActivityIndicator type={args.type} size={args.size} />
+                <ActivityIndicator type={Indicators.Dots} size={args.size} />
             </div>
         );
     }
