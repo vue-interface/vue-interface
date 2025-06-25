@@ -1,21 +1,16 @@
 @import "tailwindcss";
 
 @theme{
-    --activity-indicator-size-2xs: .25rem;
-    --activity-indicator-size-xs: .5rem;
-    --activity-indicator-size-sm: .75rem;
-    --activity-indicator-size-md: 1rem;
-    --activity-indicator-size-lg: 1.25rem;
-    --activity-indicator-size-xl: 1.5rem;
-    --activity-indicator-size-2xl: 1.75rem;
-    --activity-indicator-size-3xl: 2rem;
-    --activity-indicator-size-4xl: 2.25rem;
-
-    /*Numerical sizes*/
-    --activity-indicator-size-s-1: 0.25rem;
-    --activity-indicator-size-s-2: 0.5rem;
-    --activity-indicator-size-s-3: 0.75rem;
-    --activity-indicator-size-s-4: 1rem;
+    --activity-indicator-size-2xs: --spacing(1);
+    --activity-indicator-size-xs: --spacing(2);
+    --activity-indicator-size-sm: --spacing(3);
+    --activity-indicator-size-md: --spacing(4);
+    --activity-indicator-size-lg: --spacing(5);
+    --activity-indicator-size-xl: --spacing(6);
+    --activity-indicator-size-2xl: --spacing(7);
+    --activity-indicator-size-3xl: --spacing(8);
+    --activity-indicator-size-4xl: --spacing(9);
+    --activity-indicator-size-5xl: --spacing(10);
 
     --activity-indicator-center-display: flex;
     --activity-indicator-center-align-items: center;
@@ -29,69 +24,10 @@
     --activity-indicator-absolute-left: 0;
 }
 
-@utility activity-indicator {
-
-    &.activity-indicator-2xs {
-        font-size: var(--activity-indicator-size-2xs);
-    }
-    
-    &.activity-indicator-xs {
-        font-size: var(--activity-indicator-size-xs);
-    }
-
-    &.activity-indicator-sm {
-        font-size: var(--activity-indicator-size-sm);
-    }
-    
-    &.activity-indicator-md {
-        font-size: var(--activity-indicator-size-md);
-    }
-
-    &.activity-indicator-lg {
-        font-size: var(--activity-indicator-size-lg);
-    }
-
-    &.activity-indicator-xl {
-        font-size: var(--activity-indicator-size-xl);
-    }
-
-    &.activity-indicator-2xl {
-        font-size: var(--activity-indicator-size-2xl);
-    }
-
-    &.activity-indicator-3xl {
-        font-size: var(--activity-indicator-size-3xl);
-    }
-
-    &.activity-indicator-4xl {
-        font-size: var(--activity-indicator-size-4xl);
-    }
-
-    /*Numerial sizes*/
-    /* &.activity-indicator-s-1 {
-        font-size: var(--activity-indicator-size-s-1);
-        color: blue;
-    }
-    
-    &.activity-indicator-s-2 {
-        font-size: var(--activity-indicator-size-s-2);
-        color: green;
-    }
-
-    &.activity-indicator-s-3 {
-        font-size: var(--activity-indicator-size-s-3);
-        color: yellow;
-    }
-    
-    &.activity-indicator-s-4 {
-        font-size: var(--activity-indicator-size-s-4);
-        color: red;
-    } */
-}
-
 @utility activity-indicator-* {
+    font-size: --value(--activity-indicator-size-*, [length]);
     font-size: --spacing(--value(integer));
-    font-size: --value([*]);
+    color: --value(--color-*, [color]);
 }
 
 @utility activity-indicator-center {

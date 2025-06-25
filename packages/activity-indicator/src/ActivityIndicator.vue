@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { computed, inject, type Component } from 'vue'
+import { computed, inject, type Component } from 'vue';
+
+export type ActivityIndicatorSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
 
 export type ActivityIndicatorProps = {
   absolute?: boolean
   center?: boolean
-  size?: string
+  size?: ActivityIndicatorSize
   type: Component | string
   height?: string | number
   maxHeight?: string | number
@@ -29,7 +31,16 @@ function unit(value: string | number | null | undefined | boolean, uom = 'px'): 
 const classes = computed(() => ({
   'activity-indicator-center': props.center,
   'activity-indicator-absolute': props.absolute,
-  [`activity-indicator-${props.size}`]: !!props.size
+  'activity-indicator-2xs': props.size === '2xs',
+  'activity-indicator-xs': props.size === 'xs',
+  'activity-indicator-sm': props.size === 'sm',
+  'activity-indicator-md': props.size === 'md',
+  'activity-indicator-lg': props.size === 'lg',
+  'activity-indicator-xl': props.size === 'xl',
+  'activity-indicator-2xl': props.size === '2xl',
+  'activity-indicator-3xl': props.size === '3xl',
+  'activity-indicator-4xl': props.size === '4xl',
+  'activity-indicator-5xl': props.size === '5xl',
 }))
 
 const style = computed(() => ({
