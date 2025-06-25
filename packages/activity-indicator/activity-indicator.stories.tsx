@@ -62,7 +62,7 @@ export const IndicatorControl = {
     render: (args) => {
         return () => (
             <div class="flex py-5">
-                <ActivityIndicator type={Indicators.Dots} size={args.size} />
+                <ActivityIndicator type={args.type} size={args.size} />
             </div>
         );
     }
