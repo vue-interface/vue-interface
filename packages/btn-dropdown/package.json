@@ -49,10 +49,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-vue": "^5.2.4",
-    "@vue-interface/eslint-config": "^1.0.0-beta.0",
     "autoprefixer": "^10.4.15",
     "change-case": "^4.1.2",
-    "eslint": "^9.0.0",
     "pascalcase": "^2.0.0",
     "postcss": "^8.4.6",
     "tailwindcss": "^4.0.0",
