@@ -68,7 +68,7 @@
     }
 
     /*Numerial sizes*/
-    &.activity-indicator-s-1 {
+    /* &.activity-indicator-s-1 {
         font-size: var(--activity-indicator-size-s-1);
         color: blue;
     }
@@ -86,7 +86,12 @@
     &.activity-indicator-s-4 {
         font-size: var(--activity-indicator-size-s-4);
         color: red;
-    }
+    } */
+}
+
+@utility activity-indicator-* {
+    font-size: --spacing(--value(integer));
+    font-size: --value([*]);
 }
 
 @utility activity-indicator-center {
