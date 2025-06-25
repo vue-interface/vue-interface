@@ -11,36 +11,10 @@
     --activity-indicator-size-3xl: --spacing(8);
     --activity-indicator-size-4xl: --spacing(9);
     --activity-indicator-size-5xl: --spacing(10);
-
-    --activity-indicator-center-display: flex;
-    --activity-indicator-center-align-items: center;
-    --activity-indicator-center-justify-content: center;
-    --activity-indicator-center-margin: auto;
-
-    --activity-indicator-absolute-position: absolute;
-    --activity-indicator-absolute-width: 100%;
-    --activity-indicator-absolute-height: 100%;
-    --activity-indicator-absolute-top: 0;
-    --activity-indicator-absolute-left: 0;
 }
 
 @utility activity-indicator-* {
     font-size: --value(--activity-indicator-size-*, [length]);
     font-size: --spacing(--value(integer));
     color: --value(--color-*, [color]);
-}
-
-@utility activity-indicator-center {
-    display: var(--activity-indicator-center-display);
-    align-items: var(--activity-indicator-center-align-items);
-    justify-content: var(--activity-indicator-center-justify-content);
-    margin: var(--activity-indicator-center-margin);
-}
-
-@utility activity-indicator-absolute {
-    position: var(--activity-indicator-absolute-position);
-    width: var(--activity-indicator-absolute-width);
-    height: var(--activity-indicator-absolute-height);
-    top: var(--activity-indicator-absolute-top);
-    left: var(--activity-indicator-absolute-left);
 }
