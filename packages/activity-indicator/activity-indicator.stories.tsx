@@ -13,24 +13,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// Create a mapping object for the controls
-const indicatorComponents = {
-    Dots: Indicators.Dots,
-    Chase: Indicators.Chase,
-    Spinner: Indicators.Spinner,
-    Square: Indicators.Square,
-    SquareOrbit: Indicators.SquareOrbit,
-    SquareFold: Indicators.SquareFold,
-    CircleFade: Indicators.CircleFade,
-    CircleOrbit: Indicators.CircleOrbit,
-    CircleTrail: Indicators.CircleTrail,
-    Pulse: Indicators.Pulse,
-    DoublePulse: Indicators.DoublePulse,
-    Grid: Indicators.Grid,
-    Facebook: Indicators.Facebook,
-    Spotify: Indicators.Spotify,
-};
-
 export const IndicatorControl = {
     args: {
         size: 'md',
@@ -42,15 +24,29 @@ export const IndicatorControl = {
             options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'],
         },
         type: {
-            control: 'select',
-            options: indicatorComponents,
+            control: 'select', // Use radio instead of select for components
+            options: {
+                'Dots': Indicators.Dots,
+                'Chase': Indicators.Chase,
+                'Spinner': Indicators.Spinner,
+                'Square': Indicators.Square,
+                'SquareOrbit': Indicators.SquareOrbit,
+                'SquareFold': Indicators.SquareFold,
+                'CircleFade': Indicators.CircleFade,
+                'CircleOrbit': Indicators.CircleOrbit,
+                'CircleTrail': Indicators.CircleTrail,
+                'Pulse': Indicators.Pulse,
+                'DoublePulse': Indicators.DoublePulse,
+                'Grid': Indicators.Grid,
+                'Facebook': Indicators.Facebook,
+                'Spotify': Indicators.Spotify,
+            },
         },
     },
     render: (args) => {
-        
         return () => (
             <div class="flex py-5">
-                <ActivityIndicator {...args} type={args.type} size={args.size} />
+                <ActivityIndicator type={args.type} size={args.size} />
             </div>
         );
     }
