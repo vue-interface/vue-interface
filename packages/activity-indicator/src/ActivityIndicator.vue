@@ -1,39 +1,5 @@
 <script setup lang="ts">
-import { computed, type Component } from 'vue'
-
-// Import all your indicators directly here
-import Chase from './types/Chase.vue' // adjust paths as needed
-import CircleFade from './types/CircleFade.vue'
-import CircleOrbit from './types/CircleOrbit.vue'
-import CircleTrail from './types/CircleTrail.vue'
-import Dots from './types/Dots.vue'
-import DoublePulse from './types/DoublePulse.vue'
-import Facebook from './types/Facebook.vue'
-import Grid from './types/Grid.vue'
-import Pulse from './types/Pulse.vue'
-import Spinner from './types/Spinner.vue'
-import Spotify from './types/Spotify.vue'
-import Square from './types/Square.vue'
-import SquareFold from './types/SquareFold.vue'
-import SquareOrbit from './types/SquareOrbit.vue'
-
-// Built-in indicator mapping
-const INDICATORS: Record<string, Component> = {
-  'chase': Chase,
-  'circle-fade': CircleFade,
-  'circle-orbit': CircleOrbit,
-  'circle-trail': CircleTrail,
-  'dots': Dots,
-  'double-pulse': DoublePulse,
-  'facebook': Facebook,
-  'grid': Grid,
-  'pulse': Pulse,
-  'spinner': Spinner,
-  'spotify': Spotify,
-  'square': Square,
-  'square-fold': SquareFold,
-  'square-orbit': SquareOrbit
-}
+import { computed, inject, type Component } from 'vue'
 
 export type ActivityIndicatorProps = {
   absolute?: boolean
@@ -49,6 +15,9 @@ export type ActivityIndicatorProps = {
 }
 
 const props = defineProps<ActivityIndicatorProps>()
+
+// Inject the indicators registry from the parent/app
+const indicators = inject<Record<string, Component>>('activityIndicators', {})
 
 function unit(value: string | number | null | undefined | boolean, uom = 'px'): string | undefined {
   return value !== null
@@ -74,9 +43,9 @@ const style = computed(() => ({
 
 const component = computed((): Component | undefined => {
   if (typeof props.type === 'string') {
-    const comp = INDICATORS[props.type]
+    const comp = indicators[props.type]
     if (!comp) {
-      console.warn(`ActivityIndicator: No component found for type "${props.type}". Available types:`, Object.keys(INDICATORS))
+      console.warn(`ActivityIndicator: No component found for type "${props.type}". Available types:`, Object.keys(indicators))
     }
     return comp
   }

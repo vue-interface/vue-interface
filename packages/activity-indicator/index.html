@@ -39,7 +39,7 @@
                 
                 <!--testing numeric sizing (size="s-[#]")-->
                 <div class="mr-3">
-                    <activity-indicator type="dots" size="s-3"></activity-indicator>
+                    <activity-indicator type="dots" size="s-4"></activity-indicator>
                 </div>
             </div>
 
@@ -314,18 +314,53 @@
             </div>
         </div>
 
-<script type="module">
-    import './index.css';
-    import { createApp } from 'vue/dist/vue.esm-bundler.js';
-    import { ActivityIndicator } from './index.ts';
+        <script type="module">
+            import './index.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler.js';
     
-    const vue = createApp({
-        components: {
-            ActivityIndicator
-        }
-    });
+            import {
+                ActivityIndicator,
+                Chase,
+                CircleFade,
+                CircleOrbit,
+                CircleTrail,
+                Dots,
+                DoublePulse,
+                Facebook,
+                Grid,
+                Pulse,
+                Spinner,
+                Spotify,
+                Square,
+                SquareFold,
+                SquareOrbit
+            } from './index.ts';
+    
+            const vue = createApp({
+                components: {
+                    ActivityIndicator
+                }
+            });
 
-    vue.mount('#app')
-</script>
+            // Provide the indicators registry to all child components
+            vue.provide('activityIndicators', {
+                'chase': Chase,
+                'circle-fade': CircleFade,
+                'circle-orbit': CircleOrbit,
+                'circle-trail': CircleTrail,
+                'dots': Dots,
+                'double-pulse': DoublePulse,
+                'facebook': Facebook,
+                'grid': Grid,
+                'pulse': Pulse,
+                'spinner': Spinner,
+                'spotify': Spotify,
+                'square': Square,
+                'square-fold': SquareFold,
+                'square-orbit': SquareOrbit
+            });
+
+            vue.mount('#app')
+        </script>
     </body>
 </html>
