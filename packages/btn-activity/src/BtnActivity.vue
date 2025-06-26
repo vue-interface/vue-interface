@@ -58,7 +58,7 @@ const context = {
         :class="{
             'gap-1': !indicatorSize || ['xs', 'sm'].includes(indicatorSize),
             'gap-2': ['md', 'lg', 'xl'].includes(indicatorSize),
-            'flex-col flex-col-reverse': orientation === 'top',
+            'flex-col-reverse': orientation === 'top',
             'flex-col': orientation === 'bottom',
             'flex-row-reverse': orientation === 'left',
         }"

@@ -1,7 +1,9 @@
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import { pascalCase } from 'change-case';
 import path from 'path';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 import pkg from './package.json';
 
 const fileName = pkg.name.split('/')[1];
@@ -35,8 +37,14 @@ export default ({ command }) => defineConfig({
             ]
         }
     },
+    resolve: {
+        conditions: process.env.NODE_ENV === 'development' 
+            ? ['source', 'import', 'module', 'browser', 'default']
+            : ['import', 'module', 'browser', 'default'],
+    },
     plugins: [
         vue(),
+        dts(),
         tailwindcss(),
     ],
 });

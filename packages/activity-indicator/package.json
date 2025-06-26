@@ -2,20 +2,20 @@
   "name": "@vue-interface/activity-indicator",
   "version": "1.0.0",
   "description": "An Vue activity indicator component.",
-  "files": [
-    "dist"
-  ],
   "type": "module",
   "main": "./dist/activity-indicator.umd.cjs",
   "module": "./dist/activity-indicator.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/activity-indicator.js",
-      "require": "./dist/activity-indicator.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/activity-indicator.umd.js",
+      "import": "./dist/activity-indicator.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./src/ActivityIndicator.vue": "./src/ActivityIndicator.vue",
+    "./css": "./index.css",
+    "./types/index.ts": "./types/index.ts"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {

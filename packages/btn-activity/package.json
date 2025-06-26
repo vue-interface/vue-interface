@@ -38,12 +38,10 @@
     "url": "https://github.com/vue-interface/vue-interface/issues"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
-  "dependencies": {
-    "@vue-interface/activity-indicator": "workspace:*",
-    "@vue-interface/btn": "workspace:*"
-  },
   "peerDependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/btn": "workspace:*"    
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.7",
