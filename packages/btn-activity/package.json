@@ -1,0 +1,61 @@
+{
+  "name": "@vue-interface/btn-activity",
+  "version": "1.0.0",
+  "description": "A Vue activity button component.",
+  "type": "module",
+  "main": "./dist/btn-activity.umd.cjs",
+  "module": "./dist/btn-activity.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/btn-activity.umd.js",
+      "import": "./dist/btn-activity.js"
+    }
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/btn-activity"
+  },
+  "keywords": [
+    "Form",
+    "Control",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "dependencies": {
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/btn": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "autoprefixer": "^10.4.15",
+    "change-case": "^4.1.2",
+    "pascalcase": "^2.0.0",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^1.7.1",
+    "vue": "^3.3.4"
+  }
+}
