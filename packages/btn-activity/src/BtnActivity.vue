@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { ActivityIndicator } from '@vue-interface/activity-indicator';
-import { Btn, type BtnProps } from '@vue-interface/btn';
 import { ref, watch, watchEffect, type Component, type Ref } from 'vue';
+import { ActivityIndicator } from '@vue-interface/activity-indicator';
 
 export type BtnActivityProps = {
     activity?: boolean;
@@ -9,11 +8,15 @@ export type BtnActivityProps = {
     indicatorSize?: string;
     label?: string;
     orientation?: 'top' | 'bottom' | 'left' | 'right';
+    variant?: string;
+    size?: string;
+    block?: boolean;  
+    disabled?: boolean;
 };
 
-const props = withDefaults(defineProps<BtnActivityProps & BtnProps>(), {
+const props = withDefaults(defineProps<BtnActivityProps>(), {
     orientation: 'right',
-    variant: 'btn-primary'
+    variant: 'btn-primary',
 });
 
 export type BtnActivityContext = {
@@ -34,9 +37,9 @@ watchEffect(() => {
 });
 
 watch(status, (value) => {
-    if(value) {
+    if (value) {
         emit('show-activity');
-    }
+    } 
     else {
         emit('hide-activity');
     }
@@ -53,16 +56,25 @@ const context = {
 </script>
 
 <template>
-    <Btn
-        v-bind="props"
-        :class="{
-            'gap-1': !indicatorSize || ['xs', 'sm'].includes(indicatorSize),
-            'gap-2': ['md', 'lg', 'xl'].includes(indicatorSize),
-            'flex-col-reverse': orientation === 'top',
-            'flex-col': orientation === 'bottom',
-            'flex-row-reverse': orientation === 'left',
-        }"
-        @click="emit('click', $event, context)">
+    <button
+        type="button"
+        :disabled="disabled"
+        :class="[
+            'btn',
+            variant,
+            size,
+            {
+              'w-full': block,
+              'gap-1': !indicatorSize || ['xs', 'sm'].includes(indicatorSize),
+              'gap-2': ['md', 'lg', 'xl'].includes(indicatorSize),
+              'flex-col-reverse': orientation === 'top',
+              'flex-col': orientation === 'bottom',
+              'flex-row-reverse': orientation === 'left',
+              'inline-flex items-center justify-center': true,
+              'opacity-50 cursor-not-allowed': disabled,
+            }
+        ]"
+        @click="emit('click', $event, context)"> 
         <slot>{{ label }}</slot>
         <Transition
             enter-active-class="transition-all ease-out duration-250"
@@ -80,7 +92,8 @@ const context = {
                     'pb-1': orientation === 'bottom',
                     'pr-1': orientation === 'left',
                     'pl-1': orientation === 'right',
-                }" />
+                }"
+            />
         </Transition>
-    </Btn>
+    </button>
 </template>

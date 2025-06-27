@@ -50,7 +50,7 @@
 
             <h2 class="text-2xl mt-6 mb-3">Block</h2>
 
-            <div class="mb-5 flex gap-2">
+            <div class="mb-5 flex-col gap-4">
                 <btn-activity :indicator="Spinner()" block orientation="top" @click="onClick">Spinner Top</btn-activity>
                 <btn-activity :indicator="Spinner()" block orientation="bottom" @click="onClick">Spinner Bottom</btn-activity>
                 <btn-activity :indicator="Spinner()" block orientation="left" @click="onClick">Spinner Left</btn-activity>
@@ -102,10 +102,10 @@
 
         <script type="module">
             import './index.css';
-            import '@vue-interface/activity-indicator/dist/style.css';
+/*             import '@vue-interface/activity-indicator/dist/style.css'; */
             import { createApp } from 'vue/dist/vue.esm-bundler';
             import { BtnActivity } from './index.ts';
-            import { ActivityIndicatorPlugin, Dots, Spinner, Pulse } from '@vue-interface/activity-indicator';
+            import { Dots, Spinner, Pulse } from '@vue-interface/activity-indicator';
 
             const vue = createApp({
                 components: {
