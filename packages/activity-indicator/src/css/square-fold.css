@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 @theme {
     --activity-indicator-square-fold-margin: 1em;
     --activity-indicator-square-fold-width: 2.5em;

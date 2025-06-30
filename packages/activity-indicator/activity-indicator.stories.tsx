@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
+import { markRaw } from 'vue';
 import * as Indicators from './index';
 import './index.css';
 import ActivityIndicator from './src/ActivityIndicator.vue';
@@ -42,20 +43,20 @@ export const IndicatorControl = {
                 'Spotify',
             ],
             mapping: {
-                'Dots': Indicators.Dots,
-                'Chase': Indicators.Chase,
-                'Spinner': Indicators.Spinner,
-                'Square': Indicators.Square,
-                'SquareOrbit': Indicators.SquareOrbit,
-                'SquareFold': Indicators.SquareFold,
-                'CircleFade': Indicators.CircleFade,
-                'CircleOrbit': Indicators.CircleOrbit,
-                'CircleTrail': Indicators.CircleTrail,
-                'Pulse': Indicators.Pulse,
-                'DoublePulse': Indicators.DoublePulse,
-                'Grid': Indicators.Grid,
-                'Facebook': Indicators.Facebook,
-                'Spotify': Indicators.Spotify,
+                'Dots': markRaw(Indicators.Dots),
+                'Chase': markRaw(Indicators.Chase),
+                'Spinner': markRaw(Indicators.Spinner),
+                'Square': markRaw(Indicators.Square),
+                'SquareOrbit': markRaw(Indicators.SquareOrbit),
+                'SquareFold': markRaw(Indicators.SquareFold),
+                'CircleFade': markRaw(Indicators.CircleFade),
+                'CircleOrbit': markRaw(Indicators.CircleOrbit),
+                'CircleTrail': markRaw(Indicators.CircleTrail),
+                'Pulse': markRaw(Indicators.Pulse),
+                'DoublePulse': markRaw(Indicators.DoublePulse),
+                'Grid': markRaw(Indicators.Grid),
+                'Facebook': markRaw(Indicators.Facebook),
+                'Spotify': markRaw(Indicators.Spotify),
             },
         },
     },
@@ -88,7 +89,7 @@ export const DotsStory = {
             <ActivityIndicator type={Indicators.Dots} class="activity-indicator-[27px]" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const ChaseStory = {
     name: 'Chase',
@@ -101,7 +102,7 @@ export const ChaseStory = {
             <ActivityIndicator type={Indicators.Chase} size="xl"/>
         </div>
     ),
-};
+} satisfies Story;
 
 export const SpinnerStory = {
     name: 'Spinner',
@@ -114,7 +115,7 @@ export const SpinnerStory = {
             <ActivityIndicator type={Indicators.Spinner} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const SquareStory = {
     name: 'Square',
@@ -127,7 +128,7 @@ export const SquareStory = {
             <ActivityIndicator type={Indicators.Square} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const SquareOrbitStory = {
     name: 'Square Orbit',
@@ -140,7 +141,7 @@ export const SquareOrbitStory = {
             <ActivityIndicator type={Indicators.SquareOrbit} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const SquareFoldStory = {
     name: 'Square Fold',
@@ -153,7 +154,7 @@ export const SquareFoldStory = {
             <ActivityIndicator type={Indicators.SquareFold} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const CircleFadeStory = {
     name: 'Circle Fade',
@@ -166,7 +167,7 @@ export const CircleFadeStory = {
             <ActivityIndicator type={Indicators.CircleFade} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const CircleOrbitStory = {
     name: 'Circle Orbit',
@@ -179,7 +180,7 @@ export const CircleOrbitStory = {
             <ActivityIndicator type={Indicators.CircleOrbit} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const CircleTrailStory = {
     name: 'Circle Trail',
@@ -192,7 +193,7 @@ export const CircleTrailStory = {
             <ActivityIndicator type={Indicators.CircleTrail} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const PulseStory = {
     name: 'Pulse',
@@ -205,7 +206,7 @@ export const PulseStory = {
             <ActivityIndicator type={Indicators.Pulse} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const DoublePulseStory = {
     name: 'Double Pulse',
@@ -218,7 +219,7 @@ export const DoublePulseStory = {
             <ActivityIndicator type={Indicators.DoublePulse} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const GridStory = {
     name: 'Grid',
@@ -231,7 +232,7 @@ export const GridStory = {
             <ActivityIndicator type={Indicators.Grid} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const FacebookStory = {
     name: 'Facebook',
@@ -244,7 +245,7 @@ export const FacebookStory = {
             <ActivityIndicator type={Indicators.Facebook} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const SpotifyStory = {
     name: 'Spotify',
@@ -257,7 +258,7 @@ export const SpotifyStory = {
             <ActivityIndicator type={Indicators.Spotify} size="xl" />
         </div>
     ),
-};
+} satisfies Story;
 
 export const CenterIndicator = {
     name: 'Center Indicator',
@@ -268,7 +269,7 @@ export const CenterIndicator = {
             style="background-color: rgba(0, 0, 0, .1);" 
         />
     )
-};
+} satisfies Story;
 
 export const AbsolutInsideParent = {
     name: 'Absolute Inside Parent',
@@ -280,4 +281,4 @@ export const AbsolutInsideParent = {
             />
         </div>
     )
-};
+} satisfies Story;

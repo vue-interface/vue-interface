@@ -19,6 +19,7 @@
     "@storybook/addon-onboarding": "^9.0.13",
     "@storybook/addon-themes": "^9.0.13",
     "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^4.2.0",
     "autoprefixer": "^10.4.21",

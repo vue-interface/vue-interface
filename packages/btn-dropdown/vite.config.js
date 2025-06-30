@@ -41,9 +41,6 @@ export default ({ command }) => defineConfig({
         conditions: process.env.NODE_ENV === 'development' 
             ? ['source', 'import', 'module', 'browser', 'default']
             : ['import', 'module', 'browser', 'default'],
-        // alias: {
-        //     '@vue-interface/dropdown-menu': path.resolve(__dirname, '../dropdown-menu')
-        // }
     },
     plugins: [
         vue(),

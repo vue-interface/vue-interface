@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
+import tailwindcss from '@tailwindcss/vite';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 
@@ -38,6 +39,7 @@ const config: StorybookConfig = {
         config.plugins.push(vueJsx({
             include: /\.(jsx|tsx)$/
         }));
+        config.plugins.push(tailwindcss());
     
         config.esbuild = {
             ...config.esbuild,

@@ -1,0 +1,3 @@
+@import "./index.css";
+
+@source "../activity-indicator/src/**/*.vue";

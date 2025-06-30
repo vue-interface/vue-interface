@@ -1,4 +1,3 @@
-@import "tailwindcss";
 @theme {
   --activity-indicator-grid-width: 2.5em;
   --activity-indicator-grid-height: 2.5em;

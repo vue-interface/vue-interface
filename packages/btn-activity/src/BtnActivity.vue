@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { ref, watch, watchEffect, type Component, type Ref } from 'vue';
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
+import { ref, watch, watchEffect, type Component, type Ref } from 'vue';
+import { ActivityIndicatorSize } from '../../activity-indicator/src/ActivityIndicator.vue';
 
 export type BtnActivityProps = {
     activity?: boolean;
     indicator: Component;
-    indicatorSize?: string;
+    indicatorSize?: ActivityIndicatorSize;
     label?: string;
     orientation?: 'top' | 'bottom' | 'left' | 'right';
     variant?: string;
@@ -15,13 +16,16 @@ export type BtnActivityProps = {
 };
 
 const props = withDefaults(defineProps<BtnActivityProps>(), {
+    indicatorSize: 'xs',
+    label: undefined,
     orientation: 'right',
     variant: 'btn-primary',
+    size: 'btn-md'
 });
 
 export type BtnActivityContext = {
     status: Ref<boolean>;
-    toggle: Function;
+    toggle: () => void;
 }
 
 const emit = defineEmits<{
@@ -37,7 +41,7 @@ watchEffect(() => {
 });
 
 watch(status, (value) => {
-    if (value) {
+    if(value) {
         emit('show-activity');
     } 
     else {
@@ -64,14 +68,14 @@ const context = {
             variant,
             size,
             {
-              'w-full': block,
-              'gap-1': !indicatorSize || ['xs', 'sm'].includes(indicatorSize),
-              'gap-2': ['md', 'lg', 'xl'].includes(indicatorSize),
-              'flex-col-reverse': orientation === 'top',
-              'flex-col': orientation === 'bottom',
-              'flex-row-reverse': orientation === 'left',
-              'inline-flex items-center justify-center': true,
-              'opacity-50 cursor-not-allowed': disabled,
+                'w-full': block,
+                'gap-1': ['xs', 'sm'].includes(indicatorSize),
+                'gap-2': ['md', 'lg', 'xl'].includes(indicatorSize),
+                'flex-col-reverse': orientation === 'top',
+                'flex-col': orientation === 'bottom',
+                'flex-row-reverse': orientation === 'left',
+                'inline-flex items-center justify-center': true,
+                'opacity-50 cursor-not-allowed': disabled,
             }
         ]"
         @click="emit('click', $event, context)"> 
@@ -86,14 +90,13 @@ const context = {
             <ActivityIndicator
                 v-if="status"
                 :type="indicator"
-                :size="indicatorSize ?? 'xs'"
+                :size="indicatorSize"
                 :class="{
                     'pt-1': orientation === 'top',
                     'pb-1': orientation === 'bottom',
                     'pr-1': orientation === 'left',
                     'pl-1': orientation === 'right',
-                }"
-            />
+                }" />
         </Transition>
     </button>
 </template>

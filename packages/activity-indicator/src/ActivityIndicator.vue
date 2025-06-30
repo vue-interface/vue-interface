@@ -30,7 +30,7 @@ const classes = computed(() => ({
         :class="classes">
         <div class="activity-indicator-content">
             <Component
-                :is="props.type"
+                :is="type"
                 class="mx-auto" />
         </div>
     </div>

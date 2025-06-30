@@ -8,7 +8,7 @@
     <body>
         <div id="app" class="container mx-auto">
             <h1 class="text-5xl mb-5">btn-activity</h1>
-
+            
             <div class="mb-5 flex gap-2">
                 <div><btn-activity :indicator="Dots()" @click="onClick">Dots</btn-activity></div>
                 <div><btn-activity :indicator="Spinner()" @click="onClick">Spinner</btn-activity></div>
@@ -101,8 +101,8 @@
         </div>
 
         <script type="module">
-            import './index.css';
-/*             import '@vue-interface/activity-indicator/dist/style.css'; */
+            import './demo.css';
+            import '@vue-interface/activity-indicator/css';
             import { createApp } from 'vue/dist/vue.esm-bundler';
             import { BtnActivity } from './index.ts';
             import { Dots, Spinner, Pulse } from '@vue-interface/activity-indicator';

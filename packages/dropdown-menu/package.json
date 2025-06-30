@@ -13,7 +13,6 @@
       "import": "./dist/dropdown-menu.js",
       "require": "./dist/dropdown-menu.umd.js"
     },
-    "./src/DropdownMenu.vue": "./src/DropdownMenu.vue",
     "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
