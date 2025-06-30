@@ -32,9 +32,9 @@ export const DotsSizes = {
     name: 'Dots Sizes',
     render: () => (
         <div class="mb-5 flex gap-2">
-            <BtnActivity indicator={Dots} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Dots} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Dots} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity>
+            <div><BtnActivity indicator={Dots} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Dots} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Dots} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
         </div>
     ),
 };
@@ -43,9 +43,9 @@ export const SpinnerSizes = {
     name: 'Spinner Sizes',
     render: () => (
         <div class="mb-5 flex gap-2">
-            <BtnActivity indicator={Spinner} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Spinner} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Spinner} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity>
+            <div><BtnActivity indicator={Spinner} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Spinner} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Spinner} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
         </div>
     ),
 };
@@ -53,9 +53,9 @@ export const PulseSizes = {
     name: 'Pulse Sizes',
     render: () => (
         <div class="mb-5 flex gap-2">
-            <BtnActivity indicator={Pulse} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Pulse} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity>
-            <BtnActivity indicator={Pulse} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity>
+            <div><BtnActivity indicator={Pulse} size="btn-sm" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Pulse} size="btn-md" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
+            <div><BtnActivity indicator={Pulse} size="btn-lg" onClick={handleActivityClick}>Click Me!</BtnActivity></div>
         </div>
     ),
 };
