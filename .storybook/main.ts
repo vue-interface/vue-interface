@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
-import tailwindcss from '@tailwindcss/vite';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 
@@ -26,6 +25,7 @@ const config: StorybookConfig = {
     // Ensure JSX plugin is configured
         const vue = (await import('@vitejs/plugin-vue')).default;
         const vueJsx = (await import('@vitejs/plugin-vue-jsx')).default;
+        const tailwindcss = (await import('@tailwindcss/vite')).default;
     
         if(config.resolve) {
             config.resolve.conditions = [
