@@ -1,0 +1,33 @@
+@theme {
+    --form-padding-xs: .15rem .35rem;
+    --form-font-size-xs: .75rem;
+    --form-border-radius-xs: .2rem;
+
+    --form-padding-sm: .25rem .5rem;
+    --form-font-size-sm: .875rem;
+    --form-border-radius-sm: .25rem;
+
+    --form-padding-md: .375rem .75rem;
+    --form-font-size-md: 1rem;
+    --form-border-radius-md: .25rem;
+
+    --form-padding-lg: .5rem 1rem;
+    --form-font-size-lg: 1.25rem;
+    --form-border-radius-lg: .33rem;
+
+    --form-padding-xl: .66rem 1.25rem;
+    --form-font-size-xl: 1.33rem;
+    --form-border-radius-xl: .33rem;
+
+    --form-padding-2xl: .75rem 1.5rem;
+    --form-font-size-2xl: 1.5rem;
+    --form-border-radius-2xl: .5rem;
+
+    --form-padding-3xl: .85rem 1.75rem;
+    --form-font-size-3xl: 1.75rem;
+    --form-border-radius-3xl: .5rem;
+
+    --form-padding-4xl: 1rem 2rem;
+    --form-font-size-4xl: 2rem;
+    --form-border-radius-4xl: .66rem;
+}
