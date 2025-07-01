@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@import "./sizes.css";
+
+@theme {
+    /* Base form control styles */
+    --form-control-display: flex;
+    --form-control-width: 100%;
+    --form-control-font-family: inherit;
+    --form-control-font-weight: 400;
+    --form-control-line-height: 1.5;
+    --form-control-background-color: white;
+    --form-control-border-width: 1px;
+    --form-control-border-style: solid;
+    --form-control-border-color: oklch(87.168% 0.00944 258.479);
+    --form-control-border-radius: 0.375rem;
+    --form-control-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-control-appearance: none;
+    --form-control-padding-x: 0.75rem;
+    --form-control-padding-y: 0.375rem;
+
+    /* Dark mode */
+    --form-control-dark-color: oklch(98.463% 0.00181 249.248);
+    --form-control-dark-background-color: #374151;
+    --form-control-dark-border-color: #6b7280;
+
+    /* Focus state */
+    --form-control-focus-color: inherit;
+    --form-control-focus-background-color: inherit;
+    --form-control-focus-border-color: oklch(62.31% 0.1881 259.83);
+    --form-control-focus-outline: 0;
+    --form-control-focus-box-shadow: 0 0 0 .2rem rgb(59 130 246 / 25%);
+    --form-control-focus-dark-border-color: oklch(71.375% 0.14347 254.643);
+
+    /* Placeholder */
+    --form-control-placeholder-color: oklch(55.102% 0.02343 264.389);
+    --form-control-placeholder-opacity: 1;
+    --form-control-placeholder-dark-color: oklch(71.366% 0.01926 261.373);
+
+    /* Disabled state */
+    --form-control-disabled-color: oklch(55.102% 0.02343 264.389);
+    --form-control-disabled-background-color: oklch(96.696% 0.00298 264.792);
+    --form-control-disabled-border-color: oklch(87.168% 0.00944 258.479);
+    --form-control-disabled-opacity: 1;
+    --form-control-disabled-dark-color: oklch(71.366% 0.01926 261.373);
+    --form-control-disabled-dark-background-color: oklch(44.611% 0.02636 256.837);
+
+    /* Invalid state */
+    --form-control-invalid-color: oklch(57.707% 0.21516 27.312);
+    --form-control-invalid-background-color: inherit;
+    --form-control-invalid-border-color: oklch(57.707% 0.21516 27.312);
+    --form-control-invalid-focus-box-shadow: 0 0 0 .2rem rgb(220 38 38 / 25%);
+    --form-control-invalid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc2626'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc2626' stroke='none'/%3e%3c/svg%3e");
+
+    /* Valid state */
+    --form-control-valid-color: oklch(62.706% 0.1699 149.234);
+    --form-control-valid-background-color: inherit;
+    --form-control-valid-border-color: oklch(62.706% 0.1699 149.234);
+    --form-control-valid-focus-box-shadow: 0 0 0 .2rem oklch(62.706% 0.1699 149.234 / 0.25);
+    --form-control-valid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2316a34a' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+
+    /* Color input specific */
+    --form-control-color-width: 2.75rem;
+    --form-control-color-height: 2.375rem;
+    --form-control-color-padding: 0.375rem;
+
+    /* Form group positioning */
+    --form-group-inner-icon-size: 1.25em;
+    --form-group-inner-icon-left: 0.5em;
+    --form-group-inner-control-padding-left: 2em;
+    --form-group-activity-indicator-right: 1rem;
+}
+
+@utility form-control {
+    display: var(--form-control-display);
+    width: var(--form-control-width);
+    font-family: var(--form-control-font-family);
+    font-weight: var(--form-control-font-weight);
+    line-height: var(--form-control-line-height);
+    background-color: var(--form-control-background-color);
+    border-width: var(--form-control-border-width);
+    border-style: var(--form-control-border-style);
+    border-color: var(--form-control-border-color);
+    border-radius: var(--form-control-border-radius);
+    transition: var(--form-control-transition);
+    appearance: var(--form-control-appearance);
+    padding: var(--form-control-padding-y) var(--form-control-padding-x);
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--form-control-dark-color);
+        background-color: var(--form-control-dark-background-color);
+        border-color: var(--form-control-dark-border-color);
+    }
+
+    &:focus {
+        color: var(--form-control-focus-color);
+        background-color: var(--form-control-focus-background-color);
+        border-color: var(--form-control-focus-border-color);
+        outline: var(--form-control-focus-outline);
+        box-shadow: var(--form-control-focus-box-shadow);
+
+        @media (prefers-color-scheme: dark) {
+            border-color: var(--form-control-focus-dark-border-color);
+        }
+    }
+
+    &::placeholder {
+        color: var(--form-control-placeholder-color);
+        opacity: var(--form-control-placeholder-opacity);
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--form-control-placeholder-dark-color);
+        }
+    }
+
+    &:disabled:not([readonly]) {
+        color: var(--form-control-disabled-color);
+        background-color: var(--form-control-disabled-background-color);
+        border-color: var(--form-control-disabled-border-color);
+        opacity: var(--form-control-disabled-opacity);
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--form-control-disabled-dark-color);
+            background-color: var(--form-control-disabled-dark-background-color);
+        }
+    }
+
+    &.is-invalid,
+    &[invalid] {
+        border-color: var(--form-control-invalid-border-color);
+        background-color: var(--form-control-invalid-background-color);
+        color: var(--form-control-invalid-color);
+        background-image: var(--form-control-invalid-background-image);
+        background-repeat: no-repeat;
+        background-position: right calc((var(--form-control-line-height) * 1em + var(--form-control-padding-y) + var(--form-control-padding-y)) / 4) center;
+        background-size: 1.25em;
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--form-control-invalid-focus-box-shadow);
+        }
+    }
+
+    &.is-valid,
+    &[valid] {
+        border-color: var(--form-control-valid-border-color);
+        background-color: var(--form-control-valid-background-color);
+        color: var(--form-control-valid-color);
+        background-image: var(--form-control-valid-background-image);
+        background-repeat: no-repeat;
+        background-position: right calc((var(--form-control-line-height) * 1em + var(--form-control-padding-y) + var(--form-control-padding-y)) / 4) center;
+        background-size: 1.25em;
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--form-control-valid-focus-box-shadow);
+        }
+    }
+}
+
+@utility form-control-* {
+    padding: --value(--form-padding-*);
+    font-size: --value(--form-font-size-*);
+    border-radius: --value(--form-border-radius-*);
+}
+
+@utility form-control-color {
+    width: var(--form-control-color-width);
+    height: var(--form-control-color-height);
+    padding: var(--form-control-color-padding);
+    border-radius: var(--form-control-border-radius);
+
+    &::-moz-color-swatch {
+        border-radius: var(--form-control-border-radius);
+    }
+
+    &::-webkit-color-swatch {
+        border-radius: var(--form-control-border-radius);
+    }
+}
+
+@utility input-field {
+    @apply form-control;
+    font-size: inherit;
+
+    &.is-invalid,
+    &[invalid] {
+        label,
+        .invalid-feedback {
+            color: var(--form-control-invalid-color);
+        }
+    }
+
+    &.is-valid,
+    &[valid] {
+        label,
+        .valid-feedback {
+            color: var(--form-control-valid-color);
+        }
+    }
+}
+
+@utility textarea-field {
+    @apply input-field;
+}
+
+@utility form-group-inner {
+    position: relative;
+
+    &:has(> .form-group-inner-icon) .form-control {
+        padding-left: var(--form-group-inner-control-padding-left);
+    }
+}
+
+@utility form-group-inner-icon {
+    position: absolute;
+    top: 50%;
+    left: var(--form-group-inner-icon-left);
+    width: var(--form-group-inner-icon-size);
+    font-size: inherit;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .textarea-field & {
+        top: var(--form-group-inner-icon-left);
+        transform: none;
+    }
+}
+
+@utility activity-indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(calc(-1 * var(--form-group-activity-indicator-right)), -50%);
+    transition: all .15s ease-in;
+}
+
+@utility invalid-feedback {
+    color: var(--form-control-invalid-color);
+    display: none;
+
+    .is-invalid ~ &,
+    [invalid] ~ &,
+    :has(.is-invalid) &,
+    :has([invalid]) & {
+        display: block;
+    }
+}
+
+@utility valid-feedback {
+    color: var(--form-control-valid-color);
+    display: none;
+
+    .is-valid ~ &,
+    [valid] ~ &,
+    :has(.is-valid) &,
+    :has([valid]) & {
+        display: block;
+    }
+}
