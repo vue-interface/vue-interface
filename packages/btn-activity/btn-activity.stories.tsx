@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { Dots, Spinner, Pulse } from '@vue-interface/activity-indicator';
+import { defineComponent, ref, onMounted, computed } from 'vue';
 import './index.css';
 import BtnActivity from './src/BtnActivity.vue';
  
@@ -17,8 +18,8 @@ const handleActivityClick = (_event: MouseEvent, { toggle }: { toggle: () => voi
   setTimeout(() => toggle(), 2000);
 };
 
-export const Types = {
-    name: 'Types',
+export const ActivityTypes = {
+    name: 'Activity Types',
     render: () => (
         <div class="mb-5 flex gap-2">
             <BtnActivity indicator={Dots} onClick={handleActivityClick}>Dots</BtnActivity>
@@ -96,20 +97,34 @@ export const Variants = {
     ),
 };
 
-/* export const ActivityAttribute = {
-    name: 'ActivityAttribute',
-    render: () => (
-            <div class="flex gap-2">
-                <BtnActivity indicator={Spinner} activity="activity.value">
-                    {{ activity ? 'On' : 'Off' }}
-                </BtnActivity>
-
-                <btn-activity :indicator="Spinner()" :activity="activity" :disabled="true">
-                    {{ activity ? 'On' : 'Off' }}
-                </btn-activity>
-            </div>
-    ),
-}; */
+export const ActivityAttribute = {
+    name: 'Activity Attribute',
+    render: () => {
+        return defineComponent({
+            setup() {
+                const activity = ref(false);
+                const text = computed(() => (activity.value ? 'On' : 'Off'));
+                
+                onMounted(() => {
+                    setInterval(() => {
+                        activity.value = !activity.value;
+                    }, 1000);
+                });
+              
+                return () => (
+                    <div class="flex gap-2">
+                        <BtnActivity indicator={Spinner} activity={activity.value}>
+                            {text.value}
+                        </BtnActivity>
+                        <BtnActivity indicator={Spinner} activity={activity.value} disabled>
+                            {text.value}
+                        </BtnActivity>
+                    </div>
+                );
+            }
+        });
+    }
+};
 
 export const Disabled = {
     name: 'Disabled',
