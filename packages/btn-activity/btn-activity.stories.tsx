@@ -139,10 +139,10 @@ export const Orientation = {
     name: 'Orientation',
     render: () => (
         <div class="mb-5 flex gap-2">
-            <BtnActivity indicator={Indicators.Spinner} orientation='top' onClick={handleActivityClick}>Orientation Top</BtnActivity>
-            <BtnActivity indicator={Indicators.Spinner} orientation='bottom' onClick={handleActivityClick}>Orientation Bottom</BtnActivity>
-            <BtnActivity indicator={Indicators.Spinner} orientation='left' onClick={handleActivityClick}>Orientation Left</BtnActivity>
-            <BtnActivity indicator={Indicators.Spinner} orientation='right' onClick={handleActivityClick}>Orientation Right</BtnActivity>
+            <div><BtnActivity indicator={Indicators.Spinner} orientation='top' onClick={handleActivityClick}>Orientation Top</BtnActivity></div>
+            <div><BtnActivity indicator={Indicators.Spinner} orientation='bottom' onClick={handleActivityClick}>Orientation Bottom</BtnActivity></div>
+            <div><BtnActivity indicator={Indicators.Spinner} orientation='left' onClick={handleActivityClick}>Orientation Left</BtnActivity></div>
+            <div><BtnActivity indicator={Indicators.Spinner} orientation='right' onClick={handleActivityClick}>Orientation Right</BtnActivity></div>
         </div>
     ),
 };
