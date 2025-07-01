@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>FormControl</title>
+
+        <script type="module">
+            import './index.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler.js';
+
+            const vue = createApp({
+                data: () => ({
+                    dark: false
+                })
+            });
+
+            vue.mount('#app');
+        </script>
+    </head>
+    <body id="app">
+        <div :class="{dark}">
+            <div class="dark:bg-neutral-800 dark:text-neutral-300">
+                <div class="container mx-auto py-4 flex flex-col gap-12">
+                    <div class="flex items-center gap-2">
+                        <label class="form-label">Light</label>
+                        <input v-model="dark" type="checkbox" class="form-switch-light-dark" />
+                        <label class="form-label">Dark</label>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-4xl">Form Control</h1>
+            
+                        <div>
+                            <label class="form-label">Color</label>
+                            <input type="color" id="control" class="form-control-color" />
+                        </div>
+
+                        <div>
+                            <label for="control" class="form-label">Some Label</label>
+                            <input type="text" id="control" class="form-control" />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Placeholder</label>
+                            <input type="text" id="control" class="form-control" placeholder="Placeholder" />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Disabled</label>
+                            <input type="text" id="control" class="form-control" value="Disabled" disabled />
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Disabled (Placeholder)</label>
+                            <input type="text" id="control" class="form-control" placeholder="Disabled" disabled />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Readonly</label>
+                            <input type="text" id="control" class="form-control" placeholder="Readonly" readonly />
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Sizes</h2>
+
+                        <div>
+                            <label class="form-label">Small</label>
+                            <input type="text" class="form-control-sm" placeholder="form-control-sm" />
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Medium</label>
+                            <input type="text" class="form-control" placeholder="form-control" />
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Large</label>
+                            <input type="text" class="form-control-lg" placeholder="form-control-lg" />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Plaintext</label>
+                            <input type="text" id="control" class="form-control-plaintext" value="Readonly" readonly />
+                            <input type="text" id="control" class="form-control-plaintext" placeholder="Readonly Placeholder" readonly />
+                            <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled" readonly disabled />
+                            <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled Placeholder" readonly disabled />
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Validation</h2>
+
+                        <div>
+                            <label class="flex-shrink-0">Invalid Field</label>
+                            <div>
+                                <input type="text" class="form-control is-invalid" value="This field is invalid" />
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                            <div class="invalid-feedback">This is an inline error.</div>
+                            <div>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="flex-shrink-0">Valid Field</label>
+                            <div>
+                                <input type="text" class="form-control is-valid" value="This field is invalid" />
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                            <div class="valid-feedback">This is an inline success message.</div>
+                            <div>
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-4xl">Form Select</h1>
+            
+                        <div>
+                            <label class="form-label">Select Field</label>
+                            <select class="form-select">
+                                <option>Option A</option>
+                                <option>Option B</option>
+                                <option>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Disabled</label>
+                            <select class="form-select" disabled>
+                                <option>Option A</option>
+                                <option selected>Option B</option>
+                                <option>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Readonly</label>
+                            <select class="form-select" readonly>
+                                <option disabled>Option A</option>
+                                <option disabled selected>Option B</option>
+                                <option disabled>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Readonly (Disabled)</label>
+                            <select class="form-select" readonly disabled>
+                                <option disabled>Option A</option>
+                                <option selected>Option B</option>
+                                <option disabled>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Plaintext</label>
+                            <select class="form-select-plaintext">
+                                <option>Option A</option>
+                                <option selected>Option B</option>
+                                <option>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Plaintext (Readonly)</label>
+                            <select class="form-select-plaintext" readonly>
+                                <option disabled>Option A</option>
+                                <option disabled selected>Option B</option>
+                                <option disabled>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Plaintext (Disabled & Readonly)</label>
+                            <select class="form-select-plaintext" disabled readonly>
+                                <option disabled>Option A</option>
+                                <option disabled selected>Option B</option>
+                                <option disabled>Option C</option>
+                            </select>
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Sizes</h2>
+
+                        <div class="select-field">
+                            <label class="form-label">Small</label>
+                            <div>
+                                <select class="form-select-sm">
+                                    <option>Option A</option>
+                                    <option selected>Option B</option>
+                                    <option>Option C</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Medium</label>
+                            <select class="form-select">
+                                <option>Option A</option>
+                                <option selected>Option B</option>
+                                <option>Option C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Large</label>
+                            <select class="form-select-lg">
+                                <option>Option A</option>
+                                <option selected>Option B</option>
+                                <option>Option C</option>
+                            </select>
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Validation</h2>
+
+                        <div>
+                            <label class="flex-shrink-0">Invalid Field</label>
+                            <div>
+                                <select class="form-select" invalid>
+                                    <option>Option A</option>
+                                    <option selected>Option B</option>
+                                    <option>Option C</option>
+                                </select>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                            <div class="invalid-feedback">This is an inline error.</div>
+                            <div>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="flex-shrink-0">Valid Field</label>
+                            <div>
+                                <select class="form-select" valid>
+                                    <option>Option A</option>
+                                    <option selected>Option B</option>
+                                    <option>Option C</option>
+                                </select>
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                            <div class="valid-feedback">This is an inline success message.</div>
+                            <div>
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-4xl">Checkboxes and Radios</h1>
+
+                        <div>
+                            <label class="flex gap-2"><input type="checkbox" class="form-check"> Unchecked</label>
+                            <label class="flex gap-2"><input type="checkbox" class="form-check" checked> Checked</label>
+                            <label class="flex gap-2"><input type="checkbox" class="form-check" disabled> Unchecked (Disabled)</label>
+                            <label class="flex gap-2"><input type="checkbox" class="form-check" checked disabled> Checked (Disabled)</label>
+                        </div>
+
+                        <div>
+                            <label class="flex gap-2"><input type="radio" name="radio" class="form-check"> Unchecked</label>
+                            <label class="flex gap-2"><input type="radio" name="radio" class="form-check" checked> Checked</label>
+                            <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" disabled> Unchecked (Disabled)</label>
+                            <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" checked disabled> Checked (Disabled)</label>
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Sizes</h2>
+
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-xs">
+                            <input type="checkbox" class="form-check-xs" checked>
+                            <input type="checkbox" class="form-check-xs" invalid>
+                            <input type="checkbox" class="form-check-xs" invalid checked>
+                            <input type="checkbox" class="form-check-xs" valid>
+                            <input type="checkbox" class="form-check-xs" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-sm">
+                            <input type="checkbox" class="form-check-sm" checked>
+                            <input type="checkbox" class="form-check-sm" invalid>
+                            <input type="checkbox" class="form-check-sm" invalid checked>
+                            <input type="checkbox" class="form-check-sm" valid>
+                            <input type="checkbox" class="form-check-sm" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check">
+                            <input type="checkbox" class="form-check" checked>
+                            <input type="checkbox" class="form-check" invalid>
+                            <input type="checkbox" class="form-check" invalid checked>
+                            <input type="checkbox" class="form-check" valid>
+                            <input type="checkbox" class="form-check" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-lg">
+                            <input type="checkbox" class="form-check-lg" checked>
+                            <input type="checkbox" class="form-check-lg" invalid>
+                            <input type="checkbox" class="form-check-lg" invalid checked>
+                            <input type="checkbox" class="form-check-lg" valid>
+                            <input type="checkbox" class="form-check-lg" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-xl">
+                            <input type="checkbox" class="form-check-xl" checked>
+                            <input type="checkbox" class="form-check-xl" invalid>
+                            <input type="checkbox" class="form-check-xl" invalid checked>
+                            <input type="checkbox" class="form-check-xl" valid>
+                            <input type="checkbox" class="form-check-xl" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-2xl">
+                            <input type="checkbox" class="form-check-2xl" checked>
+                            <input type="checkbox" class="form-check-2xl" invalid>
+                            <input type="checkbox" class="form-check-2xl" invalid checked>
+                            <input type="checkbox" class="form-check-2xl" valid>
+                            <input type="checkbox" class="form-check-2xl" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-3xl">
+                            <input type="checkbox" class="form-check-3xl" checked>
+                            <input type="checkbox" class="form-check-3xl" invalid>
+                            <input type="checkbox" class="form-check-3xl" invalid checked>
+                            <input type="checkbox" class="form-check-3xl" valid>
+                            <input type="checkbox" class="form-check-3xl" valid checked>
+                        </div>
+                        
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check-4xl">
+                            <input type="checkbox" class="form-check-4xl" checked>
+                            <input type="checkbox" class="form-check-4xl" invalid>
+                            <input type="checkbox" class="form-check-4xl" invalid checked>
+                            <input type="checkbox" class="form-check-4xl" valid>
+                            <input type="checkbox" class="form-check-4xl" valid checked>
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Validation</h2>
+
+                        <div>
+                            <div>
+                                <label class="flex gap-2"><input type="checkbox" class="form-check" invalid> Invalid</label>
+                                <label class="flex gap-2"><input type="checkbox" class="form-check" checked invalid> Invalid</label>
+                                <label class="flex gap-2"><input type="radio" name="radio7" class="form-check" invalid> Invalid</label>
+                                <label class="flex gap-2"><input type="radio" name="radio7" class="form-check" checked invalid> Invalid</label>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                            <div class="invalid-feedback">This is an inline error.</div>
+                            <div>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <label class="flex gap-2"><input type="checkbox" class="form-check" valid> Valid</label>
+                                <label class="flex gap-2"><input type="checkbox" class="form-check" checked valid> Valid</label>
+                                <label class="flex gap-2"><input type="radio" name="radio8" class="form-check" valid> Valid</label>
+                                <label class="flex gap-2"><input type="radio" name="radio8" class="form-check" checked valid> Valid</label>
+                                <div class="valid-feedback">This is an inline sucess message.</div>
+                            </div>
+                            <div class="valid-feedback">This is an inline sucess message.</div>
+                            <div>
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-4xl">File Browser</h1>
+
+                        <div class="form-file">
+                            <input type="file" class="form-file-input" id="customFile">
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+
+                        <div class="form-file">
+                            <input type="file" class="form-file-input" id="customFileDisabled" disabled>
+                            <label class="form-file-label" for="customFileDisabled">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+                    
+                        <h2 class="text-2xl mt-2">File Browser Sizes</h2>
+            
+                        <div class="form-file form-file-sm">
+                            <input type="file" class="form-file-input" id="customFile">
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+            
+                        <div class="form-file">
+                            <input type="file" class="form-file-input" id="customFile">
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+            
+                        <div class="form-file form-file-lg">
+                            <input type="file" class="form-file-input" id="customFile">
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-4xl">Switches</h1>
+
+                        <div class="flex flex-col gap-2">
+                            
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" class="form-switch">
+                                Default
+                            </label>
+
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" class="form-switch" disabled>
+                                Disabled
+                            </label>
+
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" class="form-switch" disabled checked>
+                                Disabled (Checked)
+                            </label>
+
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" class="form-switch" readonly onclick="return false;">
+                                Readonly
+                            </label>
+
+                            <label class="flex gap-2 items-center">
+                                <input type="checkbox" class="form-switch" checked readonly onclick="return false;">
+                                Readonly (Checked)
+                            </label>
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Sizes</h2>
+            
+                        <div class="flex flex-col gap-2">
+                            <input type="checkbox" class="form-switch-xs">
+                            <input type="checkbox" class="form-switch-sm">
+                            <input type="checkbox" class="form-switch-md">
+                            <input type="checkbox" class="form-switch-lg">
+                            <input type="checkbox" class="form-switch-xl">
+                            <input type="checkbox" class="form-switch-2xl">
+                            <input type="checkbox" class="form-switch-3xl">
+                            <input type="checkbox" class="form-switch-4xl">
+                        </div>
+
+                        <h2 class="text-2xl mt-2">Validation</h2>
+
+                        <div>
+                            <div>
+                                <label class="flex gap-2"><input type="checkbox" class="form-switch" invalid> Invalid</label>
+                                <label class="flex gap-2"><input type="checkbox" class="form-switch" checked invalid> Invalid</label>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                            <div class="invalid-feedback">This is an inline error.</div>
+                            <div>
+                                <div class="invalid-feedback">This is an inline error.</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <label class="flex gap-2"><input type="checkbox" class="form-switch" valid> Valid</label>
+                                <label class="flex gap-2"><input type="checkbox" class="form-switch" checked valid> Valid</label>
+                                <div class="valid-feedback">This is an inline sucess message.</div>
+                            </div>
+                            <div class="valid-feedback">This is an inline sucess message.</div>
+                            <div>
+                                <div class="valid-feedback">This is an inline success message.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

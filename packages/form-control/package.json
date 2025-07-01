@@ -1,0 +1,89 @@
+{
+  "name": "@vue-interface/form-control",
+  "version": "1.0.0",
+  "description": "An abstract form control Vue mixin.",
+  "files": [
+    "dist",
+    "tailwindcss"
+  ],
+  "type": "module",
+  "main": "./dist/form-control.umd.cjs",
+  "module": "./dist/form-control.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/form-control.js",
+      "require": "./dist/form-control.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tailwindcss": "./tailwindcss/index.cjs",
+    "./tailwindcss/utils/escapeSvg": "./tailwindcss/utils/escapeSvg.cjs",
+    "./tailwindcss/animated-fields": "./tailwindcss/animated-fields.cjs",
+    "./tailwindcss/form-check": "./tailwindcss/form-check.cjs",
+    "./tailwindcss/form-control": "./tailwindcss/form-control.cjs",
+    "./tailwindcss/form-file": "./tailwindcss/form-file.cjs",
+    "./tailwindcss/form-group": "./tailwindcss/form-group.cjs",
+    "./tailwindcss/form-labels": "./tailwindcss/form-labels.cjs",
+    "./tailwindcss/form-select": "./tailwindcss/form-select.cjs",
+    "./tailwindcss/form-switch": "./tailwindcss/form-switch.cjs",
+    "./tailwindcss/form-text": "./tailwindcss/form-text.cjs",
+    "./tailwindcss/input-group": "./tailwindcss/input-group.cjs",
+    "./tailwindcss/safelist": "./tailwindcss/safelist.cjs",
+    "./tailwindcss/sizes": "./tailwindcss/sizes.cjs",
+    "./tailwindcss/validation": "./tailwindcss/validation.cjs"
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/form-control.git"
+  },
+  "keywords": [
+    "Form",
+    "Control",
+    "Vue",
+    "Mixin",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/form-control/issues"
+  },
+  "homepage": "https://github.com/vue-interface/form-control",
+  "dependencies": {
+    "@types/lodash-es": "^4.17.9",
+    "@vue-interface/activity-indicator": "workspace:*",
+    "color": "^4.2.3",
+    "deepmerge": "^4.3.1",
+    "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.7.0",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/color": "^3.0.3",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue-jsx": "^4.2.0",
+    "@vue-interface/eslint-config": "^1.0.0-beta.0",
+    "autoprefixer": "^10.4.15",
+    "change-case": "^4.1.2",
+    "commitlint": "^17.7.1",
+    "dotenv": "^16.3.1",
+    "pascalcase": "^2.0.0",
+    "postcss": "^8.4.6",
+    "semantic-release": "^21.0.7",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^6.0.0",
+    "vue": "^3.3.4",
+    "vue-tsc": "^1.8.8"
+  }
+}
