@@ -30,4 +30,9 @@
     --form-padding-4xl: 1rem 2rem;
     --form-font-size-4xl: 2rem;
     --form-border-radius-4xl: .66rem;
+
+    /* Color Picker Size */
+    --form-control-color-width: 2.75rem;
+    --form-control-color-height: 2.375rem;
+    --form-control-color-padding: 0.375rem;
 }
