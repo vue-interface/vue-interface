@@ -58,7 +58,6 @@
   "homepage": "https://github.com/vue-interface/form-control",
   "dependencies": {
     "@types/lodash-es": "^4.17.9",
-    "@vue-interface/activity-indicator": "workspace:*",
     "color": "^4.2.3",
     "deepmerge": "^4.3.1",
     "lodash-es": "^4.17.21"
