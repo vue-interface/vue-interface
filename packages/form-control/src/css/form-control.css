@@ -75,10 +75,6 @@
     --form-group-inner-icon-size: 1.25em;
     --form-group-inner-icon-left: 0.5em;
     --form-group-inner-control-padding-left: 2em;
-    --form-group-activity-indicator-right: 1rem;
-    --form-group-activity-indicator-top: 50%;
-    --form-group-activity-indicator-transform: translate(calc(-1 * var(--form-group-activity-indicator-right)), -50%);
-    --form-group-activity-indicator-transition: all .15s ease-in;
 
     /* Input field font size */
     --input-field-font-size: inherit;
@@ -286,14 +282,6 @@
         top: var(--textarea-icon-top-position);
         transform: var(--textarea-icon-transform);
     }
-}
-
-@utility activity-indicator {
-    position: var(--position-absolute);
-    right: var(--position-right-0);
-    top: var(--form-group-activity-indicator-top);
-    transform: var(--form-group-activity-indicator-transform);
-    transition: var(--form-group-activity-indicator-transition);
 }
 
 @utility invalid-feedback {
