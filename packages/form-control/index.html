@@ -80,7 +80,7 @@
 
                         <div>
                             <label class="form-label">Plaintext</label>
-                            <input type="text" id="control" class="form-control form-control-plaintext" value="Readonly" readonly />
+                            <input type="text" id="control" class="form-control-plaintext" value="Readonly" readonly />
                             <input type="text" id="control" class="form-control-plaintext" placeholder="Readonly Placeholder" readonly />
                             <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled" readonly disabled />
                             <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled Placeholder" readonly disabled />
@@ -89,7 +89,7 @@
                         <h2 class="text-2xl mt-2">Validation</h2>
 
                         <div>
-                            <label class="flex-shrink-0">Invalid Field</label>
+                            <label class="flex-shrink-0 invalid-feedback">Invalid Field</label>
                             <div>
                                 <input type="text" class="form-control is-invalid" value="This field is invalid" />
                                 <div class="invalid-feedback">This is an inline error.</div>
@@ -101,7 +101,7 @@
                         </div>
 
                         <div>
-                            <label class="flex-shrink-0">Valid Field</label>
+                            <label class="flex-shrink-0 valid-feedback">Valid Field</label>
                             <div>
                                 <input type="text" class="form-control is-valid" value="This field is invalid" />
                                 <div class="valid-feedback">This is an inline success message.</div>
