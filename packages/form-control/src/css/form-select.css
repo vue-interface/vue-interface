@@ -86,25 +86,24 @@
     --form-select-valid-background-position: right calc((var(--form-select-line-height) * 1em + var(--form-select-padding-x) * 2) / 4) center;
     --form-select-valid-background-size: 1.25em;
 
-    /* Form group positioning for select */
-    --form-select-group-inner-icon-padding-left: 2em;
-
     /* Select field font size */
     --select-field-font-size: inherit;
 
-    /* Plaintext */
+    /* Plaintext Styles */
     --form-select-plaintext-display: block;
-    --form-select-plaintext-color: inherit;
-        /* --form-select-plaintext-line-height: 1.5; */
-    --form-select-plaintext-background: transparent;
-    --form-select-plaintext-cursor: default;
+    --form-select-plaintext-outline: none;    
+    --form-select-plaintext-background-image: none; 
     --form-select-plaintext-border: none;
+    --form-select-plaintext-color: inherit;
+    --form-select-plaintext-color-focus-dark: inherit;    
+    --form-select-plaintext-color-disabled: var(--color-neutral-600, oklch(43.9% 0 0));
+    --form-select-plaintext-color-disabled-dark: var(--color-neutral-400, oklch(70.8% 0 0));    
     --form-select-plaintext-padding-left: 0em !important;
-    --form-select-plaintext-padding-right: 0em !important;
-    --form-select-plaintext-outline: none;
-    --form-select-plaintext-font-size: 1rem;
-    --form-select-plaintext-border-radius: 0.25rem;
-        /* --form-select-plaintext-background-image: none */
+    --form-select-plaintext-padding-right: 0em !important; 
+    --form-select-plaintext-cursor: default;
+    --form-select-plaintext-background-color-dark: inherit;
+    --form-select-plaintext-background-color-focus-dark: var(--color-neutral-800, oklch(26.9% 0 0));    
+    --form-select-plaintext-box-shadow-focus: none;
 }
 
 @utility form-select {
@@ -223,79 +222,35 @@
     background-size: --value(--form-select-background-size-*);
 }
 
-@utility select-field {
-    @apply form-select;
-    font-size: var(--select-field-font-size);
-
-    &.is-invalid,
-    &[invalid] {
-        label,
-        .invalid-feedback {
-            color: var(--form-select-invalid-color);
-        }
-    }
-
-    &.is-valid,
-    &[valid] {
-        label,
-        .valid-feedback {
-            color: var(--form-select-valid-color);
-        }
-    }
-}
-
-@utility select-field-* {
-    /* @apply form-select-*; */
-    font-size: --value(--form-font-size-*);
-}
-
-/* Form group styles for select fields */
-.select-field {
-    .form-group-inner {
-        position: var(--position-relative);
-    }
-
-    &:has(.form-group-inner-icon) .form-select {
-        padding-left: var(--form-select-group-inner-icon-padding-left);
-    }
-
-    .form-group-inner-icon {
-        position: var(--position-absolute);
-        top: var(--position-top-50);
-        left: var(--form-group-inner-icon-left);
-        width: var(--form-group-inner-icon-size);
-        font-size: var(--select-field-font-size);
-        transform: var(--transform-translate-y-50);
-        display: var(--display-flex);
-        align-items: var(--align-items-center);
-        justify-content: var(--justify-content-center);
-    }
-}
-
 @utility form-select-plaintext {
     display: var(--form-select-plaintext-display);
     outline: var(--form-select-plaintext-outline);
-
-/*     width: var(--form-select-width);
+    width: var(--form-select-width);
+    background-image: var(--form-select-plaintext-background-image);
+    border: var(--form-select-plaintext-border);    
     color: var(--form-select-plaintext-color);
-    border: var(--form-select-plaintext-border);
-    
-    background: var(--form-select-plaintext-background);
-    cursor: var(--form-select-plaintext-cursor);
-    padding: var(--form-select-padding-y) var(--form-select-padding-x);
     padding-left: var(--form-select-plaintext-padding-left);
-    padding-right: var(--form-select-plaintext-padding-right);
-    font-size: var(--form-select-plaintext-font-size);
-    border-radius: var(--form-select-plaintext-border-radius); */
+    padding-right: var(--form-select-plaintext-padding-right);  
+    cursor: var(--form-select-plaintext-cursor);
 
     @media (prefers-color-scheme: dark) {
-        background-color: inherit;
+        background-color: var(--form-select-plaintext-background-color-dark);
     }
 
     &:focus {
+        box-shadow: var(--form-select-plaintext-box-shadow-focus);
+
         @media (prefers-color-scheme: dark) {
-            color: var(--form-select-focus-dark-color);
-            background-color: var(--form-select-focus-dark-background-color);            
+            color: var(--form-select-plaintext-color-focus-dark);
+            background-color: var(--form-select-plaintext-background-color-focus-dark);
+        }
+    }
+
+    &:disabled {
+        color: var(--form-select-plaintext-color-disabled);
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--form-select-plaintext-color-disabled-dark);
         }
     }
 }
