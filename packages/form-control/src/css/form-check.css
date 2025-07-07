@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@import "./sizes.css";
+
+@theme {
+    --form-check-width: 1.25em;
+    --form-check-height: 1.25em;
+    --form-check-margin-top: calc((var(--form-control-line-height, 1.5) * 1em - 1.25em) / 2);
+    --form-check-vertical-align: top;
+    --form-check-background-color: inherit;
+    --form-check-background-repeat: no-repeat;
+    --form-check-background-position: center;
+    --form-check-background-size: contain;
+    --form-check-border-width: 1px;
+    --form-check-border-style: solid;
+    --form-check-border-color: var(--color-gray-400, oklch(71.9% 0.013 258.338));
+    --form-check-color-adjust: exact;
+    --form-check-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-check-appearance: none;
+    --form-check-padding: 0;
+
+    /* Dark mode */
+    --form-check-dark-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+    --form-check-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
+    --form-check-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+
+    /* Checkbox specific */
+    --form-check-checkbox-border-radius: calc(1.25em / 4);
+
+    /* Radio specific */
+    --form-check-radio-border-radius: 50%;
+
+    /* Active state */
+    --form-check-active-filter: brightness(90%);
+
+    /* Focus state */
+    --form-check-focus-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+    --form-check-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-check-focus-outline: 0;
+
+    /* Checked state */
+    --form-check-checked-background-color: var(--color-blue-500, oklch(68.7% 0.162 253.989));
+    --form-check-checked-border-color: var(--color-blue-500, oklch(68.7% 0.162 253.989));
+    --form-check-checkbox-checked-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyMCAyMCc+PHBhdGggZmlsbD0nbm9uZScgc3Ryb2tlPSd3aGl0ZScgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBzdHJva2Utd2lkdGg9JzMnIGQ9J002IDEwbDMgM2w2LTYnLz48L3N2Zz4=");
+    --form-check-radio-checked-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9Jy00IC00IDggOCc+PGNpcmNsZSByPScyJyBmaWxsPScjZmZmJy8+PC9zdmc+");
+
+    /* Disabled state */
+    --form-check-disabled-pointer-events: none;
+    --form-check-disabled-filter: none;
+    --form-check-disabled-opacity: 0.5;
+    --form-check-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
+    --form-check-disabled-label-opacity: 0.5;
+
+    /* Invalid state */
+    --form-check-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
+    --form-check-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
+    --form-check-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
+    --form-check-invalid-checked-background-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
+    --form-check-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
+
+    /* Valid state */
+    --form-check-valid-border-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    --form-check-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
+    --form-check-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    --form-check-valid-checked-background-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    --form-check-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
+}
+
+@utility form-check {
+    width: var(--form-check-width);
+    height: var(--form-check-height);
+    margin-top: var(--form-check-margin-top);
+    vertical-align: var(--form-check-vertical-align);
+    background-color: var(--form-check-background-color);
+    background-repeat: var(--form-check-background-repeat);
+    background-position: var(--form-check-background-position);
+    background-size: var(--form-check-background-size);
+    border-width: var(--form-check-border-width);
+    border-style: var(--form-check-border-style);
+    border-color: var(--form-check-border-color);
+    forced-color-adjust: var(--form-check-color-adjust);
+    transition: var(--form-check-transition);
+    appearance: var(--form-check-appearance);
+    padding: var(--form-check-padding) !important;
+
+    @media (prefers-color-scheme: dark) {
+        color: var(--form-check-dark-color);
+        background-color: var(--form-check-dark-background-color);
+        border-color: var(--form-check-dark-border-color);
+    }
+
+    &[type="checkbox"] {
+        border-radius: var(--form-check-checkbox-border-radius);
+    }
+
+    &[type="radio"] {
+        border-radius: var(--form-check-radio-border-radius);
+    }
+
+    &:active {
+        filter: var(--form-check-active-filter);
+    }
+
+    &:focus {
+        border-color: var(--form-check-focus-border-color);
+        box-shadow: var(--form-check-focus-box-shadow);
+        outline: var(--form-check-focus-outline);
+    }
+
+    &:checked {
+        background-color: var(--form-check-checked-background-color);
+        border-color: var(--form-check-checked-border-color);
+
+        &[type="checkbox"] {
+            background-image: var(--form-check-checkbox-checked-background-image);
+        }
+
+        &[type="radio"] {
+            background-image: var(--form-check-radio-checked-background-image);
+        }
+    }
+
+    &[disabled]:not([readonly]),
+    &:disabled:not([readonly]) {
+        pointer-events: var(--form-check-disabled-pointer-events);
+        filter: var(--form-check-disabled-filter);
+        opacity: var(--form-check-disabled-opacity);
+
+        @media (prefers-color-scheme: dark) {
+            background-color: var(--form-check-disabled-dark-background-color);
+        }
+
+        ~ .form-check-label {
+            opacity: var(--form-check-disabled-label-opacity);
+        }
+    }
+
+    &.is-invalid,
+    &[invalid] {
+        border-color: var(--form-check-invalid-border-color);
+        background-color: var(--form-check-invalid-background-color);
+        color: var(--form-check-invalid-color);
+
+        &:checked {
+            background-color: var(--form-check-invalid-checked-background-color);
+        }
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--form-check-invalid-focus-box-shadow);
+        }
+    }
+
+    &.is-valid,
+    &[valid] {
+        border-color: var(--form-check-valid-border-color);
+        background-color: var(--form-check-valid-background-color);
+        color: var(--form-check-valid-color);
+
+        &:checked {
+            background-color: var(--form-check-valid-checked-background-color);
+        }
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--form-check-valid-focus-box-shadow);
+        }
+    }
+}
+
+@utility form-check-* {
+    font-size: --value(--form-font-size-*);
+}

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
-@import './src/css/sizes.css';
+/* @import './src/css/sizes.css'; */
 @import './src/css/form-control.css';
 @import './src/css/form-select.css';
+@import './src/css/form-check.css';
