@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@theme {
+    /* Form Switch Base Styles */
+    --form-switch-display: inline-flex;
+    --form-switch-position: relative;
+    --form-switch-outline: none;
+    --form-switch-appearance: none;
+    --form-switch-border-width: 1px;
+    --form-switch-border-style: solid;
+    --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
+    --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-switch-line-height: 1.5;
+    --form-switch-border-radius: calc(1em * var(--form-switch-line-height));
+    
+    /* Form Switch Dimensions */
+    --form-switch-padding-top: 0.15rem;
+    --form-switch-padding-bottom: 0.15rem;
+    --form-switch-padding-left: 0.35rem;
+    --form-switch-padding-right: 0.35rem;
+    --form-switch-font-size: 0.5rem;
+    --form-switch-width: calc((1em * var(--form-switch-line-height) + var(--form-switch-padding-top) + var(--form-switch-padding-bottom) + var(--form-switch-border-width) * 2) * 2);
+    --form-switch-height: calc(1em * var(--form-switch-line-height) + var(--form-switch-padding-top) + var(--form-switch-padding-bottom) + var(--form-switch-border-width) * 2);
+    
+    /* Form Switch Before Element (toggle circle) */
+    --form-switch-before-content: '';
+    --form-switch-before-position: absolute;
+    --form-switch-before-top: 50%;
+    --form-switch-before-left: 0;
+    --form-switch-before-width: 100%;
+    --form-switch-before-height: 100%;
+    --form-switch-before-display: block;
+    --form-switch-before-border-radius: 100%;
+    --form-switch-before-background-position: left center;
+    --form-switch-before-background-repeat: no-repeat;
+    --form-switch-before-transform: translateY(-50%);
+    --form-switch-before-transition: background-color .15s ease-in-out, background-position .15s ease-in-out;
+    
+    /* Form Switch Circle Images */
+    --form-switch-circle-default: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%236b7280'/%3e%3c/svg%3e");
+    --form-switch-circle-focus: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%233b82f6'/%3e%3c/svg%3e");
+    --form-switch-circle-checked: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
+    --form-switch-circle-invalid: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23dc2626'/%3e%3c/svg%3e");
+    --form-switch-circle-valid: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2316a34a'/%3e%3c/svg%3e");
+    
+    /* Form Switch States */
+    --form-switch-checked-background: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    --form-switch-checked-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    --form-switch-checked-before-position: right center;
+    
+    /* Form Switch Focus */
+    --form-switch-focus-border-color: var(--color-blue-300, oklch(78.5% 0.11 259.815));
+    --form-switch-focus-outline: 0;
+    --form-switch-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    
+    /* Form Switch Disabled */
+    --form-switch-disabled-pointer-events: none;
+    --form-switch-disabled-filter: none;
+    --form-switch-disabled-opacity: 0.5;
+    
+    /* Form Switch Invalid */
+    --form-switch-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
+    --form-switch-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
+    --form-switch-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
+    --form-switch-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
+    
+    /* Form Switch Valid */
+    --form-switch-valid-border-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    --form-switch-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
+    --form-switch-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    --form-switch-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
+    
+    /* Form Switch Label */
+    --form-switch-label-display: flex;
+    --form-switch-label-align-items: center;
+    --form-switch-label-gap: 0.5em;
+    
+    /* Generic positioning and display values */
+    --display-flex: flex;
+    --display-block: block;
+    --display-inline-flex: inline-flex;
+    --align-items-center: center;
+    --position-relative: relative;
+    --position-absolute: absolute;
+}
+
+@utility form-switch {
+    display: var(--form-switch-display);
+    position: var(--form-switch-position);
+    outline: var(--form-switch-outline);
+    appearance: var(--form-switch-appearance);
+    border-width: var(--form-switch-border-width);
+    border-style: var(--form-switch-border-style);
+    border-color: var(--form-switch-border-color);
+    border-radius: var(--form-switch-border-radius);
+    width: var(--form-switch-width);
+    height: var(--form-switch-height);
+    transition: var(--form-switch-transition);
+    
+    &::before {
+        content: var(--form-switch-before-content);
+        position: var(--form-switch-before-position);
+        top: var(--form-switch-before-top);
+        left: var(--form-switch-before-left);
+        width: var(--form-switch-before-width);
+        height: var(--form-switch-before-height);
+        display: var(--form-switch-before-display);
+        border-radius: var(--form-switch-before-border-radius);
+        background-position: var(--form-switch-before-background-position);
+        background-repeat: var(--form-switch-before-background-repeat);
+        background-image: var(--form-switch-circle-default);
+        transform: var(--form-switch-before-transform);
+        transition: var(--form-switch-before-transition);
+    }
+    
+    &:disabled:not([readonly]) {
+        pointer-events: var(--form-switch-disabled-pointer-events);
+        filter: var(--form-switch-disabled-filter);
+        opacity: var(--form-switch-disabled-opacity);
+    }
+    
+    &:focus {
+        border-color: var(--form-switch-focus-border-color);
+        outline: var(--form-switch-focus-outline);
+        box-shadow: var(--form-switch-focus-box-shadow);
+        
+        &::before {
+            background-image: var(--form-switch-circle-focus);
+        }
+    }
+    
+    &:checked {
+        background-color: var(--form-switch-checked-background);
+        border-color: var(--form-switch-checked-border-color);
+        
+        &::before {
+            background-position: var(--form-switch-checked-before-position);
+            background-image: var(--form-switch-circle-checked);
+        }
+    }
+    
+    &.is-invalid,
+    &[invalid] {
+        border-color: var(--form-switch-invalid-border-color);
+        background-color: var(--form-switch-invalid-background-color);
+        color: var(--form-switch-invalid-color);
+        
+        &::before {
+            background-image: var(--form-switch-circle-invalid);
+        }
+        
+        &:focus {
+            box-shadow: var(--form-switch-invalid-focus-box-shadow);
+        }
+    }
+    
+    &.is-valid,
+    &[valid] {
+        border-color: var(--form-switch-valid-border-color);
+        background-color: var(--form-switch-valid-background-color);
+        color: var(--form-switch-valid-color);
+        
+        &::before {
+            background-image: var(--form-switch-circle-valid);
+        }
+        
+        &:focus {
+            box-shadow: var(--form-switch-valid-focus-box-shadow);
+        }
+    }
+}
+
+@utility form-switch-* {
+    padding: --value(--form-padding-*);
+    font-size: --value(--form-font-size-*);
+}
+
+@utility light-switch-field {
+    &.is-invalid,
+    &[invalid] {
+        label,
+        .invalid-feedback {
+            color: var(--form-switch-invalid-color);
+        }
+    }
+    
+    &.is-valid,
+    &[valid] {
+        label,
+        .valid-feedback {
+            color: var(--form-switch-valid-color);
+        }
+    }
+}
+
+@utility form-switch-label {
+    display: var(--form-switch-label-display);
+    align-items: var(--form-switch-label-align-items);
+    gap: var(--form-switch-label-gap);
+    
+    &:has(:disabled:not([readonly])) {
+        opacity: var(--form-switch-disabled-opacity);
+    }
+    
+    &:has(.is-invalid),
+    &:has([invalid]) {
+        color: var(--form-switch-invalid-color);
+    }
+    
+    &:has(.is-valid),
+    &:has([valid]) {
+        color: var(--form-switch-valid-color);
+    }
+}
+
+@utility invalid-feedback {
+    color: var(--form-switch-invalid-color);
+    display: var(--display-none);
+    
+    .is-invalid ~ &,
+    [invalid] ~ &,
+    :has(.is-invalid) &,
+    :has([invalid]) & {
+        display: var(--display-block);
+    }
+}
+
+@utility valid-feedback {
+    color: var(--form-switch-valid-color);
+    display: var(--display-none);
+    
+    .is-valid ~ &,
+    [valid] ~ &,
+    :has(.is-valid) &,
+    :has([valid]) & {
+        display: var(--display-block);
+    }
+}

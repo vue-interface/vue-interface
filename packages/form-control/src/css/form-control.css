@@ -322,26 +322,13 @@
 }
 
 @utility form-switch-light-dark {
-    padding: var(--form-switch-padding-y) var(--form-switch-padding-x);
-    font-size: var(--form-switch-font-size);
-    border-radius: var(--form-switch-border-radius);
+    /*NOTE: Possibly move this to form-switch.css*/
     border: var(--form-switch-border-width) var(--form-switch-border-style) var(--form-switch-border-color);
     background-color: var(--form-switch-light-bg);
     appearance: var(--form-switch-appearance);
     cursor: var(--form-switch-cursor);
     position: var(--position-relative);
-    line-height: var(--form-switch-line-height);
-    
-    &::before {
-      content: var(--form-switch-before-content);
-      display: var(--display-inline-block);
-      width: var(--form-switch-before-size);
-      height: var(--form-switch-before-size);
-      background-repeat: var(--form-switch-before-background-repeat);
-      background-position: var(--form-switch-before-background-position);
-      background-size: var(--form-switch-before-background-size);
-      background-image: var(--form-switch-sun-bg);
-    }
+    line-height: var(--form-switch-line-height); 
   
     &:focus::before {
       background-image: var(--form-switch-sun-bg-focus);
