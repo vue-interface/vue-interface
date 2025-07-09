@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import "./sizes.css";
+@import "./validation.css";
 
 @theme {
     --form-check-width: 1.25em;
@@ -51,19 +52,9 @@
     --form-check-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
     --form-check-disabled-label-opacity: 0.5;
 
-    /* Invalid state */
-    --form-check-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-check-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
-    --form-check-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-check-invalid-checked-background-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-check-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
-
-    /* Valid state */
-    --form-check-valid-border-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-check-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
-    --form-check-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+    /* Invalid/Valid state */
+    --form-check-invalid-checked-background-color: var(--color-red-600, oklch(57.7% 0.245 27.325));    
     --form-check-valid-checked-background-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-check-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
 }
 
 @utility form-check {
@@ -83,7 +74,7 @@
     appearance: var(--form-check-appearance);
     padding: var(--form-check-padding) !important;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: var(--form-check-dark-color);
         background-color: var(--form-check-dark-background-color);
         border-color: var(--form-check-dark-border-color);
@@ -126,7 +117,7 @@
         filter: var(--form-check-disabled-filter);
         opacity: var(--form-check-disabled-opacity);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             background-color: var(--form-check-disabled-dark-background-color);
         }
 
@@ -137,9 +128,9 @@
 
     &.is-invalid,
     &[invalid] {
-        border-color: var(--form-check-invalid-border-color);
-        background-color: var(--form-check-invalid-background-color);
-        color: var(--form-check-invalid-color);
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
 
         &:checked {
             background-color: var(--form-check-invalid-checked-background-color);
@@ -147,15 +138,15 @@
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-check-invalid-focus-box-shadow);
+            box-shadow: var(--invalid-box-shadow);
         }
     }
 
     &.is-valid,
     &[valid] {
-        border-color: var(--form-check-valid-border-color);
-        background-color: var(--form-check-valid-background-color);
-        color: var(--form-check-valid-color);
+        border-color: var(--valid-border-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
 
         &:checked {
             background-color: var(--form-check-valid-checked-background-color);
@@ -163,7 +154,7 @@
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-check-valid-focus-box-shadow);
+            box-shadow: var(--valid-box-shadow);
         }
     }
 }

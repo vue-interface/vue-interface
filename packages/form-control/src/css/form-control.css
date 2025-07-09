@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 @import "./sizes.css";
-
+@import "./validation.css";
 
 @theme {
-    /* Base form control styles */
     --form-control-display: flex;
     --form-control-width: 100%;
-    --form-control-font-family: inherit;
+    --form-control-font: inherit;
     --form-control-font-weight: 400;
     --form-control-line-height: 1.5;
     --form-control-background-color: inherit;
+    --form-control-background-repeat: no-repeat;
+    --form-control-background-size: 1.25em;
+    --form-control-background-position: right calc(1.5 * 1em + 0.375rem + 0.357rem / 4) center;
     --form-control-border-width: 1px;
     --form-control-border-style: solid;
     --form-control-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
-    --form-control-border-radius: 0.375rem;
+    --form-control-border-radius: 0.25rem;
     --form-control-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     --form-control-appearance: none;
     --form-control-padding-x: 0.75rem;
@@ -25,6 +27,8 @@
     --form-control-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
     --form-control-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
 
+    --form-control-focus-dark-background-color: var(--color-neutral-700, oklch(20.5% 0 0));
+    
     /* Focus state */
     --form-control-focus-color: inherit;
     --form-control-focus-background-color: inherit;
@@ -36,7 +40,6 @@
     /* Placeholder */
     --form-control-placeholder-color: var(--color-neutral-400, oklch(70.8% 0 0));
     --form-control-placeholder-opacity: 1;
-    --form-control-placeholder-dark-color: var(--color-neutral-400, oklch(70.8% 0 0));
 
     /* Disabled state */
     --form-control-disabled-color: var(--color-neutral-400, oklch(70.8% 0 0));
@@ -47,88 +50,16 @@
     --form-control-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
     --form-control-disabled-dark-border-color: var(--color-neutral-700, oklch(20.5% 0 0));
 
-    /* Invalid state */
-    --form-control-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-control-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
-    --form-control-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-control-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
-    --form-control-invalid-background-repeat: no-repeat;
-    --form-control-invalid-background-size: 1.25em;
-    --form-control-invalid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc2626'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc2626' stroke='none'/%3e%3c/svg%3e");
-    --form-control-invalid-background-position: right calc((var(--form-control-line-height) * 1em + var(--form-control-padding-y) + var(--form-control-padding-y)) / 4) center;
-
-    /* Valid state */
-    --form-control-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-control-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
-    --form-control-valid-border-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-control-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
-    --form-control-valid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2316a34a' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
-    --form-control-valid-background-repeat: no-repeat;
-    --form-control-valid-background-position: right calc((var(--form-control-line-height) * 1em + var(--form-control-padding-y) + var(--form-control-padding-y)) / 4) center;
-    --form-control-valid-background-size: 1.25em;
-
     /* Form control color specific */
     --form-control-color-width: 3rem;
     --form-control-color-height: calc(1.5em + var(--form-control-padding-y) + var(--form-control-padding-y) + var(--form-control-border-width) + var(--form-control-border-width));
     --form-control-color-padding: 0.375rem;
 
-    /* Form group positioning */
-    --form-group-inner-icon-size: 1.25em;
-    --form-group-inner-icon-left: 0.5em;
-    --form-group-inner-control-padding-left: 2em;
 
-    /* Input field font size */
-    --input-field-font-size: inherit;
-
-    /* Textarea specific positioning */
-    --textarea-icon-top-position: var(--form-group-inner-icon-left);
-    --textarea-icon-transform: none;
-
-    /* Generic positioning values */
-    --position-relative: relative;
-    --position-absolute: absolute;
-    --position-top-50: 50%;
-    --position-right-0: 0;
-    --transform-translate-y-50: translateY(-50%);
-    --display-flex: flex;
-    --align-items-center: center;
-    --justify-content-center: center;
-    --display-inline-block: inline-block;
-    --display-block: block;
-    --display-none: none;
-
-    /*DarK-Light mode toggle*/
-    --form-switch-padding-x: 0.75rem;
-    --form-switch-padding-y: 0.375rem;
-    --form-switch-font-size: 2rem;
-    --form-switch-border-radius: 0.25rem;
-    --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
-    --form-switch-border-width: 1px;
-    --form-switch-border-style: solid;
-
-    --form-switch-light-bg: transparent;
-    --form-switch-dark-bg: transparent;
-
-    --form-switch-before-size: 1.25em;
-    --form-switch-appearance: none;
-    --form-switch-cursor: pointer;
-    --form-switch-line-height: 1;
-    --form-switch-before-content: '';
-    --form-switch-before-background-repeat: no-repeat;
-    --form-switch-before-background-position: center;
-    --form-switch-before-background-size: contain;
-    --form-switch-sun-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNlYTU4MGM7IHN0cm9rZTogI2VhNTgwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
-
-    --form-switch-sun-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNjMjQxMGM7IHN0cm9rZTogI2MyNDEwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
-
-    --form-switch-moon-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzdlMjJjZScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
-
-    --form-switch-moon-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzZiMjFhOCcgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
     
     /* Plaintext */
     --form-control-plaintext-display: block;
     --form-control-plaintext-color: inherit;
-    --form-control-plaintext-line-height: 1.5;
     --form-control-plaintext-background: transparent;
     --form-control-plaintext-cursor: default;
     --form-control-plaintext-border: none;
@@ -142,7 +73,7 @@
 @utility form-control {
     display: var(--form-control-display);
     width: var(--form-control-width);
-    font-family: var(--form-control-font-family);
+    font-family: var(--form-control-font);
     font-weight: var(--form-control-font-weight);
     line-height: var(--form-control-line-height);
     background-color: var(--form-control-background-color);
@@ -169,16 +100,13 @@
 
         .dark & {
             border-color: var(--form-control-focus-dark-border-color);
+            background-color: var(--form-control-focus-dark-background-color);
         }
     }
 
     &::placeholder {
         color: var(--form-control-placeholder-color);
         opacity: var(--form-control-placeholder-opacity);
-
-        .dark & {
-            color: var(--form-control-placeholder-dark-color);
-        }
     }
 
     &:disabled:not([readonly]) {
@@ -196,33 +124,37 @@
 
     &.is-invalid,
     &[invalid] {
-        border-color: var(--form-control-invalid-border-color);
-        background-color: var(--form-control-invalid-background-color);
-        color: var(--form-control-invalid-color);
-        background-image: var(--form-control-invalid-background-image);
-        background-repeat: var(--form-control-invalid-background-repeat);
-        background-position: var(--form-control-invalid-background-position);
-        background-size: var(--form-control-invalid-background-size);
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
+        background-image: var(--invalid-background-image);
+        background-repeat: var(--form-control-background-repeat);
+        background-position: var(--form-control-background-position);
+        background-size: var(--form-control-background-size);
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-control-invalid-focus-box-shadow);
+            box-shadow: var(--invalid-box-shadow);
+            border-color: var(--invalid-color);
+            background-color: var(--invalid-background-color);
         }
     }
 
     &.is-valid,
     &[valid] {
-        border-color: var(--form-control-valid-border-color);
-        background-color: var(--form-control-valid-background-color);
-        color: var(--form-control-valid-color);
-        background-image: var(--form-control-valid-background-image);
-        background-repeat: var(--form-control-valid-background-repeat);
-        background-position: var(--form-control-valid-background-position);
-        background-size: var(--form-control-valid-background-size);
+        border-color: var(--valid-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
+        background-image: var(--valid-background-image);
+        background-repeat: var(--form-control-background-repeat);
+        background-position: var(--form-control-background-position);
+        background-size: var(--form-control-background-size);
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-control-valid-focus-box-shadow);
+            box-shadow: var(--valid-box-shadow);
+            border-color: var(--valid-color);
+            background-color: var(--valid-background-color);
         }
     }
 }
@@ -248,142 +180,6 @@
     }
 }
 
-@utility input-field {
-    @apply form-control;
-    font-size: var(--input-field-font-size);
-
-    &.is-invalid,
-    &[invalid] {
-        label,
-        .invalid-feedback {
-            color: var(--form-control-invalid-color);
-        }
-    }
-
-    &.is-valid,
-    &[valid] {
-        label,
-        .valid-feedback {
-            color: var(--form-control-valid-color);
-        }
-    }
-}
-
-@utility textarea-field {
-    @apply input-field;
-}
-
-@utility form-group-inner {
-    position: var(--position-relative);
-
-    &:has(> .form-group-inner-icon) .form-control {
-        padding-left: var(--form-group-inner-control-padding-left);
-    }
-}
-
-@utility form-group-inner-icon {
-    position: var(--position-absolute);
-    top: var(--position-top-50);
-    left: var(--form-group-inner-icon-left);
-    width: var(--form-group-inner-icon-size);
-    font-size: var(--input-field-font-size);
-    transform: var(--transform-translate-y-50);
-    display: var(--display-flex);
-    align-items: var(--align-items-center);
-    justify-content: var(--justify-content-center);
-
-    .textarea-field & {
-        top: var(--textarea-icon-top-position);
-        transform: var(--textarea-icon-transform);
-    }
-}
-
-@utility invalid-feedback {
-    color: var(--form-control-invalid-color);
-    display: var(--display-none);
-
-    .is-invalid ~ &,
-    [invalid] ~ &,
-    :has(.is-invalid) &,
-    :has([invalid]) & {
-        display: var(--display-block);
-    }
-}
-
-@utility valid-feedback {
-    color: var(--form-control-valid-color);
-    display: var(--display-none);
-
-    .is-valid ~ &,
-    [valid] ~ &,
-    :has(.is-valid) &,
-    :has([valid]) & {
-        display: var(--display-block);
-    }
-}
-
-@utility form-switch-light-dark {
-    /*NOTE: Possibly move this to form-switch.css*/
-    display: inline-flex;
-    position: relative;
-    outline: none;
-    appearance: none;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
-    border-radius: calc(1em * 1.5);
-    width: calc((1em * 1.5 + 0.15 + 0.15 + 1px * 2) * 2);
-    height: calc(1em * 1.5 + 0.15 + 0.15 + 1px * 2);
-    transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    
-    border: var(--form-switch-border-width) var(--form-switch-border-style) var(--form-switch-border-color);
-    background-color: var(--form-switch-light-bg);
-    appearance: var(--form-switch-appearance);
-    cursor: var(--form-switch-cursor);
-
-    line-height: var(--form-switch-line-height); 
-  
-    &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 100%;
-        background-position: left center;
-        background-repeat: no-repeat;
-        background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNlYTU4MGM7IHN0cm9rZTogI2VhNTgwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
-        transform: translateY(-50%);
-        transition: background-color .15s ease-in-out, background-position .15s ease-in-out;
-    }
-    
-    &:focus {
-     
-        &::before {
-            background-image: var(--form-switch-sun-bg-focus);
-        }
-    }
-  
-    &:checked {
-      background-color: var(--form-switch-dark-bg);
-      border-color: var(--form-switch-border-color);
-    }
-  
-    &:checked::before {
-      background-image: var(--form-switch-moon-bg);
-    }
-  
-    &:checked:focus::before {
-      background-image: var(--form-switch-moon-bg-focus);
-    }
-  
-    .dark .form-control {
-      border-color: var(--form-control-dark-border-color);
-    }
-}
-
 @utility form-control-plaintext {
     display: var(--form-control-plaintext-display);
     width: var(--form-control-width);
@@ -394,7 +190,7 @@
     cursor: var(--form-control-plaintext-cursor);
     padding: var(--form-control-padding-y) var(--form-control-padding-x);
     padding-left: var(--form-control-plaintext-padding-left);
-    padding-right: var(--orm-control-plaintext-padding-right);
+    padding-right: var(--form-control-plaintext-padding-right);
     font-size: var(--form-control-plaintext-font-size);
     border-radius: var(--form-control-plaintext-border-radius);
 }

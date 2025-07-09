@@ -3,7 +3,6 @@
 @import "./sizes.css";
 
 @theme {
-    /* Base form select styles */
     --form-select-display: flex;
     --form-select-width: 100%;
     --form-select-font-family: inherit;
@@ -66,44 +65,25 @@
     --form-select-moz-focusring-color: transparent;
     --form-select-moz-focusring-text-shadow: 0 0 0 var(--color-gray-800, oklch(31.8% 0.014 256.848));
 
-    /* Invalid state */
-    --form-select-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-select-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
-    --form-select-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-select-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
-    --form-select-invalid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc2626'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc2626' stroke='none'/%3e%3c/svg%3e");
-    --form-select-invalid-background-repeat: no-repeat;
-    --form-select-invalid-background-position: right calc((var(--form-select-line-height) * 1em + var(--form-select-padding-x) * 2) / 4) center;
-    --form-select-invalid-background-size: 1.25em;
-
-    /* Valid state */
-    --form-select-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-select-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
-    --form-select-valid-border-color: var(--color-green-600, oklch(63.199% 0.18596 147.388));
-    --form-select-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
-    --form-select-valid-background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2316a34a' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
-    --form-select-valid-background-repeat: no-repeat;
-    --form-select-valid-background-position: right calc((var(--form-select-line-height) * 1em + var(--form-select-padding-x) * 2) / 4) center;
-    --form-select-valid-background-size: 1.25em;
-
-    /* Select field font size */
-    --select-field-font-size: inherit;
+    /* Invalid/Valid state */
+    --form-select-validation-background-size: 1.25em;
+    --form-select-validation-background-position: right calc((var(--form-select-line-height) * 1em + var(--form-select-padding-x) * 2) / 4) center;
 
     /* Plaintext Styles */
     --form-select-plaintext-display: block;
     --form-select-plaintext-outline: none;    
-    --form-select-plaintext-background-image: none; 
     --form-select-plaintext-border: none;
     --form-select-plaintext-color: inherit;
+    --form-select-plaintext-cursor: default;
     --form-select-plaintext-color-focus-dark: inherit;    
     --form-select-plaintext-color-disabled: var(--color-neutral-600, oklch(43.9% 0 0));
     --form-select-plaintext-color-disabled-dark: var(--color-neutral-400, oklch(70.8% 0 0));    
     --form-select-plaintext-padding-left: 0em !important;
-    --form-select-plaintext-padding-right: 0em !important; 
-    --form-select-plaintext-cursor: default;
+    --form-select-plaintext-padding-right: 0em !important;
+    --form-select-plaintext-background-image: none;     
     --form-select-plaintext-background-color-dark: inherit;
-    --form-select-plaintext-background-color-focus-dark: var(--color-neutral-800, oklch(26.9% 0 0));    
     --form-select-plaintext-box-shadow-focus: none;
+    --form-select-plaintext-background-color-focus-dark: var(--color-neutral-800, oklch(26.9% 0 0));
 }
 
 @utility form-select {
@@ -128,7 +108,7 @@
     appearance: var(--form-select-appearance);
     opacity: var(--form-select-opacity);
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: var(--form-select-dark-color);
         background-color: var(--form-select-dark-background-color);
         border-color: var(--form-select-dark-border-color);
@@ -142,7 +122,7 @@
         outline: var(--form-select-focus-outline);
         box-shadow: var(--form-select-focus-box-shadow);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-select-focus-dark-color);
             background-color: var(--form-select-focus-dark-background-color);            
             border-color: var(--form-select-focus-dark-border-color);
@@ -153,7 +133,7 @@
         color: var(--form-select-ms-value-color);
         background-color: var(--form-select-ms-value-background-color);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-select-ms-value-dark-color);
             background-color: var(--form-select-ms-value-dark-background-color);
         }
@@ -170,7 +150,7 @@
         border-color: var(--form-select-disabled-border-color);
         color: var(--form-select-disabled-color);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-select-disabled-dark-color);
             background-color: var(--form-select-disabled-dark-background-color);
             border-color: var(--form-select-disabled-dark-border-color);
@@ -184,33 +164,39 @@
 
     &.is-invalid,
     &[invalid] {
-        border-color: var(--form-select-invalid-border-color);
-        background-color: var(--form-select-invalid-background-color);
-        color: var(--form-select-invalid-color);
-        background-image: var(--form-select-invalid-background-image);
-        background-repeat: var(--form-select-invalid-background-repeat);
-        background-position: var(--form-select-invalid-background-position);
-        background-size: var(--form-select-invalid-background-size);
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
+        background-image: var(--invalid-background-image);
+        background-repeat: var(--form-select-background-repeat);
+        background-position: var(--form-select-validation-background-position);
+        background-size: var(--form-select-validation-background-size);
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-select-invalid-focus-box-shadow);
+            box-shadow: var(--invalid-box-shadow);
+            border-color: var(--invalid-color);
+            color: var(--invalid-color);
+            background-color: var(--invalid-background-color);
         }
     }
 
     &.is-valid,
     &[valid] {
-        border-color: var(--form-select-valid-border-color);
-        background-color: var(--form-select-valid-background-color);
-        color: var(--form-select-valid-color);
-        background-image: var(--form-select-valid-background-image);
-        background-repeat: var(--form-select-valid-background-repeat);
-        background-position: var(--form-select-valid-background-position);
-        background-size: var(--form-select-valid-background-size);
+        border-color: var(--valid-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
+        background-image: var(--valid-background-image);
+        background-repeat: var(--form-select-background-repeat);
+        background-position: var(--form-select-validation-background-position);
+        background-size: var(--form-select-validation-background-size);
 
         &:focus,
         &.focus {
-            box-shadow: var(--form-select-valid-focus-box-shadow);
+            box-shadow: var(--valid-box-shadow);
+            border-color: var(--valid-color);
+            color: var(--valid-color);
+            background-color: var(--valid-background-color);
         }
     }
 }
@@ -233,14 +219,14 @@
     padding-right: var(--form-select-plaintext-padding-right);  
     cursor: var(--form-select-plaintext-cursor);
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         background-color: var(--form-select-plaintext-background-color-dark);
     }
 
     &:focus {
         box-shadow: var(--form-select-plaintext-box-shadow-focus);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-select-plaintext-color-focus-dark);
             background-color: var(--form-select-plaintext-background-color-focus-dark);
         }
@@ -249,7 +235,7 @@
     &:disabled {
         color: var(--form-select-plaintext-color-disabled);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-select-plaintext-color-disabled-dark);
         }
     }

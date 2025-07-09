@@ -1,23 +1,19 @@
 @import "tailwindcss";
 
+@import "./validation.css";
+
 @theme {
-    /* Form Switch Base Styles */
     --form-switch-display: inline-flex;
     --form-switch-position: relative;
     --form-switch-outline: none;
     --form-switch-appearance: none;
     --form-switch-border-width: 1px;
     --form-switch-border-style: solid;
+    --form-switch-border-radius: calc(1em * 1.5);   
     --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
     --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    --form-switch-line-height: 1.5;
-    --form-switch-border-radius: calc(1em * 1.5);
-    
-    /* Form Switch Dimensions */
+
     --form-switch-padding: 0.15rem 0.35;
-    --form-switch-padding-bottom: 0.15rem;
-    --form-switch-padding-left: 0.35rem;
-    --form-switch-padding-right: 0.35rem;
     --form-switch-font-size: 0.7rem;
     --form-switch-width: calc((1em * 1.5 + 0px + 0px + 1px * 2) * 2);
     --form-switch-height: calc(1em * 1.5 + 0px + 0px + 1px * 2);
@@ -57,31 +53,21 @@
     --form-switch-disabled-pointer-events: none;
     --form-switch-disabled-filter: none;
     --form-switch-disabled-opacity: 0.5;
-    
-    /* Form Switch Invalid */
-    --form-switch-invalid-border-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-switch-invalid-background-color: color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 10%, transparent);
-    --form-switch-invalid-color: var(--color-red-600, oklch(57.7% 0.245 27.325));
-    --form-switch-invalid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-red-600, oklch(57.7% 0.245 27.325)) 50%, transparent);
-    
-    /* Form Switch Valid */
-    --form-switch-valid-border-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-switch-valid-background-color: color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 10%, transparent);
-    --form-switch-valid-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
-    --form-switch-valid-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-green-600, oklch(62.7% 0.194 149.214)) 50%, transparent);
-    
-    /* Form Switch Label */
-    --form-switch-label-display: flex;
-    --form-switch-label-align-items: center;
-    --form-switch-label-gap: 0.5em;
-    
-    /* Generic positioning and display values */
-    --display-flex: flex;
-    --display-block: block;
-    --display-inline-flex: inline-flex;
-    --align-items-center: center;
-    --position-relative: relative;
-    --position-absolute: absolute;
+
+    /*Dark-Light mode toggle*/
+    --form-switch-dark-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --form-switch-dark-bg: transparent;
+
+    --form-switch-sun-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNlYTU4MGM7IHN0cm9rZTogI2VhNTgwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
+    --form-switch-sun-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNjMjQxMGM7IHN0cm9rZTogI2MyNDEwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
+
+    --form-switch-moon-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzdlMjJjZScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
+    --form-switch-moon-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzZiMjFhOCcgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
+}
+
+@utility form-switch-* {
+    padding: --value(--form-padding-*);
+    font-size: --value(--form-font-size-*);
 }
 
 @utility form-switch {
@@ -143,31 +129,31 @@
     
     &.is-invalid,
     &[invalid] {
-        border-color: var(--form-switch-invalid-border-color);
-        background-color: var(--form-switch-invalid-background-color);
-        color: var(--form-switch-invalid-color);
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
         
         &::before {
             background-image: var(--form-switch-circle-invalid);
         }
         
         &:focus {
-            box-shadow: var(--form-switch-invalid-focus-box-shadow);
+            box-shadow: var(--invalid-box-shadow);
         }
     }
     
     &.is-valid,
     &[valid] {
-        border-color: var(--form-switch-valid-border-color);
-        background-color: var(--form-switch-valid-background-color);
-        color: var(--form-switch-valid-color);
+        border-color: var(--valid-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
         
         &::before {
             background-image: var(--form-switch-circle-valid);
         }
         
         &:focus {
-            box-shadow: var(--form-switch-valid-focus-box-shadow);
+            box-shadow: var(--valid-box-shadow);
         }
     }
 }
@@ -176,31 +162,31 @@ label:has(> .form-switch:disabled:not([readonly])) {
     opacity: var(--form-switch-disabled-opacity);
 }
 
-@utility form-switch-* {
-    padding: --value(--form-padding-*);
-    font-size: --value(--form-font-size-*);
-}
-
-@utility invalid-feedback {
-    color: var(--form-switch-invalid-color);
-    display: var(--display-none);
-    
-    .is-invalid ~ &,
-    [invalid] ~ &,
-    :has(.is-invalid) &,
-    :has([invalid]) & {
-        display: var(--display-block);
+@utility form-switch-light-dark {
+    &::before {
+        background-image: var(--form-switch-sun-bg);
     }
-}
-
-@utility valid-feedback {
-    color: var(--form-switch-valid-color);
-    display: var(--display-none);
     
-    .is-valid ~ &,
-    [valid] ~ &,
-    :has(.is-valid) &,
-    :has([valid]) & {
-        display: var(--display-block);
+    &:focus {
+        &::before {
+            background-image: var(--form-switch-sun-bg-focus);
+        }
+    }
+  
+    &:checked {
+      background-color: var(--form-switch-dark-bg);
+      border-color: var(--form-switch-border-color);
+    }
+  
+    &:checked::before {
+      background-image: var(--form-switch-moon-bg);
+    }
+  
+    &:checked:focus::before {
+      background-image: var(--form-switch-moon-bg-focus);
+    }
+  
+    .dark & {
+      border-color: var(--form-switch-dark-border-color);
     }
 }

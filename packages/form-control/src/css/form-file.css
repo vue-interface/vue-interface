@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-    /* Form file base styles */
     --form-file-position: relative;
     --form-file-width: 100%;
     --form-file-line-height: 1.5;
@@ -10,9 +9,9 @@
     --form-file-padding-left: 0.75rem;
     --form-file-padding-right: 0.75rem;
     --form-file-border-width: 1px;
-    --form-file-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
     --form-file-border-style: solid;
     --from-file-border-radius: inherit;
+    --form-file-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
     
     --form-file-focus-box-shadow: 0 0 0 0.2rem color-mix(in oklch, var(--color-blue-500, oklch(62.3% 0.214 259.815)) 40%, transparent);
     
@@ -20,19 +19,20 @@
     --form-file-dark-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
     --form-file-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
     --form-file-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+
     --form-file-dark-disabled-color: var(--color-neutral-600, oklch(43.9% 0 0));
     --form-file-dark-disabled-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
     --form-file-dark-disabled-border-color: var(--color-neutral-700, oklch(20.5% 0 0));
+    
     --form-file-dark-focus-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
     --form-file-dark-focus-box-shadow: 0 0 0 0.2rem color-mix(in oklch, var(--color-blue-400, oklch(62.3% 0.214 259.815)) 50%, transparent);
 
     /* form-file-input */
-    --form-file-input-height: calc(1.5 * 1.5em + .375rem + .375rem + 1px * 2);
     --form-file-input-margin: 0;
     --form-file-input-opacity: 0; 
-    --form-file-input-z-index: 2;
+    --form-file-input-z-index: 2;    
     --form-file-input-position: relative;
-
+    --form-file-input-height: calc(1.5 * 1.5em + .375rem + .375rem + 1px * 2);
     --form-file-input-focus-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
 
     --form-file-input-disabled-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
@@ -92,7 +92,7 @@
         box-shadow: var(--form-file-focus-box-shadow);
         border-color: var(--form-file-input-focus-border-color);
 
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-file-dark-color);
             background-color: var(--form-file-dark-background-color);
             border-color: var(--form-file-dark-focus-border-color);
@@ -104,7 +104,7 @@
         border-color: var(--form-file-input-disabled-border-color);
         background-color: var(--form-file-input-didabled-background-color);
         
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-file-dark-disabled-color);
             background-color: var(--form-file-dark-disabled-background-color);
             border-color: var(--form-file-dark-disabled-border-color);
@@ -115,7 +115,7 @@
         border-color: var(--form-file-input-disabled-border-color);
         background-color: var(--form-file-input-didabled-background-color);
         
-        @media (prefers-color-scheme: dark) {
+        .dark & {
             color: var(--form-file-dark-disabled-color);
             background-color: var(--form-file-dark-disabled-background-color);
             border-color: var(--form-file-dark-disabled-border-color);
@@ -136,7 +136,7 @@
     border-radius: var(--form-file-label-border-radius);
     box-shadow: var(--form-file-label-box-shadow);
     
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: var(--form-file-dark-color);
         background-color: var(--form-file-dark-background-color);
         border-color: var(--form-file-dark-border-color);
@@ -163,7 +163,7 @@
     border-top-left-radius: var(--from-file-border-radius);
     border-bottom-left-radius: var(--from-file-border-radius);
     
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: var(--form-file-text-dark-color);
         background-color: var(--form-file-dark-background-color);
         border-color: var(--form-file-dark-border-color);
@@ -186,7 +186,7 @@
     border-top-right-radius: var(--from-file-border-radius);
     border-bottom-right-radius: var(--from-file-border-radius);
     
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: var(--form-file-dark-color);
         background-color: var(--form-file-dark-background-color);
         border-color: var(--form-file-dark-border-color);
