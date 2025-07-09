@@ -12,7 +12,7 @@
     --form-control-background-color: inherit;
     --form-control-background-repeat: no-repeat;
     --form-control-background-size: 1.25em;
-    --form-control-background-position: right calc(1.5 * 1em + 0.375rem + 0.357rem / 4) center;
+    --form-control-background-position: right calc((1.5 * 1em + .375rem + .375rem) / 4) center;
     --form-control-border-width: 1px;
     --form-control-border-style: solid;
     --form-control-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
@@ -55,8 +55,6 @@
     --form-control-color-height: calc(1.5em + var(--form-control-padding-y) + var(--form-control-padding-y) + var(--form-control-border-width) + var(--form-control-border-width));
     --form-control-color-padding: 0.375rem;
 
-
-    
     /* Plaintext */
     --form-control-plaintext-display: block;
     --form-control-plaintext-color: inherit;
