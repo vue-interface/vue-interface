@@ -24,7 +24,7 @@
                 <div class="container mx-auto py-4 flex flex-col gap-12">
                     <div class="flex items-center gap-2">
                         <label class="form-label">Light</label>
-                        <input v-model="dark" type="checkbox" class="form-switch form-switch-light-dark" />
+                        <input v-model="dark" type="checkbox" class="form-switch form-switch-2xl form-switch-light-dark" />
                         <label class="form-label">Dark</label>
                     </div>
 
@@ -469,8 +469,8 @@
 
                         <div>
                             <div>
-                                <label class="flex gap-2"><input type="checkbox" class="form-switch" invalid> Invalid</label>
-                                <label class="flex gap-2"><input type="checkbox" class="form-switch" checked invalid> Invalid</label>
+                                <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-switch" invalid> Invalid</label>
+                                <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-switch" checked invalid> Invalid</label>
                                 <div class="invalid-feedback">This is an inline error.</div>
                             </div>
                             <div class="invalid-feedback">This is an inline error.</div>
@@ -481,8 +481,8 @@
 
                         <div>
                             <div>
-                                <label class="flex gap-2"><input type="checkbox" class="form-switch" valid> Valid</label>
-                                <label class="flex gap-2"><input type="checkbox" class="form-switch" checked valid> Valid</label>
+                                <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-switch" valid> Valid</label>
+                                <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-switch" checked valid> Valid</label>
                                 <div class="valid-feedback">This is an inline sucess message.</div>
                             </div>
                             <div class="valid-feedback">This is an inline sucess message.</div>

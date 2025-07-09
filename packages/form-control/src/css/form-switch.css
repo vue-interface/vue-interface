@@ -11,16 +11,16 @@
     --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
     --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     --form-switch-line-height: 1.5;
-    --form-switch-border-radius: calc(1em * var(--form-switch-line-height));
+    --form-switch-border-radius: calc(1em * 1.5);
     
     /* Form Switch Dimensions */
-    --form-switch-padding-top: 0.15rem;
+    --form-switch-padding: 0.15rem 0.35;
     --form-switch-padding-bottom: 0.15rem;
     --form-switch-padding-left: 0.35rem;
     --form-switch-padding-right: 0.35rem;
-    --form-switch-font-size: 0.5rem;
-    --form-switch-width: calc((1em * var(--form-switch-line-height) + var(--form-switch-padding-top) + var(--form-switch-padding-bottom) + var(--form-switch-border-width) * 2) * 2);
-    --form-switch-height: calc(1em * var(--form-switch-line-height) + var(--form-switch-padding-top) + var(--form-switch-padding-bottom) + var(--form-switch-border-width) * 2);
+    --form-switch-font-size: 0.7rem;
+    --form-switch-width: calc((1em * 1.5 + 0px + 0px + 1px * 2) * 2);
+    --form-switch-height: calc(1em * 1.5 + 0px + 0px + 1px * 2);
     
     /* Form Switch Before Element (toggle circle) */
     --form-switch-before-content: '';
@@ -88,6 +88,8 @@
     display: var(--form-switch-display);
     position: var(--form-switch-position);
     outline: var(--form-switch-outline);
+    padding: var(--form-switch-padding);
+    font-size: var(--form-switch-font-size);
     appearance: var(--form-switch-appearance);
     border-width: var(--form-switch-border-width);
     border-style: var(--form-switch-border-style);
@@ -170,47 +172,13 @@
     }
 }
 
+label:has(> .form-switch:disabled:not([readonly])) {
+    opacity: var(--form-switch-disabled-opacity);
+}
+
 @utility form-switch-* {
     padding: --value(--form-padding-*);
     font-size: --value(--form-font-size-*);
-}
-
-@utility light-switch-field {
-    &.is-invalid,
-    &[invalid] {
-        label,
-        .invalid-feedback {
-            color: var(--form-switch-invalid-color);
-        }
-    }
-    
-    &.is-valid,
-    &[valid] {
-        label,
-        .valid-feedback {
-            color: var(--form-switch-valid-color);
-        }
-    }
-}
-
-@utility form-switch-label {
-    display: var(--form-switch-label-display);
-    align-items: var(--form-switch-label-align-items);
-    gap: var(--form-switch-label-gap);
-    
-    &:has(:disabled:not([readonly])) {
-        opacity: var(--form-switch-disabled-opacity);
-    }
-    
-    &:has(.is-invalid),
-    &:has([invalid]) {
-        color: var(--form-switch-invalid-color);
-    }
-    
-    &:has(.is-valid),
-    &:has([valid]) {
-        color: var(--form-switch-valid-color);
-    }
 }
 
 @utility invalid-feedback {
