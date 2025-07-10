@@ -33,7 +33,8 @@
     --form-control-focus-background-color: inherit;
     --form-control-focus-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
     --form-control-focus-outline: 0;
-    --form-control-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-control-focus-box-shadow: 0 0 0 .2rem var(--form-control-focus-box-shadow-color);
+    --form-control-focus-box-shadow-color: color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
     --form-control-focus-dark-color: var(--color-white, #fff);
     --form-control-focus-dark-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
 
@@ -83,7 +84,7 @@
     appearance: var(--form-control-appearance);
     padding: var(--form-control-padding-y) var(--form-control-padding-x);
 
-    .dark & {
+    @variant dark {
         background-color: var(--form-control-dark-background-color);
         border-color: var(--form-control-dark-border-color);
     }
@@ -95,7 +96,7 @@
         outline: var(--form-control-focus-outline);
         box-shadow: var(--form-control-focus-box-shadow);
 
-        .dark & {
+        @variant dark {
             color: var(--form-control-focus-dark-color);
             border-color: var(--form-control-focus-dark-border-color);
             background-color: var(--form-control-focus-dark-background-color);
@@ -113,7 +114,7 @@
         border-color: var(--form-control-disabled-border-color);
         opacity: var(--form-control-disabled-opacity);
 
-        .dark & {
+        @variant dark {
             color: var(--form-control-disabled-dark-color);
             background-color: var(--form-control-disabled-dark-background-color);
             border-color: var(--form-control-disabled-dark-border-color);

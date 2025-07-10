@@ -108,7 +108,7 @@
     appearance: var(--form-select-appearance);
     opacity: var(--form-select-opacity);
 
-    .dark & {
+    @variant dark {
         color: var(--form-select-dark-color);
         background-color: var(--form-select-dark-background-color);
         border-color: var(--form-select-dark-border-color);
@@ -122,7 +122,7 @@
         outline: var(--form-select-focus-outline);
         box-shadow: var(--form-select-focus-box-shadow);
 
-        .dark & {
+        @variant dark {
             color: var(--form-select-focus-dark-color);
             background-color: var(--form-select-focus-dark-background-color);            
             border-color: var(--form-select-focus-dark-border-color);
@@ -133,7 +133,7 @@
         color: var(--form-select-ms-value-color);
         background-color: var(--form-select-ms-value-background-color);
 
-        .dark & {
+        @variant dark {
             color: var(--form-select-ms-value-dark-color);
             background-color: var(--form-select-ms-value-dark-background-color);
         }
@@ -150,7 +150,7 @@
         border-color: var(--form-select-disabled-border-color);
         color: var(--form-select-disabled-color);
 
-        .dark & {
+        @variant dark {
             color: var(--form-select-disabled-dark-color);
             background-color: var(--form-select-disabled-dark-background-color);
             border-color: var(--form-select-disabled-dark-border-color);
@@ -219,14 +219,14 @@
     padding-right: var(--form-select-plaintext-padding-right);  
     cursor: var(--form-select-plaintext-cursor);
 
-    .dark & {
+    @variant dark {
         background-color: var(--form-select-plaintext-background-color-dark);
     }
 
     &:focus {
         box-shadow: var(--form-select-plaintext-box-shadow-focus);
 
-        .dark & {
+        @variant dark {
             color: var(--form-select-plaintext-color-focus-dark);
             background-color: var(--form-select-plaintext-background-color-focus-dark);
         }
@@ -235,7 +235,7 @@
     &:disabled {
         color: var(--form-select-plaintext-color-disabled);
 
-        .dark & {
+        @variant dark {
             color: var(--form-select-plaintext-color-disabled-dark);
         }
     }

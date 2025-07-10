@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
 
 @import './src/css/form-control.css';
 @import './src/css/form-select.css';

@@ -74,7 +74,7 @@
     appearance: var(--form-check-appearance);
     padding: var(--form-check-padding) !important;
 
-    .dark & {
+    @variant dark {
         color: var(--form-check-dark-color);
         background-color: var(--form-check-dark-background-color);
         border-color: var(--form-check-dark-border-color);
@@ -117,7 +117,7 @@
         filter: var(--form-check-disabled-filter);
         opacity: var(--form-check-disabled-opacity);
 
-        .dark & {
+        @variant dark {
             background-color: var(--form-check-disabled-dark-background-color);
         }
 

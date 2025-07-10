@@ -186,7 +186,7 @@ label:has(> .form-switch:disabled:not([readonly])) {
       background-image: var(--form-switch-moon-bg-focus);
     }
   
-    .dark & {
+    @variant dark {
       border-color: var(--form-switch-dark-border-color);
     }
 }
