@@ -221,7 +221,7 @@ export const FormSelect = {
             </div>
         </div>
     ),
-};
+}
 
 export const CheckboxesAndRadios = {
     name: 'Checkboxes and Radios',
@@ -232,6 +232,229 @@ export const CheckboxesAndRadios = {
                 <label class="flex gap-2"><input type="checkbox" class="form-check" checked/> Checked</label>
                 <label class="flex gap-2"><input type="checkbox" class="form-check" disabled/> Unchecked (Disabled)</label>
                 <label class="flex gap-2"><input type="checkbox" class="form-check" checked disabled/> Checked (Disabled)</label>
+            </div>
+
+            <div>
+                <label class="flex gap-2"><input type="radio" name="radio" class="form-check"/> Unchecked</label>
+                <label class="flex gap-2"><input type="radio" name="radio" class="form-check" checked/> Checked</label>
+                <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" disabled/> Unchecked (Disabled)</label>
+                <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" checked disabled/> Checked (Disabled)</label>
+            </div>
+
+            <h2 class="text-2xl mt-2">Sizes</h2>
+
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-xs"/>
+                <input type="checkbox" class="form-check form-check-xs" checked/>
+                <input type="checkbox" class="form-check form-check-xs is-invalid"/>
+                <input type="checkbox" class="form-check form-check-xs is-invalid"checked/>
+                <input type="checkbox" class="form-check form-check-xs is-valid"/>
+                <input type="checkbox" class="form-check form-check-xs is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-sm"/>
+                <input type="checkbox" class="form-check form-check-sm" checked/>
+                <input type="checkbox" class="form-check form-check-sm is-invalid"/>
+                <input type="checkbox" class="form-check form-check-sm is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-sm is-valid"/>
+                <input type="checkbox" class="form-check form-check-sm is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-md"/>
+                <input type="checkbox" class="form-check form-check-md" checked/>
+                <input type="checkbox" class="form-check form-check-md is-invalid"/>
+                <input type="checkbox" class="form-check form-check-md is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-md is-valid"/>
+                <input type="checkbox" class="form-check form-check-md is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-lg"/>
+                <input type="checkbox" class="form-check form-check-lg" checked/>
+                <input type="checkbox" class="form-check form-check-lg is-invalid"/>
+                <input type="checkbox" class="form-check form-check-lg is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-lg is-valid"/>
+                <input type="checkbox" class="form-check form-check-lg is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-xl"/>
+                <input type="checkbox" class="form-check form-check-xl" checked/>
+                <input type="checkbox" class="form-check form-check-xl is-invalid"/>
+                <input type="checkbox" class="form-check form-check-xl is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-x is-valid"/>
+                <input type="checkbox" class="form-check form-check-xl is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-2xl"/>
+                <input type="checkbox" class="form-check form-check-2xl" checked/>
+                <input type="checkbox" class="form-check form-check-2xl is-invalid"/>
+                <input type="checkbox" class="form-check form-check-2xl is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-2xl is-valid"/>
+                <input type="checkbox" class="form-check form-check-2xl is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-3xl"/>
+                <input type="checkbox" class="form-check form-check-3xl" checked/>
+                <input type="checkbox" class="form-check form-check-3xl is-invalid"/>
+                <input type="checkbox" class="form-check form-check-3xl is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-3xl is-valid"/>
+                <input type="checkbox" class="form-check form-check-3xl is-valid" checked/>
+            </div>
+            
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-4xl"/>
+                <input type="checkbox" class="form-check form-check-4xl" checked/>
+                <input type="checkbox" class="form-check form-check-4xl is-invalid"/>
+                <input type="checkbox" class="form-check form-check-4xl is-invalid" checked/>
+                <input type="checkbox" class="form-check form-check-4xl is-valid"/>
+                <input type="checkbox" class="form-check form-check-4xl is-valid" checked/>
+            </div>
+            <h2 class="text-2xl mt-2">Validation</h2>
+            <div>
+                <div>
+                    <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-check is-invalid"/> Invalid</label>
+                    <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-check is-invalid" checked/> Invalid</label>
+                    <label class="flex gap-2 invalid-feedback"><input type="radio" name="radio7" class="form-check is-invalid"/> Invalid</label>
+                    <label class="flex gap-2 invalid-feedback"><input type="radio" name="radio7" class="form-check is-invalid" checked/> Invalid</label>
+                    <div class="invalid-feedback">This is an inline error.</div>
+                </div>
+                <div class="invalid-feedback">This is an inline error.</div>
+                <div>
+                    <div class="invalid-feedback">This is an inline error.</div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-check is-valid"/> Valid</label>
+                    <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-check is-valid" checked/> Valid</label>
+                    <label class="flex gap-2 valid-feedback"><input type="radio" name="radio8" class="form-check is-valid"/> Valid</label>
+                    <label class="flex gap-2 valid-feedback"><input type="radio" name="radio8" class="form-check is-valid" checked/> Valid</label>
+                    <div class="valid-feedback">This is an inline sucess message.</div>
+                </div>
+                <div class="valid-feedback">This is an inline sucess message.</div>
+                <div>
+                    <div class="valid-feedback">This is an inline success message.</div>
+                </div>
+            </div>
+        </div>
+    ),
+}
+
+export const FileBrowser = {
+    name: 'File Browser',
+    render: () => ( 
+        <div class="flex flex-col gap-4">
+            <div class="form-file">
+                <input type="file" class="form-file-input" id="customFile"/>
+                <label class="form-file-label" for="customFile">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+            <div class="form-file">
+                <input type="file" class="form-file-input" id="customFileDisabled" disabled/>
+                <label class="form-file-label" for="customFileDisabled">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+        
+            <h2 class="text-2xl mt-2">File Browser Sizes</h2>
+
+            <div class="form-file form-file-sm">
+                <input type="file" class="form-file-input" id="customFile"/>
+                <label class="form-file-label" for="customFile">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+
+            <div class="form-file form-file-md">
+                <input type="file" class="form-file-input" id="customFile"/>
+                <label class="form-file-label" for="customFile">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+
+            <div class="form-file form-file-lg">
+                <input type="file" class="form-file-input" id="customFile"/>
+                <label class="form-file-label" for="customFile">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                </label>
+            </div>
+        </div> 
+    ),
+}
+
+export const Switches = {
+    name: 'Switches',
+    render: () => ( 
+        <div class="flex flex-col gap-4">
+            <h1 class="text-4xl">Switches</h1>
+            <div class="flex flex-col gap-2">
+                
+                <label class="flex gap-2 items-center">
+                    <input type="checkbox" class="form-switch"/>
+                    Default
+                </label>
+                <label class="flex gap-2 items-center">
+                    <input type="checkbox" class="form-switch" disabled/>
+                    Disabled
+                </label>
+                <label class="flex gap-2 items-center">
+                    <input type="checkbox" class="form-switch" disabled checked/>
+                    Disabled (Checked)
+                </label>
+                <label class="flex gap-2 items-center">
+                    <input type="checkbox" class="form-switch" readonly onClick={(e) => e.preventDefault()}/>
+                    Readonly
+                </label>
+                <label class="flex gap-2 items-center">
+                    <input type="checkbox" class="form-switch" checked readonly onClick={(e) => e.preventDefault()}/>
+                    Readonly (Checked)
+                </label>
+            </div>
+            <h2 class="text-2xl mt-2">Sizes</h2>
+
+            <div class="flex flex-col gap-2">
+                <input type="checkbox" class="form-switch form-switch-xs"/>
+                <input type="checkbox" class="form-switch form-switch-sm"/>
+                <input type="checkbox" class="form-switch form-switch-md"/>
+                <input type="checkbox" class="form-switch form-switch-lg"/>
+                <input type="checkbox" class="form-switch form-switch-xl"/>
+                <input type="checkbox" class="form-switch form-switch-2xl"/>
+                <input type="checkbox" class="form-switch form-switch-3xl"/>
+                <input type="checkbox" class="form-switch form-switch-4xl"/>
+            </div>
+            <h2 class="text-2xl mt-2">Validation</h2>
+            <div>
+                <div>
+                    <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-switch is-invalid"/> Invalid</label>
+                    <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-switch is-invalid" checked/> Invalid</label>
+                    <div class="invalid-feedback">This is an inline error.</div>
+                </div>
+                <div class="invalid-feedback">This is an inline error.</div>
+                <div>
+                    <div class="invalid-feedback">This is an inline error.</div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-switch is-valid"/> Valid</label>
+                    <label class="flex gap-2 valid-feedback"><input type="checkbox" class="form-switch is-valid" checked/> Valid</label>
+                    <div class="valid-feedback">This is an inline sucess message.</div>
+                </div>
+                <div class="valid-feedback">This is an inline sucess message.</div>
+                <div>
+                    <div class="valid-feedback">This is an inline success message.</div>
+                </div>
             </div>
         </div>
     ),
