@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 /* import { ref, onMounted, computed } from 'vue'; */
 import './index.css';
-import './src/useFormControl.ts';
+import './src/useFormControl';
  
 const meta = {
     title: 'Example/Form Control',
@@ -24,57 +24,75 @@ export default meta;
 type Story = StoryObj<typeof meta>
 
 export const FormControl = {
-    name: 'Form Control',
+  name: 'Form Control',
+  render: () => {
+    const inputs = [
+      { label: 'Some Label', props: {} },
+      { label: 'Placeholder', props: { placeholder: 'Placeholder' } },
+      { label: 'Disabled', props: { value: 'Disabled', disabled: true } },
+      { label: 'Disabled (Placeholder)', props: { placeholder: 'Disabled', disabled: true } },
+      { label: 'Readonly', props: { placeholder: 'Readonly', readonly: true } },
+    ];
+
+    return (
+      <div class="flex flex-col gap-4">
+        {inputs.map(({ label, props }, index) => (
+          <div key={index}>
+            <label class="form-label">{label}</label>
+            <input type="text" class="form-control" {...props} />
+          </div>
+        ))}
+      </div>
+    );
+  },
+} satisfies Story;
+
+export const FormControlPlaintext = {
+    name: 'Form Control Plaintext',
     render: () => ( 
         <div class="flex flex-col gap-4">           
             <div>
-                <label class="form-label">Color</label>
-                <input type="color" id="control" class="form-control form-control-color" />
-            </div>
-            <div>
-                <label for="control" class="form-label">Some Label</label>
-                <input type="text" id="control" class="form-control" />
-            </div>
-            <div>
-                <label class="form-label">Placeholder</label>
-                <input type="text" id="control" class="form-control" placeholder="Placeholder" />
-            </div>
-            <div>
-                <label class="form-label">Disabled</label>
-                <input type="text" id="control" class="form-control" value="Disabled" disabled />
-            </div>
-            
-            <div>
-                <label class="form-label">Disabled (Placeholder)</label>
-                <input type="text" id="control" class="form-control" placeholder="Disabled" disabled />
-            </div>
-            <div>
-                <label class="form-label">Readonly</label>
-                <input type="text" id="control" class="form-control" placeholder="Readonly" readonly />
-            </div>
-            <h2 class="text-2xl mt-2">Sizes</h2>
-            <div>
-                <label class="form-label">Small</label>
-                <input type="text" class="form-control form-control-sm" placeholder="form-control-sm" />
-            </div>
-            
-            <div>
-                <label class="form-label">Medium</label>
-                <input type="text" class="form-control form-control-md" placeholder="form-control" />
-            </div>
-            
-            <div>
-                <label class="form-label">Large</label>
-                <input type="text" class="form-control form-control-lg" placeholder="form-control-lg" />
-            </div>
-            <div>
                 <label class="form-label">Plaintext</label>
-                <input type="text" id="control" class="form-control-plaintext" value="Readonly" readonly />
-                <input type="text" id="control" class="form-control-plaintext" placeholder="Readonly Placeholder" readonly />
-                <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled" readonly disabled />
-                <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled Placeholder" readonly disabled />
+                {[
+                    { value: 'Readonly', readonly: true },
+                    { placeholder: 'Readonly Placeholder', readonly: true },
+                    { value: 'Readonly & Disabled', readonly: true, disabled: true },
+                    { value: 'Readonly & Disabled Placeholder', readonly: true, disabled: true },
+                ].map((props, index) => (
+                    <input
+                        key={index}
+                        type="text"
+                        class="form-control-plaintext"
+                        {...props}
+                    />
+                ))}
             </div>
-            <h2 class="text-2xl mt-2">Validation</h2>
+        </div>
+    ),
+}
+
+export const FormControlSizes = {
+  name: 'Form Control Sizes',
+  render: () => (
+        <div class="flex flex-col gap-4">
+            {[
+                { label: 'Small', size: 'sm', placeholder: 'form-control-sm' },
+                { label: 'Medium', size: 'md', placeholder: 'form-control' },
+                { label: 'Large', size: 'lg', placeholder: 'form-control-lg' },
+            ].map(({ label, size, placeholder }) => (
+                <div>
+                    <label class="form-label">{label}</label>
+                    <input type="text" class={`form-control form-control-${size}`} placeholder={placeholder} />
+                </div>
+            ))}
+        </div>
+    ),
+}
+
+export const FormControlValidation = {
+    name: 'Form Control Validation',
+    render: () => ( 
+        <div class="flex flex-col gap-4">
             <div>
                 <label class="flex-shrink-0 invalid-feedback">Invalid Field</label>
                 <div>
@@ -99,7 +117,7 @@ export const FormControl = {
             </div>
         </div>
     ),
-} satisfies Story;
+}
 
 export const FormSelect = {
     name: 'Form Select',
@@ -161,67 +179,84 @@ export const FormSelect = {
                     <option disabled>Option C</option>
                 </select>
             </div>
-            <h2 class="text-2xl mt-2">Sizes</h2>
-            
-            <div>   
-                <label class="form-label">Small</label>
-                <select class="form-select form-select-sm">
-                    <option>Option A</option>
-                    <option selected>Option B</option>
-                    <option>Option C</option>
-                </select>
-            </div>
-            
-            <div>
-                <label class="form-label">Medium</label>
-                <select class="form-select form-select-md">
-                    <option>Option A</option>
-                    <option selected>Option B</option>
-                    <option>Option C</option>
-                </select>
-            </div>
-            <div>
-                <label class="form-label">Large</label>
-                <select class="form-select form-select-lg">
-                    <option>Option A</option>
-                    <option selected>Option B</option>
-                    <option>Option C</option>
-                </select>
-            </div>
-            <h2 class="text-2xl mt-2">Validation</h2>
-            <div>
-                <label class="flex-shrink-0 invalid-feedback">Invalid Field</label>
-                <div>
-                    <select class="form-select is-invalid">
-                        <option>Option A</option>
-                        <option selected>Option B</option>
-                        <option>Option C</option>
-                    </select>
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
-                <div class="invalid-feedback">This is an inline error.</div>
-                <div>
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
-            </div>
-            <div>
-                <label class="flex-shrink-0 valid-feedback">Valid Field</label>
-                <div>
-                    <select class="form-select is-valid">
-                        <option>Option A</option>
-                        <option selected>Option B</option>
-                        <option>Option C</option>
-                    </select>
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
-                <div class="valid-feedback">This is an inline success message.</div>
-                <div>
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
-            </div>
         </div>
     ),
 }
+
+export const FormSelectSizes = {
+  name: 'Form Select Sizes',
+  render: () => {
+        const options = (
+            <>
+                <option>Option A</option>
+                <option selected>Option B</option>
+                <option>Option C</option>
+            </>
+        );
+
+        const sizes = [
+            { label: 'Small', class: 'form-select-sm' },
+            { label: 'Medium', class: 'form-select-md' },
+            { label: 'Large', class: 'form-select-lg' },
+        ];
+
+        return (
+            <div class="flex flex-col gap-4">
+                {sizes.map(({ label, class: sizeClass }) => (
+                    <div>
+                        <label class="form-label">{label}</label>
+                        <select class={`form-select ${sizeClass}`}>{options}</select>
+                    </div>
+                ))}
+            </div>
+        );
+    },
+};
+
+export const FormSelectValidation = {
+  name: 'Form Select Validation',
+  render: () => {
+        const options = (
+            <>
+                <option>Option A</option>
+                <option selected>Option B</option>
+                <option>Option C</option>
+            </>
+        );
+
+        const renderField = (type: 'valid' | 'invalid') => {
+            const className = `form-select is-${type}`;
+            const feedbackClass = `${type}-feedback`;
+            const message =
+              type === 'valid'
+                ? 'This is an inline success message.'
+                : 'This is an inline error.';
+
+            return (
+                <div>
+                    <label class={`flex-shrink-0 ${feedbackClass}`}>
+                      {type === 'valid' ? 'Valid Field' : 'Invalid Field'}
+                    </label>
+                    <div>
+                      <select class={className}>{options}</select>
+                      <div class={feedbackClass}>{message}</div>
+                    </div>
+                    <div class={feedbackClass}>{message}</div>
+                    <div>
+                      <div class={feedbackClass}>{message}</div>
+                    </div>
+                </div>
+            );
+        };
+
+        return (
+            <div class="flex flex-col gap-4">
+                {renderField('invalid')}
+                {renderField('valid')}
+            </div>
+        );
+  },
+};
 
 export const CheckboxesAndRadios = {
     name: 'Checkboxes and Radios',
@@ -240,81 +275,37 @@ export const CheckboxesAndRadios = {
                 <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" disabled/> Unchecked (Disabled)</label>
                 <label class="flex gap-2"><input type="radio" name="radio2" class="form-check" checked disabled/> Checked (Disabled)</label>
             </div>
+        </div>
+    ),
+}
 
-            <h2 class="text-2xl mt-2">Sizes</h2>
+export const CheckAndRadioSizes = {
+    name: 'Checkbox and Radio Sizes',
+    render: () => (
+        <div class="flex flex-col gap-4">
+            {['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'].map(size => (
+              <div class="flex gap-1" key={size}>
+                {['', 'checked', 'is-invalid', 'is-invalid checked', 'is-valid', 'is-valid checked'].map(state => {
+                  const className = `form-check form-check-${size} ${state}`.trim();
+                  const isChecked = state.includes('checked');
+                  return (
+                    <input
+                      type="checkbox"
+                      class={className}
+                      checked={isChecked ? true : undefined}
+                    />
+                  );
+                })}
+              </div>
+            ))}
+        </div>
+    ),
+}
 
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-xs"/>
-                <input type="checkbox" class="form-check form-check-xs" checked/>
-                <input type="checkbox" class="form-check form-check-xs is-invalid"/>
-                <input type="checkbox" class="form-check form-check-xs is-invalid"checked/>
-                <input type="checkbox" class="form-check form-check-xs is-valid"/>
-                <input type="checkbox" class="form-check form-check-xs is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-sm"/>
-                <input type="checkbox" class="form-check form-check-sm" checked/>
-                <input type="checkbox" class="form-check form-check-sm is-invalid"/>
-                <input type="checkbox" class="form-check form-check-sm is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-sm is-valid"/>
-                <input type="checkbox" class="form-check form-check-sm is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-md"/>
-                <input type="checkbox" class="form-check form-check-md" checked/>
-                <input type="checkbox" class="form-check form-check-md is-invalid"/>
-                <input type="checkbox" class="form-check form-check-md is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-md is-valid"/>
-                <input type="checkbox" class="form-check form-check-md is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-lg"/>
-                <input type="checkbox" class="form-check form-check-lg" checked/>
-                <input type="checkbox" class="form-check form-check-lg is-invalid"/>
-                <input type="checkbox" class="form-check form-check-lg is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-lg is-valid"/>
-                <input type="checkbox" class="form-check form-check-lg is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-xl"/>
-                <input type="checkbox" class="form-check form-check-xl" checked/>
-                <input type="checkbox" class="form-check form-check-xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-x is-valid"/>
-                <input type="checkbox" class="form-check form-check-xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-2xl"/>
-                <input type="checkbox" class="form-check form-check-2xl" checked/>
-                <input type="checkbox" class="form-check form-check-2xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-2xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-2xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-2xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-3xl"/>
-                <input type="checkbox" class="form-check form-check-3xl" checked/>
-                <input type="checkbox" class="form-check form-check-3xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-3xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-3xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-3xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-4xl"/>
-                <input type="checkbox" class="form-check form-check-4xl" checked/>
-                <input type="checkbox" class="form-check form-check-4xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-4xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-4xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-4xl is-valid" checked/>
-            </div>
-            <h2 class="text-2xl mt-2">Validation</h2>
+export const CheckAndRadioValidation = {
+    name: 'Checkbox and Radio Validation',
+    render: () => (
+        <div class="flex flex-col gap-4">
             <div>
                 <div>
                     <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-check is-invalid"/> Invalid</label>
@@ -363,43 +354,39 @@ export const FileBrowser = {
                     <span class="form-file-button">Browse</span>
                 </label>
             </div>
-        
-            <h2 class="text-2xl mt-2">File Browser Sizes</h2>
-
-            <div class="form-file form-file-sm">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-md">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-lg">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
         </div> 
     ),
 }
+
+export const FileBrowserSizes = {
+  name: 'File Browser Sizes',
+  render: () => {
+        const sizes = ['sm', 'md', 'lg'];
+
+        return (
+            <div class="flex flex-col gap-4">
+                {sizes.map((size) => {
+                    const id = `customFile-${size}`;
+                    return (
+                        <div class={`form-file form-file-${size}`} key={size}>
+                            <input type="file" class="form-file-input" id={id} />
+                            <label class="form-file-label" for={id}>
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    },
+};
 
 export const Switches = {
     name: 'Switches',
     render: () => ( 
         <div class="flex flex-col gap-4">
-            <h1 class="text-4xl">Switches</h1>
             <div class="flex flex-col gap-2">
-                
                 <label class="flex gap-2 items-center">
                     <input type="checkbox" class="form-switch"/>
                     Default
@@ -421,19 +408,31 @@ export const Switches = {
                     Readonly (Checked)
                 </label>
             </div>
-            <h2 class="text-2xl mt-2">Sizes</h2>
+        </div>
+    ),
+}
 
-            <div class="flex flex-col gap-2">
-                <input type="checkbox" class="form-switch form-switch-xs"/>
-                <input type="checkbox" class="form-switch form-switch-sm"/>
-                <input type="checkbox" class="form-switch form-switch-md"/>
-                <input type="checkbox" class="form-switch form-switch-lg"/>
-                <input type="checkbox" class="form-switch form-switch-xl"/>
-                <input type="checkbox" class="form-switch form-switch-2xl"/>
-                <input type="checkbox" class="form-switch form-switch-3xl"/>
-                <input type="checkbox" class="form-switch form-switch-4xl"/>
-            </div>
-            <h2 class="text-2xl mt-2">Validation</h2>
+export const SwitchSizes = {
+  name: 'Switch Sizes',
+  render: () => {
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'];
+
+    return (
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          {sizes.map(size => (
+            <input type="checkbox" class={`form-switch form-switch-${size}`} key={size} />
+          ))}
+        </div>
+      </div>
+    );
+  },
+};
+
+export const SwitchValidation = {
+    name: 'Switch Validation',
+    render: () => ( 
+        <div class="flex flex-col gap-4">
             <div>
                 <div>
                     <label class="flex gap-2 invalid-feedback"><input type="checkbox" class="form-switch is-invalid"/> Invalid</label>
