@@ -186,7 +186,6 @@
     outline: var(--form-control-plaintext-outline);
     background: var(--form-control-plaintext-background);
     cursor: var(--form-control-plaintext-cursor);
-    padding: var(--form-control-padding-y) var(--form-control-padding-x);
     padding-left: var(--form-control-plaintext-padding-left);
     padding-right: var(--form-control-plaintext-padding-right);
     font-size: var(--form-control-plaintext-font-size);
