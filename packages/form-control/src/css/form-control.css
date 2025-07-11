@@ -155,9 +155,12 @@
 }
 
 @utility form-control-* {
-    padding: calc(--value(--form-control-font-size-*) * .75 / 2) calc(--value(--form-control-font-size-*) * .75);
-    font-size: --value(--form-control-font-size-*);
-    border-radius: calc(--value(--form-control-font-size-*) / 4);
+    padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
+    padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    font-size: --value(--form-control-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
+    border-radius: calc(--value(--form-control-font-size-*, [length]) / 4);
+    border-radius: calc(--spacing(--value(integer)) / 4);
 }
 
 @utility form-control-color {

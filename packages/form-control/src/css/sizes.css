@@ -1,12 +1,12 @@
 @theme {
-    --form-control-font-size-xs: .75rem;
-    --form-control-font-size-sm: .875rem;
-    --form-control-font-size-md: 1rem;
-    --form-control-font-size-lg: 1.25rem;
-    --form-control-font-size-xl: 1.33rem;
-    --form-control-font-size-2xl: 1.5rem;
-    --form-control-font-size-3xl: 1.75rem;
-    --form-control-font-size-4xl: 2rem;
+    --form-control-font-size-xs: --spacing(2.5);
+    --form-control-font-size-sm: --spacing(3);
+    --form-control-font-size-md: --spacing(4);
+    --form-control-font-size-lg: --spacing(5);
+    --form-control-font-size-xl: --spacing(6);
+    --form-control-font-size-2xl: --spacing(7);
+    --form-control-font-size-3xl: --spacing(8);
+    --form-control-font-size-4xl: --spacing(9);
 
     /* Color Picker Size */
     --form-control-color-width: 2.75rem;

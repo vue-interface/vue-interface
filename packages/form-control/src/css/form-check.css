@@ -157,5 +157,6 @@
 }
 
 @utility form-check-* {
-    font-size: --value(--form-font-size-*);
+    font-size: --value(--form-control-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
 }

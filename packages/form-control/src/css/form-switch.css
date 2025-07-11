@@ -156,12 +156,18 @@
 }
 
 @utility form-switch-* {
-    --form-switch-height: calc(--value(--form-control-font-size-*) * 1.5 + (--value(--form-control-font-size-*) * .75) + 2px);
+    --form-switch-height: calc(--value(--form-control-font-size-*, [length]) * 1.5 + (--value(--form-control-font-size-*, [length]) * .75) + 2px);
+    --form-switch-height: calc(--spacing(--value(integer)) * 1.5 + (--spacing(--value(integer)) * .75) + 2px);
 
-    padding: calc(--value(--form-control-font-size-*) * .75 / 2) calc(--value(--form-control-font-size-*) * .75);
-    font-size: --value(--form-control-font-size-*);
+    padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
+    padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    font-size: --value(--form-control-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
     height: var(--form-switch-height);
     width: calc(var(--form-switch-height) * 2);
+
+
+    /* padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75); */
 }
 
 label:has(> .form-switch:disabled:not([readonly])) {
