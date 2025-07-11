@@ -3,7 +3,7 @@
 @utility form-control-base-animation {
     position: relative;
 
-    .form-label {
+    &:has(input.form-control, .form-select) .form-label {
         position: absolute;
         top: var(--form-control-border-width);
         left: 0;
@@ -14,8 +14,7 @@
         transition: all 150ms ease-in-out;
     }
 
-    .form-select,
-    .form-control {
+    .form-select, input.form-control {
         transition: all 150ms ease-in-out;
 
         &:is(:empty)::placeholder {
@@ -23,8 +22,8 @@
         }
     }
 
-    &:has(.form-control):focus-within,
-    &:has(.form-control:not(:placeholder-shown),.form-control.is-dirty,.form-select.is-dirty:not(.is-empty)),
+    &:has(input.form-control):focus-within,
+    &:has(input.form-control:not(:placeholder-shown),input.form-control.is-dirty,.form-select.is-dirty:not(.is-empty)),
     &:has(.form-select>option:checked:not([value=""])) {
         .form-label {
             font-size: calc(var(--form-control-font-size) * .75);
@@ -40,8 +39,8 @@
         }
     }
     
-    &:has(.form-control):focus-within .form-control:is(:placeholder-shown),
-    .form-control.is-dirty:is(:empty) {
+    &:has(input.form-control):focus-within input.form-control:is(:placeholder-shown),
+    input.form-control.is-dirty:is(:empty) {
         &::placeholder {
             visibility: visible;
         }
@@ -57,7 +56,7 @@
 
     position: relative;
     
-    .form-label {
+    &:has(input.form-control, .form-select) .form-label {
         padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
         padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
         font-size: --value(--form-control-font-size-*);
