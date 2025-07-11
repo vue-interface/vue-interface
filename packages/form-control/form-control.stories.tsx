@@ -78,7 +78,7 @@ export const FormControlSizes = {
             <input type="text" class="form-control form-control-3xl" placeholder="form-control-3xl" />
             <input type="text" class="form-control form-control-4xl" placeholder="form-control-4xl" />
 
-            <h2>Tailwind Sizes</h2>
+            <h1>Tailwind Sizes</h1>
 
             <input type="text" class="form-control form-control-4" placeholder="form-control-4" />
             <input type="text" class="form-control form-control-5" placeholder="form-control-5" />
@@ -86,7 +86,7 @@ export const FormControlSizes = {
             <input type="text" class="form-control form-control-7" placeholder="form-control-7" />
             <input type="text" class="form-control form-control-8" placeholder="form-control-8" />
 
-            <h2>Arbitrary Sizes</h2>
+            <h1>Arbitrary Sizes</h1>
 
             <input type="text" class="form-control form-control-[16px]" placeholder="form-control-[16px]" />
             <input type="text" class="form-control form-control-[21px]" placeholder="form-control-[21px]" />
@@ -99,26 +99,16 @@ export const FormControlValidation = {
     render: () => ( 
         <div class="flex flex-col gap-4">
             <div>
-                <label class="flex-shrink-0 invalid-feedback">Invalid Field</label>
-                <div>
-                    <input type="text" class="form-control is-invalid" value="This field is invalid" />
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
+                <label class="invalid-feedback">Invalid Field</label>
+                <input type="text" class="form-control is-invalid" value="This field is invalid" />
                 <div class="invalid-feedback">This is an inline error.</div>
-                <div>
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
+                <div class="invalid-feedback">This is an inline error.</div>
             </div>
             <div>
-                <label class="flex-shrink-0 valid-feedback">Valid Field</label>
-                <div>
-                    <input type="text" class="form-control is-valid" value="This field is invalid" />
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
+                <label class="valid-feedback">Valid Field</label>
+                <input type="text" class="form-control is-valid" value="This field is invalid" />
                 <div class="valid-feedback">This is an inline success message.</div>
-                <div>
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
+                <div class="valid-feedback">This is an inline success message.</div>
             </div>
         </div>
     ),
