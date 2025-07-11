@@ -5,7 +5,7 @@
 
     .form-label {
         position: absolute;
-        top: 0;
+        top: var(--form-control-border-width);
         left: 0;
         display: flex;
         align-items: center;
@@ -14,6 +14,7 @@
         transition: all 150ms ease-in-out;
     }
 
+    .form-select,
     .form-control {
         transition: all 150ms ease-in-out;
 
@@ -22,8 +23,9 @@
         }
     }
 
-    &:focus-within,
-    &:has(.form-control:not(:placeholder-shown), .form-control.is-dirty) {
+    &:has(.form-control):focus-within,
+    &:has(.form-control:not(:placeholder-shown),.form-control.is-dirty,.form-select.is-dirty:not(.is-empty)),
+    &:has(.form-select>option:checked:not([value=""])) {
         .form-label {
             font-size: calc(var(--form-control-font-size) * .75);
             padding-top: 2px;
@@ -31,13 +33,14 @@
             padding-left: calc(var(--form-control-font-size) * .75 + 1px);
         }
         
-        .form-control {
+        .form-control,
+        .form-select {
             padding-top: calc(var(--form-control-font-size) * .75);
             padding-bottom: 0;
         }
     }
     
-    &:focus-within .form-control:is(:placeholder-shown),
+    &:has(.form-control):focus-within .form-control:is(:placeholder-shown),
     .form-control.is-dirty:is(:empty) {
         &::placeholder {
             visibility: visible;
@@ -60,8 +63,9 @@
         font-size: --value(--form-control-font-size-*);
     }
 
-    &:focus-within,
-    &:has(.form-control:not(:placeholder-shown), .form-control.is-dirty) {
+    &:has(.form-control):focus-within,
+    &:has(.form-select>option:checked:not([value=""])),
+    &:has(.form-control:not(:placeholder-shown),.form-control.is-dirty,.form-select.is-dirty:not(.is-empty)) {
         .form-label {
             padding-left: calc(--value(--form-control-font-size-*, [length]) * .75 + 1px);
             padding-left: calc(--spacing(--value(integer)) * .75 + 1px);
@@ -69,7 +73,8 @@
             font-size: calc(--spacing(--value(integer)) * .75);
         }
         
-        .form-control {
+        .form-control,
+        .form-select {
             padding-top: calc(--value(--form-control-font-size-*, [length]) * .75);
             padding-top: calc(--spacing(--value(integer)) * .75);
         }
