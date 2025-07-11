@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@import "./sizes.css";
-@import "./validation.css";
-
 @theme {
     --form-check-width: 1.25em;
     --form-check-height: 1.25em;

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import "./sizes.css";
-
 @theme {
     --form-select-display: flex;
     --form-select-width: 100%;
