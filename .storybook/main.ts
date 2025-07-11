@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import path, { dirname, join } from 'node:path';
 
 const require = createRequire(import.meta.url);
 
@@ -17,7 +17,18 @@ const config: StorybookConfig = {
     },
     stories: ['../packages/**/*.mdx', '../packages/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     // Optional
-    addons: [getAbsolutePath('@storybook/addon-docs')],
+    addons: [
+        {
+            name: getAbsolutePath('@storybook/addon-docs'),
+            options: {
+                vueDocgenOptions: {
+                    alias: {
+                        '@': path.resolve('../'),
+                    },
+                },
+            },
+        },
+    ],
     docs: {
     // autodocs: 'tag',
     },
