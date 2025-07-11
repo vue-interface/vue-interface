@@ -103,7 +103,7 @@
     border-width: var(--form-select-border-width);
     border-style: var(--form-select-border-style);
     border-color: var(--form-select-border-color);
-    border-radius: var(--form-select-border-radius);
+    border-radius: calc(var(--form-control-font-size) / 4);
     transition: var(--form-select-transition);
     appearance: var(--form-select-appearance);
     opacity: var(--form-select-opacity);
