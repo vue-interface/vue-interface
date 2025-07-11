@@ -12,7 +12,7 @@
             <h3 class="text-2xl mb-3">Color Variants</h3>
 
             <div class="flex gap-2">
-                <button class="btn btn-primary">Prim</button>
+                <button class="btn btn-primary">Primary</button>
                 <button class="btn btn-secondary">Secondary</button>
                 <button class="btn btn-success">Success</button>
                 <button class="btn btn-danger">Danger</button>
@@ -118,6 +118,7 @@
             <h3 class="text-2xl mt-6 mb-3">Block Sizes</h3>
 
             <div class="flex flex-col gap-2">
+                <button class="btn btn-primary btn-2xs block">2xs</button>
                 <button class="btn btn-primary btn-xs btn-block">xs</button>
                 <button class="btn btn-primary btn-sm btn-block">sm</button>
                 <button class="btn btn-primary btn-md btn-block">md</button>
@@ -126,6 +127,15 @@
                 <button class="btn btn-primary btn-2xl btn-block">2xl</button>
                 <button class="btn btn-primary btn-3xl btn-block">3xl</button>
                 <button class="btn btn-primary btn-4xl btn-block">4xl</button>
+
+                <button class="btn btn-primary btn-3 btn-block">btn-block-3</button>
+                <button class="btn btn-primary btn-4 btn-block">btn-block-4</button>
+                <button class="btn btn-primary btn-5 btn-block">btn-block-5</button>
+                <button class="btn btn-primary btn-6 btn-block">btn-block-6</button>
+                <button class="btn btn-primary btn-7  btn-block">btn-block-7</button>
+
+                <button class="btn btn-primary btn-[16px] btn-block">16px</button>
+                <button class="btn btn-primary btn-[21px] btn-block">21px</button>
             </div>
             
             <h3 class="text-2xl mt-6 mb-3">Active</h3>
@@ -170,6 +180,14 @@
             <h2 class="text-2xl mt-6 mb-3">Sizing</h2>
 
             <div class="flex flex-col gap-2">
+                <div>
+                    <div class="btn-group btn-group-2xs">
+                        <button class="btn btn-secondary">Left</button>
+                        <button class="btn btn-secondary">Middle</button>
+                        <button class="btn btn-secondary">Right</button>
+                    </div>
+                </div>
+
                 <div>
                     <div class="btn-group btn-group-xs">
                         <button class="btn btn-secondary">Left</button>
@@ -231,6 +249,41 @@
                         <button class="btn btn-secondary">Left</button>
                         <button class="btn btn-secondary">Middle</button>
                         <button class="btn btn-secondary">Right</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-group btn-group-5xl">
+                        <button class="btn btn-secondary">Left</button>
+                        <button class="btn btn-secondary">Middle</button>
+                        <button class="btn btn-secondary">Right</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-group btn-group-3">
+                        <button class="btn btn-secondary">btn-group-3</button>
+                        <button class="btn btn-secondary">btn-group-3</button>
+                        <button class="btn btn-secondary">btn-group-3</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-group btn-group-4">
+                        <button class="btn btn-secondary">btn-group-4</button>
+                        <button class="btn btn-secondary">btn-group-4</button>
+                        <button class="btn btn-secondary">btn-group-4</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-group btn-group-5">
+                        <button class="btn btn-secondary">btn-group-5</button>
+                        <button class="btn btn-secondary">btn-group-5</button>
+                        <button class="btn btn-secondary">btn-group-5</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn-group btn-group-[16px]">
+                        <button class="btn btn-secondary">btn-group-[16px]</button>
+                        <button class="btn btn-secondary">btn-group-[16px]</button>
+                        <button class="btn btn-secondary">btn-group-[16px]</button>
                     </div>
                 </div>
             </div>
@@ -331,6 +384,18 @@
                         <button class="btn btn-secondary dropdown-toggle">Click Me</button>
                     </div>
                 </div>
+                
+                <div>
+                    <div role="group" class="btn-dropdown btn-group btn-group-3">
+                        <button class="btn btn-secondary dropdown-toggle">(btn-group-3)</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <div role="group" class="btn-dropdown btn-group btn-group-[16px]">
+                        <button class="btn btn-secondary dropdown-toggle">(btn-group-[16px])</button>
+                    </div>
+                </div>
             </div>
 
             <h2 class="text-2xl mt-6 mb-3">Split Sizing</h2>
@@ -355,7 +420,7 @@
                 </div>
 
                 <div>
-                    <div role="group" class="btn-dropdown-split btn-dropdown btn-group">
+                    <div role="group" class="btn-dropdown-split btn-dropdown btn-group btn-group-md">
                         <button class="btn btn-secondary">Click Me</button>
                         <div role="group" class="btn-group">
                             <button type="button" aria-haspopup="true" class="btn btn-secondary dropdown-toggle-split dropdown-toggle"></button>

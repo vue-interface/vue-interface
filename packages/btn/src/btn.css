@@ -1,5 +1,4 @@
-@import "./colors.css";
-@import "./sizes.css";
+@import "tailwindcss";
 
 @theme {    
     --btn-display: inline-flex;
