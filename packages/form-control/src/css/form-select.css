@@ -14,7 +14,7 @@
     --form-select-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZpbGw9J25vbmUnIHZpZXdCb3g9JzAgMCAyNCAyNCcgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZT0nIzQwNDA0MCc+PHBhdGggc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBkPSdNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUnIC8+PC9zdmc+");
     --form-select-background-repeat: no-repeat;
     --form-select-background-position: right 0.375rem center;
-    --form-select-background-size: 1rem;
+    --form-select-background-size: 1em;
     --form-select-border-width: 1px;
     --form-select-border-style: solid;
     --form-select-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
@@ -202,9 +202,9 @@
 }
 
 @utility form-select-* {
-    padding: --value(--form-select-padding-*);
-    font-size: --value(--form-font-size-*);    
-    border-radius: --value(--form-border-radius-*);    
+    padding: calc(--value(--form-control-font-size-*) * .75 / 2) calc(--value(--form-control-font-size-*) * .75);
+    font-size: --value(--form-control-font-size-*);
+    border-radius: calc(--value(--form-control-font-size-*) / 4);
     background-size: --value(--form-select-background-size-*);
 }
 

@@ -159,9 +159,9 @@
 }
 
 @utility form-control-* {
-    padding: --value(--form-padding-*);
-    font-size: --value(--form-font-size-*);
-    border-radius: --value(--form-border-radius-*);
+    padding: calc(--value(--form-control-font-size-*) * .75 / 2) calc(--value(--form-control-font-size-*) * .75);
+    font-size: --value(--form-control-font-size-*);
+    border-radius: calc(--value(--form-control-font-size-*) / 4);
 }
 
 @utility form-control-color {
