@@ -251,8 +251,11 @@
     > .btn-secondary,
     > .btn-group > .btn,
     > .btn-group > .btn-secondary {
-        padding: --value(--btn-padding-*);
-        font-size: --value(--btn-font-size-*);
-        border-radius: --value(--btn-border-radius-*);
+    	padding: calc(--value(--btn-font-size-*, [length]) * 1.5 / 4) calc(--value(--btn-font-size-*, [length]) * 1.5 / 2);
+    	padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    	font-size: --value(--btn-font-size-*, [length]);
+    	font-size: --spacing(--value(integer));
+    	border-radius: calc(--value(--btn-font-size-*, [length]) / 4);
+    	border-radius: calc(--spacing(--value(integer)) / 4);
     }
 }

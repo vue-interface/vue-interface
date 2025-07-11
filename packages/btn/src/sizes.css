@@ -1,46 +1,31 @@
 @theme {
-    --btn-padding-xs: .15rem .35rem;
-    --btn-font-size-xs: .75rem;
-    --btn-border-radius-xs: .2rem;
+    --btn-font-size-2xs: --spacing(1);
+
+    --btn-font-size-xs: --spacing(2);
     --btn-dropdown-toggle-padding-xs: .25rem;
 
-    --btn-padding-sm: .25rem .5rem;
-    --btn-font-size-sm: .875rem;
-    --btn-border-radius-sm: .25rem;
+    --btn-font-size-sm: --spacing(3);
     --btn-dropdown-toggle-padding-sm: .375rem;
 
-    --btn-padding-md: .375rem .75rem;
-    --btn-font-size-md: 1rem;
-    --btn-border-radius-sm: .25rem;
+    --btn-font-size-md: --spacing(4);
     --btn-dropdown-toggle-padding-md: .5rem;
 
-    --btn-padding-base: .375rem .75rem;
-    --btn-font-size-base: 1rem;
-    --btn-border-radius-base: .25rem;
-    --btn-dropdown-toggle-padding-base: .5rem;
-
-    --btn-padding-lg: .5rem 1rem;
-    --btn-font-size-lg: 1.25rem;
-    --btn-border-radius-lg: .25rem;
+    --btn-font-size-lg: --spacing(5);
     --btn-dropdown-toggle-padding-lg: .625rem;
 
-    --btn-padding-xl: .66rem 1.25rem;
-    --btn-font-size-xl: 1.333rem;
-    --btn-border-radius-xl: .333rem;
+    --btn-font-size-xl: --spacing(6);
+
     --btn-dropdown-toggle-padding-xl: .75rem;
 
-    --btn-padding-2xl: .75rem 1.5rem;
-    --btn-font-size-2xl: 1.5rem;
-    --btn-border-radius-2xl: .5rem;
+    --btn-font-size-2xl: --spacing(7);
     --btn-dropdown-toggle-padding-2xl: .875rem;
 
-    --btn-padding-3xl: .85rem 1.75rem;
-    --btn-font-size-3xl: 1.75rem;
-    --btn-border-radius-3xl: .5rem;
+
+    --btn-font-size-3xl: --spacing(8);
     --btn-dropdown-toggle-padding-3xl: 1rem;
 
-    --btn-padding-4xl: 1rem 2rem;
-    --btn-font-size-4xl: 2rem;
-    --btn-border-radius-4xl: .666rem;
+    --btn-font-size-4xl: --spacing(9);
     --btn-dropdown-toggle-padding-4xl: 1.125rem;
+
+    --btn-font-size-5xl: --spacing(10);
 }

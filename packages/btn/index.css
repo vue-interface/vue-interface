@@ -1,3 +1,7 @@
 @import "tailwindcss";
+
+@import "./src/sizes.css";
+@import "./src/colors.css";
+
 @import "./src/btn.css";
 @import "./src/btn-group.css";

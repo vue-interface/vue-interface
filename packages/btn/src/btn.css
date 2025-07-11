@@ -39,7 +39,7 @@
     justify-content: var(--btn-justify);
     align-items: var(--btn-align);
     gap: var(--btn-gap);
-    padding: var(--btn-padding-y) var(--btn-padding-x);
+    padding: calc(var(--btn-font-size) * 1.5 / 4) calc(var(--btn-font-size, [length]) * 1.5 / 2);
     font-size: var(--btn-font-size);
     font-family: var(--btn-font-family);
     font-weight: var(--btn-font-weight);
@@ -85,9 +85,12 @@
     background-color: --value(--btn-*, --color-*, [color]);
     border-color: --value(--btn-*, --color-*, [color]);
 
-    padding: --value(--btn-padding-*);
-    font-size: --value(--btn-font-size-*);
-    border-radius: --value(--btn-border-radius-*);
+    padding: calc(--value(--btn-font-size-*, [length]) * 1.5 / 4) calc(--value(--btn-font-size-*, [length]) * 1.5 / 2);
+    padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    font-size: --value(--btn-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
+    border-radius: calc(--value(--btn-font-size-*, [length]) / 4);
+    border-radius: calc(--spacing(--value(integer)) / 4);
 
     color: --value(--text-for-*, --btn-*-text);
     
