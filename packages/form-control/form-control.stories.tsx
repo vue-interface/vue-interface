@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 /* import { ref, onMounted, computed } from 'vue'; */
-import './index.css';
+import './demo.css';
 import './src/useFormControl';
  
 const meta = {
@@ -14,6 +14,7 @@ const meta = {
             const isDark = ['#000', '#000', 'dark'].includes(background);
             
             root.classList.toggle('dark', isDark);
+
             return Story();
         },
     ],
@@ -53,38 +54,42 @@ export const FormControlPlaintext = {
         <div class="flex flex-col gap-4">           
             <div>
                 <label class="form-label">Plaintext</label>
-                {[
-                    { value: 'Readonly', readonly: true },
-                    { placeholder: 'Readonly Placeholder', readonly: true },
-                    { value: 'Readonly & Disabled', readonly: true, disabled: true },
-                    { value: 'Readonly & Disabled Placeholder', readonly: true, disabled: true },
-                ].map((props, index) => (
-                    <input
-                        key={index}
-                        type="text"
-                        class="form-control-plaintext"
-                        {...props}
-                    />
-                ))}
+                <input type="text" id="control" class="form-control-plaintext" value="Readonly" readonly />
+                <input type="text" id="control" class="form-control-plaintext" placeholder="Readonly Placeholder" readonly />
+                <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled" readonly disabled />
+                <input type="text" id="control" class="form-control-plaintext" value="Readonly & Disabled Placeholder" readonly disabled />
             </div>
         </div>
     ),
-}
+} as Story;
 
 export const FormControlSizes = {
   name: 'Form Control Sizes',
   render: () => (
-        <div class="flex flex-col gap-4">
-            {[
-                { label: 'Small', size: 'sm', placeholder: 'form-control-sm' },
-                { label: 'Medium', size: 'md', placeholder: 'form-control' },
-                { label: 'Large', size: 'lg', placeholder: 'form-control-lg' },
-            ].map(({ label, size, placeholder }) => (
-                <div>
-                    <label class="form-label">{label}</label>
-                    <input type="text" class={`form-control form-control-${size}`} placeholder={placeholder} />
-                </div>
-            ))}
+        <div class="flex flex-col gap-2">
+            <h1>Predined Sizes</h1>
+
+            <input type="text" class="form-control form-control-xs" placeholder="form-control-xs" />
+            <input type="text" class="form-control form-control-sm" placeholder="form-control-sm" />
+            <input type="text" class="form-control form-control-md" placeholder="form-control-md" />
+            <input type="text" class="form-control form-control-lg" placeholder="form-control-lg" />
+            <input type="text" class="form-control form-control-xl" placeholder="form-control-xl" />
+            <input type="text" class="form-control form-control-2xl" placeholder="form-control-2xl" />
+            <input type="text" class="form-control form-control-3xl" placeholder="form-control-3xl" />
+            <input type="text" class="form-control form-control-4xl" placeholder="form-control-4xl" />
+
+            <h1>Tailwind Sizes</h1>
+
+            <input type="text" class="form-control form-control-4" placeholder="form-control-4" />
+            <input type="text" class="form-control form-control-5" placeholder="form-control-5" />
+            <input type="text" class="form-control form-control-6" placeholder="form-control-6" />
+            <input type="text" class="form-control form-control-7" placeholder="form-control-7" />
+            <input type="text" class="form-control form-control-8" placeholder="form-control-8" />
+
+            <h1>Arbitrary Sizes</h1>
+
+            <input type="text" class="form-control form-control-[16px]" placeholder="form-control-[16px]" />
+            <input type="text" class="form-control form-control-[21px]" placeholder="form-control-[21px]" />
         </div>
     ),
 }
@@ -94,26 +99,16 @@ export const FormControlValidation = {
     render: () => ( 
         <div class="flex flex-col gap-4">
             <div>
-                <label class="flex-shrink-0 invalid-feedback">Invalid Field</label>
-                <div>
-                    <input type="text" class="form-control is-invalid" value="This field is invalid" />
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
+                <label class="invalid-feedback">Invalid Field</label>
+                <input type="text" class="form-control is-invalid" value="This field is invalid" />
                 <div class="invalid-feedback">This is an inline error.</div>
-                <div>
-                    <div class="invalid-feedback">This is an inline error.</div>
-                </div>
+                <div class="invalid-feedback">This is an inline error.</div>
             </div>
             <div>
-                <label class="flex-shrink-0 valid-feedback">Valid Field</label>
-                <div>
-                    <input type="text" class="form-control is-valid" value="This field is invalid" />
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
+                <label class="valid-feedback">Valid Field</label>
+                <input type="text" class="form-control is-valid" value="This field is invalid" />
                 <div class="valid-feedback">This is an inline success message.</div>
-                <div>
-                    <div class="valid-feedback">This is an inline success message.</div>
-                </div>
+                <div class="valid-feedback">This is an inline success message.</div>
             </div>
         </div>
     ),

@@ -7,6 +7,7 @@
     --form-control-font-size-2xl: --spacing(7);
     --form-control-font-size-3xl: --spacing(8);
     --form-control-font-size-4xl: --spacing(9);
+    --form-control-font-size-5xl: --spacing(10);
 
     /* Color Picker Size */
     --form-control-color-width: 2.75rem;

@@ -1,163 +1,77 @@
 @import "tailwindcss";
 
-@theme {
-    --animated-position: relative;
-    --animated-font-size: var(--form-font-size, 1rem);
-    --animated-placeholder-opacity: 0;
-
-    --animated-group-inner-position: relative;
-
-    --animated-label-position: absolute;
-    --animated-label-display: flex;
-    --animated-label-top: 1px;
-    --animated-label-left: 0;
-    --animated-label-padding-left: var(--form-control-padding-x, 0.75rem);
-    --animated-label-padding-top: var(--form-control-padding-y, 0.5rem);
-    --animated-label-padding-bottom: var(--form-control-padding-y, 0.5rem);
-    --animated-label-align-items: center;
-    --animated-label-transition-duration: 300ms;
-    --animated-label-z-index: 10;
-    --animated-label-margin-bottom: 0;
-    --animated-label-transition-property: all;
-    --animated-label-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --animated-label-transition-duration-alt: 150ms;
-
-    --animated-has-icon-label-margin-left: 1.5em;
-    --animated-has-icon-sm-label-margin-left: 1.75em;
-
-    --animated-sm-font-size: var(--form-font-size-sm, 0.875rem);
-    --animated-sm-padding-x: var(--form-padding-x-sm, 0.5rem);
-    --animated-sm-padding-y: var(--form-padding-y-sm, 0.25rem);
-
-    --animated-lg-font-size: var(--form-font-size-lg, 1.125rem);
-    --animated-lg-padding-x: var(--form-padding-x-lg, 1rem);
-    --animated-lg-padding-y: var(--form-padding-y-lg, 0.75rem);
-
-    --animated-dirty-label-padding-top: .25em;
-    --animated-dirty-label-padding-bottom: 0;
-    --animated-dirty-label-font-size: 0.85em;
-    --animated-dirty-label-height: auto;
-    --animated-dirty-label-top: -1px;
-}
-
-@utility form-control-animated {
-    position: var(--animated-position);
-    font-size: var(--animated-font-size);
-
-    &::placeholder {
-        opacity: var(--animated-placeholder-opacity) !important;
-    }
-
-    .form-group-inner {
-        position: var(--animated-group-inner-position);
-
-        input,
-        textarea,
-        select {
-            padding-top: var(--animated-label-padding-top);
-            padding-bottom: var(--animated-label-padding-bottom);
-            transition: padding 200ms ease;
-        }
-    }
+@utility form-control-base-animation {
+    position: relative;
 
     .form-label {
-        position: var(--animated-label-position);
-        display: var(--animated-label-display);
-        top: var(--animated-label-top);
-        left: var(--animated-label-left);
-        padding-left: var(--animated-label-padding-left);
-        padding-top: var(--animated-label-padding-top);
-        padding-bottom: var(--animated-label-padding-bottom);
-        align-items: var(--animated-label-align-items);
-        transition: var(--animated-label-transition-duration-alt) var(--animated-label-transition-timing-function);
-        z-index: var(--animated-label-z-index);
-        margin-bottom: var(--animated-label-margin-bottom);
-        font-family: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        padding: calc(var(--form-control-font-size) * .75 / 2) calc(var(--form-control-font-size) * .75);
+        font-size: var(--form-control-font-size);
+        transition: all 150ms ease-in-out;
     }
 
-    &.has-icon {
-        .form-label {
-            margin-left: var(--animated-has-icon-label-margin-left);
-        }
-    }
+    .form-control {
+        transition: all 150ms ease-in-out;
 
-    /* &.input-field-sm {
-        .form-label {
-            font-size: var(--animated-sm-font-size);
-            padding-top: var(--animated-sm-padding-y);
-            padding-bottom: var(--animated-sm-padding-y);
-            padding-left: var(--animated-sm-padding-x);
-        }
-
-        .form-group-inner input {
-            padding-top: calc(var(--animated-sm-padding-y) * 2.5);
-            padding-bottom: var(--animated-sm-padding-y);
+        &:is(:empty)::placeholder {
+            visibility: hidden;    
         }
     }
 
-    &.input-field-lg {
+    &:focus-within,
+    &:has(.form-control:not(:placeholder-shown), .form-control.is-dirty) {
         .form-label {
-            font-size: var(--animated-lg-font-size);
-            padding-top: var(--animated-lg-padding-y);
-            padding-bottom: var(--animated-lg-padding-y);
-            padding-left: var(--animated-lg-padding-x);
+            font-size: calc(var(--form-control-font-size) * .75);
+            padding-top: 2px;
+            padding-bottom: 0;
+            padding-left: calc(var(--form-control-font-size) * .75 + 1px);
         }
-
-        .form-group-inner input {
-            padding-top: calc(var(--animated-lg-padding-y) * 2.5);
-            padding-bottom: var(--animated-lg-padding-y);
-        }
-    } */
-
-  /* Label floats and stays visible when focused */
-    &:focus-within {
-        .form-label {
-            top: var(--animated-dirty-label-top);
-            font-size: calc(1em * .75);
-            padding-top: var(--animated-dirty-label-padding-top);
-            padding-bottom: var(--animated-dirty-label-padding-bottom);
-            opacity: 1;
-            visibility: visible;
-            transition: all 200ms ease;
-            font-family: inherit;
-            color: inherit;
-        }
-      
-        .form-group-inner input,
-        .form-group-inner textarea,
-        .form-group-inner select {
-            padding-top: calc(var(--form-control-padding-y) * 2);
+        
+        .form-control {
+            padding-top: calc(var(--form-control-font-size) * .75);
             padding-bottom: 0;
         }
     }
-
-  /* Hide label only when input has content AND is NOT focused */
-    input:not(:placeholder-shown):not(:focus) ~ .form-label {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-0.25rem);
-        transition: all 200ms ease;
-    }
-}
-
-@utility form-control-animated-* {&:focus-within {
-    .form-label {
-        top: var(--animated-dirty-label-top);
-        font-size: calc(1em * .75);
-        padding-top: var(--animated-dirty-label-padding-top);
-        padding-bottom: var(--animated-dirty-label-padding-bottom);
-        opacity: 1;
-        visibility: visible;
-        transition: all 200ms ease;
-        font-family: inherit;
-        color: inherit;
-    }
     
-    .form-group-inner input,
-    .form-group-inner textarea,
-    .form-group-inner select {
-        padding-top: calc(var(--form-control-padding-y) * 2);
-        padding-bottom: 0;
+    &:focus-within .form-control:is(:placeholder-shown),
+    .form-control.is-dirty:is(:empty) {
+        &::placeholder {
+            visibility: visible;
+        }
     }
 }
+
+@utility form-control-animated {
+    @apply form-control-base-animation;
+}
+
+@utility form-control-animated-* {
+    @apply form-control-base-animation;
+
+    position: relative;
+    
+    .form-label {
+        padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
+        padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+        font-size: --value(--form-control-font-size-*);
+    }
+
+    &:focus-within,
+    &:has(.form-control:not(:placeholder-shown), .form-control.is-dirty) {
+        .form-label {
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * .75 + 1px);
+            padding-left: calc(--spacing(--value(integer)) * .75 + 1px);
+            font-size: calc(--value(--form-control-font-size-*, [length]) * .75);
+            font-size: calc(--spacing(--value(integer)) * .75);
+        }
+        
+        .form-control {
+            padding-top: calc(--value(--form-control-font-size-*, [length]) * .75);
+            padding-top: calc(--spacing(--value(integer)) * .75);
+        }
+    }
 }
