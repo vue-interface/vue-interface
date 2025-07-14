@@ -8,36 +8,39 @@
     --form-switch-outline: none;
     --form-switch-appearance: none;
     --form-switch-border-width: 1px;
-    --form-switch-border-style: solid;
-    --form-switch-border-radius: calc(1em * 1.5);   
+    --form-switch-border-style: solid; 
     --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
     --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
     --form-switch-padding: 0.15rem 0.35;
     --form-switch-font-size: 0.7rem;
-    --form-switch-width: calc((1em * 1.5 + 0px + 0px + 1px * 2) * 2);
-    --form-switch-height: calc(1em * 1.5 + 0px + 0px + 1px * 2);
+    --form-switch-height: calc(1rem);
+    --form-switch-width: calc(var(--form-switch-height) * 2);
+    --form-switch-border-radius: var(--form-switch-height);  
     
     /* Form Switch Before Element (toggle circle) */
     --form-switch-before-content: '';
     --form-switch-before-position: absolute;
     --form-switch-before-top: 50%;
     --form-switch-before-left: 0;
-    --form-switch-before-width: 100%;
-    --form-switch-before-height: 100%;
+    --form-switch-before-height: calc(var(--form-switch-height));
+    --form-switch-before-width: calc(var(--form-switch-width) - var(--form-switch-border-width) * 2 - var(--form-switch-border-width) * 2);
     --form-switch-before-display: block;
-    --form-switch-before-border-radius: 100%;
-    --form-switch-before-background-position: left center;
-    --form-switch-before-background-repeat: no-repeat;
-    --form-switch-before-transform: translateY(-50%);
-    --form-switch-before-transition: background-color .15s ease-in-out, background-position .15s ease-in-out;
+    --form-switch-before-translate-y: -50%;
+    --form-switch-before-transition: all .15s ease-in-out;
     
-    /* Form Switch Circle Images */
-    --form-switch-circle-default: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%236b7280'/%3e%3c/svg%3e");
-    --form-switch-circle-focus: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%233b82f6'/%3e%3c/svg%3e");
-    --form-switch-circle-checked: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
-    --form-switch-circle-invalid: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23dc2626'/%3e%3c/svg%3e");
-    --form-switch-circle-valid: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2316a34a'/%3e%3c/svg%3e");
+    
+    --form-switch-after-border-radius: 100%;
+    --form-switch-after-content: '';
+    --form-switch-after-position: absolute;
+    --form-switch-after-left: 0;
+    --form-switch-after-top: var(--form-switch-before-top);
+    --form-switch-after-off-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --form-switch-after-on-color: var(--color-white, #fff);
+    --form-switch-after-focus-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+
+    --form-switch-after-background-position: center;
+    --form-switch-after-background-repeat: no-repeat;
     
     /* Form Switch States */
     --form-switch-checked-background: var(--color-blue-500, oklch(62.3% 0.214 259.815));
@@ -47,7 +50,8 @@
     /* Form Switch Focus */
     --form-switch-focus-border-color: var(--color-blue-300, oklch(78.5% 0.11 259.815));
     --form-switch-focus-outline: 0;
-    --form-switch-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-switch-focus-box-shadow-style: 0 0 0 .2rem;
+    --form-switch-focus-box-shadow-color: color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
     
     /* Form Switch Disabled */
     --form-switch-disabled-pointer-events: none;
@@ -65,9 +69,13 @@
     --form-switch-moon-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzZiMjFhOCcgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
 }
 
-/** (font-size * line-height) + (padding-y) */
-
 @utility form-switch {
+    --form-switch-before-width: calc(var(--form-switch-width) - var(--form-switch-border-width) * 2);
+    --form-switch-after-height: calc(var(--form-switch-height) * .75);
+    --form-switch-after-width: var(--form-switch-after-height);
+    --form-switch-after-translate-x: calc((var(--form-switch-height) - var(--form-switch-after-height) - var(--form-switch-border-width)) / 2);
+    --form-switch-after-checked-translate-x: calc((var(--form-switch-before-width) + var(--form-switch-height) - var(--form-switch-after-height) - var(--form-switch-border-width)) / 2);
+
     display: var(--form-switch-display);
     position: var(--form-switch-position);
     outline: var(--form-switch-outline);
@@ -90,12 +98,24 @@
         width: var(--form-switch-before-width);
         height: var(--form-switch-before-height);
         display: var(--form-switch-before-display);
-        border-radius: var(--form-switch-before-border-radius);
-        background-position: var(--form-switch-before-background-position);
-        background-repeat: var(--form-switch-before-background-repeat);
-        background-image: var(--form-switch-circle-default);
-        transform: var(--form-switch-before-transform);
+        transform: translateY(var(--form-switch-before-translate-y));
         transition: var(--form-switch-before-transition);
+    }
+
+    &::after {
+        content: var(--form-switch-after-content);
+        position: var(--form-switch-after-position);
+        left: var(--form-switch-after-left);
+        top: var(--form-switch-after-top);
+        transform: translateX(var(--form-switch-after-translate-x)) translateY(var(--form-switch-before-translate-y));
+        width: var(--form-switch-after-width);
+        height: var(--form-switch-after-height);
+        background-color: var(--form-switch-after-off-color); 
+        border-radius: var(--form-switch-after-border-radius);
+        transition: var(--form-switch-before-transition);
+        background-position: var(--form-switch-after-background-position);
+        background-repeat: var(--form-switch-after-background-repeat);
+        background-size: var(--form-switch-height);
     }
     
     &:disabled:not([readonly]) {
@@ -107,10 +127,10 @@
     &:focus {
         border-color: var(--form-switch-focus-border-color);
         outline: var(--form-switch-focus-outline);
-        box-shadow: var(--form-switch-focus-box-shadow);
-        
-        &::before {
-            background-image: var(--form-switch-circle-focus);
+        box-shadow: var(--form-switch-focus-box-shadow-style) var(--form-switch-focus-box-shadow-color);
+
+        &::after {
+            background-color: var(--form-switch-after-focus-color);
         }
     }
     
@@ -118,9 +138,9 @@
         background-color: var(--form-switch-checked-background);
         border-color: var(--form-switch-checked-border-color);
         
-        &::before {
-            background-position: var(--form-switch-checked-before-position);
-            background-image: var(--form-switch-circle-checked);
+        &::after {
+            background-color: var(--form-switch-after-on-color); 
+            transform: translateX(var(--form-switch-after-checked-translate-x)) translateY(var(--form-switch-before-translate-y));
         }
     }
     
@@ -130,8 +150,8 @@
         background-color: var(--invalid-background-color);
         color: var(--invalid-color);
         
-        &::before {
-            background-image: var(--form-switch-circle-invalid);
+        &::after {
+            background-color: var(--invalid-color);
         }
         
         &:focus {
@@ -145,8 +165,8 @@
         background-color: var(--valid-background-color);
         color: var(--valid-color);
         
-        &::before {
-            background-image: var(--form-switch-circle-valid);
+        &::after {
+            background-color: var(--valid-color);
         }
         
         &:focus {
@@ -158,16 +178,41 @@
 @utility form-switch-* {
     --form-switch-height: calc(--value(--form-control-font-size-*, [length]) * 1.5 + (--value(--form-control-font-size-*, [length]) * .75) + 2px);
     --form-switch-height: calc(--spacing(--value(integer)) * 1.5 + (--spacing(--value(integer)) * .75) + 2px);
+    --form-switch-width: calc(var(--form-switch-height) * 2);
+    --form-switch-focus-box-shadow-color: color-mix(in oklch, --value(--color-*, [color]) 50%, transparent);
 
     padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
     padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
     font-size: --value(--form-control-font-size-*, [length]);
     font-size: --spacing(--value(integer));
     height: var(--form-switch-height);
-    width: calc(var(--form-switch-height) * 2);
+    width: var(--form-switch-width);
+    border-radius: calc(var(--form-switch-height));
 
+    color: --value(--color-*, [color]);
+    border-color: --value(--color-*, [color]);
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
 
-    /* padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75); */
+    &::after {
+        background-color: --value(--color-*, [color]);
+    }
+
+    &:checked {
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 25%, transparent);
+        border-color: --value(--color-*, [color]);
+
+        &::after {
+            background-color: --value(--color-*, [color]);
+        }
+    }
+
+    &:focus {
+        border-color: --value(--color-*, [color]);
+
+        &::after {
+            background-color: --value(--color-*, [color]);
+        }
+    }
 }
 
 label:has(> .form-switch:disabled:not([readonly])) {
@@ -175,27 +220,28 @@ label:has(> .form-switch:disabled:not([readonly])) {
 }
 
 @utility form-switch-light-dark {
-    &::before {
+    &::after {
+        background-color: transparent;
         background-image: var(--form-switch-sun-bg);
     }
     
-    &:focus {
-        &::before {
-            background-image: var(--form-switch-sun-bg-focus);
-        }
+    &:focus::after {
+        background-color: transparent;
+        background-image: var(--form-switch-sun-bg-focus);
     }
   
     &:checked {
-      background-color: var(--form-switch-dark-bg);
-      border-color: var(--form-switch-border-color);
+        background-color: var(--form-switch-dark-bg);
+        border-color: var(--form-switch-border-color);
     }
   
-    &:checked::before {
-      background-image: var(--form-switch-moon-bg);
+    &:checked::after {
+        background-color: transparent;
+        background-image: var(--form-switch-moon-bg);
     }
   
-    &:checked:focus::before {
-      background-image: var(--form-switch-moon-bg-focus);
+    &:checked:focus::after {
+        background-image: var(--form-switch-moon-bg-focus);
     }
   
     @variant dark {
