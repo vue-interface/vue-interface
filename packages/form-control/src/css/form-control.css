@@ -66,8 +66,6 @@
 }
 
 @utility form-control {
-    /* --form-control-focus-box-shadow: 0 0 0 .2rem var(--form-control-focus-box-shadow-color); */
-    
     display: var(--form-control-display);
     width: var(--form-control-width);
     font-family: var(--form-control-font);
@@ -165,12 +163,11 @@
     font-size: --spacing(--value(integer));
     border-radius: calc(--value(--form-control-font-size-*, [length]) / 4);
     border-radius: calc(--spacing(--value(integer)) / 4);
-
     background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
     border-color: --value(--color-*, [color]);
     
     &:focus {
-        background-color: color-mix(in oklch, --value(--color-*, [color]) 15%, transparent);
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
         border-color: --value(--color-*, [color]);
     }
 }

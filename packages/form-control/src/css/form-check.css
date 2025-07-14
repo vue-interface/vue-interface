@@ -33,7 +33,8 @@
 
     /* Focus state */
     --form-check-focus-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
-    --form-check-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-check-focus-box-shadow-style: var(--form-control-focus-box-shadow-style);
+    --form-check-focus-box-shadow-color: var(--form-control-focus-box-shadow-color);
     --form-check-focus-outline: 0;
 
     /* Checked state */
@@ -91,7 +92,7 @@
 
     &:focus {
         border-color: var(--form-check-focus-border-color);
-        box-shadow: var(--form-check-focus-box-shadow);
+        box-shadow: var(--form-check-focus-box-shadow-style) var(--form-check-focus-box-shadow-color);
         outline: var(--form-check-focus-outline);
     }
 
@@ -159,4 +160,5 @@
 @utility form-check-* {
     font-size: --value(--form-control-font-size-*, [length]);
     font-size: --spacing(--value(integer));
+    /* box-shadow: var(--form-check-focus-box-shadow-style) var(--form-check-focus-box-shadow-color); */
 }
