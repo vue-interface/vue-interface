@@ -119,6 +119,13 @@ export const FormControlValidation = {
                 <div class="valid-feedback">This is an inline success message.</div>
                 <div class="valid-feedback">This is an inline success message.</div>
             </div>
+ 
+            <h1 class="text-2xl">Custom Colors</h1>
+            <input type="text" class="form-control form-control-amber-500" />
+            <input type="text" class="form-control form-control-green-500" />
+            <input type="text" class="form-control form-control-purple-500" />
+            <input type="text" class="form-control form-control-neutral-500" />
+           
         </div>
     ),
 }
@@ -289,6 +296,25 @@ export const FormSelectValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
+
+            <h2 class="text-2xl mt-2">Custom Colors</h2>
+
+            <select class="form-select form-select-amber-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-green-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-purple-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-neutral-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
         </div>
     ),
 };
@@ -489,59 +515,6 @@ export const CheckAndRadioValidation = {
         </div>
     ),
 }
-
-export const FileBrowser = {
-    name: 'File Browser',
-    render: () => ( 
-        <div class="flex flex-col gap-4">
-            <div class="form-file">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-            <div class="form-file">
-                <input type="file" class="form-file-input" id="customFileDisabled" disabled/>
-                <label class="form-file-label" for="customFileDisabled">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-        </div> 
-    ),
-}
-
-export const FileBrowserSizes = {
-    name: 'File Browser Sizes',
-    render: () => (
-        <div class="flex flex-col gap-4">
-            <div class="form-file form-file-sm">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-md">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-lg">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-        </div>
-    ),
-};
 
 export const Switches = {
     name: 'Switches',

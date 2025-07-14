@@ -38,15 +38,7 @@ export const SplitButtons = {
 export const Sizing = {
     name: 'Sizing',
     render: () => (
-        <div class="flex flex-col gap-2">
-            <div>
-                <div class="btn-group btn-group-2xs">
-                    <button class="btn btn-secondary">Left</button>
-                    <button class="btn btn-secondary">Middle</button>
-                    <button class="btn btn-secondary">Right</button>
-                </div>
-            </div>
-            
+        <div class="flex flex-col gap-2">            
             <div>
                 <div class="btn-group btn-group-xs">
                     <button class="btn btn-secondary">Left</button>

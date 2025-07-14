@@ -103,7 +103,6 @@ export const Sizes = {
     name: 'Sizes',
     render: () => (
         <div class="flex gap-2">
-            <button class="btn btn-primary btn-2xs self-center">2xs</button>
             <button class="btn btn-primary btn-xs self-center">xs</button>
             <button class="btn btn-primary btn-sm self-center">sm</button>
             <button class="btn btn-primary btn-md self-center">md</button>
@@ -132,7 +131,6 @@ export const BlockSizes = {
     render: () => (
         <div class="flex flex-col gap-2">
             <h1 class="font-bold">Predefined Sizes</h1>
-            <button class="btn btn-primary btn-2xs block">2xs</button>
             <button class="btn btn-primary btn-xs btn-block">xs</button>
             <button class="btn btn-primary btn-sm btn-block">sm</button>
             <button class="btn btn-primary btn-md btn-block">md</button>
