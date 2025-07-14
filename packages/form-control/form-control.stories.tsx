@@ -296,6 +296,25 @@ export const FormSelectValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
+
+            <h2 class="text-2xl mt-2">Custom Colors</h2>
+
+            <select class="form-select form-select-amber-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-green-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-purple-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
+            <select class="form-select form-select-neutral-500">
+                <option value=""></option>
+                <option>1</option>
+            </select>
         </div>
     ),
 };
