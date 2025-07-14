@@ -1,24 +1,46 @@
 @import "tailwindcss";
 
+@theme {
+    --form-control-base-animation-position: relative;
+
+    --form-control-animation-position: absolute;
+    --form-control-animation-left: 0;
+    --form-control-animation-display: flex;
+    --form-control-animation-line-height: 0.75; /* use in place of .75 in calc's? Should it be 1.5*/
+    --form-control-animation-align-items: center;
+    --form-control-animation-padding: calc(var(--form-control-font-size) * .75 / 2) calc(var(--form-control-font-size) * .75);
+    --form-control-animation-transition: all 150ms ease-in-out;
+
+    --form-control-animation-is-empty-visibility: hidden;
+    --form-control-animiation-is-dirty-visibility: visible;
+
+    --form-control-animation-focus-label-font-size: calc(var(--form-control-font-size) * .75);
+    --form-control-animation-focus-label-padding-top: 2px;
+    --form-control-animation-focus-label-padding-bottom: 0;
+    --form-control-animation-focus-label-padding-left: calc(var(--form-control-font-size) * .75 + 1px);
+    --form-control-animation-focus-control-padding-top: calc(var(--form-control-font-size) * .75);
+    --form-control-animation-focus-control-padding-bottom: 0; 
+}
+
 @utility form-control-base-animation {
-    position: relative;
+    position: var(--form-control-base-animation-position);
 
     &:has(input.form-control, .form-select) .form-label {
-        position: absolute;
+        position: var(--form-control-animation-position);
         top: var(--form-control-border-width);
-        left: 0;
-        display: flex;
-        align-items: center;
-        padding: calc(var(--form-control-font-size) * .75 / 2) calc(var(--form-control-font-size) * .75);
+        left: var(--form-control-animation-left);
+        display: var(--form-control-animation-display);
+        align-items: var(--form-control-animation-align-items);
+        padding: var(--form-control-animation-padding);
         font-size: var(--form-control-font-size);
-        transition: all 150ms ease-in-out;
+        transition: var(--form-control-animation-transition);
     }
 
     .form-select, input.form-control {
-        transition: all 150ms ease-in-out;
+        transition: var(--form-control-animation-transition);
 
         &:is(:empty)::placeholder {
-            visibility: hidden;    
+            visibility: var(--form-control-animation-is-empty-visibility);
         }
     }
 
@@ -26,23 +48,23 @@
     &:has(input.form-control:not(:placeholder-shown),input.form-control.is-dirty,.form-select.is-dirty:not(.is-empty)),
     &:has(.form-select>option:checked:not([value=""])) {
         .form-label {
-            font-size: calc(var(--form-control-font-size) * .75);
-            padding-top: 2px;
-            padding-bottom: 0;
-            padding-left: calc(var(--form-control-font-size) * .75 + 1px);
+            font-size: var(--form-control-animation-focus-label-font-size);
+            padding-top: var(--form-control-animation-focus-label-padding-top);
+            padding-bottom: var(--form-control-animation-focus-label-padding-bottom);
+            padding-left: var(--form-control-animation-focus-label-padding-left);
         }
         
         .form-control,
         .form-select {
-            padding-top: calc(var(--form-control-font-size) * .75);
-            padding-bottom: 0;
+            padding-top: var(--form-control-animation-focus-control-padding-top);
+            padding-bottom: var(--form-control-animation-focus-control-padding-bottom);
         }
     }
     
     &:has(input.form-control):focus-within input.form-control:is(:placeholder-shown),
     input.form-control.is-dirty:is(:empty) {
         &::placeholder {
-            visibility: visible;
+            visibility: var(--form-control-animiation-is-dirty-visibility);
         }
     }
 }
@@ -54,7 +76,7 @@
 @utility form-control-animated-* {
     @apply form-control-base-animation;
 
-    position: relative;
+    position: var(--form-control-base-animation-position);
     
     &:has(input.form-control, .form-select) .form-label {
         padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);

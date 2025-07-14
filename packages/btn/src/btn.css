@@ -110,10 +110,6 @@
     border-color: --value(--btn-*, --color-*, [color]); 
     background-color: transparent;
 
-    padding: --value(--btn-padding-*);
-    font-size: --value(--btn-font-size-*);
-    border-radius: --value(--btn-border-radius-*);
-    
     color: --value(--btn-outline-*, --btn-*, --color-*, [color]); 
 
     &:hover {
