@@ -40,6 +40,14 @@ export const Sizing = {
     render: () => (
         <div class="flex flex-col gap-2">
             <div>
+                <div class="btn-group btn-group-2xs">
+                    <button class="btn btn-secondary">Left</button>
+                    <button class="btn btn-secondary">Middle</button>
+                    <button class="btn btn-secondary">Right</button>
+                </div>
+            </div>
+            
+            <div>
                 <div class="btn-group btn-group-xs">
                     <button class="btn btn-secondary">Left</button>
                     <button class="btn btn-secondary">Middle</button>
@@ -100,6 +108,46 @@ export const Sizing = {
                     <button class="btn btn-secondary">Left</button>
                     <button class="btn btn-secondary">Middle</button>
                     <button class="btn btn-secondary">Right</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="btn-group btn-group-5xl">
+                    <button class="btn btn-secondary">Left</button>
+                    <button class="btn btn-secondary">Middle</button>
+                    <button class="btn btn-secondary">Right</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="btn-group btn-group-3">
+                    <button class="btn btn-secondary">btn-group-3</button>
+                    <button class="btn btn-secondary">btn-group-3</button>
+                    <button class="btn btn-secondary">btn-group-3</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="btn-group btn-group-4">
+                    <button class="btn btn-secondary">btn-group-4</button>
+                    <button class="btn btn-secondary">btn-group-4</button>
+                    <button class="btn btn-secondary">btn-group-4</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="btn-group btn-group-5">
+                    <button class="btn btn-secondary">btn-group-5</button>
+                    <button class="btn btn-secondary">btn-group-5</button>
+                    <button class="btn btn-secondary">btn-group-5</button>
+                </div>
+            </div>
+            
+            <div>
+                <div class="btn-group btn-group-[16px]">
+                    <button class="btn btn-secondary">btn-group-[16px]</button>
+                    <button class="btn btn-secondary">btn-group-[16px]</button>
+                    <button class="btn btn-secondary">btn-group-[16px]</button>
                 </div>
             </div>
         </div>
@@ -172,6 +220,12 @@ export const RegularSizing = {
             </div>
 
             <div>
+                <div role="group" class="btn-dropdown btn-group btn-group-xs">
+                    <button class="btn btn-secondary dropdown-toggle">Click Me</button>
+                </div>
+            </div>
+
+            <div>
                 <div role="group" class="btn-dropdown btn-group btn-group-sm">
                     <button class="btn btn-secondary dropdown-toggle">Click Me</button>
                 </div>
@@ -210,6 +264,18 @@ export const RegularSizing = {
             <div>
                 <div role="group" class="btn-dropdown btn-group btn-group-4xl">
                     <button class="btn btn-secondary dropdown-toggle">Click Me</button>
+                </div>
+            </div>
+
+            <div>
+                <div role="group" class="btn-dropdown btn-group btn-group-3">
+                    <button class="btn btn-secondary dropdown-toggle">(btn-group-3)</button>
+                </div>
+            </div>
+                
+            <div>
+                <div role="group" class="btn-dropdown btn-group btn-group-[16px]">
+                    <button class="btn btn-secondary dropdown-toggle">(btn-group-[16px])</button>
                 </div>
             </div>
         </div>

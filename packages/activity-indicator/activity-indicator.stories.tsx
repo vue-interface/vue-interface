@@ -25,7 +25,7 @@ export const IndicatorControl = {
             options: ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'],
         },
         type: {
-            control: 'select', // Use radio instead of select for components
+            control: 'select',
             options: [
                 'Dots',
                 'Chase',
@@ -271,7 +271,7 @@ export const CenterIndicator = {
     )
 } satisfies Story;
 
-export const AbsolutInsideParent = {
+export const AbsoluteInsideParent = {
     name: 'Absolute Inside Parent',
     render: () => (
         <div 
