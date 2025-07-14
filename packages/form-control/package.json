@@ -12,9 +12,9 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/form-control.js",
-      "require": "./dist/form-control.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/form-control.umd.js"
     },
     "./tailwindcss": "./tailwindcss/index.cjs",
     "./tailwindcss/utils/escapeSvg": "./tailwindcss/utils/escapeSvg.cjs",
