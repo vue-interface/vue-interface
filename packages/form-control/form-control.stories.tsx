@@ -119,6 +119,13 @@ export const FormControlValidation = {
                 <div class="valid-feedback">This is an inline success message.</div>
                 <div class="valid-feedback">This is an inline success message.</div>
             </div>
+ 
+            <h1 class="text-2xl">Custom Colors</h1>
+            <input type="text" class="form-control form-control-amber-500" />
+            <input type="text" class="form-control form-control-green-500" />
+            <input type="text" class="form-control form-control-purple-500" />
+            <input type="text" class="form-control form-control-neutral-500" />
+           
         </div>
     ),
 }
