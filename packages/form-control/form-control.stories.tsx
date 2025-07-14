@@ -516,59 +516,6 @@ export const CheckAndRadioValidation = {
     ),
 }
 
-export const FileBrowser = {
-    name: 'File Browser',
-    render: () => ( 
-        <div class="flex flex-col gap-4">
-            <div class="form-file">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-            <div class="form-file">
-                <input type="file" class="form-file-input" id="customFileDisabled" disabled/>
-                <label class="form-file-label" for="customFileDisabled">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-        </div> 
-    ),
-}
-
-export const FileBrowserSizes = {
-    name: 'File Browser Sizes',
-    render: () => (
-        <div class="flex flex-col gap-4">
-            <div class="form-file form-file-sm">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-md">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-
-            <div class="form-file form-file-lg">
-                <input type="file" class="form-file-input" id="customFile"/>
-                <label class="form-file-label" for="customFile">
-                    <span class="form-file-text">Choose file...</span>
-                    <span class="form-file-button">Browse</span>
-                </label>
-            </div>
-        </div>
-    ),
-};
-
 export const Switches = {
     name: 'Switches',
     render: () => ( 
