@@ -54,7 +54,7 @@ const {
                     type="button"
                     aria-haspopup="true"
                     :aria-expanded="expanded"
-                    :class="{...buttonClasses, 'dropdown-toggle': true}"
+                    :class="{...buttonClasses, 'dropdown-toggle': true, 'dropdown-toggle-split': split}"
                     @blur="onBlur"
                     @click="onClickToggle" />
             </slot>
