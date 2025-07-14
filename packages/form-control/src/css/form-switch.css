@@ -233,18 +233,18 @@ label:has(> .form-switch:disabled:not([readonly])) {
     &:checked {
         background-color: var(--form-switch-dark-bg);
         border-color: var(--form-switch-border-color);
-    }
   
-    &:checked::after {
-        background-color: transparent;
-        background-image: var(--form-switch-moon-bg);
-    }
-  
-    &:checked:focus::after {
-        background-image: var(--form-switch-moon-bg-focus);
+        &::after {
+            background-color: transparent;
+            background-image: var(--form-switch-moon-bg);
+        }
+    
+        &:focus::after {
+            background-image: var(--form-switch-moon-bg-focus);
+        }
     }
   
     @variant dark {
-      border-color: var(--form-switch-dark-border-color);
+        border-color: var(--form-switch-dark-border-color);
     }
 }
