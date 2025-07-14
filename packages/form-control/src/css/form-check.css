@@ -3,24 +3,24 @@
 @theme {
     --form-check-width: 1.25em;
     --form-check-height: 1.25em;
-    --form-check-margin-top: calc((var(--form-control-line-height, 1.5) * 1em - 1.25em) / 2);
+    --form-check-margin-top: calc((var(--form-line-height, 1.5) * 1em - 1.25em) / 2);
     --form-check-vertical-align: top;
-    --form-check-background-color: inherit;
-    --form-check-background-repeat: no-repeat;
     --form-check-background-position: center;
     --form-check-background-size: contain;
-    --form-check-border-width: 1px;
-    --form-check-border-style: solid;
-    --form-check-border-color: var(--color-gray-400, oklch(71.9% 0.013 258.338));
     --form-check-color-adjust: exact;
-    --form-check-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    --form-check-appearance: none;
     --form-check-padding: 0;
+    --form-check-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-check-background-color: var(--form-background-color, inherit);
+    --form-check-background-repeat: var(--form-background-repeat, no-repeat);
+    --form-check-border-width: var(--form-border-width, 1px);
+    --form-check-border-style: var(--form-border-style, solid);
+    --form-check-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
+    --form-check-appearance: var(--form-appearance, none);
 
     /* Dark mode */
-    --form-check-dark-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
-    --form-check-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
-    --form-check-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+    --form-check-dark-color: var(--form-dark-color, oklch(98.5% 0.002 247.839));
+    --form-check-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
+    --form-check-dark-border-color: var(--form-dark-border-color, oklch(55.6% 0 0));
 
     /* Checkbox specific */
     --form-check-checkbox-border-radius: calc(1.25em / 4);
@@ -32,10 +32,10 @@
     --form-check-active-filter: brightness(90%);
 
     /* Focus state */
-    --form-check-focus-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
-    --form-check-focus-box-shadow-style: var(--form-control-focus-box-shadow-style);
-    --form-check-focus-box-shadow-color: var(--form-control-focus-box-shadow-color);
-    --form-check-focus-outline: 0;
+    --form-check-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-check-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-check-focus-box-shadow-color: var(--form-focus-box-shadow-color, color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent));
+    --form-check-focus-outline: var(--form-focus-outline, 0);
 
     /* Checked state */
     --form-check-checked-background-color: var(--color-blue-500, oklch(68.7% 0.162 253.989));
@@ -44,10 +44,10 @@
     --form-check-radio-checked-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9Jy00IC00IDggOCc+PGNpcmNsZSByPScyJyBmaWxsPScjZmZmJy8+PC9zdmc+");
 
     /* Disabled state */
-    --form-check-disabled-pointer-events: none;
-    --form-check-disabled-filter: none;
-    --form-check-disabled-opacity: 0.5;
-    --form-check-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
+    --form-check-disabled-pointer-events: var(--form-disabled-pointer-events, none);
+    --form-check-disabled-filter: var(--form-disabled-filter, none);
+    --form-check-disabled-opacity: calc(var(--form-disabled-opacity, 1) / 2);
+    --form-check-disabled-dark-background-color: var(--form-disabled-dark-background-color, oklch(20.5% 0 0));
     --form-check-disabled-label-opacity: 0.5;
 
     /* Invalid/Valid state */

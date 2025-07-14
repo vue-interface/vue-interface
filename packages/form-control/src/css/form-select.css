@@ -1,47 +1,45 @@
 @import "tailwindcss";
 
-@import "./sizes.css";
-
 @theme {
-    --form-select-display: flex;
-    --form-select-width: 100%;
-    --form-select-font-family: inherit;
-    --form-select-font-weight: 400;
-    --form-select-line-height: 1.5;
-    --form-select-color: var(--color-gray-800, oklch(31.8% 0.014 256.848));
     --form-select-vertical-align: middle;
-    --form-select-background-color: inherit;
-    --form-select-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZpbGw9J25vbmUnIHZpZXdCb3g9JzAgMCAyNCAyNCcgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZT0nIzQwNDA0MCc+PHBhdGggc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBkPSdNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUnIC8+PC9zdmc+");
-    --form-select-background-repeat: no-repeat;
-    --form-select-background-position: right 0.375rem center;
     --form-select-background-size: 1em;
-    --form-select-border-width: 1px;
-    --form-select-border-style: solid;
-    --form-select-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
     --form-select-border-radius: 0.375rem;
-    --form-select-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    --form-select-appearance: none;
     --form-select-padding-x: 0.75rem;
     --form-select-padding-y: 0.375rem;
-    --form-select-padding-right: calc(var(--form-select-padding-x) * 2);
-    --form-select-opacity: 1;
+    --form-select-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-select-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZpbGw9J25vbmUnIHZpZXdCb3g9JzAgMCAyNCAyNCcgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZT0nIzQwNDA0MCc+PHBhdGggc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBkPSdNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUnIC8+PC9zdmc+");
+    --form-select-display: var(--form-display, flex);
+    --form-select-width: var(--form-width, 100%);
+    --form-select-font: var(--from-font, inherit);
+    --form-select-font-weight: var(--form-font-weight, 400);
+    --form-select-line-height: var(--form-line-height, 1.5rem);
+    --form-select-color: var(--color-gray-800, oklch(31.8% 0.014 256.848));
+    --form-select-background-color: var(--form-background-color, inherit);
+    --form-select-background-repeat: var(--form-background-repeat, no-repeat);
+    --form-select-background-position: var(--form-background-position, right 0.375rem center);
+    --form-select-border-width: var(--form-border-width, 1px);
+    --form-select-border-style: var(--form-border-style, solid);
+    --form-select-border-color: var(--form-border-color-control-select, oklch(87% 0 0));
+    --form-select-appearance: var(--form-appearance, none);
+    --form-select-padding-right: calc(var(--form-select-padding-x, 0.75rem) * 2);
+    --form-select-opacity: var(--form-disabled-opacity, 1);
 
     /* Dark mode */
-    --form-select-dark-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
-    --form-select-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
-    --form-select-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+    --form-select-dark-color: var(--form-dark-color, oklch(98.5% 0.002 247.839));
+    --form-select-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
+    --form-select-dark-border-color: var(--form-dark-border-color,  oklch(55.6% 0 0));
     --form-select-dark-background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZpbGw9J25vbmUnIHZpZXdCb3g9JzAgMCAyNCAyNCcgc3Ryb2tlLXdpZHRoPScxLjUnIHN0cm9rZT0nI2Q0ZDRkNCc+PHBhdGggc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBkPSdNMTkuNSA4LjI1bC03LjUgNy41LTcuNS03LjUnIC8+PC9zdmc+");
 
     /* Focus state */
-    --form-select-focus-color: var(--color-gray-700, oklch(41.8% 0.01 256.848));
-    --form-select-focus-background-color: inherit;
-    --form-select-focus-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
-    --form-select-focus-outline: 0;
-    --form-select-focus-box-shadow-style: var(--form-control-focus-box-shadow-style);
-    --form-select-focus-box-shadow-color: var(--form-control-focus-box-shadow-color);
-    --form-select-focus-dark-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
-    --form-select-focus-dark-color: var(--color-white, oklch(100% 0.00011 271.152));
-    --form-select-focus-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
+    --form-select-focus-color: var(--form-focus-color, oklch(37.1% 0 0));
+    --form-select-focus-background-color: var(--form-focus-background-color, inherit);
+    --form-select-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-select-focus-outline: var(--form-focus-outline, 0);
+    --form-select-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-select-focus-box-shadow-color: var(--form-focus-box-shadow-color, color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent));
+    --form-select-focus-dark-border-color: var(--form-focus-dark-border-color, oklch(70.7% 0.165 254.624));
+    --form-select-focus-dark-color: var(--form-focus-dark-color, oklch(100% 0.00011 271.152));
+    --form-select-focus-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
 
     /* MS Value styles (Edge compatibility) */
     --form-select-ms-value-color: var(--color-gray-700, oklch(41.8% 0.01 256.848));
@@ -51,47 +49,46 @@
 
     /* Multiple/size select styles */
     --form-select-multiple-height: auto;
-    --form-select-multiple-padding-right: var(--form-select-padding-x);
+    --form-select-multiple-padding-right: var(--form-select-padding-x, 0.75rem);
     --form-select-multiple-background-image: none;
 
     /* Disabled state */
-    --form-select-disabled-color: var(--color-neutral-400, oklch(70.8% 0 0));
-    --form-select-disabled-background-color: var(--color-neutral-200, oklch(92.2% 0 0));
-    --form-select-disabled-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
-    --form-select-disabled-dark-color: var(--color-neutral-600, oklch(43.9% 0 0));
-    --form-select-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
-    --form-select-disabled-dark-border-color: var(--color-neutral-700, oklch(20.5% 0 0));
+    --form-select-disabled-color: var(--form-disabled-color, oklch(70.8% 0 0));
+    --form-select-disabled-border-color: var(--form-disabled-border-color, oklch(70.8% 0 0));
+    --form-select-disabled-dark-color: var(--form-disabled-dark-color, oklch(43.9% 0 0));
+    --form-select-disabled-dark-background-color: var(--form-disabled-dark-background-color,  oklch(20.5% 0 0));
+    --form-select-disabled-dark-border-color: var(--form-disabled-dark-border-color, oklch(20.5% 0 0));
 
     /* Firefox focus ring removal */
     --form-select-moz-focusring-color: transparent;
-    --form-select-moz-focusring-text-shadow: 0 0 0 var(--color-gray-800, oklch(31.8% 0.014 256.848));
+    --form-select-moz-focusring-text-shadow: 0 0 0 oklch(31.8% 0.014 256.848);
 
     /* Invalid/Valid state */
     --form-select-validation-background-size: 1.25em;
     --form-select-validation-background-position: right calc((var(--form-select-line-height) * 1em + var(--form-select-padding-x) * 2) / 4) center;
 
     /* Plaintext Styles */
-    --form-select-plaintext-display: block;
-    --form-select-plaintext-outline: none;    
-    --form-select-plaintext-border: none;
-    --form-select-plaintext-color: inherit;
-    --form-select-plaintext-cursor: default;
-    --form-select-plaintext-color-focus-dark: inherit;    
-    --form-select-plaintext-color-disabled: var(--color-neutral-600, oklch(43.9% 0 0));
-    --form-select-plaintext-color-disabled-dark: var(--color-neutral-400, oklch(70.8% 0 0));    
-    --form-select-plaintext-padding-left: 0em !important;
-    --form-select-plaintext-padding-right: 0em !important;
-    --form-select-plaintext-background-image: none;     
+    --form-select-plaintext-display: var(--form-plaintext-display, block);
+    --form-select-plaintext-outline: var(--form-plaintext-outline, none);    
+    --form-select-plaintext-border: var(--form-plaintext-border, none);
+    --form-select-plaintext-color: var(--form-plaintext-color, inherit);
+    --form-select-plaintext-cursor: var(--form-plaintext-cursor, default);
+    --form-select-plaintext-padding-left: var(--form-plaintext-padding-left, 0em);
+    --form-select-plaintext-padding-right: var(--form-plaintext-padding-right, 0em);
+    --form-select-plaintext-background-image: var(--form-plaintext-background-image, none);  
+    --form-select-plaintext-color-focus-dark: inherit;       
     --form-select-plaintext-background-color-dark: inherit;
     --form-select-plaintext-box-shadow-focus: none;
     --form-select-plaintext-background-color-focus-dark: var(--color-neutral-800, oklch(26.9% 0 0));
+    --form-select-plaintext-color-disabled: var(--color-neutral-600, oklch(43.9% 0 0));
+    --form-select-plaintext-color-disabled-dark: var(--color-neutral-400, oklch(70.8% 0 0));    
 }
 
 @utility form-select {
     display: var(--form-select-display);
     width: var(--form-select-width);
     padding: var(--form-select-padding-y) var(--form-select-padding-right) var(--form-select-padding-y) var(--form-select-padding-x);
-    font-family: var(--form-select-font-family);
+    font-family: var(--form-select-font);
     font-weight: var(--form-select-font-weight);
     line-height: var(--form-select-line-height);
     color: var(--form-select-color);

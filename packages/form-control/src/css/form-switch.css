@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
-@import "./validation.css";
-
 @theme {
-    --form-switch-display: inline-flex;
     --form-switch-position: relative;
     --form-switch-outline: none;
-    --form-switch-appearance: none;
-    --form-switch-border-width: 1px;
-    --form-switch-border-style: solid;
-    --form-switch-border-radius: calc(1em * 1.5);   
-    --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
     --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-switch-border-radius: calc(1em * var(--form-line-height, 1.5));   
+    --form-switch-display: var(--form-display, flex);
+    --form-switch-appearance: var(--form-appearance, none);
+    --form-switch-border-width: var(--form-border-width, 1px);
+    --form-switch-border-style: var(--form-border-style, solid);
+    --form-switch-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
 
     --form-switch-padding: 0.15rem 0.35;
     --form-switch-font-size: 0.7rem;
@@ -28,7 +26,7 @@
     --form-switch-before-display: block;
     --form-switch-before-border-radius: 100%;
     --form-switch-before-background-position: left center;
-    --form-switch-before-background-repeat: no-repeat;
+    --form-switch-before-background-repeat: var(--form-background-repeat, no-repeat);
     --form-switch-before-transform: translateY(-50%);
     --form-switch-before-transition: background-color .15s ease-in-out, background-position .15s ease-in-out;
     
@@ -45,14 +43,14 @@
     --form-switch-checked-before-position: right center;
     
     /* Form Switch Focus */
-    --form-switch-focus-border-color: var(--color-blue-300, oklch(78.5% 0.11 259.815));
-    --form-switch-focus-outline: 0;
+    --form-switch-focus-border-color: var(--form-focus-border-color);
+    --form-switch-focus-outline: var(--form-focus-outline);
     --form-switch-focus-box-shadow: 0 0 0 .2rem color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
     
     /* Form Switch Disabled */
-    --form-switch-disabled-pointer-events: none;
-    --form-switch-disabled-filter: none;
-    --form-switch-disabled-opacity: 0.5;
+    --form-switch-disabled-pointer-events: var(--form-disabled-pointer-events);
+    --form-switch-disabled-filter: var(--form-disabled-filter);
+    --form-switch-disabled-opacity: calc(var(--form-disabled-opacity) / 2);
 
     /*Dark-Light mode toggle*/
     --form-switch-dark-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
