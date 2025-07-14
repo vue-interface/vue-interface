@@ -9,10 +9,6 @@ const props = withDefaults(defineProps<BtnDropdownProps>(), {
 
 const emit = defineEmits<BtnDropdownEvents>();
 
-defineOptions({
-    inheritAttrs: false
-});
-
 const {
     target,
     menu,

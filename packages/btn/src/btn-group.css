@@ -205,5 +205,13 @@
     	font-size: --spacing(--value(integer));
     	border-radius: calc(--value(--btn-font-size-*, [length]) / 4);
     	border-radius: calc(--spacing(--value(integer)) / 4);
+
+		&:is(.dropdown-toggle-split) {
+			--dropdown-toggle-split-padding-x: calc(--value(--btn-font-size-*, [length]) * 1.5 / 4);
+			--dropdown-toggle-split-padding-x: calc(--spacing(--value(integer)) * .75 / 2);
+
+			padding-left: var(--dropdown-toggle-split-padding-x);
+			padding-right: var(--dropdown-toggle-split-padding-x);
+		}
     }
 }

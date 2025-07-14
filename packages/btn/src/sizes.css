@@ -1,7 +1,6 @@
 @theme {
-    --btn-font-size-2xs: --spacing(1);
-    --btn-font-size-xs: --spacing(2);
-    --btn-font-size-sm: --spacing(3);
+    --btn-font-size-xs: --spacing(2.85);
+    --btn-font-size-sm: --spacing(3.33);
     --btn-font-size-md: --spacing(4);
     --btn-font-size-lg: --spacing(5);
     --btn-font-size-xl: --spacing(6);

@@ -82,8 +82,7 @@ export const DropdownControl = {
                         {visible.value ? 'Showing' : 'Hidden'}
                     </div>
                 </div>
-
-                <BtnDropdown
+                    <BtnDropdown
                     {...args}
                     onShow={() => {
                         visible.value = true;
@@ -158,8 +157,7 @@ export const CustomButtons = {
                         <a href="#">Another Action</a>
                         <a href="#">Something else here</a>
                     </BtnDropdown>
-
-                    <BtnDropdown>
+                            <BtnDropdown>
                         {{
                             button: ({ target, onClickToggle, onBlur, expanded }: ButtonSlotProps) => (
                                 <button
@@ -217,56 +215,30 @@ export const Variants = {
         <div class="flex gap-2">
             <BtnDropdown label="Primary" variant="btn-primary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Secondary" variant="btn-secondary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Success" variant="btn-success">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Info" variant="btn-info">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Warning" variant="btn-warning">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Danger" variant="btn-danger">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Dark" variant="btn-dark">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Light" variant="btn-light">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Muted" variant="btn-muted">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     )
@@ -279,56 +251,30 @@ export const OutlineVariants = {
         <div class="flex gap-2">
             <BtnDropdown label="Primary" variant="btn-outline-primary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Secondary" variant="btn-outline-secondary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Success" variant="btn-outline-success">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Info" variant="btn-outline-info">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Warning" variant="btn-outline-warning">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Danger" variant="btn-outline-danger">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Dark" variant="btn-outline-dark">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Light" variant="btn-outline-light">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Muted" variant="btn-outline-muted">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     )
@@ -341,56 +287,30 @@ export const SplitButtonVariants = {
         <div class="flex gap-2">
             <BtnDropdown label="Primary" variant="btn-primary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Secondary" variant="btn-secondary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Success" variant="btn-success" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Info" variant="btn-info" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Warning" variant="btn-warning" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Danger" variant="btn-danger" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Dark" variant="btn-dark" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Light" variant="btn-light" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Muted" variant="btn-muted" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     )
@@ -403,50 +323,27 @@ export const SplitOutlineButton = {
         <div class="flex gap-2">
             <BtnDropdown label="Primary" variant="btn-outline-primary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Secondary" variant="btn-outline-secondary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Success" variant="btn-outline-success" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Info" variant="btn-outline-info" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Warning" variant="btn-outline-warning" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Danger" variant="btn-outline-danger" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Dark" variant="btn-outline-dark" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Light" variant="btn-outline-light" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     )
@@ -456,103 +353,70 @@ export const SplitOutlineButton = {
 export const ButtonSizes = {
     name: 'Button Sizes',
     render: () => (
-        <div class="flex gap-2">
-            <div>
-                <BtnDropdown label="2xs" size="btn-2xs" variant="btn-secondary">
+        <>
+            <h1 class="text-2xl mb-4">Predetermined Sizes</h1>
+
+            <div class="[&>div]:mr-2">
+                <BtnDropdown label="xs" size="btn-group-xs" variant="btn-secondary">
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
+                </BtnDropdown>
+                <BtnDropdown label="sm" size="btn-group-sm" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="md" size="btn-group-md" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="lg" size="btn-group-lg" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="xl" size="btn-group-xl" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="2xl" size="btn-group-2xl" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="3xl" size="btn-group-3xl" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="4xl" size="btn-group-4xl" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="5xl" size="btn-group-5xl" variant="btn-secondary">
+                    <a href="#">Action</a>
                 </BtnDropdown>
             </div>
 
-            <div>
-                <BtnDropdown label="xs" size="btn-xs" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
+            <h1 class="text-2xl my-4">Tailwind Sizes</h1>
 
-            <div>
-                <BtnDropdown label="sm" size="btn-sm" variant="btn-secondary">
+            <div class="[&>div]:mr-2">
+                <BtnDropdown label="btn-group-4" size="btn-group-4" variant="btn-secondary">
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
+                </BtnDropdown>
+                <BtnDropdown label="btn-group-5" size="btn-group-5" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="btn-group-6" size="btn-group-6" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="btn-group-7" size="btn-group-7" variant="btn-secondary">
+                    <a href="#">Action</a>
+                </BtnDropdown>
+                <BtnDropdown label="btn-group-8" size="btn-group-8" variant="btn-secondary">
+                    <a href="#">Action</a>
                 </BtnDropdown>
             </div>
+            
+            <h1 class="text-2xl my-4">Arbitary Sizes</h1>
 
-            <div>
-                <BtnDropdown label="md" size="btn-md" variant="btn-secondary">
+            <div class="[&>div]:mr-2">
+                <BtnDropdown label="btn-[16px]" size="btn-group-[16px]" variant="btn-secondary">
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
+                </BtnDropdown>
+                <BtnDropdown label="btn-[27px]" size="btn-group-[27px]" variant="btn-secondary">
+                    <a href="#">Action</a>
                 </BtnDropdown>
             </div>
-
-            <div>
-                <BtnDropdown label="lg" size="btn-lg" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="xl" size="btn-xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="2xl" size="btn-2xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="3xl" size="btn-3xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="4xl" size="btn-4xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="5xl" size="btn-5xl" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="btn-4" size="btn-4" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="btn-[27px]" size="btn-[27px]" variant="btn-secondary">
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-        </div>
+        </>
     )
 } satisfies Story;
 
@@ -562,90 +426,53 @@ export const SplitButtonSizes = {
     render: () => (
         <div class="flex gap-2">
             <div>
-                <BtnDropdown label="2xs" size="btn-2xs" variant="btn-secondary" split>
+                <BtnDropdown label="xs" class="btn-group-xs" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-
             <div>
-                <BtnDropdown label="xs" size="btn-xs" variant="btn-secondary" split>
+                <BtnDropdown label="sm" class="btn-group-sm" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-
             <div>
-                <BtnDropdown label="sm" size="btn-sm" variant="btn-secondary" split>
+                <BtnDropdown label="md" size="btn-group-md" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="md" size="btn-md" variant="btn-secondary" split>
+                <BtnDropdown label="lg" size="btn-group-lg" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="lg" size="btn-lg" variant="btn-secondary" split>
+                <BtnDropdown label="xl" size="btn-group-xl" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="xl" size="btn-xl" variant="btn-secondary" split>
+                <BtnDropdown label="2xl" size="btn-group-2xl" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="2xl" size="btn-2xl" variant="btn-secondary" split>
+                <BtnDropdown label="3xl" size="btn-group-3xl" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="3xl" size="btn-3xl" variant="btn-secondary" split>
+                <BtnDropdown label="4xl" size="btn-group-4xl" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-            
             <div>
-                <BtnDropdown label="4xl" size="btn-4xl" variant="btn-secondary" split>
+                <BtnDropdown label="btn-4" size="btn-group-4" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
-
             <div>
-                <BtnDropdown label="btn-4" size="btn-4" variant="btn-secondary" split>
+                <BtnDropdown label="btn-[27px]" size="btn-group-[27px]" variant="btn-secondary" split>
                     <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
-                </BtnDropdown>
-            </div>
-
-            <div>
-                <BtnDropdown label="btn-[27px]" size="btn-[27px]" variant="btn-secondary" split>
-                    <a href="#">Action</a>
-                    <a href="#">Another Action</a>
-                    <a href="#">Something else here</a>
                 </BtnDropdown>
             </div>
         </div>
@@ -665,26 +492,15 @@ export const MenuAlignment = {
         <div class="flex gap-2">
             <BtnDropdown align="start" label="Align Left" variant="btn-secondary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown align="start" label="Align Left (Split)" variant="btn-secondary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown align="end" label="Align Right" variant="btn-secondary">
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown align="end" label="Align Right (Split)" variant="btn-secondary" split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     ),
@@ -697,13 +513,9 @@ export const DropupVariation = {
         <div class="flex justify-center items-end gap-2 min-h-[150px]">
             <BtnDropdown label="Dropup" variant="btn-secondary" dropup>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
             <BtnDropdown label="Dropup (Split)" variant="btn-secondary" dropup split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     ),
@@ -716,14 +528,9 @@ export const DroprightVariation = {
         <div class="flex gap-2 items-end min-h-[150px]">
             <BtnDropdown label="Dropright" variant="btn-secondary" dropright>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
-
             <BtnDropdown label="Dropright (Split)" variant="btn-secondary" dropright split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     ),
@@ -736,14 +543,9 @@ export const DropleftVariation = {
         <div class="flex gap-2 justify-center">
             <BtnDropdown label="Dropleft" variant="btn-secondary" dropleft>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
-            </BtnDropdown>
-            
+            </BtnDropdown>            
             <BtnDropdown label="Dropleft (Split)" variant="btn-secondary" dropleft split>
                 <a href="#">Action</a>
-                <a href="#">Another Action</a>
-                <a href="#">Something else here</a>
             </BtnDropdown>
         </div>
     ),

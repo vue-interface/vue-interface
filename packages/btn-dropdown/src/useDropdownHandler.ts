@@ -3,6 +3,17 @@ import { useFloating } from '@floating-ui/vue';
 import type { DropdownMenu } from '@vue-interface/dropdown-menu';
 import { computed, ref, watchEffect, type EmitFn, type HTMLAttributes } from 'vue';
 
+type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);
+
+export type BtnGroupSizes = 'btn-group-xs'
+    | 'btn-group-sm' 
+    | 'btn-group-md'
+    | 'btn-group-lg'
+    | 'btn-group-xl'
+    | 'btn-group-2xl'
+    | 'btn-group-3xl'
+    | 'btn-group-4xl';
+
 export type BtnDropdownProps = {
     align?: Alignment;
     block?: boolean;
@@ -15,7 +26,7 @@ export type BtnDropdownProps = {
     offset?: OffsetOptions,
     middleware?: Middleware[],
     side?: Side;
-    size?: string;
+    size?: LiteralUnion<BtnGroupSizes>;
     split?: boolean;
     variant?: string;
 }
@@ -58,14 +69,14 @@ export function useDropdownHandler(props: BtnDropdownProps, emit: EmitFn<BtnDrop
         'dropup': props.dropup,
         'dropright': props.dropright,
         'dropleft': props.dropleft,
-        'expanded': expanded.value
+        'expanded': expanded.value,
+        [props.size ?? '']: !!props.size,
     }));
     
     const buttonClasses = computed(() => {
         const classes = {
             btn: true,
             [props.variant ?? '']: !!props.variant,
-            [props.size ?? '']: !!props.size,
             'btn-block': !!props.block,
             'no-caret': !props.caret
         };
