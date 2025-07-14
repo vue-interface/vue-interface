@@ -353,8 +353,8 @@ export const SplitOutlineButton = {
 export const ButtonSizes = {
     name: 'Button Sizes',
     render: () => (
-        <>
-            <h1 class="text-2xl mb-4">Predetermined Sizes</h1>
+        <div class="flex flex-col gap-2">
+            <h1 class="text-2xl">Predetermined Sizes</h1>
 
             <div class="[&>div]:mr-2">
                 <BtnDropdown label="xs" size="btn-group-xs" variant="btn-secondary">
@@ -386,7 +386,7 @@ export const ButtonSizes = {
                 </BtnDropdown>
             </div>
 
-            <h1 class="text-2xl my-4">Tailwind Sizes</h1>
+            <h1 class="text-2xl">Tailwind Sizes</h1>
 
             <div class="[&>div]:mr-2">
                 <BtnDropdown label="btn-group-4" size="btn-group-4" variant="btn-secondary">
@@ -406,7 +406,7 @@ export const ButtonSizes = {
                 </BtnDropdown>
             </div>
             
-            <h1 class="text-2xl my-4">Arbitary Sizes</h1>
+            <h1 class="text-2xl">Arbitary Sizes</h1>
 
             <div class="[&>div]:mr-2">
                 <BtnDropdown label="btn-[16px]" size="btn-group-[16px]" variant="btn-secondary">
@@ -416,7 +416,7 @@ export const ButtonSizes = {
                     <a href="#">Action</a>
                 </BtnDropdown>
             </div>
-        </>
+        </div>
     )
 } satisfies Story;
 
