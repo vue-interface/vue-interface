@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 import type { Meta, StoryObj } from '@storybook/vue3';
 import './index.css';
-// type PagePropsAndCustomArgs = ComponentPropsAndSlots<typeof Page> & { footer?: string };
  
 const meta = {
     title: 'Example/Buttons/Button',
@@ -104,14 +103,25 @@ export const Sizes = {
     name: 'Sizes',
     render: () => (
         <div class="flex gap-2">
+            <button class="btn btn-primary btn-2xs self-center">2xs</button>
             <button class="btn btn-primary btn-xs self-center">xs</button>
             <button class="btn btn-primary btn-sm self-center">sm</button>
-            <button class="btn btn-primary btn-base self-center">base</button>
+            <button class="btn btn-primary btn-md self-center">md</button>
             <button class="btn btn-primary btn-lg self-center">lg</button>
             <button class="btn btn-primary btn-xl self-center">xl</button>
             <button class="btn btn-primary btn-2xl self-center">2xl</button>
             <button class="btn btn-primary btn-3xl self-center">3xl</button>
             <button class="btn btn-primary btn-4xl self-center">4xl</button>
+            <button class="btn btn-primary btn-5xl self-center">5xl</button>
+
+            <button class="btn btn-primary btn-3 self-center">btn-3</button>
+            <button class="btn btn-primary btn-4 self-center">btn-4</button>
+            <button class="btn btn-primary btn-5 self-center">btn-5</button>
+            <button class="btn btn-primary btn-6 self-center">btn-6</button>
+            <button class="btn btn-primary btn-7 self-center">btn-7</button>
+
+            <button class="btn btn-primary btn-[16px] self-center">16px</button>
+            <button class="btn btn-primary btn-[21px] self-center">21px</button>
         </div>
     )
 };
@@ -121,14 +131,27 @@ export const BlockSizes = {
     name: 'Block Sizes',
     render: () => (
         <div class="flex flex-col gap-2">
-            <button class="btn btn-primary btn-xs">xs</button>
-            <button class="btn btn-primary btn-sm">sm</button>
-            <button class="btn btn-primary btn-base">base</button>
-            <button class="btn btn-primary btn-lg">lg</button>
-            <button class="btn btn-primary btn-xl">xl</button>
-            <button class="btn btn-primary btn-2xl">2xl</button>
-            <button class="btn btn-primary btn-3xl">3xl</button>
-            <button class="btn btn-primary btn-4xl">4xl</button>
+            <h1 class="font-bold">Predefined Sizes</h1>
+            <button class="btn btn-primary btn-2xs block">2xs</button>
+            <button class="btn btn-primary btn-xs btn-block">xs</button>
+            <button class="btn btn-primary btn-sm btn-block">sm</button>
+            <button class="btn btn-primary btn-md btn-block">md</button>
+            <button class="btn btn-primary btn-lg btn-block">lg</button>
+            <button class="btn btn-primary btn-xl btn-block">xl</button>
+            <button class="btn btn-primary btn-2xl btn-block">2xl</button>
+            <button class="btn btn-primary btn-3xl btn-block">3xl</button>
+            <button class="btn btn-primary btn-4xl btn-block">4xl</button>
+            
+            <h1 class="font-bold">Tailwind Sizes</h1>
+            <button class="btn btn-primary btn-3 btn-block">btn-block-3</button>
+            <button class="btn btn-primary btn-4 btn-block">btn-block-4</button>
+            <button class="btn btn-primary btn-5 btn-block">btn-block-5</button>
+            <button class="btn btn-primary btn-6 btn-block">btn-block-6</button>
+            <button class="btn btn-primary btn-7  btn-block">btn-block-7</button>
+            
+            <h1 class="font-bold">Arbitrary Sizes</h1>
+            <button class="btn btn-primary btn-[16px] btn-block">16px</button>
+            <button class="btn btn-primary btn-[21px] btn-block">21px</button>
         </div>
     )
 };
