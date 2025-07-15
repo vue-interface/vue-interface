@@ -1,17 +1,5 @@
 @import "tailwindcss";
-
-@theme{
-    --activity-indicator-size-2xs: --spacing(1);
-    --activity-indicator-size-xs: --spacing(2);
-    --activity-indicator-size-sm: --spacing(3);
-    --activity-indicator-size-md: --spacing(4);
-    --activity-indicator-size-lg: --spacing(5);
-    --activity-indicator-size-xl: --spacing(6);
-    --activity-indicator-size-2xl: --spacing(7);
-    --activity-indicator-size-3xl: --spacing(8);
-    --activity-indicator-size-4xl: --spacing(9);
-    --activity-indicator-size-5xl: --spacing(10);
-}
+@import "./sizes.css";
 
 @utility activity-indicator-* {
     font-size: --value(--activity-indicator-size-*, [length]);
