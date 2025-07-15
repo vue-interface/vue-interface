@@ -4,7 +4,7 @@ import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, watc
 export type FormControlEvents<T> = {
     (e: 'blur', event: FocusEvent): void
     (e: 'change', value: T): void
-    (e: 'click', event: PointerEvent): void
+    (e: 'click', event: Event): void
     (e: 'focus', event: FocusEvent): void
     (e: 'update:modelValue', value: T): void
 };
@@ -172,7 +172,7 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
 
     const formGroupClasses = computed<FormGroupClasses>(() => ({
         [String(attrs.class)]: !!attrs.class,
-        'has-activity': props.activity,
+        'has-activity': !!props.activity,
         'has-changed': hasChanged.value,
         'has-focus': hasFocus.value,
         'has-icon': hasIcon.value,
@@ -183,8 +183,8 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
     }));
 
     const controlClasses = computed<FormControlClasses>(() => ({        
-        [props.formControlClass]: !!props.formControlClass,
-        'form-control-plaintext': props.plaintext,
+        [props.formControlClass ?? '']: !!props.formControlClass,
+        'form-control-plaintext': !!props.plaintext,
         'form-control-icon': hasIcon.value,
         'is-valid': isValid.value,
         'is-invalid': isInvalid.value,
