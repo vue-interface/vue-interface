@@ -8,9 +8,10 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/input-field.js",
-      "require": "./dist/input-field.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/input-field.umd.js"
     }
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
