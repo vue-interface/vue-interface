@@ -30,7 +30,7 @@
     --form-control-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
     --form-control-focus-outline: var(--form-focus-outline, 0);
     --form-control-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
-    --form-control-focus-box-shadow-color: var(--form-focus-box-shadow-color, color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent));
+    --form-control-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
     --form-control-focus-dark-color: var(--form-focus-dark-color, oklch(100% 0.00011 271.152));
     --form-control-focus-dark-border-color: var(--form-focus-dark-border-color, oklch(70.7% 0.165 254.624));
 

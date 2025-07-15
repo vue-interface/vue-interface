@@ -27,7 +27,7 @@
     --form-focus-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
     --form-focus-outline: 0;
     --form-focus-box-shadow-style: 0 0 0 .2rem;
-    --form-focus-box-shadow-color: color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-focus-box-shadow-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
 
     --form-focus-dark-color: var(--color-white, oklch(100% 0.00011 271.152));
     --form-focus-dark-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));

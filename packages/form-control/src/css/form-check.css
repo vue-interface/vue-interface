@@ -34,7 +34,7 @@
     /* Focus state */
     --form-check-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
     --form-check-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
-    --form-check-focus-box-shadow-color: var(--form-focus-box-shadow-color, color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent));
+    --form-check-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
     --form-check-focus-outline: var(--form-focus-outline, 0);
 
     /* Checked state */
