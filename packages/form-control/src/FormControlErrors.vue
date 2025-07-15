@@ -19,14 +19,14 @@ const map = computed(() => {
         );
     }
 
-    // Finally check to see if an error of errors was passed.
+    // Next check to see if an error of errors was passed.
     if(Array.isArray(props.errors)) {
         return new Map<string, (string | Error)[]>(
             [[key, props.errors]]
         );
     }
 
-    // Next check if props.errors is a plain object. 
+    // Finally check if props.errors is a plain object. 
     if(typeof props.errors === 'object') {
         return new Map<string, (string | Error)[]>(
             Object.entries(props.errors)
