@@ -2,7 +2,7 @@
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { CheckedFormControlProps, FormControlEvents, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { ref, useSlots } from 'vue';
+import { ref } from 'vue';
 
 defineOptions({
     inheritAttrs: false
@@ -41,9 +41,9 @@ const field = ref<HTMLInputElement>();
                 name="control"
                 v-bind="{ onClick, onBlur, onFocus, controlAttributes }">
                 <div
-                    v-if="useSlots().icon"
+                    v-if="$slots.icon"
                     class="form-group-inner-icon"
-                    @click="field.focus">
+                    @click="field?.focus()">
                     <slot name="icon" />
                 </div>
                 <input

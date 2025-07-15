@@ -3,14 +3,14 @@ import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, watc
 
 export type FormControlEvents<T> = {
     (e: 'blur' | 'focus', event: FocusEvent): void
-    (e: 'click', event: PointerEvent): void
+    (e: 'click', event: MouseEvent): void
     (e: 'change' | 'update:modelValue', value: T): void
 };
 
 export type FormControlSlot<T> = (
     props: {
         controlAttributes: FormControlAttributes<T>,
-        onClick: (e: PointerEvent) => void,
+        onClick: (e: MouseEvent) => void,
         onBlur: (e: FocusEvent) => void,
         onFocus: (e: FocusEvent) => void
     }
@@ -18,7 +18,7 @@ export type FormControlSlot<T> = (
 
 export type FormControlFeedbackPropSlot = (
     props: {
-        feedback: FormControlFeedbackProp
+        feedback?: FormControlFeedbackProp
     }
 ) => unknown;
 
@@ -197,7 +197,7 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
         readonly: props.readonly
     }));
 
-    function onClick(e: PointerEvent) {
+    function onClick(e: MouseEvent) {
         if(props.readonly) {
             e.preventDefault();
         }

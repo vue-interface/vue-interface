@@ -43,14 +43,9 @@
     "url": "https://github.com/vue-interface/vue-interface/issues"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
-  "dependencies": {
-    "@types/lodash-es": "^4.17.9",
-    "color": "^4.2.3",
-    "deepmerge": "^4.3.1",
-    "lodash-es": "^4.17.21"
-  },
   "peerDependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "@vue-interface/activity-indicator": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.7.0",
@@ -58,7 +53,6 @@
     "@types/color": "^3.0.3",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^4.2.0",
-    "@vue-interface/eslint-config": "^1.0.0-beta.0",
     "autoprefixer": "^10.4.15",
     "change-case": "^4.1.2",
     "commitlint": "^17.7.1",

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { isPlainObject } from 'lodash-es';
 import { computed } from 'vue';
 import { type FormControlErrorProp, type FormControlErrorPropArray, type FormControlErrorPropRecord } from './useFormControl.js';
 
@@ -20,17 +19,17 @@ const map = computed(() => {
         );
     }
 
-    // Next check if props.errors is a plain object. 
-    if(isPlainObject(props.errors)) {
-        return new Map<string, (string | Error)[]>(
-            Object.entries(props.errors)
-        );
-    }
-
     // Finally check to see if an error of errors was passed.
     if(Array.isArray(props.errors)) {
         return new Map<string, (string | Error)[]>(
             [[key, props.errors]]
+        );
+    }
+
+    // Next check if props.errors is a plain object. 
+    if(typeof props.errors === 'object') {
+        return new Map<string, (string | Error)[]>(
+            Object.entries(props.errors)
         );
     }
 
