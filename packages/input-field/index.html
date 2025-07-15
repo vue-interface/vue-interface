@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>InputField</title>
+    </head>
+    <body class="dark:bg-neutral-900 dark:text-white">
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-5">input-field</h1>
+
+            <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-3">
+                Value: {{ value }}
+            </div>
+
+            <input-field v-model="value" label="Text Field" placeholder="Some placeholder" class="mb-3" @change="onChange"></input-field>
+            <input-field type="password" label="Password Field" class="mb-3"></input-field>
+            <input-field label="Descriptive Text Field" help-text="Some helpful text goes here." class="mb-3"></input-field>
+            <input-field type="email" label="Email Field" placeholder="you@example.com" class="mb-3"></input-field>
+            <input-field label="Plain Text" placeholder="Type something here..." class="mb-3" plaintext></input-field>
+            <input-field label="Readonly" placeholder="Type something here..." class="mb-3" readonly></input-field>
+            <input-field label="Readonly (Disabled)" placeholder="Type something here..." class="mb-3" readonly disabled></input-field>
+            <input-field label="Disabled" placeholder="Type something here..." class="mb-3" disabled></input-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
+
+            <input-field label="Small" class="mb-3 input-field-sm"></input-field>
+            <input-field label="Medium" class="mb-3"></input-field>
+            <input-field label="Large" class="mb-3 input-field-lg"></input-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Icons</h2>
+
+            <input-field label="Small Icon" class="input-field-sm mb-3">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+
+            <input-field label="Medium Icon" class="mb-3">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+
+            <input-field label="Large Icon" class="input-field-lg mb-3">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Activity Indicator</h2>
+
+            <input-field label="Small" :indicator="Dots()" indicator-size="xs" :activity="showActivity" class="input-field-sm mb-3"></input-field>
+            <input-field label="Medium" :indicator="Pulse()" indicator-size="md" :activity="showActivity" class="input-field-md mb-3"></input-field>
+            <input-field label="Large" :indicator="Dots()" indicator-size="lg" :activity="showActivity" class="input-field-lg mb-3"></input-field>
+
+            <button type="button" class="underline text-blue-600" @click="showActivity = !showActivity">
+                <span v-if="!showActivity">Show</span><span v-else>Hide</span> Activity
+            </button>
+
+            <!-- <h2 class="text-2xl mt-6 mb-3">Animated Labels</h2>
+
+            <input-field size="sm" label="Small" class="mb-3" animated></input-field>
+            <input-field size="md" label="Medium" class="mb-3" animated></input-field>
+            <input-field v-model="value" size="md" label="Medium" class="mb-3" animated></input-field>
+
+            <input-field value="Some Value" size="md" label="Medium" class="mb-3" animated></input-field>
+            <input-field size="lg" label="Large" class="mb-3" animated></input-field> -->
+
+            <h2 class="text-2xl mt-6 mb-3">Validation</h2>
+
+            <input-field label="Empty Array of Errors" :errors="[]" class="mb-3"></input-field>
+
+            <input-field label="Single Inline Error" error="This is an inline error." class="mb-3 invalid-feedback"></input-field>
+            <input-field label="Array of Errors" :errors="['First Error', 'Second Error']" class="mb-3 invalid-feedback"></input-field>
+            <input-field name="test" label="Multiple Errors From Object" :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}" class="mb-3 invalid-feedback"></input-field>
+        
+            <input-field label="Valid Field" valid class="mb-3 valid-feedback"></input-field>
+            <input-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3 valid-feedback"></input-field>
+            <input-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3 valid-feedback"></input-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Animated Labels</h2>
+
+            <input-field v-model="value" label="Text Field" placeholder="Some placeholder" class="mb-3 animated"></input-field>
+            <input-field label="Text Field" placeholder="Some placeholder" class="mb-3 animated"></input-field>
+
+            <input-field label="Small Icon" class="input-field-sm mb-3 animated">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+            
+            <input-field label="Medium Icon" class="mb-3 animated">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+
+            <input-field label="Large Icon" class="input-field-lg mb-3 animated">
+                <template #icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="stroke-black dark:stroke-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                      </svg>                      
+                </template>
+            </input-field>
+        </div>
+
+        <script type="module">
+            import './demo.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler.js';
+            import { InputField } from './index';
+            import { ActivityIndicator, Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+          
+            const vue = createApp({
+                components: {
+                   InputField
+                },
+                data() {
+                    return {
+                        Dots: () => Dots,
+                        Spinner: () => Spinner,
+                        Pulse: () => Pulse,
+                        showActivity: false,
+                        value: undefined
+                    };
+                },
+                mounted() {
+                    setTimeout(() => {
+                        this.value = 'testing...'
+                    }, 1000)
+                },
+                methods: {
+                    onChange(value) {
+                        console.log('change', value)
+                    }
+                }
+            });
+
+          /*   vue.use(ActivityIndicator, {
+                indicators: {
+                    Dots,
+                    Pulse,
+                    Spinner
+                }
+            }); */
+
+            vue.mount('#app');
+        </script>
+    </body>
+</html>

@@ -1,51 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-    --form-control-display: flex;
-    --form-control-width: 100%;
-    --form-control-font: inherit;
-    --form-control-font-weight: 400;
-    --form-control-line-height: 1.5;
-    --form-control-font-size: 1rem;
-    --form-control-background-color: inherit;
-    --form-control-background-repeat: no-repeat;
     --form-control-background-size: 1.25em;
-    --form-control-background-position: right calc((1.5 * 1em + .375rem + .375rem) / 4) center;
-    --form-control-border-width: 1px;
-    --form-control-border-style: solid;
-    --form-control-border-color: var(--color-gray-300, oklch(87.2% 0.01 258.338));
     --form-control-border-radius: 0.25rem;
     --form-control-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    --form-control-appearance: none;
+    --form-control-display: var(--form-display, flex);
+    --form-control-width: var(--form-width, 100%);
+    --form-control-font: var(--from-font, inherit);
+    --form-control-font-weight: var(--form-font-weight. 400);
+    --form-control-line-height: var(--form-line-height, 1.5);
+    --form-control-font-size: var(--form-font-size, 1rem);
+    --form-control-background-color: var(--form-background-color, inherit);
+    --form-control-background-repeat: var(--form-background-repeat, no-repeat);
+    --form-control-background-position: var(--form-background-position, right 0.375rem center);
+    --form-control-border-width: var(--form-border-width, 1px);
+    --form-control-border-style: var(--form-border-style, solid);
+    --form-control-border-color: var(--form-border-color-control-select, oklch(87% 0 0));
+    --form-control-appearance: var(--form-appearance, none);
 
     /* Dark mode */
-    --form-control-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
-    --form-control-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+    --form-control-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
+    --form-control-dark-border-color: var(--form-dark-border-color, oklch(55.6% 0 0));
 
-    --form-control-focus-dark-background-color: var(--color-neutral-700, oklch(20.5% 0 0));
+    --form-control-focus-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
     
     /* Focus state */
-    --form-control-focus-color: var(--color-neutral-700, oklch(37.1% 0 0));
-    --form-control-focus-background-color: inherit;
-    --form-control-focus-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
-    --form-control-focus-outline: 0;
-    --form-control-focus-box-shadow-style: 0 0 0 .2rem;
-    --form-control-focus-box-shadow-color: color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
-    --form-control-focus-dark-color: var(--color-white, #fff);
-    --form-control-focus-dark-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+    --form-control-focus-color: var(--form-focus-color, oklch(37.1% 0 0));
+    --form-control-focus-background-color: var(--form-focus-background-color, inherit);
+    --form-control-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-control-focus-outline: var(--form-focus-outline, 0);
+    --form-control-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-control-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-control-focus-dark-color: var(--form-focus-dark-color, oklch(100% 0.00011 271.152));
+    --form-control-focus-dark-border-color: var(--form-focus-dark-border-color, oklch(70.7% 0.165 254.624));
 
     /* Placeholder */
     --form-control-placeholder-color: var(--color-neutral-400, oklch(70.8% 0 0));
     --form-control-placeholder-opacity: 1;
 
     /* Disabled state */
-    --form-control-disabled-color: var(--color-neutral-400, oklch(70.8% 0 0));
-    --form-control-disabled-background-color: var(--color-neutral-200, oklch(92.2% 0 0));
-    --form-control-disabled-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
-    --form-control-disabled-opacity: 1;
-    --form-control-disabled-dark-color: var(--color-neutral-600, oklch(43.9% 0 0));
-    --form-control-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
-    --form-control-disabled-dark-border-color: var(--color-neutral-700, oklch(20.5% 0 0));
+    --form-control-disabled-color: var(--form-disabled-color, oklch(70.8% 0 0));
+    --form-control-disabled-background-color: var(--form-disabled-background-color, oklch(92.2% 0 0));
+    --form-control-disabled-border-color: var(--form-disabled-border-color, oklch(70.8% 0 0));
+    --form-control-disabled-opacity: var(--form-disabled-opacity, 1);
+    --form-control-disabled-dark-color: var(--form-disabled-dark-color, oklch(43.9% 0 0));
+    --form-control-disabled-dark-background-color: var(--form-disabled-dark-background-color, oklch(20.5% 0 0));
+    --form-control-disabled-dark-border-color: var(--form-disabled-dark-border-color, oklch(20.5% 0 0));
 
     /* Form control color specific */
     --form-control-color-width: 3rem;
@@ -53,16 +53,19 @@
     --form-control-color-padding: 0.375rem;
 
     /* Plaintext */
-    --form-control-plaintext-display: block;
-    --form-control-plaintext-color: inherit;
-    --form-control-plaintext-background: transparent;
-    --form-control-plaintext-cursor: default;
-    --form-control-plaintext-border: none;
-    --form-control-plaintext-padding-left: 0em !important;
-    --form-control-plaintext-padding-right: 0em !important;
-    --form-control-plaintext-outline: none;
-    --form-control-plaintext-font-size: 1rem;
-    --form-control-plaintext-border-radius: 0.25rem;
+    --form-control-plaintext-display: var(--form-plaintext-display, block);
+    --form-control-plaintext-width: var(--form-plaintext-width, 100%);
+    --form-control-plaintext-margin: var(--form-plaintext-margin, 0);
+    --form-control-plaintext-padding-left: var(--form-plaintext-padding-left, 0em);
+    --form-control-plaintext-padding-right: var(--form-plaintext-padding-right, 0em);    
+    --form-control-plaintext-color: var(--form-plaintext-color, inherit);
+    --form-control-plaintext-border: var(--form-plaintext-border, none);
+    --form-control-plaintext-line-height: var(--form-plaintext-line-height, 1.5);
+    --form-control-plaintext-background: var(--form-plaintext-background, transparent);
+    --form-control-plaintext-box-shadow: var(--form-plaintext-box-shadow, none);
+    --form-control-plaintext-outline: var(--form-plaintext-outline, none);
+    --form-control-plaintext-cursor: var(--form-plaintext-cursor, default);
+    --form-control-plaintext-appearance: var(--form-plaintext-appearance, none);
 }
 
 @utility form-control {
@@ -189,14 +192,16 @@
 
 @utility form-control-plaintext {
     display: var(--form-control-plaintext-display);
-    width: var(--form-control-width);
+    width: var(--form-control-plaintext-width);
+    margin: var(--form-control-plaintext-margin);
+    padding-left: var(--form-control-plaintext-padding-left);
+    padding-right: var(--form-control-plaintext-padding-right);    
     color: var(--form-control-plaintext-color);
     border: var(--form-control-plaintext-border);
-    outline: var(--form-control-plaintext-outline);
+    line-height: var(--form-control-plaintext-line-height);
     background: var(--form-control-plaintext-background);
+    box-shadow: var(--form-control-plaintext-box-shadow);
+    outline: var(--form-control-plaintext-outline);
     cursor: var(--form-control-plaintext-cursor);
-    padding-left: var(--form-control-plaintext-padding-left);
-    padding-right: var(--form-control-plaintext-padding-right);
-    font-size: var(--form-control-plaintext-font-size);
-    border-radius: var(--form-control-plaintext-border-radius);
+    appearance: var(--form-control-plaintext-appearance);
 }

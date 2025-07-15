@@ -1,0 +1,62 @@
+/*Contains all base form styles*/
+
+@theme {
+    --form-display: flex;
+    --form-width: 100%;
+    --from-font: inherit;
+    --form-font-weight: 400;
+    --form-line-height: 1.5;
+    --form-font-size: 1rem;
+    --form-background-color: inherit;
+    --form-background-repeat: no-repeat;
+    --form-background-position: right 0.375rem center;
+    --form-border-width: 1px;
+    --form-border-style: solid;
+    --form-border-color-control-select: var(--color-neutral-300, oklch(87% 0 0)); /* form-control & form-select */
+    --form-border-color-switch-check: var(--color-neutral-400, oklch(70.8% 0 0)); /* from-switch & form-check */
+    --form-appearance: none;
+    
+    /* Dark Mode */
+    --form-dark-background-color: var(--color-neutral-700, oklch(37.1% 0 0));
+    --form-dark-border-color: var(--color-neutral-500, oklch(55.6% 0 0));
+    --form-dark-color: var(--color-gray-50, oklch(98.5% 0.002 247.839));
+    
+    /* Focus */
+    --form-focus-color: var(--color-neutral-700, oklch(37.1% 0 0));
+    --form-focus-background-color: inherit;
+    --form-focus-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    --form-focus-outline: 0;
+    --form-focus-box-shadow-style: 0 0 0 .2rem;
+    --form-focus-box-shadow-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+
+    --form-focus-dark-color: var(--color-white, oklch(100% 0.00011 271.152));
+    --form-focus-dark-border-color: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+
+    /* Disabled */
+    --form-disabled-opacity: 1;
+    --form-disabled-filter: none;     
+    --form-disabled-pointer-events: none; 
+    --form-disabled-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --form-disabled-background-color: var(--color-neutral-200, oklch(92.2% 0 0));
+    --form-disabled-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
+
+    --form-disabled-dark-color: var(--color-neutral-600, oklch(43.9% 0 0));
+    --form-disabled-dark-background-color: var(--color-neutral-900, oklch(20.5% 0 0));
+    --form-disabled-dark-border-color: var(--color-neutral-700, oklch(20.5% 0 0));
+
+    /* Plaintext */
+    --form-plaintext-display: block;
+    --form-plaintext-width: 100%;
+    --form-plaintext-margin: 0;
+    --form-plaintext-padding-left: 0em !important;
+    --form-plaintext-padding-right: 0em !important;
+    --form-plaintext-color: inherit;
+    --form-plaintext-border: none;
+    --form-plaintext-line-height: 1.5;
+    --form-plaintext-background: transparent;
+    --form-plaintext-background-image: none;
+    --form-plaintext-box-shadow: none;
+    --form-plaintext-outline: none;
+    --form-plaintext-cursor: default;
+    --form-plaintext-appearance: none;
+}

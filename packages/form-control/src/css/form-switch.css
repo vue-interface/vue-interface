@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
-@import "./validation.css";
-
 @theme {
-    --form-switch-display: inline-flex;
     --form-switch-position: relative;
     --form-switch-outline: none;
-    --form-switch-appearance: none;
-    --form-switch-border-width: 1px;
-    --form-switch-border-style: solid; 
-    --form-switch-border-color: var(--color-gray-400, oklch(76.5% 0.01 258.33));
+    --form-switch-appearance: var(--form-appearance, none);
+    --form-switch-border-width: var(--form-border-width, 1px);
+    --form-switch-border-style: var(--form-border-style, solid); 
+    --form-switch-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
     --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-switch-border-radius: calc(1em * var(--form-line-height, 1.5));   
+    --form-switch-display: var(--form-display, flex);
+    --form-switch-appearance: var(--form-appearance, none);
+    --form-switch-border-width: var(--form-border-width, 1px);
+    --form-switch-border-style: var(--form-border-style, solid);
+    --form-switch-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
 
     --form-switch-padding: 0.15rem 0.35;
     --form-switch-font-size: 0.7rem;
@@ -28,7 +31,6 @@
     --form-switch-before-display: block;
     --form-switch-before-translate-y: -50%;
     --form-switch-before-transition: all .15s ease-in-out;
-    
     
     --form-switch-after-border-radius: 100%;
     --form-switch-after-content: '';
@@ -48,18 +50,18 @@
     --form-switch-checked-before-position: right center;
     
     /* Form Switch Focus */
-    --form-switch-focus-border-color: var(--color-blue-300, oklch(78.5% 0.11 259.815));
-    --form-switch-focus-outline: 0;
-    --form-switch-focus-box-shadow-style: 0 0 0 .2rem;
-    --form-switch-focus-box-shadow-color: color-mix(in oklch, var(--color-blue-400, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-switch-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-switch-focus-outline: var(--form-focus-outline, 0);
+    --form-switch-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-switch-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
     
     /* Form Switch Disabled */
-    --form-switch-disabled-pointer-events: none;
-    --form-switch-disabled-filter: none;
-    --form-switch-disabled-opacity: 0.5;
+    --form-switch-disabled-pointer-events: var(--form-disabled-pointer-events);
+    --form-switch-disabled-filter: var(--form-disabled-filter);
+    --form-switch-disabled-opacity: calc(var(--form-disabled-opacity) / 2);
 
     /*Dark-Light mode toggle*/
-    --form-switch-dark-border-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --form-switch-dark-border-color: var(--form-dark-border-color, oklch(55.6% 0 0));
     --form-switch-dark-bg: transparent;
 
     --form-switch-sun-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNlYTU4MGM7IHN0cm9rZTogI2VhNTgwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
