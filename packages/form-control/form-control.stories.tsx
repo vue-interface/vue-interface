@@ -196,69 +196,48 @@ export const FormSelect = {
 
 export const FormSelectSizes = {
     name: 'Form Select Sizes',
-    render: () => (
-        <div class="flex flex-col gap-4">
-            <select class="form-select form-select-xs">
-                <option selected>form-select-xs</option>
-            </select>
+    render: () => {
+        const predefinedSizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'];
+        const tailwindSizes = ['5', '6', '7', '8'];
+        
+        return (
+            <div class="flex flex-col gap-4">
+                <h1>Predined Sizes</h1>
 
-            <select class="form-select form-select-sm">
-                <option selected>form-select-sm</option>
-            </select>
+                <select class="form-select form-select-xs">
+                    <option selected>form-select-md</option>
+                </select>
+                
+                {predefinedSizes.map(size => (
+                    <select class={`form-select form-select-${size}`}>
+                        <option selected>{`form-select-${size}`}</option>
+                    </select>
+                ))}
 
-            <select class="form-select form-select-md">
-                <option selected>form-select-md</option>
-            </select>
+                <h1>Tailwind Sizes</h1>
 
-            <select class="form-select form-select-lg">
-                <option selected>form-select-lg</option>
-            </select>
+                <select class="form-select form-select-4">
+                    <option selected>form-select-4</option>
+                </select>
 
-            <select class="form-select form-select-xl">
-                <option selected>form-select-xl</option>
-            </select>
+                {tailwindSizes.map(size => (
+                    <select class={`form-select form-select-${size}`}>
+                        <option selected>{`form-select-${size}`}</option>
+                    </select>
+                ))}
 
-            <select class="form-select form-select-2xl">
-                <option selected>form-select-2xl</option>
-            </select>
+                <h1>Arbitrary Sizes</h1>
 
-            <select class="form-select form-select-3xl">
-                <option selected>form-select-3xl</option>
-            </select>
+                <select class="form-select form-select-[16px]">
+                    <option selected>form-select-[16px]</option>
+                </select>
 
-            <select class="form-select form-select-4xl">
-                <option selected>form-select-4xl</option>
-            </select>
-
-            <select class="form-select form-select-4">
-                <option selected>form-select-4</option>
-            </select>
-
-            <select class="form-select form-select-5">
-                <option selected>form-select-5</option>
-            </select>
-
-            <select class="form-select form-select-6">
-                <option selected>form-select-6</option>
-            </select>
-
-            <select class="form-select form-select-7">
-                <option selected>form-select-7</option>
-            </select>
-
-            <select class="form-select form-select-8">
-                <option selected>form-select-8</option>
-            </select>
-
-            <select class="form-select form-select-[16px]">
-                <option selected>form-select-[16px]</option>
-            </select>
-
-            <select class="form-select form-select-[21px]">
-                <option selected>form-select-[21px]</option>
-            </select>
-        </div>
-    ),
+                <select class="form-select form-select-[21px]">
+                    <option selected>form-select-[21px]</option>
+                </select>
+            </div>
+        )
+    },
 };
 
 export const FormSelectValidation = {
@@ -342,145 +321,67 @@ export const CheckboxesAndRadios = {
 
 export const CheckAndRadioSizes = {
     name: 'Checkbox and Radio Sizes',
-    render: () => (
-        <div class="flex flex-col gap-4">
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-xs"/>
-                <input type="checkbox" class="form-check form-check-xs" checked/>
-                <input type="checkbox" class="form-check form-check-xs is-invalid"/>
-                <input type="checkbox" class="form-check form-check-xs is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-xs is-valid"/>
-                <input type="checkbox" class="form-check form-check-xs is-valid" checked/>
-            </div>
+    render: () => {
+        const predefinedSizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'];
+        const tailwindSizes = ['5', '6', '7', '8'];
+        const arbitrarySizes = ['21px'];
+        
+        const renderCheckboxRow = (size: string, isArbitrary = false) => {
+            const classBase = isArbitrary
+                ? `form-check form-check-[${size}]`
+                : `form-check form-check-${size}`;
             
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-sm"/>
-                <input type="checkbox" class="form-check form-check-sm" checked/>
-                <input type="checkbox" class="form-check form-check-sm is-invalid"/>
-                <input type="checkbox" class="form-check form-check-sm is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-sm is-valid"/>
-                <input type="checkbox" class="form-check form-check-sm is-valid" checked/>
+            return (
+
+                <div class="flex gap-1">
+                    <input type="checkbox" class={classBase} />
+                    <input type="checkbox" class={classBase} checked />
+                    <input type="checkbox" class={`${classBase} is-invalid`} />
+                    <input type="checkbox" class={`${classBase} is-invalid`} checked />
+                    <input type="checkbox" class={`${classBase} is-valid`} />
+                    <input type="checkbox" class={`${classBase} is-valid`} checked />
+                </div>
+            );
+        };
+        
+        return (
+            <div class="flex flex-col gap-4">
+                <h1>Predined Sizes</h1>
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check form-check-xs"/>
+                            <input type="checkbox" class="form-check form-check-xs" checked/>
+                            <input type="checkbox" class="form-check form-check-xs is-invalid"/>
+                            <input type="checkbox" class="form-check form-check-xs is-invalid"checked/>
+                            <input type="checkbox" class="form-check form-check-xs is-valid"/>
+                            <input type="checkbox" class="form-check form-check-xs is-valid" checked/>
+                        </div>
+                {predefinedSizes.map(size => renderCheckboxRow(size))}
+
+                <h1>Tailwind Sizes</h1>
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check form-check-4"/>
+                            <input type="checkbox" class="form-check form-check-4" checked/>
+                            <input type="checkbox" class="form-check form-check-4 is-invalid"/>
+                            <input type="checkbox" class="form-check form-check-4 is-invalid"checked/>
+                            <input type="checkbox" class="form-check form-check-4 is-valid"/>
+                            <input type="checkbox" class="form-check form-check-4 is-valid" checked/>
+                        </div>
+                {tailwindSizes.map(size => renderCheckboxRow(size))}
+
+                <h1>Arbitrary Sizes</h1>
+                        <div class="flex gap-1">
+                            <input type="checkbox" class="form-check form-check-[16px]"/>
+                            <input type="checkbox" class="form-check form-check-[16px]" checked/>
+                            <input type="checkbox" class="form-check form-check-[16px] is-invalid"/>
+                            <input type="checkbox" class="form-check form-check-[16px] is-invalid"checked/>
+                            <input type="checkbox" class="form-check form-check-[16px] is-valid"/>
+                            <input type="checkbox" class="form-check form-check-[16px] is-valid" checked/>
+                        </div>
+                {arbitrarySizes.map(size => renderCheckboxRow(size, true))}
             </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-md"/>
-                <input type="checkbox" class="form-check form-check-md" checked/>
-                <input type="checkbox" class="form-check form-check-md is-invalid"/>
-                <input type="checkbox" class="form-check form-check-md is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-md is-valid"/>
-                <input type="checkbox" class="form-check form-check-md is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-lg"/>
-                <input type="checkbox" class="form-check form-check-lg" checked/>
-                <input type="checkbox" class="form-check form-check-lg is-invalid"/>
-                <input type="checkbox" class="form-check form-check-lg is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-lg is-valid"/>
-                <input type="checkbox" class="form-check form-check-lg is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-xl"/>
-                <input type="checkbox" class="form-check form-check-xl" checked/>
-                <input type="checkbox" class="form-check form-check-xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-2xl"/>
-                <input type="checkbox" class="form-check form-check-2xl" checked/>
-                <input type="checkbox" class="form-check form-check-2xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-2xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-2xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-2xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-3xl"/>
-                <input type="checkbox" class="form-check form-check-3xl" checked/>
-                <input type="checkbox" class="form-check form-check-3xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-3xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-3xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-3xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-4xl"/>
-                <input type="checkbox" class="form-check form-check-4xl" checked/>
-                <input type="checkbox" class="form-check form-check-4xl is-invalid"/>
-                <input type="checkbox" class="form-check form-check-4xl is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-4xl is-valid"/>
-                <input type="checkbox" class="form-check form-check-4xl is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-4"/>
-                <input type="checkbox" class="form-check form-check-4" checked/>
-                <input type="checkbox" class="form-check form-check-4 is-invalid"/>
-                <input type="checkbox" class="form-check form-check-4 is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-4 is-valid"/>
-                <input type="checkbox" class="form-check form-check-4 is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-5"/>
-                <input type="checkbox" class="form-check form-check-5" checked/>
-                <input type="checkbox" class="form-check form-check-5 is-invalid"/>
-                <input type="checkbox" class="form-check form-check-5 is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-5 is-valid"/>
-                <input type="checkbox" class="form-check form-check-5 is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-6"/>
-                <input type="checkbox" class="form-check form-check-6" checked/>
-                <input type="checkbox" class="form-check form-check-6 is-invalid"/>
-                <input type="checkbox" class="form-check form-check-6 is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-6 is-valid"/>
-                <input type="checkbox" class="form-check form-check-6 is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-7"/>
-                <input type="checkbox" class="form-check form-check-7" checked/>
-                <input type="checkbox" class="form-check form-check-7 is-invalid"/>
-                <input type="checkbox" class="form-check form-check-7 is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-7 is-valid"/>
-                <input type="checkbox" class="form-check form-check-7 is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-8"/>
-                <input type="checkbox" class="form-check form-check-8" checked/>
-                <input type="checkbox" class="form-check form-check-8 is-invalid"/>
-                <input type="checkbox" class="form-check form-check-8 is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-8 is-valid"/>
-                <input type="checkbox" class="form-check form-check-8 is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-[16px]"/>
-                <input type="checkbox" class="form-check form-check-[16px]" checked/>
-                <input type="checkbox" class="form-check form-check-[16px] is-invalid"/>
-                <input type="checkbox" class="form-check form-check-[16px] is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-[16px] is-valid"/>
-                <input type="checkbox" class="form-check form-check-[16px] is-valid" checked/>
-            </div>
-            
-            <div class="flex gap-1">
-                <input type="checkbox" class="form-check form-check-[21px]"/>
-                <input type="checkbox" class="form-check form-check-[21px]" checked/>
-                <input type="checkbox" class="form-check form-check-[21px] is-invalid"/>
-                <input type="checkbox" class="form-check form-check-[21px] is-invalid" checked/>
-                <input type="checkbox" class="form-check form-check-[21px] is-valid"/>
-                <input type="checkbox" class="form-check form-check-[21px] is-valid" checked/>
-            </div>
-        </div>
-    ),
-}
+        );
+    },
+};
 
 export const CheckAndRadioValidation = {
     name: 'Checkbox and Radio Validation',
@@ -511,6 +412,19 @@ export const CheckAndRadioValidation = {
                 <div>
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
+            </div>
+
+            <h2 class="text-2xl mt-2">Custom Colors</h2>
+                        
+            <div class="flex gap-1">
+                <input type="checkbox" class="form-check form-check-amber-500"/>
+                <input type="checkbox" class="form-check form-check-amber-500" checked/>
+                <input type="checkbox" class="form-check form-check-green-500"/>
+                <input type="checkbox" class="form-check form-check-green-500" checked/>
+                <input type="checkbox" class="form-check form-check-purple-500"/>
+                <input type="checkbox" class="form-check form-check-purple-500" checked/>
+                <input type="checkbox" class="form-check form-check-neutral-500"/>
+                <input type="checkbox" class="form-check form-check-neutral-500" checked/>
             </div>
         </div>
     ),
@@ -550,6 +464,7 @@ export const SwitchSizes = {
     name: 'Switch Sizes',
     render: () => (
         <div class="flex flex-col gap-2">
+            <h1>Predefined Sizes</h1>
             <input type="checkbox" class="form-switch form-switch-xs"/>
             <input type="checkbox" class="form-switch form-switch-sm"/>
             <input type="checkbox" class="form-switch form-switch-md"/>
@@ -558,11 +473,17 @@ export const SwitchSizes = {
             <input type="checkbox" class="form-switch form-switch-2xl"/>
             <input type="checkbox" class="form-switch form-switch-3xl"/>
             <input type="checkbox" class="form-switch form-switch-4xl"/>
+
+            <h1>Tailwind Sizes</h1>
             <input type="checkbox" class="form-switch form-switch-4"/>
             <input type="checkbox" class="form-switch form-switch-5"/>
             <input type="checkbox" class="form-switch form-switch-6"/>
             <input type="checkbox" class="form-switch form-switch-7"/>
             <input type="checkbox" class="form-switch form-switch-8"/>
+
+            <h1>Arbitrary Sizes</h1>
+            <input type="checkbox" class="form-switch form-switch-[16px]"/>
+            <input type="checkbox" class="form-switch form-switch-[27px]"/>
         </div>
     ),
 };
@@ -593,6 +514,150 @@ export const SwitchValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
+           
+           <h2 class="text-2xl mt-2">Custom Colors</h2>
+
+            <div class="flex flex-col gap-2">
+                <input type="checkbox" class="form-switch form-switch-amber-500"/>
+                <input type="checkbox" class="form-switch form-switch-purple-500"/>
+                <input type="checkbox" class="form-switch form-switch-green-500"/>
+                <input type="checkbox" class="form-switch form-switch-neutral-500"/>
+            </div>
+        </div>
+    ),
+}
+
+export const FormControlAnimatedLabels = {
+    name: 'Animated Labels - Form Control',
+    render: () => (
+        <div class="flex flex-col gap-4">
+            <div class="form-control-animated">
+                <label for="form-control-animated" class="form-label">form-control</label>
+                <input type="text" id="form-control-animated" class="form-control is-dirty" placeholder="form-control"/>
+            </div>
+            <div class="form-control-animated-xs">
+                <label for="form-control-animated-xs" class="form-label">form-control-xs</label>
+                <input type="text" id="form-control-animated-xs" class="form-control form-control-xs" placeholder="form-control-xs"/>
+            </div>
+            <div class="form-control-animated-sm">
+                <label for="form-control-animated-sm" class="form-label">form-control-sm</label>
+                <input type="text" id="form-control-animated-sm" class="form-control form-control-sm" placeholder="form-control-sm"/>
+            </div>
+            <div class="form-control-animated-md">
+                <label for="form-control-animated-md" class="form-label">form-control-md</label>
+                <input type="text" id="form-control-animated-md" class="form-control form-control-md" placeholder="form-control-md"/>
+            </div>
+            <div class="form-control-animated-lg">
+                <label for="form-control-animated-lg" class="form-label">form-control-lg</label>
+                <input type="text" id="form-control-animated-lg" class="form-control form-control-lg" placeholder="form-control-lg"/>
+            </div>
+            <div class="form-control-animated-xl">
+                <label for="form-control-animated-xl" class="form-label">form-control-xl</label>
+                <input type="text" id="form-control-animated-xl" class="form-control form-control-xl" placeholder="form-control-xl"/>
+            </div>
+            <div class="form-control-animated-2xl">
+                <label for="form-control-animated-2xl" class="form-label">form-control-2xl</label>
+                <input type="text" id="form-control-animated-2xl" class="form-control form-control-2xl" placeholder="form-control-2xl"/>
+            </div>
+            <div class="form-control-animated-3xl">
+                <label for="form-control-animated-3xl" class="form-label">form-control-3xl</label>
+                <input type="text" id="form-control-animated-3xl" class="form-control form-control-3xl" placeholder="form-control-3xl"/>
+            </div>
+            <div class="form-control-animated-4xl">
+                <label for="form-control-animated-4xl" class="form-label">form-control-4xl</label>
+                <input type="text" id="form-control-animated-4xl" class="form-control form-control-4xl" placeholder="form-control-4xl"/>
+            </div>
+
+        </div>
+    ),
+}
+
+export const FormSelectAnimatedLabels = {
+    name: 'Animated Labels - Form Select',
+    render: () => (
+        <div class="flex flex-col gap-4 min-h-[750px]">
+            <div class="form-control-animated">
+                <label for="form-select-animated" class="form-label">form-select</label>
+                <select id="form-select-animated" class="form-select">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-xs">
+                <label for="form-select-animated-xs" class="form-label">form-select-xs</label>
+                <select id="form-select-animated-xs" class="form-select form-select-xs">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-sm">
+                <label for="form-select-animated-sm" class="form-label">form-select-sm</label>
+                <select id="form-select-animated-sm" class="form-select form-select-sm">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-md">
+                <label for="form-select-animated-md" class="form-label">form-select-md</label>
+                <select id="form-select-animated-md" class="form-select form-select-md">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-lg">
+                <label for="form-select-animated-lg" class="form-label">form-select-lg</label>
+                <select id="form-select-animated-lg" class="form-select form-select-lg">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-xl">
+                <label for="form-select-animated-xl" class="form-label">form-select-xl</label>
+                <select id="form-select-animated-xl" class="form-select form-select-xl">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-2xl">
+                <label for="form-select-animated-2xl" class="form-label">form-select-2xl</label>
+                <select id="form-select-animated-2xl" class="form-select form-select-2xl">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-3xl">
+                <label for="form-select-animated-3xl" class="form-label">form-select-3xl</label>
+                <select id="form-select-animated-3xl" class="form-select form-select-3xl">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-control-animated-4xl">
+                <label for="form-select-animated-4xl" class="form-label">form-select-4xl</label>
+                <select id="form-select-animated-4xl" class="form-select form-select-4xl">
+                    <option value=""></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+
         </div>
     ),
 }
