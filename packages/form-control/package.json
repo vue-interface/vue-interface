@@ -12,11 +12,12 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "source": "./index.ts",
       "types": "./dist/index.d.ts",
-      "import": "./dist/form-control.js",
-      "require": "./dist/form-control.umd.js"
+      "require": "./dist/form-control.umd.js",
+      "import": "./dist/form-control.js"
     },
-    "./demo": "./demo.css"
+    "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {

@@ -2,9 +2,6 @@
   "name": "@vue-interface/input-field",
   "version": "1.0.0",
   "description": "A Vue input field component.",
-  "files": [
-    "dist"
-  ],
   "type": "module",
   "main": "./dist/input-field.umd.cjs",
   "module": "./dist/input-field.js",

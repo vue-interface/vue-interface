@@ -1,5 +1,3 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@import '@vue-interface/activity-indicator/dist/style.css';
+@import "tailwindcss";
+@import "@vue-interface/form-control/css";
+@import "@vue-interface/activity-indicator/css";
