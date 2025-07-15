@@ -1,4 +1,4 @@
-import { isNil } from 'lodash-es';
+import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, watchEffect, type Component, type WritableComputedRef } from 'vue';
 
 export type FormControlEvents<T> = {
@@ -10,7 +10,7 @@ export type FormControlEvents<T> = {
 export type FormControlSlot<T> = (
     props: {
         controlAttributes: FormControlAttributes<T>,
-        onClick: (e: Event) => void,
+        onClick: (e: PointerEvent) => void,
         onBlur: (e: FocusEvent) => void,
         onFocus: (e: FocusEvent) => void
     }
@@ -59,7 +59,7 @@ export type FormControlProps<T, V> = {
     helpText?: string,
     id?: string,
     indicator?: Component,
-    indicatorSize?: string,
+    indicatorSize?: ActivityIndicatorSize,
     invalid?: boolean,
     label?: string,
     labelClass?: string,
@@ -221,7 +221,7 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
     }
 
     onBeforeMount(() => {
-        isDirty.value = !isNil(model.value);
+        isDirty.value = model.value !== null && model.value !== undefined;
     });
 
     return {
