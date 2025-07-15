@@ -2,11 +2,9 @@ import { isNil } from 'lodash-es';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, watchEffect, type Component, type WritableComputedRef } from 'vue';
 
 export type FormControlEvents<T> = {
-    (e: 'blur', event: FocusEvent): void
-    (e: 'change', value: T): void
-    (e: 'click', event: Event): void
-    (e: 'focus', event: FocusEvent): void
-    (e: 'update:modelValue', value: T): void
+    (e: 'blur' | 'focus', event: FocusEvent): void
+    (e: 'click', event: PointerEvent): void
+    (e: 'change' | 'update:modelValue', value: T): void
 };
 
 export type FormControlSlot<T> = (
@@ -16,18 +14,18 @@ export type FormControlSlot<T> = (
         onBlur: (e: FocusEvent) => void,
         onFocus: (e: FocusEvent) => void
     }
-) => any;
+) => unknown;
 
 export type FormControlFeedbackPropSlot = (
     props: {
         feedback: FormControlFeedbackProp
     }
-) => any;
+) => unknown;
 
-export type FormControlActivitySlot = () => any;
-export type FormControlHelpSlot = (helpText?: string) => any;
-export type FormControlIconSlot = () => any;
-export type FormControlLabelSlot = () => any;
+export type FormControlActivitySlot = () => unknown;
+export type FormControlHelpSlot = (helpText?: string) => unknown;
+export type FormControlIconSlot = () => unknown;
+export type FormControlLabelSlot = () => unknown;
 
 export type FormControlSlots<T> = {
     control?: FormControlSlot<T>
@@ -44,7 +42,7 @@ export type FormControlErrorSlot = (props: {
     id?: unknown,
     error?: FormControlErrorProp,
     errors?: FormControlErrorPropArray | FormControlErrorPropRecord
-}) => any;
+}) => unknown;
 
 export type FormControlErrorProp = string | Error;
 export type FormControlErrorPropArray = FormControlErrorProp[];
@@ -190,7 +188,7 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
         'is-invalid': isInvalid.value,
     }));
 
-    const controlAttributes = computed<FormControlAttributes<any>>(() => ({
+    const controlAttributes = computed<FormControlAttributes<T>>(() => ({
         ...attrs,
         id: id.value,
         name: props.name,
