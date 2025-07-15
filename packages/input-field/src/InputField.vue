@@ -36,13 +36,13 @@ const field = ref<HTMLInputElement>();
             </label>
         </slot>
         
-        <div class="form-group-inner">
+        <div class="form-control-inner">
             <slot
                 name="control"
                 v-bind="{ onClick, onBlur, onFocus, controlAttributes }">
                 <div
                     v-if="$slots.icon"
-                    class="form-group-inner-icon"
+                    class="form-control-inner-icon"
                     @click="field?.focus()">
                     <slot name="icon" />
                 </div>
