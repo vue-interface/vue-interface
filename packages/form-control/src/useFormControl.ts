@@ -2,17 +2,17 @@ import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, watchEffect, type Component, type WritableComputedRef } from 'vue';
 
 export type FormControlEvents<T> = {
-    (e: 'blur' | 'focus', event: FocusEvent): void
-    (e: 'click', event: MouseEvent): void
-    (e: 'change' | 'update:modelValue', value: T): void
+    (e: 'blur' | 'focus', event: FocusEvent): void;
+    (e: 'click', event: MouseEvent): void;
+    (e: 'change' | 'update:modelValue', value: T): void;
 };
 
 export type FormControlSlot<T> = (
     props: {
-        controlAttributes: FormControlAttributes<T>,
-        onClick: (e: MouseEvent) => void,
-        onBlur: (e: FocusEvent) => void,
-        onFocus: (e: FocusEvent) => void
+        controlAttributes: FormControlAttributes<T>;
+        onClick: (e: MouseEvent) => void;
+        onBlur: (e: FocusEvent) => void;
+        onFocus: (e: FocusEvent) => void;
     }
 ) => unknown;
 
@@ -28,20 +28,20 @@ export type FormControlIconSlot = () => unknown;
 export type FormControlLabelSlot = () => unknown;
 
 export type FormControlSlots<T> = {
-    control?: FormControlSlot<T>
-    activity?: FormControlActivitySlot
-    errors?: FormControlErrorSlot,
-    feedback?: FormControlFeedbackPropSlot,
-    icon?: FormControlIconSlot,
-    label?: FormControlLabelSlot,
-    help?: FormControlHelpSlot
+    control?: FormControlSlot<T>;
+    activity?: FormControlActivitySlot;
+    errors?: FormControlErrorSlot;
+    feedback?: FormControlFeedbackPropSlot;
+    icon?: FormControlIconSlot;
+    label?: FormControlLabelSlot;
+    help?: FormControlHelpSlot;
 };
 
 export type FormControlErrorSlot = (props: {
-    name?: unknown,
-    id?: unknown,
-    error?: FormControlErrorProp,
-    errors?: FormControlErrorPropArray | FormControlErrorPropRecord
+    name?: unknown;
+    id?: unknown;
+    error?: FormControlErrorProp;
+    errors?: FormControlErrorPropArray | FormControlErrorPropRecord;
 }) => unknown;
 
 export type FormControlErrorProp = string | Error;
@@ -49,62 +49,68 @@ export type FormControlErrorPropArray = FormControlErrorProp[];
 export type FormControlErrorPropRecord = Record<string,FormControlErrorProp[]>
 export type FormControlFeedbackProp = string | string[];
 
-export type FormControlProps<T, V> = {
-    activity?: boolean,
-    disabled?: boolean,
-    error?: FormControlErrorProp,
-    errors?: FormControlErrorPropArray | FormControlErrorPropRecord,
-    feedback?: FormControlFeedbackProp,
-    formControlClass?: string,
-    helpText?: string,
-    id?: string,
-    indicator?: Component,
-    indicatorSize?: ActivityIndicatorSize,
-    invalid?: boolean,
-    label?: string,
-    labelClass?: string,
-    modelValue?: T,
-    name?: string,
-    plaintext?: boolean,
-    readonly?: boolean,
-    valid?: boolean,
-    value?: V
+export type FormControlSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
+
+export type PossibleFormControlSize<P extends string, T extends FormControlSize> = 
+    `${P}-${T}` | ((`${P}-${number}` | `${P}-[${string}]`) & Record<never, never>);
+
+export type FormControlProps<P extends string,T,V> = {
+    activity?: boolean;
+    disabled?: boolean;
+    error?: FormControlErrorProp;
+    errors?: FormControlErrorPropArray | FormControlErrorPropRecord;
+    feedback?: FormControlFeedbackProp;
+    formControlClass?: string;
+    helpText?: string;
+    id?: string;
+    indicator?: Component;
+    indicatorSize?: ActivityIndicatorSize;
+    invalid?: boolean;
+    label?: string;
+    labelClass?: string;
+    modelValue?: T;
+    name?: string;
+    plaintext?: boolean;
+    size?: PossibleFormControlSize<P, FormControlSize>;
+    readonly?: boolean;
+    valid?: boolean;
+    value?: V;
 }
 
 export type FormGroupClasses = {
-    'has-activity': boolean,
-    'has-changed': boolean,
-    'has-focus': boolean,
-    'has-icon': boolean,
-    'is-dirty': boolean,
-    'is-empty': boolean,
-    'is-invalid': boolean,
-    'is-valid': boolean
+    'has-activity': boolean;
+    'has-changed': boolean;
+    'has-focus': boolean;
+    'has-icon': boolean;
+    'is-dirty': boolean;
+    'is-empty': boolean;
+    'is-invalid': boolean;
+    'is-valid': boolean;
 } & Record<string,boolean>
 
 export type FormControlAttributes<V> = {
     id: string,
-    class: FormControlClasses,
-    disabled?: boolean,
-    readonly?: boolean,
-    value?: V,
+    class: FormControlClasses;
+    disabled?: boolean;
+    readonly?: boolean;
+    value?: V;
 } & Record<string, unknown>;
 
 export type FormControlClasses = {
-    'form-control-plaintext': boolean,
-    'form-control-icon': boolean,
-    'is-valid': boolean,
-    'is-invalid': boolean,    
+    'form-control-plaintext': boolean;
+    'form-control-icon': boolean;
+    'is-valid': boolean;
+    'is-invalid': boolean;    
 } & Record<string,boolean>
 
-export type CheckedFormControlProps<T, V> = FormControlProps<T, V> & {
-    checked?: boolean,
+export type CheckedFormControlProps<P extends string,T,V> = FormControlProps<P,T,V> & {
+    checked?: boolean;
 }
 
-export type UseFormControlOptions<T,V> = {
-    props: FormControlProps<T,V> | CheckedFormControlProps<T,V>,
-    emit: FormControlEvents<T>,
-    model?: WritableComputedRef<T>
+export type UseFormControlOptions<P extends string,T,V> = {
+    props: FormControlProps<P,T,V> | CheckedFormControlProps<P,T,V>;
+    emit: FormControlEvents<T>;
+    model?: WritableComputedRef<T>;
 }
 
 // @todo - JK
@@ -115,7 +121,7 @@ export type UseFormControlOptions<T,V> = {
 // across drastically varying types of implementation. Look at CheckboxField vs
 // InputField for differences.
 
-export function useFormControl<T,V>({ props, emit, model }: UseFormControlOptions<T,V>) {
+export function useFormControl<P extends string,T,V>({ props, emit, model }: UseFormControlOptions<P,T,V>) {
     if(!model) {
         const currentValue = ref<T>();
         
@@ -182,6 +188,7 @@ export function useFormControl<T,V>({ props, emit, model }: UseFormControlOption
 
     const controlClasses = computed<FormControlClasses>(() => ({        
         [props.formControlClass ?? '']: !!props.formControlClass,
+        [props.size ?? '']: !!props.size,
         'form-control-plaintext': !!props.plaintext,
         'form-control-icon': hasIcon.value,
         'is-valid': isValid.value,

@@ -5,7 +5,7 @@ import FormControlFeedback from './src/FormControlFeedback.vue';
 export * from './src/useFormControl.js';
 
 export {
-config,
-FormControlErrors,
-FormControlFeedback
+    config,
+    FormControlErrors,
+    FormControlFeedback
 };
