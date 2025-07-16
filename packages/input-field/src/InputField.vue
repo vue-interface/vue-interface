@@ -8,23 +8,27 @@ defineOptions({
     inheritAttrs: false
 });
 
-defineSlots<FormControlSlots<T>>();
+type FormControlSizePrefix = 'form-control';
 
-const emit = defineEmits<FormControlEvents<T>>();
 
-const props = withDefaults(defineProps<FormControlProps<'form-control', T, V>>(), {
+defineSlots<FormControlSlots<FormControlSizePrefix,T>>();
+
+const model = defineModel<T>();
+
+const props = withDefaults(defineProps<FormControlProps<FormControlSizePrefix, T, V>>(), {
     formControlClass: 'form-control',
     labelClass: 'form-label'
 });
 
+const emit = defineEmits<FormControlEvents<T>>();
+
 const {
     controlAttributes,
     formGroupClasses,
-    model,
     onClick,
     onBlur,
     onFocus
-} = useFormControl({ props, emit });
+} = useFormControl<FormControlSizePrefix,T,V>({ model, props, emit });
 
 const field = ref<HTMLInputElement>();
 </script>
