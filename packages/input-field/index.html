@@ -82,7 +82,7 @@
 
             <input-field label="Small" size="form-control-sm" :indicator="Dots()" indicator-size="xs" :activity="showActivity" class="mb-3"></input-field>
             <input-field label="Medium" size="form-control-md" :indicator="Pulse()" indicator-size="md" :activity="showActivity" class="mb-3"></input-field>
-            <input-field label="Large" size="form-control-lg" :indicator="Dots()" indicator-size="lg" :activity="showActivity" class="mb-3"></input-field>
+            <input-field label="Large" size="form-control-lg" :indicator="Spinner()" indicator-size="lg" :activity="showActivity" class="mb-3"></input-field>
 
             <button type="button" class="underline text-blue-600" @click="showActivity = !showActivity">
                 <span v-if="!showActivity">Show</span><span v-else>Hide</span> Activity
@@ -233,15 +233,6 @@
                     }
                 }
             });
-
-          /*   vue.use(ActivityIndicator, {
-                indicators: {
-                    Dots,
-                    Pulse,
-                    Spinner
-                }
-            }); */
-
             vue.mount('#app');
         </script>
     </body>
