@@ -47,6 +47,26 @@
     --form-control-disabled-dark-background-color: var(--form-disabled-dark-background-color, oklch(20.5% 0 0));
     --form-control-disabled-dark-border-color: var(--form-disabled-dark-border-color, oklch(20.5% 0 0));
 
+    /* Form-control-inner */
+    --form-control-inner-position: relative;
+    
+    --form-control-inner-icon-position: absolute;
+    --form-control-inner-icon-top: 50%;
+    --form-control-inner-icon-left: 0.5em;
+    --form-control-inner-icon-width: 1.25em;
+    --form-control-inner-icon-font-size: inherit;
+    --form-control-inner-icon-transform: translateY(-50%);
+    --form-control-inner-icon-display: flex;
+    --form-control-inner-icon-align-items: center;
+    --form-control-inner-icon-justify-content: center;
+
+    /* Activity-indicator */
+    --form-control-activity-indicator-position: absolute;
+    --form-control-activity-indicator-right: 0;
+    --form-control-activity-indicator-top: 50%;
+    --form-control-activity-indicator-transform: translate(-1rem, -50%);
+    --form-control-activity-indicator-transition: all .15s ease-in;
+
     /* Form control color specific */
     --form-control-color-width: 3rem;
     --form-control-color-height: calc(1.5em + var(--form-control-font-size) * .75 + var(--form-control-border-width) * 2);
@@ -182,8 +202,30 @@
             padding-left: calc(--spacing(--value(integer)) * 2);
         }
     }
+}
 
+@utility form-control-inner {
+    position: var(--form-control-inner-position);
+}
 
+@utility form-control-inner-icon {
+    position: var(--form-control-inner-icon-position);
+    top: var(--form-control-inner-icon-top);
+    left: var(--form-control-inner-icon-left);
+    width: var(--form-control-inner-icon-width);
+    font-size: var(--form-control-inner-icon-font-size);
+    transform: var(--form-control-inner-icon-transform);
+    display: var(--form-control-inner-icon-display);
+    align-items: var(--form-control-inner-icon-align-items);
+    justify-content: var(--form-control-inner-icon-justify-content);
+}
+
+@utility activity-indicator {
+    position: var(--form-control-activity-indicator-position);
+    right: var(--form-control-activity-indicator-right);
+    top: var(--form-control-activity-indicator-top);
+    transform: var(--form-control-activity-indicator-transform);
+    transition: var(--form-control-activity-indicator-transition);
 }
 
 @utility form-control-color {
@@ -217,26 +259,3 @@
     appearance: var(--form-control-plaintext-appearance);
 }
 
-@utility form-control-inner {
-    position: relative;
-}
-
-@utility form-control-inner-icon {
-    position: absolute;
-    top: 50%;
-    left: 0.5em;
-    width: 1.25em;
-    font-size: inherit;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@utility activity-indicator {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-1rem, -50%);
-    transition: all .15s ease-in;
-}
