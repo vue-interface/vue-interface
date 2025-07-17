@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { Dots, Pulse, Spinner} from '@vue-interface/activity-indicator';
 /* import { ref} from 'vue'; */
 import './demo.css';
+import InputField from './src/InputField.vue';
  
 const meta = {
     title: 'Example/Buttons/Button Activity',
