@@ -119,13 +119,20 @@ export const FormControlValidation = {
                 <div class="valid-feedback">This is an inline success message.</div>
                 <div class="valid-feedback">This is an inline success message.</div>
             </div>
- 
-            <h1 class="text-2xl">Custom Colors</h1>
-            <input type="text" class="form-control form-control-amber-500" />
-            <input type="text" class="form-control form-control-green-500" />
-            <input type="text" class="form-control form-control-purple-500" />
-            <input type="text" class="form-control form-control-neutral-500" />
+
            
+        </div>
+    ),
+}
+
+export const FormControlCustomColors = {
+    name: 'Form Control Custom Colors',
+    render: () => (
+        <div class="flex flex-col gap-4">
+            <input type="text" placeholder="form-control-amber-500" class="form-control form-control-amber-500" />
+            <input type="text" placeholder="form-control-green-500" class="form-control form-control-green-500" />
+            <input type="text" placeholder="form-control-purple-500" class="form-control form-control-purple-500" />
+            <input type="text" placeholder="form-control-neutral-500" class="form-control form-control-neutral-500" />
         </div>
     ),
 }
@@ -275,28 +282,33 @@ export const FormSelectValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
+        </div>
+    ),
+};
 
-            <h2 class="text-2xl mt-2">Custom Colors</h2>
-
-            <select class="form-select form-select-amber-500">
+export const FormSelectCustomColors = {
+    name: 'Form Select Custom Colors',
+    render: () => (
+        <div class="flex flex-col gap-4">
+            <select placeholder="form-control-amber-500" class="form-select form-select-amber-500">
                 <option value=""></option>
                 <option>1</option>
             </select>
-            <select class="form-select form-select-green-500">
+            <select placeholder="form-control-green-500" class="form-select form-select-green-500">
                 <option value=""></option>
                 <option>1</option>
             </select>
-            <select class="form-select form-select-purple-500">
+            <select placeholder="form-control-purple-500" class="form-select form-select-purple-500">
                 <option value=""></option>
                 <option>1</option>
             </select>
-            <select class="form-select form-select-neutral-500">
+            <select placeholder="form-control-neutral-500" class="form-select form-select-neutral-500">
                 <option value=""></option>
                 <option>1</option>
             </select>
         </div>
     ),
-};
+}
 
 export const CheckboxesAndRadios = {
     name: 'Checkboxes and Radios',
@@ -413,9 +425,14 @@ export const CheckAndRadioValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
+        </div>
+    ),
+}
 
-            <h2 class="text-2xl mt-2">Custom Colors</h2>
-                        
+export const CheckboxCustomColors = {
+    name: 'Checkbox Custom Colors',
+    render: () => (
+        <div class="flex flex-col gap-4">                    
             <div class="flex gap-1">
                 <input type="checkbox" class="form-check form-check-amber-500"/>
                 <input type="checkbox" class="form-check form-check-amber-500" checked/>
@@ -514,15 +531,18 @@ export const SwitchValidation = {
                     <div class="valid-feedback">This is an inline success message.</div>
                 </div>
             </div>
-           
-           <h2 class="text-2xl mt-2">Custom Colors</h2>
+        </div>
+    ),
+}
 
-            <div class="flex flex-col gap-2">
-                <input type="checkbox" class="form-switch form-switch-amber-500"/>
-                <input type="checkbox" class="form-switch form-switch-purple-500"/>
-                <input type="checkbox" class="form-switch form-switch-green-500"/>
-                <input type="checkbox" class="form-switch form-switch-neutral-500"/>
-            </div>
+export const SwitchCustomColors = {
+    name: 'Switch Custom Colors',
+    render: () => (        
+        <div class="flex flex-col gap-2">
+            <input type="checkbox" class="form-switch form-switch-amber-500"/>
+            <input type="checkbox" class="form-switch form-switch-purple-500"/>
+            <input type="checkbox" class="form-switch form-switch-green-500"/>
+            <input type="checkbox" class="form-switch form-switch-neutral-500"/>
         </div>
     ),
 }
