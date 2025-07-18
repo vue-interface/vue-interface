@@ -41,6 +41,7 @@
     "node": ">=22"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "@storybook/vue3": "^9.0.17",
     "@storybook/vue3-vite": "^9.0.17",
     "vue": "^3.5.17"

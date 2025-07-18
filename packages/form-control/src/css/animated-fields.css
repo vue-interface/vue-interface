@@ -17,7 +17,7 @@
     --form-control-animation-focus-label-font-size: calc(var(--form-control-font-size) * .75);
     --form-control-animation-focus-label-padding-top: 0;
     --form-control-animation-focus-label-padding-bottom: 0;
-    --form-control-animation-focus-label-padding-left: calc(var(--form-control-font-size) * .75 + 1px);
+    --form-control-animation-focus-label-padding-left: calc(var(--form-control-font-size) * .75);
     --form-control-animation-focus-control-padding-top: calc(var(--form-control-font-size) * .75);
     --form-control-animation-focus-control-padding-bottom: 0; 
 }
@@ -37,7 +37,7 @@
         z-index: var(--form-control-animation-z-index);
     }
 
-    &:has(.form-control:empty):not(.is-dirty) {
+    &:has(.form-control:empty:not(.has-focus)):not(.is-dirty) {
         input.form-control::placeholder {
             visibility: var(--form-control-animation-is-empty-visibility);
         }
@@ -83,12 +83,12 @@
     }
 
     &:has(input.form-control):focus-within,
-    &:has(.form-select>option:checked:not([value=""])),
-    &:has(input.form-control:not(:placeholder-shown))
-    &:has(input.form-control).is-dirty {
+    &:has(input.form-control:not(:placeholder-shown)),
+    &:has(input.form-control).is-dirty,
+    &:has(.form-select>option:checked:not([value=""])) {
         .form-label {
-            padding-left: calc(--value(--form-control-font-size-*, [length]) * .75 + 1px);
-            padding-left: calc(--spacing(--value(integer)) * .75 + 1px);
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * .75);
+            padding-left: calc(--spacing(--value(integer)) * .75);
             font-size: calc(--value(--form-control-font-size-*, [length]) * .75);
             font-size: calc(--spacing(--value(integer)) * .75);
         }
@@ -101,12 +101,12 @@
     }
     
     &.has-icon {
-        font-size: calc(--value(--form-control-font-size-*, [length])); /*controls icon size*/
+        font-size: calc(--value(--form-control-font-size-*, [length]));
         font-size: calc(--spacing(--value(integer)));
         
         .form-label {
-           margin-left: calc(--value(--form-control-font-size-*, [length]) * 1.5);
-           margin-left: calc(--spacing(--value(integer)) * 1.5);
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * 2) !important;
+            padding-left: calc(--spacing(--value(integer)) * 2) !important;
         }
 
         .form-control-icon {

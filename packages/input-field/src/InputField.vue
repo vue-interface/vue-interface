@@ -1,26 +1,23 @@
-<script setup lang="ts" generic="T, V">
+<script setup lang="ts" generic="ModelValue, Value">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { ref } from 'vue';
+import { InputHTMLAttributes, ref } from 'vue';
 
 defineOptions({
     inheritAttrs: false
 });
 
-type FormControlSizePrefix = 'form-control';
+defineSlots<FormControlSlots<InputFieldControlSizePrefix,ModelValue>>();
 
+const model = defineModel<ModelValue>();
 
-defineSlots<FormControlSlots<FormControlSizePrefix,T>>();
-
-const model = defineModel<T>();
-
-const props = withDefaults(defineProps<FormControlProps<FormControlSizePrefix, T, V>>(), {
+const props = withDefaults(defineProps<InputFieldProps<ModelValue,Value>>(), {
     formControlClass: 'form-control',
     labelClass: 'form-label'
 });
 
-const emit = defineEmits<FormControlEvents<T>>();
+const emit = defineEmits<FormControlEvents<ModelValue>>();
 
 const {
     controlAttributes,
@@ -28,9 +25,20 @@ const {
     onClick,
     onBlur,
     onFocus
-} = useFormControl<FormControlSizePrefix,T,V>({ model, props, emit });
+} = useFormControl<InputHTMLAttributes, InputFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLInputElement>();
+</script>
+
+<script lang="ts">
+export type InputFieldControlSizePrefix = 'form-control';
+
+export type InputFieldProps<ModelValue, Value> = FormControlProps<
+    InputHTMLAttributes, 
+    InputFieldControlSizePrefix, 
+    ModelValue, 
+    Value
+>;
 </script>
 
 <template>
@@ -116,7 +124,8 @@ const field = ref<HTMLInputElement>();
             v-bind="{ helpText }">
             <small
                 v-if="helpText"
-                ref="help">
+                ref="help"
+                class="form-help">
                 {{ helpText }}
             </small>
         </slot>

@@ -1,11 +1,11 @@
 import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
-import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type ModelRef } from 'vue';
+import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type HTMLAttributes, type ModelRef } from 'vue';
 
-export type FormControlEvents<T> = {
+export type FormControlEvents<ModelValue> = {
     (e: 'blur' | 'focus', event: FocusEvent): void;
     (e: 'click', event: MouseEvent): void;
-    (e: 'change', value: T|undefined): void;
-    (e: 'update:modelValue', value: T): void;
+    (e: 'change', value: ModelValue|undefined): void;
+    (e: 'update:modelValue', value: ModelValue): void;
 };
 
 export type FormControlFeedbackPropSlot = (
@@ -19,8 +19,8 @@ export type FormControlHelpSlot = (helpText?: string) => unknown;
 export type FormControlIconSlot = () => unknown;
 export type FormControlLabelSlot = () => unknown;
 
-export type FormControlSlots<P extends string, T> = {
-    control?: FormControlSlot<P,T>;
+export type FormControlSlots<Prefix extends string, ModelValue> = {
+    control?: FormControlSlot<Prefix, ModelValue>;
     activity?: FormControlActivitySlot;
     errors?: FormControlErrorSlot;
     feedback?: FormControlFeedbackPropSlot;
@@ -29,9 +29,9 @@ export type FormControlSlots<P extends string, T> = {
     help?: FormControlHelpSlot;
 };
 
-export type FormControlSlot<P extends string, T> = (
+export type FormControlSlot<Prefix extends string, ModelValue> = (
     props: {
-        controlAttributes: FormControlAttributes<P, T>;
+        controlAttributes: FormControlAttributes<Prefix, ModelValue>;
         onClick: (e: MouseEvent) => void;
         onBlur: (e: FocusEvent) => void;
         onFocus: (e: FocusEvent) => void;
@@ -60,12 +60,16 @@ type ValidCalc = `calc(${NonEmptyCalcContentString})`;
 type ValidBracketContent =  NumericWithUnit | ValidCalc;
 
 export type FormControlSize<
-    P extends string,
-    T extends PredeterminedSize = PredeterminedSize,
-    C extends string = never,
-> = `${P}-${T}` | `${P}-${number}` | `${P}-[${ValidBracketContent}]` | C;
+    Prefix extends string,
+    Value extends PredeterminedSize = PredeterminedSize
+> = `${Prefix}-${Value}` | `${Prefix}-${number}` | `${Prefix}-[${ValidBracketContent}]`;
 
-export type FormControlProps<P extends string,T,V,C extends string = never> = {
+export type FormControlProps<
+    Attributes extends HTMLAttributes,
+    Size extends string,
+    ModelValue,
+    Value
+> = {
     activity?: boolean;
     disabled?: boolean;
     error?: FormControlErrorProp;
@@ -79,14 +83,15 @@ export type FormControlProps<P extends string,T,V,C extends string = never> = {
     invalid?: boolean;
     label?: string;
     labelClass?: string;
-    modelValue?: T;
+    modelValue?: ModelValue;
     name?: string;
     plaintext?: boolean;
-    size?: FormControlSize<P,PredeterminedSize,C>;
+    size?: FormControlSize<Size,PredeterminedSize>;
+    color?: string;
     readonly?: boolean;
     valid?: boolean;
-    value?: V;
-}
+    value?: Value;
+} & /* @vue-ignore */ Attributes;
 
 export type FormGroupClasses = {
     'has-activity': boolean;
@@ -99,35 +104,54 @@ export type FormGroupClasses = {
     'is-valid': boolean;
 } & Record<string,boolean>
 
-export type FormControlAttributes<P extends string, V> = {
+export type FormControlAttributes<Prefix extends string, Value> = {
     id: string,
-    class: FormControlClasses<P>;
+    class: FormControlClasses<Prefix>;
     disabled?: boolean;
     readonly?: boolean;
-    value?: V;
+    value?: Value;
 } & Record<string, unknown>;
 
-export type FormControlClasses<P extends string> = {
+export type FormControlClasses<Prefix extends string> = {
     'form-control-plaintext': boolean;
     'form-control-icon': boolean;
+    'has-activity': boolean;
+    'has-changed': boolean;
+    'has-focus': boolean;
     'is-valid': boolean;
     'is-invalid': boolean;
     'is-dirty': boolean;
     'is-empty': boolean;
-    size?: FormControlSize<P>
+    size?: FormControlSize<Prefix>
+    color?: boolean;
 } & Record<string,boolean>
 
-export type CheckedFormControlProps<P extends string,T,V,C extends string = never> = FormControlProps<P,T,V,C> & {
+export type CheckedFormControlProps<
+    Attributes extends HTMLAttributes,
+    Size extends string,
+    ModelValue,
+    Value
+> = FormControlProps<Attributes, Size, ModelValue, Value> & {
     checked?: boolean;
 }
 
-export type UseFormControlOptions<P extends string,T,V,C extends string = never> = {
-    model: ModelRef<T|undefined>;
-    props: FormControlProps<P,T,V,C> | CheckedFormControlProps<P,T,V,C>;
-    emit: FormControlEvents<T>;
+export type UseFormControlOptions<
+    Attributes extends HTMLAttributes,
+    Size extends string,
+    ModelValue,
+    Value
+> = {
+    model: ModelRef<ModelValue|undefined>;
+    props: FormControlProps<Attributes,Size,ModelValue,Value> | CheckedFormControlProps<Attributes,Size,ModelValue,Value>;
+    emit: FormControlEvents<ModelValue>;
 }
 
-export function useFormControl<P extends string,T,V,C extends string = never>({ props, emit, model }: UseFormControlOptions<P,T,V,C>) {
+export function useFormControl<
+    Attributes extends HTMLAttributes,
+    Size extends string,
+    ModelValue,
+    Value
+>({ props, emit, model }: UseFormControlOptions<Attributes,Size,ModelValue,Value>) {
     const attrs = useAttrs();
     
     const hasChanged = ref(false);
@@ -173,18 +197,22 @@ export function useFormControl<P extends string,T,V,C extends string = never>({ 
         'is-empty': isEmpty.value,
     }));
 
-    const controlClasses = computed<FormControlClasses<P>>(() => ({        
+    const controlClasses = computed<FormControlClasses<Size>>(() => ({        
         [props.formControlClass ?? '']: !!props.formControlClass,
         [props.size ?? '']: !!props.size,
+        [props.color ?? '']: !!props.color,
         'form-control-plaintext': !!props.plaintext,
         'form-control-icon': hasIcon.value,
+        'has-activity': !!props.activity,
+        'has-changed': hasChanged.value,
+        'has-focus': hasFocus.value,
         'is-valid': isValid.value,
         'is-invalid': isInvalid.value,
         'is-dirty': isDirty.value,
         'is-empty': isEmpty.value,
     }));
 
-    const controlAttributes = computed<FormControlAttributes<P,T>>(() => ({
+    const controlAttributes = computed<FormControlAttributes<Size,ModelValue>>(() => ({
         ...attrs,
         id: id.value,
         name: props.name,
@@ -210,7 +238,7 @@ export function useFormControl<P extends string,T,V,C extends string = never>({ 
     }
 
     function onFocus(e: FocusEvent) {
-        isDirty.value = true;
+        // isDirty.value = true;
         hasFocus.value = true;
 
         emit('focus', e);
