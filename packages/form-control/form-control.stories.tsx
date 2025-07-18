@@ -4,7 +4,7 @@ import './demo.css';
 import './src/useFormControl';
  
 const meta = {
-    title: 'Example/Form Control',
+    title: 'Example/Form Fields/Form Control',
     tags: ['autodocs'],
 
     decorators: [
@@ -70,7 +70,7 @@ export const FormControlPlaintext = {
             </div>
         </div>
     ),
-} as Story;
+}
 
 export const FormControlSizes = {
   name: 'Form Control Sizes',
