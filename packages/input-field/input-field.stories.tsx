@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-/* import { ref} from 'vue'; */
+import { ref} from 'vue';
 import { CalendarDaysIcon } from '@heroicons/vue/24/outline';
 import { Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
 import './demo.css';
@@ -114,14 +114,23 @@ export const FormLabelsWithIcons = {
 
 export const InputFieldWithIndicators = {
     name: 'Input Field with Activity Indicators',
-    render: () => (
-        <div class="flex flex-col gap-2">
-            <InputField label="Small" size="form-control-sm" indicator={Dots} indicator-size="xs" activity={true} class="mb-3" />
-            <InputField label="Medium" size="form-control-md" indicator={Pulse} indicator-size="md" activity={true} class="mb-3" />
-            <InputField label="Large" size="form-control-lg" indicator={Spinner} indicator-size="lg" activity={true} class="mb-3" />
-        
-        </div>
-    ),
+    render: () => {
+        const showActivity = ref(false);
+
+        return () => (
+            <div class="flex flex-col gap-2">
+                <InputField label="Small" size="form-control-sm" indicator={Dots} indicator-size="xs" activity={showActivity.value} class="mb-3" />
+                <InputField label="Medium" size="form-control-md" indicator={Pulse} indicator-size="md" activity={showActivity.value} class="mb-3" />
+                <InputField label="Large" size="form-control-lg" indicator={Spinner} indicator-size="lg" activity={showActivity.value} class="mb-3" />
+
+                <button type="button" class="self-start underline text-blue-600" 
+                    onClick={() => (showActivity.value = !showActivity.value)}
+                >
+                    {showActivity.value ? 'Hide' : 'Show'} Activity
+                </button>
+            </div>
+        );
+    },
 } satisfies Story;
 
 export const InputFieldValidation = {
