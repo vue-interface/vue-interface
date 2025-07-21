@@ -219,6 +219,15 @@
         border-color: --value(--color-*, [color]);
         /*color: --value(--color-*, [color]); <--Use this to change color of text in menu*/
     }
+
+    &.has-icon { 
+        padding: 0rem;
+        
+        .form-control-icon {
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * 2);
+            padding-left: calc(--spacing(--value(integer)) * 2);
+        }
+    }
 }
 
 @utility form-select-plaintext {

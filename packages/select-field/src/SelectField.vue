@@ -1,30 +1,31 @@
-<script setup lang="ts" generic="T, V">
+<script setup lang="ts" generic="ModelValue, Value">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { onMounted, ref, useSlots } from 'vue';
+import { InputHTMLAttributes, ref, onMounted, useSlots } from 'vue';
 
 defineOptions({
     inheritAttrs: false
 });
 
-defineSlots<FormControlSlots<T>>();
+defineSlots<FormControlSlots<SelectFieldControlSizePrefix,ModelValue>>();
 
-const emit = defineEmits<FormControlEvents<T>>();
+const model = defineModel<ModelValue>();
 
-const props = withDefaults(defineProps<FormControlProps<T, V>>(), {
+const props = withDefaults(defineProps<SelectFieldProps<ModelValue,Value>>(), {
     formControlClass: 'form-select',
     labelClass: 'form-label'
 });
 
+const emit = defineEmits<FormControlEvents<ModelValue>>();
+
 const {
     controlAttributes,
     formGroupClasses,
-    model,
     onClick,
     onBlur,
     onFocus
-} = useFormControl<T,V>({ props, emit });
+} = useFormControl<InputHTMLAttributes, SelectFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLSelectElement>();
 
@@ -54,6 +55,17 @@ onMounted(() => {
 });
 </script>
 
+<script lang="ts">
+export type SelectFieldControlSizePrefix = 'form-select';
+
+export type SelectFieldProps<ModelValue, Value> = FormControlProps<
+    SelectHTMLAttributes, 
+    SelectFieldControlSizePrefix, 
+    ModelValue, 
+    Value
+>;
+</script>
+
 <template>
     <div
         class="select-field"
@@ -68,14 +80,14 @@ onMounted(() => {
             </label>
         </slot>
 
-        <div class="form-group-inner">
+        <div class="form-control-inner">
             <slot
                 name="control"
                 v-bind="{ onClick, onBlur, onFocus, controlAttributes }">
                 <div
-                    v-if="useSlots().icon"
-                    class="form-group-inner-icon"
-                    @click="field.focus">
+                    v-if="$slots.icon"
+                    class="form-control-inner-icon"
+                    @click="field?.focus()">
                     <slot name="icon" />
                 </div>
                 <select
