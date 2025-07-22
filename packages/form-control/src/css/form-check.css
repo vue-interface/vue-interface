@@ -91,11 +91,11 @@
         margin-left: var(--form-check-label-margin-left);
     }
 
-    &:active {
+    &:active:not(:disabled,:read-only) {
         filter: var(--form-check-active-filter);
     }
 
-    &:focus {
+    &:focus:not(:disabled,:read-only) {
         border-color: var(--form-check-focus-border-color);
         box-shadow: var(--form-check-focus-box-shadow-style) var(--form-check-focus-box-shadow-color);
         outline: var(--form-check-focus-outline);
