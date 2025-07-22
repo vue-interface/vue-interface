@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { ref} from 'vue';
+import { ref } from 'vue';
 import { CalendarDaysIcon } from '@heroicons/vue/24/outline';
 import { Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
 import './demo.css';
@@ -43,7 +43,7 @@ export const InputFieldVariations = {
 } satisfies Story;
 
 export const InputFieldSizes = {
-    name: 'Input Filed Sizes',
+    name: 'Sizes',
     render: () => (
         <div class="flex flex-col gap-2">
             <InputField label="Small" size="form-control-sm" />
@@ -54,7 +54,7 @@ export const InputFieldSizes = {
 }
 
 export const InputFieldColors = {
-    name: 'Input Field Colors',
+    name: 'Custom Colors',
     render: () => (
         <div class="flex flex-col gap-2">
             <InputField placeholder="form-control-red-500" color="form-control-red-500"/>
@@ -66,7 +66,7 @@ export const InputFieldColors = {
 } satisfies Story;
 
 export const FormLabelsWithIcons = {
-    name: 'Form Labels With Icons',
+    name: 'Icons',
     render: () => (
         <div class="flex flex-col gap-2">
             <InputField label="Extra Small Icon" size="form-control-xs" class="form-control-xs">
@@ -113,7 +113,7 @@ export const FormLabelsWithIcons = {
 } satisfies Story;
 
 export const InputFieldWithIndicators = {
-    name: 'Input Field with Activity Indicators',
+    name: 'Activity Indicators',
     render: () => {
         const showActivity = ref(false);
 
@@ -134,7 +134,7 @@ export const InputFieldWithIndicators = {
 } satisfies Story;
 
 export const InputFieldValidation = {
-    name: 'Input Field Validation',
+    name: 'Validation',
     render: () => (
         <div class="flex flex-col gap-3">
           <InputField label="Empty Array of Errors" errors={[]} class="mb-3" />
@@ -149,7 +149,7 @@ export const InputFieldValidation = {
 } satisfies Story;
 
 export const AnimatedFormLabels = {
-    name: 'Animated Form Labels',
+    name: 'Animated',
     render: () => (
         <div class="flex flex-col gap-2">
             <InputField label="Text Field" placeholder="Some placeholder" size="form-control-xs" class="form-control-animated-xs"/>
@@ -170,7 +170,7 @@ export const AnimatedFormLabels = {
 } satisfies Story;
 
 export const AnimatedFormLabelsWithIcon = {
-    name: 'Animated Form Labels with Icon',
+    name: 'Animated with Icon',
     render: () => (
         <div class="flex flex-col gap-2">
             <InputField label="Text Field" placeholder="Some placeholder" size="form-control-xs" class="form-control-animated-xs">

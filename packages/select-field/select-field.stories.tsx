@@ -63,7 +63,7 @@ export const SelectFieldVariations = {
 export const SelectFieldSizes = {
     name: 'Sizes',
     render: () => (
-        <div class="flex flex-col gap-2 min-h-[1125px]">
+        <div class="flex flex-col gap-2 min-h-[1075px]">
             <SelectField label="form-select-xs" size="form-select-xs">
                 <option value="1">Option 1</option>
                 <option value="2" selected>Option 2</option>
@@ -131,7 +131,7 @@ export const SelectFieldSizes = {
 export const SelectFieldColors = {
     name: 'Custom Colors',
     render: () => (
-        <div class="flex flex-col gap-2 min-h-[450px]">
+        <div class="flex flex-col gap-2 min-h-[350px]">
             <SelectField label="red-500" value="2" color="form-select-red-500">
                 <option value="1">Option 1</option>
                 <option value="2" selected>Option 2</option>
@@ -160,7 +160,7 @@ export const SelectFieldWithIcons = {
     name: 'Icons',
     render: () => {
         return () => (
-            <div class="flex flex-col gap-2 min-h-[1400px]">
+            <div class="flex flex-col gap-2 min-h-[1325px]">
                 <SelectField label="xs Icon" size="form-select-xs" class="form-select-xs">
                     {{
                         default: () => (
@@ -328,7 +328,7 @@ export const SelectFieldWithIndicators = {
         const showActivity = ref(false);
 
         return () => (
-            <div class="flex flex-col gap-2 min-h-[700px]">
+            <div class="flex flex-col gap-2 min-h-[300px]">
                 <SelectField label="Small" size="form-select-sm" indicator={Dots} indicator-size="xs" activity={showActivity.value}>
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
@@ -409,46 +409,54 @@ export const SelectFieldValidation = {
 } satisfies Story;
 
 export const SelectFieldAnimated = {
-    name: 'Animated Labels',
+    name: 'Animated',
+    render: () => (
+        <div class="flex flex-col gap-2 min-h-[400px]">
+            <SelectField label="form-select-sm" size="form-select-sm" class="form-control-animated-sm">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+            <SelectField label="form-select-md" size="form-select-md" class="form-control-animated-md">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+            <SelectField label="form-select-lg" size="form-select-lg" class="form-control-animated-lg">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+            <SelectField label="form-select-xl" size="form-select-xl" class="form-control-animated-xl">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+            <SelectField label="form-select-4" size="form-select-4" class="form-control-animated-4">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+            <SelectField label="form-select-[16px]" size="form-select-[16px]" class="form-control-animated-[16px]">
+                <option value=""></option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </SelectField>
+        </div>
+    ),
+}
+
+export const SelectFieldAnimatedWithIcons = {
+    name: 'Animated with Icons',
     render: () => {
         return () => (
-            <div class="flex flex-col gap-2 min-h-[825px]">
-                <SelectField label="form-select-sm" size="form-select-sm" class="form-control-animated-sm">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
-                <SelectField label="form-select-md" size="form-select-md" class="form-control-animated-md">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
-                <SelectField label="form-select-lg" size="form-select-lg" class="form-control-animated-lg">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
-                <SelectField label="form-select-xl" size="form-select-xl" class="form-control-animated-xl">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
-                <SelectField label="form-select-4" size="form-select-4" class="form-control-animated-4">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
-                <SelectField label="form-select-[16px]" size="form-select-[16px]" class="form-control-animated-[16px]">
-                    <option value=""></option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </SelectField>
+            <div class="flex flex-col gap-2 min-h-[550px]">
                 <SelectField label="Small Icon" size="form-select-sm" class="form-control-animated-sm">
                     {{
                         default: () => (
