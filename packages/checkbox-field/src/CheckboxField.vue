@@ -1,0 +1,130 @@
+<script setup lang="ts" generic="ModelValue, Value">
+import type { CheckedFormControlProps, FormControlEvents, FormControlSlots, FormControlProps } from '@vue-interface/form-control';
+import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
+import { InputHTMLAttributes, onMounted, ref, CheckHTMLAttributes } from 'vue';
+
+defineOptions({
+    inheritAttrs: false
+});
+
+/* defineSlots<Exclude<FormControlSlots<ModelValue>, 'activity'>>(); */
+
+defineSlots<Exclude<FormControlSlots<CheckboxFieldControlSizePrefix,ModelValue>, 'activity'> & {
+    default: () => unknown
+}>();
+
+const model = defineModel<ModelValue>();
+
+const props = withDefaults(defineProps<CheckedFormControlProps< ModelValue, Value>>(), {
+    formControlClass: 'form-check',
+    labelClass: 'form-check-label'
+});
+
+const emit = defineEmits<FormControlEvents<ModelValue>>();
+
+const {
+    controlAttributes,
+    formGroupClasses,
+    onClick,
+    onBlur,
+    onFocus
+} = useFormControl<InputHTMLAttributes, CheckboxFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
+
+const field = ref<HTMLInputElement>();
+
+onMounted(() => {
+    if(!props.checked) {
+        return;
+    }
+    
+    if(Array.isArray(props.modelValue)
+        && !props.modelValue.includes(props.value)
+        || !props.modelValue) {
+            
+        field.value?.click();
+    }
+
+    field.value.checked = true;
+});
+</script>
+
+<script lang="ts">
+export type CheckboxFieldControlSizePrefix = 'form-check';
+
+export type SelectFieldProps<ModelValue, Value> = FormControlProps<
+    CheckHTMLAttributes, 
+    CheckboxFieldControlSizePrefix , 
+    ModelValue, 
+    Value
+>;
+</script>
+
+<template>
+    <div
+        class="checkbox-field"
+        :class="formGroupClasses">
+        <input
+            ref="field"
+            v-model="model"
+            v-bind="controlAttributes"
+            type="checkbox"
+            :value="value"
+            @change="emit('change', model)"
+            @click="onClick"
+            @blur="onBlur"
+            @focus="onFocus">
+
+        <slot name="label">
+            <label
+                ref="label"
+                :class="labelClass"
+                :for="controlAttributes.id">
+                <slot>
+                    {{ label }}
+                </slot>
+            </label>
+        </slot>
+
+        <slot
+            name="errors"
+            v-bind="{ error, errors, id, name }">        
+            <FormControlErrors
+                v-if="!!(error || errors)"
+                :id="id && String(id)"
+                v-slot="{ error }"
+                :name="name && String(name)"
+                :error="error"
+                :errors="errors">
+                <div
+                    invalid
+                    class="invalid-feedback">
+                    {{ error }}<br>
+                </div>
+            </FormControlErrors>
+        </slot>
+        
+        <slot
+            name="feedback"
+            v-bind="{ feedback }">
+            <FormControlFeedback
+                v-slot="{ feedback }"
+                :feedback="feedback">
+                <div
+                    valid
+                    class="valid-feedback">
+                    {{ feedback }}
+                </div>
+            </FormControlFeedback>
+        </slot>
+
+        <slot
+            name="help"
+            v-bind="{ helpText }">
+            <small
+                v-if="helpText"
+                ref="help">
+                {{ helpText }}
+            </small>
+        </slot>
+    </div>
+</template>
