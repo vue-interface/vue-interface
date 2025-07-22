@@ -95,7 +95,7 @@
         filter: var(--form-check-active-filter);
     }
 
-    &:focus:not(:disabled,:read-only) {
+    &:focus {
         border-color: var(--form-check-focus-border-color);
         box-shadow: var(--form-check-focus-box-shadow-style) var(--form-check-focus-box-shadow-color);
         outline: var(--form-check-focus-outline);
