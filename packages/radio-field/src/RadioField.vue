@@ -59,7 +59,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
 
 <template>
     <div
-        class="radio-field flex gap-2"
+        class="radio-field"
         :class="formGroupClasses">
         <input
             ref="field"
