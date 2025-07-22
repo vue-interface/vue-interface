@@ -220,7 +220,7 @@
     justify-content: var(--form-control-inner-icon-justify-content);
 }
 
-@utility activity-indicator {
+@utility form-control-activity-indicator {
     position: var(--form-control-activity-indicator-position);
     right: var(--form-control-activity-indicator-right);
     top: var(--form-control-activity-indicator-top);

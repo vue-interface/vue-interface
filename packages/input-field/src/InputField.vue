@@ -74,17 +74,19 @@ export type InputFieldProps<ModelValue, Value> = FormControlProps<
                     @focus="onFocus"
                     @change="emit('change', model)">
             </slot>
-
-            <slot name="activity">
-                <Transition name="input-field-fade">
-                    <ActivityIndicator
-                        v-if="activity && indicator"
-                        key="activity"
-                        ref="activity"
-                        :type="indicator"
-                        :size="indicatorSize" />
-                </Transition>
-            </slot>
+            
+            <div class="form-control-activity-indicator">
+                <slot name="activity">
+                    <Transition name="input-field-fade">
+                        <ActivityIndicator
+                            v-if="activity && indicator"
+                            key="activity"
+                            ref="activity"
+                            :type="indicator"
+                            :size="indicatorSize" />
+                    </Transition>
+                </slot>
+            </div>
         </div>
 
         <slot

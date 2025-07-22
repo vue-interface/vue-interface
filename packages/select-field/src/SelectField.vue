@@ -104,17 +104,19 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
                     <slot />
                 </select>
             </slot>
-
-            <slot name="activity">
-                <Transition name="select-field-fade">
-                    <ActivityIndicator
-                        v-if="activity && indicator"
-                        key="activity"
-                        ref="activity"
-                        :type="indicator"
-                        :size="indicatorSize" />
-                </Transition>
-            </slot>
+            
+            <div class="form-control-activity-indicator">
+                <slot name="activity">
+                    <Transition name="select-field-fade">
+                        <ActivityIndicator
+                            v-if="activity && indicator"
+                            key="activity"
+                            ref="activity"
+                            :type="indicator"
+                            :size="indicatorSize" />
+                    </Transition>
+                </slot>
+            </div>    
         </div>
 
         <slot
