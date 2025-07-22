@@ -2,13 +2,15 @@
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { InputHTMLAttributes, ref, onMounted, useSlots } from 'vue';
+import { InputHTMLAttributes, onMounted, ref, SelectHTMLAttributes, useSlots } from 'vue';
 
 defineOptions({
     inheritAttrs: false
 });
 
-defineSlots<FormControlSlots<SelectFieldControlSizePrefix,ModelValue>>();
+defineSlots<FormControlSlots<SelectFieldControlSizePrefix,ModelValue> & {
+    default: () => unknown
+}>();
 
 const model = defineModel<ModelValue>();
 
@@ -29,21 +31,23 @@ const {
 
 const field = ref<HTMLSelectElement>();
 
-function onMousedown(e) {
+function onMousedown(e: MouseEvent) {
     onClick(e);
 
-    field.value.focus();
+    field.value?.focus();
 }
 
 // Check the option slots for selected options. If the field has hardcoded
 // selected options, this will ensure the value of the field is always set to
 // the property. This will ensure the model is updated to the selected value.
 onMounted(() => {
-    if(!useSlots().default) {
+    const slot = useSlots().default;
+
+    if(!slot) {
         return;
     }
 
-    for(const child of useSlots().default()) {
+    for(const child of slot()) {
         if(!child.props) {
             return;
         }
