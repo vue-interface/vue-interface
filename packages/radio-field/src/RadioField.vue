@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="ModelValue, Value">
-import type { CheckedFormControlProps, FormControlSlots, FormControlEvents, FormControlProps } from '@vue-interface/form-control';
+import type { CheckedFormControlProps, FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, onMounted, ref } from 'vue';
 
@@ -39,7 +39,7 @@ onMounted(() => {
         field.value?.click();
     }
 
-    if (field.value) {
+    if(field.value) {
         field.value.checked = true;
     }
 });

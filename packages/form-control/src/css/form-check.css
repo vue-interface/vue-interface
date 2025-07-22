@@ -16,6 +16,7 @@
     --form-check-border-style: var(--form-border-style, solid);
     --form-check-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
     --form-check-appearance: var(--form-appearance, none);
+    --form-check-label-margin-left: .5em;
 
     /* Dark mode */
     --form-check-dark-color: var(--form-dark-color, oklch(98.5% 0.002 247.839));
@@ -84,6 +85,10 @@
 
     &[type="radio"] {
         border-radius: var(--form-check-radio-border-radius);
+    }
+
+    ~ .form-check-label {
+        margin-left: var(--form-check-label-margin-left);
     }
 
     &:active {

@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="ModelValue, Value">
-import type { CheckedFormControlProps, FormControlEvents, FormControlSlots, FormControlProps } from '@vue-interface/form-control';
+import type { CheckedFormControlProps, FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, onMounted, ref } from 'vue';
 
@@ -42,7 +42,7 @@ onMounted(() => {
         field.value?.click();
     }
 
-    if (field.value) {
+    if(field.value) {
         field.value.checked = true;
     }
 });
@@ -61,7 +61,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
 
 <template>
     <div
-        class="checkbox-field flex gap-2"
+        class="checkbox-field"
         :class="formGroupClasses">
         <input
             ref="field"
