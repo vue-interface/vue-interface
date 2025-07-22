@@ -170,6 +170,10 @@
     background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
     border-color: --value(--color-*, [color]);
 
+    ~ .form-check-label {
+        margin-left: --value(--form-check-label-margin-left-*);
+    }
+
     &:focus {
         background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
         border-color: --value(--color-*, [color]);
