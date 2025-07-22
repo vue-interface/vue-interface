@@ -1,13 +1,11 @@
 <script setup lang="ts" generic="ModelValue, Value">
 import type { CheckedFormControlProps, FormControlEvents, FormControlSlots, FormControlProps } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { InputHTMLAttributes, onMounted, ref, CheckHTMLAttributes } from 'vue';
+import { InputHTMLAttributes, onMounted, ref } from 'vue';
 
 defineOptions({
     inheritAttrs: false
 });
-
-/* defineSlots<Exclude<FormControlSlots<ModelValue>, 'activity'>>(); */
 
 defineSlots<Exclude<FormControlSlots<CheckboxFieldControlSizePrefix,ModelValue>, 'activity'> & {
     default: () => unknown
@@ -15,7 +13,7 @@ defineSlots<Exclude<FormControlSlots<CheckboxFieldControlSizePrefix,ModelValue>,
 
 const model = defineModel<ModelValue>();
 
-const props = withDefaults(defineProps<CheckedFormControlProps< ModelValue, Value>>(), {
+const props = withDefaults(defineProps<CheckedFormControlProps<InputHTMLAttributes, CheckboxFieldControlSizePrefix, ModelValue, Value>>(), {
     formControlClass: 'form-check',
     labelClass: 'form-check-label'
 });
@@ -44,7 +42,9 @@ onMounted(() => {
         field.value?.click();
     }
 
-    field.value.checked = true;
+    if (field.value) {
+        field.value.checked = true;
+    }
 });
 </script>
 
@@ -52,7 +52,7 @@ onMounted(() => {
 export type CheckboxFieldControlSizePrefix = 'form-check';
 
 export type SelectFieldProps<ModelValue, Value> = FormControlProps<
-    CheckHTMLAttributes, 
+    InputHTMLAttributes, 
     CheckboxFieldControlSizePrefix , 
     ModelValue, 
     Value
@@ -61,7 +61,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
 
 <template>
     <div
-        class="checkbox-field"
+        class="checkbox-field flex gap-2"
         :class="formGroupClasses">
         <input
             ref="field"

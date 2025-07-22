@@ -30,12 +30,12 @@
             </div>
 
             <div class="mb-4">
-                <checkbox-field v-model="colors" label="Red" value="red" checked></checkbox-field>
-                <checkbox-field v-model="colors" label="Green" value="green"></checkbox-field>
-                <checkbox-field v-model="colors" label="Blue" value="blue"></checkbox-field>
-                <checkbox-field v-model="colors" label="Yellow" value="yellow"></checkbox-field>
-                <checkbox-field v-model="colors" label="Purple" value="purple" disabled>Purple (Disabled)</checkbox-field>
-                <checkbox-field v-model="colors" label="Pink" value="pink" readonly>Pink (Readonly)</checkbox-field>
+                <checkbox-field v-model="colors" label="Red" value="red" color="form-check-red-500" checked></checkbox-field>
+                <checkbox-field v-model="colors" label="Green" value="green" color="form-check-green-500"></checkbox-field>
+                <checkbox-field v-model="colors" label="Blue" value="blue" color="form-check-blue-500"></checkbox-field>
+                <checkbox-field v-model="colors" label="Yellow" value="yellow" color="form-check-yellow-500"></checkbox-field>
+                <checkbox-field v-model="colors" label="Purple" value="purple" color="form-check-purple-500" disabled>Purple (Disabled)</checkbox-field>
+                <checkbox-field v-model="colors" label="Pink" value="pink" color="form-check-pink-500" readonly>Pink (Readonly)</checkbox-field>
             </div>
             
             <div class="mb-4">
@@ -51,21 +51,33 @@
 
             <h3 class="text-3xl mb-3">Sizes</h3>
 
-            <checkbox-field name="size[]" class="checkbox-field-sm" placeholder="Small">Small</checkbox-field>
-            <checkbox-field name="size[]" placeholder="Medium">Medium</checkbox-field>
-            <checkbox-field name="size[]" class="checkbox-field-lg" placeholder="Large">Large</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-xs" placeholder="xs">xs</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-sm" placeholder="Small">Small</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-md" placeholder="Medium">Medium</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-lg" placeholder="Large">Large</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-xl" placeholder="Extra Large">XL</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-2xl" placeholder="2xl">2xl</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-3xl" placeholder="3xl">3xl</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-4xl" placeholder="4xl">4xl</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-5xl" placeholder="5xl">5xl</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-4" placeholder="form-check-4">form-check-4</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-5" placeholder="form-check-5">form-check-5</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-6" placeholder="form-check-6">form-check-6</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-[16px]" placeholder="form-check-[16px]">form-check-[16px]</checkbox-field>
+            <checkbox-field name="size[]" class="form-check-[21px]" placeholder="form-check-[21px]">form-check-[21px]</checkbox-field>
+
 
             <hr class="my-6">
 
             <h3 class="text-3xl mb-3">Validation</h3>
 
             <checkbox-field label="Empty Array of Errors" :errors="[]" class="mb-3"></checkbox-field>
-            <checkbox-field label="Single Inline Error" class="mb-3" error="This is an inline error."></checkbox-field>
-            <checkbox-field name="multiple" class="mb-3" label="Multiple Errors From Object" :errors="{'multiple': ['This is an inline error #1.', 'This is an inline error #2.']}"></checkbox-field>
+            <checkbox-field label="Single Inline Error" class="mb-3 invalid-feedback" error="This is an inline error."></checkbox-field>
+            <checkbox-field name="multiple" class="mb-3 invalid-feedback" label="Multiple Errors From Object" :errors="{'multiple': ['This is an inline error #1.', 'This is an inline error #2.']}"></checkbox-field>
         
-            <checkbox-field label="Valid Field" valid class="mb-3"></checkbox-field>
-            <checkbox-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3"></checkbox-field>            
-            <checkbox-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3"></checkbox-field>
+            <checkbox-field label="Valid Field" valid class="mb-3 valid-feedback"></checkbox-field>
+            <checkbox-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3 valid-feedback"></checkbox-field>            
+            <checkbox-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3 valid-feedback"></checkbox-field>
 
         </form>
 
