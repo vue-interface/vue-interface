@@ -17,6 +17,8 @@
     --form-control-border-style: var(--form-border-style, solid);
     --form-control-border-color: var(--form-border-color-control-select, oklch(87% 0 0));
     --form-control-appearance: var(--form-appearance, none);
+    --form-control-inner-icon-textarea-top: .575em;
+    --form-control-inner-icon-textarea-transform: none;
 
     /* Dark mode */
     --form-control-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
@@ -218,6 +220,11 @@
     display: var(--form-control-inner-icon-display);
     align-items: var(--form-control-inner-icon-align-items);
     justify-content: var(--form-control-inner-icon-justify-content);
+
+    &:has(~ textarea.form-control) {
+        top: var(--form-control-inner-icon-textarea-top);
+        transform: var(--form-control-inner-icon-textarea-transform);
+    }
 }
 
 @utility form-control-activity-indicator {

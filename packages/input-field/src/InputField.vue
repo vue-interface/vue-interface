@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="ModelValue, Value">
+<script setup lang="ts" generic="ModelValue extends undefined|string|number|null, Value">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';

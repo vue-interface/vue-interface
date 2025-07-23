@@ -139,9 +139,11 @@ export type UseFormControlOptions<
     Attributes extends HTMLAttributes,
     Size extends string,
     ModelValue,
-    Value
+    Value,
+    Getter = ModelValue,
+    Setter = ModelValue
 > = {
-    model: ModelRef<ModelValue|undefined>;
+    model: ModelRef<ModelValue|undefined,string,Getter,Setter>;
     props: FormControlProps<Attributes,Size,ModelValue,Value> | CheckedFormControlProps<Attributes,Size,ModelValue,Value>;
     emit: FormControlEvents<ModelValue>;
 }
@@ -150,8 +152,10 @@ export function useFormControl<
     Attributes extends HTMLAttributes,
     Size extends string,
     ModelValue,
-    Value
->({ props, emit, model }: UseFormControlOptions<Attributes,Size,ModelValue,Value>) {
+    Value,
+    Getter = ModelValue,
+    Setter = ModelValue,
+>({ props, emit, model }: UseFormControlOptions<Attributes,Size,ModelValue,Value,Getter,Setter>) {
     const attrs = useAttrs();
     
     const hasChanged = ref(false);

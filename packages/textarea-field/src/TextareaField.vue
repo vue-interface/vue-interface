@@ -1,9 +1,9 @@
-<script setup lang="ts" generic="ModelValue, Value">
+<script setup lang="ts" generic="ModelValue extends undefined|string|ReadonlyArray<string>|number|null, Value">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import { vAutogrow } from '@vue-interface/autogrow';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { InputHTMLAttributes, ref, useSlots, watch } from 'vue';
+import { InputHTMLAttributes, ref, TextareaHTMLAttributes, useSlots, watch } from 'vue';
 
 defineOptions({
     inheritAttrs: false
@@ -13,12 +13,8 @@ defineSlots<FormControlSlots<TextareaFieldControlSizePrefix,ModelValue>>();
 
 const model = defineModel<ModelValue>();
 
-/* type TextareaFieldProps = FormControlProps<ModelValue, Value> & {
-    autogrow?: boolean
-} */
-
-const props = withDefaults(defineProps<InputFieldProps<ModelValue,Value>>(), {
-    autogrow: true,
+const props = withDefaults(defineProps<TextareaFieldProps<ModelValue,Value>>(), {
+    autogrow: false,
     formControlClass: 'form-control',
     labelClass: 'form-label'
 });
@@ -37,18 +33,20 @@ const field = ref<HTMLTextAreaElement>();
 
 watch(model, () => {
     field.value?.dispatchEvent(new Event('resize'));
-})
+});
 </script>
 
 <script lang="ts">
 export type TextareaFieldControlSizePrefix = 'form-control';
 
-export type InputFieldProps<ModelValue, Value> = FormControlProps<
-    InputHTMLAttributes, 
+export type TextareaFieldProps<ModelValue, Value> = FormControlProps<
+    TextareaHTMLAttributes, 
     TextareaFieldControlSizePrefix, 
     ModelValue, 
     Value
->;
+> & {
+    autogrow?: boolean
+};
 </script>
 
 <template>
@@ -82,7 +80,8 @@ export type InputFieldProps<ModelValue, Value> = FormControlProps<
                     v-bind="controlAttributes"
                     @click="onClick"
                     @blur="onBlur"
-                    @focus="onFocus" />
+                    @focus="onFocus"
+                    @change="emit('change', model)" />
             </slot>
             
             <div class="form-control-activity-indicator">

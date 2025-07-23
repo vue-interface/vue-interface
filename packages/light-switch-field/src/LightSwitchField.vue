@@ -1,47 +1,31 @@
-<script setup lang="ts" generic="ModelValue, Value, OnValue">
-import type { CheckedFormControlProps, FormControlProps,FormControlSlots } from '@vue-interface/form-control';
+<script setup lang="ts" generic="ModelValue, Value">
+import type { FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlEvents, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { computed, InputHTMLAttributes, ref } from 'vue';
+import { InputHTMLAttributes, ref } from 'vue';
 
-defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix,ModelValue>>();
+defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix,ModelValue> & {
+    default: () => unknown
+}>();
 
-const model = defineModel<ModelValue>();
+const model = defineModel<ModelValue,string,boolean,boolean>({
+    get(value) {
+        return value === props.onValue;
+    },
+    set(value) {
+        return value ? props.onValue : props.offValue;
+    }
+});
 
-// The TS implementation here is kinda weak. v-model should be the same as the
-// onValue and offValue props. The issue is that we need to cast as `any` or
-// else we get the following TS error:
-// `Type 'T' is not assignable to type 'InferDefault<FormControlProps<T, V> & {
-// checked?: boolean; } & { onValue?: T; offValue?: T; }, T>'`.
-const props = withDefaults(defineProps<CheckedFormControlProps<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value>>(), {
-    onValue?: ModelValue,
-    offValue?: ModelValue,
-}>(), {
+const props = withDefaults(defineProps<LightSwitchFieldProps<ModelValue, Value>>(), {
     formControlClass: 'form-switch',
     labelClass: 'form-switch-label',
-    onValue: 1 as any,
-    offValue: 0 as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onValue: true as any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    offValue: false as any
 });
 
 const emit = defineEmits<FormControlEvents<ModelValue>>();
-
-function getModelValue(): ModelValue {
-    if(props.modelValue === undefined) {
-        return props.checked
-            ? props.onValue
-            : props.offValue;
-    }
-
-    return props.modelValue;
-}
-
-const checked = computed({
-    get() {
-        return model.value === props.onValue;
-    },
-    set(value) {
-        model.value = value === true ? props.onValue : props.offValue;
-    }
-});
 
 const {
     controlAttributes,
@@ -49,7 +33,7 @@ const {
     onClick,
     onBlur,
     onFocus
-} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
+} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean|undefined>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
 </script>
@@ -57,12 +41,15 @@ const field = ref<HTMLTextAreaElement>();
 <script lang="ts">
 export type LightSwitchFieldControlSizePrefix = 'form-switch';
 
-export type SelectFieldProps<ModelValue, Value> = FormControlProps<
+export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
     InputHTMLAttributes, 
-    LightSwitchFieldControlSizePrefix , 
+    LightSwitchFieldControlSizePrefix, 
     ModelValue, 
     Value
->;
+> & {
+    onValue?: ModelValue,
+    offValue?: ModelValue,
+};
 </script>
 
 <template>
@@ -74,7 +61,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
             :class="labelClass">            
             <input
                 ref="field"
-                v-model="checked"
+                v-model="model"
                 type="checkbox"
                 v-bind="controlAttributes"
                 @click="onClick"

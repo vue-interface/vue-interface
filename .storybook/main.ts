@@ -32,8 +32,24 @@ const config: StorybookConfig = {
     docs: {
     // autodocs: 'tag',
     },
+    babel: async (options) => {
+        return {
+            ...options,
+            plugins: [
+                ...options.plugins,
+                [
+                    '@vue/babel-plugin-jsx',
+                    {
+                        enableObjectSlots: false,
+                        transformOn: true,
+                        optimize: false,
+                    }
+                ]
+            ]
+        };
+    },
     viteFinal: async (config) => {
-    // Ensure JSX plugin is configured
+        // Ensure JSX plugin is configured
         const vue = (await import('@vitejs/plugin-vue')).default;
         const vueJsx = (await import('@vitejs/plugin-vue-jsx')).default;
         const tailwindcss = (await import('@tailwindcss/vite')).default;

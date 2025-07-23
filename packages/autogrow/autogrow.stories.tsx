@@ -1,79 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { vAutogrow } from './index';
-import { withDirectives, defineComponent } from 'vue';
+import { defineComponent } from 'vue';
+import './demo.css';
+import vAutogrow from './src/vAutogrow';
  
 const meta = {
     title: 'Example/Form Fields/Autogrow',
-    tags: ['autodocs'],
+    tags: ['autodocs']
 } satisfies Meta;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>
 
-console.log(vAutogrow);
-
 export const AutogrowBasicUsage = {
     name: 'Basic Usage',
-    render: () => defineComponent({
-        render() {
-            return withDirectives(
-                <textarea rows="6" class="form-control"/>,
-                [[vAutogrow]]
-            );
-        }
-    })
+    render: (() => defineComponent({
+        directives:{
+            'autogrow': vAutogrow
+        },
+        render: () => (
+            <textarea v-autogrow rows="6" class="form-control"/>
+        )
+    })) as any
 } satisfies Story;
-
-export const AutogrowWithLongContent = {
-    name: 'With Long Content',
-    render: () => defineComponent({
-        render() {
-            return withDirectives(
-                <textarea v-autogrow rows="6" class="form-control">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi mollis, consectetur urna vel, bibendum risus. Mauris mattis porttitor ligula. Aliquam accumsan ut sapien et consequat. Curabitur in ipsum magna. Nulla facilisi. Nulla egestas pharetra congue. Maecenas condimentum, metus eget commodo lacinia, nulla leo tristique dolor, sed tempus ligula quam a elit. Aliquam tempus mauris ac dignissim tincidunt. Quisque eu felis magna. Nulla dignissim porttitor ipsum, a tristique nunc placerat ut. Mauris dictum ut mi sed pharetra. Nulla elementum cursus augue, ut porttitor ex commodo eget. Quisque porttitor dictum hendrerit.
-
-                Aenean pharetra arcu vel pellentesque dictum. Nulla ornare malesuada lectus id rhoncus. Vestibulum eget erat vel nunc facilisis tristique sit amet at est. Ut convallis eleifend pulvinar. Ut in bibendum ex, at posuere eros. Ut porttitor a nisi pellentesque semper. Sed tempus varius consequat. Aenean felis mi, placerat vitae euismod eu, faucibus vitae metus. Nulla vulputate enim eget tortor maximus, vel blandit ante pulvinar. Maecenas vel libero elementum, vulputate leo eu, elementum turpis. Pellentesque ut mauris vel dolor gravida vehicula vel sit amet orci. Integer id arcu ullamcorper, tincidunt sapien nec, consectetur felis.
-
-                Vivamus varius lacinia diam, sed fringilla velit vehicula ut. Morbi fringilla dictum lobortis. Maecenas quis quam vel tortor varius blandit. Maecenas pretium lacus non nisl vehicula accumsan. Vestibulum scelerisque blandit magna, sit amet mollis ex pulvinar id. Curabitur dapibus viverra sapien. Sed pretium lectus metus, in malesuada sapien vulputate sit amet. Cras dignissim placerat dui eu porta.
-
-                Sed auctor enim ut magna bibendum posuere. Cras sit amet malesuada dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum sagittis ornare. Praesent fringilla ligula in arcu dictum, vel elementum purus ullamcorper. Nulla suscipit finibus tellus, non faucibus augue fermentum vel.
-
-                Fusce fringilla sit amet tortor maximus sagittis. Maecenas porttitor maximus massa, nec gravida justo semper sit amet. Etiam ac mauris non nisl egestas tempus a ut eros. Maecenas vitae felis iaculis massa tincidunt auctor. Aliquam neque augue, ullamcorper nec dui vitae, tempor accumsan massa. Ut convallis velit et imperdiet luctus. Ut scelerisque semper lectus, interdum vestibulum ipsum egestas vitae. In sagittis risus magna, vel luctus risus blandit sed. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed lectus neque, gravida vitae dapibus ac, laoreet a massa. Aliquam vestibulum ultrices mi at tristique. Aliquam erat volutpat. Suspendisse venenatis tellus et neque venenatis semper. Vestibulum accumsan dolor nulla, eu dapibus odio maximus sit amet. Cras vulputate tincidunt quam nec porta. Phasellus interdum blandit enim, in suscipit ante sollicitudin in.
-                </textarea>,
-                [[vAutogrow]]
-            );
-        }
-    })
-} satisfies Story;
-
-
-
-
-
-/* export const AutogrowResizeOnUpdate = {
-    name: 'Resize on Update',
-    render: () => withDirectives (
-        <textarea rows="2" class="form-control"/>,
-        [[vAutogrow]]
-    ),
-} satisfies Story;
-
-
-
-export const AutogrowMaxHeight = {
-    name: 'Max Height',
-    render: () => (
-        <textarea v-autogrow="300" rows="6" class="form-control">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae nisi mollis, consectetur urna vel, bibendum risus. Mauris mattis porttitor ligula. Aliquam accumsan ut sapien et consequat. Curabitur in ipsum magna. Nulla facilisi. Nulla egestas pharetra congue. Maecenas condimentum, metus eget commodo lacinia, nulla leo tristique dolor, sed tempus ligula quam a elit. Aliquam tempus mauris ac dignissim tincidunt. Quisque eu felis magna. Nulla dignissim porttitor ipsum, a tristique nunc placerat ut. Mauris dictum ut mi sed pharetra. Nulla elementum cursus augue, ut porttitor ex commodo eget. Quisque porttitor dictum hendrerit.
-
-                Aenean pharetra arcu vel pellentesque dictum. Nulla ornare malesuada lectus id rhoncus. Vestibulum eget erat vel nunc facilisis tristique sit amet at est. Ut convallis eleifend pulvinar. Ut in bibendum ex, at posuere eros. Ut porttitor a nisi pellentesque semper. Sed tempus varius consequat. Aenean felis mi, placerat vitae euismod eu, faucibus vitae metus. Nulla vulputate enim eget tortor maximus, vel blandit ante pulvinar. Maecenas vel libero elementum, vulputate leo eu, elementum turpis. Pellentesque ut mauris vel dolor gravida vehicula vel sit amet orci. Integer id arcu ullamcorper, tincidunt sapien nec, consectetur felis.
-
-                Vivamus varius lacinia diam, sed fringilla velit vehicula ut. Morbi fringilla dictum lobortis. Maecenas quis quam vel tortor varius blandit. Maecenas pretium lacus non nisl vehicula accumsan. Vestibulum scelerisque blandit magna, sit amet mollis ex pulvinar id. Curabitur dapibus viverra sapien. Sed pretium lectus metus, in malesuada sapien vulputate sit amet. Cras dignissim placerat dui eu porta.
-
-                Sed auctor enim ut magna bibendum posuere. Cras sit amet malesuada dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum sagittis ornare. Praesent fringilla ligula in arcu dictum, vel elementum purus ullamcorper. Nulla suscipit finibus tellus, non faucibus augue fermentum vel.
-
-                Fusce fringilla sit amet tortor maximus sagittis. Maecenas porttitor maximus massa, nec gravida justo semper sit amet. Etiam ac mauris non nisl egestas tempus a ut eros. Maecenas vitae felis iaculis massa tincidunt auctor. Aliquam neque augue, ullamcorper nec dui vitae, tempor accumsan massa. Ut convallis velit et imperdiet luctus. Ut scelerisque semper lectus, interdum vestibulum ipsum egestas vitae. In sagittis risus magna, vel luctus risus blandit sed. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed lectus neque, gravida vitae dapibus ac, laoreet a massa. Aliquam vestibulum ultrices mi at tristique. Aliquam erat volutpat. Suspendisse venenatis tellus et neque venenatis semper. Vestibulum accumsan dolor nulla, eu dapibus odio maximus sit amet. Cras vulputate tincidunt quam nec porta. Phasellus interdum blandit enim, in suscipit ante sollicitudin in.
-            </textarea>
-    ),
-} satisfies Story; */

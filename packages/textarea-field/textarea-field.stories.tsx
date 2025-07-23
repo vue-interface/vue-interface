@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
-import { ref} from 'vue';
 import { CalendarDaysIcon } from '@heroicons/vue/24/outline';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import { Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+import { ref } from 'vue';
 import './demo.css';
 import TextareaField from './src/TextareaField.vue';
  
@@ -130,9 +130,9 @@ export const TextareaFieldAutogrow = {
     name: 'Autogrow',
     render: () => (
         <div class="flex flex-col">
-            <TextareaField label="Small" size="form-control-sm" class="mb-3"></TextareaField>
-            <TextareaField label="Medium" size="form-control-md" class="mb-3"></TextareaField>
-            <TextareaField label="Large" size="form-control-lg" class="mb-3"></TextareaField>
+            <TextareaField label="Small" size="form-control-sm" autogrow={true} class="mb-3"></TextareaField>
+            <TextareaField label="Medium" size="form-control-md" autogrow={true} class="mb-3"></TextareaField>
+            <TextareaField label="Large" size="form-control-lg" autogrow={true} class="mb-3"></TextareaField>
         </div>
     ),
 } satisfies Story;
@@ -149,58 +149,6 @@ export const TextareaFieldvalidation = {
             <TextareaField label="Valid Field" valid class="mb-3 valid-feedback"></TextareaField>
             <TextareaField label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3 valid-feedback"/>
             <TextareaField label="Valid Field with Array of Feedback" valid feedback={['This is some success message.', 'This is some success message.']} class="mb-3 valid-feedback"/>
-        </div>
-    ),
-} satisfies Story;
-
-export const TextareaFieldAnimated = {
-    name: 'Animated',
-    render: () => (
-        <div class="flex flex-col">
-            <TextareaField label="Text Field" placeholder="Some placeholder" size="form-control-sm" class="mb-3 form-control-animated-sm"/>
-            <TextareaField label="Text Field" placeholder="Some placeholder" size="form-control-md" class="mb-3 form-control-animated-md"/>
-            <TextareaField label="Text Field" placeholder="Some placeholder" size="form-control-lg" class="mb-3 form-control-animated-lg"/>
-        </div>
-    ),
-} satisfies Story;
-
-export const TextareaFieldAnimatedWithIcons = {
-    name: 'Animated with Icons',
-    render: () => (
-        <div class="flex flex-col">
-            <TextareaField label="xs Icon" placeholder="Some placeholder" size="form-control-xs" class="mb-3 form-control-animated-xs">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Small Icon" placeholder="Some placeholder" size="form-control-sm" class="mb-3 form-control-animated-sm">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Medium Icon" placeholder="Some placeholder" size="form-control-md" class="mb-3 form-control-animated-md">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Large Icon" placeholder="Some placeholder" size="form-control-lg" class="mb-3 form-control-animated-lg">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="XL Icon" placeholder="Some placeholder" size="form-control-xl" class="mb-3 form-control-animated-xl">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="2xl Icon" placeholder="Some placeholder" size="form-control-2xl" class="mb-3 form-control-animated-2xl">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Icon-4" placeholder="Some placeholder" size="form-control-4" class="mb-3 form-control-animated-4">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Icon-5" placeholder="Some placeholder" size="form-control-5" class="mb-3 form-control-animated-5">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Icon-6" placeholder="Some placeholder" size="form-control-6" class="mb-3 form-control-animated-6">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Icon-[16px]" placeholder="Some placeholder" size="form-control-[16px]" class="mb-3 form-control-animated-[16px]">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
-            <TextareaField label="Icon-[21px]" placeholder="Some placeholder" size="form-control-[21px]" class="mb-3 form-control-animated-[21px]">
-                {{ icon: () => <CalendarDaysIcon/> }}
-            </TextareaField>
         </div>
     ),
 } satisfies Story;

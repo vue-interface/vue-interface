@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import './index.css';
+import './demo.css';
 import RadioField from './src/RadioField.vue';
  
 const meta = {

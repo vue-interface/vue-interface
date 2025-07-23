@@ -25,11 +25,17 @@ const preview: Preview = {
             source: {
                 type: 'code',
                 transform: (src, storyContext) => {
-                // Extract just the JSX from render function
-                    const renderMatch = src.match(/render:\s*\(\)\s*=>\s*(.+)(?=,|\s*})/s);
+                    // Extract just the JSX from render function
+                    const renderMatch = src.match(/render:\s*\(\)\s*=>\s*(.+?)(?=\s+})/s);
+
+                    // if(renderMatch?.[2]) {
+                    //     return renderMatch[2].trim();
+                    // }
+
                     if(renderMatch) {
                         return renderMatch[1].trim();
                     }
+
                     return src;
                 }
             }
