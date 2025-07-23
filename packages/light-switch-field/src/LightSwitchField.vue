@@ -36,11 +36,35 @@ const emit = defineEmits<FormControlEvents<ModelValue,boolean>>();
 const {
     controlAttributes,
     formGroupClasses,
-    onClick,
     onBlur,
     onFocus,
+    onFocusin,
+    onFocusout,
+    onClick,
+    onMousedown,
+    onMouseup,
+    onMouseover,
+    onMouseout,
+    onMouseenter,
+    onMouseleave,
     onChange,
-    onInput
+    onInput,
+    onBeforeinput,
+    onKeydown,
+    onKeyup,
+    onKeypress,
+    onSelect,
+    onSelectionchange,
+    onInvalid,
+    onSubmit,
+    onReset,
+    onCopy,
+    onCut,
+    onPaste,
+    onTouchstart,
+    onTouchend,
+    onTouchmove,
+    onTouchcancel
 } = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
@@ -72,11 +96,35 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
                 v-model="model"
                 type="checkbox"
                 v-bind="controlAttributes"
-                @click="onClick"
                 @blur="onBlur"
                 @focus="onFocus"
+                @focusin="onFocusin"
+                @focusout="onFocusout"
+                @click="onClick"
+                @mousedown="onMousedown"
+                @mouseup="onMouseup"
+                @mouseover="onMouseover"
+                @mouseout="onMouseout"
+                @mouseenter="onMouseenter"
+                @mouseleave="onMouseleave"
                 @change="onChange"
-                @input="onInput">
+                @input="onInput"
+                @beforeinput="onBeforeinput"
+                @keydown="onKeydown"
+                @keyup="onKeyup"
+                @keypress="onKeypress"
+                @select="onSelect"
+                @selectionchange="onSelectionchange"
+                @invalid="onInvalid"
+                @submit="onSubmit"
+                @reset="onReset"
+                @copy="onCopy"
+                @cut="onCut"
+                @paste="onPaste"
+                @touchstart="onTouchstart"
+                @touchend="onTouchend"
+                @touchmove="onTouchmove"
+                @touchcancel="onTouchcancel">
             <slot>{{ label }}</slot>
         </label>
 

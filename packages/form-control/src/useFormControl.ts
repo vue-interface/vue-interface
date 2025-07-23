@@ -1,11 +1,15 @@
 import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type HTMLAttributes, type ModelRef } from 'vue';
 
-export type FormControlEvents<ModelValue,Getter = ModelValue|undefined> = {
-    (e: 'blur' | 'focus', event: FocusEvent): void;
-    (e: 'click', event: MouseEvent): void;
-    (e: 'change' | 'input', event: Event, value: Getter): void;
-    (e: 'update:modelValue', value: ModelValue): void;
+export type FormControlEvents<ModelValue, Getter = ModelValue | undefined> = {
+   (e: 'blur' | 'focus' | 'focusin' | 'focusout', event: FocusEvent): void;
+   (e: 'click' | 'mousedown' | 'mouseup' | 'mouseover' | 'mouseout' | 'mouseenter' | 'mouseleave', event: MouseEvent): void;
+   (e: 'change' | 'input' | 'beforeinput', event: Event, value: Getter): void;
+   (e: 'keydown' | 'keyup' | 'keypress', event: KeyboardEvent): void;
+   (e: 'select' | 'selectionchange' | 'invalid' | 'submit' | 'reset', event: Event): void;
+   (e: 'copy' | 'cut' | 'paste', event: ClipboardEvent): void;
+   (e: 'touchstart' | 'touchend' | 'touchmove' | 'touchcancel', event: TouchEvent): void;
+   (e: 'update:modelValue', value: ModelValue): void;
 };
 
 export type FormControlFeedbackPropSlot = (
@@ -225,16 +229,6 @@ export function useFormControl<
         readonly: props.readonly
     }));
 
-    function onClick(e: MouseEvent) {
-        if(props.readonly) {
-            e.preventDefault();
-        }
-
-        nextTick(() => {
-            emit('click', e);
-        });
-    }
-
     function onBlur(e: FocusEvent) {
         hasFocus.value = false;
 
@@ -247,13 +241,119 @@ export function useFormControl<
 
         emit('focus', e);
     }
+    
+    function onFocusin(e: FocusEvent) {
+        emit('focusin', e);
+    }
+    
+    function onFocusout(e: FocusEvent) {
+        emit('focusout', e);
+    }
+    
+    function onClick(e: MouseEvent) {
+        if(props.readonly) {
+            e.preventDefault();
+        }
+
+        nextTick(() => {
+            emit('click', e);
+        });
+    }
+    
+    function onMousedown(e: MouseEvent) {
+        emit('mousedown', e);
+    }
+
+    function onMouseup(e: MouseEvent) {
+        emit('mouseup', e);
+    }
+
+    function onMouseover(e: MouseEvent) {
+        emit('mouseover', e);
+    }
+
+    function onMouseout(e: MouseEvent) {
+        emit('mouseup', e);
+    }
+
+    function onMouseenter(e: MouseEvent) {
+        emit('mouseenter', e);
+    }
+
+    function onMouseleave(e: MouseEvent) {
+        emit('mouseleave', e);
+    }
+
+    function onChange(e: Event) {
+        emit('change', e, model.value);
+    }
 
     function onInput(e: Event) {
         emit('input', e, model.value);
     }
 
-    function onChange(e: Event) {
-        emit('change', e, model.value);
+    function onBeforeinput(e: Event) {
+        emit('beforeinput', e, model.value);
+    }
+
+    function onKeydown(e: KeyboardEvent) {
+        emit('keydown', e);
+    }
+
+    function onKeyup(e: KeyboardEvent) {
+        emit('keyup', e);
+    }
+
+    function onKeypress(e: KeyboardEvent) {
+        emit('keypress', e);
+    }
+
+    function onSelect(e: Event) {
+        emit('select', e);
+    }
+
+    function onSelectionchange(e: Event) {
+        emit('selectionchange', e);
+    }
+
+    function onInvalid(e: Event) {
+        emit('invalid', e);
+    }
+
+    function onSubmit(e: Event) {
+        emit('submit', e);
+    }
+
+    function onReset(e: Event) {
+        emit('reset', e);
+    }
+
+    function onCopy(e: ClipboardEvent) {
+        emit('copy', e);
+    }
+
+    function onCut(e: ClipboardEvent) {
+        emit('cut', e);
+    }
+
+    function onPaste(e: ClipboardEvent) {
+        emit('paste', e);
+    }
+    
+    function onTouchstart(e: TouchEvent) {
+        emit('touchstart', e);
+    }
+    
+    function onTouchend(e: TouchEvent) {
+        emit('touchend', e);
+    }
+    
+    function onTouchmove(e: TouchEvent) {
+        emit('touchmove', e);
+    }
+    
+    function onTouchcancel(e: TouchEvent) {
+        emit('touchcancel', e);
     }
 
     onBeforeMount(() => {
@@ -267,10 +367,34 @@ export function useFormControl<
         hasFocus,
         model,
         id,
-        onClick,
         onBlur,
         onFocus,
+        onFocusin,
+        onFocusout,
+        onClick,
+        onMousedown,
+        onMouseup,
+        onMouseover,
+        onMouseout,
+        onMouseenter,
+        onMouseleave,
+        onChange,
         onInput,
-        onChange
+        onBeforeinput,
+        onKeydown,
+        onKeyup,
+        onKeypress,
+        onSelect,
+        onSelectionchange,
+        onInvalid,
+        onSubmit,
+        onReset,
+        onCopy,
+        onCut,
+        onPaste,
+        onTouchstart,
+        onTouchend,
+        onTouchmove,
+        onTouchcancel
     };
 }
