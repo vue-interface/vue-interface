@@ -1,10 +1,10 @@
 import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type HTMLAttributes, type ModelRef } from 'vue';
 
-export type FormControlEvents<ModelValue> = {
+export type FormControlEvents<ModelValue,Getter = ModelValue|undefined> = {
     (e: 'blur' | 'focus', event: FocusEvent): void;
     (e: 'click', event: MouseEvent): void;
-    (e: 'change', value: ModelValue|undefined): void;
+    (e: 'change' | 'input', event: Event, value: Getter): void;
     (e: 'update:modelValue', value: ModelValue): void;
 };
 
@@ -143,9 +143,9 @@ export type UseFormControlOptions<
     Getter = ModelValue,
     Setter = ModelValue
 > = {
-    model: ModelRef<ModelValue|undefined,string,Getter,Setter>;
+    model: ModelRef<ModelValue,string,Getter,Setter>;
     props: FormControlProps<Attributes,Size,ModelValue,Value> | CheckedFormControlProps<Attributes,Size,ModelValue,Value>;
-    emit: FormControlEvents<ModelValue>;
+    emit: FormControlEvents<ModelValue,Getter>;
 }
 
 export function useFormControl<
@@ -153,8 +153,8 @@ export function useFormControl<
     Size extends string,
     ModelValue,
     Value,
-    Getter = ModelValue,
-    Setter = ModelValue,
+    Getter = ModelValue|undefined,
+    Setter = ModelValue|undefined,
 >({ props, emit, model }: UseFormControlOptions<Attributes,Size,ModelValue,Value,Getter,Setter>) {
     const attrs = useAttrs();
     
@@ -248,6 +248,14 @@ export function useFormControl<
         emit('focus', e);
     }
 
+    function onInput(e: Event) {
+        emit('input', e, model.value);
+    }
+
+    function onChange(e: Event) {
+        emit('change', e, model.value);
+    }
+
     onBeforeMount(() => {
         isDirty.value = model.value !== null && model.value !== undefined;
     });
@@ -261,6 +269,8 @@ export function useFormControl<
         id,
         onClick,
         onBlur,
-        onFocus
+        onFocus,
+        onInput,
+        onChange
     };
 }

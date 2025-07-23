@@ -5,19 +5,19 @@ import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, ref, TextareaHTMLAttributes, useSlots, watch } from 'vue';
 
-defineOptions({
-    inheritAttrs: false
-});
-
-defineSlots<FormControlSlots<TextareaFieldControlSizePrefix,ModelValue>>();
-
-const model = defineModel<ModelValue>();
-
 const props = withDefaults(defineProps<TextareaFieldProps<ModelValue,Value>>(), {
     autogrow: false,
     formControlClass: 'form-control',
     labelClass: 'form-label'
 });
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const model = defineModel<ModelValue>();
+
+defineSlots<FormControlSlots<TextareaFieldControlSizePrefix,ModelValue>>();
 
 const emit = defineEmits<FormControlEvents<ModelValue>>();
 
@@ -26,7 +26,9 @@ const {
     formGroupClasses,
     onClick,
     onBlur,
-    onFocus
+    onFocus,
+    onChange,
+    onInput
 } = useFormControl<InputHTMLAttributes, TextareaFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
@@ -81,7 +83,8 @@ export type TextareaFieldProps<ModelValue, Value> = FormControlProps<
                     @click="onClick"
                     @blur="onBlur"
                     @focus="onFocus"
-                    @change="emit('change', model)" />
+                    @change="onChange"
+                    @input="onInput" />
             </slot>
             
             <div class="form-control-activity-indicator">

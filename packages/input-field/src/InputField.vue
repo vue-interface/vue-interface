@@ -1,21 +1,21 @@
-<script setup lang="ts" generic="ModelValue extends undefined|string|number|null, Value">
+<script setup lang="ts" generic="ModelValue, Value">
 import { ActivityIndicator } from '@vue-interface/activity-indicator';
 import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, ref } from 'vue';
 
-defineOptions({
-    inheritAttrs: false
-});
-
-defineSlots<FormControlSlots<InputFieldControlSizePrefix,ModelValue>>();
-
-const model = defineModel<ModelValue>();
-
 const props = withDefaults(defineProps<InputFieldProps<ModelValue,Value>>(), {
     formControlClass: 'form-control',
     labelClass: 'form-label'
 });
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const model = defineModel<ModelValue>();
+
+defineSlots<FormControlSlots<InputFieldControlSizePrefix,ModelValue>>();
 
 const emit = defineEmits<FormControlEvents<ModelValue>>();
 
@@ -24,7 +24,9 @@ const {
     formGroupClasses,
     onClick,
     onBlur,
-    onFocus
+    onFocus,
+    onChange,
+    onInput
 } = useFormControl<InputHTMLAttributes, InputFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLInputElement>();
@@ -72,7 +74,8 @@ export type InputFieldProps<ModelValue, Value> = FormControlProps<
                     @click="onClick"
                     @blur="onBlur"
                     @focus="onFocus"
-                    @change="emit('change', model)">
+                    @change="onChange"
+                    @input="onInput">
             </slot>
             
             <div class="form-control-activity-indicator">

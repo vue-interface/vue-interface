@@ -4,20 +4,20 @@ import type { FormControlEvents, FormControlProps, FormControlSlots } from '@vue
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, onMounted, ref, SelectHTMLAttributes, useSlots } from 'vue';
 
-defineOptions({
-    inheritAttrs: false
-});
-
-defineSlots<FormControlSlots<SelectFieldControlSizePrefix,ModelValue> & {
-    default: () => unknown
-}>();
-
-const model = defineModel<ModelValue>();
-
 const props = withDefaults(defineProps<SelectFieldProps<ModelValue,Value>>(), {
     formControlClass: 'form-select',
     labelClass: 'form-label'
 });
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const model = defineModel<ModelValue>();
+
+defineSlots<FormControlSlots<SelectFieldControlSizePrefix,ModelValue> & {
+    default: () => unknown
+}>();
 
 const emit = defineEmits<FormControlEvents<ModelValue>>();
 
@@ -26,7 +26,9 @@ const {
     formGroupClasses,
     onClick,
     onBlur,
-    onFocus
+    onFocus,
+    onChange,
+    onInput
 } = useFormControl<InputHTMLAttributes, SelectFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLSelectElement>();
@@ -100,7 +102,9 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
                     v-bind="controlAttributes"
                     @mousedown="onMousedown"
                     @blur="onBlur"
-                    @focus="onFocus">
+                    @focus="onFocus"
+                    @change="onChange"
+                    @input="onInput">
                     <slot />
                 </select>
             </slot>

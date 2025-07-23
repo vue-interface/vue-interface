@@ -1,39 +1,47 @@
 <script setup lang="ts" generic="ModelValue, Value">
 import type { FormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlEvents, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
-import { InputHTMLAttributes, ref } from 'vue';
+import { computed, InputHTMLAttributes, ref } from 'vue';
+
+const props = withDefaults(defineProps<LightSwitchFieldProps<ModelValue, Value>>(), {
+    formControlClass: 'form-switch',
+    labelClass: 'form-switch-label',
+    onValue: undefined,
+    offValue: undefined
+});
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const model = defineModel<ModelValue,string,boolean>({
+    required: true,
+    get(value) {
+        return value === onValue.value;
+    },
+    set(value) {
+        return value ? onValue.value : offValue.value;
+    }
+});
+
+const onValue = computed(() => props.onValue ?? (true as ModelValue));
+const offValue = computed(() => props.offValue ?? (false as ModelValue));
 
 defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix,ModelValue> & {
     default: () => unknown
 }>();
 
-const model = defineModel<ModelValue,string,boolean,boolean>({
-    get(value) {
-        return value === props.onValue;
-    },
-    set(value) {
-        return value ? props.onValue : props.offValue;
-    }
-});
-
-const props = withDefaults(defineProps<LightSwitchFieldProps<ModelValue, Value>>(), {
-    formControlClass: 'form-switch',
-    labelClass: 'form-switch-label',
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onValue: true as any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    offValue: false as any
-});
-
-const emit = defineEmits<FormControlEvents<ModelValue>>();
+const emit = defineEmits<FormControlEvents<ModelValue,boolean>>();
 
 const {
     controlAttributes,
     formGroupClasses,
     onClick,
     onBlur,
-    onFocus
-} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean|undefined>({ model, props, emit });
+    onFocus,
+    onChange,
+    onInput
+} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
 </script>
@@ -66,7 +74,9 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
                 v-bind="controlAttributes"
                 @click="onClick"
                 @blur="onBlur"
-                @focus="onFocus">
+                @focus="onFocus"
+                @change="onChange"
+                @input="onInput">
             <slot>{{ label }}</slot>
         </label>
 

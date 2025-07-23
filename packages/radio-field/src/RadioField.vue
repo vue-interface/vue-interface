@@ -3,20 +3,20 @@ import type { CheckedFormControlProps, FormControlEvents, FormControlProps, Form
 import { FormControlErrors, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { InputHTMLAttributes, onMounted, ref } from 'vue';
 
-defineOptions({
-    inheritAttrs: false
-});
-
-defineSlots<Exclude<FormControlSlots<RadioFieldControlSizePrefix,ModelValue>, 'activity'> & {
-    default: () => unknown
-}>();
-
-const model = defineModel<ModelValue>();
-
 const props = withDefaults(defineProps<CheckedFormControlProps<InputHTMLAttributes, RadioFieldControlSizePrefix, ModelValue, Value>>(), {
     formControlClass: 'form-check',
     labelClass: 'form-check-label'
 });
+
+defineOptions({
+    inheritAttrs: false
+});
+
+const model = defineModel<ModelValue>();
+
+defineSlots<Exclude<FormControlSlots<RadioFieldControlSizePrefix,ModelValue>, 'activity'> & {
+    default: () => unknown
+}>();
 
 const emit = defineEmits<FormControlEvents<ModelValue>>();
 
@@ -25,7 +25,9 @@ const {
     formGroupClasses,
     onClick,
     onBlur,
-    onFocus
+    onFocus,
+    onChange,
+    onInput
 } = useFormControl<InputHTMLAttributes, RadioFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLInputElement>();
@@ -69,7 +71,9 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
             :value="value"
             @click="onClick"
             @blur="onBlur"
-            @focus="onFocus">
+            @focus="onFocus"
+            @change="onChange"
+            @input="onInput">
 
         <slot name="label">
             <label
