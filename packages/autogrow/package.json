@@ -1,0 +1,63 @@
+{
+  "name": "@vue-interface/autogrow",
+  "version": "1.0.0",
+  "description": "A Vue directive that makes textareas grow as the user types.",
+  "type": "module",
+  "main": "./dist/autogrow.umd.cjs",
+  "module": "./dist/autogrow.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/autogrow.js",
+      "require": "./dist/autogrow.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/autogrow"
+  },
+  "keywords": [
+    "Textarea",
+    "Autogrow",
+    "Vue",
+    "Directive",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {  
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.7.0",
+    "@types/color": "^3.0.3",
+    "@tailwindcss/vite": "^4.1.7",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue-jsx": "^5.0.0",
+    "@vue-interface/eslint-config": "^1.0.0-beta.0",
+    "autoprefixer": "^10.4.19",
+    "change-case": "^4.1.2",
+    "commitlint": "^17.8.1",
+    "dotenv": "^16.4.5",
+    "pascalcase": "^2.0.0",
+    "postcss": "^8.4.28",
+    "semantic-release": "^21.1.1",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.2.2",
+    "vite": "^7.0.0",
+    "vue": "^3.3.4",
+    "vue-tsc": "^3.0.0"
+  }
+}
