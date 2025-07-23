@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>LightSwitchField</title>
+    </head>
+    <body class="dark:bg-neutral-900 dark:text-white">
+        <form id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-5">light-switch-field</h1>
+            
+            <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-3">
+                Value: {{ value }}
+            </div>
+            
+            <light-switch-field v-model="value" :on-value="true" :off-value="false" label="Default" id="default" name="default"></light-switch-field>
+            <light-switch-field label="Off"></light-switch-field>
+            <light-switch-field checked label="On"></light-switch-field>
+            <light-switch-field disabled label="Disabled"></light-switch-field>
+            <light-switch-field disabled checked label="Disabled (Checked)"></light-switch-field>
+            <light-switch-field disabled readonly label="Disabled (Readonly)"></light-switch-field>
+            <light-switch-field disabled checked readonly label="Disabled (Checked & Readonly)"></light-switch-field>
+            <light-switch-field readonly label="Readonly"></light-switch-field>
+            <light-switch-field readonly checked label="Readonly (Checked)"></light-switch-field>
+            
+            <h2 class="text-2xl mt-6 mb-3">Alternative On/Off Values</h2>
+
+            <light-switch-field
+                v-model="value2"
+                label="Using True/False String"
+                on-value="true"
+                off-value="false"
+                :help-text="`Current Value: ${value2}`">
+            </light-switch-field>
+
+            <light-switch-field
+                v-model="value3"
+                label="Using Numerical String"
+                on-value="1"
+                off-value="0"
+                class="mb-3"
+                :help-text="`Current Value: ${value3}`">
+            </light-switch-field>
+            
+            <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
+
+            <light-switch-field label="Small" class="form-switch-sm mb-3"></light-switch-field>
+            <light-switch-field label="Medium" class="form-switch-md mb-3"></light-switch-field>
+            <light-switch-field label="Large" class="form-switch-lg"></light-switch-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Validation</h2>
+
+            <light-switch-field label="Empty Array of Errors" :errors="[]" class="mb-3"></light-switch-field>
+            <light-switch-field label="Single Inline Error" error="This is an inline error." class="mb-3"></light-switch-field>
+            <light-switch-field label="Array of Errors" :errors="['First Error', 'Second Error']" class="mb-3"></light-switch-field>
+            <light-switch-field name="test" abel="Multiple Errors From Object" :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}" class="mb-3"></light-switch-field>
+
+            <light-switch-field label="Valid Field" valid class="mb-3"></light-switch-field>
+            <light-switch-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3"></light-switch-field>
+            <light-switch-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3"></light-switch-field>
+
+        </form>
+
+        <script type="module">
+            import './index.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler';
+            import { LightSwitchField } from './index';
+              
+            const vue = createApp({
+                components: {
+                    LightSwitchField
+                },
+                data() {
+                    return {
+                        value: true,
+                        value2: 'true',
+                        value3: '1'
+                    };
+                }
+            })
+            .mount('#app');
+        </script>
+    </body>
+</html>
