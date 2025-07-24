@@ -145,7 +145,15 @@
             transform: translateX(var(--form-switch-after-checked-translate-x)) translateY(var(--form-switch-before-translate-y));
         }
     }
+
     
+    ~.form-switch-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: red;
+    }
+
     &.is-invalid,
     &[invalid] {
         border-color: var(--invalid-color);

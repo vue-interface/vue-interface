@@ -43,21 +43,40 @@
             </light-switch-field>
             
             <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
+            
+            <light-switch-field label="Extra Small" size="form-switch-xs"></light-switch-field>
+            <light-switch-field label="Small" size="form-switch-sm"></light-switch-field>
+            <light-switch-field label="Medium" size="form-switch-md"></light-switch-field>
+            <light-switch-field label="Large" size="form-switch-lg"></light-switch-field>
+            <light-switch-field label="xl" size="form-switch-xl"></light-switch-field>
+            <light-switch-field label="2xl" size="form-switch-2xl"></light-switch-field>
+            <light-switch-field label="3xl" size="form-switch-3xl"></light-switch-field>
+            <light-switch-field label="4xl" size="form-switch-4xl"></light-switch-field>
+            <light-switch-field label="form-switch-4" size="form-switch-4"></light-switch-field>
+            <light-switch-field label="form-switch-5" size="form-switch-5"></light-switch-field>
+            <light-switch-field label="form-switch-6" size="form-switch-6"></light-switch-field>
+            <light-switch-field label="form-switch-7" size="form-switch-7"></light-switch-field>
+            <light-switch-field label="form-switch-[16px]" size="form-switch-[16px]"></light-switch-field>
+            <light-switch-field label="form-switch-[21px]" size="form-switch-[21px]"></light-switch-field>
 
-            <light-switch-field label="Small" class="form-switch-sm mb-3"></light-switch-field>
-            <light-switch-field label="Medium" class="form-switch-md mb-3"></light-switch-field>
-            <light-switch-field label="Large" class="form-switch-lg"></light-switch-field>
+
+            <h2 class="text-2xl mt-6 mb-3">Colors</h2>
+
+            <light-switch-field label="form-switch-amber-500" color="form-switch-amber-500"></light-switch-field>
+            <light-switch-field label="form-switch-purple-500" color="form-switch-purple-500"></light-switch-field>
+            <light-switch-field label="form-switch-green-500" color="form-switch-green-500"></light-switch-field>
+            <light-switch-field label="form-switch-neutral-500" color="form-switch-neutral-500"></light-switch-field>
 
             <h2 class="text-2xl mt-6 mb-3">Validation</h2>
 
             <light-switch-field label="Empty Array of Errors" :errors="[]" class="mb-3"></light-switch-field>
-            <light-switch-field label="Single Inline Error" error="This is an inline error." class="mb-3"></light-switch-field>
-            <light-switch-field label="Array of Errors" :errors="['First Error', 'Second Error']" class="mb-3"></light-switch-field>
-            <light-switch-field name="test" abel="Multiple Errors From Object" :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}" class="mb-3"></light-switch-field>
+            <light-switch-field label="Single Inline Error" error="This is an inline error." class="mb-3 invalid-feedback"></light-switch-field>
+            <light-switch-field label="Array of Errors" :errors="['First Error', 'Second Error']" class="mb-3 invalid-feedback"></light-switch-field>
+            <light-switch-field name="test" label="Multiple Errors From Object" :errors="{'test': ['This is an inline error #1.', 'This is an inline error #2.']}" class="mb-3 invalid-feedback"></light-switch-field>
 
-            <light-switch-field label="Valid Field" valid class="mb-3"></light-switch-field>
-            <light-switch-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3"></light-switch-field>
-            <light-switch-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3"></light-switch-field>
+            <light-switch-field label="Valid Field" valid class="mb-3 valid-feedback"></light-switch-field>
+            <light-switch-field label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3 valid-feedback"></light-switch-field>
+            <light-switch-field label="Valid Field with Array of Feedback" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3 valid-feedback"></light-switch-field>
 
         </form>
 
