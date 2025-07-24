@@ -20,6 +20,12 @@
     --form-switch-height: calc(1rem);
     --form-switch-width: calc(var(--form-switch-height) * 2);
     --form-switch-border-radius: var(--form-switch-height);  
+
+    
+    --form-switch-label-display: inline-flex;
+    --form-switch-label-align-items: center;
+    --form-switch-label-vertical-align: middle;
+    --form-switch-label-gap: 0.5em;
     
     /* Form Switch Before Element (toggle circle) */
     --form-switch-before-content: '';
@@ -146,12 +152,11 @@
         }
     }
 
-    
-    ~.form-switch-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: red;
+    label.form-switch-label:has(&) {
+        display: var(--form-switch-label-display);
+        align-items: var(--form-switch-label-align-items);
+        vertical-align: var(--form-switch-label-vertical-align); 
+        gap: var(--form-switch-label-gap);
     }
 
     &.is-invalid,
