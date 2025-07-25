@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="ModelValue, Value">
-import type { FormControlProps, FormControlSlots } from '@vue-interface/form-control';
+import type { CheckedFormControlProps, FormControlSlots } from '@vue-interface/form-control';
 import { FormControlErrors, FormControlEvents, FormControlFeedback, useFormControl } from '@vue-interface/form-control';
 import { computed, InputHTMLAttributes, ref } from 'vue';
 
@@ -72,13 +72,12 @@ const field = ref<HTMLTextAreaElement>();
 <script lang="ts">
 export type LightSwitchFieldControlSizePrefix = 'form-switch';
 
-export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
+export type LightSwitchFieldProps<ModelValue, Value> = CheckedFormControlProps<
     InputHTMLAttributes,
     LightSwitchFieldControlSizePrefix,
     ModelValue,
     Value
 > & {
-    checked?: boolean,
     onValue?: ModelValue,
     offValue?: ModelValue,
 };
@@ -96,7 +95,6 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
                 v-model="model"
                 type="checkbox"
                 v-bind="controlAttributes"
-                :checked="checked"
                 @blur="onBlur"
                 @focus="onFocus"
                 @focusin="onFocusin"
