@@ -16,10 +16,10 @@ defineOptions({
 
 const model = defineModel<ModelValue,string,boolean>({
     get(value) {
-        return value === onValue.value;
+        return (value === onValue.value) || props.checked;
     },
     set(value) {
-        return value ? onValue.value : offValue.value;
+        return (value ? onValue.value : offValue.value) || props.checked;
     }
 });
 
@@ -78,6 +78,7 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
     ModelValue, 
     Value
 > & {
+    checked?: boolean,
     onValue?: ModelValue,
     offValue?: ModelValue,
 };
@@ -89,12 +90,13 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
         :class="formGroupClasses">
         <label
             :for="controlAttributes.id"
-            :class="labelClass">            
+            :class="labelClass">  
             <input
                 ref="field"
                 v-model="model"
                 type="checkbox"
                 v-bind="controlAttributes"
+                :checked="checked"
                 @blur="onBlur"
                 @focus="onFocus"
                 @focusin="onFocusin"
