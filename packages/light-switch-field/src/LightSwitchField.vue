@@ -15,7 +15,6 @@ defineOptions({
 });
 
 const model = defineModel<ModelValue,string,boolean>({
-    required: true,
     get(value) {
         return value === onValue.value;
     },
@@ -31,7 +30,7 @@ defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix,ModelValue> & {
     default: () => unknown
 }>();
 
-const emit = defineEmits<FormControlEvents<ModelValue,boolean>>();
+const emit = defineEmits<FormControlEvents<ModelValue,boolean|undefined>>();
 
 const {
     controlAttributes,
@@ -65,7 +64,7 @@ const {
     onTouchend,
     onTouchmove,
     onTouchcancel
-} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean>({ model, props, emit });
+} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean|undefined>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
 </script>
