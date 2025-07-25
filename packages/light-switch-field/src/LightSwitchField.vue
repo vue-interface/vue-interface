@@ -30,40 +30,12 @@ defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix, ModelValue> & {
     default: () => unknown
 }>();
 
-const emit = defineEmits<FormControlEvents<ModelValue, boolean|undefined>>();
+const emit = defineEmits<FormControlEvents<ModelValue>>();
 
 const {
     controlAttributes,
     formGroupClasses,
-    onBlur,
-    onFocus,
-    onFocusin,
-    onFocusout,
-    onClick,
-    onMousedown,
-    onMouseup,
-    onMouseover,
-    onMouseout,
-    onMouseenter,
-    onMouseleave,
-    onChange,
-    onInput,
-    onBeforeinput,
-    onKeydown,
-    onKeyup,
-    onKeypress,
-    onSelect,
-    onSelectionchange,
-    onInvalid,
-    onSubmit,
-    onReset,
-    onCopy,
-    onCut,
-    onPaste,
-    onTouchstart,
-    onTouchend,
-    onTouchmove,
-    onTouchcancel
+    listeners,
 } = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean | undefined>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
@@ -90,41 +62,16 @@ export type LightSwitchFieldProps<ModelValue, Value> = CheckedFormControlProps<
         <label
             :for="controlAttributes.id"
             :class="labelClass">
-            <input
-                ref="field"
-                v-model="model"
-                type="checkbox"
-                v-bind="controlAttributes"
-                @blur="onBlur"
-                @focus="onFocus"
-                @focusin="onFocusin"
-                @focusout="onFocusout"
-                @click="onClick"
-                @mousedown="onMousedown"
-                @mouseup="onMouseup"
-                @mouseover="onMouseover"
-                @mouseout="onMouseout"
-                @mouseenter="onMouseenter"
-                @mouseleave="onMouseleave"
-                @change="onChange"
-                @input="onInput"
-                @beforeinput="onBeforeinput"
-                @keydown="onKeydown"
-                @keyup="onKeyup"
-                @keypress="onKeypress"
-                @select="onSelect"
-                @selectionchange="onSelectionchange"
-                @invalid="onInvalid"
-                @submit="onSubmit"
-                @reset="onReset"
-                @copy="onCopy"
-                @cut="onCut"
-                @paste="onPaste"
-                @touchstart="onTouchstart"
-                @touchend="onTouchend"
-                @touchmove="onTouchmove"
-                @touchcancel="onTouchcancel">
-            <slot>{{ label }}</slot>
+            <slot
+                name="control"
+                v-bind="{ controlAttributes, listeners }">
+                <input
+                    ref="field"
+                    v-model="model"
+                    type="checkbox"
+                    v-bind="{...controlAttributes, ...listeners}">
+                <slot name="label">{{ label }}</slot>
+            </slot>
         </label>
 
         <slot

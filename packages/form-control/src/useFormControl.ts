@@ -1,7 +1,7 @@
 import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
 import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type EmitFn, type HTMLAttributes, type ModelRef } from 'vue';
 
-export type FormControlEvents<ModelValue, Getter> = {
+export type NativeFormControlEvents = {
     blur: [event: FocusEvent];
     focus: [event: FocusEvent];
     focusin: [event: FocusEvent];
@@ -28,10 +28,21 @@ export type FormControlEvents<ModelValue, Getter> = {
     touchend: [event: TouchEvent];
     touchmove: [event: TouchEvent];
     touchcancel: [event: TouchEvent];
-    change: [event: Event, value: Getter];
-    input: [event: Event, value: Getter];
-    beforeinput: [event: Event, value: Getter];
+    change: [event: Event];
+    input: [event: Event];
+    beforeinput: [event: Event];
+};
+
+export type FormControlEvents<ModelValue> = {
     'update:modelValue': [value: ModelValue];
+} & NativeFormControlEvents;
+
+type ListenerFunctions<T> = {
+  [K in keyof T as `on${Capitalize<string & K>}`]: T[K] extends [infer Arg1, infer Arg2]
+    ? (arg1: Arg1, arg2: Arg2) => void
+    : T[K] extends [infer Arg1]
+    ? (arg1: Arg1) => void
+    : () => void;
 };
 
 export type FormControlFeedbackPropSlot = (
@@ -58,9 +69,7 @@ export type FormControlSlots<Prefix extends string, ModelValue> = {
 export type FormControlSlot<Prefix extends string, ModelValue> = (
     props: {
         controlAttributes: FormControlAttributes<Prefix, ModelValue>;
-        onClick: (e: MouseEvent) => void;
-        onBlur: (e: FocusEvent) => void;
-        onFocus: (e: FocusEvent) => void;
+        listeners: ListenerFunctions<NativeFormControlEvents>;
     }
 ) => unknown;
 
@@ -130,12 +139,12 @@ export type FormGroupClasses = {
     'is-valid': boolean;
 } & Record<string,boolean>
 
-export type FormControlAttributes<Prefix extends string, Value> = {
+export type FormControlAttributes<Prefix extends string, ModelValue> = {
     id: string,
     class: FormControlClasses<Prefix>;
     disabled?: boolean;
     readonly?: boolean;
-    value?: Value;
+    value?: ModelValue;
 } & Record<string, unknown>;
 
 export type FormControlClasses<Prefix extends string> = {
@@ -171,7 +180,7 @@ export type UseFormControlOptions<
 > = {
     model: ModelRef<ModelValue,string,Getter,Setter>;
     props: FormControlProps<Attributes,Size,ModelValue,Value> | CheckedFormControlProps<Attributes,Size,ModelValue,Value>;
-    emit: EmitFn<FormControlEvents<ModelValue,Getter>>;
+    emit: EmitFn<FormControlEvents<ModelValue>>;
 }
 
 export function useFormControl<
@@ -241,6 +250,104 @@ export function useFormControl<
         'is-dirty': isDirty.value,
         'is-empty': isEmpty.value,
     }));
+    
+    const listeners = {
+        onBlur: (e: FocusEvent) => {
+            hasFocus.value = false;
+            emit('blur', e);
+        },
+        onFocus: (e: FocusEvent) => {
+        // isDirty.value = true;
+            hasFocus.value = true;
+            emit('focus', e);
+        },
+        onFocusin: (e: FocusEvent) => {
+            emit('focusin', e);
+        },
+        onFocusout: (e: FocusEvent) => {
+            emit('focusout', e);
+        },
+        onClick: (e: MouseEvent) => {
+            if(props.readonly) {
+                e.preventDefault();
+            }
+            nextTick(() => {
+                emit('click', e);
+            });
+        },
+        onMousedown: (e: MouseEvent) => {
+            emit('mousedown', e);
+        },
+        onMouseup: (e: MouseEvent) => {
+            emit('mouseup', e);
+        },
+        onMouseover: (e: MouseEvent) => {
+            emit('mouseover', e);
+        },
+        onMouseout: (e: MouseEvent) => {
+            emit('mouseup', e);
+        },
+        onMouseenter: (e: MouseEvent) => {
+            emit('mouseenter', e);
+        },
+        onMouseleave: (e: MouseEvent) => {
+            emit('mouseleave', e);
+        },
+        onChange: (e: Event) => {
+            emit('change', e);
+        },
+        onInput: (e: Event) => {
+            emit('input', e);
+        },
+        onBeforeinput: (e: Event) => {
+            emit('beforeinput', e);
+        },
+        onKeydown: (e: KeyboardEvent) => {
+            emit('keydown', e);
+        },
+        onKeyup: (e: KeyboardEvent) => {
+            emit('keyup', e);
+        },
+        onKeypress: (e: KeyboardEvent) => {
+            emit('keypress', e);
+        },
+        onSelect: (e: Event) => {
+            emit('select', e);
+        },
+        onSelectionchange: (e: Event) => {
+            emit('selectionchange', e);
+        },
+        onInvalid: (e: Event) => {
+            emit('invalid', e);
+        },
+        onSubmit: (e: Event) => {
+            emit('submit', e);
+        },
+        onReset: (e: Event) => {
+            emit('reset', e);
+        },
+        onCopy: (e: ClipboardEvent) => {
+            emit('copy', e);
+        },
+        onCut: (e: ClipboardEvent) => {
+            emit('cut', e);
+        },
+        onPaste: (e: ClipboardEvent) => {
+            emit('paste', e);
+        },
+        onTouchstart: (e: TouchEvent) => {
+            emit('touchstart', e);
+        },
+        onTouchend: (e: TouchEvent) => {
+            emit('touchend', e);
+        },
+        onTouchmove: (e: TouchEvent) => {
+            emit('touchmove', e);
+        },
+        onTouchcancel: (e: TouchEvent) => {
+            emit('touchcancel', e);
+        }
+    };
 
     const controlAttributes = computed<FormControlAttributes<Size,ModelValue>>(() => ({
         ...attrs,
@@ -251,172 +358,23 @@ export function useFormControl<
         readonly: props.readonly
     }));
 
-    function onBlur(e: FocusEvent) {
-        hasFocus.value = false;
-
-        emit('blur', e);
-    }
-
-    function onFocus(e: FocusEvent) {
-        // isDirty.value = true;
-        hasFocus.value = true;
-
-        emit('focus', e);
-    }
-    
-    function onFocusin(e: FocusEvent) {
-        emit('focusin', e);
-    }
-    
-    function onFocusout(e: FocusEvent) {
-        emit('focusout', e);
-    }
-    
-    function onClick(e: MouseEvent) {
-        if(props.readonly) {
-            e.preventDefault();
-        }
-
-        nextTick(() => {
-            emit('click', e);
-        });
-    }
-    
-    function onMousedown(e: MouseEvent) {
-        emit('mousedown', e);
-    }
-
-    function onMouseup(e: MouseEvent) {
-        emit('mouseup', e);
-    }
-
-    function onMouseover(e: MouseEvent) {
-        emit('mouseover', e);
-    }
-
-    function onMouseout(e: MouseEvent) {
-        emit('mouseup', e);
-    }
-
-    function onMouseenter(e: MouseEvent) {
-        emit('mouseenter', e);
-    }
-
-    function onMouseleave(e: MouseEvent) {
-        emit('mouseleave', e);
-    }
-
-    function onChange(e: Event) {
-        emit('change', e, model.value);
-    }
-
-    function onInput(e: Event) {
-        emit('input', e, model.value);
-    }
-
-    function onBeforeinput(e: Event) {
-        emit('beforeinput', e, model.value);
-    }
-
-    function onKeydown(e: KeyboardEvent) {
-        emit('keydown', e);
-    }
-
-    function onKeyup(e: KeyboardEvent) {
-        emit('keyup', e);
-    }
-
-    function onKeypress(e: KeyboardEvent) {
-        emit('keypress', e);
-    }
-
-    function onSelect(e: Event) {
-        emit('select', e);
-    }
-
-    function onSelectionchange(e: Event) {
-        emit('selectionchange', e);
-    }
-
-    function onInvalid(e: Event) {
-        emit('invalid', e);
-    }
-
-    function onSubmit(e: Event) {
-        emit('submit', e);
-    }
-
-    function onReset(e: Event) {
-        emit('reset', e);
-    }
-
-    function onCopy(e: ClipboardEvent) {
-        emit('copy', e);
-    }
-
-    function onCut(e: ClipboardEvent) {
-        emit('cut', e);
-    }
-
-    function onPaste(e: ClipboardEvent) {
-        emit('paste', e);
-    }
-    
-    function onTouchstart(e: TouchEvent) {
-        emit('touchstart', e);
-    }
-    
-    function onTouchend(e: TouchEvent) {
-        emit('touchend', e);
-    }
-    
-    function onTouchmove(e: TouchEvent) {
-        emit('touchmove', e);
-    }
-    
-    function onTouchcancel(e: TouchEvent) {
-        emit('touchcancel', e);
-    }
-
     onBeforeMount(() => {
         isDirty.value = model.value !== null && model.value !== undefined;
     });
 
     return {
+        attrs,
         controlAttributes,
         controlClasses,
         formGroupClasses,
+        hasChanged,
         hasFocus,
+        hasIcon,
+        isDirty,
+        isEmpty,
+        isInvalid,
+        isValid,
+        listeners,
         model,
-        id,
-        onBlur,
-        onFocus,
-        onFocusin,
-        onFocusout,
-        onClick,
-        onMousedown,
-        onMouseup,
-        onMouseover,
-        onMouseout,
-        onMouseenter,
-        onMouseleave,
-        onChange,
-        onInput,
-        onBeforeinput,
-        onKeydown,
-        onKeyup,
-        onKeypress,
-        onSelect,
-        onSelectionchange,
-        onInvalid,
-        onSubmit,
-        onReset,
-        onCopy,
-        onCut,
-        onPaste,
-        onTouchstart,
-        onTouchend,
-        onTouchmove,
-        onTouchcancel
     };
 }

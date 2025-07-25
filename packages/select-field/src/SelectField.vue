@@ -24,41 +24,13 @@ const emit = defineEmits<FormControlEvents<ModelValue>>();
 const {
     controlAttributes,
     formGroupClasses,
-    onBlur,
-    onFocus,
-    onFocusin,
-    onFocusout,
-    onClick,
-    onMousedown,
-    onMouseup,
-    onMouseover,
-    onMouseout,
-    onMouseenter,
-    onMouseleave,
-    onChange,
-    onInput,
-    onBeforeinput,
-    onKeydown,
-    onKeyup,
-    onKeypress,
-    onSelect,
-    onSelectionchange,
-    onInvalid,
-    onSubmit,
-    onReset,
-    onCopy,
-    onCut,
-    onPaste,
-    onTouchstart,
-    onTouchend,
-    onTouchmove,
-    onTouchcancel
+    listeners,
 } = useFormControl<InputHTMLAttributes, SelectFieldControlSizePrefix, ModelValue, Value>({ model, props, emit });
 
 const field = ref<HTMLSelectElement>();
 
 function onMousedownLabel(e: MouseEvent) {
-    onClick(e);
+    listeners.onClick(e);
 
     field.value?.focus();
 }
@@ -114,7 +86,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
         <div class="form-control-inner">
             <slot
                 name="control"
-                v-bind="{ onClick, onBlur, onFocus, controlAttributes }">
+                v-bind="{ controlAttributes, listeners }">
                 <div
                     v-if="$slots.icon"
                     class="form-control-inner-icon"
@@ -124,36 +96,7 @@ export type SelectFieldProps<ModelValue, Value> = FormControlProps<
                 <select
                     ref="field"
                     v-model="model"
-                    v-bind="controlAttributes"
-                    @blur="onBlur"
-                    @focus="onFocus"
-                    @focusin="onFocusin"
-                    @focusout="onFocusout"
-                    @click="onClick"
-                    @mousedown="onMousedown"
-                    @mouseup="onMouseup"
-                    @mouseover="onMouseover"
-                    @mouseout="onMouseout"
-                    @mouseenter="onMouseenter"
-                    @mouseleave="onMouseleave"
-                    @change="onChange"
-                    @input="onInput"
-                    @beforeinput="onBeforeinput"
-                    @keydown="onKeydown"
-                    @keyup="onKeyup"
-                    @keypress="onKeypress"
-                    @select="onSelect"
-                    @selectionchange="onSelectionchange"
-                    @invalid="onInvalid"
-                    @submit="onSubmit"
-                    @reset="onReset"
-                    @copy="onCopy"
-                    @cut="onCut"
-                    @paste="onPaste"
-                    @touchstart="onTouchstart"
-                    @touchend="onTouchend"
-                    @touchmove="onTouchmove"
-                    @touchcancel="onTouchcancel">
+                    v-bind="{...controlAttributes, ...listeners}">
                     <slot />
                 </select>
             </slot>
