@@ -19,9 +19,9 @@
     "jsxImportSource": "vue"
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.vue",
+    "packages/*/src/**/*.ts",
+    "packages/*/src/**/*.vue",
+    "packages/*/index.ts"
   ],
   "exclude": ["node_modules"]
 }

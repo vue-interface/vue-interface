@@ -14,7 +14,7 @@ defineOptions({
     inheritAttrs: false
 });
 
-const model = defineModel<ModelValue,string,boolean>({
+const model = defineModel<ModelValue, string, boolean>({
     get(value) {
         return (value === onValue.value) || props.checked;
     },
@@ -26,11 +26,11 @@ const model = defineModel<ModelValue,string,boolean>({
 const onValue = computed(() => props.onValue ?? (true as ModelValue));
 const offValue = computed(() => props.offValue ?? (false as ModelValue));
 
-defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix,ModelValue> & {
+defineSlots<FormControlSlots<LightSwitchFieldControlSizePrefix, ModelValue> & {
     default: () => unknown
 }>();
 
-const emit = defineEmits<FormControlEvents<ModelValue,boolean|undefined>>();
+const emit = defineEmits<FormControlEvents<ModelValue, boolean|undefined>>();
 
 const {
     controlAttributes,
@@ -64,7 +64,7 @@ const {
     onTouchend,
     onTouchmove,
     onTouchcancel
-} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean|undefined>({ model, props, emit });
+} = useFormControl<InputHTMLAttributes, LightSwitchFieldControlSizePrefix, ModelValue, Value, boolean | undefined>({ model, props, emit });
 
 const field = ref<HTMLTextAreaElement>();
 </script>
@@ -73,9 +73,9 @@ const field = ref<HTMLTextAreaElement>();
 export type LightSwitchFieldControlSizePrefix = 'form-switch';
 
 export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
-    InputHTMLAttributes, 
-    LightSwitchFieldControlSizePrefix, 
-    ModelValue, 
+    InputHTMLAttributes,
+    LightSwitchFieldControlSizePrefix,
+    ModelValue,
     Value
 > & {
     checked?: boolean,
@@ -90,7 +90,7 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
         :class="formGroupClasses">
         <label
             :for="controlAttributes.id"
-            :class="labelClass">  
+            :class="labelClass">
             <input
                 ref="field"
                 v-model="model"
@@ -131,7 +131,7 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
 
         <slot
             name="errors"
-            v-bind="{ error, errors, id, name }">        
+            v-bind="{ error, errors, id, name }">
             <FormControlErrors
                 v-if="!!(error || errors)"
                 :id="id"
@@ -146,7 +146,7 @@ export type LightSwitchFieldProps<ModelValue, Value> = FormControlProps<
                 </div>
             </FormControlErrors>
         </slot>
-        
+
         <slot
             name="feedback"
             v-bind="{ feedback }">

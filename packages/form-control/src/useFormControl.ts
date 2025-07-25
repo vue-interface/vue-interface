@@ -1,15 +1,37 @@
 import { ActivityIndicatorSize } from '@vue-interface/activity-indicator';
-import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type HTMLAttributes, type ModelRef } from 'vue';
+import { computed, nextTick, onBeforeMount, ref, useAttrs, useSlots, watch, type Component, type EmitFn, type HTMLAttributes, type ModelRef } from 'vue';
 
-export type FormControlEvents<ModelValue, Getter = ModelValue | undefined> = {
-   (e: 'blur' | 'focus' | 'focusin' | 'focusout', event: FocusEvent): void;
-   (e: 'click' | 'mousedown' | 'mouseup' | 'mouseover' | 'mouseout' | 'mouseenter' | 'mouseleave', event: MouseEvent): void;
-   (e: 'change' | 'input' | 'beforeinput', event: Event, value: Getter): void;
-   (e: 'keydown' | 'keyup' | 'keypress', event: KeyboardEvent): void;
-   (e: 'select' | 'selectionchange' | 'invalid' | 'submit' | 'reset', event: Event): void;
-   (e: 'copy' | 'cut' | 'paste', event: ClipboardEvent): void;
-   (e: 'touchstart' | 'touchend' | 'touchmove' | 'touchcancel', event: TouchEvent): void;
-   (e: 'update:modelValue', value: ModelValue): void;
+export type FormControlEvents<ModelValue, Getter> = {
+    blur: [event: FocusEvent];
+    focus: [event: FocusEvent];
+    focusin: [event: FocusEvent];
+    focusout: [event: FocusEvent];
+    click: [event: MouseEvent];
+    mousedown: [event: MouseEvent];
+    mouseup: [event: MouseEvent];
+    mouseover: [event: MouseEvent];
+    mouseout: [event: MouseEvent];
+    mouseenter: [event: MouseEvent];
+    mouseleave: [event: MouseEvent];
+    keydown: [event: KeyboardEvent];
+    keyup: [event: KeyboardEvent];
+    keypress: [event: KeyboardEvent];
+    select: [event: Event];
+    selectionchange: [event: Event];
+    invalid: [event: Event];
+    submit: [event: Event];
+    reset: [event: Event];
+    copy: [event: ClipboardEvent];
+    cut: [event: ClipboardEvent];
+    paste: [event: ClipboardEvent];
+    touchstart: [event: TouchEvent];
+    touchend: [event: TouchEvent];
+    touchmove: [event: TouchEvent];
+    touchcancel: [event: TouchEvent];
+    change: [event: Event, value: Getter];
+    input: [event: Event, value: Getter];
+    beforeinput: [event: Event, value: Getter];
+    'update:modelValue': [value: ModelValue];
 };
 
 export type FormControlFeedbackPropSlot = (
@@ -149,7 +171,7 @@ export type UseFormControlOptions<
 > = {
     model: ModelRef<ModelValue,string,Getter,Setter>;
     props: FormControlProps<Attributes,Size,ModelValue,Value> | CheckedFormControlProps<Attributes,Size,ModelValue,Value>;
-    emit: FormControlEvents<ModelValue,Getter>;
+    emit: EmitFn<FormControlEvents<ModelValue,Getter>>;
 }
 
 export function useFormControl<
