@@ -19,7 +19,7 @@ const model = defineModel<ModelValue,string,boolean>({
         return (value === onValue.value) || props.checked;
     },
     set(value) {
-        return (value ? onValue.value : offValue.value) || props.checked;
+        return value ? onValue.value : offValue.value;
     }
 });
 
