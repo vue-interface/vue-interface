@@ -13,7 +13,7 @@
                 Value: {{ value }}
             </div>
             
-            <light-switch-field v-model="value" :on-value="true" :off-value="false" label="Default" id="default" name="default" @focus="onFocus" @blur="onBlur"></light-switch-field>
+            <light-switch-field v-model="value" :on-value="true" :off-value="false" label="Default" id="default" name="default"></light-switch-field>
             <light-switch-field label="Off"></light-switch-field>
             <light-switch-field checked label="On"></light-switch-field>
             <light-switch-field disabled label="Disabled"></light-switch-field>
@@ -89,14 +89,6 @@
             const vue = createApp({
                 components: {
                     LightSwitchField
-                },
-                methods: {
-                    onFocus() {
-                        console.log('focus')
-                    }, 
-                    onBlur() {
-                        console.log('blur')
-                    }  
                 },
                 data() {
                     return {
