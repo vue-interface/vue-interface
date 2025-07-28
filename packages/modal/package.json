@@ -1,34 +1,32 @@
 {
-  "name": "@vue-interface/light-switch-field",
+  "name": "@vue-interface/modal",
   "version": "1.0.0",
-  "description": "A Vue light switch field component.",
+  "description": "A Vue modal component.",
   "type": "module",
-  "main": "./dist/light-switch-field.umd.cjs",
-  "module": "./dist/light-switch-field.js",
+  "main": "./dist/modal.umd.cjs",
+  "module": "./dist/modal.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "source": "./index.ts",
       "types": "./dist/index.d.ts", 
-      "import": "./dist/light-switch-field.js",
-      "require": "./dist/light-switch-field.umd.js"
-    }
+      "import": "./dist/modal.js",
+      "require": "./dist/modal.umd.js"
+    },
+    "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc",
-    "lint": "eslint",
     "preview": "vite preview"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/light-switch-field"
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/modal"
   },
   "keywords": [
-    "Light",
-    "Switch",
-    "Field",
+    "Modal",
     "Vue",
     "Component",
     "Tailwind",
@@ -41,7 +39,8 @@
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {
-    "@vue-interface/form-control": "workspace:*",
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/btn": "workspace:*",
     "vue": "^3.3.4"
   },
   "devDependencies": {
