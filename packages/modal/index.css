@@ -1,29 +1,42 @@
 @import "tailwindcss";
 @import "@vue-interface/btn";
- 
+
+@import "./src/colors.css";
 
 @utility modal {
     position: relative;
-    background-color: var(--color-stone-500);
-    opacity: 1; /* TODO: fix so opacity of this does not affect modal-content opacity */
+    background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 50%, transparent);
     padding: 2rem;
-    width: 50vw;
+    width: 100%;
 
     @variant dark {
         background-color: var(--color-stone-800);
     }
 }
 
+@utility modal-* {
+  .modal-icon {
+    /* Allows for modal-primary, modal-warning, etc. */
+    background-color: --value(--icon-bg-*, --color-*, [color]);
+    color: --value(--icon-color-*, --color-*, [color]);
+
+    /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
+    background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+    color: --value(--color-*, [color]);
+  }
+}
+
+
 @utility modal-content {
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    width: 500px; /* controls width of gray area around modal */
     overflow: hidden;
     position: relative;
     color: var(--color-stone-800);
     opacity: 1;
-    
+    width: 500px; /* controls width of gray area around modal */
+
     @variant dark {
         background-color: var(--color-stone-800);
         color: var(--color-stone-100);
