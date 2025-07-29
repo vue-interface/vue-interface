@@ -1,2 +1,91 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@import "@vue-interface/btn";
+ 
 
+@utility modal {
+    position: relative;
+    background-color: var(--color-stone-500);
+    opacity: 1; /* TODO: fix so opacity of this does not affect modal-content opacity */
+    padding: 2rem;
+    width: 50vw;
+
+    @variant dark {
+        background-color: var(--color-stone-800);
+    }
+}
+
+@utility modal-content {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    width: 500px; /* controls width of gray area around modal */
+    overflow: hidden;
+    position: relative;
+    color: var(--color-stone-800);
+    opacity: 1;
+    
+    @variant dark {
+        background-color: var(--color-stone-800);
+        color: var(--color-stone-100);
+    }
+}
+
+@utility modal-header {
+    margin-top: 0rem;
+    text-align: left;
+    flex: 1;
+    display: flex;
+    padding: 1.5rem;
+}
+
+@utility modal-icon {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    margin-right: 1rem;
+    background-color: var(--color-rose-100);
+    color: var(--color-rose-800);
+    justify-content: center;
+    align-items: center;
+}
+
+@utility modal-title {
+    font-weight: 600;
+}
+
+@utility modal-body {
+    margin-top: 0.5rem;
+}
+
+@utility modal-footer {
+    padding: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    display: flex;
+    gap: 0.6rem;
+    background-color: var(--color-stone-50);
+    justify-content: flex-end;
+
+    @variant dark {
+        background-color: var(--color-stone-900);
+    }
+}    
+
+/* Close Button */
+@utility close-button {
+    position: absolute;
+    top: calc(var(--spacing) * 3);
+    right: calc(var(--spacing) * 3);
+    color: var(--color-stone-500);
+    cursor: pointer;
+
+    &:hover,
+    &.hover {
+        color: var(--color-stone-600);
+    }
+
+    &:active {
+        color: var(--color-stone-700);
+    }
+}

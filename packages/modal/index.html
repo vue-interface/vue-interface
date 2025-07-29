@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modal</title>
 </head>
-<body>
+<body class="dark:bg-neutral-900 dark:text-white">
+    <div class="container mx-auto">
+        <h1 class="text-4xl mb-5">Modal</h1>
+
+        <!-- Size Variants Section -->
+        <h2 class="text-2xl mb-2">Variants</h2>
+
+        <!-- Basic Modal -->
+        <h3 class="mt-4 mb-4">Basic Left Aligned</h3>
+
+        <div id="modal" class="modal">
+            <div class="flex justify-center"> <!-- add class="flex justify-center" to center the modal -->
+                <div class="modal-content">
+                    <button type="button" class="close-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <div class="modal-header">
+                            <div class="modal-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="modal-title">Some Title</div>
+                                <div class="modal-body">Confirm</div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-secondary">Cancel</button>
+                        <button class="btn btn-danger">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     
+    </div>
+    
+    <script type="module">
+        import './index.css';
+    </script>
 </body>
 </html>
