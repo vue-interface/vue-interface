@@ -15,15 +15,22 @@
 }
 
 @utility modal-* {
-  .modal-icon {
-    /* Allows for modal-primary, modal-warning, etc. */
-    background-color: --value(--icon-bg-*, --color-*, [color]);
-    color: --value(--icon-color-*, --color-*, [color]);
+    .modal-icon {
+        /* Allows for modal-primary, modal-warning, etc. */
+        background-color: --value(--icon-bg-*, --color-*, [color]);
+        color: --value(--icon-color-*, --color-*, [color]);
 
-    /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
-    background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
-    color: --value(--color-*, [color]);
-  }
+        /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+        color: --value(--color-*, [color]);
+    }
+
+    .modal-footer button.btn-* {
+        background-color: --value(--btn-*, --color-*, [color]);
+        border-color: --value(--btn-*, --color-*, [color]);
+        color: --value(--text-for-*, --btn-*-text);
+    }
+    
 }
 
 
