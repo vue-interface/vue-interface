@@ -95,7 +95,12 @@
     }
 
     .modal-footer {
-        flex-direction: column;
+        flex-direction: row; /* default to row */
+        justify-content: center;
+
+        &:has(:only-child) {
+            flex-direction: column; /* only stack when there's one child */
+        }
     }
 }
 
