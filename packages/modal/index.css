@@ -3,19 +3,50 @@
 
 @import "./src/colors.css";
 
-@utility modal {
-    position: relative;
-    background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 50%, transparent);
-    padding: 2rem;
-    width: 100%;
+@utility modal-wrapper {
+    position: relative; /* change to absolute to fill screen */
+    inset: 0;
+    z-index: 10;
+    width: 50vw; /* change to 100vw to fill horizontally */
+    overflow-y: auto;
+    background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @variant dark {
-        background-color: var(--color-stone-800);
+        background-color: color-mix(in oklch, var(--color-stone-800, oklch(26.8% 0.007 34.298)) 75%, transparent);
     }
 }
 
+@utility modal-container {
+    display: flex;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    @media (min-width: 640px) {
+        align-items: center;
+        padding: 1rem;
+    }
+}
+
+@utility modal {
+    position: relative;
+    text-align: left;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    transform: translate(0);
+
+    @media (min-width: 640px) {
+        min-width: 200px; /* doesnt let modal get too small */
+        width: 500px; /* default width */
+        max-width: 100%; /* maximum allowable width */
+    }
+
+}
+
 @utility modal-* {
-    .modal-icon {
+    .modal-header-icon {
         /* Allows for modal-primary, modal-warning, etc. */
         background-color: --value(--icon-bg-*, --color-*, [color]);
         color: --value(--icon-color-*, --color-*, [color]);
@@ -25,78 +56,120 @@
         color: --value(--color-*, [color]);
     }
 
-    .modal-footer button.btn-* {
-        background-color: --value(--btn-*, --color-*, [color]);
-        border-color: --value(--btn-*, --color-*, [color]);
-        color: --value(--text-for-*, --btn-*-text);
+    .modal-footer {
+        /* Automatically style confirm button based on modal color, but does not allow for user
+        to specify color and then override it. Also does not have a default value */
+        button.btn:last-child:not([class*="btn-"]) {
+            background-color: --value(--btn-*, --color-*, [color]);
+            border-color: --value(--btn-*, --color-*, [color]);
+            color: --value(--text-for-*, --btn-*-text);
+
+            &:hover {
+                background-color: color-mix(in oklch, --value(--btn-*, --color-*) 90%, black);
+            }   
+
+            &:focus {
+                box-shadow: 0 0 0 .2rem --alpha(--value(--btn-*, --color-*) / 50%);
+            }
+
+            &:active {
+                background-color: color-mix(in oklch, --value(--btn-*, --color-*) 95%, black);
+            }
+        }
     }
-    
 }
 
 
-@utility modal-content {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    overflow: hidden;
-    position: relative;
-    color: var(--color-stone-800);
-    opacity: 1;
-    width: 500px; /* controls width of gray area around modal */
+@utility modal-content {   
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding-inline: 1rem;
+    background-color: white; 
+    color: var(--color-stone-900);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     @variant dark {
         background-color: var(--color-stone-800);
         color: var(--color-stone-100);
     }
+
+    @media (min-width: 640px) {
+        padding: 1.5rem;
+    }
 }
 
 @utility modal-header {
-    margin-top: 0rem;
-    text-align: left;
-    flex: 1;
-    display: flex;
-    padding: 1.5rem;
+    @media (min-width: 640px) {
+        display: flex;
+        align-items: flex-start;
+    }
 }
 
-@utility modal-icon {
+@utility modal-header-icon {
+    margin-inline: auto; /* changing this to margin-left: 0; makes it go left */
     display: flex;
-    width: 2.5rem;
-    height: 2.5rem;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
     border-radius: 100%;
-    margin-right: 1rem;
     background-color: var(--color-rose-100);
     color: var(--color-rose-800);
-    justify-content: center;
-    align-items: center;
+
+    @media (min-width: 640px) {
+        margin-right: 1rem;
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 }
 
-@utility modal-title {
-    font-weight: 600;
+@utility modal-header-text {
+    margin-top: 0.75rem;
+    text-align: center; /* this controls if the text is centered or not */
+    flex: 1;
+
+    @media (min-width: 640px) { 
+        margin-top: 0rem;
+        text-align: left;
+    }
+    
+    >.modal-title {
+        font-weight: 600;
+    }
+    
+    >.modal-body {
+        margin-top: 0.5rem;
+    }
 }
 
-@utility modal-body {
-    margin-top: 0.5rem;
-}
 
 @utility modal-footer {
-    padding: 1.5rem;
+    padding-inline: 1rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    display: flex;
-    gap: 0.6rem;
     background-color: var(--color-stone-50);
     justify-content: flex-end;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 
     @variant dark {
         background-color: var(--color-stone-900);
+    }
+
+    @media (min-width: 640px) {
+        padding-inline: 1rem;
+        display: flex;
+        gap: 0.5rem;
+        /* flex-direction: column; */ /* basically toggles button block and flex-col at the same time */
     }
 }    
 
 /* Close Button */
 @utility close-button {
     position: absolute;
-    top: calc(var(--spacing) * 3);
-    right: calc(var(--spacing) * 3);
+    top: 0.75rem;
+    right: 0.75rem;
     color: var(--color-stone-500);
     cursor: pointer;
 
