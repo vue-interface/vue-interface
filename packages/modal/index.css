@@ -59,7 +59,7 @@
     .modal-footer {
         /* Automatically style confirm button based on modal color, but does not allow for user
         to specify color and then override it. Also does not have a default value */
-        button.btn:last-child:not([class*="btn-"]) {
+        button.btn:last-child {
             background-color: --value(--btn-*, --color-*, [color]);
             border-color: --value(--btn-*, --color-*, [color]);
             color: --value(--text-for-*, --btn-*-text);
@@ -187,22 +187,9 @@
         /* flex-direction: column; */ /* toggles button block and flex-col at the same time */
     }
 
-    button.btn:last-child:not([class*="btn-"]) {
-        background-color: var(--color-red-700);
-        border-color: var(--color-red-700);
-        color: var(--color-white);
-        
-        &:hover {
-            background-color: color-mix(in oklch, var(--color-red-700) 90%, black);
-        } 
-
-        &:focus {
-            box-shadow: 0 0 0 .2rem --alpha(var(--color-red-700) / 50%);
-        }
-        
-        &:active {
-            background-color: color-mix(in oklch, -var(--color-red-700) 95%, black);
-        }
+    /* Sets default confirm button color */
+    button.btn:last-child {
+        @apply btn-danger;
     }
 }    
 
