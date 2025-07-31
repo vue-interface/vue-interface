@@ -7,7 +7,7 @@
     position: relative; /* change to absolute to fill screen */
     inset: 0;
     z-index: 10;
-    width: 50vw; /* change to 100vw to fill horizontally */
+    width: 100vw; /* change to 100vw to fill horizontally */
     overflow-y: auto;
     background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
     transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -97,6 +97,10 @@
     .modal-footer {
         flex-direction: row; /* default to row */
         justify-content: center;
+        
+        button.btn {
+            flex: 1;
+        }
 
         &:has(:only-child) {
             flex-direction: column; /* only stack when there's one child */
@@ -172,26 +176,36 @@
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     background-color: var(--color-stone-50);
-    justify-content: flex-end;
+    display: flex;
+    gap: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
+    flex-direction: row;
 
     @variant dark {
         background-color: var(--color-stone-900);
     }
-
-    @media (min-width: 640px) {
-        padding-inline: 1rem;
-        display: flex;
-        gap: 0.5rem;
-        /* flex-direction: column; */ /* toggles button block and flex-col at the same time */
-    }
-
-    /* Sets default confirm button color */
+    
     button.btn:last-child {
         @apply btn-danger;
     }
-}    
+    
+    button.btn {
+        flex: 1; 
+    }
+
+    @media (min-width: 640px) {
+        justify-content: flex-end;
+
+        button.btn {
+            flex: 0 0 auto;
+        }
+    }
+
+
+
+}
+
 
 /* Close Button */
 @utility close-button {
