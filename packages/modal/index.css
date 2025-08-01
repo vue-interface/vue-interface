@@ -26,23 +26,21 @@
     /* Modal */
     --modal-position: relative;
     --modal-text-align: left;
-    --modal-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --modal-box-shadow: 0 10px 20px -5px color-mix(in oklch, var(--color-black, oklch(0% 0 0)) 10%, transparent);
     --modal-transition: all 0.2s ease-in-out;
     --modal-transform: translate(0);
     --modal-min-width: 200px;
     --modal-width: 500px; /* default modal size */
     --modal-max-width: 100%;
 
-    /* Modal Content */
-    --modal-content-border-top-left-radius: 0.5rem;
-    --modal-content-border-top-right-radius: 0.5rem;
-    --modal-content-padding: 0.75rem 1rem; /* padding: top/bottom left/right */
-    --modal-content-background-color: white;
-    --modal-content-color: var(--color-stone-900);
-    --modal-content-dark-background-color: var(--color-stone-800);
-    --modal-content-dark-color: var(--color-stone-100);
-
     /* Modal Header */
+    --modal-header-border-top-left-radius: 0.5rem;
+    --modal-header-border-top-right-radius: 0.5rem;
+    --modal-header-padding: 0.75rem 1rem; /* padding: top/bottom left/right */
+    --modal-header-background-color: var(--color-white, oklch(100% 0.00011 271.152));
+    --modal-header-color: var(--color-stone-900, oklch(21.6% 0.006 56.043));
+    --modal-header-dark-background-color: var(--color-stone-800, oklch(26.8% 0.007 34.298));
+    --modal-header-dark-color: var(--color-stone-100, oklch(97% 0.001 106.424));
     --modal-header-display: flex;
 
     /* Modal Header Icon */
@@ -53,8 +51,8 @@
     --modal-header-icon-align-items: center;
     --modal-header-icon-justify-content: center;
     --modal-header-icon-border-radius: 100%;
-    --modal-header-icon-background-color: var(--color-rose-100);
-    --modal-header-icon-color: var(--color-rose-800);
+    --modal-header-icon-background-color: var(--color-rose-100, oklch(94.1% 0.03 12.58));
+    --modal-header-icon-color: var(--color-rose-800, oklch(45.5% 0.188 13.697));
     --modal-header-icon-min-width-margin-right: 1rem;
     --modal-header-icon-min-width-height: 2.5rem;
     --modal-header-icon-min-width-width: 2.5rem;
@@ -70,13 +68,13 @@
 
     /* Modal Footer */
     --modal-footer-padding: 0.75rem 1rem;
-    --modal-footer-background-color: var(--color-stone-50);
+    --modal-footer-background-color: var(--color-stone-50, oklch(98.5% 0.001 106.423));
+    --modal-footer-dark-background-color: var(--color-stone-900, oklch(21.6% 0.006 56.043));
     --modal-footer-display: flex;
     --modal-footer-gap: 0.5rem;
     --modal-footer-border-bottom-left-radius: 0.5rem;
     --modal-footer-border-bottom-right-radius: 0.5rem;
     --modal-footer-flex-direction: row;
-    --modal-footer-dark-background-color: var(--color-stone-900);
     --modal-footer-btn-flex: 1;
     --modal-footer-justify-content: flex-end;
     --modal-footer-min-width-btn-flex: 0 0 auto;
@@ -93,12 +91,12 @@
 
     /* Close Button */
     --close-button-position: absolute;
+    --close-button-cursor: pointer;
     --close-button-top: 0.75rem;
     --close-button-right: 0.75rem;
-    --close-button-color: var(--color-stone-500);
-    --close-button-cursor: pointer;
-    --close-button-hover-color: var(--color-stone-600);
-    --close-button-active-color: var(--color-stone-700);
+    --close-button-color: var(--color-stone-500, oklch(55.3% 0.013 58.071));
+    --close-button-hover-color: var(--color-stone-600, oklch(44.4% 0.011 73.639));
+    --close-button-active-color: var(--color-stone-700, oklch(37.4% 0.01 67.558));
 }
 
 @utility modal-wrapper {
@@ -217,22 +215,20 @@
     }
 }
 
-@utility modal-content {   
+@utility modal-header {   
     /* flex: 1 1 auto; */ /* needed if want to change width */
     
-    border-top-left-radius: var(--modal-content-border-top-left-radius);
-    border-top-right-radius: var(--modal-content-border-top-right-radius);
-    padding: var(--modal-content-padding);
-    background-color: var(--modal-content-background-color); 
-    color: var(--modal-content-color);
+    border-top-left-radius: var(--modal-header-border-top-left-radius);
+    border-top-right-radius: var(--modal-header-border-top-right-radius);
+    padding: var(--modal-header-padding);
+    background-color: var(--modal-header-background-color); 
+    color: var(--modal-header-color);
 
     @variant dark {
-        background-color: var(--modal-content-dark-background-color);
-        color: var(--modal-content-dark-color);
+        background-color: var(--modal-header-dark-background-color);
+        color: var(--modal-header-dark-color);
     }
-}
 
-@utility modal-header {
     @media (min-width: 640px) {
         display: var(--modal-header-display);
     }
