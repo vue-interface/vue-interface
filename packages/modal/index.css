@@ -180,6 +180,18 @@
     }
 }
 
+@utility modal-screen {
+    @apply modal-center;
+    
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
 @utility modal-center {
 /*     & {
         min-height: 290px;
@@ -216,7 +228,7 @@
 }
 
 @utility modal-header {   
-    /* flex: 1 1 auto; */ /* needed if want to change width */
+    flex: 1 1 auto; /* needed if want to change height */
     
     border-top-left-radius: var(--modal-header-border-top-left-radius);
     border-top-right-radius: var(--modal-header-border-top-right-radius);
