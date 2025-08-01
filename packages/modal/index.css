@@ -1,15 +1,16 @@
 @import "tailwindcss";
 @import "@vue-interface/btn";
 
-@import "./src/colors.css";
+@import "./src/css/colors.css";
+@import "./src/css/sizes.css";
 
 @theme {
     /* Modal Wrapper */
-    --modal-wrapper-position: relative;
+    --modal-wrapper-position: relative; /* switch between absolute and relative for full/partial vertical */
     --modal-wrapper-inset: 0;
     --modal-wrapper-z-index: 10;
     --modal-wrapper-min-width: 15%;
-    --modal-wrapper-width: 50%;
+    --modal-wrapper-width: 100%; /* switch between 100% and 50% for full/half width screen */
     --modal-wrapper-overflow-y: auto;
     --modal-wrapper-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --modal-wrapper-background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
@@ -21,8 +22,6 @@
     --modal-container-align-items: center;
     --modal-container-justify-content: center;
     --modal-container-padding: 1rem;
-    --modal-container-sm-align-items: center;
-    --modal-container-sm-padding: 1rem;
 
     /* Modal */
     --modal-position: relative;
@@ -30,25 +29,21 @@
     --modal-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
     --modal-transition: all 0.2s ease-in-out;
     --modal-transform: translate(0);
-    --modal-sm-min-width: 200px;
-    --modal-sm-width: 500px;
-    --modal-sm-max-width: 100%;
+    --modal-min-width: 200px;
+    --modal-width: 500px; /* default modal size */
+    --modal-max-width: 100%;
 
     /* Modal Content */
     --modal-content-border-top-left-radius: 0.5rem;
     --modal-content-border-top-right-radius: 0.5rem;
-    --modal-content-padding-inline: 1rem;
+    --modal-content-padding: 0.75rem 1rem; /* padding: top/bottom left/right */
     --modal-content-background-color: white;
     --modal-content-color: var(--color-stone-900);
-    --modal-content-padding-top: 1rem;
-    --modal-content-padding-bottom: 1rem;
     --modal-content-dark-background-color: var(--color-stone-800);
     --modal-content-dark-color: var(--color-stone-100);
-    --modal-content-sm-padding: 1.5rem;
 
     /* Modal Header */
-    --modal-header-sm-display: flex;
-    --modal-header-sm-align-items: flex-start;
+    --modal-header-display: flex;
 
     /* Modal Header Icon */
     --modal-header-icon-margin-inline: auto;
@@ -60,23 +55,21 @@
     --modal-header-icon-border-radius: 100%;
     --modal-header-icon-background-color: var(--color-rose-100);
     --modal-header-icon-color: var(--color-rose-800);
-    --modal-header-icon-sm-margin-right: 1rem;
-    --modal-header-icon-sm-height: 2.5rem;
-    --modal-header-icon-sm-width: 2.5rem;
+    --modal-header-icon-min-width-margin-right: 1rem;
+    --modal-header-icon-min-width-height: 2.5rem;
+    --modal-header-icon-min-width-width: 2.5rem;
 
     /* Modal Header Text */
     --modal-header-text-margin-top: 0.75rem;
     --modal-header-text-text-align: center;
     --modal-header-text-flex: 1;
-    --modal-header-text-sm-margin-top: 0rem;
-    --modal-header-text-sm-text-align: left;
+    --modal-header-text-min-width-margin-top: 0rem;
+    --modal-header-text-min-width-text-align: left;
     --modal-title-font-weight: 600;
     --modal-body-margin-top: 0.5rem;
 
     /* Modal Footer */
-    --modal-footer-padding-inline: 1rem;
-    --modal-footer-padding-top: 0.75rem;
-    --modal-footer-padding-bottom: 0.75rem;
+    --modal-footer-padding: 0.75rem 1rem;
     --modal-footer-background-color: var(--color-stone-50);
     --modal-footer-display: flex;
     --modal-footer-gap: 0.5rem;
@@ -85,8 +78,8 @@
     --modal-footer-flex-direction: row;
     --modal-footer-dark-background-color: var(--color-stone-900);
     --modal-footer-btn-flex: 1;
-    --modal-footer-sm-justify-content: flex-end;
-    --modal-footer-sm-btn-flex: 0 0 auto;
+    --modal-footer-justify-content: flex-end;
+    --modal-footer-min-width-btn-flex: 0 0 auto;
 
     /* Modal Center */
     --modal-center-header-flex-direction: column;
@@ -129,11 +122,6 @@
     align-items: var(--modal-container-align-items);
     justify-content: var(--modal-container-justify-content);
     padding: var(--modal-container-padding);
-
-    @media (min-width: 640px) {
-        align-items: var(--modal-container-sm-align-items);
-        padding: var(--modal-container-sm-padding);
-    }
 }
 
 @utility modal {
@@ -143,14 +131,24 @@
     transition: var(--modal-transition);
     transform: var(--modal-transform);
 
-    @media (min-width: 640px) {
-        min-width: var(--modal-sm-min-width);
-        width: var(--modal-sm-width);
-        max-width: var(--modal-sm-max-width);
-    }
+    min-width: var(--modal-min-width); /* 200px */
+    width: var(--modal-width); /* 500px */
+    max-width: var(--modal-max-width); /* 100% (full-screen) */
+
+    /* height: 150px;
+    display: flex;
+    flex-direction: column; */
+    
 }
 
 @utility modal-* {
+    & {
+        width: --value(--modal-size-*, [length]);
+        width: calc(--spacing(--value(integer)));
+
+        /* height: calc(--value(--modal-size-*, [length]) / 2); */
+    }
+
     .modal-header-icon {
         /* Allows for modal-primary, modal-warning, etc. */
         background-color: --value(--icon-bg-*, --color-*, [color]);
@@ -185,6 +183,12 @@
 }
 
 @utility modal-center {
+/*     & {
+        min-height: 290px;
+        display: flex;
+        flex-direction: column;
+    } */
+    
     .modal-header {
         flex-direction: var(--modal-center-header-flex-direction);
         align-items: var(--modal-center-header-align-items);
@@ -214,28 +218,23 @@
 }
 
 @utility modal-content {   
+    /* flex: 1 1 auto; */ /* needed if want to change width */
+    
     border-top-left-radius: var(--modal-content-border-top-left-radius);
     border-top-right-radius: var(--modal-content-border-top-right-radius);
-    padding-inline: var(--modal-content-padding-inline);
+    padding: var(--modal-content-padding);
     background-color: var(--modal-content-background-color); 
     color: var(--modal-content-color);
-    padding-top: var(--modal-content-padding-top);
-    padding-bottom: var(--modal-content-padding-bottom);
 
     @variant dark {
         background-color: var(--modal-content-dark-background-color);
         color: var(--modal-content-dark-color);
     }
-
-    @media (min-width: 640px) {
-        padding: var(--modal-content-sm-padding);
-    }
 }
 
 @utility modal-header {
     @media (min-width: 640px) {
-        display: var(--modal-header-sm-display);
-        align-items: var(--modal-header-sm-align-items);
+        display: var(--modal-header-display);
     }
 }
 
@@ -251,9 +250,9 @@
     color: var(--modal-header-icon-color);
 
     @media (min-width: 640px) {
-        margin-right: var(--modal-header-icon-sm-margin-right);
-        height: var(--modal-header-icon-sm-height);
-        width: var(--modal-header-icon-sm-width);
+        margin-right: var(--modal-header-icon-min-width-margin-right);
+        height: var(--modal-header-icon-min-width-height);
+        width: var(--modal-header-icon-min-width-width);
     }
 }
 
@@ -263,8 +262,8 @@
     flex: var(--modal-header-text-flex);
 
     @media (min-width: 640px) { 
-        margin-top: var(--modal-header-text-sm-margin-top);
-        text-align: var(--modal-header-text-sm-text-align);
+        margin-top: var(--modal-header-text-min-width-margin-top);
+        text-align: var(--modal-header-text-min-width-text-align);
     }
     
     >.modal-title {
@@ -277,15 +276,14 @@
 }
 
 @utility modal-footer {
-    padding-inline: var(--modal-footer-padding-inline);
-    padding-top: var(--modal-footer-padding-top);
-    padding-bottom: var(--modal-footer-padding-bottom);
+    padding: var(--modal-footer-padding);
     background-color: var(--modal-footer-background-color);
     display: var(--modal-footer-display);
     gap: var(--modal-footer-gap);
     border-bottom-left-radius: var(--modal-footer-border-bottom-left-radius);
     border-bottom-right-radius: var(--modal-footer-border-bottom-right-radius);
     flex-direction: var(--modal-footer-flex-direction);
+    justify-content: var(--modal-footer-justify-content);
 
     @variant dark {
         background-color: var(--modal-footer-dark-background-color);
@@ -300,10 +298,8 @@
     }
 
     @media (min-width: 640px) {
-        justify-content: var(--modal-footer-sm-justify-content);
-
         button.btn {
-            flex: var(--modal-footer-sm-btn-flex);
+            flex: var(--modal-footer-min-width-btn-flex);
         }
     }
 }
