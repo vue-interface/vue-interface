@@ -1,7 +1,8 @@
 import Tooltip from './src/Tooltip.vue';
-import TooltipPlugin from './src/TooltipPlugin';
+import { TooltipDirective, TooltipPlugin } from './src/TooltipPlugin';
 
 export {
     Tooltip,
+    TooltipDirective,
     TooltipPlugin
 };
