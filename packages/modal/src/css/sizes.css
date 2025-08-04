@@ -1,0 +1,12 @@
+@theme {
+    --modal-size-2xs: --spacing(50); /* 200px */  
+    --modal-size-xs: --spacing(75); /* 300px */ 
+    --modal-size-sm: --spacing(100); /* 400px */  
+    --modal-size-md: --spacing(125); /* 500px */ 
+    --modal-size-lg: --spacing(150); /* 600px */  
+    --modal-size-xl: --spacing(175); /* 700px */  
+    --modal-size-2xl: --spacing(200);  /* 800px */
+    --modal-size-3xl: --spacing(225);  /* 900px */
+    --modal-size-4xl: --spacing(250);  /* 1000px */
+    --modal-size-5xl: --spacing(275);  /* 1100px */
+}

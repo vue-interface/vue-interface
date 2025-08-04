@@ -1,34 +1,32 @@
 {
-  "name": "@vue-interface/light-switch-field",
+  "name": "@vue-interface/modal",
   "version": "1.0.0",
-  "description": "A Vue light switch field component.",
+  "description": "A Vue modal component.",
   "type": "module",
-  "main": "./dist/light-switch-field.umd.cjs",
-  "module": "./dist/light-switch-field.js",
+  "main": "./dist/modal.umd.cjs",
+  "module": "./dist/modal.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "source": "./index.ts",
       "types": "./dist/index.d.ts", 
-      "import": "./dist/light-switch-field.js",
-      "require": "./dist/light-switch-field.umd.js"
-    }
+      "import": "./dist/modal.js",
+      "require": "./dist/modal.umd.js"
+    },
+    "./css": "./index.css"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc",
-    "lint": "eslint",
     "preview": "vite preview"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/light-switch-field"
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/modal"
   },
   "keywords": [
-    "Light",
-    "Switch",
-    "Field",
+    "Modal",
     "Vue",
     "Component",
     "Tailwind",
@@ -41,17 +39,26 @@
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {
-    "@vue-interface/form-control": "workspace:*",
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/btn": "workspace:*",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.7.0",
     "@tailwindcss/vite": "^4.1.7",
-    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue-jsx": "^5.0.0",
+    "@vue-interface/eslint-config": "^1.0.0-beta.0",
+    "autoprefixer": "^10.4.19",
     "change-case": "^4.1.2",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.0.0",
+    "commitlint": "^17.8.1",
+    "dotenv": "^16.4.5",
+    "pascalcase": "^2.0.0",
+    "postcss": "^8.4.30",
+    "semantic-release": "^21.1.2",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.2.2",
     "vite": "^7.0.0",
-    "vite-plugin-dts": "^1.7.1",
     "vue": "^3.3.4",
     "vue-tsc": "^3.0.0"
   }
