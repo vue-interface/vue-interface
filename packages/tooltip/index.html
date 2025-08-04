@@ -38,11 +38,76 @@
                     </Tooltip>
                 </with-tooltip>
             </div>
+
+            <h2 class="text-2xl">Via Plugin</h2>
+
+            <div class="flex gap-4 [&>a]:text-blue-500 [&>a]:hover:underline">
+                <a href="#" title="Some Tooltip" data-tooltip-placement="top">
+                    Top
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="bottom">
+                    Bottom
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="left">
+                    Left
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="right">
+                    Right
+                </a>
+            </div>
+
+            <h2 class="text-2xl">Dynamic Elements</h2>
+
+            <div class="flex gap-4 [&>button]:p-2 [&>button]:rounded [&>button]:bg-blue-500">
+                <button @click="dynamicEl = true">Mount Element</button>
+
+                <button v-if="dynamicEl" title="Some Tooltip" @click="dynamicEl = false">
+                    Click to Unmount
+                </button>
+            </div>
+
+            <h2 class="text-2xl">Via Directive</h2>
+
+            <div class="flex gap-4 [&>button]:p-2 [&>button]:rounded [&>button]:bg-blue-500">
+                <button @click="directiveEl = true">Mount Element</button>
+
+                <button v-if="directiveEl" v-tooltip="'Some Tooltip'" @click="directiveEl = false">
+                    Click to Unmount
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'top'
+                }" @click="directiveEl = false">
+                    Top
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'bottom'
+                }" @click="directiveEl = false">
+                    Bottom
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'left'
+                }" @click="directiveEl = false">
+                    Left
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'right'
+                }" @click="directiveEl = false">
+                    Right
+                </button>
+            </div>
         </div>
         <script type="module">
             import './index.css';
             import { createApp, defineComponent, h, ref, onMounted } from 'vue/dist/vue.esm-bundler';
-            import { Tooltip } from './index';
+            import { Tooltip, TooltipPlugin } from './index';
 
             const WithTooltip = defineComponent({
                 setup(props, a) {
@@ -54,25 +119,21 @@
                         classList: 'text-blue-500 hover:underline'
                     }, a.slots.default({ el }))
                 }
-                /*
-                render({ $el }) {
-                    return h('a', {
-                        href: '#',
-                        classList: 'text-blue-500 hover:underline'
-                    }, [
-                        this.$slots.default({ $el }),
-                        h(Tooltip, 'sad')
-                    ])
-                }
-                */
             });
 
             const vue = createApp({
                 components: {
                     WithTooltip,
                     Tooltip
+                },
+                data() {
+                    return {
+                        dynamicEl: false,
+                        directiveEl: false,
+                    }
                 }
             })
+            .use(TooltipPlugin)
             .mount('#app');
         </script>
     </body>

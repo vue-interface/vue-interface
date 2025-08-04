@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { arrow, autoUpdate, flip as flipFn, FlipOptions, MaybeElement, offset as offsetFn, OffsetOptions, ReferenceElement, useFloating, UseFloatingOptions } from '@floating-ui/vue';
-import { computed, isRef, Ref, ref, shallowReadonly, ShallowRef, useTemplateRef, watchEffect } from 'vue';
+import { computed, isRef, onUnmounted, Ref, ref, shallowReadonly, ShallowRef, Teleport, useTemplateRef, watchEffect } from 'vue';
 
 export type TooltipProps = {
     title?: string;
@@ -25,34 +25,39 @@ defineSlots<{
     default: () => void
 }>();
 
+const tooltipEl = useTemplateRef('tooltipEl');
+const arrowEl = useTemplateRef('arrowEl');
+const isShowing = ref(false);
+const hash = Math.random().toString(36).slice(2, 12);
+
 const targetEl = isRef(props.target)
     ? props.target
     : shallowReadonly(ref(props.target));
 
+const id = computed(() => {
+    if(!(targetEl.value instanceof Element)) {
+        return;
+    }
+
+    return targetEl.value.getAttribute('data-tooltip-id');
+})
+
+
 watchEffect(() => {
-    if(!targetEl.value) {
+    if(!targetEl.value || id.value) {
         return;
     }
 
     if(targetEl.value instanceof Element) {
-        targetEl.value.addEventListener('mouseover', function() {
-            show();
-        })
-
-        targetEl.value.addEventListener('mouseout', function() {
-            hide()
-        })
+        targetEl.value.setAttribute('data-tooltip-id', hash);
+        targetEl.value.addEventListener('mouseover', show);
+        targetEl.value.addEventListener('mouseout', hide);
     }
-})
-
-const tooltipEl = useTemplateRef('tooltipEl');
-const arrowEl = useTemplateRef('arrowEl');
-const isMounted = ref(false);
-const isShowing = ref(false);
+});
 
 watchEffect(() => {
     isShowing.value = props.show;
-})
+});
 
 const dynamicOffset = computed<OffsetOptions>(() => {
     if (props.offset) {
@@ -63,7 +68,7 @@ const dynamicOffset = computed<OffsetOptions>(() => {
         const { height } = getComputedStyle(arrowEl.value);
 
         return {
-            mainAxis: parseInt(height.replace('px', ''))
+            mainAxis: parseInt(height.replace('px', '')),
         }
     }
 });
@@ -113,37 +118,55 @@ function show() {
 function hide() {
     isShowing.value = false;
 }
+
+onUnmounted(() => {
+    if(targetEl.value instanceof Element) {
+        targetEl.value.removeAttribute('data-tooltip-id');
+    }
+})
+
+defineExpose({
+    show,
+    hide,
+    tooltipEl,
+    arrowEl,
+    isShowing,
+    hash,
+})
 </script>
 
 <template>
-    <div
-        ref="tooltipEl"
-        class="tooltip"
-        role="tooltip"
-        :class="tooltipClasses"
-        :style="floatingStyles">
+    <Teleport to="body">
         <div
-            ref="arrowEl"
-            class="tooltip-arrow"
-            :style="{
-                transform: arrowRotation[arrowPosition],
-                ...Object.assign({
-                    left:
-                        middlewareData.arrow?.x != null
-                            ? `${middlewareData.arrow.x}px`
-                            : '',
-                    top:
-                        middlewareData.arrow?.y != null
-                            ? `${middlewareData.arrow.y}px`
-                            : ''
-                }, {
-                    [arrowPosition]: `calc(${-(arrowEl?.offsetWidth ?? 0) / 2}px)`
-                })
-            }" />
-        <div
-            ref="inner"
-            class="tooltip-inner">
-            <slot>{{ title }}</slot>
+            ref="tooltipEl"
+            class="tooltip"
+            role="tooltip"
+            :data-tooltip-id="hash"
+            :class="tooltipClasses"
+            :style="floatingStyles">
+            <div
+                ref="arrowEl"
+                class="tooltip-arrow"
+                :style="{
+                    transform: arrowRotation[arrowPosition],
+                    ...Object.assign({
+                        left:
+                            middlewareData.arrow?.x != null
+                                ? `${middlewareData.arrow.x}px`
+                                : '',
+                        top:
+                            middlewareData.arrow?.y != null
+                                ? `${middlewareData.arrow.y}px`
+                                : ''
+                    }, {
+                        [arrowPosition]: `calc(${-(arrowEl?.offsetWidth ?? 0) / 2}px)`
+                    })
+                }" />
+            <div
+                ref="inner"
+                class="tooltip-inner">
+                <slot>{{ title }}</slot>
+            </div>
         </div>
-    </div>
+    </Teleport>
 </template>
