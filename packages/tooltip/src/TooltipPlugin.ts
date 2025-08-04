@@ -65,7 +65,7 @@ function shouldRemoveTooltip(target: Node): target is Element {
     return target.hasAttribute(`${prefix}-id`);
 }
 
-export const TooltipDirective: Directive<Element, TooltipProps> =  {
+export const TooltipDirective: Directive<Element, string|TooltipProps> =  {
     beforeMount(target, binding) {
         createTooltip(target, typeof binding.value === 'string' ? {
             title: binding.value
