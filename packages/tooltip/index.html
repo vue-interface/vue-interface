@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Tooltip</title>
+    </head>
+    <body class="dark:bg-neutral-900 dark:text-white">
+        <div id="app" class="container mx-auto flex flex-col gap-6">
+            <h1 class="text-4xl">tooltip</h1>
+
+            <div class="flex gap-4">
+                <with-tooltip v-slot="{el}">
+                    Top
+                    <Tooltip :target="el">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+                
+                <with-tooltip v-slot="{el}">
+                    Bottom
+                    <Tooltip :target="el" placement="bottom">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+                
+                <with-tooltip v-slot="{el}">
+                    Left
+                    <Tooltip :target="el" placement="left">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+
+                <with-tooltip v-slot="{el}">
+                    Right
+                    <Tooltip :target="el" placement="right">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+            </div>
+        </div>
+        <script type="module">
+            import './index.css';
+            import { createApp, defineComponent, h, ref, onMounted } from 'vue/dist/vue.esm-bundler';
+            import { Tooltip } from './index';
+
+            const WithTooltip = defineComponent({
+                setup(props, a) {
+                    const el = ref();
+
+                    return () => h('a', {
+                        ref: el,
+                        href: '#',
+                        classList: 'text-blue-500 hover:underline'
+                    }, a.slots.default({ el }))
+                }
+                /*
+                render({ $el }) {
+                    return h('a', {
+                        href: '#',
+                        classList: 'text-blue-500 hover:underline'
+                    }, [
+                        this.$slots.default({ $el }),
+                        h(Tooltip, 'sad')
+                    ])
+                }
+                */
+            });
+
+            const vue = createApp({
+                components: {
+                    WithTooltip,
+                    Tooltip
+                }
+            })
+            .mount('#app');
+        </script>
+    </body>
+</html>

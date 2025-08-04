@@ -44,7 +44,7 @@ const field = ref<HTMLTextAreaElement>();
 <script lang="ts">
 export type LightSwitchFieldControlSizePrefix = 'form-switch';
 
-export type LightSwitchFieldProps<ModelValue, Value> = CheckedFormControlProps<
+export type LightSwitchFieldProps<ModelValue = undefined, Value = undefined> = CheckedFormControlProps<
     InputHTMLAttributes,
     LightSwitchFieldControlSizePrefix,
     ModelValue,

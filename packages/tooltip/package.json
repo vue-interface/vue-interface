@@ -1,18 +1,20 @@
 {
-  "name": "@vue-interface/radio-field",
-  "version": "1.0.0",
-  "description": "A Vue radio field component.",
+  "name": "@vue-interface/tooltip",
+  "version": "1.0.0-beta.18",
+  "description": "A Vue tooltip component.",
   "type": "module",
-  "main": "./dist/radio-field.umd.cjs",
-  "module": "./dist/radio-field.js",
+  "main": "./dist/tooltip.umd.js",
+  "module": "./dist/tooltip.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "source": "./index.ts",
-      "types": "./dist/index.d.ts",     
-      "import": "./dist/radio-field.js",
-      "require": "./dist/radio-field.umd.js"
-    }
+      "types": "./index.ts",
+      "import": "./dist/tooltip.js",
+      "require": "./dist/tooltip.umd.js"
+    },
+    "./tailwindcss": "./tailwindcss/index.cjs",
+    "./tailwindcss/safelist": "./tailwindcss/safelist.cjs"
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
@@ -22,11 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/radio-field"
+    "url": "git+https://github.com/vue-interface/tooltip.git"
   },
   "keywords": [
-    "Radio",
-    "Field",
+    "Tooltip",
     "Vue",
     "Component",
     "Tailwind",
@@ -35,14 +36,18 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/tooltip/issues"
   },
-  "homepage": "https://github.com/vue-interface/vue-interface",
+  "homepage": "https://github.com/vue-interface/tooltip",
+  "dependencies": {
+    "@popperjs/core": "^2.4.4"
+  },
   "peerDependencies": {
-    "@vue-interface/form-control": "workspace:*",
+    "@floating-ui/vue": "^1.1.7",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@floating-ui/dom": "^1.7.2",
     "@tailwindcss/vite": "^4.1.7",
     "@types/node": "^24.0.0",
     "change-case": "^4.1.2",

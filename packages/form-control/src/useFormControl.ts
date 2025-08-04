@@ -7,12 +7,15 @@ export type NativeFormControlEvents = {
     focusin: [event: FocusEvent];
     focusout: [event: FocusEvent];
     click: [event: MouseEvent];
+    doubleclick: [event: MouseEvent];
+    contextmenu: [event: MouseEvent];
     mousedown: [event: MouseEvent];
     mouseup: [event: MouseEvent];
     mouseover: [event: MouseEvent];
     mouseout: [event: MouseEvent];
     mouseenter: [event: MouseEvent];
     mouseleave: [event: MouseEvent];
+    mousemove: [event: MouseEvent];
     keydown: [event: KeyboardEvent];
     keyup: [event: KeyboardEvent];
     keypress: [event: KeyboardEvent];
@@ -21,6 +24,8 @@ export type NativeFormControlEvents = {
     invalid: [event: Event];
     submit: [event: Event];
     reset: [event: Event];
+    scroll: [event: Event];
+    wheel: [event: WheelEvent];
     copy: [event: ClipboardEvent];
     cut: [event: ClipboardEvent];
     paste: [event: ClipboardEvent];
@@ -37,7 +42,7 @@ export type FormControlEvents<ModelValue> = {
     'update:modelValue': [value: ModelValue];
 } & NativeFormControlEvents;
 
-type ListenerFunctions<T> = {
+export type FormControlListeners<T> = {
   [K in keyof T as `on${Capitalize<string & K>}`]: T[K] extends [infer Arg1, infer Arg2]
     ? (arg1: Arg1, arg2: Arg2) => void
     : T[K] extends [infer Arg1]
@@ -69,7 +74,7 @@ export type FormControlSlots<Prefix extends string, ModelValue> = {
 export type FormControlSlot<Prefix extends string, ModelValue> = (
     props: {
         controlAttributes: FormControlAttributes<Prefix, ModelValue>;
-        listeners: ListenerFunctions<NativeFormControlEvents>;
+        listeners: FormControlListeners<NativeFormControlEvents>;
     }
 ) => unknown;
 
@@ -251,13 +256,13 @@ export function useFormControl<
         'is-empty': isEmpty.value,
     }));
     
-    const listeners = {
+    const listeners: FormControlListeners<NativeFormControlEvents> = {
         onBlur: (e: FocusEvent) => {
             hasFocus.value = false;
             emit('blur', e);
         },
         onFocus: (e: FocusEvent) => {
-        // isDirty.value = true;
+            // isDirty.value = true;
             hasFocus.value = true;
             emit('focus', e);
         },
@@ -274,6 +279,12 @@ export function useFormControl<
             nextTick(() => {
                 emit('click', e);
             });
+        },
+        onDoubleclick: (e: MouseEvent) => {
+            emit('doubleclick', e);
+        },
+        onContextmenu: (e: MouseEvent) => {
+            emit('contextmenu', e);
         },
         onMousedown: (e: MouseEvent) => {
             emit('mousedown', e);
@@ -292,6 +303,9 @@ export function useFormControl<
         },
         onMouseleave: (e: MouseEvent) => {
             emit('mouseleave', e);
+        },
+        onMousemove: (e: MouseEvent) => {
+            emit('mousemove', e);
         },
         onChange: (e: Event) => {
             emit('change', e);
@@ -325,6 +339,12 @@ export function useFormControl<
         },
         onReset: (e: Event) => {
             emit('reset', e);
+        },
+        onScroll: (e: Event) => {
+            emit('scroll', e);
+        },
+        onWheel: (e: WheelEvent) => {
+            emit('wheel', e);
         },
         onCopy: (e: ClipboardEvent) => {
             emit('copy', e);

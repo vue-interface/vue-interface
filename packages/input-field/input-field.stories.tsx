@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
-import { ref } from 'vue';
 import { CalendarDaysIcon } from '@heroicons/vue/24/outline';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import { Dots, Pulse, Spinner } from '@vue-interface/activity-indicator';
+import { fn } from 'storybook/test';
+import { ref } from 'vue';
 import './demo.css';
 import InputField from './src/InputField.vue';
  
 const meta = {
     title: 'Example/Form Fields/Input Field',
     tags: ['autodocs'],
-    /* component: InputField, */
     decorators: [
         (Story, context) => {
             const background = context.globals.backgrounds?.value?.toLowerCase?.() || '';
@@ -144,6 +144,15 @@ export const InputFieldValidation = {
           <InputField label="Valid Field" valid class="mb-3 valid-feedback"/>
           <InputField label="Valid Field with Feedback" valid feedback="This is some success message." class="mb-3 valid-feedback"/>
           <InputField label="Valid Field with Array of Feedback" valid feedback={['This is some success message.', 'Another success message.']} class="mb-3 valid-feedback"/>
+        </div>
+    )
+} satisfies Story;
+
+export const InputFieldEvents = {
+    name: 'Events',
+    render: () => (
+        <div class="flex flex-col gap-3">
+          <InputField onFocus={fn()} class="mb-3" />
         </div>
     )
 } satisfies Story;
