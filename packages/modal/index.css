@@ -6,22 +6,41 @@
 
 @theme {
     /* Modal Wrapper */
-    --modal-wrapper-position: relative; /* switch between absolute and relative for full/partial vertical */
+    --modal-wrapper-position: fixed; /* switch between absolute and relative for full/partial vertical */
     --modal-wrapper-inset: 0;
-    --modal-wrapper-z-index: 10;
+    --modal-wrapper-z-index: 1000;
     --modal-wrapper-min-width: 15%;
     --modal-wrapper-width: 100%; /* switch between 100% and 50% for full/half width screen */
     --modal-wrapper-overflow-y: auto;
     --modal-wrapper-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --modal-wrapper-background-color: color-mix(in oklch, var(--color-stone-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
-    --modal-wrapper-dark-background-color: color-mix(in oklch, var(--color-stone-800, oklch(26.8% 0.007 34.298)) 75%, transparent);
+    --modal-wrapper-background-color: color-mix(in oklch, var(--color-neutral-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
+    --modal-wrapper-dark-background-color: color-mix(in oklch, var(--color-neutral-800, oklch(26.8% 0.007 34.298)) 75%, transparent);
+
+
+    --modal-backdrop-position: absolute;
+    --modal-backdrop-top: 0;
+    --modal-backdrop-left: 0;
+    --modal-backdrop-z-index: 1;
+    --modal-backdrop-width: 100%;
+    --modal-backdrop-height: 100%;
+    --modal-backdrop-background-color: color-mix(in oklch, var(--color-neutral-500, oklch(55.3% 0.013 58.071)) 75%, transparent);
+    --modal-backdrop-dark-background-color: color-mix(in oklch, var(--color-neutral-800, oklch(26.8% 0.007 34.298)) 75%, transparent);
 
     /* Modal Container */
+    --modal-container-position: relative;
     --modal-container-display: flex;
-    --modal-container-min-height: 100%;
+    --modal-container-flex-direction: column;
+    --modal-container-z-index: 2;
+    --modal-container-width: 100%;
+    --modal-container-max-width: var(--modal-size-md);
     --modal-container-align-items: center;
     --modal-container-justify-content: center;
     --modal-container-padding: 1rem;
+    --modal-container-box-shadow: var(--shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1));
+
+    /* Modal Body */
+    --modal-body-max-height: calc(var(--modal-container-max-width) / 2);
+    --modal-body-overflow-y: auto;
 
     /* Modal */
     --modal-position: relative;
@@ -34,13 +53,14 @@
     --modal-max-width: 100%;
 
     /* Modal Header */
+    --modal-header-width: 100%;
     --modal-header-border-top-left-radius: 0.5rem;
     --modal-header-border-top-right-radius: 0.5rem;
     --modal-header-padding: 0.75rem 1rem; /* padding: top/bottom left/right */
     --modal-header-background-color: var(--color-white, oklch(100% 0.00011 271.152));
-    --modal-header-color: var(--color-stone-900, oklch(21.6% 0.006 56.043));
-    --modal-header-dark-background-color: var(--color-stone-800, oklch(26.8% 0.007 34.298));
-    --modal-header-dark-color: var(--color-stone-100, oklch(97% 0.001 106.424));
+    --modal-header-color: var(--color-neutral-900, oklch(21.6% 0.006 56.043));
+    --modal-header-dark-background-color: var(--color-neutral-800, oklch(26.8% 0.007 34.298));
+    --modal-header-dark-color: var(--color-neutral-100, oklch(97% 0.001 106.424));
     --modal-header-display: flex;
 
     /* Modal Header Icon */
@@ -67,9 +87,10 @@
     --modal-body-margin-top: 0.5rem;
 
     /* Modal Footer */
+    --modal-footer-width: 100%;
     --modal-footer-padding: 0.75rem 1rem;
-    --modal-footer-background-color: var(--color-stone-50, oklch(98.5% 0.001 106.423));
-    --modal-footer-dark-background-color: var(--color-stone-900, oklch(21.6% 0.006 56.043));
+    --modal-footer-background-color: var(--color-neutral-50, oklch(98.5% 0.001 106.423));
+    --modal-footer-dark-background-color: var(--color-neutral-900, oklch(21.6% 0.006 56.043));
     --modal-footer-display: flex;
     --modal-footer-gap: 0.5rem;
     --modal-footer-border-bottom-left-radius: 0.5rem;
@@ -94,9 +115,9 @@
     --modal-close-button-cursor: pointer;
     --modal-close-button-top: 0.75rem;
     --modal-close-button-right: 0.75rem;
-    --modal-close-button-color: var(--color-stone-500, oklch(55.3% 0.013 58.071));
-    --modal-close-button-hover-color: var(--color-stone-600, oklch(44.4% 0.011 73.639));
-    --modal-close-button-active-color: var(--color-stone-700, oklch(37.4% 0.01 67.558));
+    --modal-close-button-color: var(--color-neutral-500, oklch(55.3% 0.013 58.071));
+    --modal-close-button-hover-color: var(--color-neutral-600, oklch(44.4% 0.011 73.639));
+    --modal-close-button-active-color: var(--color-neutral-700, oklch(37.4% 0.01 67.558));
 }
 
 /* @utility modal-wrapper {
@@ -123,16 +144,26 @@
 }  */
 
 @utility modal {
-    position: var(--modal-position);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* position: var(--modal-wrapper-position);
     text-align: var(--modal-text-align);
     box-shadow: var(--modal-box-shadow);
     transition: var(--modal-transition);
     transform: var(--modal-transform);
-    visibility: hidden;
+    visibility: hidden; */
 
-    min-width: var(--modal-min-width); /* 200px */
-    width: var(--modal-width); /* 500px */
-    max-width: var(--modal-max-width); /* 100% (full-screen) */
+    /* min-width: var(--modal-min-width);
+    width: var(--modal-width);
+    max-width: var(--modal-max-width); */
 
     /* height: 150px;
     display: flex;
@@ -145,34 +176,31 @@
     }
 
     .modal-backdrop {
-        position: var(--modal-wrapper-position);
-        inset: var(--modal-wrapper-inset);
-        z-index: var(--modal-wrapper-z-index);
-        min-width: var(--modal-wrapper-min-width);
-        width: var(--modal-wrapper-width);
-        overflow-y: var(--modal-wrapper-overflow-y);
-        transition: var(--modal-wrapper-transition);
-        background-color: var(--modal-wrapper-background-color);
+        position: var(--modal-backdrop-position);
+        top: var(--modal-backdrop-top);
+        left: var(--modal-backdrop-left);
+        z-index: var(--modal-backdrop-z-index);
+        width: var(--modal-backdrop-width);
+        height: var(--modal-backdrop-height);
+        background-color: var(--modal-backdrop-background-color);
 
         @variant dark {
-            background-color: var(--modal-wrapper-dark-background-color);
+            background-color: var(--modal-backdrop-dark-background-color);
         }
     }
     
-    >.modal-container {
+    .modal-container {
+        max-height: 100vh;
+        position: var(--modal-container-position);
         display: var(--modal-container-display);
-        min-height: var(--modal-container-min-height);
+        z-index: var(--modal-container-z-index);
+        flex-direction: var(--modal-container-flex-direction);
+        width: var(--modal-container-width);
+        max-width: var(--modal-container-max-width);
         align-items: var(--modal-container-align-items);
         justify-content: var(--modal-container-justify-content);
-        padding: var(--modal-container-padding);
+        box-shadow: var(--modal-container-box-shadow);
     }
-
-
-
-
-
-
-
 
     .modal-close-button {
         position: var(--modal-close-button-position);
@@ -194,22 +222,28 @@
     .modal-header {   
         flex: 1 1 auto; 
         
+        max-height: calc(100vh - (var(--btn-font-size) + var(--btn-padding-y) * 2) - 3rem);
+        width: var(--modal-header-width);
         border-top-left-radius: var(--modal-header-border-top-left-radius);
         border-top-right-radius: var(--modal-header-border-top-right-radius);
         padding: var(--modal-header-padding);
         background-color: var(--modal-header-background-color); 
         color: var(--modal-header-color);
-
+        display: flex;
+        flex-direction: column;
+        
         @variant dark {
+            border-top: 1px solid var(--color-neutral-700);
             background-color: var(--modal-header-dark-background-color);
             color: var(--modal-header-dark-color);
         }
 
         @media (min-width: 640px) {
             display: var(--modal-header-display);
+            flex-direction: row;
         }
 
-        >.modal-header-icon {
+        .modal-header-icon {
             margin-inline: var(--modal-header-icon-margin-inline);
             display: var(--modal-header-icon-display);
             height: var(--modal-header-icon-height);
@@ -219,6 +253,7 @@
             border-radius: var(--modal-header-icon-border-radius);
             background-color: var(--modal-header-icon-background-color);
             color: var(--modal-header-icon-color);
+            flex-shrink: 0;
 
             @media (min-width: 640px) {
                 margin-right: var(--modal-header-icon-min-width-margin-right);
@@ -227,12 +262,24 @@
             }
         }
 
-        >.modal-header-text {
+        .modal-header-text {
+            display: flex;
+            flex-direction: column;
+            height: 0px;
             margin-top: var(--modal-header-text-margin-top);
             text-align: var(--modal-header-text-text-align);
             flex: var(--modal-header-text-flex);
         
+            /* Add these properties to fix the overflow issue */
+            width: 100%;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            min-width: 0; /* Important for flex items to shrink */
+        
+            
             @media (min-width: 640px) { 
+                height: auto;
                 margin-top: var(--modal-header-text-min-width-margin-top);
                 text-align: var(--modal-header-text-min-width-text-align);
             }
@@ -246,8 +293,15 @@
             }
         }
     }
+    
+    .modal-body {
+        height: 100%;
+        max-height: var(--modal-body-max-height);
+        overflow-y: var(--modal-body-overflow-y);
+    }
 
     .modal-footer {
+        width: var(--modal-footer-width);
         padding: var(--modal-footer-padding);
         background-color: var(--modal-footer-background-color);
         display: var(--modal-footer-display);
@@ -278,11 +332,11 @@
 }
 
 @utility modal-* {
-    & {
-        width: --value(--modal-size-*, [length]);
-        width: calc(--spacing(--value(integer)));
+    --modal-max-width: --value(--modal-size-*, [length], [percentage]);
+    --modal-max-width: calc(--spacing(--value(integer)));
 
-        /* height: calc(--value(--modal-size-*, [length]) / 2); */
+    .modal-container {
+        max-width: var(--modal-max-width);
     }
 
     .modal-header > .modal-header-icon {
@@ -293,6 +347,10 @@
         /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
         background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
         color: --value(--color-*, [color]);
+    }
+
+    .modal-body {
+        max-height: calc(var(--modal-max-width) / 2);
     }
 
     .modal-footer {
@@ -315,6 +373,24 @@
                 background-color: color-mix(in oklch, --value(--btn-*, --color-*) 95%, black);
             }
         }
+    }
+}
+
+@utility modal-w-* {
+    --modal-max-width: --value(--modal-size-*, [length], [percentage]);
+    --modal-max-width: calc(--spacing(--value(integer)));
+
+    .modal-container {
+        max-width: var(--modal-max-width);
+    }
+}
+
+@utility modal-h-* {
+    --modal-max-height: --value(--modal-size-*, [length], [percentage]);
+    --modal-max-height: calc(--spacing(--value(integer)));
+
+    .modal-body {
+        max-height: var(--modal-max-height);
     }
 }
 
