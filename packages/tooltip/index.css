@@ -12,6 +12,7 @@
     --tooltip-transition: opacity .15s ease-out;
     --tooltip-pointer-events: none;
 
+    --tooltip-inner-position: relative;
     --tooltip-inner-max-width: 200px;
     --tooltip-inner-padding-y: .25em;
     --tooltip-inner-padding-x: .5em;
@@ -49,7 +50,7 @@
     }
 
     .tooltip-inner {
-        position: relative;
+        position: var(--tooltip-inner-position);
         max-width: var(--tooltip-inner-max-width);
         padding: var(--tooltip-inner-padding-y) var(--tooltip-inner-padding-x);
         background-color: var(--tooltip-inner-background-color);
