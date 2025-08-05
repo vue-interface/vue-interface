@@ -299,30 +299,30 @@
 }
 
 @utility modal-* {
-    --modal-max-width: --value(--modal-size-*, [length], [percentage]);
-    --modal-max-width: calc(--spacing(--value(integer)));
-
     .modal-container {
-        max-width: var(--modal-max-width);
-    }
-
-    .modal-header > .modal-header-icon {
-        /* Allows for modal-primary, modal-warning, etc. */
-        background-color: --value(--icon-bg-*, --color-*, [color]);
-        color: --value(--icon-color-*, --color-*, [color]);
-
-        /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
-        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
-        color: --value(--color-*, [color]);
-    }
-
+        max-width: --value(--modal-size-*, [length], [percentage]);
+        max-width: calc(--spacing(--value(integer)));
+    }    
+    
     .modal-body {
         max-height: calc(var(--modal-max-width) / 2);
     }
 
+    .modal-header {
+        .modal-header-icon {
+            /* Allows for modal-primary, modal-warning, etc. */
+            background-color: --value(--icon-bg-*, --color-*, [color]);
+            color: --value(--icon-color-*, --color-*, [color]);
+
+            /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
+            background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+            color: --value(--color-*, [color]);
+        }
+    }
+
     .modal-footer {
         /* Automatically style confirm button based on modal color, but does not allow for user
-        to specify color and then override it. Also does not have a default value */
+        to specify color and then override it */
         button.btn:last-child {
             background-color: --value(--btn-*, --color-*, [color]);
             border-color: --value(--btn-*, --color-*, [color]);
@@ -364,33 +364,30 @@
 @utility modal-screen {
     @apply modal-center;
     
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    .modal-container {
+        max-width: var(--modal-container-width);
+        height: var(--modal-container-max-height);
+    }
+
+    .modal-header > .modal-header-text > .modal-body  {
+        max-height: calc(100vh - 12rem);
+    }
     
 }
 
 @utility modal-center {
     .modal-header {
-        /* Force mobile layout: column direction, no responsive override */
-        flex-direction: var(--modal-center-header-flex-direction) !important;
-        align-items: var(--modal-center-header-align-items);
-    }
+        display: var(--modal-header-display);
+        flex-direction: var( --modal-header-flex-direction);
+    
+        .modal-header-icon {
+            margin-inline: var(--modal-center-header-icon-margin-inline);
+        }
 
-    .modal-header-icon {
-        /* Center the icon and use mobile sizing */
-        margin-inline: var(--modal-center-header-icon-margin-inline);
-        height: var(--modal-header-icon-height) !important; /* Use larger mobile size */
-        width: var(--modal-header-icon-width) !important; /* Use larger mobile size */
-    }
-
-    .modal-header-text {
-        /* Center text and use mobile spacing */
-        text-align: var(--modal-center-header-text-text-align) !important;
-        margin-top: var(--modal-center-header-text-margin-top) !important;
+        .modal-header-text {
+            text-align: var(--modal-header-text-text-align);
+            margin-top: var(--modal-header-text-margin-top);
+        }
     }
 
     .modal-footer {
@@ -398,13 +395,13 @@
         justify-content: var(--modal-center-footer-justify-content);
         
         button.btn {
-            /* Use mobile button flex behavior */
-            flex: var(--modal-center-footer-btn-flex) !important;
+            flex: var(--modal-center-footer-btn-flex);
         }
 
-        /* Special case for single button */
         &:has(:only-child) {
             flex-direction: column;
         }
     }
+
+    
 }
