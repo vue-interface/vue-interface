@@ -310,11 +310,9 @@
 
     .modal-header {
         .modal-header-icon {
-            /* Allows for modal-primary, modal-warning, etc. */
             background-color: --value(--icon-bg-*, --color-*, [color]);
             color: --value(--icon-color-*, --color-*, [color]);
 
-            /* Allows for modal-*-* (modal-blue-800). modal-*-800 is equivalent to regular */
             background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
             color: --value(--color-*, [color]);
         }
@@ -358,6 +356,18 @@
 
     .modal-body {
         max-height: var(--modal-max-height);
+    }
+}
+
+@utility modal-icon-* {
+    .modal-header {
+        .modal-header-icon {
+            background-color: --value(--icon-bg-*, --color-*, [color]);
+            color: --value(--icon-color-*, --color-*, [color]);
+
+            background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+            color: --value(--color-*, [color]);
+        }
     }
 }
 
