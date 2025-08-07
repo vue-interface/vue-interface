@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 import Modal, { type ModalProps } from './Modal.vue';
 
-const props = withDefaults(defineProps<ModalProps>(), {
+const props = withDefaults(defineProps<ModalProps & {
+    buttonLabel?: string;
+}>(), {
     backdrop: true,
     buttonBlock: false,
     buttonOrientation: 'horizontal',
     buttonPosition: 'end',
+    buttonLabel: 'Ok',
     closeButton: false,
     content: undefined,
     dismissable: true,
@@ -17,17 +20,31 @@ const props = withDefaults(defineProps<ModalProps>(), {
     type: 'info',
 });
 
-const modal = ref<typeof Modal>();
+const modalProps = computed(() => {
+    return Object.fromEntries(
+        Object.entries(props)
+            .filter(([key]) => {
+                return !['buttonLabel'].includes(key);
+            })
+    );
+});
+
+const modal = useTemplateRef<InstanceType<typeof Modal>>('modal');
+const confirmButton = useTemplateRef<HTMLButtonElement>('confirmButton');
 
 defineExpose({
-    modal
+    modal,
+    confirmButton,
+    props: modal.value?.props,
+    open: modal.value?.open,
+    close: modal.value?.close,
 });
 </script>
 
 <template>
     <Modal 
         ref="modal"
-        v-bind="props">
+        v-bind="modalProps">
         <slot />
         <template #title>
             <slot name="title" />
@@ -37,9 +54,10 @@ defineExpose({
         </template>
         <template #buttons="{ close }">
             <button
+                ref="confirmButton"
                 class="btn btn-secondary"
                 @click="close()">
-                Dismiss
+                {{ buttonLabel }}
             </button>
         </template>
     </Modal>

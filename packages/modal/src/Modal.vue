@@ -1,21 +1,10 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watchEffect, type Component, type RenderFunction } from 'vue';
+import { computed, FunctionalComponent, onMounted, onUnmounted, ref, watchEffect, type Component, type RenderFunction } from 'vue';
 import CheckCircleIcon from '../src/CheckCircleIcon.vue';
 import ExclamationCircleIcon from '../src/ExclamationCircleIcon.vue';
 import ExclamationTriangleIcon from '../src/ExclamationTriangleIcon.vue';
 import InfoCircleIcon from '../src/InfoCircleIcon.vue';
 import XMarkIcon from '../src/XMarkIcon.vue';
-
-/* export interface Button {
-    class?: string;
-    disabled?: boolean;
-    name?: string;
-    label?: string;
-    size?: string;
-    outline?: boolean;
-    variant?: string;
-    onClick?: Function;
-} */
 
 export type ModalSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | string;
 
@@ -28,7 +17,7 @@ export type ModalProps = {
     closeButton?: boolean;
     content?: string | Component;
     footer?: boolean;
-    icon?: Function | Component | RenderFunction | boolean;
+    icon?: FunctionalComponent | Component | RenderFunction | boolean;
     show?: boolean;
     title?: string | Component;
     trigger?: string | Element | (() => Element);
@@ -59,17 +48,16 @@ const props = withDefaults(defineProps<ModalProps>(), {
     type: 'info',
     size: 'modal-md',
     color: 'modal-primary',
+    colors: () => ({
+        info: 'modal-icon-primary',
+        warning: 'modal-icon-warning',
+        critical: 'modal-icon-danger',
+        success: 'modal-icon-success'
+    })
 });
 
 const mounted = ref(false);
 const showing = ref(props.show);
-
-const colors = computed(() => Object.assign({
-    info: 'modal-icon-primary',
-    warning: 'modal-icon-warning',
-    critical: 'modal-icon-danger',
-    success: 'modal-icon-success'
-}, props.colors));
 
 if(typeof document === 'object') {
     const overflow = document.body.style.overflow;
@@ -162,7 +150,7 @@ function onClickTrigger() {
 
 onMounted(() => {
     mounted.value = props.show;
-
+    
     if(trigger.value) {
         trigger.value.addEventListener('click', onClickTrigger);
     }
@@ -179,8 +167,9 @@ onUnmounted(() => {
     <Teleport to="body">
         <div
             v-show="showing"
-            class="relative z-10"
-            aria-labelledby="modal-title"
+            class="modal"
+            :class="{show: showing}"
+            aria-labelledby="modal"
             role="dialog"
             aria-modal="true">
             <Transition
@@ -195,94 +184,92 @@ onUnmounted(() => {
                     class="modal-backdrop"
                     @click.self="dismissable && close()" />
             </Transition>
-            <div
-                class="modal-container">
-                <Transition
-                    enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    enter-active-class="ease-out duration-100"
-                    enter-to-class="opacity-100 translate-y-0 sm:scale-100"
-                    leave-from-class="opacity-100 translate-y-0 sm:scale-100"
-                    leave-active-class="ease-in duration-200"
-                    leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-                    <div 
-                        v-if="mounted">
-                        <slot
-                            name="close-button"
+            <Transition
+                enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enter-active-class="ease-out duration-100"
+                enter-to-class="opacity-100 translate-y-0 sm:scale-100"
+                leave-from-class="opacity-100 translate-y-0 sm:scale-100"
+                leave-active-class="ease-in duration-200"
+                leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                <div
+                    v-if="mounted"
+                    class="modal-container">
+                    <slot
+                        name="close-button"
+                        v-bind="context">
+                        <template v-if="closeButton">
+                            <button
+                                type="button"
+                                class="modal-close-button"
+                                @click="close()">
+                                <XMarkIcon />
+                            </button>
+                        </template>
+                    </slot>
+                    <div class="modal-header">
+                        <slot 
+                            name="icon" 
                             v-bind="context">
-                            <template v-if="closeButton">
-                                <button
-                                    type="button"
-                                    class="modal-close-button"
-                                    @click="close()">
-                                    <XMarkIcon />
-                                </button>
-                            </template>
+                            <div
+                                v-if="icon"
+                                class="modal-header-icon"
+                                :class="{[colors[type] ?? '']: !!colors[type]}">
+                                <Component
+                                    :is="icon"
+                                    class="w-6 h-6" />
+                            </div>
                         </slot>
-                        <div class="modal-header">
+                        <div class="modal-header-text">
                             <slot 
-                                name="icon" 
+                                name="title" 
                                 v-bind="context">
                                 <div
-                                    v-if="icon"
-                                    class="modal-header-icon"
-                                    :class="{[colors[type]]: !!colors[type]}">
-                                    <Component
-                                        :is="icon"
-                                        class="w-6 h-6" />
+                                    v-if="typeof title === 'string'"
+                                    id="modal-title"
+                                    class="modal-title">
+                                    {{ title }}
+                                </div>
+                                <Component
+                                    :is="title"
+                                    v-else-if="title" />
+                            </slot>
+                                
+                            <slot 
+                                name="body" 
+                                v-bind="context">
+                                <div class="modal-body">
+                                    <slot>
+                                        <p v-if="typeof content === 'string'">
+                                            {{ content }}
+                                        </p>
+                                        <Component
+                                            :is="content"
+                                            v-else-if="content" />
+                                    </slot>
                                 </div>
                             </slot>
-                            <div class="modal-header-text">
-                                <slot 
-                                    name="title" 
-                                    v-bind="context">
-                                    <div
-                                        v-if="typeof title === 'string'"
-                                        id="modal-title"
-                                        class="modal-title">
-                                        {{ title }}
-                                    </div>
-                                    <Component
-                                        :is="title"
-                                        v-else-if="title" />
-                                </slot>
-                                
-                                <slot 
-                                    name="body" 
-                                    v-bind="context">
-                                    <div class="modal-body">
-                                        <slot>
-                                            <p v-if="typeof content === 'string'">
-                                                {{ content }}
-                                            </p>
-                                            <Component
-                                                :is="content"
-                                                v-else-if="content" />
-                                        </slot>
-                                    </div>
-                                </slot>
-                            </div>
                         </div>
-                        <slot
-                            name="footer"
-                            v-bind="context">
-                            <div 
-                                v-if="footer" 
-                                class="modal-footer"
-                                :class="{
-                                        'sm:justify-end sm:flex-row-reverse': buttonPosition === 'start',
-                                        'sm:justify-center': buttonPosition === 'center',
-                                        'sm:justify-end': buttonPosition === 'end',
-                                        'sm:flex-row': buttonOrientation === 'horizontal',
-                                        'sm:flex-col': buttonOrientation === 'vertical',
-                                }">
-                                <slot
-                                    name="buttons"
-                                    v-bind="context" />
-                            </div>
-                        </slot>
                     </div>
-                </Transition>
-            </div>
+                    <slot
+                        name="footer"
+                        v-bind="context">
+                        <div 
+                            v-if="footer" 
+                            class="modal-footer"
+                            :class="{
+                                'sm:justify-end sm:flex-row-reverse': buttonPosition === 'start',
+                                'sm:justify-center': buttonPosition === 'center',
+                                'sm:justify-end': buttonPosition === 'end',
+                                'sm:flex-row': buttonOrientation === 'horizontal',
+                                'sm:flex-col': buttonOrientation === 'vertical',
+                            }">
+                            <slot
+                                name="buttons"
+                                v-bind="context" />
+                        </div>
+                    </slot>
+                </div>
+            </Transition>
         </div>
     </Teleport>
 </template>

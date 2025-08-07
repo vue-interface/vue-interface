@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 import Modal, { type ModalContext, type ModalProps } from './Modal.vue';
 
 const props = withDefaults(defineProps<ModalProps & {
@@ -35,12 +35,17 @@ const emit = defineEmits<{
     confirm: [button: HTMLButtonElement, context: ModalContext]
 }>();
 
-const modal = ref<typeof Modal>();
-const confirmButton = ref<HTMLButtonElement>();
+const modal = useTemplateRef<InstanceType<typeof Modal>>('modal');
+const cancelButton = useTemplateRef<HTMLButtonElement>('cancelButton');
+const confirmButton = useTemplateRef<HTMLButtonElement>('confirmButton');
 
 defineExpose({
+    modal,
+    cancelButton,
     confirmButton,
-    modal
+    props: modal.value?.props,
+    open: modal.value?.open,
+    close: modal.value?.close,
 });
 </script>
 
@@ -57,6 +62,7 @@ defineExpose({
         </template>
         <template #buttons="context">
             <button
+                ref="cancelButton"
                 class="btn btn-outline-secondary"
                 :class="{'flex-1': buttonBlock}"
                 @click="context.close()">

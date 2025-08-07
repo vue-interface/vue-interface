@@ -16,6 +16,7 @@
     --modal-width: 100%;
     --modal-height: 100%;
     --modal-padding: 1rem;
+    --modal-z-index: 1000;
 
     --modal-show-visibility: visible;
     --modal-show-transition: transform .3s ease-out, opacity .3s ease-out;
@@ -138,6 +139,7 @@
     justify-content: var(--modal-justify-content);
     align-items: var(--modal-align-items);
     visibility: var(--modal-visibility);
+    z-index: var(--modal-z-index);
 
     &.show {
         visibility: var(--modal-show-visibility);
