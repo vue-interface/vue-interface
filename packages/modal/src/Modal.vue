@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watchEffect, type Component, type RenderFunction } from 'vue';
-import CheckCircleIcon from './CheckCircleIcon.vue';
-import ExclamationCircleIcon from './ExclamationCircleIcon.vue';
-import ExclamationTriangleIcon from './ExclamationTriangleIcon.vue';
-import InfoCircleIcon from './InfoCircleIcon.vue';
-import XMarkIcon from './XMarkIcon.vue';
+import CheckCircleIcon from '../src/CheckCircleIcon.vue';
+import ExclamationCircleIcon from '../src/ExclamationCircleIcon.vue';
+import ExclamationTriangleIcon from '../src/ExclamationTriangleIcon.vue';
+import InfoCircleIcon from '../src/InfoCircleIcon.vue';
+import XMarkIcon from '../src/XMarkIcon.vue';
 
 /* export interface Button {
     class?: string;
@@ -56,7 +56,9 @@ const props = withDefaults(defineProps<ModalProps>(), {
     show: false,
     title: undefined,
     trigger: undefined,
-    type: 'info'
+    type: 'info',
+    size: 'modal-md',
+    color: 'modal-primary',
 });
 
 const mounted = ref(false);
@@ -177,7 +179,7 @@ onUnmounted(() => {
     <Teleport to="body">
         <div
             v-show="showing"
-            class="modal"
+            class="relative z-10"
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true">
@@ -190,11 +192,11 @@ onUnmounted(() => {
                 leave-to-class="opacity-0">
                 <div
                     v-if="mounted && backdrop"
-                    class="modal-backdrop" />
+                    class="modal-backdrop"
+                    @click.self="dismissable && close()" />
             </Transition>
             <div
-                class="modal-container"
-                @click.self="dismissable && close()">
+                class="modal-container">
                 <Transition
                     enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     enter-active-class="ease-out duration-100"
