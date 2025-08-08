@@ -356,8 +356,8 @@
     --modal-max-height: --value(--modal-size-*, [length], [percentage]);
     --modal-max-height: calc(--spacing(--value(integer)));
 
-    .modal-body {
-        max-height: var(--modal-max-height);
+    .modal-container {
+        height: var(--modal-max-height);
     }
 }
 

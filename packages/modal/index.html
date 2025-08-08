@@ -7,44 +7,679 @@
 </head>
 <body class="dark:bg-neutral-900 dark:text-white">
     <div id="app" class="container mx-auto">
-        <div class="flex gap-2 mt-3 mr-3">
+        <h1 class="text-4xl mb-6">Modals</h1>
+
+        <div class="flex gap-2 mb-3">
             <button id="modal" class="btn btn-primary">Modal</button>
             <button id="confirm" class="btn btn-primary">Confirm</button>
             <button id="alert" class="btn btn-primary">Alert</button>
+
+            <Modal
+                trigger="#modal"
+                close-button
+                button-orientation="vertical"
+                title="Some Title">
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Confirm
+                trigger="#confirm"
+                close-button
+                button-orientation="vertical"
+                title="Some Title"
+                @confirm="onConfirm">
+                Confirm
+            </Confirm>
+
+            <Alert
+                trigger="#alert"
+                close-button
+                button-orientation="vertical"
+                title="Some Title">
+                Alert
+            </Alert>    
         </div>
 
-        <Modal
-            trigger="#modal"
-            close-button
-            type="critical"
-            button-orientation="vertical"
-            title="Some Title">
-            Some Content
-            <template #buttons="{close}">
+        <h3 class="text-2xl mb-3">Types</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="info" class="btn btn-primary">Info</button>
+            <button id="warning" class="btn btn-warning">Warning</button>
+            <button id="critical" class="btn btn-danger">Critical</button>
+            <button id="success" class="btn btn-success">Success</button>
+
+            <Modal
+                trigger="#info"
+                close-button
+                type="info"
+                button-orientation="vertical"
+                title="Info">
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Confirm
+                trigger="#warning"
+                close-button
+                type="warning"
+                button-orientation="vertical"
+                title="Warning"
+                @confirm="onConfirm">
+                Some Content
+            </Confirm>
+
+            <Alert
+                trigger="#critical"
+                close-button
+                type="critical"
+                button-orientation="vertical"
+                title="Critical">
+                Some Content
+            </Alert>
+
+            <Modal
+                trigger="#success"
+                close-button
+                type="success"
+                button-orientation="vertical"
+                title="Success">
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>    
+        </div>
+
+        <h3 class="text-2xl mb-3">Centered</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="centeredSingle" class="btn btn-primary">Centered Single Action</button>
+            <button id="centeredDouble" class="btn btn-primary">Centered Double Action</button>
+
+            <Modal
+                trigger="#centeredSingle"
+                close-button
+                class="modal-center"
+                button-orientation="vertical"
+                title="Centered Single Action">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Confirm
+                trigger="#centeredDouble"
+                close-button
+                class="modal-center"
+                button-orientation="vertical"
+                title="Some Title"
+                @confirm="onConfirm">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </Confirm>    
+        </div>
+
+        <h3 class="text-2xl mb-3">Sizes</h3>
+
+        <h3 class="text-lg mb-3">Predetermined Sizes</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-2xs" class="btn btn-primary">modal-2xs</button>
+            <button id="modal-xs" class="btn btn-primary">modal-xs</button>
+            <button id="modal-sm" class="btn btn-primary">modal-sm</button>
+            <button id="modal-md" class="btn btn-primary">modal-md</button>
+            <button id="modal-lg" class="btn btn-primary">modal-lg</button>
+            <button id="modal-xl" class="btn btn-primary">modal-xl</button>
+            <button id="modal-2xl" class="btn btn-primary">modal-2xl</button>
+            <button id="modal-3xl" class="btn btn-primary">modal-3xl</button>
+            <button id="modal-4xl" class="btn btn-primary">modal-4xl</button>
+            <button id="modal-5xl" class="btn btn-primary">modal-5xl</button>
+            <button id="modal-screen" class="btn btn-primary">Fullscreen</button>
+
+            <Modal
+                trigger="#modal-2xs"
+                close-button
+                size="2xs"
+                button-orientation="vertical"
+                title="modal-2xs"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-xs"
+              close-button
+              size="xs"
+              button-orientation="vertical"
+              title="modal-xs"
+            >
+              Some Content
+              <template #buttons="{ close }">
                 <button class="btn" @click="close">Close</button>
-            </template>
-        </Modal>
+              </template>
+            </Modal>
 
-        <Confirm
-            trigger="#confirm"
-            close-button
-            type="critical"
-            button-orientation="vertical"
-            title="Some Title"
-            @confirm="onConfirm">
-            Confirm
-        </Confirm>
+            <Modal
+              trigger="#modal-sm"
+              close-button
+              size="sm"
+              button-orientation="vertical"
+              title="modal-sm"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
 
-        <Alert
-            trigger="#alert"
-            close-button
-            type="critical"
-            button-orientation="vertical"
-            title="Some Title">
-            Aert
-        </Alert>
+            <Modal
+              trigger="#modal-md"
+              close-button
+              size="md"
+              button-orientation="vertical"
+              title="modal-md"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
 
-        <!-- <h3 class="text-xl mb-3 mt-3">Simple Modal</h3>
+            <Modal
+              trigger="#modal-lg"
+              close-button
+              size="lg"
+              button-orientation="vertical"
+              title="modal-lg"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-xl"
+              close-button
+              size="xl"
+              button-orientation="vertical"
+              title="modal-xl"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-2xl"
+              close-button
+              size="2xl"
+              button-orientation="vertical"
+              title="modal-2xl"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-3xl"
+              close-button
+              size="3xl"
+              button-orientation="vertical"
+              title="modal-3xl"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-4xl"
+              close-button
+              size="4xl"
+              button-orientation="vertical"
+              title="modal-4xl"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-5xl"
+              close-button
+              size="5xl"
+              button-orientation="vertical"
+              title="modal-5xl"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-screen"
+              close-button
+              size="screen"
+              button-orientation="vertical"
+              title="Fullscreen Modal"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+        </div>
+
+        <h3 class="text-lg mb-3">Tailwind Sizes</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-125" class="btn btn-primary">modal-125</button>
+            <button id="modal-150" class="btn btn-primary">modal-150</button>
+            <button id="modal-175" class="btn btn-primary">modal-175</button>
+            <button id="modal-200" class="btn btn-primary">modal-200</button>
+
+            <Modal
+              trigger="#modal-125"
+              close-button
+              class="modal-125"
+              button-orientation="vertical"
+              title="modal-125"
+            >
+              500px
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-150"
+              close-button
+              class="modal-150"
+              button-orientation="vertical"
+              title="modal-150"
+            >
+              600px
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-175"
+              close-button
+              class="modal-175"
+              button-orientation="vertical"
+              title="modal-175"
+            >
+              700px
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+
+            <Modal
+              trigger="#modal-200"
+              close-button
+              class="modal-200"
+              button-orientation="vertical"
+              title="modal-200"
+            >
+              800px
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+        </div>
+
+        <h3 class="text-lg mb-3">Arbitrary Sizes</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-400px" class="btn btn-primary">modal-[400px]</button>
+            <button id="modal-700px" class="btn btn-primary">modal-[700px]</button>
+            <button id="modal-100" class="btn btn-primary">modal-[100%]</button>
+            <button id="modal-w-h" class="btn btn-primary">modal-w-[30vw] modal-h-[100vh]</button>
+            
+            <Modal
+              trigger="#modal-400px"
+              close-button
+              class="modal-[400px]"
+              button-orientation="vertical"
+              title="modal-[400px]"
+            >
+              Some Content
+              <template #buttons="{ close }">
+            <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+            
+            <Modal
+              trigger="#modal-700px"
+              close-button
+              class="modal-[700px]"
+              button-orientation="vertical"
+              title="modal-[700px]"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+        
+            <Modal
+              trigger="#modal-100"
+              close-button
+              class="modal-[100%]"
+              button-orientation="vertical"
+              title="modal-[100%]"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+        
+            <Modal
+              trigger="#modal-w-h"
+              close-button
+              class="modal-w-[30vw] modal-h-[100vh]"
+              button-orientation="vertical"
+              title="modal-w-[30vw] modal-h-[100vh]"
+            >
+              Some Content
+              <template #buttons="{ close }">
+                <button class="btn" @click="close">Close</button>
+              </template>
+            </Modal>
+        </div>
+
+        <h3 class="text-2xl mb-3">Colors</h3>
+
+        <h3 class="text-lg mb-3">Predetermined Colors</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-primary" class="btn btn-primary">Primary</button>
+            <button id="modal-secondary" class="btn btn-secondary">Secondary</button>
+            <button id="modal-success" class="btn btn-success">Success</button>
+            <button id="modal-danger" class="btn btn-danger">Danger</button>
+            <button id="modal-warning" class="btn btn-warning">Warning</button>
+            <button id="modal-info" class="btn btn-info">Info</button>
+            <button id="modal-light" class="btn btn-light">Light</button>
+            <button id="modal-dark" class="btn btn-dark">Dark</button>
+
+            <Modal
+                trigger="#modal-primary"
+                close-button
+                class="modal-primary"
+                button-orientation="vertical"
+                title="modal-primary"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-secondary"
+                close-button
+                class="modal-secondary"
+                button-orientation="vertical"
+                title="modal-secondary"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-success"
+                close-button
+                class="modal-success"
+                button-orientation="vertical"
+                title="modal-success"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-danger"
+                close-button
+                class="modal-danger"
+                button-orientation="vertical"
+                title="modal-danger"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-warning"
+                close-button
+                class="modal-warning"
+                button-orientation="vertical"
+                title="modal-warning"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-info"
+                close-button
+                class="modal-info"
+                button-orientation="vertical"
+                title="modal-info"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-light"
+                close-button
+                class="modal-light"
+                button-orientation="vertical"
+                title="modal-light"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-dark"
+                close-button
+                class="modal-dark"
+                button-orientation="vertical"
+                title="modal-dark"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+        </div>
+
+        <h3 class="text-lg mb-3">Icon-only Colors</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-icon-primary" class="btn btn-primary">Primary</button>
+            <button id="modal-icon-secondary" class="btn btn-secondary">Secondary</button>
+            <button id="modal-icon-success" class="btn btn-success">Success</button>
+            <button id="modal-icon-danger" class="btn btn-danger">Danger</button>
+            <button id="modal-icon-warning" class="btn btn-warning">Warning</button>
+            <button id="modal-icon-info" class="btn btn-info">Info</button>
+
+            <Modal
+                trigger="#modal-icon-primary"
+                close-button
+                class="modal-icon-primary"
+                button-orientation="vertical"
+                title="modal-icon-primary"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-icon-secondary"
+                close-button
+                class="modal-icon-secondary"
+                button-orientation="vertical"
+                title="modal-icon-secondary"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-icon-success"
+                close-button
+                class="modal-icon-success"
+                button-orientation="vertical"
+                title="modal-icon-success"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-icon-danger"
+                close-button
+                class="modal-icon-danger"
+                button-orientation="vertical"
+                title="modal-icon-danger"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-icon-warning"
+                close-button
+                class="modal-icon-warning"
+                button-orientation="vertical"
+                title="modal-icon-warning"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-icon-info"
+                close-button
+                class="modal-icon-info"
+                button-orientation="vertical"
+                title="modal-icon-info"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            
+        </div>
+
+        <h3 class="text-lg mb-3">Custom Colors</h3>
+
+        <div class="flex gap-2 mb-3">
+            <button id="modal-green-500" class="btn btn-green-500">green-500</button>
+            <button id="modal-amber-500" class="btn btn-amber-500">amber-500</button>
+            <button id="modal-yellow-500" class="btn btn-yellow-500">yellow-500</button>
+            <button id="modal-red-500" class="btn btn-orange-500">orange-500</button>
+
+            <Modal
+                trigger="#modal-green-500"
+                close-button
+                class="modal-green-500"
+                button-orientation="vertical"
+                title="modal-green-500"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-amber-500"
+                close-button
+                class="modal-amber-500"
+                button-orientation="vertical"
+                title="modal-amber-500"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-yellow-500"
+                close-button
+                class="modal-yellow-500"
+                button-orientation="vertical"
+                title="modal-yellow-500"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+
+            <Modal
+                trigger="#modal-red-500"
+                close-button
+                class="modal-red-500"
+                button-orientation="vertical"
+                title="modal-red-500"
+            >
+                Some Content
+                <template #buttons="{close}">
+                    <button class="btn" @click="close">Close</button>
+                </template>
+            </Modal>
+        </div>
+
+
+        <!--<h3 class="text-xl mb-3 mt-3">Simple Modal</h3>
         
         <div class="h-100 translate-z-0">
             <div class="modal show">
@@ -79,473 +714,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <h3 class="text-xl mb-3 mt-3">Centered Single Action</h3>
-        
-        <div class="h-125 translate-z-0">
-                <div class="modal modal-center show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">Centered With Single Action</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <h3 class="text-xl mb-3 mt-3">Centered With Wide Buttons</h3>
-        
-        <div class="h-125 translate-z-0">
-                <div class="modal modal-center show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">Centered with Wide Buttons</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Confirm</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <h3 class="text-xl mb-3 mt-3">Sizes</h3>
-        
-        <div class="flex flex-col gap-4">
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-2xs show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-2xs</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-xs show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-xs</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-lg show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-lg</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-5xl show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-5xl</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-175 show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-175</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-[600px] show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-600px</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-[100%] show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-[100%]</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-w-[30vw] modal-h-[100vw] show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-w-[30vw] modal-h-[100vw]</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <h3 class="text-xl mb-3 mt-3">Colors</h3>
-        
-        <div class="flex flex-col gap-4">
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-secondary show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-secondary</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-danger show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-danger</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-100 translate-z-0">
-                <div class="modal modal-orange-500 show">
-                    <div class="modal-backdrop"></div>
-                    <div class="modal-container">
-                        <button type="button" class="modal-close-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                        <div class="modal-header">  
-                            <div class="modal-header-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                                </svg>
-                            </div>
-                            <div class="modal-header-text">
-                                <div id="modal-title" class="modal-title">modal-orange-500</div>
-                                <div id="modal-body" class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-outline-secondary">Cancel</button>
-                            <button class="btn">Confirm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> 
-        
-        <h3 class="text-xl mb-3 mt-3">Fullscreen modal</h3>
-        
-        <div class="h-200 translate-z-0">
-            <div class="modal modal-screen show">
-                <div class="modal-backdrop"></div>
-                <div class="modal-container">
-                    <button type="button" class="modal-close-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                    <div class="modal-header">  
-                        <div class="modal-header-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"></path>
-                            </svg>
-                        </div>
-                        <div class="modal-header-text">
-                            <div id="modal-title" class="modal-title">modal-screen</div>
-                            <div id="modal-body" class="modal-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-outline-secondary">Confirm</button>
-                        <button class="btn">Confirm</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
+        </div>-->
     </div>
 
     <script type="module">
