@@ -6,7 +6,7 @@ import ExclamationTriangleIcon from '../src/ExclamationTriangleIcon.vue';
 import InfoCircleIcon from '../src/InfoCircleIcon.vue';
 import XMarkIcon from '../src/XMarkIcon.vue';
 
-export type ModalSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | string;
+export type ModalSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
 
 export type ModalProps = {
     buttonBlock?: boolean,
@@ -21,13 +21,13 @@ export type ModalProps = {
     show?: boolean;
     title?: string | Component;
     trigger?: string | Element | (() => Element);
-    type?: 'info' | 'warning' | 'critical' | 'success'
+    type?: 'info' | 'warning' | 'critical' | 'danger' | 'success';
     size?: ModalSize;
-    color?: string;
     colors?: {
         info?: string;
         warning?: string;
         critical?: string;
+        danger?: string;
         success?: string;
     }
 }
@@ -46,13 +46,12 @@ const props = withDefaults(defineProps<ModalProps>(), {
     title: undefined,
     trigger: undefined,
     type: 'info',
-    size: 'modal-md',
-    color: 'modal-primary',
     colors: () => ({
-        info: 'modal-icon-primary',
-        warning: 'modal-icon-warning',
-        critical: 'modal-icon-danger',
-        success: 'modal-icon-success'
+        info: 'modal-primary',
+        warning: 'modal-warning',
+        critical: 'modal-danger',
+        danger: 'modal-danger',
+        success: 'modal-success'
     })
 });
 
@@ -78,6 +77,7 @@ const icon = computed(() => {
             info: InfoCircleIcon,
             warning: ExclamationTriangleIcon,
             critical: ExclamationCircleIcon,
+            danger: ExclamationCircleIcon,
             success: CheckCircleIcon
         }[props.type];
     }
@@ -89,6 +89,12 @@ const icon = computed(() => {
     return undefined;
 });
 
+const emit = defineEmits<{
+    confirm: [button: HTMLButtonElement, context: ModalContext];
+    'close-modal': [];
+    'open-modal': [];
+}>();
+
 async function open(): Promise<void> {
     showing.value = true;
         
@@ -96,6 +102,7 @@ async function open(): Promise<void> {
         mounted.value = true;
 
         setTimeout(() => {
+            emit('open-modal');
             resolve();
         }, 300);
     });
@@ -107,7 +114,7 @@ async function close(): Promise<void> {
 
         setTimeout(() => {
             showing.value = false;
-
+            emit('close-modal');
             resolve();
         }, 200);
     });
@@ -168,7 +175,11 @@ onUnmounted(() => {
         <div
             v-show="showing"
             class="modal"
-            :class="{show: showing}"
+            :class="[
+                {[colors[type] ?? '']: !!colors[type], 
+                show: showing}, 
+                `modal-${props.size}`]"
+            v-bind="$attrs"
             aria-labelledby="modal"
             role="dialog"
             aria-modal="true">
@@ -212,8 +223,7 @@ onUnmounted(() => {
                             v-bind="context">
                             <div
                                 v-if="icon"
-                                class="modal-header-icon"
-                                :class="{[colors[type] ?? '']: !!colors[type]}">
+                                class="modal-header-icon">
                                 <Component
                                     :is="icon"
                                     class="w-6 h-6" />

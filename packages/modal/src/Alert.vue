@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<ModalProps & {
     buttonBlock: false,
     buttonOrientation: 'horizontal',
     buttonPosition: 'end',
-    buttonLabel: 'Ok',
+    buttonLabel: 'OK',
     closeButton: false,
     content: undefined,
     dismissable: true,
@@ -55,7 +55,7 @@ defineExpose({
         <template #buttons="{ close }">
             <button
                 ref="confirmButton"
-                class="btn btn-secondary"
+                class="btn"
                 @click="close()">
                 {{ buttonLabel }}
             </button>

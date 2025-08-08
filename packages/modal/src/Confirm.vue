@@ -71,13 +71,7 @@ defineExpose({
             <button
                 ref="confirmButton"
                 class="btn"
-                :class="{
-                    'flex-1': buttonBlock,
-                    'btn-primary': type === 'info',
-                    'btn-warning': type === 'warning',
-                    'btn-danger': type === 'critical',
-                    'btn-success': type === 'success',
-                }"
+                
                 @click="emit('confirm', confirmButton!, context)">
                 {{ confirmLabel }}
             </button>

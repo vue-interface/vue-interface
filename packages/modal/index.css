@@ -284,7 +284,7 @@
             background-color: var(--modal-footer-dark-background-color);
         }
         
-        button.btn:last-child {
+        button.btn:last-child:not([class*='btn-']) {
             @apply btn-primary;
         }
         
@@ -323,7 +323,7 @@
     .modal-footer {
         /* Automatically style confirm button based on modal color, but does not allow for user
         to specify color and then override it */
-        button.btn:last-child {
+        button.btn:last-child:not([class*='btn-']) {
             background-color: --value(--btn-*, --color-*, [color]);
             border-color: --value(--btn-*, --color-*, [color]);
             color: --value(--text-for-*, --btn-*-text);
