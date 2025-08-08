@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, FunctionalComponent, onMounted, onUnmounted, ref, watchEffect, type Component, type RenderFunction } from 'vue';
+import { computed, FunctionalComponent, onMounted, onUnmounted, ref, watchEffect, useAttrs, type Component, type RenderFunction } from 'vue';
 import CheckCircleIcon from '../src/CheckCircleIcon.vue';
 import ExclamationCircleIcon from '../src/ExclamationCircleIcon.vue';
 import ExclamationTriangleIcon from '../src/ExclamationTriangleIcon.vue';
@@ -168,6 +168,8 @@ onUnmounted(() => {
         trigger.value.removeEventListener('click', onClickTrigger);
     }
 });
+
+const attrs = useAttrs();
 </script>
 
 <template>
@@ -176,7 +178,7 @@ onUnmounted(() => {
             v-show="showing"
             class="modal"
             :class="[
-                {[colors[type] ?? '']: !!colors[type], 
+                {[colors[props.type] ?? '']: !attrs.class && colors[type], 
                 show: showing}, 
                 `modal-${props.size}`]"
             v-bind="$attrs"
