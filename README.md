@@ -1,6 +1,6 @@
 # Vue Interface
 
-This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Components are organized as a in packages. The purpose of this monorepo is provide a convenient and efficient way to develop and maintain UI components that are dependent on each other without relying on symlinks and other hacks that provide less than optimal development experiences. The goal is provide a collection of CLI tools so you can develop, version and publish for individual packages all from the root of the repo. The monorepo also utilizes [Storybook.js](https://storybook.js.org/) for clean documentation. 
+This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Components are organized  in packages. The purpose of this monorepo is to provide a convenient and efficient way to develop and maintain UI components that are dependent on each other without relying on symlinks and other hacks that provide less than optimal development experiences. The goal is provide a collection of CLI tools so you can develop, version and publish for individual packages all from the root of the repo. The monorepo also utilizes [Storybook.js](https://storybook.js.org/) for clean documentation. 
 
 ## Installation
 
