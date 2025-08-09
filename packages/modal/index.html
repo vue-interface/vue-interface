@@ -18,8 +18,11 @@
                 trigger="#modal"
                 close-button
                 button-orientation="vertical"
-                title="Some Title">
-                Some Content
+                title="Some Title"
+                content="Some Content"
+                
+            >
+                
                 <template #buttons="{close}">
                     <button class="btn" @click="close">Close</button>
                 </template>
@@ -621,7 +624,7 @@
             <button id="modal-green-500" class="btn btn-green-500">green-500</button>
             <button id="modal-amber-500" class="btn btn-amber-500">amber-500</button>
             <button id="modal-yellow-500" class="btn btn-yellow-500">yellow-500</button>
-            <button id="modal-red-500" class="btn btn-orange-500">orange-500</button>
+            <button id="modal-red-500" class="btn btn-red-500">red-500</button>
 
             <Modal
                 trigger="#modal-green-500"

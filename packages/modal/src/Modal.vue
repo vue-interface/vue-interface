@@ -6,7 +6,7 @@ import ExclamationTriangleIcon from '../src/ExclamationTriangleIcon.vue';
 import InfoCircleIcon from '../src/InfoCircleIcon.vue';
 import XMarkIcon from '../src/XMarkIcon.vue';
 
-export type ModalSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
+export type ModalSize = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | 'screen';
 
 export type ModalProps = {
     buttonBlock?: boolean,
@@ -23,6 +23,7 @@ export type ModalProps = {
     trigger?: string | Element | (() => Element);
     type?: 'info' | 'warning' | 'critical' | 'danger' | 'success';
     size?: ModalSize;
+    buttons?: (context: ModalContext) => any;
     colors?: {
         info?: string;
         warning?: string;
@@ -277,7 +278,12 @@ const attrs = useAttrs();
                             }">
                             <slot
                                 name="buttons"
-                                v-bind="context" />
+                                v-bind="context">
+                                <Component
+                                    v-if="buttons"
+                                    :is="buttons"
+                                    v-bind="context" />
+                            </slot>
                         </div>
                     </slot>
                 </div>

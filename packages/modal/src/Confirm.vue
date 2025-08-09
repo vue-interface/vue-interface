@@ -39,6 +39,13 @@ const modal = useTemplateRef<InstanceType<typeof Modal>>('modal');
 const cancelButton = useTemplateRef<HTMLButtonElement>('cancelButton');
 const confirmButton = useTemplateRef<HTMLButtonElement>('confirmButton');
 
+function handleConfirm(context: ModalContext) {
+    if (confirmButton.value) {
+        emit('confirm', confirmButton.value, context);
+        context.close();
+    }
+}
+
 defineExpose({
     modal,
     cancelButton,
@@ -71,8 +78,7 @@ defineExpose({
             <button
                 ref="confirmButton"
                 class="btn"
-                
-                @click="emit('confirm', confirmButton!, context)">
+                @click="handleConfirm(context)">
                 {{ confirmLabel }}
             </button>
         </template>
