@@ -4,6 +4,7 @@
 node_modules
 .pnp
 .pnp.js
+docs/.vitepress/cache
 
 # Local env files
 .env
