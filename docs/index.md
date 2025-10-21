@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "Vue Interface"
-  text: "Complete documentation for the Vue Interface component library"
-  tagline: My great project tagline
+  # text: ""
+  tagline: Complete documentation for the Vue Interface component library
   actions:
     - theme: brand
       text: Markdown Examples
