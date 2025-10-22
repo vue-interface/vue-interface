@@ -15,35 +15,31 @@ export default defineConfig({
     	nav: [
     	  	{ text: 'Home', link: '/' },
     	  	{ text: 'Guide', link: 'getting-started', activeMatch: 'getting-started' },
-			{ text: 'Components', link: '/components', activeMatch: '/components/' },
+			{ text: 'Components', link: '/components', activeMatch: 'components' },
     	],
 
-    	sidebar: {
-    	  	'/': {
-				base: '/',
-    	  	  	items: [
-					{
-						text: 'Introduction',
-						collapsed: false,
-						items: [
-							{ text: 'What is Vue Interface?', link: 'about' },
-							{ text: 'Getting Started', link: 'getting-started' },
-    	  	  	  			{ text: 'Runtime API Examples', link: 'api-examples' }
-						]
-					}
-    	  	  	]
-    	  	},
-			'components': {
-				items: [
-					{
-						text: 'Buttons',
-						collapsed: false,
-						items: [
-							{ text: 'Button', link: '../../packages/btn' }
-						]
-					}
-				]
-			}
+		sidebar: {
+		  	'/': [
+				{
+		  	    	text: 'Introduction',
+		  	    	collapsed: false,
+		  	    	items: [
+		  	    	  	{ text: 'What is Vue Interface?', link: '/about' },
+		  	    	  	{ text: 'Getting Started', link: '/getting-started' }
+		  	    	]
+		  	  	},
+				{
+					text: 'Components',
+		  	    	collapsed: false,
+		  	    	items: [
+						{ text: 'Index of Components', link: '/components' },
+		  	    	  	{ text: 'Directives', link: '/directives' },
+		  	    	  	{ text: 'Buttons', link: '/buttons' },
+		  	    	  	{ text: 'Form Fields', link: '/form-fields' },
+						{ text: 'Miscellaneous', link: '/misc' }
+		  	    	]
+				}
+		  	],
 		},
 
     	socialLinks: [

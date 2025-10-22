@@ -4,7 +4,7 @@
 
 ### Package Manager
 
-Package manager like [pnpm](https://pnpm.io), [yarn](https://classic.yarnpkg.com/en/), or [npm](https://www.npmjs.com).
+Install using a package manager like [pnpm](https://pnpm.io), [yarn](https://classic.yarnpkg.com/en/), or [npm](https://www.npmjs.com).
   
 ::: code-group
 ```bash [pnpm]
