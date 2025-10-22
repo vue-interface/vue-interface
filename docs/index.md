@@ -8,11 +8,11 @@ hero:
   tagline: Complete documentation for the Vue Interface component library
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /getting-started
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: About
+      link: /about
 
 features:
   - title: Feature A

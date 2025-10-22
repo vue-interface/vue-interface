@@ -14,20 +14,21 @@ export default defineConfig({
 
     	nav: [
     	  	{ text: 'Home', link: '/' },
-    	  	{ text: 'Examples', link: '/markdown-examples', activeMatch: 'markdown-examples' },
+    	  	{ text: 'Guide', link: 'getting-started', activeMatch: 'getting-started' },
 			{ text: 'Components', link: '/components', activeMatch: '/components/' },
     	],
 
     	sidebar: {
-    	  	'markdown-examples': {
-				base: '/markdown-examples/',
+    	  	'/': {
+				base: '/',
     	  	  	items: [
 					{
-						text: 'Markdown Examples',
+						text: 'Introduction',
 						collapsed: false,
 						items: [
-							{ text: 'Markdown Examples', link: '/markdown-examples' },
-    	  	  	  			{ text: 'Runtime API Examples', link: '/api-examples' }
+							{ text: 'What is Vue Interface?', link: 'about' },
+							{ text: 'Getting Started', link: 'getting-started' },
+    	  	  	  			{ text: 'Runtime API Examples', link: 'api-examples' }
 						]
 					}
     	  	  	]
@@ -50,7 +51,7 @@ export default defineConfig({
     	],
 
 		editLink: {
-            pattern: 'https://github.com/vue-interface/vue-interface/edit/jsx/docs/:path'
+            pattern: 'https://github.com/vue-interface/vue-interface-new/edit/jsx/docs/:path'
         }
   	}
 })
