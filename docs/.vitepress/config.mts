@@ -30,9 +30,9 @@ export default defineConfig({
 		  	  	},
 				{
 					text: 'Components',
+					link: '/components',
 		  	    	collapsed: false,
 		  	    	items: [
-						{ text: 'Index of Components', link: '/components' },
 		  	    	  	{ text: 'Directives', link: '/directives' },
 		  	    	  	{ text: 'Buttons', link: '/buttons' },
 		  	    	  	{ text: 'Form Fields', link: '/form-fields' },
