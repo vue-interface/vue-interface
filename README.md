@@ -23,3 +23,11 @@ pnpm dev
 
 To open [Storybook](https://storybook.js.org/) from the monorepo, ensure you are in the root directory, then
 run the following command `pnpm storybook`. This will build the stories and open Storybook on `localhost:6006`.
+
+## VitePress Documentation
+This monorepo utilizes [VitePress](https://vuejs.github.io/vitepress/v1/) for detailed documentation. To open, ensure you are in the root directory, then run:
+
+```bash
+pnpm run docs:dev
+```
+This will open VitePress on `localhost:5173`.
