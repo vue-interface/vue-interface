@@ -1,7 +1,23 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+ 	srcDir: path.resolve(__dirname, '../..'),
+  	srcExclude: ['**/node_modules/**', '**/src/**', '**/dist/**'],
+	
+  	vite: {
+        plugins: [
+          	tailwindcss() as any
+        ],
+  	  	resolve: {
+  	  	  	alias: {
+  	  	  	  	'@packages': path.resolve(__dirname, '../../packages')
+  	  	  	}
+  	  	},
+  	},
+	
 	lang: 'en-US',
     title: "Vue Interface",
     description: "Complete documentation for the Vue Interface component library",
@@ -13,34 +29,60 @@ export default defineConfig({
         },
 
     	nav: [
-    	  	{ text: 'Home', link: '/' },
-    	  	{ text: 'Guide', link: 'getting-started', activeMatch: 'getting-started' },
-			{ text: 'Components', link: '/components', activeMatch: 'components' },
+    	  	{ text: 'Home', link: '/docs' },
+    	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
+			{ text: 'Components', link: '/docs/components', activeMatch: 'components' },
     	],
 
-		sidebar: {
-		  	'/': [
-				{
-		  	    	text: 'Introduction',
-		  	    	collapsed: false,
-		  	    	items: [
-		  	    	  	{ text: 'What is Vue Interface?', link: '/about' },
-		  	    	  	{ text: 'Getting Started', link: '/getting-started' }
-		  	    	]
-		  	  	},
-				{
-					text: 'Components',
-					link: '/components',
-		  	    	collapsed: false,
-		  	    	items: [
-		  	    	  	{ text: 'Directives', link: '/directives' },
-		  	    	  	{ text: 'Buttons', link: '/buttons' },
-		  	    	  	{ text: 'Form Fields', link: '/form-fields' },
-						{ text: 'Miscellaneous', link: '/misc' }
-		  	    	]
-				}
-		  	],
-		},
+		sidebar: [
+			{
+	  	    	text: 'Introduction',
+	  	    	collapsed: false,
+	  	    	items: [
+	  	    	  	{ text: 'What is Vue Interface?', link: '/docs/about' },
+	  	    	  	{ text: 'Getting Started', link: '/docs/getting-started' }
+	  	    	]
+	  	  	},
+			{
+				text: 'Components',
+				link: '/docs/components',
+	  	    	collapsed: false,
+	  	    	items: [
+	  	    	  	{ text: 'Directives', collapsed: false,
+						items: [
+              				{ text: 'Autogrow', link: 'autogrow' }
+            			] 
+					 },
+	  	    	  	{ text: 'Buttons', collapsed: false,
+						items: [
+              				{ text: 'Button', link: '/packages/btn/btn' },
+              				{ text: 'Button Group', link: '/btn/btn-group' },
+              				{ text: 'Button Dropdown', link: 'btn-dropdown' },
+              				{ text: 'Button Activity', link: 'btn-activity' },
+            			] 
+					},
+	  	    	  	{ text: 'Form Fields', collapsed: false,
+						items: [
+              				{ text: 'Form Control', link: 'form-control' },
+              				{ text: 'Checkbox Field', link: 'checkbox-field' },
+              				{ text: 'Input Field', link: 'input-field' },
+              				{ text: 'Light Switch Field', link: 'light-switch-field' },
+              				{ text: 'Radio Field', link: 'radio-field' },
+              				{ text: 'Select Field', link: 'select-field' },
+              				{ text: 'Textarea Field', link: 'textarea-field' }
+            			]
+					},
+					{ text: 'Miscellaneous', collapsed: false,
+						items: [
+							{ text: 'Activity Indicator', link: 'activity-indicator' },
+							{ text: 'Dropdown Menu', link: 'dropdown-menu' },
+							{ text: 'Modal', link: 'modal' },
+							{ text: 'Tooltip', link: 'tooltip' },
+						]
+					}
+	  	    	]
+			}
+		],
 
     	socialLinks: [
     	  	{ icon: 'github', link: 'https://github.com/vue-interface/vue-interface-new' }
