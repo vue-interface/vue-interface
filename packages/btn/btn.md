@@ -2,8 +2,8 @@
 title: Button
 ---
 
-<script setup>
-import '@packages/btn/index.css'
+<script type="module">
+import './index.css'
 </script>
 
 # Button
@@ -13,7 +13,7 @@ The `btn` utility class provides a flexible and customizable button component sy
 ## Color Variants
 
 Standard button color variants:
-<div class="bg-red-500 text-white p-1">Test</div>
+<div class="bg-red-200 text-black p-1">Test</div>
 
 <div class="flex gap-2 my-4">
   <button class="btn btn-primary">Primary</button>

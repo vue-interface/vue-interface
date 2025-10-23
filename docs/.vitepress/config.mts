@@ -3,14 +3,11 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
- 	srcDir: path.resolve(__dirname, '../..'),
-  	srcExclude: ['**/node_modules/**', '**/src/**', '**/dist/**'],
-	
-  	vite: {
-        plugins: [
-          	tailwindcss() as any
-        ],
+export default defineConfig({	
+	srcDir: path.resolve(__dirname, '../../'),
+  	srcExclude: ['**/node_modules/**', '**/dist/**'],
+	vite: {
+        plugins: [tailwindcss() as any],
   	  	resolve: {
   	  	  	alias: {
   	  	  	  	'@packages': path.resolve(__dirname, '../../packages')
@@ -29,7 +26,7 @@ export default defineConfig({
         },
 
     	nav: [
-    	  	{ text: 'Home', link: '/docs' },
+    	  	{ text: 'Home', link: '/docs/index' },
     	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
 			{ text: 'Components', link: '/docs/components', activeMatch: 'components' },
     	],
@@ -48,7 +45,7 @@ export default defineConfig({
 				link: '/docs/components',
 	  	    	collapsed: false,
 	  	    	items: [
-	  	    	  	{ text: 'Directives', collapsed: false,
+	  	    	  	{ text: 'Directives', collapsed: true,
 						items: [
               				{ text: 'Autogrow', link: 'autogrow' }
             			] 
@@ -57,11 +54,11 @@ export default defineConfig({
 						items: [
               				{ text: 'Button', link: '/packages/btn/btn' },
               				{ text: 'Button Group', link: '/btn/btn-group' },
-              				{ text: 'Button Dropdown', link: 'btn-dropdown' },
-              				{ text: 'Button Activity', link: 'btn-activity' },
+              				{ text: 'Button Dropdown', link: '/btn-dropdown' },
+              				{ text: 'Button Activity', link: '/btn-activity' },
             			] 
 					},
-	  	    	  	{ text: 'Form Fields', collapsed: false,
+	  	    	  	{ text: 'Form Fields', collapsed: true,
 						items: [
               				{ text: 'Form Control', link: 'form-control' },
               				{ text: 'Checkbox Field', link: 'checkbox-field' },
@@ -72,7 +69,7 @@ export default defineConfig({
               				{ text: 'Textarea Field', link: 'textarea-field' }
             			]
 					},
-					{ text: 'Miscellaneous', collapsed: false,
+					{ text: 'Miscellaneous', collapsed: true,
 						items: [
 							{ text: 'Activity Indicator', link: 'activity-indicator' },
 							{ text: 'Dropdown Menu', link: 'dropdown-menu' },
