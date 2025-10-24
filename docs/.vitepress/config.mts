@@ -6,6 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({	
 	srcDir: path.resolve(__dirname, '../../'),
   	srcExclude: ['**/node_modules/**', '**/dist/**'],
+
+	rewrites: {
+		'docs/index.md': 'index.md'
+	},
+
 	vite: {
         plugins: [tailwindcss() as any],
   	  	resolve: {
