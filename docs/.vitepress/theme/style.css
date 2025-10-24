@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* .test-tailwind {
+  @apply bg-green-500 text-white p-4;
+}
+.btn {
+  background: blue !important;
+  padding: 20px !important;
+} */
+
+@import "@packages/btn/index.css";
