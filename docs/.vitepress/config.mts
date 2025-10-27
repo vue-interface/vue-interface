@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitepress'
-import path from 'path'
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({	
@@ -12,8 +12,24 @@ export default defineConfig({
 	},
 
 	vite: {
-        plugins: [tailwindcss()],
+        plugins: [
+			tailwindcss(), 
+            {
+                name: 'exclude-vitepress-base-css',
+                enforce: 'pre',
+                load(id) {
+                    if (id.endsWith('theme-default/styles/base.css')) {
+                        return ''
+                    }
+                }
+            }
+		],
   	  	resolve: {
+			conditions: [
+				'source',
+				'import',
+				'require',
+			],
   	  	  	alias: {
   	  	  	  	'@packages': path.resolve(__dirname, '../../packages')
   	  	  	}
