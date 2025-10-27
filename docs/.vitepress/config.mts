@@ -12,7 +12,7 @@ export default defineConfig({
 	},
 
 	vite: {
-        plugins: [tailwindcss() as any],
+        plugins: [tailwindcss()],
   	  	resolve: {
   	  	  	alias: {
   	  	  	  	'@packages': path.resolve(__dirname, '../../packages')

@@ -11,22 +11,16 @@
     "clean:storybook": "node ./clean-storybook.js",
     "prepare": "husky",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:build": "spress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.0.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^17.8.1",
-    "@storybook/addon-docs": "^9.0.18",
-    "@storybook/addon-onboarding": "^9.0.18",
-    "@storybook/addon-themes": "^9.0.18",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^24.1.0",
     "@vitejs/plugin-vue": "^6.0.1",
-    "@vitejs/plugin-vue-jsx": "^5.0.1",
-    "@vue/babel-plugin-jsx": "^1.4.0",
     "autoprefixer": "^10.4.21",
     "change-case": "^5.4.4",
     "eslint": "^9.32.0",
@@ -42,7 +36,7 @@
     "typescript-eslint": "^8.38.0",
     "vite": "^7.0.6",
     "vite-plugin-dts": "^4.5.4",
-    "vitepress": "1.6.4",
+    "vitepress": "2.0.0-alpha.12",
     "vue": "^3.3.4",
     "vue-tsc": "^3.0.0"
   },
@@ -52,8 +46,6 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
-    "@storybook/vue3": "^9.0.18",
-    "@storybook/vue3-vite": "^9.0.18",
     "vue": "^3.5.18"
   }
 }
