@@ -73,7 +73,7 @@ export default defineConfig({
 					 },
 	  	    	  	{ text: 'Buttons', collapsed: false,
 						items: [
-              				{ text: 'Button', link: '/packages/btn/btn' },
+              				{ text: 'Button', link: '/packages/btn/docs/btn' },
               				{ text: 'Button Group', link: '/btn/btn-group' },
               				{ text: 'Button Dropdown', link: '/btn-dropdown' },
               				{ text: 'Button Activity', link: '/btn-activity' },

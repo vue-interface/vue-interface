@@ -8,7 +8,7 @@ Custom directives for enhanced functionality.
 
 ## Buttons
 Button components and variants for user interactions.
-- [Button](/packages/btn/btn)
+- [Button](/packages/btn/docs/btn)
 - [Button Group](/packages/btn/btn-group)
 - [Button Dropdown](/packages/btn-dropdown)
 - [Button Activity](/packages/btn-activity)
