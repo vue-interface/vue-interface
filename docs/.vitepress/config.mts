@@ -91,7 +91,7 @@ export default defineConfig({
     	],
 
 		editLink: {
-            pattern: 'https://github.com/vue-interface/vue-interface-new/edit/jsx/docs/:path'
+            pattern: 'https://github.com/vue-interface/vue-interface-new/edit/jsx/:path'
         }
   	}
 })
