@@ -2,30 +2,19 @@
 
 Browse our component library organized into the following categories:
 
-## Directives
-Custom directives for enhanced functionality.
+- [Activity Indicator](/activity-indicator)
 - [Autogrow](/autogrow)
-
-## Buttons
-Button components and variants for user interactions.
 - [Button](/packages/btn/docs/btn)
-- [Button Group](/packages/btn/btn-group)
-- [Button Dropdown](/packages/btn-dropdown)
 - [Button Activity](/packages/btn-activity)
-
-## Form Fields
-Form fields and form controls for data entry.
-- [Form Control](/form-control)
+- [Button Dropdown](/packages/btn-dropdown)
+- [Button Group](/packages/btn/btn-group)
 - [Checkbox Field](/checkbox-field)
+- [Dropdown Menu](/dropdown-menu)
+- [Form Control](/form-control)
 - [Input Field](/input-field)
 - [Light Switch Field](/light-switch-field)
+- [Modal](/modal)
 - [Radio Field](/radio-field)
 - [Select Field](/select-field)
 - [Textarea Field](/textarea-field)
-
-## Miscellaneous
-Miscellaneous utility components and helpers.
-- [Activity Indicator](/activity-indicator)
-- [Dropdown Menu](/dropdown-menu)
-- [Modal](/modal)
 - [Tooltip](/tooltip)

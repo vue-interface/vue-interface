@@ -1,6 +1,23 @@
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
+import fs from 'fs';
 import { defineConfig } from 'vitepress';
+
+function generateComponentsSidebar() {
+  	const filePath = path.resolve(__dirname, '../../docs/components.md');
+  	const content = fs.readFileSync(filePath, 'utf-8');
+
+  	const regex = /\- \[([^\]]+)\]\(([^)]+)\)/g;
+  	const items = [];
+  	let match;
+
+  	while ((match = regex.exec(content)) !== null) {
+  	  	const [, text, link] = match;
+  	  	items.push({ text, link });
+  	}
+
+  	return items;
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({	
@@ -62,44 +79,11 @@ export default defineConfig({
 	  	    	]
 	  	  	},
 			{
-				text: 'Components',
+				text: 'Packages',
 				link: '/docs/components',
 	  	    	collapsed: false,
-	  	    	items: [
-	  	    	  	{ text: 'Directives', collapsed: true,
-						items: [
-              				{ text: 'Autogrow', link: 'autogrow' }
-            			] 
-					 },
-	  	    	  	{ text: 'Buttons', collapsed: false,
-						items: [
-              				{ text: 'Button', link: '/packages/btn/docs/btn' },
-              				{ text: 'Button Group', link: '/btn/btn-group' },
-              				{ text: 'Button Dropdown', link: '/btn-dropdown' },
-              				{ text: 'Button Activity', link: '/btn-activity' },
-            			] 
-					},
-	  	    	  	{ text: 'Form Fields', collapsed: true,
-						items: [
-              				{ text: 'Form Control', link: 'form-control' },
-              				{ text: 'Checkbox Field', link: 'checkbox-field' },
-              				{ text: 'Input Field', link: 'input-field' },
-              				{ text: 'Light Switch Field', link: 'light-switch-field' },
-              				{ text: 'Radio Field', link: 'radio-field' },
-              				{ text: 'Select Field', link: 'select-field' },
-              				{ text: 'Textarea Field', link: 'textarea-field' }
-            			]
-					},
-					{ text: 'Miscellaneous', collapsed: true,
-						items: [
-							{ text: 'Activity Indicator', link: 'activity-indicator' },
-							{ text: 'Dropdown Menu', link: 'dropdown-menu' },
-							{ text: 'Modal', link: 'modal' },
-							{ text: 'Tooltip', link: 'tooltip' },
-						]
-					}
-	  	    	]
-			}
+	  	    	items: generateComponentsSidebar()
+			},
 		],
 
     	socialLinks: [
