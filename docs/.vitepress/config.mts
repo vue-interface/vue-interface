@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { defineConfig } from 'vitepress';
 
-function generateComponentsSidebar() {
+function generatePackagesSidebar() {
   	const filePath = path.resolve(__dirname, '../../docs/components.md');
   	const content = fs.readFileSync(filePath, 'utf-8');
 
@@ -66,7 +66,7 @@ export default defineConfig({
     	nav: [
     	  	{ text: 'Home', link: '/docs/index' },
     	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
-			{ text: 'Components', link: '/docs/components', activeMatch: 'components' },
+			{ text: 'Pakcages', link: '/docs/packages', activeMatch: 'pacakges' },
     	],
 
 		sidebar: [
@@ -80,9 +80,9 @@ export default defineConfig({
 	  	  	},
 			{
 				text: 'Packages',
-				link: '/docs/components',
+				link: '/docs/packages',
 	  	    	collapsed: false,
-	  	    	items: generateComponentsSidebar()
+	  	    	items: generatePackagesSidebar()
 			},
 		],
 

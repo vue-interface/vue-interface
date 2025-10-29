@@ -1,4 +1,4 @@
-# Components
+# Packages
 
 Browse our component library organized into the following categories:
 
