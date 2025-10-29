@@ -4,7 +4,7 @@ import fs from 'fs';
 import { defineConfig } from 'vitepress';
 
 function generatePackagesSidebar() {
-  	const filePath = path.resolve(__dirname, '../../docs/components.md');
+  	const filePath = path.resolve(__dirname, '../../docs/packages.md');
   	const content = fs.readFileSync(filePath, 'utf-8');
 
   	const regex = /\- \[([^\]]+)\]\(([^)]+)\)/g;
@@ -48,7 +48,7 @@ export default defineConfig({
 				'require',
 			],
   	  	  	alias: {
-  	  	  	  	'@packages': path.resolve(__dirname, '../../packages')
+  	  	  	  	'@': path.resolve(__dirname, '../../packages')
   	  	  	}
   	  	},
   	},
@@ -66,7 +66,7 @@ export default defineConfig({
     	nav: [
     	  	{ text: 'Home', link: '/docs/index' },
     	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
-			{ text: 'Pakcages', link: '/docs/packages', activeMatch: 'pacakges' },
+			{ text: 'Packages', link: '/docs/packages', activeMatch: 'pacakges' },
     	],
 
 		sidebar: [

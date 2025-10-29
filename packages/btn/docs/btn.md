@@ -10,6 +10,14 @@ import '../index.css'
 
 The `btn` utility class provides a flexible and customizable button component system with color variants, sizes, and states.
 
+<button class="btn btn-primary">Button</button>
+
+```html 
+<button class="btn btn-primary">Button</button>
+```
+
+This is the default button where the `btn` class provides the default sizing and the `btn-primary` class applies the primary variant color. 
+
 ## Color Variants
 
 The button component supports eight standard color variants. Each variant applies a solid background color with appropriate text contrast.
@@ -26,16 +34,7 @@ The button component supports eight standard color variants. Each variant applie
 </div>
 
 ::: details Show Code
-```html
-<button class="btn btn-primary">Primary</button>
-<button class="btn btn-secondary">Secondary</button>
-<button class="btn btn-success">Success</button>
-<button class="btn btn-danger">Danger</button>
-<button class="btn btn-warning">Warning</button>
-<button class="btn btn-info">Info</button>
-<button class="btn btn-light">Light</button>
-<button class="btn btn-dark">Dark</button>
-```
+<<< @/packages/btn/index.html#colorVariants{html}
 :::
 
 ## Custom Colors
@@ -46,15 +45,12 @@ You can use any Tailwind color with its shade value using the `btn-[color]-[shad
     <button class="btn btn-red-700">Red-700</button>
     <button class="btn btn-blue-700">Blue-700</button>
     <button class="btn btn-green-700 ">Green-700</button>
-    <button class="btn btn-dark">Black</button>
+    <button class="btn btn-black">Black</button>
 </div>
 
-```html
-<button class="btn btn-red-700">Red-700</button>
-<button class="btn btn-blue-700">Blue-700</button>
-<button class="btn btn-green-700 ">Green-700</button>
-<button class="btn btn-dark">Black</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#customColors{html}
+:::
 
 ## Color Shades
 
@@ -73,20 +69,11 @@ Demonstrates the full range of Tailwind color shades (50-900) available for butt
     <button class="btn btn-red-900">Red 900</button>
 </div>
 
-```html
-<button class="btn btn-red-50">Red 50</button>
-<button class="btn btn-red-100">Red 100</button>
-<button class="btn btn-red-200">Red 200</button>
-<button class="btn btn-red-300">Red 300</button>
-<button class="btn btn-red-400">Red 400</button>
-<button class="btn btn-red-500">Red 500</button>
-<button class="btn btn-red-600">Red 600</button>
-<button class="btn btn-red-700">Red 700</button>
-<button class="btn btn-red-800">Red 800</button>
-<button class="btn btn-red-900">Red 900</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#colorShades{html}
+:::
 
-## Outline Variants
+## Outline Buttons
 
 Outline buttons feature transparent backgrounds with colored borders and text. They provide a lighter visual weight compared to solid buttons and are useful for secondary actions. Syntax: `btn-outline-[variant]` or `btn-outline-[custom color]`.
 
@@ -101,16 +88,9 @@ Outline buttons feature transparent backgrounds with colored borders and text. T
     <button class="btn btn-outline-dark">Dark</button>         
 </div>
 
-```html
-<button class="btn btn-outline-primary">Primary</button>
-<button class="btn btn-outline-secondary">Secondary</button>
-<button class="btn btn-outline-success">Success</button>
-<button class="btn btn-outline-danger">Danger</button>
-<button class="btn btn-outline-warning">Warning</button>
-<button class="btn btn-outline-info">Info</button>
-<button class="btn btn-outline-light">Light</button>
-<button class="btn btn-outline-dark">Dark</button>  
-```
+::: details Show Code
+<<< @/packages/btn/index.html#outlineButtons{html}
+:::
 
 ## Outline Color Shades
 
@@ -129,18 +109,9 @@ Outline buttons support the same color shade range as solid buttons using the fo
     <button class="btn btn-outline-red-900 btn-block">Red 900</button>
 </div>
 
-```html
-<button class="btn btn-outline-red-50 btn-block">Red 50</button>
-<button class="btn btn-outline-red-100 btn-block">Red 100</button>
-<button class="btn btn-outline-red-200 btn-block">Red 200</button>
-<button class="btn btn-outline-red-300 btn-block">Red 300</button>
-<button class="btn btn-outline-red-400 btn-block">Red 400</button>
-<button class="btn btn-outline-red-500 btn-block">Red 500</button>
-<button class="btn btn-outline-red-600 btn-block">Red 600</button>
-<button class="btn btn-outline-red-700 btn-block">Red 700</button>
-<button class="btn btn-outline-red-800 btn-block">Red 800</button>
-<button class="btn btn-outline-red-900 btn-block">Red 900</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#outlineColorShades{html}
+:::
 
 ## Block Buttons
 
@@ -157,16 +128,9 @@ Block buttons span the full width of their container using the `btn-block` class
     <button class="btn btn-dark btn-block">Dark</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-block">Primary</button>
-<button class="btn btn-secondary btn-block">Secondary</button>
-<button class="btn btn-success btn-block">Success</button>
-<button class="btn btn-danger btn-block">Danger</button>
-<button class="btn btn-warning btn-block">Warning</button>
-<button class="btn btn-info btn-block">Info</button>
-<button class="btn btn-light btn-block">Light</button>
-<button class="btn btn-dark btn-block">Dark</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#blockButtons{html}
+:::
 
 ## Sizes
 
@@ -186,17 +150,9 @@ Nine predefined size options (xs through 5xl) provide consistent button sizing a
     <button class="btn btn-primary btn-5xl self-center">5xl</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-xs self-center">xs</button>
-<button class="btn btn-primary btn-sm self-center">sm</button>
-<button class="btn btn-primary btn-md self-center">md</button>
-<button class="btn btn-primary btn-lg self-center">lg</button>
-<button class="btn btn-primary btn-xl self-center">xl</button>
-<button class="btn btn-primary btn-2xl self-center">2xl</button>
-<button class="btn btn-primary btn-3xl self-center">3xl</button>
-<button class="btn btn-primary btn-4xl self-center">4xl</button>
-<button class="btn btn-primary btn-5xl self-center">5xl</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnPredeterminedSizes{html}
+:::
 
 ### Tailwind Sizes
 
@@ -210,13 +166,9 @@ Use Tailwind's numeric sizing scale (`btn-3` through `btn-7`, etc.) for more gra
     <button class="btn btn-primary btn-7 self-center">btn-7</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-3 self-center">btn-3</button>
-<button class="btn btn-primary btn-4 self-center">btn-4</button>
-<button class="btn btn-primary btn-5 self-center">btn-5</button>
-<button class="btn btn-primary btn-6 self-center">btn-6</button>
-<button class="btn btn-primary btn-7 self-center">btn-7</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnTailwindSizes{html}
+:::
 
 ### Arbitrary sizes
 
@@ -227,10 +179,9 @@ For precise sizing needs, specify exact pixel values using the `btn-[Npx]` synta
     <button class="btn btn-primary btn-[21px] self-center">21px</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-[16px] self-center">16px</button>
-<button class="btn btn-primary btn-[21px] self-center">21px</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnArbitrarySizes{html}
+:::
 
 ## Responsive Sizes
 
@@ -238,9 +189,9 @@ Combine display and size classes with responsive prefixes to create buttons that
 
 <button class="btn btn-primary btn-xs btn-block md:btn-inline md:btn-md">btn-xs md:btn-base</button>
 
-```html
-<button class="btn btn-primary btn-xs btn-block md:btn-inline md:btn-md">btn-xs md:btn-base</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#responsiveSizes{html}
+:::
 
 ## Block Sizes
 
@@ -260,17 +211,9 @@ All predefined sizes work with the `btn-block` class to create full-width button
     <button class="btn btn-primary btn-5xl btn-block">5xl</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-xs btn-block">xs</button>
-<button class="btn btn-primary btn-sm btn-block">sm</button>
-<button class="btn btn-primary btn-md btn-block">md</button>
-<button class="btn btn-primary btn-lg btn-block">lg</button>
-<button class="btn btn-primary btn-xl btn-block">xl</button>
-<button class="btn btn-primary btn-2xl btn-block">2xl</button>
-<button class="btn btn-primary btn-3xl btn-block">3xl</button>
-<button class="btn btn-primary btn-4xl btn-block">4xl</button>
-<button class="btn btn-primary btn-5xl btn-block">5xl</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnBlockPredeterminedSizes{html}
+:::
 
 ### Tailwind Sizes
 
@@ -284,13 +227,9 @@ Tailwind numeric sizes can also be combined with `btn-block` for full-width butt
     <button class="btn btn-primary btn-7 btn-block">btn-7</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-3 btn-block">btn-3</button>
-<button class="btn btn-primary btn-4 btn-block">btn-4</button>
-<button class="btn btn-primary btn-5 btn-block">btn-5</button>
-<button class="btn btn-primary btn-6 btn-block">btn-6</button>
-<button class="btn btn-primary btn-7 btn-block">btn-7</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnBlockTailwindSizes{html}
+:::
 
 ### Arbitrary sizes
 
@@ -301,10 +240,9 @@ Arbitrary pixel sizes work with `btn-block` as well, giving you complete control
     <button class="btn btn-primary btn-[21px] btn-block">21px</button>
 </div>
 
-```html
-<button class="btn btn-primary btn-[16px] btn-block">16px</button>
-<button class="btn btn-primary btn-[21px] btn-block">21px</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnBlockArbitrarySizes{html}
+:::
 
 ## Button States
 
@@ -315,10 +253,10 @@ Buttons support two states: `active` for pressed/selected states and `disabled` 
     <button class="btn btn-primary" disabled>Disabled</button>
 </div>
 
-```html
-<button class="btn btn-primary" active>Active</button>
-<button class="btn btn-primary" disabled>Disabled</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnActive{html}
+<<< @/packages/btn/index.html#btnDisabled{html}
+:::
 
 ## Button Types
 
@@ -329,7 +267,6 @@ Standard HTML button types (submit and button) work with the button component. U
     <button type="button" class="btn btn-primary">Button</button>
 </div>
 
-```html
-<button type="submit" class="btn btn-primary">Submit</button>
-<button type="button" class="btn btn-primary">Button</button>
-```
+::: details Show Code
+<<< @/packages/btn/index.html#btnTypes{html}
+:::
