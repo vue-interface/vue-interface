@@ -80,7 +80,7 @@ export default defineConfig({
 	  	  	},
 			{
 				text: 'Packages',
-				link: '/docs/packages',
+				link: '/docs/packages', 
 	  	    	collapsed: false,
 	  	    	items: generatePackagesSidebar()
 			},
