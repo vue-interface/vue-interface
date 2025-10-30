@@ -39,7 +39,23 @@ export default defineConfig({
                         return ''
                     }
                 }
-            }
+            },
+			{
+			  	name: 'auto-restart-on-packages-change',
+			  	configureServer(server) {
+			  	  	const file = path.resolve(__dirname, '../../docs/packages.md')
+			  	  	const config = path.resolve(__dirname, 'config.mts')
+					
+			  	  	server.watcher.add(file)
+			  	  	server.watcher.on('change', (changed) => {
+			  	  	  	if (changed === file) {
+			  	  	  	  	console.log('\n📦 packages.md changed — restarting VitePress...\n')
+			  	  	  	  	const now = new Date()
+			  	  	  	  	fs.utimesSync(config, now, now)
+			  	  	  	}
+			  	  	})
+			  	}
+			}
 		],
   	  	resolve: {
 			conditions: [
