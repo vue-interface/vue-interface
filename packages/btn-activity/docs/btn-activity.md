@@ -7,7 +7,7 @@ title: Button Activity
 import '../demo.css'
 import '@vue-interface/activity-indicator/css'
 import { ref, onMounted } from 'vue'
-import { BtnActivity } from '../index.ts'
+import BtnActivity from '../src/BtnActivity.vue';
 import { Dots, Spinner, Pulse } from '@vue-interface/activity-indicator'
 
 const activity = ref(false)
