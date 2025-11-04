@@ -26,6 +26,7 @@ The `btn-activity` component provides an interactive button with built-in activi
 
 ## Basic Usage
 
+::: raw
 <!-- #region basicUsage-->
 <btn-dropdown label="Dropdown" @click-toggle="onToggle">
     <a href="#/test" @click="onClickItem">Action</a>
@@ -34,6 +35,7 @@ The `btn-activity` component provides an interactive button with built-in activi
     <a href="#">Something else here</a>
 </btn-dropdown>
 <!-- #endregion basicUsage-->
+:::
 
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#basicUsage{html}
 

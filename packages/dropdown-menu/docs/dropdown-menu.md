@@ -47,7 +47,8 @@ The `dropdown-menu` component displays a list of actionable or informational ite
 
 <span>{{ item }} was clicked!</span>
 
-<div class="dark:bg-neutral-900 dark:text-white demo-wrapper">
+::: raw
+<div>
     <!-- #region basicUsage -->
     <div class="dropdown-menu show">
         <h3 class="dropdown-header">Vue Router</h3>
@@ -77,5 +78,6 @@ The `dropdown-menu` component displays a list of actionable or informational ite
     </div>
     <!-- #endregion basicUsage -->
 </div>
+:::
 
 <<< @/packages/dropdown-menu/docs/dropdown-menu.md#basicUsage{html}
