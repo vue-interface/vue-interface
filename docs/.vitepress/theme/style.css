@@ -3,3 +3,17 @@
 @layer base {
     @import './base.css';
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@variant dark {
+    body {
+        @apply text-white;
+    }
+}
+
+/* @custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+} */
