@@ -3,7 +3,6 @@ title: Button Activity
 ---
 
 <script setup>
-/* #region setup */
 import '../demo.css'
 import '@vue-interface/activity-indicator/css'
 import { ref, onMounted } from 'vue'
@@ -12,6 +11,7 @@ import { Dots, Spinner, Pulse } from '@vue-interface/activity-indicator'
 
 const activity = ref(false)
 
+/* #region setup */
 const onClick = (event, { toggle }) => {
     toggle()
     
@@ -19,7 +19,9 @@ const onClick = (event, { toggle }) => {
         toggle()
     }, 2000)
 }
+/* #endregion setup */
 
+/* #region activity */
 onMounted(() => {
     const toggle = () => setTimeout(() => {
         activity.value = !activity.value
@@ -28,7 +30,7 @@ onMounted(() => {
     
     toggle()
 })
-/* #endregion setup */
+/* #endregion activity */
 </script>
 
 # Button Activity
@@ -55,7 +57,7 @@ The `btn-activity` component provides an interactive button with built-in activi
     <div><btn-activity :indicator="Dots" size="btn-sm" @click="onClick">Click Me!</btn-activity></div>
     <div><btn-activity :indicator="Dots" size="btn-md" @click="onClick">Click Me!</btn-activity></div>
     <div><btn-activity :indicator="Dots" size="btn-lg" @click="onClick">Click Me!</btn-activity></div>
-    <!-- #region dots -->
+    <!-- #endregion dots -->
 </div>
 
 ::: details Show Code
@@ -159,6 +161,8 @@ Control the activity state programmatically using the `activity` prop.
 ::: details Show Code
 <<< @/packages/btn-activity/docs/btn-activity.md#activityAttribute{html}
 :::
+
+<<< @/packages/btn-activity/docs/btn-activity.md#activity{js}
 
 ## Disabled State
 

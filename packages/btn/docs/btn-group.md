@@ -41,7 +41,11 @@ Button groups can be combined with [dropdown menus](/packages/dropdown-menu/docs
 
 ## Sizing
 
-`btn-group` supports predefined sizes `btn-group-xs` - `btn-group-5xl` to match your design needs.
+Customize the size of a `btn-group` using a [predetermined size](#predetermined-sizes), [tailwind's numeric sizing classes](#tailwind-sizes), or an [arbitrary](#arbitrary-sizes) CSS length unit.
+
+### Predetermined Sizes
+
+The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `btn-group-[size]`.
 
 <div class="flex flex-col gap-2">
     <!-- #region sizing-->
@@ -99,7 +103,7 @@ Button groups can be combined with [dropdown menus](/packages/dropdown-menu/docs
 
 ### Tailwind Sizes
 
-Use Tailwind's numeric sizing scale for more granular control over button group sizes. Tailwind’s default spacing scale has a range of `0 - 96`.
+For more granular control over button sizes, use Tailwind's numeric sizing scale classes: `btn-group-1` - `btn-group-96`.
 
 <div class="flex flex-col gap-2">
     <!-- #region tailwindSizes-->
@@ -127,7 +131,7 @@ Use Tailwind's numeric sizing scale for more granular control over button group 
 
 ### Arbitrary Sizes
 
-For precise sizing needs, specify exact pixel values using the `btn-group-[Npx]` syntax.
+For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]` or any other CSS length units (`rem`, `em`, `mm`, etc.).
 
 <div class="flex flex-col gap-2">
     <!-- #region arbitrarySizes-->
@@ -135,6 +139,11 @@ For precise sizing needs, specify exact pixel values using the `btn-group-[Npx]`
         <button class="btn btn-secondary">btn-group-[16px]</button>
         <button class="btn btn-secondary">btn-group-[16px]</button>
         <button class="btn btn-secondary">btn-group-[16px]</button>
+    </div>
+    <div class="btn-group btn-group-[1.2rem]">
+        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
     </div>
     <!-- #endregion arbitrarySizes-->
 </div>

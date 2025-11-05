@@ -88,7 +88,7 @@ export default defineConfig({
     	nav: [
     	  	{ text: 'Home', link: '/docs/index' },
     	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
-			{ text: 'Packages', link: '/docs/packages', activeMatch: 'pacakges' },
+			{ text: 'Packages', link: '/docs/packages', activeMatch: 'packages' },
     	],
 
 		sidebar: [
@@ -109,7 +109,7 @@ export default defineConfig({
 		],
 
     	socialLinks: [
-    	  	{ icon: 'github', link: 'https://github.com/vue-interface/vue-interface-new' }
+    	  	{ icon: 'github', link: 'https://github.com/vue-interface/vue-interface-new/tree/jsx' }
     	],
 
 		editLink: {

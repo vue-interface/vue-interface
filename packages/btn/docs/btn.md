@@ -146,9 +146,11 @@ Block buttons span the full width of their container using the `btn-block` class
 
 ## Sizes
 
+Customize the size of a `btn` using a [predetermined size](#predetermined-sizes), [tailwind's numeric sizing classes](#tailwind-sizes), or an [arbitrary](#arbitrary-sizes) CSS length unit.
+
 ### Predetermined Sizes
 
-Nine predefined size options (xs through 5xl) provide consistent button sizing across your application.
+The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `btn-[size]`.
 
 <div class="flex flex-wrap gap-2">
     <!-- #region btnPredeterminedSizes-->
@@ -170,7 +172,7 @@ Nine predefined size options (xs through 5xl) provide consistent button sizing a
 
 ### Tailwind Sizes
 
-Use Tailwind's numeric sizing scale (`btn-3` through `btn-7`, etc.) for more granular control over button dimensions. This follows Tailwind's standard spacing scale.
+For more granular control over button sizes, use Tailwind's numeric sizing scale classes: `btn-1` - `btn-96`.
 
 <div class="flex flex-wrap gap-2">
     <!-- #region btnTailwindSizes-->
@@ -188,12 +190,12 @@ Use Tailwind's numeric sizing scale (`btn-3` through `btn-7`, etc.) for more gra
 
 ### Arbitrary sizes
 
-For precise sizing needs, specify exact pixel values using the `btn-[Npx]` syntax. This is useful when you need buttons that match specific design requirements.
+For precise sizing, specify exact pixel values using the syntax `btn-[Npx]` or any other CSS length units (`rem`, `em`, `mm`, etc.).
 
 <div class="flex flex-wrap gap-2">
     <!-- #region btnArbitrarySizes-->
     <button class="btn btn-primary btn-[16px] self-center">16px</button>
-    <button class="btn btn-primary btn-[21px] self-center">21px</button>
+    <button class="btn btn-primary btn-[1.5rem] self-center">1.5rem</button>
     <!-- #endregion btnArbitrarySizes-->
 </div>
 
@@ -269,7 +271,7 @@ Arbitrary pixel sizes work with `btn-block` as well, giving you complete control
 <<< @/packages/btn/docs/btn.md#btnBlockArbitrarySizes{html}
 :::
 
-## Button States
+## States
 
 Buttons support two states: `active` for pressed/selected states and `disabled` for non-interactive buttons. The active state typically shows a darker background, while disabled buttons appear faded and don't respond to user inputs.
 
@@ -284,7 +286,7 @@ Buttons support two states: `active` for pressed/selected states and `disabled` 
 <<< @/packages/btn/docs/btn.md#btnStates{html}
 :::
 
-## Button Types
+## Types
 
 Standard HTML button types (submit and button) work with the button component. Use `type="submit"` for form submissions and `type="button"` for general interactions.
 

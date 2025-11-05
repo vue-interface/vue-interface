@@ -22,7 +22,7 @@ function onToggle() {
 
 # Button Dropdown
 
-The `btn-activity` component provides an interactive button with built-in activity indicators for async operations. It extends the standard [button](/packages/btn/docs/btn), [button-group](/packages/btn/docs/btn-group), and [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu) components to create these buttons.
+The `btn-dropdown` component provides an interactive button paired with a dropdown menu. It extends the standard [button](/packages/btn/docs/btn), [button-group](/packages/btn/docs/btn-group), and [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu) components.
 
 ## Basic Usage
 
@@ -41,9 +41,11 @@ The `btn-activity` component provides an interactive button with built-in activi
 
 ### Split Button
 
+Create a split `btn-dropdown` component by adding the `split` prop. 
+
 ::: raw
 <!-- #region split-->
-<btn-dropdown label="Dropdown" split @click="onClick" @click-toggle="onToggle">
+<btn-dropdown label="Dropdown" @click-toggle="onToggle" split>
     <a href="#/test" @click="onClickItem">Action</a>
     <a href="#">Another Action</a>
     <hr>
@@ -54,7 +56,7 @@ The `btn-activity` component provides an interactive button with built-in activi
 
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#split{html}
 
-::: info
+::: tip
 The split dropdown button is a combination of a [button-group](/packages/btn/docs/btn-group) button and a [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu).
 :::
 
@@ -339,7 +341,11 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Sizes
 
+Customize the size of a `btn-dropdown` component using a [predetermined size](#predetermined-sizes), [tailwind's numeric sizing classes](#tailwind-sizes), or an [arbitrary](#arbitrary-sizes) CSS length unit.
+
 ### Predetermined Sizes
+
+The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `btn-group-[size]`.
 
 ::: raw
 <div class="flex flex-wrap gap-2">
@@ -417,6 +423,8 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Tailwind Sizes
 
+For more granular control over button sizes, use Tailwind's numeric sizing scale classes: `btn-group-1` - `btn-group-96`.
+
 ::: raw
 <div class="flex gap-2">
     <!-- #region tailwind-->
@@ -451,18 +459,13 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Arbitrary Sizes
 
+For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]` or any other CSS length units (`rem`, `em`, `mm`, etc.).
+
 ::: raw
 <div class="flex gap-2">
     <!-- #region arbitrary-->
     <div>
         <btn-dropdown label="btn-group-[16px]" size="btn-group-[16px]" variant="btn-secondary">
-            <a href="#">Action</a>
-            <a href="#">Another Action</a>
-            <a href="#">Something else here</a>
-        </btn-dropdown>
-    </div>
-    <div>
-        <btn-dropdown label="btn-group-[21px]" size="btn-group-[21px]" variant="btn-secondary">
             <a href="#">Action</a>
             <a href="#">Another Action</a>
             <a href="#">Something else here</a>
@@ -485,7 +488,11 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Split Sizes
 
+Customize the size of a split `btn-dropdown` component using a [predetermined size](#predetermined-sizes), [tailwind's numeric sizing classes](#tailwind-sizes), or an [arbitrary](#arbitrary-sizes) CSS length unit.
+
 ### Predetermined Sizes
+
+The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `btn-group-[size]`.
 
 ::: raw
 <div class="flex flex-wrap gap-2">
@@ -563,6 +570,8 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Tailwind Sizes
 
+For more granular control over button sizes, use Tailwind's numeric sizing scale classes: `btn-group-1` - `btn-group-96`.
+
 ::: raw
 <div class="flex gap-2">
     <!-- #region splitTailwind-->
@@ -597,18 +606,14 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Arbitrary Sizes
 
+For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]` or any other CSS length units (`rem`, `em`, `mm`, etc.).
+
+
 ::: raw
 <div class="flex gap-2">
     <!-- #region splitArbitrary-->
     <div>
         <btn-dropdown label="btn-group-[16px]" size="btn-group-[16px]" variant="btn-secondary" split>
-            <a href="#">Action</a>
-            <a href="#">Another Action</a>
-            <a href="#">Something else here</a>
-        </btn-dropdown>
-    </div>
-    <div>
-        <btn-dropdown label="btn-group-[21px]" size="btn-group-[21px]" variant="btn-secondary" split>
             <a href="#">Action</a>
             <a href="#">Another Action</a>
             <a href="#">Something else here</a>
@@ -630,6 +635,8 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ## Menu Alignment
+
+Customize the alignment of the dropdown menu  relative to the button using the `align` prop. Use `start` value to align the left side of the menu to the button, and the `end` value to align right edge of the menu to the button. 
 
 ::: raw
 <div class="flex gap-2">
