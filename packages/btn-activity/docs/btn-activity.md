@@ -128,7 +128,7 @@ Full-width buttons with different indicator orientations using the `block` prop.
 
 Button activity supports all standard button color variants.
 
-<div class="flex gap-2 mb-5">
+<div class="flex flex-wrap gap-2 mb-5">
   <!-- #region variants -->
   <btn-activity :indicator="Spinner" variant="btn-secondary" @click="onClick">btn-secondary</btn-activity>
   <btn-activity :indicator="Spinner" variant="btn-warning" @click="onClick">btn-warning</btn-activity>

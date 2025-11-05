@@ -3,20 +3,26 @@ import path from 'path';
 import fs from 'fs';
 import { defineConfig } from 'vitepress';
 
+// This function automatically generates sidebar items, including nested children
 function generatePackagesSidebar() {
-  	const filePath = path.resolve(__dirname, '../../docs/packages.md');
-  	const content = fs.readFileSync(filePath, 'utf-8');
+  	const filePath = path.resolve(__dirname, '../../docs/packages.md')
+  	const lines = fs.readFileSync(filePath, 'utf-8')
+  	  	.split('\n')
+  	  	.filter(l => l.trim().startsWith('-'))
 
-  	const regex = /\- \[([^\]]+)\]\(([^)]+)\)/g;
-  	const items = [];
-  	let match;
+  	const tree: any[] = [], stack: any[] = [{ indent: -1, items: tree }]
 
-  	while ((match = regex.exec(content)) !== null) {
-  	  	const [, text, link] = match;
-  	  	items.push({ text, link });
+  	for (const line of lines) {
+  	  	const indent = line.match(/^\s*/)?.[0].length ?? 0
+  	  	const [, text, link] = line.match(/\[([^\]]+)\]\(([^)]+)\)/) || []
+  	  	const item: any = { text: text || line.replace(/^\s*-\s*/, '').trim(), ...(link && { link }) }
+
+  	  	while (indent <= stack[stack.length - 1].indent) stack.pop()
+  	  	stack[stack.length - 1].items.push(item)
+  	  	stack.push({ indent, items: (item.items = []) })
   	}
 
-  	return items;
+  	return tree
 }
 
 // https://vitepress.dev/reference/site-config

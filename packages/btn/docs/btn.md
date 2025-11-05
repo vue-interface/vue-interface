@@ -22,7 +22,7 @@ This is the default button where the `btn` class provides the default sizing and
 
 The button component supports eight standard color variants. Each variant applies a solid background color with appropriate text contrast.
 
-<div class="flex gap-2 my-4">
+<div class="flex flex-wrap gap-2 my-4">
     <!-- #region colorVariants -->
     <button class="btn btn-primary">Primary</button>
     <button class="btn btn-secondary">Secondary</button>
@@ -43,7 +43,7 @@ The button component supports eight standard color variants. Each variant applie
 
 You can use any Tailwind color with its shade value using the `btn-[color]-[shade]` syntax. This allows you to create buttons with specific colors from Tailwind's color palette.
 
-<div class="flex gap-2 my-4">
+<div class="flex flex-wrap gap-2 my-4">
     <!-- #region customColors -->
     <button class="btn btn-red-700">Red-700</button>
     <button class="btn btn-blue-700">Blue-700</button>
@@ -83,7 +83,7 @@ Demonstrates the full range of Tailwind color shades (50-900) available for butt
 
 Outline buttons feature transparent backgrounds with colored borders and text. They provide a lighter visual weight compared to solid buttons and are useful for secondary actions. Syntax: `btn-outline-[variant]` or `btn-outline-[custom color]`.
 
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
     <!-- #region outlineButtons -->
     <button class="btn btn-outline-primary">Primary</button>
     <button class="btn btn-outline-secondary">Secondary</button>
@@ -150,7 +150,7 @@ Block buttons span the full width of their container using the `btn-block` class
 
 Nine predefined size options (xs through 5xl) provide consistent button sizing across your application.
 
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
     <!-- #region btnPredeterminedSizes-->
     <button class="btn btn-primary btn-xs self-center">xs</button>
     <button class="btn btn-primary btn-sm self-center">sm</button>
@@ -172,7 +172,7 @@ Nine predefined size options (xs through 5xl) provide consistent button sizing a
 
 Use Tailwind's numeric sizing scale (`btn-3` through `btn-7`, etc.) for more granular control over button dimensions. This follows Tailwind's standard spacing scale.
 
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
     <!-- #region btnTailwindSizes-->
     <button class="btn btn-primary btn-3 self-center">btn-3</button>
     <button class="btn btn-primary btn-4 self-center">btn-4</button>
@@ -190,7 +190,7 @@ Use Tailwind's numeric sizing scale (`btn-3` through `btn-7`, etc.) for more gra
 
 For precise sizing needs, specify exact pixel values using the `btn-[Npx]` syntax. This is useful when you need buttons that match specific design requirements.
 
-<div class="flex gap-2">
+<div class="flex flex-wrap gap-2">
     <!-- #region btnArbitrarySizes-->
     <button class="btn btn-primary btn-[16px] self-center">16px</button>
     <button class="btn btn-primary btn-[21px] self-center">21px</button>

@@ -32,7 +32,7 @@ To use an indicator, specify a `:type=[indicator]` prop, and `size=[size]` prop.
 
 ## Sizing
 
-The size of all indicators can be customized using predetermined size classes: `2xs` - `5xl`. 
+The size of all indicators can be customized using predetermined size classes: `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`,  `4xl`,`5xl`. 
 
 ``` html
 <activity-indicator :type="Dots" size="lg"></activity-indicator>

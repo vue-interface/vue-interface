@@ -10,6 +10,10 @@ import '../index.css'
 
 The `btn-group` utility class provides a flexible and customizable button-group component based on the [button](/packages/btn/docs/btn) component. 
 
+::: tip 
+Button groups can be combined with [dropdown menus](/packages/dropdown-menu/docs/dropdown-menu) to create [dropdown buttons](/packages/btn-dropdown/docs/btn-dropdown).
+:::
+
 ## Basic Usage
 
 <!-- #region basicUsage-->
@@ -34,10 +38,6 @@ The `btn-group` utility class provides a flexible and customizable button-group 
 <!-- #endregion splitButtons-->
 
 <<< @/packages/btn/docs/btn-group.md#splitButtons{html}
-
-::: tip 
-Split buttons can be combined with [dropdown menus](/packages/dropdown-menu/docs/dropdown-menu) to create [dropdown buttons](/packages/btn-dropdown/docs/btn-dropdown).
-:::
 
 ## Sizing
 

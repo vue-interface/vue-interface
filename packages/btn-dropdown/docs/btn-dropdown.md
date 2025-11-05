@@ -41,6 +41,7 @@ The `btn-activity` component provides an interactive button with built-in activi
 
 ### Split Button
 
+::: raw
 <!-- #region split-->
 <btn-dropdown label="Dropdown" split @click="onClick" @click-toggle="onToggle">
     <a href="#/test" @click="onClickItem">Action</a>
@@ -49,6 +50,7 @@ The `btn-activity` component provides an interactive button with built-in activi
     <a href="#">Something else here</a>
 </btn-dropdown>
 <!-- #endregion split-->
+:::
 
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#split{html}
 
@@ -58,6 +60,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Custom Buttons 
 
+::: raw
 <div class="flex items-center gap-2">
     <!-- #region custom1 -->
     <btn-dropdown :caret="false" label="+" button-class="btn-primary rounded-full p-0 size-8" @click-toggle="onToggle">
@@ -92,6 +95,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>  
     <!-- #endregion custom2 -->
 </div>
+:::
 
 ::: details Show Code - (+)
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#custom1{html}
@@ -103,6 +107,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Variants
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region variants -->
     <btn-dropdown label="Primary" variant="btn-primary">
@@ -152,6 +157,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>
     <!-- #endregion variants -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#variants{html}
@@ -159,6 +165,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Outline Variants
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region outlineVariants -->
     <btn-dropdown label="Primary" variant="btn-outline-primary" outline>
@@ -208,6 +215,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>
     <!-- #endregion outlineVariants -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#outlineVariants{html}
@@ -215,6 +223,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Split Button Variants
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region splitVariants -->
     <btn-dropdown label="Primary" variant="btn-primary" split>
@@ -264,6 +273,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>
     <!-- #endregion splitVariants -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitVariants{html}
@@ -271,6 +281,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Split Outline Variants
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region splitOutlineVariants -->
     <btn-dropdown label="Primary" variant="btn-outline-primary" outline split>
@@ -320,6 +331,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>
     <!-- #endregion splitOutlineVariants -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitOutlineVariants{html}
@@ -329,6 +341,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Predetermined Sizes
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region predetermined-->
     <div>
@@ -396,6 +409,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion predetermined -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#predetermined{html}
@@ -403,6 +417,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Tailwind Sizes
 
+::: raw
 <div class="flex gap-2">
     <!-- #region tailwind-->
     <div>
@@ -428,6 +443,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion tailwind-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#tailwind{html}
@@ -435,6 +451,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Arbitrary Sizes
 
+::: raw
 <div class="flex gap-2">
     <!-- #region arbitrary-->
     <div>
@@ -460,6 +477,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion arbitrary-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#arbitrary{html}
@@ -469,6 +487,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Predetermined Sizes
 
+::: raw
 <div class="flex flex-wrap gap-2">
     <!-- #region splitPredetermined-->
     <div>
@@ -536,6 +555,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion splitPredetermined -->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitPredetermined{html}
@@ -543,6 +563,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Tailwind Sizes
 
+::: raw
 <div class="flex gap-2">
     <!-- #region splitTailwind-->
     <div>
@@ -568,6 +589,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion splitTailwind-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitTailwind{html}
@@ -575,6 +597,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ### Arbitrary Sizes
 
+::: raw
 <div class="flex gap-2">
     <!-- #region splitArbitrary-->
     <div>
@@ -600,6 +623,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </div>
     <!-- #endregion splitArbitrary-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitArbitrary{html}
@@ -607,6 +631,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 
 ## Menu Alignment
 
+::: raw
 <div class="flex gap-2">
     <!-- #region menuAlignment-->
     <btn-dropdown align="start" label="Align Left" variant="btn-secondary">
@@ -631,6 +656,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
     </btn-dropdown>
     <!-- #endregion menuAlignment-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#menuAlignment{html}
@@ -642,6 +668,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 
 ### Dropup
 
+::: raw
 <div class="flex gap-2">
     <!-- #region dropup-->
     <btn-dropdown label="Dropup" variant="btn-secondary" dropup>
@@ -656,6 +683,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
     </btn-dropdown>
     <!-- #endregion dropup-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropup{html}
@@ -663,6 +691,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 
 ### Dropright
 
+::: raw
 <div class="flex gap-2">
     <!-- #region dropright-->
     <btn-dropdown label="Dropright" variant="btn-secondary" dropright>
@@ -677,6 +706,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
     </btn-dropdown>
     <!-- #endregion dropright-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropright{html}
@@ -684,6 +714,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 
 ### Dropleft
 
+::: raw
 <div class="flex gap-2">
     <!-- #region dropleft-->
     <btn-dropdown label="Dropleft" variant="btn-secondary" dropleft>
@@ -698,6 +729,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
     </btn-dropdown>
     <!-- #endregion dropleft-->
 </div>
+:::
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropleft{html}
