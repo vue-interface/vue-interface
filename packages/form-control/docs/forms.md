@@ -8,7 +8,7 @@ The **Form components** provide a consistent set of styled form elements built w
 
 ## Available Components
 
-- [Form Control](./form-control)
 - [Form Check](./form-check)
+- [Form Control](./form-control)
 - [Form Select](./form-select)
 - [Form Switch](./form-switch)
