@@ -280,4 +280,6 @@ The `form-select` animated component combines the tailwind `form-control-animate
     <!-- #endregion animated -->
 </div>
 
+::: details Show Code
 <<< @/packages/form-control/docs/form-select.md#animated{html}
+:::

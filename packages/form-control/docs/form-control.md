@@ -173,19 +173,21 @@ Customize the color of a form-control element with the [Tailwind color palette](
 The `form-control-animated` class provides a custom animated component where the `label` can be nested inside the input space and move when interacted with. This decreases the size needed for a form-control component. Use the [size](#sizes) classes described above to customize the size.
 
 <div class="flex flex-col gap-4">
-<!-- #region animated -->
-<div class="form-control-animated">
-    <label for="form-control-animated" class="form-label">form-control</label>
-    <input type="text" id="form-control-animated" class="form-control is-dirty" placeholder="form-control"/>
-</div>
-<div class="form-control-animated-lg">
-    <label for="form-control-animated-lg" class="form-label">form-control-lg</label>
-    <input type="text" id="form-control-animated-lg" class="form-control form-control-lg" placeholder="form-control-lg"/>
-</div>
-<!-- #endregion animated -->
+    <!-- #region animated -->
+    <div class="form-control-animated">
+        <label for="form-control-animated" class="form-label">form-control</label>
+        <input type="text" id="form-control-animated" class="form-control is-dirty" placeholder="form-control"/>
+    </div>
+    <div class="form-control-animated-lg">
+        <label for="form-control-animated-lg" class="form-label">form-control-lg</label>
+        <input type="text" id="form-control-animated-lg" class="form-control form-control-lg" placeholder="form-control-lg"/>
+    </div>
+    <!-- #endregion animated -->
 </div>
 
+::: details Show Code
 <<< @/packages/form-control/docs/form-control.md#animated{html}
+:::
 
 ## Custom Components
 
