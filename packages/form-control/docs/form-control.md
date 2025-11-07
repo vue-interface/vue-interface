@@ -170,7 +170,7 @@ Customize the color of a form-control element with the [Tailwind color palette](
 
 ## Animated
 
-The `form-control-animated` class provides a custom animated component where the `label` can be nested inside the input space and move when interacted with. This decreases the size needed for a form-control component. Use the [size](#sizes) classes described above to customize the size.
+The `form-control-animated` class provides a custom animated component where the `label` can be nested inside the input space and move when interacted with. This decreases the size needed for a form-control component.
 
 <div class="flex flex-col gap-4">
     <!-- #region animated -->
@@ -178,15 +178,68 @@ The `form-control-animated` class provides a custom animated component where the
         <label for="form-control-animated" class="form-label">form-control</label>
         <input type="text" id="form-control-animated" class="form-control is-dirty" placeholder="form-control"/>
     </div>
+    <!-- #endregion animated -->
+</div>
+
+<<< @/packages/form-control/docs/form-control.md#animated{html}
+
+Use the [size](#sizes) classes described above to customize the size of the animated field.
+
+<div class="flex flex-col gap-4">
+    <!-- #region animatedSizes -->
+    <div class="form-control-animated-xs">
+        <label for="form-control-animated-xs" class="form-label">form-control-xs</label>
+        <input type="text" id="form-control-animated-xs" class="form-control form-control-xs" placeholder="form-control-xs"/>
+    </div>
+    <div class="form-control-animated-sm">
+        <label for="form-control-animated-sm" class="form-label">form-control-sm</label>
+        <input type="text" id="form-control-animated-sm" class="form-control form-control-sm" placeholder="form-control-sm"/>
+    </div>
+    <div class="form-control-animated-md">
+        <label for="form-control-animated-md" class="form-label">form-control-md</label>
+        <input type="text" id="form-control-animated-md" class="form-control form-control-md" placeholder="form-control-md"/>
+    </div>
     <div class="form-control-animated-lg">
         <label for="form-control-animated-lg" class="form-label">form-control-lg</label>
         <input type="text" id="form-control-animated-lg" class="form-control form-control-lg" placeholder="form-control-lg"/>
     </div>
-    <!-- #endregion animated -->
+    <div class="form-control-animated-xl">
+        <label for="form-control-animated-xl" class="form-label">form-control-xl</label>
+        <input type="text" id="form-control-animated-xl" class="form-control form-control-xl" placeholder="form-control-xl"/>
+    </div>
+    <div class="form-control-animated-2xl">
+        <label for="form-control-animated-2xl" class="form-label">form-control-2xl</label>
+        <input type="text" id="form-control-animated-2xl" class="form-control form-control-2xl" placeholder="form-control-2xl"/>
+    </div>
+    <div class="form-control-animated-3xl">
+        <label for="form-control-animated-3xl" class="form-label">form-control-3xl</label>
+        <input type="text" id="form-control-animated-3xl" class="form-control form-control-3xl" placeholder="form-control-3xl"/>
+    </div>
+    <div class="form-control-animated-4xl">
+        <label for="form-control-animated-4xl" class="form-label">form-control-4xl</label>
+        <input type="text" id="form-control-animated-4xl" class="form-control form-control-4xl" placeholder="form-control-4xl"/>
+    </div>
+    <div class="form-control-animated-5xl">
+        <label for="form-control-animated-5xl" class="form-label">form-control-5xl</label>
+        <input type="text" id="form-control-animated-5xl" class="form-control form-control-5xl" placeholder="form-control-5xl"/>
+    </div>
+    <div class="form-control-animated-3">
+        <label for="form-control-animated-3" class="form-label">form-control-3</label>
+        <input type="text" id="form-control-animated-3" class="form-control form-control-3" placeholder="form-control-3"/>
+    </div>
+    <div class="form-control-animated-4">
+        <label for="form-control-animated-4" class="form-label">form-control-4</label>
+        <input type="text" id="form-control-animated-4" class="form-control form-control-4" placeholder="form-control-4"/>
+    </div>
+    <div class="form-control-animated-[1.5rem]">
+        <label for="form-control-animated-[1.5rem]" class="form-label">form-control-[1.5rem]</label>
+        <input type="text" id="form-control-animated-[1.5rem]" class="form-control form-control-[1.5rem]" placeholder="form-control-[1.5rem]"/>
+    </div>
+    <!-- #endregion animatedSizes -->
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#animated{html}
+<<< @/packages/form-control/docs/form-control.md#animatedSizes{html}
 :::
 
 ## Custom Components

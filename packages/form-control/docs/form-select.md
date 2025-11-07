@@ -255,13 +255,49 @@ Customize the color of a form-select element with the [Tailwind color palette](h
 
 ## Animated
 
-The `form-select` animated component combines the tailwind `form-control-animated` and `form-select-animated` classes to provide a custom animated component. Use the [size](#sizes) classes described above to customize the size.
+The `form-select` animated component combines the tailwind `form-control-animated` and `form-select-animated` classes to provide a custom animated component.
 
 <div class="flex flex-col gap-4">
     <!-- #region animated -->
     <div class="form-control-animated">
         <label for="form-select-animated" class="form-label">form-select</label>
         <select id="form-select-animated" class="form-select">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <!-- #endregion animated -->
+</div>
+
+<<< @/packages/form-control/docs/form-select.md#animated{html}
+
+Use the [size](#sizes) classes described above to customize the size of the animated select fields. 
+
+<div class="flex flex-col gap-4">
+    <!-- #region animatedSizes -->
+    <div class="form-control-animated-xs">
+        <label for="form-select-animated-xs" class="form-label">form-select-xs</label>
+        <select id="form-select-animated-xs" class="form-select form-select-xs">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-sm">
+        <label for="form-select-animated-sm" class="form-label">form-select-sm</label>
+        <select id="form-select-animated-sm" class="form-select form-select-sm">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-md">
+        <label for="form-select-animated-md" class="form-label">form-select-md</label>
+        <select id="form-select-animated-md" class="form-select form-select-md">
             <option value=""></option>
             <option>1</option>
             <option>2</option>
@@ -277,9 +313,81 @@ The `form-select` animated component combines the tailwind `form-control-animate
             <option>3</option>
         </select>
     </div>
-    <!-- #endregion animated -->
+    <div class="form-control-animated-xl">
+        <label for="form-select-animated-xl" class="form-label">form-select-xl</label>
+        <select id="form-select-animated-xl" class="form-select form-select-xl">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-2xl">
+        <label for="form-select-animated-2xl" class="form-label">form-select-2xl</label>
+        <select id="form-select-animated-2xl" class="form-select form-select-2xl">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-3xl">
+        <label for="form-select-animated-3xl" class="form-label">form-select-3xl</label>
+        <select id="form-select-animated-3xl" class="form-select form-select-3xl">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-4xl">
+        <label for="form-select-animated-4xl" class="form-label">form-select-4xl</label>
+        <select id="form-select-animated-4xl" class="form-select form-select-4xl">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-5xl">
+        <label for="form-select-animated-5xl" class="form-label">form-select-5xl</label>
+        <select id="form-select-animated-5xl" class="form-select form-select-5xl">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-3">
+        <label for="form-select-animated-3" class="form-label">form-select-3</label>
+        <select id="form-select-animated-3" class="form-select form-select-3">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-4">
+        <label for="form-select-animated-4" class="form-label">form-select-4</label>
+        <select id="form-select-animated-4" class="form-select form-select-4">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <div class="form-control-animated-[1.5rem]">
+        <label for="form-select-animated-[1.5rem]" class="form-label">form-select-[1.5rem]</label>
+        <select id="form-select-animated-[1.5rem]" class="form-select form-select-[1.5rem]">
+            <option value=""></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
+    <!-- #endregion animatedSizes -->
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#animated{html}
+<<< @/packages/form-control/docs/form-select.md#animatedSizes{html}
 :::
