@@ -132,7 +132,7 @@ Customize the checkbox's size using a [predetermined size](#predetermined-sizes)
 
 ### Predetermined Sizes
 
-The size of all checkboxes can be customized using predetermined size classes: `form-check-xs - form-check-5xl`.
+The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `form-check-[size]`.
 
 <!-- #region predeterminedSizes -->
 <checkbox-field name="size[]" class="form-check-xs" placeholder="Extra Small">xs</checkbox-field>
