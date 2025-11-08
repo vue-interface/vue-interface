@@ -46,7 +46,7 @@
             </Alert>    
         </div>
 
-        <h3 class="text-2xl mb-3">Types</h3>
+        <h3 class="text-2xl mb-3">Variants</h3>
 
         <div class="flex gap-2 mb-3">
             <button id="info" class="btn btn-primary">Info</button>
@@ -729,12 +729,14 @@
                 Confirm,
                 Alert,
             },
+            /* #region close */
             methods: {
                 onConfirm(button, context) {
                     console.log('Confirmed!', button, context);
                     context.close();
                 }
             }
+            /* #endregion close */
         })
         .mount('#app');
     </script>

@@ -180,7 +180,7 @@ const attrs = useAttrs();
             class="modal"
             :class="[
                 {[colors[props.type] ?? '']: !attrs.class && colors[type], 
-                show: showing}, 
+                 show: showing}, 
                 `modal-${props.size}`]"
             v-bind="$attrs"
             aria-labelledby="modal"
