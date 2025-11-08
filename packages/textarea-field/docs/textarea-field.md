@@ -274,10 +274,10 @@ Validation classes provides error-checking styling for the textarea-field compon
 Customize the color of a textarea-field component with the [Tailwind color palette](https://tailwindcss.com/docs/colors) by adding the `color` prop: `form-control-[color]`.
 
 <!-- #region customColors -->
-<textarea-field label="3xl" color="form-control-red-500" class="mb-3"></textarea-field>
-<textarea-field label="4xl" color="form-control-blue-500" class="mb-3"></textarea-field>
-<textarea-field label="5xl" color="form-control-green-500" class="mb-3"></textarea-field>
-<textarea-field label="5xl" color="form-control-amber-500" class="mb-3"></textarea-field>
+<textarea-field label="form-control-red-500" color="form-control-red-500" class="mb-3"></textarea-field>
+<textarea-field label="form-control-blue-500" color="form-control-blue-500" class="mb-3"></textarea-field>
+<textarea-field label="form-control-green-500" color="form-control-green-500" class="mb-3"></textarea-field>
+<textarea-field label="form-control-amber-500" color="form-control-amber-500" class="mb-3"></textarea-field>
 <!-- #endregion customColors -->
 
 ::: details Show Code
