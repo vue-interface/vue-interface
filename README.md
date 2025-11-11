@@ -1,6 +1,6 @@
 # Vue Interface
 
-This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Components are organized  in packages. The purpose of this monorepo is to provide a convenient and efficient way to develop and maintain UI components that are dependent on each other without relying on symlinks and other hacks that provide less than optimal development experiences. The goal is provide a collection of CLI tools so you can develop, version and publish for individual packages all from the root of the repo. The monorepo also utilizes [Storybook.js](https://storybook.js.org/) for clean documentation. 
+This is a monorepo for the components of [Vue Interface](https://github.com/vue-interface). Components are organized  in packages. The purpose of this monorepo is to provide a convenient and efficient way to develop and maintain UI components that are dependent on each other without relying on symlinks and other hacks that provide less than optimal development experiences. The goal is provide a collection of CLI tools so you can develop, version and publish for individual packages all from the root of the repo. The monorepo also utilizes [VitePress](https://vuejs.github.io/vitepress/v1/) for clean documentation. 
 
 ## Installation
 
@@ -19,15 +19,10 @@ pnpm install
 pnpm dev
 ```
 
-## Storybook.js Usage
-
-To open [Storybook](https://storybook.js.org/) from the monorepo, ensure you are in the root directory, then
-run the following command `pnpm storybook`. This will build the stories and open Storybook on `localhost:6006`.
-
 ## VitePress Documentation
 This monorepo utilizes [VitePress](https://vuejs.github.io/vitepress/v1/) for detailed documentation. To open, ensure you are in the root directory, then run:
 
 ```bash
-pnpm run docs:dev
+pnpm docs:dev
 ```
 This will open VitePress on `localhost:5173`.
