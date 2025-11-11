@@ -10,8 +10,8 @@
     ".": {
       "source": "./index.ts",
       "types": "./dist/index.d.ts",
-      "require": "./dist/btn-dropdown.umd.js",
-      "import": "./dist/btn-dropdown.js"
+      "import": "./dist/btn-dropdown.js",
+      "require": "./dist/btn-dropdown.umd.js"
     }
   },
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
