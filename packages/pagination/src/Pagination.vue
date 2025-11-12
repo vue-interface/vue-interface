@@ -1,103 +1,112 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
+import type { PaginationSize } from './usePagination.ts';
 
-const props = withDefaults(defineProps<{
+export type PaginationProps = {
     align?: 'start' | 'end' | 'center';
     disabled?: boolean;
     page?: number;
     showPages?: number;
     totalPages: number;
-    size?: 'sm' | 'lg';
-}>(), {
-    align: 'center',
+    size?: PaginationSize;
+}
+
+const props = withDefaults(defineProps<PaginationProps>(), {
+    align: 'start',
     page: 1,
-    showPages: 6
+    showPages: 5,
+    size: 'pagination-md'
 });
 
 const emit = defineEmits<{
-    (e: 'paginate', page: number)
+    paginate: [page: number];
 }>();
 
 const currentPage = ref<number>();
 
-watchEffect(() => currentPage.value = props.page);
+watchEffect(() => {
+    currentPage.value = props.page;
+});
 
 const classes = computed(() => ({
     'justify-content-center': props.align === 'center',
     'justify-content-start': props.align === 'start',
     'justify-content-end': props.align === 'end',
-    [`pagination-${props.size}`]: !!props.size
+    [props.size ?? '']: !!props.size
 }));
 
-function generate() {
-    const pages = [];
+interface PageItem {
+    page?: number | string;
+    divider?: boolean;
+    disabled?: boolean;
+    class?: string;
+    label?: string;
+}
 
-    const showPages = props.showPages % 2
-        ? props.showPages + 1
-        : props.showPages;
-
-    let startPage = (currentPage.value >= showPages)
-        ? currentPage.value - (showPages / 2)
-        : 1;
-
-    const startOffset = showPages + startPage;
-
-    const endPage = props.totalPages < startOffset
-        ? props.totalPages
-        : startOffset;
-
-    const diff = startPage - endPage + showPages;
-
-    startPage -= (startPage - diff > 0) ? diff : 0;
-
+function generatePages(): PageItem[] {
+    const pages: PageItem[] = [];
+    const current = currentPage.value ?? props.page;
+    const total = props.totalPages;
+    
+    const maxVisible = props.showPages % 2 === 0 ? props.showPages : props.showPages + 1;
+    const halfVisible = maxVisible / 2;
+    
+    let startPage = Math.max(1, current - halfVisible);
+    const endPage = Math.min(total, startPage + maxVisible - 1);
+    
+    if(endPage - startPage < maxVisible - 1) {
+        startPage = Math.max(1, endPage - maxVisible + 1);
+    }
+    
     if(startPage > 1) {
         pages.push({ page: 1 });
-    }
-
-    if(startPage > 2) {
-        pages.push({ divider: true });
-    }
-
-    for(let i = startPage; i < endPage; i++) {
-        pages.push({ page: i });
-    }
-
-    if(endPage <= props.totalPages) {
-        if(props.totalPages - 1 > endPage) {
+        
+        if(startPage > 2) {
             pages.push({ divider: true });
         }
-
+    }
+    
+    for(let i = startPage; i <= endPage; i++) {
+        pages.push({ page: i });
+    }
+    
+    if(endPage < total) {
+        if(endPage < total - 1) {
+            pages.push({ divider: true });
+        }
+        
         pages.push({
-            page: props.totalPages < Infinity ? props.totalPages : '&#8734;',
-            disabled: props.totalPages === Infinity
+            page: total < Infinity ? total : '∞',
+            disabled: total === Infinity
         });
     }
-
+    
     return pages;
 }
 
-const pages = computed(() => generate());
+const pages = computed(() => generatePages());
 
-function paginate(page: number) {
-    currentPage.value = page;
+function paginate(page: number | string | undefined) {
+    if(typeof page !== 'number' || page < 1 || page > props.totalPages) {
+        return;
+    }
     
+    currentPage.value = page;
     emit('paginate', page);
 }
 
 function next() {
-    paginate(
-        currentPage.value >= props.totalPages
-            ? currentPage.value
-            : currentPage.value + 1
-    );
+    const current = currentPage.value ?? props.page;
+    if(current < props.totalPages) {
+        paginate(current + 1);
+    }
 }
 
 function prev() {
-    paginate(
-        currentPage.value <= 1
-            ? currentPage.value
-            : currentPage.value - 1
-    );
+    const current = currentPage.value ?? props.page;
+    if(current > 1) {
+        paginate(current - 1);
+    }
 }
 
 defineExpose({
@@ -147,7 +156,7 @@ defineExpose({
                         :class="item.class"
                         :disabled="disabled"
                         :data-label="item.label"
-                        @click.prevent="paginate(item.page)">
+                        @click.prevent="item.page && paginate(item.page)">
                         <span
                             v-if="item.label"
                             aria-hidden="true">
@@ -163,7 +172,7 @@ defineExpose({
             </li>
             <li
                 class="page-item"
-                :class="{'disabled': disabled || currentPage >= totalPages}">
+                :class="{'disabled': disabled || (currentPage ?? 1) >= totalPages}">
                 <a
                     href="#"
                     class="page-link"
