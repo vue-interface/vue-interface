@@ -9,30 +9,36 @@ export type PaginationProps = {
     showPages?: number;
     totalPages: number;
     size?: PaginationSize;
+    color?: string;
+    modelValue?: number;
 }
 
 const props = withDefaults(defineProps<PaginationProps>(), {
     align: 'start',
     page: 1,
-    showPages: 5,
-    size: 'pagination-md'
+    showPages: 4,
+    size: 'pagination-md',
+    color: 'pagination-blue-600',
+    modelValue: 1
 });
 
 const emit = defineEmits<{
     paginate: [page: number];
+    'update:modelValue': [page: number];
 }>();
 
 const currentPage = ref<number>();
 
 watchEffect(() => {
-    currentPage.value = props.page;
+    currentPage.value = props.modelValue ?? props.page;
 });
 
 const classes = computed(() => ({
     'justify-content-center': props.align === 'center',
     'justify-content-start': props.align === 'start',
     'justify-content-end': props.align === 'end',
-    [props.size ?? '']: !!props.size
+    [props.size ?? '']: !!props.size,
+    [props.color ?? '']: !!props.color
 }));
 
 interface PageItem {
@@ -93,6 +99,7 @@ function paginate(page: number | string | undefined) {
     
     currentPage.value = page;
     emit('paginate', page);
+    emit('update:modelValue', page);
 }
 
 function next() {

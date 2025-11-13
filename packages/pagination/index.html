@@ -16,7 +16,7 @@
                 Page: {{ pageNum }}
             </div>
 
-            <pagination v-model="pageNum" :page="1" :total-pages="100" pageNum="1" class="mb-3"></pagination>
+            <pagination v-model="pageNum" :total-pages="100" class="mb-3"></pagination>
             <pagination :page="1" :total-pages="100" class="mb-3"></pagination>
             <pagination :page="50" :total-pages="100" class="mb-3"></pagination>
             <pagination :page="100" :total-pages="100" class="mb-3"></pagination>
@@ -44,6 +44,11 @@
 
             <h2 class="text-2xl mt-6 mb-3">Colors</h2>
 
+            <pagination color="pagination-amber-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-green-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-purple-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-neutral-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+
             <h2 class="text-2xl mt-6 mb-3">Shadow</h2>
 
             <pagination shadow :page="1" :total-pages="100" class="mb-3"></pagination>
@@ -69,7 +74,7 @@
 
             The current page is: {{ page }}
 
-            <pagination align="start" :page="page" :total-pages="100" class="mb-3"></pagination>
+            <pagination :page="page" :total-pages="100" class="mb-3"></pagination>
         </div>
 
         <script type="module">
@@ -84,7 +89,7 @@
                 data() {
                     return {
                         page: 1,
-                        pageNub: "1"
+                        pageNum: 1,
                     }
                 },
                 mounted() {

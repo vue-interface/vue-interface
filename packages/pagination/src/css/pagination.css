@@ -8,7 +8,6 @@
     /* Page Link */
     --page-link-position: relative;
     --page-link-display: block;
-    --page-link-color: var(--color-blue-600, oklch(54.1% 0.202 252.551)); /* controls text color */
     --page-link-text-decoration: none;
     --page-link-background-color: inherit;
     --page-link-border-width: 1px;
@@ -19,37 +18,29 @@
 
     /* Page Link Hover */
     --page-link-hover-z-index: 2;
-    --page-link-hover-color: oklch(from var(--color-blue-600, oklch(54.1% 0.202 252.551)) calc(l - 0.15) c h);
     --page-link-hover-text-decoration: none;
-    --page-link-hover-background-color: var(--color-gray-100, oklch(97% 0.001 106.424));
-    --page-link-hover-border-color: var(--color-gray-200, oklch(95% 0.002 247.858));
+    --page-link-hover-background-color: var(--color-gray-100, oklch(96.7% 0.003 264.542));
+    --page-link-hover-border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
+
+    --page-link-hover-dark-background-color: color-mix(in oklch, var(--color-zinc-900, oklch(21% 0.006 285.885)) 10%, transparent);
 
     /* Page Link Focus */
     --page-link-focus-z-index: 3;
     --page-link-focus-outline: 0;
     --page-link-focus-box-shadow-width: 0.25rem;
-    --page-link-focus-box-shadow-color: var(--color-blue-600, oklch(54.1% 0.202 252.551));
 
     /* Page Link Active */
     --page-link-active-z-index: 3;
-    --page-link-active-color: var(--color-white, oklch(100% 0.00011 271.152));
-    --page-link-active-background-color: var(--color-blue-600, oklch(54.1% 0.202 252.551)); /* box color */
-    --page-link-active-border-color: var(--color-blue-600, oklch(54.1% 0.202 252.551)); /* box border */
+    --page-link-active-color: var(--color-white, #fff);
 
     /* Page Link Disabled */
-    --page-link-disabled-color: var(--color-gray-400, oklch(78.4% 0.002 247.839));
+    --page-link-disabled-color: var(--color-gray-400, oklch(70.7% 0.022 261.325));
     --page-link-disabled-pointer-events: none;
     --page-link-disabled-background-color: inherit;
-    --page-link-disabled-border-color: var(--color-gray-200, oklch(95% 0.002 247.858));
+    --page-link-disabled-border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
 
     /* Page Item */
     --page-item-margin-left: -1px;
-
-    /* TODO: 
-    - Page Link Hover: it should use color-mix
-    - Dark mode: Hover color for appropriate elements should be dark shade of background
-    - Custom colors so I an do class="pagination-blue-600 and it changes the text color, active (background color, outline color, border color), accordingly" 
-    */
 }
 
 @utility pagination {
@@ -73,7 +64,6 @@
     .page-link {
         position: var(--page-link-position);
         display: var(--page-link-display);
-        color: var(--page-link-color);
         text-decoration: var(--page-link-text-decoration);
         background-color: var(--page-link-background-color);
         border: var(--page-link-border-width) solid var(--page-link-border-color);
@@ -82,16 +72,18 @@
 
         &:hover {
             z-index: var(--page-link-hover-z-index);
-            color: var(--page-link-hover-color);
             text-decoration: var(--page-link-hover-text-decoration);
             background-color: var(--page-link-hover-background-color);
             border-color: var(--page-link-hover-border-color);
+
+            @variant dark {
+                background-color: var(--page-link-hover-dark-background-color);
+            }
         }
 
         &:focus {
             z-index: var(--page-link-focus-z-index);
             outline: var(--page-link-focus-outline);
-            box-shadow: 0 0 0 var(--page-link-focus-box-shadow-width) var(--page-link-focus-box-shadow-color);
         }
     }
 
@@ -139,19 +131,36 @@
         font-size: --spacing(--value(integer));
         padding: calc(--value(--pagination-font-size-*, [length]) * 0.375) calc(--value(--pagination-font-size-*, [length]) * 0.75);
         padding: calc(--spacing(--value(integer)) * 0.375) calc(--spacing(--value(integer)) * 0.75);
+
+        color: --value(--color-*, [color]);
+        
+        &:hover {
+            color: color-mix(in oklch, --value(--color-*, [color]) 90%, black);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 var(--page-link-focus-box-shadow-width) --value(--color-*, [color]);
+        }
     }
 
-    .page-item:first-child .page-link {
-        border-top-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
-        border-top-left-radius: calc(--spacing(--value(integer)) / 4);
-        border-bottom-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
-        border-bottom-left-radius: calc(--spacing(--value(integer)) / 4);
-    }
+    .page-item {
+        &:first-child .page-link {
+            border-top-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-top-left-radius: calc(--spacing(--value(integer)) / 4);
+            border-bottom-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-bottom-left-radius: calc(--spacing(--value(integer)) / 4);
+        }
 
-    .page-item:last-child .page-link {
-        border-top-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
-        border-top-right-radius: calc(--spacing(--value(integer)) / 4);
-        border-bottom-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
-        border-bottom-right-radius: calc(--spacing(--value(integer)) / 4);
+        &:last-child .page-link {
+            border-top-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-top-right-radius: calc(--spacing(--value(integer)) / 4);
+            border-bottom-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-bottom-right-radius: calc(--spacing(--value(integer)) / 4);
+        }
+
+        &.active .page-link {
+            background-color: --value(--color-*, [color]);
+            border-color: --value(--color-*, [color]);
+        }
     }
 }
