@@ -1,6 +1,6 @@
 # Packages
 
-Browse our component library organized into the following categories:
+All packages combine [Vue.js](https://vuejs.org/) and [TailwindCSS v4](https://tailwindcss.com/) utilities to create highly-customized components, directives, and plugins.
 
 - [Activity Indicator](/packages/activity-indicator/docs/activity-indicator)
 - [Autogrow](/packages/autogrow/docs/autogrow)
