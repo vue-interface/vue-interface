@@ -22,12 +22,13 @@
     --page-link-hover-background-color: var(--color-gray-100, oklch(96.7% 0.003 264.542));
     --page-link-hover-border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
 
-    --page-link-hover-dark-background-color: color-mix(in oklch, var(--color-zinc-900, oklch(21% 0.006 285.885)) 10%, transparent);
+    --page-link-hover-dark-background-color: color-mix(in oklch, var(--color-zinc-900, oklch(21% 0.006 285.885)) 70%, transparent);
 
     /* Page Link Focus */
     --page-link-focus-z-index: 3;
     --page-link-focus-outline: 0;
     --page-link-focus-box-shadow-width: 0.25rem;
+    --page-link-focus-box-shadow-color: var(--color-blue-600, oklch(54.1% 0.202 252.551));
 
     /* Page Link Active */
     --page-link-active-z-index: 3;
@@ -84,6 +85,7 @@
         &:focus {
             z-index: var(--page-link-focus-z-index);
             outline: var(--page-link-focus-outline);
+            box-shadow: 0 0 0 var(--page-link-focus-box-shadow-width) var(--page-link-focus-box-shadow-color);
         }
     }
 
@@ -135,7 +137,11 @@
         color: --value(--color-*, [color]);
         
         &:hover {
-            color: color-mix(in oklch, --value(--color-*, [color]) 90%, black);
+            background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+
+                @variant dark {
+                    background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+                }
         }
 
         &:focus {

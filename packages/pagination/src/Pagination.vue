@@ -30,7 +30,7 @@ const emit = defineEmits<{
 const currentPage = ref<number>();
 
 watchEffect(() => {
-    currentPage.value = props.modelValue ?? props.page;
+    currentPage.value = props.page ?? props.modelValue;
 });
 
 const classes = computed(() => ({

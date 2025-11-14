@@ -18,6 +18,7 @@ Browse our component library organized into the following categories:
 - [Input Field](/packages/input-field/docs/input-field)
 - [Light Switch Field](/packages/light-switch-field/docs/light-switch-field)
 - [Modal](/packages/modal/docs/modal)
+- [Pagination](/packages/pagination/docs/pagination)
 - [Radio Field](/packages/radio-field/docs/radio-field)
 - [Select Field](/packages/select-field/docs/select-field)
 - [Textarea Field](/packages/textarea-field/docs/textarea-field)

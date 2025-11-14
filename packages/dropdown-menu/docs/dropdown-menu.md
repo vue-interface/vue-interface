@@ -3,7 +3,7 @@ title: Dropdown Menu
 ---
 
 <script setup>
-import '../index.css'
+import '../demo.css'
 import { ref, onMounted } from 'vue'
 
 const item = ref('Nothing')
@@ -47,6 +47,8 @@ The `dropdown-menu` component displays a list of actionable or informational ite
 
 <span>{{ item }} was clicked!</span>
 
+<div class="btn-dropdown-override">
+
 ::: raw
 <div>
     <!-- #region basicUsage -->
@@ -79,5 +81,7 @@ The `dropdown-menu` component displays a list of actionable or informational ite
     <!-- #endregion basicUsage -->
 </div>
 :::
+
+</div>
 
 <<< @/packages/dropdown-menu/docs/dropdown-menu.md#basicUsage{html}
