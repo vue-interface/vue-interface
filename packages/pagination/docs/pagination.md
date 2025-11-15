@@ -37,7 +37,9 @@ The `pagination` component utilizes five [Vue props](https://vuejs.org/guide/com
 | `total-pages` | `:total-pages="[value]" ` | Total number of pages |
 | `show-pages` | `:show-pages="[value]" ` | [Number of pages visible](#custom-display-amount) |
 | `size` | `size="pagination-[size]"` | [Pagination Size](#sizes) | 
-| `color` | `color="pagination-[color]"` | [Pagination Color](#custom-colors) | 
+| `color` | `color="pagination-[color]"` | [Pagination Color](#custom-colors) |
+| `align` | `align="[value]"` | [Custom Alignment](#alignment) |
+| `disabled` | `disabled` | Toggle disabled state |
 
 ## Basic Usage
 
