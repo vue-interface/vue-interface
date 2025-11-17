@@ -21,8 +21,6 @@ onMounted(() => {
 /* #endregion reactive */
 </script>
 
-<div class="pagination-override">
-
 # Pagination
 
 The `pagination` component provides flexible and customizable pagination control with customizable sizes, colors, and states.
@@ -189,22 +187,3 @@ The current page is: {{ page }}
 
 <<< @/packages/pagination/docs/pagination.md#reactivePage{html}
 <<< @/packages/pagination/docs/pagination.md#reactive{js}
-
-</div>
-
-<!-- Issues:
-.vp-doc a {
-    color: var(--vp-c-brand-1);
-}
-
-is causing vitepress to override my styles. putting:
-
-.vp-doc .pagination-override .vp-raw a,
-.vp-doc .pagination-override .vp-raw ul,
-.vp-doc .pagination-override .vp-raw li + li {
-    color: inherit, revert, or revert-layer !important;
-}
-
-makes it go to the system setting color: black instead of my colors. It crosses it out in the style sidebar but does not change how it 
-affects the display. Only when I do not use color: inherit and uncheck the .vp-doc a color from the style sidebar does it work.
--->

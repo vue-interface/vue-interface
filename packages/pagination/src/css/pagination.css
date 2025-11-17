@@ -41,6 +41,8 @@
     --page-link-disabled-border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
 
     /* Page Item */
+    --page-item-margin-top: 0;
+    --page-item-margin-bottom: 0;
     --page-item-margin-left: -1px;
 }
 
@@ -90,6 +92,9 @@
     }
 
     .page-item {
+        margin-top: var(--page-item-margin-top);
+        margin-bottom: var(--page-item-margin-bottom);
+
         &:not(:first-child) .page-link {
             margin-left: var(--page-item-margin-left);
         }

@@ -1,6 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 import { defineConfig } from 'vitepress';
 
 // This function automatically generates sidebar items, including nested children
@@ -25,6 +25,7 @@ function generatePackagesSidebar() {
   	return tree
 }
 
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({	
 	srcDir: path.resolve(__dirname, '../../'),
@@ -41,7 +42,10 @@ export default defineConfig({
                 name: 'exclude-vitepress-base-css',
                 enforce: 'pre',
                 load(id) {
-                    if (id.endsWith('theme-default/styles/base.css')) {
+					if ([
+						'theme-default/styles/base.css',
+						'theme-default/styles/components/vp-doc.css'
+					].some(suffix => id.endsWith(suffix))) {
                         return ''
                     }
                 }

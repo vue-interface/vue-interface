@@ -2,6 +2,7 @@
 
 @layer base {
     @import './base.css';
+    @import './vp-doc.css';
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -10,4 +11,9 @@
     body {
         @apply text-white;
     }
+}
+
+/* VitePress CSS Overrides */
+.vp-doc .dropdown-header {
+    margin: 0 !important;
 }

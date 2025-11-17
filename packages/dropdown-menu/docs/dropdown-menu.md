@@ -21,24 +21,6 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.vp-doc .dropdown-menu.show {
-  position: relative !important;
-  z-index: 1 !important;
-  display: inline-block;
-  margin-top: 1rem;
-  box-shadow: none; /* optional: remove floating look */
-}
-
-/* Contain the preview layout */
-.vp-doc .demo-wrapper,
-.vp-doc .relative {
-  position: relative;
-  overflow: visible; /* ensure content still shows */
-  isolation: isolate; /* creates its own stacking context */
-}
-</style>
-
 # Dropdown Menu
 
 The `dropdown-menu` component displays a list of actionable or informational items, similar to traditional dropdown lists. It supports headers, dividers, links, and plain text items.
@@ -47,12 +29,10 @@ The `dropdown-menu` component displays a list of actionable or informational ite
 
 <span>{{ item }} was clicked!</span>
 
-<div class="btn-dropdown-override">
-
 ::: raw
 <div>
     <!-- #region basicUsage -->
-    <div class="dropdown-menu show">
+    <div class="dropdown-menu show relative">
         <h3 class="dropdown-header">Vue Router</h3>
         <h3 class="dropdown-header">Links</h3>
         <a href="#" class="dropdown-item active">Item #2</a>
@@ -81,7 +61,5 @@ The `dropdown-menu` component displays a list of actionable or informational ite
     <!-- #endregion basicUsage -->
 </div>
 :::
-
-</div>
 
 <<< @/packages/dropdown-menu/docs/dropdown-menu.md#basicUsage{html}

@@ -102,39 +102,6 @@ a {
   text-decoration: inherit;
 }
 
-.vp-doc .pagination-override .vp-raw a,
-.vp-doc .pagination-override .vp-raw ul,
-.vp-doc .pagination-override .vp-raw li + li{
-    /* color: revert-layer !important; */
-    text-decoration: none !important;
-    font-weight: inherit !important;
-    list-style: none !important;
-    margin-top: 0px !important;
-    transition: none !important;
-}
-
-.vp-doc .pagination-override .vp-raw ul,
-.vp-doc .pagination-override .vp-raw ol {
-    padding-left: 0rem !important;
-    margin: 0px !important;
-}
-
-.vp-doc .pagination-override .vp-raw a:hover {
-    /* color: revert-layer !important; */
-    text-decoration: none !important;
-}
-
-.vp-doc .btn-dropdown-override .vp-raw a {
-    color: inherit !important;
-    text-decoration: none !important;
-    font-weight: inherit !important;
-}
-
-.vp-doc .btn-dropdown-override .vp-raw h3 {
-    margin: 0px 0 0 !important;
-    font-weight: 500 !important;
-}
-
 ol,
 ul {
   list-style: none;
