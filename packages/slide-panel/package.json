@@ -1,0 +1,50 @@
+{
+  "name": "@vue-interface/slide-panel",
+  "version": "1.0.0",
+  "description": "A Vue slide panel component.",
+  "type": "module",
+  "main": "./dist/slide-panel.umd.cjs",
+  "module": "./dist/slide-panel.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/slide-panel.js",
+      "require": "./dist/slide-panel.umd.cjs"
+    }
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/slide-panel"
+  },
+  "keywords": [
+    "Slide",
+    "Panel",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "dependencies": {
+    "css-unit-converter": "^1.1.2",
+    "deepmerge": "^4.2.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4",
+    "@vue-interface/input-field": "workspace:*",
+    "@vue-interface/btn": "workspace:*"
+  }
+}
