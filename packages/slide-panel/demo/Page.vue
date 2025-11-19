@@ -21,12 +21,12 @@ function onClose() {
 
         <div class="flex gap-2">
             <button
-                class="rounded bg-sky-500 text-white px-2 py-1"
+                class="btn btn-primary"
                 @click="open('panel-1')">
                 Open Panel 1
             </button>
             <button
-                class="rounded bg-sky-500 text-white px-2 py-1"
+                class="btn btn-secondary"
                 @click="open('panel-2')">
                 Open Panel 2
             </button>
@@ -43,7 +43,7 @@ function onClose() {
                 </h1>
 
                 <button
-                    class="rounded bg-sky-500 text-white px-2 py-1"
+                    class="btn btn-primary"
                     @click="test()">
                     Close Panel 1
                 </button>
@@ -68,7 +68,7 @@ function onClose() {
             </h1>
 
             <button
-                class="rounded bg-sky-500 text-white px-2 py-1"
+                class="btn btn-secondary"
                 @click="close('panel-2')">
                 Close Panel 2
             </button>

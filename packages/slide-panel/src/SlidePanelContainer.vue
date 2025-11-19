@@ -66,6 +66,10 @@ const observer = new MutationObserver((records) => {
 });
 
 onMounted(() => {
+    if(!container.value) {
+        return;
+    }
+
     observer.observe(container.value, {
         attributeFilter: ['class'],
         attributes: true,
@@ -80,13 +84,10 @@ onMounted(() => {
             :id="name"
             ref="container"
             :data-align="align"
-            class="
-                fixed top-0 right-0 h-full inline-flex
-                [&>div]:absolute [&>div]:h-full [&>div]:top-0
-            "
+            class="slide-panel-container"
             :class="{
-                '[&>div]:rounded-tl-xl [&>div]:rounded-bl-xl [&>div]:right-0 [&>div]:border-r-none [&>.v-enter-from]:translate-x-full [&>.v-leave-to]:translate-x-full [&>.v-enter-from]:ease-out [&>.v-leave-to]:ease-in': align === 'right',
-                '[&>div]:rounded-tr-xl [&>div]:rounded-br-xl [&>div]:left-0': align === 'left'
+                'slide-panel-container-right': align === 'right',
+                'slide-panel-container-left': align === 'left'
             }" />
     </Teleport>
 </template>

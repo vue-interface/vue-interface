@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { computed, ref, toRaw, useAttrs, watchEffect } from 'vue';
+import { computed, ref, toRaw, useAttrs, watchEffect, Ref } from 'vue';
 import SlidePanelClose from './SlidePanelClose.vue';
 import { containers, defaultContainerName, type SlidePanel } from './registry';
 
 const props = withDefaults(defineProps<{
     container?: string;
     name: string;
-    open?: boolean;
+    defaultOpen?: boolean;
 }>(), {
     container: defaultContainerName,
-    open: false
+    defaultOpen: false
 });
 
 defineOptions({
@@ -17,8 +17,7 @@ defineOptions({
 });
 
 const emit = defineEmits<{
-    (e: 'open'),
-    (e: 'close'),
+    (e: 'open' | 'close'): void
 }>();
 
 const el = ref<HTMLDivElement>();
@@ -61,7 +60,7 @@ function onClickPanel() {
 registry.panels.value[props.name] = {
     open,
     close,
-    el,
+    el: el as Ref<HTMLDivElement>,
     isOpen,
     isTopSlide,
 };
@@ -78,11 +77,11 @@ defineSlots<{
     default(props: {
         open: SlidePanel['open'],
         close: SlidePanel['close']
-    }): any
+    }): void
 }>();
 
 watchEffect(() => {
-    isOpen.value = props.open;
+    isOpen.value = props.defaultOpen;
 });
 </script>
 
@@ -92,15 +91,15 @@ watchEffect(() => {
             <div
                 v-if="isOpen"
                 ref="el"
-                class="shadow-xl min-w-[6rem] border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 duration-500 overflow-auto p-5"
+                class="slide-panel"
                 :class="{
                     'top-slide': isTopSlide,
-                    'bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 hover:border-neutral-300 hover:cursor-pointer': !isTopSlide
+                    'slide-panel-inactive': !isTopSlide
                 }"
                 v-bind="useAttrs()"
                 @click="!isTopSlide && onClickPanel()">
                 <SlidePanelClose
-                    class="fixed right-2 top-4 z-10"
+                    class="absolute right-12 top-4 z-10"
                     @click="close" />
                 <div class="relative  pr-12">
                     <slot v-bind="{open, close}" />
