@@ -1,258 +1,258 @@
-<script lang="ts">
-import { defineComponent, VNode } from 'vue';
+<script setup lang="ts">
+import { computed, ref, watch, nextTick, watchEffect, VNode, useSlots } from 'vue';
 import Slide from './Slide.vue';
-// import SlideDeckControls from './SlideDeckControls.vue';
 
-export default defineComponent({
+export type SlideDeckProps = {
+    attrs?: Record<string, unknown>;
+    active?: number;
+    autoResize?: boolean;
+    controls?: boolean;
+    props?: Record<string, unknown>;
+    modelValue?: number;
+};
 
-    components: {
-        Slide,
-        // SlideDeckControls
-    },
+const props = withDefaults(defineProps<SlideDeckProps>(), {
+    attrs: () => ({}),
+    active: 0,
+    autoResize: true,
+    controls: false,
+    props: () => ({}),
+    modelValue: 0
+});
 
-    props: {
+const emit = defineEmits<{
+    'before-enter': [current: VNode | undefined, previous: VNode | undefined];
+    'enter': [current: VNode | undefined, previous: VNode | undefined];
+    'after-enter': [current: VNode | undefined, previous: VNode | undefined];
+    'before-leave': [current: VNode | undefined, previous: VNode | undefined];
+    'leave': [current: VNode | undefined, previous: VNode | undefined];
+    'after-leave': [current: VNode | undefined, previous: VNode | undefined];
+    'update:modelValue': [value: number];
+}>();
 
-        /**
-         * Additional attributes to be passed to the slots.
-         */
-        attrs: {
-            type: Object,
-            default: () => ({})
-        },
+const slots = useSlots();
 
-        /**
-         * The slide key or index that should show.
-         */
-        active: {
-            type: Number,
-            default: 0
-        },
+const currentActive = ref<number>(0);
+const direction = ref<'forward' | 'backward'>('forward');
+const maxHeight = ref<string | undefined>(undefined);
+const mounted = ref<boolean>(false);
+const lastSlide = ref<number | null>(null);
+const sliding = ref<boolean>(false);
 
-        /**
-         * Automatically resize the height of the slide so it animates from one
-         * slide to the next.
-         */
-        autoResize: {
-            type: Boolean,
-            default: true
-        },
+watchEffect(() => {
+    currentActive.value = props.active ?? props.modelValue;
+});
 
-        /**
-         * Show the slide-deck controls to change the slide.
-         */
-        controls: Boolean,
 
-        /**
-         * Additional props to be passed to the slots.
-         */
-        props: {
-            type: Object,
-            default: () => ({})
-        },
+watch(currentActive, (value: number, oldValue: number) => {
+    lastSlide.value = oldValue;
+    direction.value = (
+        findIndex(oldValue) > findIndex(value)
+    ) ? 'backward' : 'forward';
+    emit('update:modelValue', value);
+});
 
-        /**
-         * Pass the slots as a prop instead of using <slot />.
-         */
-        slots: {
-            type: Array,
-            default: undefined
-        }
-    },
+// Computed
+const classes = computed(() => ({
+    sliding: sliding.value
+}));
 
-    emits: [
-        'before-enter',
-        'enter',
-        'after-enter',
-        'before-leave',
-        'leave',
-        'after-leave'
-    ],
+const contentClasses = computed(() => ({
+    [direction.value]: true
+}));
 
-    data() {
-        return {
-            currentActive: this.active,
-            direction: 'forward',
-            maxHeight: undefined,
-            mounted: false,
-            lastSlide: null,
-            sliding: false,
-        };
-    },
+const isFirstSlide = computed(() => {
+    return findIndex(currentActive.value) === 0;
+});
+
+const isLastSlide = computed(() => {
+    return findIndex(currentActive.value) === vnodes().length - 1;
+});
+
+const totalSlides = computed(() => {
+    return vnodes().length;
+});
+
+// Methods
+function vnodes(): VNode[] {
+    const defaultSlot = slots.default?.({ next, prev, first, last, goto }) || [];
     
-    watch: {
-
-        currentActive(value: number, oldValue: number): void {
-            this.lastSlide = oldValue;
-            this.direction = (
-                this.findIndex(oldValue) > this.findIndex(value)
-            ) ? 'backward' : 'forward';
-        }
-    },
-    
-    mounted(): void {
-        this.$nextTick(() => {
-            this.mounted = true;
-            this.$emit('enter', this.slot());
-        });
-    },
-
-    methods: {
-
-        findIndex(key: string|number): number {
-            return this.vnodes().findIndex((vnode: VNode, i: number) => {
-                if(vnode.key === key) {
-                    return true;
-                }
-                
-                if(i === key) {
-                    return true;
-                }
-
-                return false;
-            });
-        },
-
-        find(key: string|number): VNode|undefined {
-            return this.vnodes()[this.findIndex(key)];
-        },
-
-        first(): void {
-            this.goto(0);
-        },
-
-        last(): void {
-            this.goto(this.vnodes().length - 1);
-        },
-
-        goto(key: number): void {
-            if(!this.sliding) {
-                this.currentActive = Math.max(0, key);
-            }
-        },
-
-        next(): void {
-            if(!this.sliding) {
-                this.currentActive = Math.min(
-                    this.findIndex(this.currentActive) + 1, this.vnodes().length - 1
-                );
-            }
-        },
-
-        prev(): void {
-            if(!this.sliding) {
-                this.currentActive = Math.max(
-                    this.findIndex(this.currentActive) - 1, 0
-                );
-            }
-        },
-
-        resize(el: HTMLElement): void {
-            const height = getComputedStyle(el).height;
-
-            this.maxHeight = height === '0x'
-                ? this.maxHeight
-                : height;
-        },
+    return defaultSlot.map((slot: VNode, key: number) => {
+        slot.props = Object.assign(
+            {}, slot.props, props.props, props.attrs
+        );
         
-        slot(): VNode {
-            return this.find(this.currentActive);
-        },
+        return Object.assign(slot, {
+            key: slot.key ?? key
+        });
+    });
+}
 
-        vnodes(): VNode[] {
-            return (this.slots || this.$slots.default(this))
-                .map((slot: VNode, key: number) => {
-                    slot.props = Object.assign(
-                        {}, slot.props, this.props, this.attrs
-                    );                                        
-                                        
-                    return Object.assign(slot, {
-                        key
-                    });
-                });
-        },
-
-        onClickControl(e: Event, vnode: VNode): void {
-            if(!this.sliding) {
-                this.goto(vnode);
-            }
-        },
-
-        onBeforeLeave(el: HTMLElement): void {
-            this.autoResize && this.resize(el);
-            this.$emit(
-                'before-leave',
-                this.slot(),
-                this.find(this.lastSlide)
-            );
-        },
-
-        onBeforeEnter(): void {
-            this.sliding = true;
-            this.$emit(
-                'before-enter',
-                this.slot(),
-                this.find(this.lastSlide)
-            );
-        },
-
-        onEnter(el: HTMLElement): void {
-            this.$nextTick(() => {
-                this.autoResize && this.resize(el);
-                this.$emit(
-                    'enter',
-                    this.slot(),
-                    this.find(this.lastSlide)
-                );
-            });
-        },
-
-        onAfterEnter(): void {
-            this.$emit(
-                'after-enter',
-                this.slot(),
-                this.find(this.lastSlide)
-            );
-        },
-
-        onLeave(): void {
-            this.$nextTick(() => {
-                this.$emit(
-                    'leave',
-                    this.slot(),
-                    this.find(this.lastSlide)
-                );
-            });
-        },
-
-        onAfterLeave(): void {
-            this.sliding = false;
-
-            this.$nextTick(() => {
-                this.maxHeight = null;
-                this.$emit(
-                    'after-leave',
-                    this.slot(),
-                    this.find(this.lastSlide)
-                );
-            });
+function findIndex(key: string | number): number {
+    return vnodes().findIndex((vnode: VNode, i: number) => {
+        if(vnode.key === key) {
+            return true;
+        }
+        
+        if(i === key) {
+            return true;
         }
 
-    }
+        return false;
+    });
+}
 
+function find(key: string | number): VNode | undefined {
+    const index = findIndex(key);
+    return index >= 0 ? vnodes()[index] : undefined;
+}
+
+function slot(): VNode | undefined {
+    return find(currentActive.value);
+}
+
+function first(): void {
+    goto(0);
+}
+
+function last(): void {
+    goto(vnodes().length - 1);
+}
+
+function goto(key: number): void {
+    if(!sliding.value) {
+        currentActive.value = Math.max(0, Math.min(key, vnodes().length - 1));
+    }
+}
+
+function next(): void {
+    if(!sliding.value) {
+        const nextIndex = findIndex(currentActive.value) + 1;
+        if(nextIndex < vnodes().length) {
+            currentActive.value = nextIndex;
+        }
+    }
+}
+
+function prev(): void {
+    if(!sliding.value) {
+        const prevIndex = findIndex(currentActive.value) - 1;
+        if(prevIndex >= 0) {
+            currentActive.value = prevIndex;
+        }
+    }
+}
+
+function resize(el: Element): void {
+    if(!(el instanceof HTMLElement)) return;
+    
+    const height = getComputedStyle(el).height;
+
+    maxHeight.value = height === '0px'
+        ? maxHeight.value
+        : height;
+}
+
+function onClickControl(_e: Event, vnode: VNode): void {
+    if(!sliding.value && typeof vnode.key === 'number') {
+        goto(vnode.key);
+    }
+}
+
+function onBeforeLeave(el: Element): void {
+    if(props.autoResize) {
+        resize(el);
+    }
+    const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+    emit('before-leave', slot(), previous);
+}
+
+function onBeforeEnter(): void {
+    sliding.value = true;
+    const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+    emit('before-enter', slot(), previous);
+}
+
+function onEnter(el: Element): void {
+    nextTick(() => {
+        if(props.autoResize) {
+            resize(el);
+        }
+        const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+        emit('enter', slot(), previous);
+    });
+}
+
+function onAfterEnter(): void {
+    const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+    emit('after-enter', slot(), previous);
+}
+
+function onLeave(): void {
+    nextTick(() => {
+        const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+        emit('leave', slot(), previous);
+    });
+}
+
+function onAfterLeave(): void {
+    sliding.value = false;
+
+    nextTick(() => {
+        maxHeight.value = undefined;
+        const previous = lastSlide.value !== null ? find(lastSlide.value) : undefined;
+        emit('after-leave', slot(), previous);
+    });
+}
+
+nextTick(() => {
+    mounted.value = true;
+    emit('enter', slot(), undefined);
+});
+
+defineExpose({
+    currentActive,
+    direction,
+    maxHeight,
+    mounted,
+    lastSlide,
+    sliding,
+    isFirstSlide,
+    isLastSlide,
+    totalSlides,
+    findIndex,
+    find,
+    first,
+    last,
+    goto,
+    next,
+    prev,
+    resize,
+    slot,
+    vnodes,
+    onClickControl
 });
 </script>
 
 <template>
     <div
         class="slide-deck"
-        :class="{ sliding }">
+        :class="classes">
         <slot
             name="top"
-            :active="currentActive" />
+            :active="currentActive"
+            :is-first="isFirstSlide"
+            :is-last="isLastSlide"
+            :total="totalSlides"
+            :goto="goto"
+            :next="next"
+            :prev="prev"
+            :first="first"
+            :last="last" />
         <div
             ref="content"
             class="slide-deck-content"
-            :class="{ [direction]: true }"
+            :class="contentClasses"
             :style="{ maxHeight }">
             <Transition
                 :name="`slide-${direction}`"
@@ -272,75 +272,25 @@ export default defineComponent({
         </div>
         <slot
             name="middle"
-            :active="currentActive" />
-        <!-- <slot
-            name="controls"
-            :active="currentActive">
-            <slide-deck-controls
-                v-if="controls && mounted"
-                ref="controls"
-                :slots="slots()"
-                :active="currentActive"
-                @click="onClickControl">
-                <template #default="context">
-                    <slot
-                        name="bullet"
-                        v-bind="context" />
-                </template>
-            </slide-deck-controls>
-        </slot> -->
+            :active="currentActive"
+            :is-first="isFirstSlide"
+            :is-last="isLastSlide"
+            :total="totalSlides"
+            :goto="goto"
+            :next="next"
+            :prev="prev"
+            :first="first"
+            :last="last" />
         <slot
             name="bottom"
-            :active="currentActive" />
+            :active="currentActive"
+            :is-first="isFirstSlide"
+            :is-last="isLastSlide"
+            :total="totalSlides"
+            :goto="goto"
+            :next="next"
+            :prev="prev"
+            :first="first"
+            :last="last" />
     </div>
 </template>
-
-<style>
-.slide-deck {
-    height: auto;
-    position: relative;
-}
-
-.slide-deck.sliding {
-    overflow: hidden;
-}
-
-.slide-deck .slide-deck-content {
-    display: flex;
-    flex-wrap: nowrap;
-    transition-property: max-height;
-    transition-duration: 250ms;
-    transition-timing-function: ease-in-out;
-}
-
-.slide-deck .slide-deck-content.forward {
-    flex-direction: row;
-}
-
-.slide-deck .slide-deck-content.backward {
-    flex-direction: row-reverse;
-}
-
-.slide-deck .slide-deck-slide {
-    width: 100%;
-    flex-shrink: 0;
-    align-self: flex-start;
-}
-
-.slide-forward-leave-active,
-.slide-forward-enter-active,
-.slide-backward-leave-active,
-.slide-backward-enter-active {
-    transition: all 250ms ease-in-out;
-}
-
-.slide-deck .slide-forward-enter-to,
-.slide-deck .slide-forward-leave-to { 
-    transform: translateX(-100%);
-}
-
-.slide-deck .slide-backward-enter-to,
-.slide-deck .slide-backward-leave-to { 
-    transform: translateX(100%);
-}
-</style>

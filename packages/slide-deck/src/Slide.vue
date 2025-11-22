@@ -1,24 +1,21 @@
-<script lang="ts" setup>
-import { onMounted, VNode } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, VNode } from 'vue';
 
 const props = defineProps<{
     node?: VNode
 }>();
 
-onMounted(() => {
-    node.value?.el?.dispatchEvent(new Event('enter'));
-});
-</script>
+const nodeRef = ref<VNode>();
 
-<script lang="ts">
-import { ref } from 'vue';
-let node = ref<VNode>();
+onMounted(() => {
+    nodeRef.value?.el?.dispatchEvent(new Event('enter'));
+});
 </script>
 
 <template>
     <div class="slide-deck-slide">
         <Component
             :is="props.node"
-            ref="node" />
+            ref="nodeRef" />
     </div>
 </template>
