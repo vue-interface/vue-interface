@@ -21,5 +21,6 @@ All packages combine [Vue.js](https://vuejs.org/) and [TailwindCSS v4](https://t
 - [Pagination](/packages/pagination/docs/pagination)
 - [Radio Field](/packages/radio-field/docs/radio-field)
 - [Select Field](/packages/select-field/docs/select-field)
+- [Slide Panel](/packages/slide-panel/docs/slide-panel)
 - [Textarea Field](/packages/textarea-field/docs/textarea-field)
 - [Tooltip](/packages/tooltip/docs/tooltip)

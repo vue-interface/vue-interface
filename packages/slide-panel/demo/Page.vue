@@ -1,6 +1,8 @@
 <script setup lang="ts">
+/* #region imports */
 import SlidePanel from '../src/SlidePanel.vue';
 import { useSlidePanels } from '../src/registry';
+/* #endregion imports */
 
 const { open, close } = useSlidePanels();
 
@@ -15,10 +17,11 @@ function onClose() {
 
 <template>
     <div class="container mx-auto">
-        <h1 class="text-5xl mb-5">
+        <!-- <h1 class="text-5xl mb-5">
             SlidePanel
-        </h1>
+        </h1> -->
 
+        <!-- #region example -->
         <div class="flex gap-2">
             <button
                 class="btn btn-primary"
@@ -73,5 +76,11 @@ function onClose() {
                 Close Panel 2
             </button>
         </SlidePanel>
+        <!-- #endregion example -->
     </div>
 </template>
+
+<!-- Issue -->
+ <!-- adding align=right or left aligns the header button and contents left or right not the container. only changing the prop in 
+  SlidePanelContainer switches the side of the panel. Somehow I need to control just the align prop from the SlidePanelContainer.vue from inside
+  my SlidePanel component or wrap it with SlidePanelContianer or something to apply the align to the container not the panel itself -->
