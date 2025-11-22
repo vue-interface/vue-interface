@@ -3,7 +3,7 @@ title: Modal
 ---
 
 <script setup>
-import '../index.css'
+import '../demo.css'
 import { Modal, Confirm, Alert } from '../index.ts';
 
 function onConfirm(button, context) {
