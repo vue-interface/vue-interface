@@ -61,17 +61,16 @@ const contentClasses = computed(() => ({
     [direction.value]: true
 }));
 
-const isFirstSlide = computed(() => {
-    return findIndex(currentActive.value) === 0;
-});
-
-const isLastSlide = computed(() => {
-    return findIndex(currentActive.value) === vnodes().length - 1;
-});
-
-const totalSlides = computed(() => {
-    return vnodes().length;
-});
+const { isFirstSlide, isLastSlide, totalSlides } = computed(() => {
+    const currentIndex = findIndex(currentActive.value);
+    const total = vnodes().length;
+    
+    return {
+        isFirstSlide: currentIndex === 0,
+        isLastSlide: currentIndex === total - 1,
+        totalSlides: total
+    };
+}).value;
 
 // Methods
 function vnodes(): VNode[] {
@@ -240,15 +239,7 @@ defineExpose({
         :class="classes">
         <slot
             name="top"
-            :active="currentActive"
-            :is-first="isFirstSlide"
-            :is-last="isLastSlide"
-            :total="totalSlides"
-            :goto="goto"
-            :next="next"
-            :prev="prev"
-            :first="first"
-            :last="last" />
+            :active="currentActive" />
         <div
             ref="content"
             class="slide-deck-content"
@@ -272,25 +263,9 @@ defineExpose({
         </div>
         <slot
             name="middle"
-            :active="currentActive"
-            :is-first="isFirstSlide"
-            :is-last="isLastSlide"
-            :total="totalSlides"
-            :goto="goto"
-            :next="next"
-            :prev="prev"
-            :first="first"
-            :last="last" />
+            :active="currentActive" />
         <slot
             name="bottom"
-            :active="currentActive"
-            :is-first="isFirstSlide"
-            :is-last="isLastSlide"
-            :total="totalSlides"
-            :goto="goto"
-            :next="next"
-            :prev="prev"
-            :first="first"
-            :last="last" />
+            :active="currentActive" />
     </div>
 </template>

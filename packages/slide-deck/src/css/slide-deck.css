@@ -5,6 +5,9 @@
     --slide-deck-height: auto;
     --slide-deck-position: relative;
     --slide-deck-overflow: hidden;
+    --slide-deck-border-color: var(--color-black);
+    --slide-deck-dark-border-color: var(--color-white);
+    --slide-deck-border-width: 2px;
 
     /* Slide Deck Content */
     --slide-deck-content-display: flex;
@@ -20,6 +23,11 @@
     --slide-deck-slide-flex-shrink: 0;
     --slide-deck-slide-align-self: flex-start;
 
+    --slide-deck-slide-margin-top: 0px;
+    --slide-deck-slide-border-top: none;
+    --slide-deck-slide-padding-top: 0px;
+
+
     /* Slide Animations */
     --slide-transition-duration: 250ms;
     --slide-transition-timing-function: ease-in-out;
@@ -30,6 +38,12 @@
 @utility slide-deck {
     height: var(--slide-deck-height);
     position: var(--slide-deck-position);
+    border-color: var(--slide-deck-border-color);
+    border-width: var(--slide-deck-border-width);
+
+    @variant dark {
+        border-color: var(--slide-deck-dark-border-color);
+    }
 
     &.sliding {
         overflow: var(--slide-deck-overflow);
@@ -55,6 +69,12 @@
         width: var(--slide-deck-slide-width);
         flex-shrink: var(--slide-deck-slide-flex-shrink);
         align-self: var(--slide-deck-slide-align-self);
+        
+        h2 {
+            margin-top: var(--slide-deck-slide-margin-top);
+            border-top: var(--slide-deck-slide-border-top);
+            padding-top: var(--slide-deck-slide-padding-top);
+        }
     }
 
     .slide-forward-leave-active,
