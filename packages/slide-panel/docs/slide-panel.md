@@ -14,10 +14,12 @@ The `slide panel` component provides a custom sliding panel that can slide from 
 
 ## Basic Usage
 
-<SlidePanelContainer />
+<SlidePanelContainer class="top-16 h-[91vh]"/>
 <Page />
 
-::: details Show Code
 <<< @/packages/slide-panel/demo/Page.vue#imports{ts}
 <<< @/packages/slide-panel/demo/Page.vue#example{ts}
+
+::: info
+The `slide panel` component is aligned to the right side of the screen, but can be switched to the left side by adding the `align="left"` prop. 
 :::

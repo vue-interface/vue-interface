@@ -88,6 +88,7 @@ onMounted(() => {
             :class="{
                 'slide-panel-container-right': align === 'right',
                 'slide-panel-container-left': align === 'left'
-            }" />
+            }" 
+            v-bind="$attrs" />
     </Teleport>
 </template>
