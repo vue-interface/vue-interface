@@ -1,0 +1,31 @@
+{
+  "name": "@vue-interface/breadcrumb",
+  "version": "1.0.0",
+  "description": "A TailwindCSS breadcrumb.",
+  "type": "module",
+  "main": "./index.css",
+  "module": "./index.css",
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/breadcrumb"
+  },
+  "keywords": [
+    "Breadcrumb",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface"
+}
