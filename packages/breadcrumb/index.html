@@ -5,20 +5,176 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Breadcrumb</title>
     </head>
-    <body>
+    <body class="dark:bg-neutral-900 dark:text-white">
         <div id="app" class="container mx-auto mb-6">
             <h1 class="text-4xl mb-6">Breadcrumb</h1>
 
-            <div class="breadcrumb">
-                <a href="/" class="breadcumb-link"><HomeIcon /> Home</a>
-                <a href="/foo" class="breadcumb-link">Foo</a>
-                <a href="/foo/bar" class="breadcumb-link active">Bar</a>
+            <h2 class="text-2xl mb-3">Basic Usage</h2>
+
+            <div class="flex flex-col gap-3">
+                <div class="breadcrumb">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb">
+                    <a href="/" class="breadcrumb-link no-icon">Home</a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+            </div>
+            
+            <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
+
+            <div class="flex flex-col gap-3">
+                <div class="breadcrumb breadcrumb-xs">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-sm">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-md">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-lg">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-xl">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-2xl">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-3xl">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-4xl">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-5xl">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+
+                <!-- Tailwind -->
+                <div class="breadcrumb breadcrumb-4">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-5">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-6">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                
+                <!-- Arbitrary -->
+                <div class="breadcrumb breadcrumb-[16px]">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-[1.5rem]">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
             </div>
 
+            <h2 class="text-2xl mt-6 mb-3">Variants</h2>
 
+            <div class="flex flex-col gap-3">
+                <div class="breadcrumb breadcrumb-primary">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-secondary">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-success">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-danger">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-warning">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-info">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-light">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-dark">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+            </div>
+
+            <h2 class="text-2xl mt-6 mb-3">Custom Colors</h2>
+
+            <div class="flex flex-col gap-3">
+                <div class="breadcrumb breadcrumb-green-500">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-amber-500">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-yellow-500">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+                <div class="breadcrumb breadcrumb-red-500">
+                    <a href="/" class="breadcrumb-link"></a>
+                    <a href="/foo" class="breadcrumb-link">Foo</a>
+                    <a href="/foo/bar" class="breadcrumb-link active">Bar</a>
+                </div>
+            </div>
         </div>
         <script type="module">
-            import './index.css';
+            import './demo.css';
         </script>    
     </body>
 </html>

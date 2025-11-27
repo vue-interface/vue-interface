@@ -1,2 +1,134 @@
 @import 'tailwindcss';
 
+@theme {
+    /* Breadcrumb container variables */
+    --breadcrumb-display: inline-flex;
+    --breadcrumb-align: center;
+    --breadcrumb-gap: 0;
+    --breadcrumb-padding: calc(var(--breadcrumb-font-size) * 0.75) calc(var(--breadcrumb-font-size, [length]) * 0.75);
+    --breadcrumb-bg: inherit;
+    /* --breadcrumb-dark-bg: var(--color-neutral-800, oklch(26.9% 0 0)); */
+    --breadcrumb-border-radius: 0.25rem;
+    --breadcrumb-box-shadow: 0 1px 3px oklch(0% 0 0 / 0.1);
+    --breadcrumb-font-size: 1rem;
+
+    /* Breadcrumb link variables */
+    --breadcrumb-link-display: flex;
+    --breadcrumb-link-align: center;
+    --breadcrumb-link-color: inherit;
+    --breadcrumb-link-font-weight: normal;
+    --breadcrumb-link-text-decoration: none;
+    --breadcrumb-link-color: var(--color-neutral-600);
+    --breadcrumb-link-dark-color: var(--color-neutral-400);
+    
+    /* Breadcrumb active link variables */
+    --breadcrumb-link-active-color: var(--active-color-primary);
+    --breadcrumb-link-active-pointer-events: none;
+    --breadcrumb-link-active-cursor: default;
+
+    /* Home icon variables */
+    --breadcrumb-home-icon-content: '';
+    --breadcrumb-home-icon-display: inline-block;
+    --breadcrumb-home-icon-width: 1.25em;
+    --breadcrumb-home-icon-height: 1.25em;
+    --breadcrumb-home-icon-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
+    --breadcrumb-home-icon-dark-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
+    --breadcrumb-home-icon-size: contain;
+    --breadcrumb-home-icon-repeat: no-repeat;
+    --breadcrumb-home-icon-background-position: center;
+
+    /* Separator chevron variables */
+    --breadcrumb-separator-icon-content: '';
+    --breadcrumb-separator-icon-display: inline-block;
+    --breadcrumb-separator-icon-width: 1em;
+    --breadcrumb-separator-icon-height: 1em;
+    --breadcrumb-separator-icon-margin: 0.5rem;
+    --breadcrumb-separator-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
+    --breadcrumb-separator-icon-dark-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
+    --breadcrumb-separator-icon-size: contain;
+    --breadcrumb-separator-icon-repeat: no-repeat;
+    --breadcrumb-separator-icon-background-position: center;
+    --breadcrumb-separator-icon-pointer-events: none;
+}
+
+@utility breadcrumb {
+    display: var(--breadcrumb-display);
+    align-items: var(--breadcrumb-align);
+    gap: var(--breadcrumb-gap);
+    padding: var(--breadcrumb-padding);
+    background-color: var(--breadcrumb-bg);
+    border-radius: var(--breadcrumb-border-radius);
+    box-shadow: var(--breadcrumb-box-shadow);
+    font-size: var(--breadcrumb-font-size);
+
+    /* @variant dark {
+        background-color: var(--breadcrumb-dark-bg);
+    }*/
+ 
+    & .breadcrumb-link {
+        display: var(--breadcrumb-link-display);
+        align-items: var(--breadcrumb-link-align);
+        color: var(--breadcrumb-link-color);
+        text-decoration: var(--breadcrumb-link-text-decoration);
+        color: var(--breadcrumb-link-color);
+        font-weight: var(--breadcrumb-link-font-weight);
+
+        @variant dark {
+            color: var(--breadcrumb-link-dark-color);
+        }
+
+        &.active {
+            color: var(--breadcrumb-link-active-color);
+            pointer-events: var(--breadcrumb-link-active-pointer-events);
+            cursor: var(--breadcrumb-link-active-cursor);
+        }
+
+        /* Home icon */
+        &:first-child::before {
+            content: var(--breadcrumb-home-icon-content);
+            display: var(--breadcrumb-home-icon-display);
+            width: var(--breadcrumb-home-icon-width);
+            height: var(--breadcrumb-home-icon-height);
+            background-image: var(--breadcrumb-home-icon-background-image);
+            background-size: var(--breadcrumb-home-icon-size);
+            background-repeat: var(--breadcrumb-home-icon-repeat);
+            background-position: var(--breadcrumb-home-icon-background-position);
+
+            @variant dark {
+                background-image: var(--breadcrumb-home-icon-dark-background-image);
+            }
+        }
+
+        &.no-icon:first-child::before {
+            content: none;
+        }
+
+        /* chevronRightIcon between links */
+        &:not(:last-child)::after {
+            content: var(--breadcrumb-separator-icon-content);
+            display: var(--breadcrumb-separator-icon-display);
+            width: var(--breadcrumb-separator-icon-width);
+            height: var(--breadcrumb-separator-icon-height);
+            margin: 0 var(--breadcrumb-separator-icon-margin);
+            background-image: var(--breadcrumb-separator-icon-svg);
+            background-size: var(--breadcrumb-separator-icon-size);
+            background-repeat: var(--breadcrumb-separator-icon-repeat);
+            background-position: var(--breadcrumb-separator-icon-background-position);
+            pointer-events: var(--breadcrumb-separator-icon-pointer-events);
+
+            @variant dark {
+                background-image: var(--breadcrumb-separator-icon-dark-background-image);
+            }
+        }
+    }
+}
+
+@utility breadcrumb-* {
+    font-size: --value(--breadcrumb-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
+
+    & .breadcrumb-link.active {
+        color: --value(--active-color-*, --color-*, [color]);
+        color: --value(--color-*, [color]);
+    }
+}
