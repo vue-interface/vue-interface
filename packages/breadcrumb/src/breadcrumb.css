@@ -6,11 +6,7 @@
     --breadcrumb-align: center;
     --breadcrumb-gap: 0;
     --breadcrumb-padding: calc(var(--breadcrumb-font-size) * 0.75) calc(var(--breadcrumb-font-size, [length]) * 0.75);
-    --breadcrumb-bg: inherit;
-    /* --breadcrumb-dark-bg: var(--color-neutral-800, oklch(26.9% 0 0)); */
-    --breadcrumb-border-radius: 0.25rem;
-    --breadcrumb-box-shadow: 0 1px 3px oklch(0% 0 0 / 0.1);
-    --breadcrumb-font-size: 1rem;
+    --breadcrumb-font-size: var(--breadcrumb-font-size-md);
 
     /* Breadcrumb link variables */
     --breadcrumb-link-display: flex;
@@ -56,14 +52,7 @@
     align-items: var(--breadcrumb-align);
     gap: var(--breadcrumb-gap);
     padding: var(--breadcrumb-padding);
-    background-color: var(--breadcrumb-bg);
-    border-radius: var(--breadcrumb-border-radius);
-    box-shadow: var(--breadcrumb-box-shadow);
     font-size: var(--breadcrumb-font-size);
-
-    /* @variant dark {
-        background-color: var(--breadcrumb-dark-bg);
-    }*/
  
     & .breadcrumb-link {
         display: var(--breadcrumb-link-display);
@@ -72,10 +61,6 @@
         text-decoration: var(--breadcrumb-link-text-decoration);
         color: var(--breadcrumb-link-color);
         font-weight: var(--breadcrumb-link-font-weight);
-
-        @variant dark {
-            color: var(--breadcrumb-link-dark-color);
-        }
 
         &.active {
             color: var(--breadcrumb-link-active-color);
@@ -93,10 +78,6 @@
             background-size: var(--breadcrumb-home-icon-size);
             background-repeat: var(--breadcrumb-home-icon-repeat);
             background-position: var(--breadcrumb-home-icon-background-position);
-
-            @variant dark {
-                background-image: var(--breadcrumb-home-icon-dark-background-image);
-            }
         }
 
         &.no-icon:first-child::before {
@@ -115,10 +96,20 @@
             background-repeat: var(--breadcrumb-separator-icon-repeat);
             background-position: var(--breadcrumb-separator-icon-background-position);
             pointer-events: var(--breadcrumb-separator-icon-pointer-events);
+        }
+    }
 
-            @variant dark {
-                background-image: var(--breadcrumb-separator-icon-dark-background-image);
-            }
+    @variant dark {
+        & .breadcrumb-link {
+            color: var(--breadcrumb-link-dark-color);
+        }
+
+        & .breadcrumb-link:first-child::before {
+            background-image: var(--breadcrumb-home-icon-dark-background-image);
+        }
+
+        & .breadcrumb-link:not(:last-child)::after {
+            background-image: var(--breadcrumb-separator-icon-dark-background-image);
         }
     }
 }
