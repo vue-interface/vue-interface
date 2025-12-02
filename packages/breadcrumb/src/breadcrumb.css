@@ -23,28 +23,20 @@
     --breadcrumb-link-active-cursor: default;
 
     /* Home icon variables */
-    --breadcrumb-home-icon-content: '';
+    --breadcrumb-home-icon-content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
     --breadcrumb-home-icon-display: inline-block;
     --breadcrumb-home-icon-width: 1.25em;
     --breadcrumb-home-icon-height: 1.25em;
-    --breadcrumb-home-icon-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
-    --breadcrumb-home-icon-dark-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
-    --breadcrumb-home-icon-size: contain;
-    --breadcrumb-home-icon-repeat: no-repeat;
-    --breadcrumb-home-icon-background-position: center;
+    --breadcrumb-home-icon-dark-content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25'/%3E%3C/svg%3E");
 
     /* Separator chevron variables */
-    --breadcrumb-separator-icon-content: '';
+    --breadcrumb-separator-icon-content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
     --breadcrumb-separator-icon-display: inline-block;
     --breadcrumb-separator-icon-width: 1em;
-    --breadcrumb-separator-icon-height: 1em;
-    --breadcrumb-separator-icon-margin: 0.5rem;
-    --breadcrumb-separator-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
-    --breadcrumb-separator-icon-dark-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
-    --breadcrumb-separator-icon-size: contain;
-    --breadcrumb-separator-icon-repeat: no-repeat;
-    --breadcrumb-separator-icon-background-position: center;
-    --breadcrumb-separator-icon-pointer-events: none;
+    --breadcrumb-separator-icon-height: 1.2em;
+    --breadcrumb-separator-icon-margin: 0.5rem;--breadcrumb-separator-icon-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23525252'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
+    --breadcrumb-separator-icon-dark-content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23A3A3A3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5'/%3E%3C/svg%3E");
+
 }
 
 @utility breadcrumb {
@@ -69,19 +61,11 @@
         }
 
         /* Home icon */
-        &:first-child::before {
+        &.breadcrumb-icon-home::before {
             content: var(--breadcrumb-home-icon-content);
             display: var(--breadcrumb-home-icon-display);
             width: var(--breadcrumb-home-icon-width);
             height: var(--breadcrumb-home-icon-height);
-            background-image: var(--breadcrumb-home-icon-background-image);
-            background-size: var(--breadcrumb-home-icon-size);
-            background-repeat: var(--breadcrumb-home-icon-repeat);
-            background-position: var(--breadcrumb-home-icon-background-position);
-        }
-
-        &.no-icon:first-child::before {
-            content: none;
         }
 
         /* chevronRightIcon between links */
@@ -91,11 +75,6 @@
             width: var(--breadcrumb-separator-icon-width);
             height: var(--breadcrumb-separator-icon-height);
             margin: 0 var(--breadcrumb-separator-icon-margin);
-            background-image: var(--breadcrumb-separator-icon-svg);
-            background-size: var(--breadcrumb-separator-icon-size);
-            background-repeat: var(--breadcrumb-separator-icon-repeat);
-            background-position: var(--breadcrumb-separator-icon-background-position);
-            pointer-events: var(--breadcrumb-separator-icon-pointer-events);
         }
     }
 
@@ -104,12 +83,12 @@
             color: var(--breadcrumb-link-dark-color);
         }
 
-        & .breadcrumb-link:first-child::before {
-            background-image: var(--breadcrumb-home-icon-dark-background-image);
+        & .breadcrumb-link.breadcrumb-icon-home::before {
+            content: var(--breadcrumb-home-icon-dark-content);
         }
 
         & .breadcrumb-link:not(:last-child)::after {
-            background-image: var(--breadcrumb-separator-icon-dark-background-image);
+            content: var(--breadcrumb-separator-icon-dark-content);
         }
     }
 }

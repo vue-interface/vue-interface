@@ -17,12 +17,12 @@ To create a breadcrumb component, use the parent `breadcrumb` class and then add
 <div class="flex flex-col gap-3">
     <!-- #region basicUsage -->
     <div class="breadcrumb">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb">
-        <a href="#" class="breadcrumb-link no-icon">Home</a>
+        <a href="#" class="breadcrumb-link">Home</a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
@@ -42,47 +42,47 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 <div class="flex flex-col gap-3">
     <!-- #region predeterminedSizes-->
     <div class="breadcrumb breadcrumb-xs">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-sm">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-md">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-lg">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-xl">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-2xl">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-3xl">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-4xl">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-5xl">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
@@ -100,17 +100,17 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 <div class="flex flex-col gap-3">
     <!-- #region tailwindSizes-->
     <div class="breadcrumb breadcrumb-4">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-5">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-6">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
@@ -128,12 +128,12 @@ For precise sizing, specify exact pixel values using the syntax `breadcrumb-[Npx
 <div class="flex flex-col gap-3">
     <!-- #region arbitrarySizes-->
     <div class="breadcrumb breadcrumb-[16px]">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-[1.5rem]">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
@@ -151,42 +151,42 @@ The breadcrumb component supports eight standard color variants: `primary`, `sec
 <div class="flex flex-col gap-3">
     <!-- #region variants -->
     <div class="breadcrumb breadcrumb-primary">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-secondary">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-success">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-danger">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-warning">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-info">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-light">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-dark">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
@@ -204,22 +204,22 @@ Customize the color of the `breadcrumb` component with the [Tailwind color palet
 <div class="flex flex-col gap-3">
     <!-- #region customColors -->
     <div class="breadcrumb breadcrumb-green-500">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-amber-500">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-yellow-500">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
     <div class="breadcrumb breadcrumb-red-500">
-        <a href="#" class="breadcrumb-link"></a>
+        <a href="#" class="breadcrumb-link breadcrumb-icon-home"></a>
         <a href="#foo" class="breadcrumb-link">Foo</a>
         <a href="#foo/bar" class="breadcrumb-link active">Bar</a>
     </div>
