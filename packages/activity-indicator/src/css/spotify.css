@@ -1,0 +1,57 @@
+@theme {
+    --activity-indicator-spotify-width: 2em;
+    --activity-indicator-spotify-height: 2em;
+    --activity-indicator-spotify-border-radius: 50%;
+    --activity-indicator-spotify-background: conic-gradient(white, black);
+    --activity-indicator-spotify-position: relative;
+    --activity-indicator-spotify-animation: activity-indicator-spotify 1.4s linear infinite;
+    --activity-indicator-spotify-transform: translateZ(0);
+
+    --activity-indicator-spotify-after-background: var(--color-white, #fff);
+    --activity-indicator-spotify-after-width: 75%;
+    --activity-indicator-spotify-after-height: 75%;
+    --activity-indicator-spotify-after-border-radius: 50%;
+    --activity-indicator-spotify-after-content: '';
+    --activity-indicator-spotify-after-margin: auto;
+    --activity-indicator-spotify-after-position: absolute;
+    --activity-indicator-spotify-after-top: 0;
+    --activity-indicator-spotify-after-left: 0;
+    --activity-indicator-spotify-after-bottom: 0;
+    --activity-indicator-spotify-after-right: 0;
+
+    --activity-indicator-spotify-transform-from: rotate(0deg);
+    --activity-indicator-spotify-transform-to: rotate(360deg);
+}
+
+@utility activity-indicator-spotify {
+    width: var(--activity-indicator-spotify-width);
+    height: var(--activity-indicator-spotify-height);
+    border-radius: var(--activity-indicator-spotify-border-radius);
+    background: var(--activity-indicator-spotify-background);
+    position: var(--activity-indicator-spotify-position);
+    animation: var(--activity-indicator-spotify-animation);
+    transform: var(--activity-indicator-spotify-transform);
+
+    &::after {
+        background-color: var(--activity-indicator-spotify-after-background);
+        width: var(--activity-indicator-spotify-after-width);
+        height: var(--activity-indicator-spotify-after-height);
+        border-radius: var(--activity-indicator-spotify-after-border-radius);
+        content: var(--activity-indicator-spotify-after-content);
+        margin: var(--activity-indicator-spotify-after-margin);
+        position: var(--activity-indicator-spotify-after-position);
+        top: var(--activity-indicator-spotify-after-top);
+        left: var(--activity-indicator-spotify-after-left);
+        bottom: var(--activity-indicator-spotify-after-bottom);
+        right: var(--activity-indicator-spotify-after-right);
+    }
+}
+
+@keyframes activity-indicator-spotify {
+    from {
+        transform: var(--activity-indicator-spotify-transform-from);
+    }
+    to {
+        transform: var(--activity-indicator-spotify-transform-to);
+    }
+}

@@ -1,0 +1,179 @@
+@theme {
+    /* Pagination */
+    --pagination-display: flex;
+    --pagination-padding-left: 0;
+    --pagination-list-style: none;
+    --pagination-justify-content: flex-start;
+
+    /* Page Link */
+    --page-link-position: relative;
+    --page-link-display: block;
+    --page-link-text-decoration: none;
+    --page-link-background-color: inherit;
+    --page-link-border-width: 1px;
+    --page-link-border-color: var(--color-neutral-300, oklch(87% 0 0));
+    --page-link-font-size: 1rem;
+    --page-link-padding: 0.375rem 0.75rem;
+    --page-link-border-radius: 0.25rem;
+    --page-link-color: inherit;
+
+    /* Page Link Hover */
+    --page-link-hover-z-index: 2;
+    --page-link-hover-text-decoration: none;
+    --page-link-hover-background-color: var(--color-gray-100, oklch(96.7% 0.003 264.542));
+    --page-link-hover-border-color: var(--color-gray-200, oklch(92.8% 0.006 264.531));
+
+    --page-link-hover-dark-background-color: color-mix(in oklch, var(--color-zinc-900, oklch(21% 0.006 285.885)) 70%, transparent);
+
+    /* Page Link Focus */
+    --page-link-focus-z-index: 3;
+    --page-link-focus-outline: 0;
+    --page-link-focus-box-shadow-width: 0.25rem;
+    --page-link-focus-box-shadow-color: var(--color-blue-600, oklch(54.1% 0.202 252.551));
+
+    /* Page Link Active */
+    --page-link-active-z-index: 3;
+    --page-link-active-color: var(--color-white, #fff);
+
+    /* Page Link Disabled */
+    --page-link-disabled-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --page-link-disabled-pointer-events: none;
+    --page-link-disabled-background-color: inherit;
+    --page-link-disabled-border-color: var(--color-neutral-300, oklch(87% 0 0));
+
+    /* Page Item */
+    --page-item-margin-top: 0;
+    --page-item-margin-bottom: 0;
+    --page-item-margin-left: -1px;
+}
+
+@utility pagination {
+    display: var(--pagination-display);
+    padding-left: var(--pagination-padding-left);
+    list-style: var(--pagination-list-style);
+    justify-content: var(--pagination-justify-content);
+
+    &.justify-content-start {
+        justify-content: flex-start;
+    }
+
+    &.justify-content-center {
+        justify-content: center;
+    }
+
+    &.justify-content-end {
+        justify-content: flex-end;
+    }
+
+    .page-link {
+        position: var(--page-link-position);
+        display: var(--page-link-display);
+        text-decoration: var(--page-link-text-decoration);
+        background-color: var(--page-link-background-color);
+        border: var(--page-link-border-width) solid var(--page-link-border-color);
+        font-size: var(--page-link-font-size);
+        padding: var(--page-link-padding);
+        color: var(--page-link-color);
+
+        &:hover {
+            z-index: var(--page-link-hover-z-index);
+            text-decoration: var(--page-link-hover-text-decoration);
+            background-color: var(--page-link-hover-background-color);
+
+            @variant dark {
+                background-color: var(--page-link-hover-dark-background-color);
+            }
+        }
+
+        &:focus {
+            z-index: var(--page-link-focus-z-index);
+            outline: var(--page-link-focus-outline);
+            box-shadow: 0 0 0 var(--page-link-focus-box-shadow-width) var(--page-link-focus-box-shadow-color);
+        }
+    }
+
+    .page-item {
+        margin-top: var(--page-item-margin-top);
+        margin-bottom: var(--page-item-margin-bottom);
+
+        &:not(:first-child) .page-link {
+            margin-left: var(--page-item-margin-left);
+        }
+
+        &.active .page-link {
+            z-index: var(--page-link-active-z-index);
+            color: var(--page-link-active-color);
+            background-color: var(--page-link-active-background-color);
+            border-color: var(--page-link-active-border-color);
+        }
+
+        &.disabled .page-link {
+            color: var(--page-link-disabled-color);
+            pointer-events: var(--page-link-disabled-pointer-events);
+            background-color: var(--page-link-disabled-background-color);
+            border-color: var(--page-link-disabled-border-color);
+        }
+
+        &.disabled.active .page-link {
+            color: var(--page-link-disabled-background-color);
+            pointer-events: var(--page-link-disabled-pointer-events);
+            background-color: var(--page-link-disabled-color);
+            border-color: var(--page-link-disabled-color);
+        }
+
+        &:first-child .page-link {
+            border-top-left-radius: var(--page-link-border-radius);
+            border-bottom-left-radius: var(--page-link-border-radius);
+        }
+
+        &:last-child .page-link {
+            border-top-right-radius: var(--page-link-border-radius);
+            border-bottom-right-radius: var(--page-link-border-radius);
+        }
+    }
+}
+
+@utility pagination-* {
+    .page-link {
+        font-size: --value(--pagination-font-size-*, [length]);
+        font-size: --spacing(--value(integer));
+        padding: calc(--value(--pagination-font-size-*, [length]) * 0.375) calc(--value(--pagination-font-size-*, [length]) * 0.75);
+        padding: calc(--spacing(--value(integer)) * 0.375) calc(--spacing(--value(integer)) * 0.75);
+
+        
+        
+        &:hover {
+            background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+
+                @variant dark {
+                    background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+                }
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 var(--page-link-focus-box-shadow-width) --alpha(--value(--color-*, [color]) / 50%);
+            border-color: --value(--color-*, [color]);
+        }
+    }
+
+    .page-item {
+        &:first-child .page-link {
+            border-top-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-top-left-radius: calc(--spacing(--value(integer)) / 4);
+            border-bottom-left-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-bottom-left-radius: calc(--spacing(--value(integer)) / 4);
+        }
+
+        &:last-child .page-link {
+            border-top-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-top-right-radius: calc(--spacing(--value(integer)) / 4);
+            border-bottom-right-radius: calc(--value(--pagination-font-size-*, [length]) / 4);
+            border-bottom-right-radius: calc(--spacing(--value(integer)) / 4);
+        }
+
+        &.active .page-link {
+            background-color: --value(--color-*, [color]);
+            border-color: --value(--color-*, [color]);
+        }
+    }
+}

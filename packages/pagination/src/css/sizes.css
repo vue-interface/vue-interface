@@ -1,0 +1,11 @@
+@theme {
+    --pagination-font-size-xs: --spacing(2);
+    --pagination-font-size-sm: --spacing(3);
+    --pagination-font-size-md: --spacing(4);
+    --pagination-font-size-lg: --spacing(5);
+    --pagination-font-size-xl: --spacing(6);
+    --pagination-font-size-2xl: --spacing(7);
+    --pagination-font-size-3xl: --spacing(8);
+    --pagination-font-size-4xl: --spacing(9);
+    --pagination-font-size-5xl: --spacing(10);
+}

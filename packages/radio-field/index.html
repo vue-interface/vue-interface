@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RadioField</title>
+</head>
+
+<body class="dark:bg-neutral-900 dark:text-white">
+    <form id="app" class="container mx-auto mb-6">
+        <h1 class="text-4xl mb-6">radio-field</h1>
+        
+        <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-4">
+            Value: {{ value }}
+        </div>
+
+        <radio-field v-model="value" name="default" label="Unchecked" value="unchecked"></radio-field>
+        <radio-field v-model="value" name="default" label="Checked" value="checked" checked></radio-field>
+
+        <div class="bg-neutral-100 dark:bg-neutral-800 p-3 my-4">
+            Color: {{ color }}
+        </div>
+
+        <div class="mb-4">
+            <radio-field v-model="color" name="color" label="Red" value="form-check-red-500" color="form-check-red-500"></radio-field>
+            <radio-field v-model="color" name="color" label="Green" value="form-check-green-500" color="form-check-green-500"></radio-field>
+            <radio-field v-model="color" name="color" label="Blue" value="form-check-blue-500" color="form-check-blue-500"></radio-field>
+            <radio-field v-model="color" name="color" label="Yellow" value="form-check-yellow-500" color="form-check-yellow-500"></radio-field>
+        </div>
+        
+        <div class="mb-4">
+            <radio-field label="Unchecked" value="Unchecked"></radio-field>
+            <radio-field label="Checked" value="checked" checked></radio-field>
+            <radio-field label="Disabled" value="disabled" disabled></radio-field>
+            <radio-field label="Disabled (checked)" value="disabled_checked" checked disabled></radio-field>
+            <radio-field label="Readonly" value="readonly" readonly></radio-field>
+            <radio-field label="Readonly (checked)" value="readonly_checked" checked readonly></radio-field>
+            <radio-field label="Readonly & Disabled" value="readonly_disabled" readonly disabled></radio-field>
+            <radio-field label="Readonly & Disabled (checked)" value="readonly_disabled_checked" readonly disabled checked></radio-field>
+        </div>
+
+        <hr class="my-6">
+
+        <h3 class="text-3xl mb-3">Sizes</h3>
+
+        <radio-field name="size" value="xs" class="form-check-xs">xs</radio-field>
+        <radio-field name="size" value="sm" class="form-check-sm">Small</radio-field>
+        <radio-field name="size" value="md" class="form-check-md">Medium</radio-field>
+        <radio-field name="size" value="lg" class="form-check-lg">Large</radio-field>
+        <radio-field name="size" value="xl" class="form-check-xl">xl</radio-field>
+        <radio-field name="size" value="2xl" class="form-check-2xl">2xl</radio-field>
+        <radio-field name="size" value="3xl" class="form-check-3xl">3xl</radio-field>
+        <radio-field name="size" value="4xl" class="form-check-4xl">4xl</radio-field>
+        <radio-field name="size" value="5xl" class="form-check-5xl">5xl</radio-field>
+        <radio-field name="size" value="4" class="form-check-4">form-check-4</radio-field>
+        <radio-field name="size" value="5" class="form-check-5">form-check-5</radio-field>
+        <radio-field name="size" value="6" class="form-check-6">form-check-6</radio-field>
+        <radio-field name="size" value="7" class="form-check-7">form-check-7</radio-field>
+        <radio-field name="size" value="[16px]" class="form-check-[16px]">form-check-[16px]</radio-field>
+        <radio-field name="size" value="[21px]" class="form-check-[21px]">form-check-[21px]</radio-field>
+
+        <hr class="my-6">
+
+        <h3 class="text-3xl mb-3">Validation</h3>
+
+        <radio-field label="Empty Array of Errors" value="true" :errors="[]" class="mb-3"></radio-field>
+        <radio-field label="Single Inline Error" value="true" class="mb-3 invalid-feedback" error="This is an inline error."></radio-field>
+        <radio-field name="multiple" value="true" class="mb-3 invalid-feedback" label="Multiple Errors From Object" :errors="{'multiple': ['This is an inline error #1.', 'This is an inline error #2.']}"></radio-field>
+    
+        <radio-field label="Valid Field" value="true" valid class="mb-3 valid-feedback"></radio-field>
+        <radio-field label="Valid Field with Feedback" value="true" valid feedback="This is some success message." class="mb-3 valid-feedback"></radio-field>
+        <radio-field label="Valid Field with Array of Feedback" value="true" valid :feedback="['This is some success message.', 'This is some success message.']" class="mb-3 valid-feedback"></radio-field>
+    </form>
+
+    <script type="module">
+        import './index.css';
+        import { createApp } from 'vue/dist/vue.esm-bundler.js';
+        import { RadioField } from './index.ts';
+
+        const vue = createApp({
+            components: {
+                RadioField
+            },
+            data() {
+                return {
+                    value: false,
+                    color: 'yellow'
+                };
+            }
+        });
+
+        vue.mount('#app')
+    </script>
+</body>
+
+</html>

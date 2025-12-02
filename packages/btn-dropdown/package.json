@@ -1,0 +1,49 @@
+{
+  "name": "@vue-interface/btn-dropdown",
+  "version": "1.0.0",
+  "description": "A Vue button dropdown component.",
+  "type": "module",
+  "main": "./dist/btn-dropdown.umd.js",
+  "module": "./dist/btn-dropdown.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/btn-dropdown.js",
+      "require": "./dist/btn-dropdown.umd.js"
+    }
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/btn-dropdown"
+  },
+  "keywords": [
+    "Button",
+    "Dropdown",
+    "Menu",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {
+    "@floating-ui/dom": "^1.7.1",
+    "@floating-ui/vue": "^1.1.6",
+    "@vue-interface/btn": "workspace:*",
+    "@vue-interface/dropdown-menu": "workspace:*",
+    "vue": "^3.3.4"
+  }
+}

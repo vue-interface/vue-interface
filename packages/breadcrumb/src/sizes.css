@@ -1,0 +1,11 @@
+@theme{
+    --breadcrumb-font-size-xs: --spacing(2.5);
+    --breadcrumb-font-size-sm: --spacing(3);
+    --breadcrumb-font-size-md: --spacing(4);
+    --breadcrumb-font-size-lg: --spacing(5);
+    --breadcrumb-font-size-xl: --spacing(6);
+    --breadcrumb-font-size-2xl: --spacing(7);
+    --breadcrumb-font-size-3xl: --spacing(8);
+    --breadcrumb-font-size-4xl: --spacing(9);
+    --breadcrumb-font-size-5xl: --spacing(10);
+}

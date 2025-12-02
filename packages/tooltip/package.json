@@ -1,0 +1,52 @@
+{
+  "name": "@vue-interface/tooltip",
+  "version": "1.0.0-beta.18",
+  "description": "A Vue tooltip component.",
+  "type": "module",
+  "main": "./dist/tooltip.umd.js",
+  "module": "./dist/tooltip.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./index.ts",
+      "import": "./dist/tooltip.js",
+      "require": "./dist/tooltip.umd.js"
+    },
+    "./tailwindcss": "./tailwindcss/index.cjs",
+    "./tailwindcss/safelist": "./tailwindcss/safelist.cjs"
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/tooltip.git"
+  },
+  "keywords": [
+    "Tooltip",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/tooltip/issues"
+  },
+  "homepage": "https://github.com/vue-interface/tooltip",
+  "dependencies": {
+    "@popperjs/core": "^2.4.4"
+  },
+  "peerDependencies": {
+    "@floating-ui/vue": "^1.1.7",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@floating-ui/dom": "^1.7.2"
+  }
+}

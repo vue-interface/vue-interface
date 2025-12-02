@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@import './src/css/form.css';
+
+@import './src/css/sizes.css';
+@import './src/css/validation.css';
+
+@import './src/css/form-control.css';
+@import './src/css/form-select.css';
+@import './src/css/form-check.css';
+@import './src/css/form-switch.css';
+/* @import './src/css/form-text.css'; */
+@import './src/css/animated-fields.css';
+

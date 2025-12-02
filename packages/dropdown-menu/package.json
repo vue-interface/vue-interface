@@ -1,12 +1,38 @@
 {
-  "name": "dropdown-menu",
+  "name": "@vue-interface/dropdown-menu",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A Vue dropdown menu component.",
+  "type": "module",
+  "main": "./dist/dropdown-menu.umd.cjs",
+  "module": "./dist/dropdown-menu.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/dropdown-menu.js",
+      "require": "./dist/dropdown-menu.umd.js"
+    },
+    "./css": "./demo.css"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/dropdown-menu"
+  },
+  "keywords": [
+    "Button",
+    "Control",
+    "Vue",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  }
 }

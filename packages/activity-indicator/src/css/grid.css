@@ -1,0 +1,80 @@
+@theme {
+  --activity-indicator-grid-width: 2.5em;
+  --activity-indicator-grid-height: 2.5em;
+  --activity-indicator-grid-child-width: 33%;
+  --activity-indicator-grid-child-height: 33%;
+  --activity-indicator-grid-child-bg: currentColor;
+  --activity-indicator-grid-child-float: left;
+  --activity-indicator-grid-child-animation: activity-indicator-grid 1.3s infinite ease-in-out;
+  
+  --activity-indicator-grid1-delay: 0.2s;
+  --activity-indicator-grid2-delay: 0.3s;
+  --activity-indicator-grid3-delay: 0.4s;
+  --activity-indicator-grid4-delay: 0.1s;
+  --activity-indicator-grid5-delay: 0.2s;
+  --activity-indicator-grid6-delay: 0.3s;
+  --activity-indicator-grid7-delay: 0s;
+  --activity-indicator-grid8-delay: 0.1s;
+  --activity-indicator-grid9-delay: 0.2s;
+  
+  --activity-indicator-grid-scale-normal: scale3d(1, 1, 1);
+  --activity-indicator-grid-scale-shrink: scale3d(0, 0, 1);
+}
+
+@utility activity-indicator-grid {
+  width: var(--activity-indicator-grid-width);
+  height: var(--activity-indicator-grid-height);
+  
+  & .activity-indicator-grid {
+    width: var(--activity-indicator-grid-child-width);
+    height: var(--activity-indicator-grid-child-height);
+    background-color: var(--activity-indicator-grid-child-bg);
+    float: var(--activity-indicator-grid-child-float);
+    animation: var(--activity-indicator-grid-child-animation);
+  }
+  
+  & .activity-indicator-grid1 {
+    animation-delay: var(--activity-indicator-grid1-delay);
+  }
+  
+  & .activity-indicator-grid2 {
+    animation-delay: var(--activity-indicator-grid2-delay);
+  }
+  
+  & .activity-indicator-grid3 {
+    animation-delay: var(--activity-indicator-grid3-delay);
+  }
+  
+  & .activity-indicator-grid4 {
+    animation-delay: var(--activity-indicator-grid4-delay);
+  }
+  
+  & .activity-indicator-grid5 {
+    animation-delay: var(--activity-indicator-grid5-delay);
+  }
+  
+  & .activity-indicator-grid6 {
+    animation-delay: var(--activity-indicator-grid6-delay);
+  }
+  
+  & .activity-indicator-grid7 {
+    animation-delay: var(--activity-indicator-grid7-delay);
+  }
+  
+  & .activity-indicator-grid8 {
+    animation-delay: var(--activity-indicator-grid8-delay);
+  }
+  
+  & .activity-indicator-grid9 {
+    animation-delay: var(--activity-indicator-grid9-delay);
+  }
+}
+
+@keyframes activity-indicator-grid {
+  0%, 70%, 100% {
+    transform: var(--activity-indicator-grid-scale-normal);
+  }
+  35% {
+    transform: var(--activity-indicator-grid-scale-shrink);
+  }
+}

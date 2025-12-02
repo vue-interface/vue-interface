@@ -1,5 +1,7 @@
-@import "./btn.css";
-/*@import "./css/btn-group.css";*/
-/*@import "./css/dropdown-menu.css";*/
+@import "tailwindcss";
 
-/** @import "./css/btn-activity.css"; */
+@import "./src/sizes.css";
+@import "./src/colors.css";
+
+@import "./src/btn.css";
+@import "./src/btn-group.css";

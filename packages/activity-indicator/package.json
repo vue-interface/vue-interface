@@ -1,0 +1,46 @@
+{
+  "name": "@vue-interface/activity-indicator",
+  "version": "1.0.0",
+  "description": "An Vue activity indicator component.",
+  "type": "module",
+  "main": "./dist/activity-indicator.umd.cjs",
+  "module": "./dist/activity-indicator.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/activity-indicator.umd.js",
+      "import": "./dist/activity-indicator.js"
+    },
+    "./css": "./index.css"
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "watch": "vite build --watch -m development",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/activity-indicator"
+  },
+  "keywords": [
+    "Activity",
+    "Loading",
+    "Component",
+    "Vue",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  }
+}

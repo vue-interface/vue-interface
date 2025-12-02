@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@theme {
+    /* Slide Panel */
+    --slide-panel-box-shadow: 0 20px 25px -5px oklch(0% 0 0 / 0.1), 0 8px 10px -6px oklch(0% 0 0 / 0.1);
+    --slide-panel-min-width: 6rem;
+    --slide-panel-border-width: 1px;
+    --slide-panel-border-style: solid;
+    --slide-panel-border-color: var(--color-neutral-200);
+    --slide-panel-bg: var(--color-neutral-50);
+    --slide-panel-transition-duration: 500ms;
+    --slide-panel-overflow: auto;
+    --slide-panel-padding: 1.25rem;
+
+    --slide-panel-dark-border-color:  var(--color-neutral-800);
+    --slide-panel-dark-bg: var(--color-neutral-900);
+
+    /* Slide Panel Container */
+    --slide-panel-container-position: fixed;
+    --slide-panel-container-top: 0;
+    --slide-panel-container-right: 0;
+    --slide-panel-container-height: 100%;
+    --slide-panel-container-display: inline-flex;
+    
+    --slide-panel-container-child-position: absolute;
+    --slide-panel-container-child-height: 100%;
+    --slide-panel-container-child-top: 0;
+
+    /* Slide Panel Container Right */
+    --slide-panel-container-right-border-radius-tl: 0.75rem;
+    --slide-panel-container-right-border-radius-bl: 0.75rem;
+    --slide-panel-container-right-position: 0;
+    --slide-panel-container-right-border-right: none;
+    --slide-panel-container-right-enter-transform: translateX(100%);
+    --slide-panel-container-right-leave-transform: translateX(100%);
+    --slide-panel-container-right-enter-timing: ease-out;
+    --slide-panel-container-right-leave-timing: ease-in;
+    
+    /* Slide Panel Container Left */
+    --slide-panel-container-left-border-radius-tr: 0.75rem;
+    --slide-panel-container-left-border-radius-br: 0.75rem;
+    --slide-panel-container-left-position: 0;
+    --slide-panel-container-left-enter-transform: translateX(-100%);
+    --slide-panel-container-left-leave-transform: translateX(-100%);
+    --slide-panel-container-left-enter-timing: ease-out;
+    --slide-panel-container-left-leave-timing: ease-in;
+
+    /* Slide Panel Inactive (not top slide) */
+    --slide-panel-inactive-bg: var(--color-neutral-100);
+    --slide-panel-inactive-dark-bg: var(--color-neutral-700);
+    --slide-panel-inactive-hover-bg: var(--color-neutral-200);
+    --slide-panel-inactive-dark-hover-bg: var(--color-neutral-600);
+    --slide-panel-inactive-hover-border-color: var(--color-neutral-300);
+    --slide-panel-inactive-hover-dark-border-color: var(--color-neutral-700);
+    --slide-panel-inactive-hover-cursor: pointer;
+
+    /* Close Button */
+    --close-button-position: absolute;
+    --close-button-border-radius: 100%;
+    --close-button-outline: none;
+    --close-button-display: inline-flex;
+    --close-button-align-items: center;
+    --close-button-justify-content: center;
+    --close-button-font-size: 1.5rem;
+    --close-button-height: 2rem;
+    --close-button-width: 2rem;
+    --close-button-color: var(--color-gray-400);
+
+    --close-button-focus-bg: var(--color-gray-300);
+    --close-button-focus-color: var(--color-gray-500);
+    --close-button-hover-bg: var(--color-gray-300);
+    --close-button-hover-color: var(--color-gray-500);
+    --close-button-active-scale: 0.9;
+    --close-button-active-bg: var(--color-gray-400);
+    --close-button-active-color: var(--color-gray-300);
+    --close-button-active-shadow: inset 0 2px 4px 0 oklch(0% 0 0 / 0.05);
+
+    --close-button-dark-bg: var(--color-gray-500);
+    --close-button-dark-color: var(--color-gray-300);
+    --close-button-dark-active-color: var(--color-gray-400);
+
+
+}
+
+@utility slide-panel {
+    box-shadow: var(--slide-panel-box-shadow);
+    min-width: var(--slide-panel-min-width);
+    border-width: var(--slide-panel-border-width);
+    border-style: var(--slide-panel-border-style);
+    border-color: var(--slide-panel-border-color);
+    background-color: var(--slide-panel-bg);
+    transition-duration: var(--slide-panel-transition-duration);
+    overflow: var(--slide-panel-overflow);
+    padding: var(--slide-panel-padding);
+
+    @variant dark {
+        border-color: var(--slide-panel-dark-border-color);
+        background-color: var(--slide-panel-dark-bg);
+    }
+}
+
+@utility slide-panel-container {
+    position: var(--slide-panel-container-position);
+    top: var(--slide-panel-container-top);
+    right: var(--slide-panel-container-right);
+    height: var(--slide-panel-container-height);
+    display: var(--slide-panel-container-display);
+    
+    & > div {
+        position: var(--slide-panel-container-child-position);
+        height: var(--slide-panel-container-child-height);
+        top: var(--slide-panel-container-child-top);
+    }
+}
+
+@utility slide-panel-container-right {
+    & > div {
+        border-top-left-radius: var(--slide-panel-container-right-border-radius-tl);
+        border-bottom-left-radius: var(--slide-panel-container-right-border-radius-bl);
+        right: var(--slide-panel-container-right-position);
+        border-right: var(--slide-panel-container-right-border-right);
+    }
+    
+    & > .v-enter-from {
+        transform: var(--slide-panel-container-right-enter-transform);
+        transition-timing-function: var(--slide-panel-container-right-enter-timing);
+    }
+    
+    & > .v-leave-to {
+        transform: var(--slide-panel-container-right-leave-transform);
+        transition-timing-function: var(--slide-panel-container-right-leave-timing);
+    }
+}
+
+@utility slide-panel-container-left {
+    right: auto;
+    left: 0;
+    
+    & > div {
+        border-top-right-radius: var(--slide-panel-container-left-border-radius-tr);
+        border-bottom-right-radius: var(--slide-panel-container-left-border-radius-br);
+        left: var(--slide-panel-container-left-position);
+    }
+    
+    & > .v-enter-from {
+        transform: var(--slide-panel-container-left-enter-transform);
+        transition-timing-function: var(--slide-panel-container-left-enter-timing);
+    }
+    
+    & > .v-leave-to {
+        transform: var(--slide-panel-container-left-leave-transform);
+        transition-timing-function: var(--slide-panel-container-left-leave-timing);
+    }
+}
+
+@utility slide-panel-inactive {
+    background-color: var(--slide-panel-inactive-bg);
+
+        &:hover {
+            background-color: var(--slide-panel-inactive-hover-bg);
+            border-color: var(--slide-panel-inactive-hover-border-color);
+            cursor: var(--slide-panel-inactive-hover-cursor);
+
+            @variant dark {
+                background-color: var(--slide-panel-inactive-dark-hover-bg);
+                border-color: var(--slide-panel-inactive-hover-dark-border-color);
+            }
+        }
+
+        @variant dark {
+            background-color: var(--slide-panel-inactive-dark-bg);
+        }
+}
+
+@utility close-button {
+    position: var(--close-button-position);
+    border-radius: var(--close-button-border-radius);
+    outline: var(--close-button-outline);
+    display: var(--close-button-display);
+    align-items: var(--close-button-align-items);
+    justify-content: var(--close-button-justify-content);
+    font-size: var(--close-button-font-size);
+    height: var(--close-button-height);
+    width: var(--close-button-width);
+    color: var(--close-button-color);
+
+    &:focus {
+        background-color: var(--close-button-focus-bg);
+        color: var(--close-button-focus-color);
+    }
+
+    &:hover {
+        background-color: var(--close-button-hover-bg);
+        color: var(--close-button-hover-color);
+    }
+
+    &:active {
+        scale: var(--close-button-active-scale);
+        background-color: var(--close-button-active-bg);
+        color: var(--close-button-active-color);
+        box-shadow: var(--close-button-active-shadow);
+    }
+
+    @variant dark {
+
+        &:focus {
+            background-color: var(--close-button-dark-bg);
+            color: var(--close-button-dark-color);
+        }
+
+        &:hover{
+            background-color: var(--close-button-dark-bg);
+            color: var(--close-button-dark-color);
+        }
+
+        &:active {
+            color: var(--close-button-dark-active-color);
+        }
+    }
+    
+}

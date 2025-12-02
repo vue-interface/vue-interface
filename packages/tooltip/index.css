@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+    --tooltip-position: absolute;
+    --tooltip-hiding-z-index: -1;
+    --tooltip-showing-z-index: 100;
+    --tooltip-display: block;
+    --tooltip-font-size: .875rem;
+    --tooltip-word-wrap: break-word;
+    --tooltip-opacity-hidden: 0;
+    --tooltip-opacity-visible: .9;
+    --tooltip-transition: opacity .15s ease-out;
+    --tooltip-pointer-events: none;
+
+    --tooltip-inner-position: relative;
+    --tooltip-inner-max-width: 200px;
+    --tooltip-inner-padding-y: .25em;
+    --tooltip-inner-padding-x: .5em;
+    --tooltip-inner-background-color: var(--colors-black, black);
+    --tooltip-inner-color: var(--color-white, white);
+    --tooltip-inner-text-align: center;
+    --tooltip-inner-border-radius: .333em;
+    --tooltip-inner-z-index: 2;
+    --tooltip-inner-dark-color: var(--color-white, white);
+    --tooltip-inner-dark-background-color: var(--colors-black, black);
+
+    --tooltip-arrow-position: absolute;
+    --tooltip-arrow-display: block;
+    --tooltip-arrow-width: .5em;
+    --tooltip-arrow-height: .5em;
+    --tooltip-arrow-z-index: 1;
+    --tooltip-color: var(--colors-black, black);
+    --tooltip-arrow-background-color: var(--tooltip-inner-background-color);
+    --tooltip-arrow-dark-background-color: var(--tooltip-inner-dark-background-color);
+}
+
+@utility tooltip {
+    position: var(--tooltip-position);
+    z-index: var(--tooltip-z-hiding-index);
+    display: var(--tooltip-display);
+    font-size: var(--tooltip-font-size);
+    word-wrap: var(--tooltip-word-wrap);
+    opacity: var(--tooltip-opacity-hidden);
+    transition: var(--tooltip-transition);
+    pointer-events: var(--tooltip-pointer-events);
+
+    &.show {
+        opacity: var(--tooltip-opacity-visible);
+        z-index: var(--tooltip-z-showing-index);
+    }
+
+    .tooltip-inner {
+        position: var(--tooltip-inner-position);
+        max-width: var(--tooltip-inner-max-width);
+        padding: var(--tooltip-inner-padding-y) var(--tooltip-inner-padding-x);
+        background-color: var(--tooltip-inner-background-color);
+        color: var(--tooltip-inner-color);
+        text-align: var(--tooltip-inner-text-align);
+        border-radius: var(--tooltip-inner-border-radius);
+        z-index: var(--tooltip-inner-z-index);
+    }
+
+    .tooltip-arrow {
+        position: var(--tooltip-arrow-position);
+        display: var(--tooltip-arrow-display);
+        width: var(--tooltip-arrow-width);
+        height: var(--tooltip-arrow-height);
+        background-color: var(--tooltip-arrow-background-color);
+        z-index: var(--tooltip-arrow-index);
+    }
+}

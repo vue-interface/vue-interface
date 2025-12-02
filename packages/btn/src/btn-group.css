@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@theme {
+	--btn-group-position: relative;
+	--btn-group-display: inline-flex;
+	--btn-group-vertical-align: middle;
+	--btn-group-cursor: pointer;
+	--btn-group-user-select: none;
+
+	--btn-group-horizontal-margin-left: -1px;
+	--btn-group-horizontal-border-radius-right: 0;
+	--btn-group-horizontal-border-radius-left: 0;
+
+	--btn-group-vertical-flex-direction: column;
+	--btn-group-vertical-align-items: flex-start;
+	--btn-group-vertical-justify-content: center;
+	--btn-group-vertical-width: 100%;
+	--btn-group-vertical-margin-top: -1px;
+	--btn-group-vertical-border-radius-bottom: 0;
+	--btn-group-vertical-border-radius-top: 0;
+
+	--btn-inner-position: relative;
+	--btn-inner-flex: 1 1 auto;
+	--btn-inner-z-index: 1;
+
+	--dropdown-toggle-split-padding-x: calc(.375rem * .75);
+	--dropdown-toggle-split-padding-left: calc(.375rem * .75);
+
+	--dropdown-toggle-after-margin-left: 0;
+	--dropdown-toggle-before-margin-right: 0;
+
+	--dropdown-toggle-whitespace: nowrap;
+
+	--dropdown-toggle-arrow-display: inline-block;
+	--dropdown-toggle-arrow-vertical-align: calc(.3em * .85);
+	--dropdown-toggle-arrow-content: "";
+	--dropdown-toggle-arrow-margin: 0 .15em;
+	--dropdown-toggle-arrow-border-top: .3em solid;
+	--dropdown-toggle-arrow-border-right: .3em solid transparent;
+	--dropdown-toggle-arrow-border-bottom: 0;
+	--dropdown-toggle-arrow-border-left: .3em solid transparent;
+
+	--dropdown-toggle-arrow-split-margin-left: calc(.375rem * .75);
+
+	--dropup-arrow-border-top: 0;
+	--dropup-arrow-border-bottom: .3em solid;
+	--dropup-arrow-bottom: 100%;
+	--dropup-arrow-margin-top: 0;
+
+	--dropright-arrow-border-top: .3em solid transparent;
+	--dropright-arrow-border-right: 0;
+	--dropright-arrow-border-bottom: .3em solid transparent;
+	--dropright-arrow-border-left: .3em solid;
+	--dropright-arrow-top: 0;
+	--dropright-arrow-left: 100%;
+	--dropright-arrow-margin-top: 0;
+
+	--dropleft-arrow-display: none;
+
+	--dropleft-before-display: inline-block;
+	--dropleft-before-vertical-align: calc(.3em * .85);
+	--dropleft-before-content: "";
+	--dropleft-before-margin: 0 .15em;
+	--dropleft-before-border-top: .3em solid transparent;
+	--dropleft-before-border-left: 0;
+	--dropleft-before-border-bottom: .3em solid transparent;
+	--dropleft-before-border-right: .3em solid;
+	--dropleft-before-top: 0;
+	--dropleft-before-right: 100%;
+	--dropleft-before-left: auto;
+	--dropleft-before-margin-top: 0;
+}
+
+@utility btn-group {
+	position: var(--btn-group-position);
+	display: var(--btn-group-display);
+	vertical-align: var(--btn-group-vertical-align);
+
+	&:not(.btn-group-vertical) {
+		> .btn:not(:first-child),
+		> .btn-group:not(:first-child) {
+			margin-left: var(--btn-group-horizontal-margin-left);
+		}
+
+		> .btn:not(:last-child):not(.dropdown-toggle),
+		> .btn-group:not(:last-child) .btn {
+			border-top-right-radius: var(--btn-group-horizontal-border-radius-right);
+			border-bottom-right-radius: var(--btn-group-horizontal-border-radius-right);
+		}
+
+		> .btn:not(:first-child),
+		> .btn-group:not(:first-child) .btn {
+			border-top-left-radius: var(--btn-group-horizontal-border-radius-left);
+			border-bottom-left-radius: var(--btn-group-horizontal-border-radius-left);
+		}
+	}
+
+	&.btn-group-vertical {
+		flex-direction: var(--btn-group-vertical-flex-direction);
+		align-items: var(--btn-group-vertical-align-items);
+		justify-content: var(--btn-group-vertical-justify-content);
+
+		> .btn,
+		> .btn-group {
+			width: var(--btn-group-vertical-width);
+		}
+
+		> .btn:not(:first-child),
+		> .btn-group:not(:first-child) {
+			margin-top: var(--btn-group-vertical-margin-top);
+		}
+
+		> .btn:not(:last-child):not(.dropdown-toggle),
+		> .btn-group:not(:last-child) .btn {
+			border-bottom-left-radius: var(--btn-group-vertical-border-radius-bottom);
+			border-bottom-right-radius: var(--btn-group-vertical-border-radius-bottom);
+		}
+
+		> .btn:not(:first-child),
+		> .btn-group:not(:first-child) .btn {
+			border-top-left-radius: var(--btn-group-vertical-border-radius-top);
+			border-top-right-radius: var(--btn-group-vertical-border-radius-top);
+		}
+	}
+
+	> :btn {
+		position: var(--btn-inner-position);
+		flex: var(--btn-inner-flex);
+
+		&:hover,
+		&.focus,
+		&.active,
+		&.active {
+			z-index: var(--btn-inner-z-index);
+		}
+	}
+
+	> .dropdown-toggle:not(.no-caret) {
+		white-space: var(--dropdown-toggle-whitespace);
+
+		&::after {
+			display: var(--dropdown-toggle-arrow-display);
+			vertical-align: var(--dropdown-toggle-arrow-vertical-align);
+			content: var(--dropdown-toggle-arrow-content);
+			margin: var(--dropdown-toggle-arrow-margin);
+			border-top: var(--dropdown-toggle-arrow-border-top);
+			border-right: var(--dropdown-toggle-arrow-border-right);
+			border-bottom: var(--dropdown-toggle-arrow-border-bottom);
+			border-left: var(--dropdown-toggle-arrow-border-left);
+		}
+
+		&:not(.dropdown-toggle-split)::after {
+			margin-left: var(--dropdown-toggle-arrow-split-margin-left);
+		}
+	}
+
+	.dropdown-toggle-split {
+		padding-right: var(--dropdown-toggle-split-padding-x);
+		padding-left: var(--dropdown-toggle-split-padding-left);
+	}
+
+	&.dropup .dropdown-toggle::after {
+		border-top: var(--dropup-arrow-border-top);
+		border-bottom: var(--dropup-arrow-border-bottom);
+		bottom: var(--dropup-arrow-bottom);
+		margin-top: var(--dropup-arrow-margin-top);
+	}
+
+	&.dropright .dropdown-toggle::after {
+		border-top: var(--dropright-arrow-border-top);
+		border-right: var(--dropright-arrow-border-right);
+		border-bottom: var(--dropright-arrow-border-bottom);
+		border-left: var(--dropright-arrow-border-left);
+		top: var(--dropright-arrow-top);
+		left: var(--dropright-arrow-left);
+		margin-top: var(--dropright-arrow-margin-top);
+	}
+
+	&.dropleft .dropdown-toggle::after {
+		display: var(--dropleft-arrow-display);
+	}
+
+	&.dropleft .dropdown-toggle::before {
+		display: var(--dropleft-before-display);
+		vertical-align: var(--dropleft-before-vertical-align);
+		content: var(--dropleft-before-content);
+		margin: var(--dropleft-before-margin);
+		border-top: var(--dropleft-before-border-top);
+		border-left: var(--dropleft-before-border-left);
+		border-bottom: var(--dropleft-before-border-bottom);
+		border-right: var(--dropleft-before-border-right);
+		top: var(--dropleft-before-top);
+		right: var(--dropleft-before-right);
+		left: var(--dropleft-before-left);
+		margin-top: var(--dropleft-before-margin-top);
+	}
+}
+
+@utility btn-group-* {
+    > .btn,
+    > .btn-group > .btn {
+    	padding: calc(--value(--btn-font-size-*, [length]) * 1.5 / 4) calc(--value(--btn-font-size-*, [length]) * 1.5 / 2);
+    	padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    	font-size: --value(--btn-font-size-*, [length]);
+    	font-size: --spacing(--value(integer));
+    	border-radius: calc(--value(--btn-font-size-*, [length]) / 4);
+    	border-radius: calc(--spacing(--value(integer)) / 4);
+
+		&:is(.dropdown-toggle-split) {
+			--dropdown-toggle-split-padding-x: calc(--value(--btn-font-size-*, [length]) * 1.5 / 4);
+			--dropdown-toggle-split-padding-x: calc(--spacing(--value(integer)) * .75 / 2);
+
+			padding-left: var(--dropdown-toggle-split-padding-x);
+			padding-right: var(--dropdown-toggle-split-padding-x);
+		}
+    }
+}

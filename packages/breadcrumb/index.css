@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@import './src/sizes.css';
+@import './src/colors.css';
+
+@import './src/breadcrumb.css';

@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+@import "./src/css/sizes.css";
+@import "./src/css/pagination.css";

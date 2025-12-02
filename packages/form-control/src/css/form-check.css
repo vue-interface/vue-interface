@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+    --form-check-width: 1.25em;
+    --form-check-height: 1.25em;
+    --form-check-margin-top: calc((var(--form-line-height, 1.5) * 1em - 1.25em) / 2);
+    --form-check-vertical-align: top;
+    --form-check-background-position: center;
+    --form-check-background-size: contain;
+    --form-check-color-adjust: exact;
+    --form-check-padding: 0;
+    --form-check-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-check-background-color: var(--form-background-color, inherit);
+    --form-check-background-repeat: var(--form-background-repeat, no-repeat);
+    --form-check-border-width: var(--form-border-width, 1px);
+    --form-check-border-style: var(--form-border-style, solid);
+    --form-check-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
+    --form-check-appearance: var(--form-appearance, none);
+    --form-check-label-margin-left: .5em;
+
+    /* Dark mode */
+    --form-check-dark-color: var(--form-dark-color, oklch(98.5% 0.002 247.839));
+    --form-check-dark-background-color: var(--form-dark-background-color, oklch(37.1% 0 0));
+    --form-check-dark-border-color: var(--form-dark-border-color, oklch(55.6% 0 0));
+
+    /* Checkbox specific */
+    --form-check-checkbox-border-radius: calc(1.25em / 4);
+
+    /* Radio specific */
+    --form-check-radio-border-radius: 50%;
+
+    /* Active state */
+    --form-check-active-filter: brightness(90%);
+
+    /* Focus state */
+    --form-check-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-check-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-check-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    --form-check-focus-outline: var(--form-focus-outline, 0);
+
+    /* Checked state */
+    --form-check-checked-background-color: var(--color-blue-500, oklch(68.7% 0.162 253.989));
+    --form-check-checked-border-color: var(--color-blue-500, oklch(68.7% 0.162 253.989));
+    --form-check-checkbox-checked-background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3E%3C/svg%3E");
+    --form-check-radio-checked-background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='2' fill='%23fff'/%3E%3C/svg%3E");
+
+    /* Disabled state */
+    --form-check-disabled-pointer-events: var(--form-disabled-pointer-events, none);
+    --form-check-disabled-filter: var(--form-disabled-filter, none);
+    --form-check-disabled-opacity: calc(var(--form-disabled-opacity, 1) / 2);
+    --form-check-disabled-dark-background-color: var(--form-disabled-dark-background-color, oklch(20.5% 0 0));
+    --form-check-disabled-label-opacity: 0.5;
+
+    /* Invalid/Valid state */
+    --form-check-invalid-checked-background-color: var(--color-red-600, oklch(57.7% 0.245 27.325));    
+    --form-check-valid-checked-background-color: var(--color-green-600, oklch(62.7% 0.194 149.214));
+}
+
+@utility form-check {
+    width: var(--form-check-width);
+    height: var(--form-check-height);
+    margin-top: var(--form-check-margin-top);
+    vertical-align: var(--form-check-vertical-align);
+    background-color: var(--form-check-background-color);
+    background-repeat: var(--form-check-background-repeat);
+    background-position: var(--form-check-background-position);
+    background-size: var(--form-check-background-size);
+    border-width: var(--form-check-border-width);
+    border-style: var(--form-check-border-style);
+    border-color: var(--form-check-border-color);
+    forced-color-adjust: var(--form-check-color-adjust);
+    transition: var(--form-check-transition);
+    appearance: var(--form-check-appearance);
+    padding: var(--form-check-padding) !important;
+
+    @variant dark {
+        color: var(--form-check-dark-color);
+        background-color: var(--form-check-dark-background-color);
+        border-color: var(--form-check-dark-border-color);
+    }
+
+    &[type="checkbox"] {
+        border-radius: var(--form-check-checkbox-border-radius);
+    }
+
+    &[type="radio"] {
+        border-radius: var(--form-check-radio-border-radius);
+    }
+
+    ~ .form-check-label {
+        margin-left: var(--form-check-label-margin-left);
+    }
+
+    &:active:not(:disabled,:read-only) {
+        filter: var(--form-check-active-filter);
+    }
+
+    &:focus {
+        border-color: var(--form-check-focus-border-color);
+        box-shadow: var(--form-check-focus-box-shadow-style) var(--form-check-focus-box-shadow-color);
+        outline: var(--form-check-focus-outline);
+    }
+
+    &:checked {
+        background-color: var(--form-check-checked-background-color);
+        border-color: var(--form-check-checked-border-color);
+
+        &[type="checkbox"] {
+            background-image: var(--form-check-checkbox-checked-background-image);
+        }
+
+        &[type="radio"] {
+            background-image: var(--form-check-radio-checked-background-image);
+        }
+    }
+
+    &[disabled]:not([readonly]),
+    &:disabled:not([readonly]) {
+        pointer-events: var(--form-check-disabled-pointer-events);
+        filter: var(--form-check-disabled-filter);
+        opacity: var(--form-check-disabled-opacity);
+
+        @variant dark {
+            background-color: var(--form-check-disabled-dark-background-color);
+        }
+
+        ~ .form-check-label {
+            opacity: var(--form-check-disabled-label-opacity);
+        }
+    }
+
+    &.is-invalid,
+    &[invalid] {
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
+
+        &:checked {
+            background-color: var(--form-check-invalid-checked-background-color);
+        }
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--invalid-box-shadow);
+        }
+    }
+
+    &.is-valid,
+    &[valid] {
+        border-color: var(--valid-border-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
+
+        &:checked {
+            background-color: var(--form-check-valid-checked-background-color);
+        }
+
+        &:focus,
+        &.focus {
+            box-shadow: var(--valid-box-shadow);
+        }
+    }
+}
+
+@utility form-check-* {
+    --form-check-focus-box-shadow-color: color-mix(in oklch, --value(--color-*, [color]) 50%, transparent);
+    
+    font-size: --value(--form-control-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
+    background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+    border-color: --value(--color-*, [color]);
+
+    ~ .form-check-label {
+        margin-left: --value(--form-check-label-margin-left-*);
+    }
+
+    &:focus {
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+        border-color: --value(--color-*, [color]);
+    }
+
+    &:checked {
+        border-color: --value(--color-*, [color]);
+        background-color: --value(--color-*, [color]);
+    }
+}

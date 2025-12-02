@@ -1,0 +1,160 @@
+@theme {
+  --activity-indicator-spinner-width: 2.5em;
+  --activity-indicator-spinner-height: 2.5em;
+  --activity-indicator-spinner-bg: currentColor;
+  --activity-indicator-spinner-animation: activity-indicator-spinner 1.2s infinite ease-in-out both;
+  
+  --activity-indicator-spinner-bar-width: 10%;
+  --activity-indicator-spinner-bar-height: 33.333%;
+  --activity-indicator-spinner-bar-margin: 0 auto;
+  --activity-indicator-spinner-bar-display: block;
+  --activity-indicator-spinner-bar-content: '';
+  
+  --activity-indicator-spinner-position: relative;
+  --activity-indicator-spinner-child-position: absolute;
+  --activity-indicator-spinner-child-width: 100%;
+  --activity-indicator-spinner-child-height: 100%;
+  --activity-indicator-spinner-child-left: 0;
+  --activity-indicator-spinner-child-top: 0;
+  
+  --activity-indicator-spinner-spinner2-rotate: rotate(30deg);
+  --activity-indicator-spinner-spinner3-rotate: rotate(60deg);
+  --activity-indicator-spinner-spinner4-rotate: rotate(90deg);
+  --activity-indicator-spinner-spinner5-rotate: rotate(120deg);
+  --activity-indicator-spinner-spinner6-rotate: rotate(150deg);
+  --activity-indicator-spinner-spinner7-rotate: rotate(180deg);
+  --activity-indicator-spinner-spinner8-rotate: rotate(210deg);
+  --activity-indicator-spinner-spinner9-rotate: rotate(240deg);
+  --activity-indicator-spinner-spinner10-rotate: rotate(270deg);
+  --activity-indicator-spinner-spinner11-rotate: rotate(300deg);
+  --activity-indicator-spinner-spinner12-rotate: rotate(330deg);
+  
+  --activity-indicator-spinner-spinner2-delay: -1.1s;
+  --activity-indicator-spinner-spinner3-delay: -1s;
+  --activity-indicator-spinner-spinner4-delay: -0.9s;
+  --activity-indicator-spinner-spinner5-delay: -0.8s;
+  --activity-indicator-spinner-spinner6-delay: -0.7s;
+  --activity-indicator-spinner-spinner7-delay: -0.6s;
+  --activity-indicator-spinner-spinner8-delay: -0.5s;
+  --activity-indicator-spinner-spinner9-delay: -0.4s;
+  --activity-indicator-spinner-spinner10-delay: -0.3s;
+  --activity-indicator-spinner-spinner11-delay: -0.2s;
+  --activity-indicator-spinner-spinner12-delay: -0.1s;
+}
+
+@utility activity-indicator-spinner {
+  width: var(--activity-indicator-spinner-width);
+  height: var(--activity-indicator-spinner-height);
+  position: var(--activity-indicator-spinner-position);
+  
+  & .activity-indicator-spinner {
+    width: var(--activity-indicator-spinner-child-width);
+    height: var(--activity-indicator-spinner-child-height);
+    position: var(--activity-indicator-spinner-child-position);
+    left: var(--activity-indicator-spinner-child-left);
+    top: var(--activity-indicator-spinner-child-top);
+    
+    &::before {
+      content: var(--activity-indicator-spinner-bar-content);
+      display: var(--activity-indicator-spinner-bar-display);
+      margin: var(--activity-indicator-spinner-bar-margin);
+      width: var(--activity-indicator-spinner-bar-width);
+      height: var(--activity-indicator-spinner-bar-height);
+      background-color: var(--activity-indicator-spinner-bg);
+      animation: var(--activity-indicator-spinner-animation);
+    }
+  }
+}
+
+@utility activity-indicator-spinner2 {
+  transform: var(--activity-indicator-spinner-spinner2-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner2-delay); 
+  }
+}
+
+@utility activity-indicator-spinner3 {
+  transform: var(--activity-indicator-spinner-spinner3-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner3-delay); 
+  }
+}
+
+@utility activity-indicator-spinner4 {
+  transform: var(--activity-indicator-spinner-spinner4-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner4-delay); 
+  }
+}
+
+@utility activity-indicator-spinner5 {
+  transform: var(--activity-indicator-spinner-spinner5-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner5-delay); 
+  }
+}
+
+@utility activity-indicator-spinner6 {
+  transform: var(--activity-indicator-spinner-spinner6-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner6-delay); 
+  }
+}
+
+@utility activity-indicator-spinner7 {
+  transform: var(--activity-indicator-spinner-spinner7-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner7-delay); 
+  }
+}
+
+@utility activity-indicator-spinner8 {
+  transform: var(--activity-indicator-spinner-spinner8-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner8-delay); 
+  }
+}
+
+@utility activity-indicator-spinner9 {
+  transform: var(--activity-indicator-spinner-spinner9-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner9-delay); 
+  }
+}
+
+@utility activity-indicator-spinner10 {
+  transform: var(--activity-indicator-spinner-spinner10-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner10-delay); 
+  }
+}
+
+@utility activity-indicator-spinner11 {
+  transform: var(--activity-indicator-spinner-spinner11-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner11-delay); 
+  }
+}
+
+@utility activity-indicator-spinner12 {
+  transform: var(--activity-indicator-spinner-spinner12-rotate);
+  
+  .activity-indicator-spinner &::before { 
+    animation-delay: var(--activity-indicator-spinner-spinner12-delay); 
+  }
+}
+
+@keyframes activity-indicator-spinner {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}

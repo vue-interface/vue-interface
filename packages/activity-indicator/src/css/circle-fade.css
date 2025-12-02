@@ -1,0 +1,165 @@
+@theme {
+    --activity-indicator-circle-fade-width: 2.5em;
+    --activity-indicator-circle-fade-height: 2.5em;
+    --activity-indicator-circle-fade-position: relative;
+    --activity-indicator-circle-fade-display: inline-block;
+
+    --activity-indicator-circle-width: 100%;
+    --activity-indicator-circle-height: 100%;
+    --activity-indicator-circle-position: absolute;
+    --activity-indicator-circle-left: 0;
+    --activity-indicator-circle-top: 0;
+
+    --activity-indicator-circle-before-content: '';
+    --activity-indicator-circle-before-display: block;
+    --activity-indicator-circle-before-margin: 0 auto;
+    --activity-indicator-circle-before-width: 15%;
+    --activity-indicator-circle-before-height: 15%;
+    --activity-indicator-circle-before-bg: currentColor;
+    --activity-indicator-circle-before-border-radius: 100%;
+    --activity-indicator-circle-before-animation: activity-indicator-circle-fade 1.2s infinite ease-in-out both;
+
+    --activity-indicator-circle-delay-1: 0s;
+    --activity-indicator-circle-delay-2: -1.1s;
+    --activity-indicator-circle-delay-3: -1s;
+    --activity-indicator-circle-delay-4: -0.9s;
+    --activity-indicator-circle-delay-5: -0.8s;
+    --activity-indicator-circle-delay-6: -0.7s;
+    --activity-indicator-circle-delay-7: -0.6s;
+    --activity-indicator-circle-delay-8: -0.5s;
+    --activity-indicator-circle-delay-9: -0.4s;
+    --activity-indicator-circle-delay-10: -0.3s;
+    --activity-indicator-circle-delay-11: -0.2s;
+    --activity-indicator-circle-delay-12: -0.1s;
+
+    --activity-indicator-circle-rotate-1: rotate(0deg);
+    --activity-indicator-circle-rotate-2: rotate(30deg);
+    --activity-indicator-circle-rotate-3: rotate(60deg);
+    --activity-indicator-circle-rotate-4: rotate(90deg);
+    --activity-indicator-circle-rotate-5: rotate(120deg);
+    --activity-indicator-circle-rotate-6: rotate(150deg);
+    --activity-indicator-circle-rotate-7: rotate(180deg);
+    --activity-indicator-circle-rotate-8: rotate(210deg);
+    --activity-indicator-circle-rotate-9: rotate(240deg);
+    --activity-indicator-circle-rotate-10: rotate(270deg);
+    --activity-indicator-circle-rotate-11: rotate(300deg);
+    --activity-indicator-circle-rotate-12: rotate(330deg);
+
+    --activity-indicator-circle-fade-opacity-false: 0;
+    --activity-indicator-circle-fade-opacity-true: 1;
+}
+
+@utility activity-indicator-circle-fade {
+    display: var(--activity-indicator-circle-fade-display);
+    width: var(--activity-indicator-circle-fade-width);
+    height: var(--activity-indicator-circle-fade-height);
+    position: var(--activity-indicator-circle-fade-position);
+}
+
+@utility activity-indicator-circle {
+    width: var(--activity-indicator-circle-width);
+    height: var(--activity-indicator-circle-height);
+    position: var(--activity-indicator-circle-position);
+    left: var(--activity-indicator-circle-left);
+    top: var(--activity-indicator-circle-top);
+
+    &:before {
+        content: var(--activity-indicator-circle-before-content);
+        display: var(--activity-indicator-circle-before-display);
+        margin: var(--activity-indicator-circle-before-margin);
+        width: var(--activity-indicator-circle-before-width);
+        height: var(--activity-indicator-circle-before-height);
+        background-color: var(--activity-indicator-circle-before-bg);
+        border-radius: var(--activity-indicator-circle-before-border-radius);
+        animation: var(--activity-indicator-circle-before-animation);
+    }
+
+    &:nth-child(1) {
+        transform: var(--activity-indicator-circle-rotate-1);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-1);
+        }
+    }
+
+    &:nth-child(2) {
+        transform: var(--activity-indicator-circle-rotate-2);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-2);
+        }
+    }
+
+    &:nth-child(3) {
+        transform: var(--activity-indicator-circle-rotate-3);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-3);
+        }
+    }
+
+    &:nth-child(4) {
+        transform: var(--activity-indicator-circle-rotate-4);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-4);
+        }
+    }
+
+    &:nth-child(5) {
+        transform: var(--activity-indicator-circle-rotate-5);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-5);
+        }
+    }
+
+    &:nth-child(6) {
+        transform: var(--activity-indicator-circle-rotate-6);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-6);
+        }
+    }
+
+    &:nth-child(7) {
+        transform: var(--activity-indicator-circle-rotate-7);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-7);
+        }
+    }
+
+    &:nth-child(8) {
+        transform: var(--activity-indicator-circle-rotate-8);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-8);
+        }
+    }
+
+    &:nth-child(9) {
+        transform: var(--activity-indicator-circle-rotate-9);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-9);
+        }
+    }
+
+    &:nth-child(10) {
+        transform: var(--activity-indicator-circle-rotate-10);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-10);
+        }
+    }
+
+    &:nth-child(11) {
+        transform: var(--activity-indicator-circle-rotate-11);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-11);
+        }
+    }
+
+    &:nth-child(12) {
+        transform: var(--activity-indicator-circle-rotate-12);
+        &:before {
+            animation-delay: var(--activity-indicator-circle-delay-12);
+        }
+    }
+}
+
+@keyframes activity-indicator-circle-fade {
+    0%, 39%, 100% { opacity: var(--activity-indicator-circle-fade-opacity-false); }
+    40% { opacity: var(--activity-indicator-circle-fade-opacity-true); }
+}

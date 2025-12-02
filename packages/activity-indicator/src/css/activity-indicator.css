@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "./sizes.css";
+
+@utility activity-indicator-* {
+    font-size: --value(--activity-indicator-size-*, [length]);
+    font-size: --spacing(--value(integer));
+    color: --value(--color-*, [color]);
+}

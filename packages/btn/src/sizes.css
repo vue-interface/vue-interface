@@ -1,0 +1,11 @@
+@theme {
+    --btn-font-size-xs: --spacing(2.85);
+    --btn-font-size-sm: --spacing(3.33);
+    --btn-font-size-md: --spacing(4);
+    --btn-font-size-lg: --spacing(5);
+    --btn-font-size-xl: --spacing(6);
+    --btn-font-size-2xl: --spacing(7);
+    --btn-font-size-3xl: --spacing(8);
+    --btn-font-size-4xl: --spacing(9);
+    --btn-font-size-5xl: --spacing(10);
+}

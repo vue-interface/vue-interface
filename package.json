@@ -1,32 +1,47 @@
 {
-  "name": "vue-interface-new",
+  "name": "vue-interface",
   "private": true,
   "scripts": {
     "build": "pnpm turbo run build",
     "dev": "turbo run dev",
     "lint": "eslint packages/**/*.{js,ts,vue}",
     "lint:fix": "npm run lint -- --fix",
-    "storybook": "pnpm run clean:storybook && storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "clean:storybook": "node ./clean-storybook.js"
+    "prepare": "husky",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "spress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "9.0.5",
-    "@storybook/addon-themes": "^9.0.5",
-    "@storybook/html-vite": "9.0.5",
-    "@tailwindcss/postcss": "^4.1.8",
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.6",
-    "prettier": "^3.5.3",
-    "storybook": "9.0.5",
-    "tailwindcss": "^4.0.0",
-    "turbo": "^2.5.4"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/node": "^24.1.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "autoprefixer": "^10.4.21",
+    "change-case": "^5.4.4",
+    "eslint": "^9.32.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.11",
+    "turbo": "^2.5.5",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.38.0",
+    "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.4",
+    "vitepress": "2.0.0-alpha.12",
+    "vue": "^3.3.4",
+    "vue-tsc": "^3.0.0"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "dependencies": {
-    "@storybook/vue3": "^9.0.5"
+    "@heroicons/vue": "^2.2.0",
+    "vue": "^3.5.18"
   }
 }

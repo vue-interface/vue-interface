@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+    --form-control-base-animation-position: relative;
+
+    --form-control-animation-position: absolute;
+    --form-control-animation-left: 0;
+    --form-control-animation-display: flex;
+    --form-control-animation-line-height: 0.75; /* use in place of .75 in calc's? Should it be 1.5*/
+    --form-control-animation-align-items: center;
+    --form-control-animation-padding: calc(var(--form-control-font-size) * .75 / 2) calc(var(--form-control-font-size) * .75);
+    --form-control-animation-transition: all 150ms ease-in-out;
+    --form-control-animation-z-index: 1;
+    
+    --form-control-animation-is-empty-visibility: hidden;
+
+    --form-control-animation-focus-label-font-size: calc(var(--form-control-font-size) * .75);
+    --form-control-animation-focus-label-padding-top: 0;
+    --form-control-animation-focus-label-padding-bottom: 0;
+    --form-control-animation-focus-label-padding-left: calc(var(--form-control-font-size) * .75);
+    --form-control-animation-focus-control-padding-top: calc(var(--form-control-font-size) * .75);
+    --form-control-animation-focus-control-padding-bottom: 0; 
+}
+
+@utility form-control-base-animation {
+    position: var(--form-control-base-animation-position);
+
+    &:has(input.form-control, .form-select) .form-label {
+        position: var(--form-control-animation-position);
+        top: var(--form-control-border-width);
+        left: var(--form-control-animation-left);
+        display: var(--form-control-animation-display);
+        align-items: var(--form-control-animation-align-items);
+        padding: var(--form-control-animation-padding);
+        font-size: var(--form-control-font-size);
+        transition: var(--form-control-animation-transition);
+        z-index: var(--form-control-animation-z-index);
+    }
+
+    &:has(.form-control:empty:not(.has-focus)):not(.is-dirty) {
+        input.form-control::placeholder {
+            visibility: var(--form-control-animation-is-empty-visibility);
+        }
+    }
+
+    .form-select, input.form-control {
+        transition: var(--form-control-animation-transition);
+    }
+
+    &:has(input.form-control):focus-within,
+    &:has(input.form-control:not(:placeholder-shown)),
+    &:has(input.form-control).is-dirty,
+    &:has(.form-select>option:checked:not([value=""])) {
+        .form-label {
+            font-size: var(--form-control-animation-focus-label-font-size);
+            padding-top: var(--form-control-animation-focus-label-padding-top);
+            padding-bottom: var(--form-control-animation-focus-label-padding-bottom);
+            padding-left: var(--form-control-animation-focus-label-padding-left);
+        }
+        
+        .form-control,
+        .form-select {
+            padding-top: var(--form-control-animation-focus-control-padding-top);
+            padding-bottom: var(--form-control-animation-focus-control-padding-bottom);
+        }
+    }
+}
+
+@utility form-control-animated {
+    @apply form-control-base-animation;
+}
+
+@utility form-control-animated-* {
+    @apply form-control-base-animation;
+
+    position: var(--form-control-base-animation-position);
+    
+    &:has(input.form-control, .form-select) .form-label {
+        padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
+        padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+        font-size: --value(--form-control-font-size-*, [length]);
+        font-size: --spacing(--value(integer));
+    }
+
+    &:has(input.form-control):focus-within,
+    &:has(input.form-control:not(:placeholder-shown)),
+    &:has(input.form-control).is-dirty,
+    &:has(.form-select>option:checked:not([value=""])) {
+        .form-label {
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * .75);
+            padding-left: calc(--spacing(--value(integer)) * .75);
+            font-size: calc(--value(--form-control-font-size-*, [length]) * .75);
+            font-size: calc(--spacing(--value(integer)) * .75);
+        }
+        
+        .form-control,
+        .form-select {
+            padding-top: calc(--value(--form-control-font-size-*, [length]) * .75);
+            padding-top: calc(--spacing(--value(integer)) * .75);
+        }        
+    }
+    
+    &.has-icon {
+        font-size: calc(--value(--form-control-font-size-*, [length]));
+        font-size: calc(--spacing(--value(integer)));
+        
+        .form-label {
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * 2) !important;
+            padding-left: calc(--spacing(--value(integer)) * 2) !important;
+        }
+
+        .form-control-icon {
+            padding-left: calc(--value(--form-control-font-size-*, [length]) * 2);
+            padding-left: calc(--spacing(--value(integer)) * 2);
+        }
+    }
+}

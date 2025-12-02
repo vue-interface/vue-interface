@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Tooltip</title>
+    </head>
+    <body class="dark:bg-neutral-900 dark:text-white">
+        <div id="app" class="container mx-auto flex flex-col gap-6">
+            <h1 class="text-4xl">tooltip</h1>
+
+            <div class="flex gap-4">
+                <with-tooltip v-slot="{el}">
+                    Top
+                    <Tooltip :target="el">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+                
+                <with-tooltip v-slot="{el}">
+                    Bottom
+                    <Tooltip :target="el" placement="bottom">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+                
+                <with-tooltip v-slot="{el}">
+                    Left
+                    <Tooltip :target="el" placement="left">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+
+                <with-tooltip v-slot="{el}">
+                    Right
+                    <Tooltip :target="el" placement="right">
+                        Some Toolip
+                    </Tooltip>
+                </with-tooltip>
+            </div>
+
+            <h2 class="text-2xl">Via Plugin</h2>
+
+            <div class="flex gap-4 [&>a]:text-blue-500 [&>a]:hover:underline">
+                <a href="#" title="Some Tooltip" data-tooltip-placement="top">
+                    Top
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="bottom">
+                    Bottom
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="left">
+                    Left
+                </a>
+                <a href="#" title="Some Tooltip" data-tooltip-placement="right">
+                    Right
+                </a>
+            </div>
+
+            <h2 class="text-2xl">Dynamic Elements</h2>
+
+            <div class="flex gap-4 [&>button]:p-2 [&>button]:rounded [&>button]:bg-blue-500">
+                <button @click="dynamicEl = true">Mount Element</button>
+
+                <button v-if="dynamicEl" title="Some Tooltip" @click="dynamicEl = false">
+                    Click to Unmount
+                </button>
+            </div>
+
+            <h2 class="text-2xl">Via Directive</h2>
+
+            <div class="flex gap-4 [&>button]:p-2 [&>button]:rounded [&>button]:bg-blue-500">
+                <button @click="directiveEl = true">Mount Element</button>
+
+                <button v-if="directiveEl" v-tooltip="'Some Tooltip'" @click="directiveEl = false">
+                    Click to Unmount
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'top'
+                }" @click="directiveEl = false">
+                    Top
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'bottom'
+                }" @click="directiveEl = false">
+                    Bottom
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'left'
+                }" @click="directiveEl = false">
+                    Left
+                </button>
+
+                <button v-if="directiveEl" v-tooltip="{
+                    title: 'Some Tooltip',
+                    placement: 'right'
+                }" @click="directiveEl = false">
+                    Right
+                </button>
+            </div>
+        </div>
+        <script type="module">
+            import './index.css';
+            import { createApp, defineComponent, h, ref, onMounted } from 'vue/dist/vue.esm-bundler';
+            import { Tooltip, TooltipPlugin } from './index';
+
+            const WithTooltip = defineComponent({
+                setup(props, a) {
+                    const el = ref();
+
+                    return () => h('a', {
+                        ref: el,
+                        href: '#',
+                        classList: 'text-blue-500 hover:underline'
+                    }, a.slots.default({ el }))
+                }
+            });
+
+            const vue = createApp({
+                components: {
+                    WithTooltip,
+                    Tooltip
+                },
+                data() {
+                    return {
+                        dynamicEl: false,
+                        directiveEl: false,
+                    }
+                }
+            })
+            .use(TooltipPlugin)
+            .mount('#app');
+        </script>
+    </body>
+</html>

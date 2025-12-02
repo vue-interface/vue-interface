@@ -1,0 +1,45 @@
+{
+  "name": "@vue-interface/slide-deck",
+  "version": "1.0.0",
+  "description": "A Vue slide deck component.",
+  "type": "module",
+  "main": "./dist/slide-deck.umd.cjs",
+  "module": "./dist/slide-deck.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/slide-deck.js",
+      "require": "./dist/slide-deck.umd.cjs"
+    }
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/slide-deck"
+  },
+  "keywords": [
+    "Slide",
+    "Deck",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {
+    "@vue-interface/btn": "workspace:*",
+    "vue": "^3.3.4"
+  }
+}

@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+@theme {
+    --form-switch-position: relative;
+    --form-switch-outline: none;
+    --form-switch-appearance: var(--form-appearance, none);
+    --form-switch-border-width: var(--form-border-width, 1px);
+    --form-switch-border-style: var(--form-border-style, solid); 
+    --form-switch-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
+    --form-switch-transition: background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    --form-switch-border-radius: calc(1em * var(--form-line-height, 1.5));   
+    --form-switch-display: var(--form-display, flex);
+    --form-switch-appearance: var(--form-appearance, none);
+    --form-switch-border-width: var(--form-border-width, 1px);
+    --form-switch-border-style: var(--form-border-style, solid);
+    --form-switch-border-color: var(--form-border-color-switch-check, oklch(70.8% 0 0));
+
+    --form-switch-padding: 0.15rem 0.35;
+    --form-switch-font-size: 0.7rem;
+    --form-switch-height: calc(1rem);
+    --form-switch-width: calc(var(--form-switch-height) * 2);
+    --form-switch-border-radius: var(--form-switch-height);  
+
+    
+    --form-switch-label-display: inline-flex;
+    --form-switch-label-align-items: center;
+    --form-switch-label-vertical-align: middle;
+    --form-switch-label-gap: 0.5em;
+    
+    /* Form Switch Before Element (toggle circle) */
+    --form-switch-before-content: '';
+    --form-switch-before-position: absolute;
+    --form-switch-before-top: 50%;
+    --form-switch-before-left: 0;
+    --form-switch-before-height: calc(var(--form-switch-height));
+    --form-switch-before-width: calc(var(--form-switch-width) - var(--form-switch-border-width) * 2 - var(--form-switch-border-width) * 2);
+    --form-switch-before-display: block;
+    --form-switch-before-translate-y: -50%;
+    --form-switch-before-transition: all .15s ease-in-out;
+    
+    --form-switch-after-border-radius: 100%;
+    --form-switch-after-content: '';
+    --form-switch-after-position: absolute;
+    --form-switch-after-left: 0;
+    --form-switch-after-top: var(--form-switch-before-top);
+    --form-switch-after-off-color: var(--color-neutral-400, oklch(70.8% 0 0));
+    --form-switch-after-on-color: var(--color-white, #fff);
+    --form-switch-after-focus-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+
+    --form-switch-after-background-position: center;
+    --form-switch-after-background-repeat: no-repeat;
+    
+    /* Form Switch States */
+    --form-switch-checked-background: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    --form-switch-checked-border-color: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+    --form-switch-checked-before-position: right center;
+    
+    /* Form Switch Focus */
+    --form-switch-focus-border-color: var(--form-focus-border-color, oklch(62.3% 0.214 259.815));
+    --form-switch-focus-outline: var(--form-focus-outline, 0);
+    --form-switch-focus-box-shadow-style: var(--form-focus-box-shadow-style, 0 0 0 .2rem);
+    --form-switch-focus-box-shadow-color: color-mix(in oklch, var(--form-focus-box-shadow-color, oklch(70.7% 0.165 254.624)) 50%, transparent);
+    
+    /* Form Switch Disabled */
+    --form-switch-disabled-pointer-events: var(--form-disabled-pointer-events);
+    --form-switch-disabled-filter: var(--form-disabled-filter);
+    --form-switch-disabled-opacity: calc(var(--form-disabled-opacity) / 2);
+
+    /*Dark-Light mode toggle*/
+    --form-switch-dark-border-color: var(--form-dark-border-color, oklch(55.6% 0 0));
+    --form-switch-dark-bg: transparent;
+
+    --form-switch-sun-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNlYTU4MGM7IHN0cm9rZTogI2VhNTgwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
+    --form-switch-sun-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nI2ZlZjA4YScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcgZD0nTSAwIC02IEwgMCAtNC41IE0gNC4yNDMgLTQuMjQxIEwgMy4xODIgLTMuMTgyIE0gNiAwIEwgNC41IDAgTSA0LjI0MyA0LjI0MyBMIDMuMTgyIDMuMTgyIE0gMCA0LjUgTCAwIDYgTSAtMy4xODIgMy4xODIgTCAtNC4yNDEgNC4yNDMgTSAtNC41IDAgTCAtNiAwIE0gLTMuMTgyIC0zLjE4MiBMIC00LjI0MSAtNC4yNDEgTSAyLjQ5OCAwIEMgMi40OTggMS45MjcgMC40MTggMy4xMjcgLTEuMjUgMi4xNjcgQyAtMi4wMjEgMS43MTggLTIuNDk4IDAuODk1IC0yLjQ5OCAwIEMgLTIuNDk4IC0xLjkyNSAtMC40MTggLTMuMTMgMS4yNSAtMi4xNjUgQyAyLjAyNiAtMS43MTggMi40OTggLTAuODkzIDIuNDk4IDAgWicgc3R5bGU9J2ZpbGw6ICNjMjQxMGM7IHN0cm9rZTogI2MyNDEwYycgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjwvc3ZnPg==");
+
+    --form-switch-moon-bg: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzdlMjJjZScgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
+    --form-switch-moon-bg-focus: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSctMTIgLTEyIDI0IDI0JyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxjaXJjbGUgcj0nOScgZmlsbD0nIzZiMjFhOCcgdHJhbnNmb3JtPSdtYXRyaXgoMSwgMCwgMCwgMSwgNy4xMDU0MjczNTc2MDEwMDJlLTE1LCAwKScvPjxwYXRoIHN0cm9rZT0nd2hpdGUnIGZpbGw9J3doaXRlJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGQ9J00gNiAyLjE2MiBDIDUuMjQgMi40NzkgNC40MjMgMi42NDIgMy41OTkgMi42NDEgQyAwLjE1MyAyLjY0MSAtMi42NDEgLTAuMTUzIC0yLjY0MSAtMy41OTkgQyAtMi42NDEgLTQuNDUgLTIuNDcgLTUuMjYxIC0yLjE2MiAtNiBDIC00LjQ4NiAtNS4wMyAtNiAtMi43NTggLTYgLTAuMjM5IEMgLTYgMy4yMDYgLTMuMjA2IDYgMC4yMzkgNiBDIDIuNzU4IDYuMDAxIDUuMDMgNC40ODcgNiAyLjE2MiBaJyB0cmFuc2Zvcm09J21hdHJpeCgxLCAwLCAwLCAxLCAzLjU1MjcxMzY3ODgwMDUwMWUtMTUsIDApJy8+PC9zdmc+");
+}
+
+@utility form-switch {
+    --form-switch-before-width: calc(var(--form-switch-width) - var(--form-switch-border-width) * 2);
+    --form-switch-after-height: calc(var(--form-switch-height) * .75);
+    --form-switch-after-width: var(--form-switch-after-height);
+    --form-switch-after-translate-x: calc((var(--form-switch-height) - var(--form-switch-after-height) - var(--form-switch-border-width)) / 2);
+    --form-switch-after-checked-translate-x: calc((var(--form-switch-before-width) + var(--form-switch-height) - var(--form-switch-after-height) - var(--form-switch-border-width)) / 2);
+
+    display: var(--form-switch-display);
+    position: var(--form-switch-position);
+    outline: var(--form-switch-outline);
+    padding: var(--form-switch-padding);
+    font-size: var(--form-switch-font-size);
+    appearance: var(--form-switch-appearance);
+    border-width: var(--form-switch-border-width);
+    border-style: var(--form-switch-border-style);
+    border-color: var(--form-switch-border-color);
+    border-radius: var(--form-switch-border-radius);
+    width: var(--form-switch-width);
+    height: var(--form-switch-height);
+    transition: var(--form-switch-transition);
+    
+    &::before {
+        content: var(--form-switch-before-content);
+        position: var(--form-switch-before-position);
+        top: var(--form-switch-before-top);
+        left: var(--form-switch-before-left);
+        width: var(--form-switch-before-width);
+        height: var(--form-switch-before-height);
+        display: var(--form-switch-before-display);
+        transform: translateY(var(--form-switch-before-translate-y));
+        transition: var(--form-switch-before-transition);
+    }
+
+    &::after {
+        content: var(--form-switch-after-content);
+        position: var(--form-switch-after-position);
+        left: var(--form-switch-after-left);
+        top: var(--form-switch-after-top);
+        transform: translateX(var(--form-switch-after-translate-x)) translateY(var(--form-switch-before-translate-y));
+        width: var(--form-switch-after-width);
+        height: var(--form-switch-after-height);
+        background-color: var(--form-switch-after-off-color); 
+        border-radius: var(--form-switch-after-border-radius);
+        transition: var(--form-switch-before-transition);
+        background-position: var(--form-switch-after-background-position);
+        background-repeat: var(--form-switch-after-background-repeat);
+        background-size: var(--form-switch-height);
+    }
+    
+    &:disabled:not([readonly]) {
+        pointer-events: var(--form-switch-disabled-pointer-events);
+        filter: var(--form-switch-disabled-filter);
+        opacity: var(--form-switch-disabled-opacity);
+    }
+    
+    &:focus {
+        border-color: var(--form-switch-focus-border-color);
+        outline: var(--form-switch-focus-outline);
+        box-shadow: var(--form-switch-focus-box-shadow-style) var(--form-switch-focus-box-shadow-color);
+
+        &::after {
+            background-color: var(--form-switch-after-focus-color);
+        }
+    }
+    
+    &:checked {
+        background-color: var(--form-switch-checked-background);
+        border-color: var(--form-switch-checked-border-color);
+        
+        &::after {
+            background-color: var(--form-switch-after-on-color); 
+            transform: translateX(var(--form-switch-after-checked-translate-x)) translateY(var(--form-switch-before-translate-y));
+        }
+    }
+
+    label.form-switch-label:has(&) {
+        display: var(--form-switch-label-display);
+        align-items: var(--form-switch-label-align-items);
+        vertical-align: var(--form-switch-label-vertical-align); 
+        gap: var(--form-switch-label-gap);
+    }
+
+    &.is-invalid,
+    &[invalid] {
+        border-color: var(--invalid-color);
+        background-color: var(--invalid-background-color);
+        color: var(--invalid-color);
+        
+        &::after {
+            background-color: var(--invalid-color);
+        }
+        
+        &:focus {
+            box-shadow: var(--invalid-box-shadow);
+        }
+    }
+    
+    &.is-valid,
+    &[valid] {
+        border-color: var(--valid-color);
+        background-color: var(--valid-background-color);
+        color: var(--valid-color);
+        
+        &::after {
+            background-color: var(--valid-color);
+        }
+        
+        &:focus {
+            box-shadow: var(--valid-box-shadow);
+        }
+    }
+}
+
+@utility form-switch-* {
+    --form-switch-height: calc(--value(--form-control-font-size-*, [length]) * 1.5 + (--value(--form-control-font-size-*, [length]) * .75) + 2px);
+    --form-switch-height: calc(--spacing(--value(integer)) * 1.5 + (--spacing(--value(integer)) * .75) + 2px);
+    --form-switch-width: calc(var(--form-switch-height) * 2);
+    --form-switch-focus-box-shadow-color: color-mix(in oklch, --value(--color-*, [color]) 50%, transparent);
+
+    padding: calc(--value(--form-control-font-size-*, [length]) * .75 / 2) calc(--value(--form-control-font-size-*, [length]) * .75);
+    padding: calc(--spacing(--value(integer)) * .75 / 2) calc(--spacing(--value(integer)) * .75);
+    font-size: --value(--form-control-font-size-*, [length]);
+    font-size: --spacing(--value(integer));
+    height: var(--form-switch-height);
+    width: var(--form-switch-width);
+    border-radius: calc(var(--form-switch-height));
+
+    color: --value(--color-*, [color]);
+    border-color: --value(--color-*, [color]);
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 10%, transparent);
+
+    &::after {
+        background-color: --value(--color-*, [color]);
+    }
+
+    &:checked {
+        background-color: color-mix(in oklch, --value(--color-*, [color]) 25%, transparent);
+        border-color: --value(--color-*, [color]);
+
+        &::after {
+            background-color: --value(--color-*, [color]);
+        }
+    }
+
+    &:focus {
+        border-color: --value(--color-*, [color]);
+
+        &::after {
+            background-color: --value(--color-*, [color]);
+        }
+    }
+}
+
+label:has(> .form-switch:disabled:not([readonly])) {
+    opacity: var(--form-switch-disabled-opacity);
+}
+
+@utility form-switch-light-dark {
+    &::after {
+        background-color: transparent;
+        background-image: var(--form-switch-sun-bg);
+    }
+    
+    &:focus::after {
+        background-color: transparent;
+        background-image: var(--form-switch-sun-bg-focus);
+    }
+  
+    &:checked {
+        background-color: var(--form-switch-dark-bg);
+        border-color: var(--form-switch-border-color);
+  
+        &::after {
+            background-color: transparent;
+            background-image: var(--form-switch-moon-bg);
+        }
+    
+        &:focus::after {
+            background-image: var(--form-switch-moon-bg-focus);
+        }
+    }
+  
+    @variant dark {
+        border-color: var(--form-switch-dark-border-color);
+    }
+}

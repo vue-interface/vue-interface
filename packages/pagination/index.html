@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Pagination</title>
+    </head>
+    <body class="dark:bg-zinc-900 dark:text-white">
+        <div id="app" class="container mx-auto">
+            <h1 class="text-4xl mb-5">pagination</h1>
+
+            <h2 class="text-2xl mt-6 mb-3">Basic Usage</h2>
+
+            <!-- try to get something so whatever page it selects, it shows it in the header -->
+            <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-4">
+                Page: {{ pageNum }}
+            </div>
+
+            <pagination v-model="pageNum" :total-pages="100" class="mb-3"></pagination>
+            <pagination :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination :page="50" :total-pages="100" class="mb-3"></pagination>
+            <pagination :page="100" :total-pages="100" class="mb-3"></pagination>
+            <pagination :page="50" :total-pages="100" class="mb-3" disabled></pagination>
+
+            <h2 class="text-2xl mt-6 mb-3">Sizes</h2>
+            
+            <pagination size="pagination-xs" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-sm" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-md" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-lg" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-xl" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-2xl" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-3xl" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-4xl" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-5xl" :page="1" :total-pages="100" class="mb-3"></pagination>
+
+            <pagination size="pagination-3" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-4" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-5" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-6" :page="1" :total-pages="100" class="mb-3"></pagination>
+
+            <pagination size="pagination-[16px]" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination size="pagination-[1.5rem]" :page="1" :total-pages="100" class="mb-3"></pagination>
+
+            <h2 class="text-2xl mt-6 mb-3">Colors</h2>
+
+            <pagination color="pagination-amber-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-green-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-purple-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination color="pagination-neutral-500" :page="1" :total-pages="100" class="mb-3"></pagination>
+
+            <h2 class="text-2xl mt-6 mb-3">Shadow</h2>
+
+            <pagination shadow :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination shadow="sm" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination shadow="md" :page="1" :total-pages="100" class="mb-3"></pagination>
+            <pagination shadow="lg" :page="1" :total-pages="100" class="mb-3"></pagination>
+
+            <h2 class="text-2xl mt-6 mb-3">Alignment</h2>
+
+            <pagination align="start" :page="50" :total-pages="100" class="mb-3"></pagination>
+            <pagination align="center" :page="50" :total-pages="100" class="mb-3"></pagination>
+            <pagination align="end" :page="50" :total-pages="100" class="mb-3"></pagination>
+
+            <h2 class="text-2xl mt-6">Change Number of Pages</h2>
+    
+            <p class="mb-3">(Must be an even number)</p>
+
+            <pagination :page="50" :total-pages="100" :show-pages="4" class="mb-3"></pagination>
+            <pagination :page="50" :total-pages="100" :show-pages="10" class="mb-3"></pagination>
+            <pagination :page="50" :total-pages="100" :show-pages="20" class="mb-3"></pagination>
+
+            <h2 class="text-2xl mt-6 mb-3">Reactive Page Prop</h2>
+
+            The current page is: {{ page }}
+
+            <pagination :page="page" :total-pages="100" class="mb-3"></pagination>
+        </div>
+
+        <script type="module">
+            import './demo.css';
+            import { createApp } from 'vue/dist/vue.esm-bundler';
+            import { Pagination } from './index';
+
+            createApp({
+                components: {
+                    Pagination
+                },
+                data() {
+                    return {
+                        page: 1,
+                        pageNum: 1,
+                    }
+                },
+                mounted() {
+                    setTimeout(() => {
+                        this.page = 50;
+                    }, 1000);
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+@theme {
+    --activity-indicator-square-orbit-margin: .5em;
+    --activity-indicator-square-orbit-width: 3em;
+    --activity-indicator-square-orbit-height: 3em;
+    --activity-indicator-square-orbit-position: relative;
+
+    --activity-indicator-square-orbit-cube-background-color: #333;
+    --activity-indicator-square-orbit-cube-width: 1em;
+    --activity-indicator-square-orbit-cube-height: 1em;
+    --activity-indicator-square-orbit-cube-position: absolute;
+    --activity-indicator-square-orbit-cube-top: 0;
+    --activity-indicator-square-orbit-cube-left: 0;
+
+    --activity-indicator-square-orbit-animation-name: activity-indicator-square-orbit;
+    --activity-indicator-square-orbit-animation-duration: 1.8s;
+    --activity-indicator-square-orbit-animation-timing-function: ease-in-out;
+    --activity-indicator-square-orbit-animation-iteration-count: infinite;
+    --activity-indicator-square-orbit-animation: var(--activity-indicator-square-orbit-animation-name) var(--activity-indicator-square-orbit-animation-duration) var(--activity-indicator-square-orbit-animation-timing-function) var(--activity-indicator-square-orbit-animation-iteration-count);
+
+    --activity-indicator-square-orbit-cube2-animation-delay: -0.9s;
+
+    --activity-indicator-square-orbit-25-translateX: 2em;
+    --activity-indicator-square-orbit-25-rotate: -90deg;
+    --activity-indicator-square-orbit-25-scale: 0.5;
+    --activity-indicator-square-orbit-25-transform: translateX(var(--activity-indicator-square-orbit-25-translateX)) rotate(var(--activity-indicator-square-orbit-25-rotate)) scale(var(--activity-indicator-square-orbit-25-scale));
+
+    --activity-indicator-square-orbit-50-translateX: 2em;
+    --activity-indicator-square-orbit-50-translateY: 2em;
+    --activity-indicator-square-orbit-50-rotate: -179deg;
+    --activity-indicator-square-orbit-50-transform: translateX(var(--activity-indicator-square-orbit-50-translateX)) translateY(var(--activity-indicator-square-orbit-50-translateY)) rotate(var(--activity-indicator-square-orbit-50-rotate));
+
+    --activity-indicator-square-orbit-50_1-translateX: 2em;
+    --activity-indicator-square-orbit-50_1-translateY: 2em;
+    --activity-indicator-square-orbit-50_1-rotate: -180deg;
+    --activity-indicator-square-orbit-50_1-transform: translateX(var(--activity-indicator-square-orbit-50_1-translateX)) translateY(var(--activity-indicator-square-orbit-50_1-translateY)) rotate(var(--activity-indicator-square-orbit-50_1-rotate));
+
+    --activity-indicator-square-orbit-75-translateX: 0px;
+    --activity-indicator-square-orbit-75-translateY: 2em;
+    --activity-indicator-square-orbit-75-rotate: -270deg;
+    --activity-indicator-square-orbit-75-scale: 0.5;
+    --activity-indicator-square-orbit-75-transform: translateX(var(--activity-indicator-square-orbit-75-translateX)) translateY(var(--activity-indicator-square-orbit-75-translateY)) rotate(var(--activity-indicator-square-orbit-75-rotate)) scale(var(--activity-indicator-square-orbit-75-scale));
+
+    --activity-indicator-square-orbit-100-rotate: -360deg;
+    --activity-indicator-square-orbit-100-transform: rotate(var(--activity-indicator-square-orbit-100-rotate));
+}
+
+@utility activity-indicator-square-orbit {
+    margin: var(--activity-indicator-square-orbit-margin);
+    width: var(--activity-indicator-square-orbit-width);
+    height: var(--activity-indicator-square-orbit-height);
+    position: var(--activity-indicator-square-orbit-position);
+}
+
+@utility activity-indicator-square-orbit-cube1 {
+    background-color: var(--activity-indicator-square-orbit-cube-background-color);
+    width: var(--activity-indicator-square-orbit-cube-width);
+    height: var(--activity-indicator-square-orbit-cube-height);
+    position: var(--activity-indicator-square-orbit-cube-position);
+    top: var(--activity-indicator-square-orbit-cube-top);
+    left: var(--activity-indicator-square-orbit-cube-left);
+    animation: var(--activity-indicator-square-orbit-animation);
+}
+
+@utility activity-indicator-square-orbit-cube2 {
+    background-color: var(--activity-indicator-square-orbit-cube-background-color);
+    width: var(--activity-indicator-square-orbit-cube-width);
+    height: var(--activity-indicator-square-orbit-cube-height);
+    position: var(--activity-indicator-square-orbit-cube-position);
+    top: var(--activity-indicator-square-orbit-cube-top);
+    left: var(--activity-indicator-square-orbit-cube-left);
+    animation: var(--activity-indicator-square-orbit-animation);
+    animation-delay: var(--activity-indicator-square-orbit-cube2-animation-delay);
+}
+
+@keyframes activity-indicator-square-orbit {
+    25% {
+        transform: var(--activity-indicator-square-orbit-25-transform);
+    }
+    50% {
+        transform: var(--activity-indicator-square-orbit-50-transform);
+    }
+    50.1% {
+        transform: var(--activity-indicator-square-orbit-50_1-transform);
+    }
+    75% {
+        transform: var(--activity-indicator-square-orbit-75-transform);
+    }
+    100% {
+        transform: var(--activity-indicator-square-orbit-100-transform);
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@vue-interface/form-control",
+  "version": "1.0.0",
+  "description": "An abstract form control Vue mixin.",
+  "files": [
+    "dist",
+    "tailwindcss"
+  ],
+  "type": "module",
+  "main": "./dist/form-control.umd.cjs",
+  "module": "./dist/form-control.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/form-control.umd.js",
+      "import": "./dist/form-control.js"
+    },
+    "./css": "./index.css"
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/form-control"
+  },
+  "keywords": [
+    "Form",
+    "Control",
+    "Vue",
+    "Mixin",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {
+    "vue": "^3.3.4",
+    "@vue-interface/activity-indicator": "workspace:*"
+  }
+}

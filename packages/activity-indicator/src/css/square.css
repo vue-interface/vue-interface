@@ -1,0 +1,44 @@
+@theme {
+    --activity-indicator-square-width: 2.5em;
+    --activity-indicator-square-height: 2.5em;
+    --activity-indicator-square-background-color: currentColor;
+
+    --activity-indicator-square-animation-name: activity-indicator-square;
+    --activity-indicator-square-animation-duration: 1.2s;
+    --activity-indicator-square-animation-timing-function: ease-in-out;
+    --activity-indicator-square-animation-iteration-count: infinite;
+    --activity-indicator-square-animation: var(--activity-indicator-square-animation-name) var(--activity-indicator-square-animation-duration) var(--activity-indicator-square-animation-timing-function) var(--activity-indicator-square-animation-iteration-count);
+
+    --activity-indicator-square-perspective-value: 120px;
+
+    --activity-indicator-square-0-rotateX: 0deg;
+    --activity-indicator-square-0-rotateY: 0deg;
+    --activity-indicator-square-0-transform: perspective(var(--activity-indicator-square-perspective-value)) rotateX(var(--activity-indicator-square-0-rotateX)) rotateY(var(--activity-indicator-square-0-rotateY));
+
+    --activity-indicator-square-50-rotateX: -180.1deg;
+    --activity-indicator-square-50-rotateY: 0deg;
+    --activity-indicator-square-50-transform: perspective(var(--activity-indicator-square-perspective-value)) rotateX(var(--activity-indicator-square-50-rotateX)) rotateY(var(--activity-indicator-square-50-rotateY));
+
+    --activity-indicator-square-100-rotateX: -180deg;
+    --activity-indicator-square-100-rotateY: -179.9deg;
+    --activity-indicator-square-100-transform: perspective(var(--activity-indicator-square-perspective-value)) rotateX(var(--activity-indicator-square-100-rotateX)) rotateY(var(--activity-indicator-square-100-rotateY));
+}
+
+@utility activity-indicator-square {
+    width: var(--activity-indicator-square-width);
+    height: var(--activity-indicator-square-height);
+    background-color: var(--activity-indicator-square-background-color);
+    animation: var(--activity-indicator-square-animation);
+}
+
+@keyframes activity-indicator-square {
+    0% {
+        transform: var(--activity-indicator-square-0-transform);
+    }
+    50% {
+        transform: var(--activity-indicator-square-50-transform);
+    }
+    100% {
+        transform: var(--activity-indicator-square-100-transform);
+    }
+}

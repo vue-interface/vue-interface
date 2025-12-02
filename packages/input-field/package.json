@@ -1,0 +1,46 @@
+{
+  "name": "@vue-interface/input-field",
+  "version": "1.0.0",
+  "description": "A Vue input field component.",
+  "type": "module",
+  "main": "./dist/input-field.umd.cjs",
+  "module": "./dist/input-field.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/input-field.js",
+      "require": "./dist/input-field.umd.js"
+    }
+  },
+  "browserslist": "last 2 versions, > 0.5%, ie >= 11",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/input-field"
+  },
+  "keywords": [
+    "Input",
+    "Field",
+    "Vue",
+    "Component",
+    "Tailwind",
+    "Bootstrap"
+  ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/vue-interface/issues"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
+  "peerDependencies": {
+    "@vue-interface/activity-indicator": "workspace:*",
+    "@vue-interface/form-control": "workspace:*",
+    "vue": "^3.3.4"
+  }
+}

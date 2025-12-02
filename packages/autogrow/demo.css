@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "../form-control/index.css";
+
+@variant dark {
+    body {
+        @apply text-white;
+    }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
