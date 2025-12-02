@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/checkbox-field",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.10",
   "description": "A Vue checkbox field component.",
   "type": "module",
   "main": "./dist/checkbox-field.umd.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/checkbox-field"
+    "url": "git+https://github.com/vue-interface/checkbox-field"
   },
   "keywords": [
     "Checkbox",
@@ -35,7 +35,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/checkbox-field"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

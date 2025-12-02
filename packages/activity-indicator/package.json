@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/activity-indicator",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.20",
   "description": "An Vue activity indicator component.",
   "type": "module",
   "main": "./dist/activity-indicator.umd.cjs",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/activity-indicator"
+    "url": "git+https://github.com/vue-interface/activity-indicator"
   },
   "keywords": [
     "Activity",
@@ -37,7 +37,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/activity-indicator"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

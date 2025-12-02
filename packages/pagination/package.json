@@ -1,6 +1,6 @@
 {
     "name": "@vue-interface/pagination",
-    "version": "1.0.0",
+    "version": "2.0.0-beta.6",
     "description": "A Vue pagination component.",
     "type": "module",
     "main": "./dist/pagination.umd.js",
@@ -22,7 +22,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/pagination"
+        "url": "git+https://github.com/vue-interface/pagination"
     },
     "keywords": [
         "Pagination",
@@ -34,7 +34,7 @@
     "author": "Justin Kimbrell",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/vue-interface/vue-interface/issues"
+        "url": "https://github.com/vue-interface/pagination"
     },
     "homepage": "https://github.com/vue-interface/vue-interface",
     "peerDependencies": {

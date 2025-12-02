@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/radio-field",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.7",
   "description": "A Vue radio field component.",
   "type": "module",
   "main": "./dist/radio-field.umd.cjs",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/radio-field"
+    "url": "git+https://github.com/vue-interface/radio-field"
   },
   "keywords": [
     "Radio",
@@ -35,7 +35,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/radio-field"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

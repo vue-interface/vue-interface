@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/slide-deck",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.5",
   "description": "A Vue slide deck component.",
   "type": "module",
   "main": "./dist/slide-deck.umd.cjs",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/slide-deck"
+    "url": "git+https://github.com/vue-interface/slide-deck"
   },
   "keywords": [
     "Slide",
@@ -35,7 +35,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/slide-deck"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

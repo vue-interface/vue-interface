@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/dropdown-menu",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.21",
   "description": "A Vue dropdown menu component.",
   "type": "module",
   "main": "./dist/dropdown-menu.umd.cjs",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/dropdown-menu"
+    "url": "git+https://github.com/vue-interface/dropdown-menu"
   },
   "keywords": [
     "Button",
@@ -32,6 +32,12 @@
     "Tailwind",
     "Bootstrap"
   ],
+  "author": "Justin Kimbrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vue-interface/dropdown-menu"
+  },
+  "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {
     "vue": "^3.3.4"
   }

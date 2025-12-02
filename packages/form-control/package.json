@@ -1,11 +1,7 @@
 {
   "name": "@vue-interface/form-control",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.51",
   "description": "An abstract form control Vue mixin.",
-  "files": [
-    "dist",
-    "tailwindcss"
-  ],
   "type": "module",
   "main": "./dist/form-control.umd.cjs",
   "module": "./dist/form-control.js",
@@ -27,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/form-control"
+    "url": "git+https://github.com/vue-interface/form-control"
   },
   "keywords": [
     "Form",
@@ -40,7 +36,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/form-control"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

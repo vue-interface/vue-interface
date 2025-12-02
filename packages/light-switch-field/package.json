@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/light-switch-field",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.11",
   "description": "A Vue light switch field component.",
   "type": "module",
   "main": "./dist/light-switch-field.umd.cjs",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/light-switch-field"
+    "url": "git+https://github.com/vue-interface/light-switch-field"
   },
   "keywords": [
     "Light",
@@ -37,7 +37,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/light-switch-field"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {

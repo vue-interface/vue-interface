@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/autogrow",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.9",
   "description": "A Vue directive that makes textareas grow as the user types.",
   "type": "module",
   "main": "./dist/autogrow.umd.cjs",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/vue-interface/tree/jsx/packages/autogrow"
+    "url": "git+https://github.com/vue-interface/autogrow"
   },
   "keywords": [
     "Textarea",
@@ -34,7 +34,7 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/vue-interface/issues"
+    "url": "https://github.com/vue-interface/autogrow"
   },
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {  

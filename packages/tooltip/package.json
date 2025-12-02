@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-interface/tooltip.git"
+    "url": "git+https://github.com/vue-interface/tooltip"
   },
   "keywords": [
     "Tooltip",
@@ -36,9 +36,9 @@
   "author": "Justin Kimbrell",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vue-interface/tooltip/issues"
+    "url": "https://github.com/vue-interface/tooltip"
   },
-  "homepage": "https://github.com/vue-interface/tooltip",
+  "homepage": "https://github.com/vue-interface/vue-interface",
   "dependencies": {
     "@popperjs/core": "^2.4.4"
   },
