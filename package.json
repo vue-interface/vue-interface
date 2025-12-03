@@ -8,10 +8,13 @@
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "spress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^17.8.1",
     "@tailwindcss/postcss": "^4.1.11",
