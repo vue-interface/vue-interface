@@ -14,7 +14,6 @@ permissions:
 
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build:
