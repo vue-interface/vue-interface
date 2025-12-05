@@ -8,7 +8,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@vue-interface/breadcrumb",
     "@vue-interface/btn-activity",
     "@vue-interface/btn-dropdown",
     "@vue-interface/checkbox-field",
