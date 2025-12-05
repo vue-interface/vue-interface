@@ -10,7 +10,6 @@
   "ignore": [
     "@vue-interface/autogrow",
     "@vue-interface/breadcrumb",
-    "@vue-interface/btn",
     "@vue-interface/btn-activity",
     "@vue-interface/btn-dropdown",
     "@vue-interface/checkbox-field",
