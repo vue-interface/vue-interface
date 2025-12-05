@@ -1,0 +1,53 @@
+name: Publish Packages
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    # 🚨 CRITICAL: Grant the necessary permissions for git operations (commit/PR creation)
+    permissions:
+      contents: write # Needed for the action to commit version bumps
+      pull-requests: write # Needed for the action to create the Version PR
+      
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - uses: pnpm/action-setup@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      
+      # We must re-install dependencies here for the publish step
+      # because the 'release' job does not automatically share the node_modules from 'build'.
+      - name: Install Dependencies
+        run: pnpm install
+        
+      # You must rebuild BEFORE running the publish script if your publish script relies on build artifacts.
+      # If pnpm build is quick, leave it. If not, consider using a separate build artifact.
+      - name: Build Packages (Required for Publish)
+        run: pnpm build
+        
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          baseBranch: main
+          publish: pnpm release # Your final publishing command
+          version: pnpm version  # Your versioning command (optional, uses default if omitted)
+          commit: "chore: version bump from changesets"
+          title: "🚀 Version Packages" # Title for the auto-created PR
+        env:
+          # Required for git operations (PR creation, push)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Required for publishing to npm
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
