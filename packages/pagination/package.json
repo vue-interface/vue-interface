@@ -1,6 +1,6 @@
 {
     "name": "@vue-interface/pagination",
-    "version": "3.0.0-beta.1",
+    "version": "3.0.0",
     "description": "A Vue pagination component.",
     "type": "module",
     "main": "./dist/pagination.umd.js",
@@ -38,6 +38,6 @@
     },
     "homepage": "https://github.com/vue-interface/vue-interface",
     "peerDependencies": {
-      "vue": "^3.3.4"
+        "vue": "^3.3.4"
     }
 }
