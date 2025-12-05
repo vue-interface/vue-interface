@@ -42,12 +42,9 @@ export default defineConfig({
                 name: 'exclude-vitepress-base-css',
                 enforce: 'pre',
                 load(id) {
-					if ([
-						'theme-default/styles/base.css',
-						'theme-default/styles/components/vp-doc.css'
-					].some(suffix => id.endsWith(suffix))) {
-                        return ''
-                    }
+					if(id.match(/theme-default\/styles\/(base|components)(.+)?.css/gm)) {
+						return '';
+					}
                 }
             },
 			{
