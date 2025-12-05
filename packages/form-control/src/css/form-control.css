@@ -7,7 +7,7 @@
     --form-control-display: var(--form-display, flex);
     --form-control-width: var(--form-width, 100%);
     --form-control-font: var(--from-font, inherit);
-    --form-control-font-weight: var(--form-font-weight. 400);
+    --form-control-font-weight: var(--form-font-weight, 400);
     --form-control-line-height: var(--form-line-height, 1.5);
     --form-control-font-size: var(--form-font-size, 1rem);
     --form-control-background-color: var(--form-background-color, inherit);
