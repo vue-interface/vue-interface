@@ -92,21 +92,13 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
         
-      # You must rebuild BEFORE running the publish script if your publish script relies on build artifacts.
-      # If pnpm build is quick, leave it. If not, consider using a separate build artifact.
-      - name: Build Packages (Required for Publish)
-        run: pnpm build
-        
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          # This runs 'changeset version' if changesets exist, creates a PR, and updates the PR.
-          # If the commit is a merge commit from a Version PR, it runs 'changeset publish'.
-          publish: pnpm release # Your final publishing command
-          version: pnpm version  # Your versioning command (optional, uses default if omitted)
+          publish: pnpm release
           commit: "chore: version bump from changesets"
-          title: "🚀 Version Packages" # Title for the auto-created PR
+          title: "🚀 Version Packages"
         env:
           # Required for git operations (PR creation, push)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
