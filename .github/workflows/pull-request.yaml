@@ -1,4 +1,4 @@
-name: Publish
+name: Publish Packages
 
 on:
   pull_request:
@@ -7,7 +7,6 @@ on:
 
 jobs:
   release:
-    name: Publish Packages
     runs-on: ubuntu-latest
     
     # 🚨 CRITICAL: Grant the necessary permissions for git operations (commit/PR creation)
@@ -42,8 +41,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          # This runs 'changeset version' if changesets exist, creates a PR, and updates the PR.
-          # If the commit is a merge commit from a Version PR, it runs 'changeset publish'.
+          baseBranch: main
           publish: pnpm release # Your final publishing command
           version: pnpm version  # Your versioning command (optional, uses default if omitted)
           commit: "chore: version bump from changesets"
