@@ -2,7 +2,7 @@
   "name": "vue-interface",
   "private": true,
   "scripts": {
-    "build": "pnpm turbo run build",
+    "build": "pnpm turbo run build --affected",
     "dev": "turbo run dev",
     "lint": "eslint packages/**/*.{js,ts,vue}",
     "lint:fix": "npm run lint -- --fix",
