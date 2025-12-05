@@ -123,7 +123,7 @@
 		}
 	}
 
-	> :btn {
+	> .btn {
 		position: var(--btn-inner-position);
 		flex: var(--btn-inner-flex);
 
