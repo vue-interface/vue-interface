@@ -9,9 +9,6 @@ jobs:
   release:
     name: Publish Packages
     runs-on: ubuntu-latest
-    # This job should only run after the build/deploy job, but it does NOT depend on 'deploy' succeeding
-    # as the Changesets PR is created even if deploy fails. It should depend on 'build'.
-    needs: build
     
     # 🚨 CRITICAL: Grant the necessary permissions for git operations (commit/PR creation)
     permissions:
