@@ -106,7 +106,7 @@ export default defineConfig({
 	  	  	},
 			{
 				text: 'Packages',
-				link: '/docs/packages', 
+				link: '/packages', 
 	  	    	collapsed: false,
 	  	    	items: generatePackagesSidebar()
 			},
