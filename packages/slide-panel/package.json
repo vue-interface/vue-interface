@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/slide-panel",
-  "version": "1.0.0-beta.16",
+  "version": "2.0.0-beta.1",
   "description": "A Vue slide panel component.",
   "type": "module",
   "main": "./dist/slide-panel.umd.cjs",

@@ -7,13 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@vue-interface/btn-dropdown",
-    "@vue-interface/dropdown-menu",
-    "@vue-interface/modal",
-    "@vue-interface/pagination",
-    "@vue-interface/slide-deck",
-    "@vue-interface/slide-panel",
-    "@vue-interface/tooltip"
-  ]
+  "ignore": []
 }

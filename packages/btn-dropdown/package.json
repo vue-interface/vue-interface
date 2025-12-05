@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/btn-dropdown",
-  "version": "2.0.0-beta.24",
+  "version": "3.0.0-beta.1",
   "description": "A Vue button dropdown component.",
   "type": "module",
   "main": "./dist/btn-dropdown.umd.js",
