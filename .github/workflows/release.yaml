@@ -6,7 +6,6 @@ on:
     paths:
       - '.changeset/**'
       - 'packages/**/package.json'
-      - 'package.json'
 
 permissions:
   contents: write
