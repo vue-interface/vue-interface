@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/textarea-field",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "A Vue textarea field component.",
   "type": "module",
   "main": "./dist/textarea-field.umd.js",
