@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/slide-deck",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0",
   "description": "A Vue slide deck component.",
   "type": "module",
   "main": "./dist/slide-deck.umd.cjs",
