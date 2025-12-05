@@ -32,7 +32,7 @@ The `dropdown-menu` component displays a list of actionable or informational ite
 ::: raw
 <div>
     <!-- #region basicUsage -->
-    <div class="dropdown-menu show relative">
+    <div class="dropdown-menu show relative z-1">
         <h3 class="dropdown-header">Vue Router</h3>
         <h3 class="dropdown-header">Links</h3>
         <a href="#" class="dropdown-item active">Item #2</a>

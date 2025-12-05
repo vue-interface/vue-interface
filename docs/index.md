@@ -1,25 +1,24 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "Vue Interface"
-  # text: ""
-  tagline: Complete documentation for the Vue Interface component library
+  tagline: A collection of scoped, styled, and accessible Vue 3 components built with Tailwind CSS v4.
   actions:
     - theme: brand
       text: Getting Started
       link: /docs/getting-started
     - theme: alt
-      text: About
-      link: /docs/about
+      text: View Packages
+      link: /docs/packages
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 📦 Modular Architecture
+    details: Install only what you need. Each component is a separate scoped package (e.g., @vue-interface/modal).
+  - title: 🎨 Tailwind CSS v4
+    details: Built with the latest Tailwind CSS for utility-first styling and easy customization.
+  - title: 🛡️ TypeScript Ready
+    details: Written in TypeScript for excellent type safety and developer experience.
+  - title: ♿ Accessible
+    details: Components are designed with accessibility in mind, following WAI-ARIA practices.
 ---
-

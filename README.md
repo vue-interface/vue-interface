@@ -26,3 +26,48 @@ This monorepo utilizes [VitePress](https://vuejs.github.io/vitepress/v1/) for de
 pnpm docs:dev
 ```
 This will open VitePress on `localhost:5173`.
+
+## Versioning
+
+Each package is independently versioned using strict [semantic versioning](https://semver.org/). The monorepo uses [Changesets](https://akinoccc.github.io/changesets/) to manage versions and changelogs for all packages independently. When a package introduces a change, only that package receives a version bump and other packages remain unaffected.
+
+### Creating a Changeset
+After making changes to one or more packages, create a changeset to document what changed:
+
+::: code-group
+```bash [pnpm]
+pnpm changeset
+```
+
+```bash [yarn]
+yarn changeset
+```
+:::
+
+This interactive command will:
+
+1. Ask which packages changed - Select the packages you modified (use spacebar to select, enter to confirm)
+2. Ask for version bump type - Choose the semantic version bump for each package:
+    - major - Breaking changes (e.g., removing a prop, changing API)
+    - minor - New features (e.g., adding a new prop, new functionality)
+    - patch - Bug fixes (e.g., fixing a rendering issue)
+3. Ask for a summary - Write a brief description of the change (this appears in the changelog)
+
+### Example CLI Workflow
+
+```bash
+🦋 Which packages would you like to include?
+  ◉ @vue-interface/input-field ← Select this package (press space)
+  ◯ @vue-interface/btn
+  ◯ @vue-interface/form-control
+ 
+🦋 What kind of change is this for @vue-interface/input-field?
+  major (breaking change)
+  minor (new feature)
+  ❯ patch (bug fix) ← Select this option (press space)
+
+🦋 Please enter a summary:
+  Fix styling error when input is disabled
+```
+
+The Changesets CLI then generates a markdown file in the .changeset/ directory with a random name (e.g., cool-lions-dance.md).

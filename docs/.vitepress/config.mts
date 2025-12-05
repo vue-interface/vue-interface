@@ -15,7 +15,7 @@ function generatePackagesSidebar() {
   	for (const line of lines) {
   	  	const indent = line.match(/^\s*/)?.[0].length ?? 0
   	  	const [, text, link] = line.match(/\[([^\]]+)\]\(([^)]+)\)/) || []
-  	  	const item: any = { text: text || line.replace(/^\s*-\s*/, '').trim(), ...(link && { link }) }
+  	  	const item: any = { text: text || line.replace(/^\s*-\s*/, '').trim(), ...(link && { link: link.replace(/\/packages\/([^\/]+)\/docs\/(.+)/, '/packages/$2') }) }
 
   	  	while (indent <= stack[stack.length - 1].indent) stack.pop()
   	  	stack[stack.length - 1].items.push(item)
@@ -32,7 +32,9 @@ export default defineConfig({
   	srcExclude: ['**/node_modules/**', '**/dist/**'],
 
 	rewrites: {
-		'docs/index.md': 'index.md'
+		'docs/:slug*': ':slug*',
+		// 'packages/:pkg/docs/:pkg.md': 'packages/:pkg',
+		'packages/:pkg/docs/:slug*': 'packages/:slug*',
 	},
 
 	vite: {
