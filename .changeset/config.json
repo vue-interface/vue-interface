@@ -9,18 +9,11 @@
   "updateInternalDependencies": "patch",
   "ignore": [
     "@vue-interface/btn-dropdown",
-    "@vue-interface/checkbox-field",
     "@vue-interface/dropdown-menu",
-    "@vue-interface/form-control",
-    "@vue-interface/input-field",
-    "@vue-interface/light-switch-field",
     "@vue-interface/modal",
     "@vue-interface/pagination",
-    "@vue-interface/radio-field",
-    "@vue-interface/select-field",
     "@vue-interface/slide-deck",
     "@vue-interface/slide-panel",
-    "@vue-interface/textarea-field",
     "@vue-interface/tooltip"
   ]
 }

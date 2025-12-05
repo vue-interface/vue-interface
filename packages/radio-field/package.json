@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/radio-field",
-  "version": "2.0.0-beta.7",
+  "version": "3.0.0-beta.1",
   "description": "A Vue radio field component.",
   "type": "module",
   "main": "./dist/radio-field.umd.cjs",
