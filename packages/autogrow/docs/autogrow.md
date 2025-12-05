@@ -21,6 +21,22 @@ onMounted(() => {
 
 The Autogrow directive automatically resizes a [textarea](/packages/textarea-field/docs/textarea-field) to fit its content. It eliminates the need for manual resizing and provides smooth UX for variable-length text inputs.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/autogrow
+```
+
+```bash [yarn]
+yarn add @vue-interface/autogrow
+```
+
+```bash [npm]
+npm i @vue-interface/autogrow
+```
+:::
+
 ## Basic Usage
 
 <div class="mb-6">

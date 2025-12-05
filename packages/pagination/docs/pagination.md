@@ -25,6 +25,22 @@ onMounted(() => {
 
 The `pagination` component provides flexible and customizable pagination control with customizable sizes, colors, and states.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/pagination
+```
+
+```bash [yarn]
+yarn add @vue-interface/pagination
+```
+
+```bash [npm]
+npm i @vue-interface/pagination
+```
+:::
+
 ## Props
 
 The `pagination` component utilizes five [Vue props](https://vuejs.org/guide/components/props.html#prop-validation) for different customizations.

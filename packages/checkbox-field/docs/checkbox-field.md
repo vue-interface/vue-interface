@@ -31,6 +31,22 @@ function onBlur(e) {
 
 The `CheckboxField` component extends the [form-control](/packages/form-control/docs/form-control) component and provides a flexible checkbox input with support for custom colors, sizes, states, and validation.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/checkbox-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/checkbox-field
+```
+
+```bash [npm]
+npm i @vue-interface/checkbox-field
+```
+:::
+
 ## Basic Usage
 
 <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-4">

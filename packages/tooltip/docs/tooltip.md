@@ -35,6 +35,22 @@ if (app) {
 
 The `tooltip` component provides flexible tooltips with customizable placement options.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/tooltip
+```
+
+```bash [yarn]
+yarn add @vue-interface/tooltip
+```
+
+```bash [npm]
+npm i @vue-interface/tooltip
+```
+:::
+
 ## Basic Usage
 
 Tooltips can be positioned at the top, bottom, left, or right of the target element.

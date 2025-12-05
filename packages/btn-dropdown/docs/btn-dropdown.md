@@ -24,6 +24,22 @@ function onToggle() {
 
 The `btn-dropdown` component provides an interactive button paired with a dropdown menu. It extends the standard [button](/packages/btn/docs/btn), [button-group](/packages/btn/docs/btn-group), and [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu) components.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/btn-dropdown
+```
+
+```bash [yarn]
+yarn add @vue-interface/btn-dropdown
+```
+
+```bash [npm]
+npm i @vue-interface/btn-dropdown
+```
+:::
+
 ## Basic Usage
 
 <ClientOnly>

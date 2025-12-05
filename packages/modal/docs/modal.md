@@ -16,6 +16,22 @@ function onConfirm(button, context) {
 
 The `modal` component provides flexible and customizable modals with customizable sizes and colors. The modal component uses a [button](/packages/btn/docs/btn) with an unique `id` to call the modal with a matching `id`. 
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/modal
+```
+
+```bash [yarn]
+yarn add @vue-interface/modal
+```
+
+```bash [npm]
+npm i @vue-interface/modal
+```
+:::
+
 ## Basic Usage
 
 <div>

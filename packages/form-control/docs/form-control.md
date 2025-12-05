@@ -10,6 +10,28 @@ import '../demo.css'
 
 The `form control` utility class is a [form component](./forms) that provides a flexible and customizable input elements with customizable sizes, states, and colors.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/form-control
+```
+
+```bash [yarn]
+yarn add @vue-interface/form-control
+```
+
+```bash [npm]
+npm i @vue-interface/form-control
+```
+:::
+
+### Tailwind Setup
+
+```css
+@import '@vue-interface/form-control/index.css';
+```
+
 ## Basic Usage
 
 <div class="flex flex-col gap-4">

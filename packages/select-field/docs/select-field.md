@@ -22,6 +22,22 @@ onMounted(() => {
 
 The `select-field` component provides flexible and customizable select dropdown fields with customizable sizes and states.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/select-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/select-field
+```
+
+```bash [npm]
+npm i @vue-interface/select-field
+```
+:::
+
 ## Variations and States
 
 <!-- #region variations -->

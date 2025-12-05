@@ -26,6 +26,22 @@ function onChange(newValue) {
 
 The `input-field` component provides flexible and customizable input fields with customizable sizes and states.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/input-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/input-field
+```
+
+```bash [npm]
+npm i @vue-interface/input-field
+```
+:::
+
 ## Variations and States
 
 <!-- #region variations -->

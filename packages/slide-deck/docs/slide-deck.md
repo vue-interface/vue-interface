@@ -48,6 +48,22 @@ function onAfterLeave(current, previous) {
 
 A slide deck is an abstract component that adds a slide effect between components. The height of the slide deck will automatically grow to the next slide. Since each element must be different, or a key must be defined for Vue transitions, the component will automatically add the slide index as a key if a key isn't define. The component handles the differing animations for going backwards and forwards.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/slide-deck
+```
+
+```bash [yarn]
+yarn add @vue-interface/slide-deck
+```
+
+```bash [npm]
+npm i @vue-interface/slide-deck
+```
+:::
+
 ## Basic Usage
 
 The `slide deck` component extends the [button](/packages/btn/docs/btn) classes, allowing for the buttons to be customized with the various colors, variants, sizes, and states. Customize the slide deck headers and background colors with the appropriate [Tailwind](https://tailwindcss.com/) classes and [color palette](https://tailwindcss.com/docs/colors). 

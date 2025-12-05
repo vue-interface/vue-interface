@@ -1,6 +1,5 @@
 {
   "name": "vue-interface",
-  "private": true,
   "scripts": {
     "build": "pnpm turbo run build --affected",
     "dev": "turbo run dev",

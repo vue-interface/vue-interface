@@ -22,6 +22,22 @@ onMounted(() => {
 
 The `textarea-field` component provides flexible and customizable textarea fields with customizable sizes and states.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/textarea-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/textarea-field
+```
+
+```bash [npm]
+npm i @vue-interface/textarea-field
+```
+:::
+
 ## Variations and States
 
 <!-- #region variations -->

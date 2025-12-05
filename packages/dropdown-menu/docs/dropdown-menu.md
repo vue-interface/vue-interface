@@ -25,6 +25,22 @@ onMounted(() => {
 
 The `dropdown-menu` component displays a list of actionable or informational items, similar to traditional dropdown lists. It supports headers, dividers, links, and plain text items.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/dropdown-menu
+```
+
+```bash [yarn]
+yarn add @vue-interface/dropdown-menu
+```
+
+```bash [npm]
+npm i @vue-interface/dropdown-menu
+```
+:::
+
 ## Basic Usage
 
 <span>{{ item }} was clicked!</span>

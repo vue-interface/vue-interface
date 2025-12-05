@@ -10,13 +10,36 @@ import '../index.css'
 
 The `btn` utility class provides a flexible and customizable button component system with color variants, sizes, and states.
 
-<button class="btn btn-primary">Button</button>
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/btn
+```
+
+```bash [yarn]
+yarn add @vue-interface/btn
+```
+
+```bash [npm]
+npm i @vue-interface/btn
+```
+:::
+
+### Tailwind Setup
+
+```css
+@import '@vue-interface/btn/index.css';
+```
+
+### Basic Usage
 
 ```html 
 <button class="btn btn-primary">Button</button>
 ```
 
 This is the default button where the `btn` class provides the default sizing and the `btn-primary` class applies the primary variant color. 
+
 
 ## Color Variants
 

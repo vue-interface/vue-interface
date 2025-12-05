@@ -12,6 +12,22 @@ import SlidePanelContainer from '../src/SlidePanelContainer.vue'
 
 The `slide panel` component provides a custom sliding panel that can slide from the left or right with customizable contents. `Slide Panel` uses the [button](/packages/btn/docs/btn) component and utility classes for the buttons, allowing all the buttons to use the various css classes to customize the button such as the color, size, or variant. 
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/slide-panel
+```
+
+```bash [yarn]
+yarn add @vue-interface/slide-panel
+```
+
+```bash [npm]
+npm i @vue-interface/slide-panel
+```
+:::
+
 ## Basic Usage
 
 <SlidePanelContainer class="top-16 h-[91vh]"/>

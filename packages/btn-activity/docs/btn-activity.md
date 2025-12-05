@@ -36,6 +36,22 @@ onMounted(() => {
 
 The `btn-activity` component provides an interactive button with built-in activity indicators for async operations. It extends the standard [button](/packages/btn/docs/btn) and [activity-indicator](/packages/activity-indicator/docs/activity-indicator) components to create these buttons.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/btn-activity
+```
+
+```bash [yarn]
+yarn add @vue-interface/btn-activity
+```
+
+```bash [npm]
+npm i @vue-interface/btn-activity
+```
+:::
+
 ## Basic Usage
 
 <div class="mb-5 flex gap-2">

@@ -16,6 +16,22 @@ const value3 = ref('1')
 
 The `light-switch-field` component provides flexible and customizable input fields with customizable sizes, states, and colors.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/light-switch-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/light-switch-field
+```
+
+```bash [npm]
+npm i @vue-interface/light-switch-field
+```
+:::
+
 ## Variations and States
 
 <!-- #region variations -->

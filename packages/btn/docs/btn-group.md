@@ -14,6 +14,28 @@ The `btn-group` utility class provides a flexible and customizable button-group 
 Button groups can be combined with [dropdown menus](/packages/dropdown-menu/docs/dropdown-menu) to create [dropdown buttons](/packages/btn-dropdown/docs/btn-dropdown).
 :::
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/btn-group
+```
+
+```bash [yarn]
+yarn add @vue-interface/btn-group
+```
+
+```bash [npm]
+npm i @vue-interface/btn-group
+```
+:::
+
+### Tailwind Setup
+
+```css
+@import '@vue-interface/btn-group/index.css';
+```
+
 ## Basic Usage
 
 <!-- #region basicUsage-->
@@ -47,55 +69,73 @@ Customize the size of a `btn-group` using a [predetermined size](#predetermined-
 
 The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`. Use the syntax: `btn-group-[size]`.
 
+<!-- #region sizing-->
 <div class="flex flex-col gap-2">
-    <!-- #region sizing-->
-    <div class="btn-group btn-group-xs">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-xs">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-sm">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-md">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-md">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-lg">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-lg">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-xl">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-xl">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-2xl">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-2xl">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-3xl">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-3xl">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-4xl">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-4xl">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-5xl">
-        <button class="btn btn-secondary">Left</button>
-        <button class="btn btn-secondary">Middle</button>
-        <button class="btn btn-secondary">Right</button>
+    <div>
+        <div class="btn-group btn-group-5xl">
+            <button class="btn btn-secondary">Left</button>
+            <button class="btn btn-secondary">Middle</button>
+            <button class="btn btn-secondary">Right</button>
+        </div>
     </div>
-    <!-- #endregion sizing-->
 </div>
+<!-- #endregion sizing-->
 
 ::: details Show Code
 <<< @/packages/btn/docs/btn-group.md#sizing{html}
@@ -105,25 +145,31 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 
 For more granular control over button sizes, use Tailwind's numeric sizing scale classes: `btn-group-1` - `btn-group-96`.
 
+<!-- #region tailwindSizes-->
 <div class="flex flex-col gap-2">
-    <!-- #region tailwindSizes-->
-    <div class="btn-group btn-group-3">
-        <button class="btn btn-secondary">btn-group-3</button>
-        <button class="btn btn-secondary">btn-group-3</button>
-        <button class="btn btn-secondary">btn-group-3</button>
+    <div>
+        <div class="btn-group btn-group-3">
+            <button class="btn btn-secondary">btn-group-3</button>
+            <button class="btn btn-secondary">btn-group-3</button>
+            <button class="btn btn-secondary">btn-group-3</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-4">
-        <button class="btn btn-secondary">btn-group-4</button>
-        <button class="btn btn-secondary">btn-group-4</button>
-        <button class="btn btn-secondary">btn-group-4</button>
+    <div>
+        <div class="btn-group btn-group-4">
+            <button class="btn btn-secondary">btn-group-4</button>
+            <button class="btn btn-secondary">btn-group-4</button>
+            <button class="btn btn-secondary">btn-group-4</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-5">
-        <button class="btn btn-secondary">btn-group-5</button>
-        <button class="btn btn-secondary">btn-group-5</button>
-        <button class="btn btn-secondary">btn-group-5</button>
+    <div>
+        <div class="btn-group btn-group-5">
+            <button class="btn btn-secondary">btn-group-5</button>
+            <button class="btn btn-secondary">btn-group-5</button>
+            <button class="btn btn-secondary">btn-group-5</button>
+        </div>
     </div>
-    <!-- #endregion tailwindSizes-->
 </div>
+<!-- #endregion tailwindSizes-->
 
 ::: details Show Code
 <<< @/packages/btn/docs/btn-group.md#tailwindSizes{html}
@@ -133,20 +179,24 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 
 For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]` or any other CSS length units (`rem`, `em`, `mm`, etc.).
 
+<!-- #region arbitrarySizes-->
 <div class="flex flex-col gap-2">
-    <!-- #region arbitrarySizes-->
-    <div class="btn-group btn-group-[16px]">
-        <button class="btn btn-secondary">btn-group-[16px]</button>
-        <button class="btn btn-secondary">btn-group-[16px]</button>
-        <button class="btn btn-secondary">btn-group-[16px]</button>
+    <div>
+        <div class="btn-group btn-group-[16px]">
+            <button class="btn btn-secondary">btn-group-[16px]</button>
+            <button class="btn btn-secondary">btn-group-[16px]</button>
+            <button class="btn btn-secondary">btn-group-[16px]</button>
+        </div>
     </div>
-    <div class="btn-group btn-group-[1.2rem]">
-        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
-        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
-        <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+    <div>
+        <div class="btn-group btn-group-[1.2rem]">
+            <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+            <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+            <button class="btn btn-secondary">btn-group-[1.2rem]</button>
+        </div>
     </div>
-    <!-- #endregion arbitrarySizes-->
 </div>
+<!-- #endregion arbitrarySizes-->
 
 ::: details Show Code
 <<< @/packages/btn/docs/btn-group.md#arbitrarySizes{html}

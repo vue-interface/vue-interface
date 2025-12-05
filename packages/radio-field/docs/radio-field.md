@@ -15,6 +15,22 @@ const color = ref("yellow")
 
 The `radio-field` component provides flexible and customizable input fields with customizable sizes, states, and colors.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/radio-field
+```
+
+```bash [yarn]
+yarn add @vue-interface/radio-field
+```
+
+```bash [npm]
+npm i @vue-interface/radio-field
+```
+:::
+
 ## Basic Usage
 
 <div class="bg-neutral-100 dark:bg-neutral-800 p-3 mb-4">

@@ -10,6 +10,22 @@ import '../demo.css'
 
 The `breadcrumb` utility class provides a flexible and customizable breadcrumb component system with customizable color variants and sizes.
 
+### Installation
+
+::: code-group
+```bash [pnpm]
+pnpm i @vue-interface/breadcrumb
+```
+
+```bash [yarn]
+yarn add @vue-interface/breadcrumb
+```
+
+```bash [npm]
+npm i @vue-interface/breadcrumb
+```
+:::
+
 ## Basic Usage
 
 To create a breadcrumb component, use the parent `breadcrumb` class and then add the `breadcrumb-link` class to the links in the breadcrumb. To remove the home icon, insert the `no-icon` class into the first link.
