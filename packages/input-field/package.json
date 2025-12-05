@@ -1,6 +1,6 @@
 {
   "name": "@vue-interface/input-field",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "A Vue input field component.",
   "type": "module",
   "main": "./dist/input-field.umd.cjs",
