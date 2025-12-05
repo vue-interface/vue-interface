@@ -7,10 +7,10 @@ hero:
   actions:
     - theme: brand
       text: Getting Started
-      link: /docs/getting-started
+      link: /getting-started
     - theme: alt
       text: View Packages
-      link: /docs/packages
+      link: /packages
 
 features:
   - title: 📦 Modular Architecture

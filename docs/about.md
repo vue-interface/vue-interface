@@ -20,4 +20,4 @@ Inclusive by default. We follow **WAI-ARIA** best practices, ensuring support fo
 
 ### Ready for your next project?
 
-[Get Started with Vue Interface](/docs/getting-started)
+[Get Started with Vue Interface](/getting-started)

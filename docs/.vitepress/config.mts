@@ -90,9 +90,9 @@ export default defineConfig({
         },
 
     	nav: [
-    	  	{ text: 'Home', link: '/docs/index' },
-    	  	{ text: 'Guide', link: '/docs/getting-started', activeMatch: 'getting-started' },
-			{ text: 'Packages', link: '/docs/packages', activeMatch: 'packages' },
+    	  	{ text: 'Home', link: '/' },
+    	  	{ text: 'Guide', link: '/getting-started', activeMatch: 'getting-started' },
+			{ text: 'Packages', link: '/packages', activeMatch: 'packages' },
     	],
 
 		sidebar: [
@@ -100,8 +100,8 @@ export default defineConfig({
 	  	    	text: 'Introduction',
 	  	    	collapsed: false,
 	  	    	items: [
-	  	    	  	{ text: 'What is Vue Interface?', link: '/docs/about' },
-	  	    	  	{ text: 'Getting Started', link: '/docs/getting-started' }
+	  	    	  	{ text: 'What is Vue Interface?', link: '/about' },
+	  	    	  	{ text: 'Getting Started', link: '/getting-started' }
 	  	    	]
 	  	  	},
 			{
