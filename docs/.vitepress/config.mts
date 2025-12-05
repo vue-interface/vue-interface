@@ -121,6 +121,6 @@ export default defineConfig({
         }
   	},
     sitemap: {
-        hostname: 'https://vue-interface.com'
+        hostname: 'https://vue-interface.github.io/'
     }
 })
