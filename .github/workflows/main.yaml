@@ -1,4 +1,4 @@
-name: Release 🚀
+name: Release
 
 on:
   push:
@@ -19,32 +19,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛒
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # - name: Cache turbo build setup 💾
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: .turbo
-      #     key: ${{ runner.os }}-turbo-${{ github.sha }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-turbo-
-      - uses: pnpm/action-setup@v3 📦
-      - name: Setup Node 🛠️
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - uses: pnpm/action-setup@v3
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-      - name: Install dependencies ⬇️
+          cache: pnpm 
+      - name: Install dependencies
         run: pnpm install
-      - name: Build Packages 🏗️
+      - name: Build Packages
         run: pnpm build
-      - name: Build with VitePress 🔨
+      - name: Build with VitePress
         run: pnpm docs:build
-      - name: Setup Pages ⚙️
+      - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Upload artifact ⬆️
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
@@ -58,6 +58,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-      - name: Deploy to GitHub Pages 🌐
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
