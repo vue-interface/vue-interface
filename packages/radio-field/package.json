@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "source": "./index.ts",
-      "types": "./dist/index.d.ts",     
+      "types": "./dist/index.d.ts",
       "import": "./dist/radio-field.js",
       "require": "./dist/radio-field.umd.js"
     }

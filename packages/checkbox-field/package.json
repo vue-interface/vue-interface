@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "source": "./index.ts",
-      "types": "./dist/index.d.ts",      
+      "types": "./dist/index.d.ts",
       "import": "./dist/checkbox-field.js",
       "require": "./dist/checkbox-field.umd.cjs"
     }

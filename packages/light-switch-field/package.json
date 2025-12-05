@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "source": "./index.ts",
-      "types": "./dist/index.d.ts", 
+      "types": "./dist/index.d.ts",
       "import": "./dist/light-switch-field.js",
       "require": "./dist/light-switch-field.umd.js"
     }

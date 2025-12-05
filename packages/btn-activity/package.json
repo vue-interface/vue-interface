@@ -41,6 +41,6 @@
   "peerDependencies": {
     "vue": "^3.3.4",
     "@vue-interface/activity-indicator": "workspace:*",
-    "@vue-interface/btn": "workspace:*"    
+    "@vue-interface/btn": "workspace:*"
   }
 }

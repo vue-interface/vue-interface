@@ -9,7 +9,7 @@
   "exports": {
     ".": {
       "source": "./index.ts",
-      "types": "./dist/index.d.ts",     
+      "types": "./dist/index.d.ts",
       "import": "./dist/select-field.js",
       "require": "./dist/select-field.umd.js"
     }
@@ -40,7 +40,7 @@
   "homepage": "https://github.com/vue-interface/vue-interface",
   "peerDependencies": {
     "@vue-interface/activity-indicator": "workspace:*",
-    "@vue-interface/form-control": "workspace:*",    
+    "@vue-interface/form-control": "workspace:*",
     "vue": "^3.3.4"
   }
 }
