@@ -1,36 +1,33 @@
-name: Release
+name: Release Workflow
 
 on:
   push:
     branches: [main]
 
 permissions:
+  # Base permissions for all jobs. Individual jobs will override for 'write' as needed.
   contents: read
   pages: write
   id-token: write
-  pull-requests: write
   packages: write
+  pull-requests: read # Not strictly needed at top level, but doesn't hurt
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  # 1. Build & Deploy Job (Your existing logic)
   build:
-    name: Build
+    name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      # - name: Cache turbo build setup
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: .turbo
-      #     key: ${{ runner.os }}-turbo-${{ github.sha }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-turbo-
+          # Fetch full history is important for Changesets and deployment
+          fetch-depth: 0 
+      
       - uses: pnpm/action-setup@v3
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -41,6 +38,8 @@ jobs:
         run: pnpm install
       - name: Build Packages
         run: pnpm build
+      
+      # --- Deployment Steps ---
       - name: Build with VitePress
         run: pnpm docs:build
       - name: Setup Pages
@@ -49,8 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
-
-  # Deployment job
+          
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -62,37 +60,55 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
+
+  # 2. Release/Publish Job (The core Changesets logic)
   release:
-    name: Publish
+    name: Publish Packages
     runs-on: ubuntu-latest
-    needs: deploy 
-    if: success()
+    # This job should only run after the build/deploy job, but it does NOT depend on 'deploy' succeeding
+    # as the Changesets PR is created even if deploy fails. It should depend on 'build'.
+    needs: build
+    
+    # 🚨 CRITICAL: Grant the necessary permissions for git operations (commit/PR creation)
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # Needed for the action to commit version bumps
+      pull-requests: write # Needed for the action to create the Version PR
+      
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      
       - uses: pnpm/action-setup@v3
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
+      
+      # We must re-install dependencies here for the publish step
+      # because the 'release' job does not automatically share the node_modules from 'build'.
       - name: Install Dependencies
         run: pnpm install
-      - name: Build Packages
+        
+      # You must rebuild BEFORE running the publish script if your publish script relies on build artifacts.
+      # If pnpm build is quick, leave it. If not, consider using a separate build artifact.
+      - name: Build Packages (Required for Publish)
         run: pnpm build
+        
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release 
-          version: pnpm version  
+          # This runs 'changeset version' if changesets exist, creates a PR, and updates the PR.
+          # If the commit is a merge commit from a Version PR, it runs 'changeset publish'.
+          publish: pnpm release # Your final publishing command
+          version: pnpm version  # Your versioning command (optional, uses default if omitted)
           commit: "chore: version bump from changesets"
+          title: "🚀 Version Packages" # Title for the auto-created PR
         env:
+          # Required for git operations (PR creation, push)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Required for publishing to npm
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
