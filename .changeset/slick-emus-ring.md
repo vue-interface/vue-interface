@@ -2,4 +2,7 @@
 "@vue-interface/activity-indicator": major
 ---
 
-Major update for Tailwind v4 utilities.
+Release v3.0.0
+
+- Add new Tailwind v4 utilities
+- Drop support for Tailwind v3.
