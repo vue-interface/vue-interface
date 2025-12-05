@@ -120,20 +120,6 @@ export default defineConfig({
             pattern: 'https://github.com/vue-interface/vue-interface/edit/main/:path'
         }
   	},
-	/* head: [
-        [
-            'script',
-            {async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-L1GWWG8KPL'}
-        ],
-        [
-            'script',
-            {},
-            `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-L1GWWG8KPL');`
-        ]
-    ], */
     sitemap: {
         hostname: 'https://vue-interface.com'
     }

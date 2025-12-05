@@ -52,6 +52,7 @@ A slide deck is an abstract component that adds a slide effect between component
 
 The `slide deck` component extends the [button](/packages/btn/docs/btn) classes, allowing for the buttons to be customized with the various colors, variants, sizes, and states. Customize the slide deck headers and background colors with the appropriate [Tailwind](https://tailwindcss.com/) classes and [color palette](https://tailwindcss.com/docs/colors). 
 
+<ClientOnly>
 <!-- #region basicUsage -->
 <div class="my-6">
     <div class="flex justify-between mb-3">
@@ -88,6 +89,7 @@ The `slide deck` component extends the [button](/packages/btn/docs/btn) classes,
     </slide-deck>
 </div>
 <!-- #endregion basicUsage -->
+</ClientOnly>
 
 <<< @/packages/slide-deck/docs/slide-deck.md#basicUsage{html}
 <<< @/packages/slide-deck/docs/slide-deck.md#script{js}

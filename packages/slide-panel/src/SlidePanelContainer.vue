@@ -37,38 +37,38 @@ watch(registry.topSlide, () => {
 
 containers[props.name] = registry;
 
-const observer = new MutationObserver((records) => {
-    for(const record of records) {
-        if(!(record.target instanceof HTMLDivElement)
-            || record.target.parentElement !== container.value
-        ) {
-            continue;
-        }
-        
-        if(record.target.classList.contains('v-enter-active')
-            && !record.target.getAttribute('data-index')
-        ) {
-            registry.elements.value.push(record.target);
-
-            registry.index.value++;
-            
-            record.target.setAttribute('data-index', registry.index.value.toString());
-            record.target.style.zIndex = registry.index.value.toString();
-        }
-        else if(record.target.classList.contains('v-leave-from')
-            && registry.elements.value.includes(record.target)
-        ) {
-            registry.elements.value.splice(
-                registry.elements.value.indexOf(record.target), 1
-            );
-        }
-    }
-});
-
 onMounted(() => {
     if(!container.value) {
         return;
     }
+
+    const observer = new MutationObserver((records) => {
+        for(const record of records) {
+            if(!(record.target instanceof HTMLDivElement)
+            || record.target.parentElement !== container.value
+            ) {
+                continue;
+            }
+        
+            if(record.target.classList.contains('v-enter-active')
+            && !record.target.getAttribute('data-index')
+            ) {
+                registry.elements.value.push(record.target);
+
+                registry.index.value++;
+            
+                record.target.setAttribute('data-index', registry.index.value.toString());
+                record.target.style.zIndex = registry.index.value.toString();
+            }
+            else if(record.target.classList.contains('v-leave-from')
+            && registry.elements.value.includes(record.target)
+            ) {
+                registry.elements.value.splice(
+                    registry.elements.value.indexOf(record.target), 1
+                );
+            }
+        }
+    });
 
     observer.observe(container.value, {
         attributeFilter: ['class'],

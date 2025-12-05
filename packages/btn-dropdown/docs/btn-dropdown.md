@@ -26,7 +26,7 @@ The `btn-dropdown` component provides an interactive button paired with a dropdo
 
 ## Basic Usage
 
-<div class="btn-dropdown-override">
+<ClientOnly>
 
 ::: raw
 <!-- #region basicUsage-->
@@ -38,8 +38,6 @@ The `btn-dropdown` component provides an interactive button paired with a dropdo
 </btn-dropdown>
 <!-- #endregion basicUsage-->
 :::
-
-
 
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#basicUsage{html}
 
@@ -742,7 +740,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 </div>
 :::
 
-</div>
+</ClientOnly>
 
 ::: details Show Code
 <<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropleft{html}

@@ -84,6 +84,28 @@ export const TooltipDirective: Directive<Element, string|TooltipProps> =  {
 
 export function TooltipPlugin(app: App<Element>) {
     app.mixin({
+        beforeMount() {
+            const observer = new MutationObserver((mutations) => {
+                for(const { addedNodes, removedNodes } of mutations) {
+                    addedNodes.forEach((node) => {
+                        if(shouldCreateTooltip(node)) {
+                            createTooltip(node);
+                        }
+                    });
+
+                    removedNodes.forEach((node) => {
+                        if(shouldRemoveTooltip(node)) {
+                            destroyTooltip(node);
+                        }
+                    });
+                }
+            });
+      
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        },
         mounted() {
             let el = this.$el;
 
@@ -109,27 +131,6 @@ export function TooltipPlugin(app: App<Element>) {
                 }
             }
         }
-    });
-
-    const observer = new MutationObserver((mutations) => {
-        for(const { addedNodes, removedNodes } of mutations) {
-            addedNodes.forEach((node) => {
-                if(shouldCreateTooltip(node)) {
-                    createTooltip(node);
-                }
-            });
-
-            removedNodes.forEach((node) => {
-                if(shouldRemoveTooltip(node)) {
-                    destroyTooltip(node);
-                }
-            });
-        }
-    });
-      
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
     });
 
     app.directive<Element, string|TooltipProps>('tooltip', TooltipDirective);
