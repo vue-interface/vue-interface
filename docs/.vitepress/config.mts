@@ -117,10 +117,10 @@ export default defineConfig({
     	],
 
 		editLink: {
-            pattern: 'https://github.com/vue-interface/vue-interface-new/edit/jsx/:path'
+            pattern: 'https://github.com/vue-interface/vue-interface/edit/main/:path'
         }
   	},
-	head: [
+	/* head: [
         [
             'script',
             {async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-L1GWWG8KPL'}
@@ -133,7 +133,7 @@ export default defineConfig({
             gtag('js', new Date());
             gtag('config', 'G-L1GWWG8KPL');`
         ]
-    ],
+    ], */
     sitemap: {
         hostname: 'https://vue-interface.com'
     }
