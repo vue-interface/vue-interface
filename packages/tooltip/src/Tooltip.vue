@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { arrow, autoUpdate, flip as flipFn, FlipOptions, MaybeElement, offset as offsetFn, OffsetOptions, ReferenceElement, useFloating, UseFloatingOptions } from '@floating-ui/vue';
-import { computed, isRef, onUnmounted, Ref, ref, shallowReadonly, ShallowRef, Teleport, useTemplateRef, watchEffect } from 'vue';
+import { computed, isRef, onUnmounted, Ref, ref, shallowReadonly, ShallowRef, useTemplateRef, watchEffect } from 'vue';
 
 export type TooltipProps = {
     title?: string;
@@ -14,6 +14,8 @@ export type TooltipProps = {
 };
 
 const props = withDefaults(defineProps<TooltipProps>(), {
+    title: undefined,
+    target: undefined,
     placement: 'top',
     middleware: undefined,
     strategy: undefined,
@@ -25,8 +27,8 @@ defineSlots<{
     default: () => void
 }>();
 
-const tooltipEl = useTemplateRef('tooltipEl');
-const arrowEl = useTemplateRef('arrowEl');
+const tooltipEl = useTemplateRef<HTMLDivElement>('tooltipEl');
+const arrowEl = useTemplateRef<HTMLDivElement>('arrowEl');
 const isShowing = ref(false);
 const hash = Math.random().toString(36).slice(2, 12);
 
@@ -40,7 +42,7 @@ const id = computed(() => {
     }
 
     return targetEl.value.getAttribute('data-tooltip-id');
-})
+});
 
 
 watchEffect(() => {
@@ -50,8 +52,8 @@ watchEffect(() => {
 
     if(targetEl.value instanceof Element) {
         targetEl.value.setAttribute('data-tooltip-id', hash);
-        targetEl.value.addEventListener('mouseover', show);
-        targetEl.value.addEventListener('mouseout', hide);
+        targetEl.value.addEventListener('mouseover', open);
+        targetEl.value.addEventListener('mouseout', close);
     }
 });
 
@@ -60,17 +62,17 @@ watchEffect(() => {
 });
 
 const dynamicOffset = computed<OffsetOptions>(() => {
-    if (props.offset) {
+    if(props.offset) {
         return props.offset;
     }
 
     return () => {
-        const { height } = getComputedStyle(arrowEl.value);
+        const { height } = arrowEl.value ? getComputedStyle(arrowEl.value) : { height: '0px' };
 
         return {
             mainAxis: parseInt(height.replace('px', '')),
-        }
-    }
+        };
+    };
 });
 
 const { floatingStyles, middlewareData, placement } = useFloating(targetEl, tooltipEl, {
@@ -111,11 +113,11 @@ const arrowRotation = computed<Record<Side,string>>(() => ({
     left: 'rotate(135deg)',
 }));
 
-function show() {
+function open() {
     isShowing.value = true;
 }
 
-function hide() {
+function close() {
     isShowing.value = false;
 }
 
@@ -123,16 +125,16 @@ onUnmounted(() => {
     if(targetEl.value instanceof Element) {
         targetEl.value.removeAttribute('data-tooltip-id');
     }
-})
+});
 
 defineExpose({
-    show,
-    hide,
+    open,
+    close,
     tooltipEl,
     arrowEl,
     isShowing,
     hash,
-})
+});
 </script>
 
 <template>

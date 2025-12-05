@@ -44,7 +44,9 @@ export default ({ command }) => defineConfig({
     },
     plugins: [
         vue(),
-        dts(),
+        dts({
+    entryRoot: path.resolve(__dirname, './'),
+}),
         tailwindcss(),
     ],
 });

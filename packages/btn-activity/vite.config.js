@@ -37,14 +37,11 @@ export default ({ command }) => defineConfig({
             ]
         }
     },
-    resolve: {
-        conditions: process.env.NODE_ENV === 'development' 
-            ? ['source', 'import', 'module', 'browser', 'default']
-            : ['import', 'module', 'browser', 'default'],
-    },
     plugins: [
         vue(),
-        dts(),
-        tailwindcss(),
+        dts({
+            entryRoot: path.resolve(__dirname, './'),
+        }),
+        tailwindcss()
     ],
 });

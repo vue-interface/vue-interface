@@ -13,6 +13,12 @@ const external = [
     ...(pkg.peerDependencies ? Object.keys(pkg.peerDependencies) : [])
 ];
 
+console.log({
+    entry: path.resolve(__dirname, 'index.ts'),
+    name: pascalCase(fileName),
+    fileName,
+});
+
 export default ({ command }) => defineConfig({
     build: {
         sourcemap: command === 'build',
@@ -39,7 +45,9 @@ export default ({ command }) => defineConfig({
     },
     plugins: [
         vue(),
-        dts(),
+        dts({
+            entryRoot: path.resolve(__dirname, './'),
+        }),
         tailwindcss()
     ],
 });

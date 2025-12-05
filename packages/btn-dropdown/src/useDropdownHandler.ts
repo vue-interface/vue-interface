@@ -1,6 +1,6 @@
 import { flip, offset, Placement, type Alignment, type Middleware, type OffsetOptions, type Side } from '@floating-ui/dom';
 import { useFloating } from '@floating-ui/vue';
-import type { DropdownMenu } from '@vue-interface/dropdown-menu';
+import { DropdownMenu } from '@vue-interface/dropdown-menu';
 import { computed, ref, watchEffect, type EmitFn, type HTMLAttributes } from 'vue';
 
 type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);

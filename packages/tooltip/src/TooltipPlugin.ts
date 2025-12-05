@@ -21,13 +21,17 @@ function createTooltip(target: Element, props?: TooltipProps) {
 
     render(vnode, container);
 
-    if(target.hasAttribute('title')) {
-        target.setAttribute(`${prefix}-og-title`, target.getAttribute('title'));
+    const title = target.getAttribute('title');
+
+    if(title) {
+        target.setAttribute(`${prefix}-og-title`, title);
         target.removeAttribute('title');
     }
 
     return () => {
-        vnode.component.exposed.tooltipEl.value?.remove();
+        if(vnode.component) {
+            vnode.component.exposed?.tooltipEl.value?.remove();
+        }
     };
 }
 
@@ -42,8 +46,10 @@ function destroyTooltip(target: Element) {
 
     target.removeAttribute(`${prefix}-id`);
 
-    if(target.hasAttribute(`${prefix}-og-title`)) {
-        target.setAttribute('title', target.getAttribute(`${prefix}-og-title`))
+    const title = target.getAttribute(`${prefix}-og-title`);
+
+    if(title) {
+        target.setAttribute('title', title);
     }
 }
 
@@ -74,7 +80,7 @@ export const TooltipDirective: Directive<Element, string|TooltipProps> =  {
     beforeUnmount(target) {
         destroyTooltip(target);
     }
-}
+};
 
 export function TooltipPlugin(app: App<Element>) {
     app.mixin({
@@ -111,13 +117,13 @@ export function TooltipPlugin(app: App<Element>) {
                 if(shouldCreateTooltip(node)) {
                     createTooltip(node);
                 }
-            })
+            });
 
             removedNodes.forEach((node) => {
                 if(shouldRemoveTooltip(node)) {
                     destroyTooltip(node);
                 }
-            })
+            });
         }
     });
       

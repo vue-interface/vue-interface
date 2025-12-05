@@ -17,7 +17,7 @@
   "browserslist": "last 2 versions, > 0.5%, ie >= 11",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "repository": {
