@@ -34,7 +34,7 @@ npm i @vue-interface/slide-panel
 <Page />
 
 <<< @/packages/slide-panel/demo/Page.vue#imports{ts}
-<<< @/packages/slide-panel/demo/Page.vue#example{ts}
+<<< @/packages/slide-panel/demo/Page.vue#example{html}
 
 ::: info
 The `slide panel` component is aligned to the right side of the screen, but can be switched to the left side by adding the `align="left"` prop. 
