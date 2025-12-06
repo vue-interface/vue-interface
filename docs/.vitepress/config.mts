@@ -91,7 +91,7 @@ export default defineConfig({
 		],
 
     	socialLinks: [
-    	  	{ icon: 'github', link: 'https://github.com/vue-interface/vue-interface-new/tree/jsx' }
+    	  	{ icon: 'github', link: 'https://github.com/vue-interface/vue-interface.github.io' }
     	],
 
 		editLink: {
