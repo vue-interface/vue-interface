@@ -15,9 +15,3 @@ Written in **TypeScript** from the ground up for first-class type inference and 
 
 ### Accessible & Inclusive
 Inclusive by default. We follow **WAI-ARIA** best practices, ensuring support for keyboard navigation and screen readers.
-
----
-
-### Ready for your next project?
-
-[Get Started with Vue Interface](/getting-started)
