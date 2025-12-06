@@ -19,7 +19,7 @@ onMounted(() => {
 
 # Autogrow
 
-The Autogrow directive automatically resizes a [textarea](/packages/textarea-field/docs/textarea-field) to fit its content. It eliminates the need for manual resizing and provides smooth UX for variable-length text inputs.
+The Autogrow directive automatically resizes a [textarea](/packages/textarea-field/) to fit its content. It eliminates the need for manual resizing and provides smooth UX for variable-length text inputs.
 
 ### Installation
 
@@ -46,7 +46,7 @@ npm i @vue-interface/autogrow
 </div>
 
 ::: details Show Code
-<<< @/packages/autogrow/docs/autogrow.md#basic{html}
+<<< ./index.md#basic{html}
 :::
 
 ## Resize on Update
@@ -58,7 +58,7 @@ npm i @vue-interface/autogrow
 </div>
 
 ::: details Show Code
-<<< @/packages/autogrow/docs/autogrow.md#resize-update{html}
+<<< ./index.md#resize-update{html}
 :::
 
 ## With Long Existing Content
@@ -71,7 +71,7 @@ npm i @vue-interface/autogrow
 <!-- #region long-content-->
 
 ::: details Show Code
-<<< @/packages/autogrow/docs/autogrow.md#long-content{html}
+<<< ./index.md#long-content{html}
 :::
 
 ## Max Height
@@ -84,5 +84,5 @@ npm i @vue-interface/autogrow
 <!-- #endregion max-height -->
 
 ::: details Show Code
-<<< @/packages/autogrow/docs/autogrow.md#max-height{html}
+<<< ./index.md#max-height{html}
 :::

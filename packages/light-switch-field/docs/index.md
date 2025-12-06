@@ -47,7 +47,7 @@ npm i @vue-interface/light-switch-field
 <!-- #endregion variations -->
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#variations{html}
+<<< ./index.md#variations{html}
 :::
 
 ## Alternative On/Off Values
@@ -72,7 +72,7 @@ npm i @vue-interface/light-switch-field
 <!-- #endregion altValues -->
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#altValues{html}
+<<< ./index.md#altValues{html}
 :::
 
 ## Sizes
@@ -98,7 +98,7 @@ The size can be customized using predetermined `size prop` values: `xs`, `sm`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -115,7 +115,7 @@ For more granular control over sizes, use Tailwind's numeric sizing scale classe
 </div>
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -130,7 +130,7 @@ For precise sizing, specify exact pixel values using the syntax `form-switch-[Np
 </div>
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Custom Colors
@@ -145,7 +145,7 @@ Customize the color of a `light-switch-field` component with the [Tailwind color
 <!-- #endregion customColors -->
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## Validation
@@ -164,5 +164,5 @@ Validation classes provides error-checking styling for the `light-switch-field` 
 <!-- #endregion validatin -->
 
 ::: details Show Code
-<<< @/packages/light-switch-field/docs/light-switch-field.md#validation{html}
+<<< ./index.md#validation{html}
 :::

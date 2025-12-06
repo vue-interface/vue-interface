@@ -78,4 +78,4 @@ npm i @vue-interface/dropdown-menu
 </div>
 :::
 
-<<< @/packages/dropdown-menu/docs/dropdown-menu.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}

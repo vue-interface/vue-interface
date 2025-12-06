@@ -22,7 +22,7 @@ function onToggle() {
 
 # Button Dropdown
 
-The `btn-dropdown` component provides an interactive button paired with a dropdown menu. It extends the standard [button](/packages/btn/docs/btn), [button-group](/packages/btn/docs/btn-group), and [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu) components.
+The `btn-dropdown` component provides an interactive button paired with a dropdown menu. It extends the standard [button](/packages/btn/), [button-group](/packages/btn/btn-group), and [dropdown-menu](/packages/dropdown-menu/) components.
 
 ### Installation
 
@@ -55,7 +55,7 @@ npm i @vue-interface/btn-dropdown
 <!-- #endregion basicUsage-->
 :::
 
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 
 ### Split Button
 
@@ -72,10 +72,10 @@ Create a split `btn-dropdown` component by adding the `split` prop.
 <!-- #endregion split-->
 :::
 
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#split{html}
+<<< ./index.md#split{html}
 
 ::: tip
-The split dropdown button is a combination of a [button-group](/packages/btn/docs/btn-group) button and a [dropdown-menu](/packages/dropdown-menu/docs/dropdown-menu).
+The split dropdown button is a combination of a [button-group](/packages/btn/btn-group) button and a [dropdown-menu](/packages/dropdown-menu/).
 :::
 
 ## Custom Buttons 
@@ -118,11 +118,11 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ::: details Show Code - (+)
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#custom1{html}
+<<< ./index.md#custom1{html}
 :::
 
 ::: details Show Code - Elipses
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#custom2{html}
+<<< ./index.md#custom2{html}
 :::
 
 ## Variants
@@ -180,7 +180,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#variants{html}
+<<< ./index.md#variants{html}
 :::
 
 ## Outline Variants
@@ -238,7 +238,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#outlineVariants{html}
+<<< ./index.md#outlineVariants{html}
 :::
 
 ## Split Button Variants
@@ -296,7 +296,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitVariants{html}
+<<< ./index.md#splitVariants{html}
 :::
 
 ## Split Outline Variants
@@ -354,7 +354,7 @@ The split dropdown button is a combination of a [button-group](/packages/btn/doc
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitOutlineVariants{html}
+<<< ./index.md#splitOutlineVariants{html}
 :::
 
 ## Sizes
@@ -436,7 +436,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#predetermined{html}
+<<< ./index.md#predetermined{html}
 :::
 
 ### Tailwind Sizes
@@ -472,7 +472,7 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#tailwind{html}
+<<< ./index.md#tailwind{html}
 :::
 
 ### Arbitrary Sizes
@@ -501,7 +501,7 @@ For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#arbitrary{html}
+<<< ./index.md#arbitrary{html}
 :::
 
 ## Split Sizes
@@ -583,7 +583,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitPredetermined{html}
+<<< ./index.md#splitPredetermined{html}
 :::
 
 ### Tailwind Sizes
@@ -619,7 +619,7 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitTailwind{html}
+<<< ./index.md#splitTailwind{html}
 :::
 
 ### Arbitrary Sizes
@@ -649,7 +649,7 @@ For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#splitArbitrary{html}
+<<< ./index.md#splitArbitrary{html}
 :::
 
 ## Menu Alignment
@@ -684,7 +684,7 @@ Customize the alignment of the dropdown menu  relative to the button using the `
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#menuAlignment{html}
+<<< ./index.md#menuAlignment{html}
 :::
 
 ## Menu Direction Variations
@@ -711,7 +711,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropup{html}
+<<< ./index.md#dropup{html}
 :::
 
 ### Dropright
@@ -734,7 +734,7 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 :::
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropright{html}
+<<< ./index.md#dropright{html}
 :::
 
 ### Dropleft
@@ -759,5 +759,5 @@ Specify the direction of the dropdown menu using the [dropup](#dropup), [droprig
 </ClientOnly>
 
 ::: details Show Code
-<<< @/packages/btn-dropdown/docs/btn-dropdown.md#dropleft{html}
+<<< ./index.md#dropleft{html}
 :::

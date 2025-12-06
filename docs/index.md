@@ -6,11 +6,11 @@ hero:
   tagline: A collection of scoped, styled, and accessible Vue 3 components built with Tailwind CSS v4.
   actions:
     - theme: brand
+      text: About
+      link: /about
+    - theme: alt
       text: Getting Started
       link: /getting-started
-    - theme: alt
-      text: View Packages
-      link: /packages
 
 features:
   - title: 📦 Modular Architecture

@@ -8,25 +8,25 @@ import '../index.css'
 
 # Button Group
 
-The `btn-group` utility class provides a flexible and customizable button-group component based on the [button](/packages/btn/docs/btn) component. 
+The `btn-group` utility class provides a flexible and customizable button-group component based on the [button](/packages/btn/) component. 
 
 ::: tip 
-Button groups can be combined with [dropdown menus](/packages/dropdown-menu/docs/dropdown-menu) to create [dropdown buttons](/packages/btn-dropdown/docs/btn-dropdown).
+Button groups can be combined with [dropdown menus](/packages/dropdown-menu/) to create [dropdown buttons](/packages/btn-dropdown/).
 :::
 
 ### Installation
 
 ::: code-group
 ```bash [pnpm]
-pnpm i @vue-interface/btn-group
+pnpm i @vue-interface/btn
 ```
 
 ```bash [yarn]
-yarn add @vue-interface/btn-group
+yarn add @vue-interface/btn
 ```
 
 ```bash [npm]
-npm i @vue-interface/btn-group
+npm i @vue-interface/btn
 ```
 :::
 
@@ -46,7 +46,7 @@ npm i @vue-interface/btn-group
 </div>
 <!-- #endregion basicUsage-->
 
-<<< @/packages/btn/docs/btn-group.md#basicUsage{html}
+<<< ./btn-group.md#basicUsage{html}
 
 ## Split Buttons
 
@@ -59,7 +59,7 @@ npm i @vue-interface/btn-group
 </div>
 <!-- #endregion splitButtons-->
 
-<<< @/packages/btn/docs/btn-group.md#splitButtons{html}
+<<< ./btn-group.md#splitButtons{html}
 
 ## Sizing
 
@@ -138,7 +138,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 <!-- #endregion sizing-->
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#sizing{html}
+<<< ./btn-group.md#sizing{html}
 :::
 
 ### Tailwind Sizes
@@ -172,7 +172,7 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 <!-- #endregion tailwindSizes-->
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#tailwindSizes{html}
+<<< ./btn-group.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -199,7 +199,7 @@ For precise sizing, specify exact pixel values using the syntax `btn-group-[Npx]
 <!-- #endregion arbitrarySizes-->
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#arbitrarySizes{html}
+<<< ./btn-group.md#arbitrarySizes{html}
 :::
 
 ## Orientation
@@ -224,7 +224,7 @@ Button groups support four dropdown orientations for flexible positioning.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#orientation{html}
+<<< ./btn-group.md#orientation{html}
 :::
 
 ## Split Orientation
@@ -261,7 +261,7 @@ Split button dropdowns with orientation support.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#splitOrientation{html}
+<<< ./btn-group.md#splitOrientation{html}
 :::
 
 ## Regular Sizing
@@ -319,7 +319,7 @@ The size of regular dropdown buttons can be customized using the predetermined s
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#regularSizing{html}
+<<< ./btn-group.md#regularSizing{html}
 :::
 
 ### Tailwind Sizes
@@ -347,7 +347,7 @@ Use Tailwind's numeric sizing scale for more granular control over button group 
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#regTWSizing{html}
+<<< ./btn-group.md#regTWSizing{html}
 :::
 
 ### Arbitrary Sizes
@@ -370,7 +370,7 @@ For precise sizing needs, specify exact pixel values using the `btn-group-[Npx]`
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#regArbSizing{html}
+<<< ./btn-group.md#regArbSizing{html}
 :::
 
 ## Split Sizing
@@ -455,7 +455,7 @@ The size of split dropdown buttons can be customized using the predetermined siz
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#splitSizing{html}
+<<< ./btn-group.md#splitSizing{html}
 :::
 
 ### Split Tailwind Sizes
@@ -492,7 +492,7 @@ Use Tailwind's numeric sizing scale for more granular control over button group 
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#splitTWSizing{html}
+<<< ./btn-group.md#splitTWSizing{html}
 :::
 
 ### Split Arbitrary Sizes
@@ -515,7 +515,7 @@ For precise sizing needs, specify exact pixel values using the `btn-group-[Npx]`
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#splitArbSizing{html}
+<<< ./btn-group.md#splitArbSizing{html}
 :::
 
 ## Vertical Variation
@@ -537,5 +537,5 @@ Create vertical button groups using the `btn-group-vertical` class.
 <!-- #endregion verticalVariation-->
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn-group.md#verticalVariation{html}
+<<< ./btn-group.md#verticalVariation{html}
 :::

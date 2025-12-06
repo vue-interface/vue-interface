@@ -66,7 +66,7 @@ npm i @vue-interface/slide-deck
 
 ## Basic Usage
 
-The `slide deck` component extends the [button](/packages/btn/docs/btn) classes, allowing for the buttons to be customized with the various colors, variants, sizes, and states. Customize the slide deck headers and background colors with the appropriate [Tailwind](https://tailwindcss.com/) classes and [color palette](https://tailwindcss.com/docs/colors). 
+The `slide deck` component extends the [button](/packages/btn/) classes, allowing for the buttons to be customized with the various colors, variants, sizes, and states. Customize the slide deck headers and background colors with the appropriate [Tailwind](https://tailwindcss.com/) classes and [color palette](https://tailwindcss.com/docs/colors). 
 
 <ClientOnly>
 <!-- #region basicUsage -->
@@ -107,5 +107,5 @@ The `slide deck` component extends the [button](/packages/btn/docs/btn) classes,
 <!-- #endregion basicUsage -->
 </ClientOnly>
 
-<<< @/packages/slide-deck/docs/slide-deck.md#basicUsage{html}
-<<< @/packages/slide-deck/docs/slide-deck.md#script{js}
+<<< ./index.md#basicUsage{html}
+<<< ./index.md#script{js}

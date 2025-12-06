@@ -8,7 +8,7 @@ import '../demo.css'
 
 # Form Check
 
-The `form-check` utility class is a [form component](./forms) that provides flexible and customizable checkbox and radio button inputs with customizable sizes, states, and colors.
+The `form-check` utility class is a flexible and customizable Tailwind CSS utility to style checkbox and radio fields.
 
 ## Basic Usage
 
@@ -30,7 +30,7 @@ The `form-check` utility class is a [form component](./forms) that provides flex
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#basicUsage{html}
+<<< ./form-check.md#basicUsage{html}
 :::
 
 ## Sizes
@@ -119,7 +119,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#predeterminedSizes{html}
+<<< ./form-check.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -156,7 +156,7 @@ For more granular control over checkbox and radio sizes, use Tailwind's numeric 
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#TWSizes{html}
+<<< ./form-check.md#TWSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -185,7 +185,7 @@ For precise sizing, specify exact pixel values using the syntax `form-check-[Npx
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#arbitrarySizes{html}
+<<< ./form-check.md#arbitrarySizes{html}
 :::
 
 ## Validation
@@ -224,7 +224,7 @@ Validation classes provides error-checking styling for the form-check element. T
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#validation{html}
+<<< ./form-check.md#validation{html}
 :::
 
 ## Custom Colors
@@ -246,5 +246,5 @@ Customize the color of a form-check element with the [Tailwind color palette](ht
 
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-check.md#customColors{html}
+<<< ./form-check.md#customColors{html}
 :::

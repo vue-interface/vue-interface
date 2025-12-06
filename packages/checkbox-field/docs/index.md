@@ -29,7 +29,7 @@ function onBlur(e) {
 
 # Checkbox Field
 
-The `CheckboxField` component extends the [form-control](/packages/form-control/docs/form-control) component and provides a flexible checkbox input with support for custom colors, sizes, states, and validation.
+The `CheckboxField` component extends the [form-control](/packages/form-control/) component and provides a flexible checkbox input with support for custom colors, sizes, states, and validation.
 
 ### Installation
 
@@ -67,7 +67,7 @@ npm i @vue-interface/checkbox-field
     <!-- #endregion basicUsage -->
 </div>
 
-<<< @/packages/checkbox-field/docs/checkbox-field.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 
 ## Custom Colors
 
@@ -122,7 +122,7 @@ Customize the color of a checkbox using a Tailwind color using the class: `form-
 </div>
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## States
@@ -139,7 +139,7 @@ Customize the color of a checkbox using a Tailwind color using the class: `form-
 </div>
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#states{html}
+<<< ./index.md#states{html}
 :::
 
 ## Sizes
@@ -163,7 +163,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 <!-- #endregion predeterminedSizes -->
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -177,7 +177,7 @@ For more granular control over sizes, use Tailwind's numeric sizing scale classe
 <!-- #endregion tailwindSizes -->
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -190,7 +190,7 @@ For precise sizing, specify exact pixel values using the syntax `form-check-[Npx
 <!-- #endregion arbitrarySizes -->
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Validation
@@ -234,5 +234,5 @@ For precise sizing, specify exact pixel values using the syntax `form-check-[Npx
 <!-- #endregion validation -->
 
 ::: details Show Code
-<<< @/packages/checkbox-field/docs/checkbox-field.md#validation{html}
+<<< ./index.md#validation{html}
 :::

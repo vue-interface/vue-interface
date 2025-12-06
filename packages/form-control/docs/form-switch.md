@@ -8,7 +8,7 @@ import '../demo.css'
 
 # Form Switch
 
-The `form-switch` utility class is a [form component](./forms) that provides flexible and customizable toggle switchs with customizable sizes, states, and colors.
+The `form-switch` utility class is a flexible and customizable Tailwind CSS utility to style light switch fields.
 
 ## Basic Usage
 
@@ -38,7 +38,7 @@ The `form-switch` utility class is a [form component](./forms) that provides fle
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#basicUsage{html}
+<<< ./form-switch.md#basicUsage{html}
 :::
 
 ## Sizes
@@ -64,7 +64,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#predeterminedSizes{html}
+<<< ./form-switch.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -80,7 +80,7 @@ For more granular control over switch sizes, use Tailwind's numeric sizing scale
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#TWSizes{html}
+<<< ./form-switch.md#TWSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -95,7 +95,7 @@ For precise sizing, specify exact pixel values using the syntax `form-switch-[Np
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#arbitrarySizes{html}
+<<< ./form-switch.md#arbitrarySizes{html}
 :::
 
 ## Validation
@@ -130,7 +130,7 @@ Validation classes provides error-checking styling for the form-switch element. 
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#validation{html}
+<<< ./form-switch.md#validation{html}
 :::
 
 ## Custom Colors
@@ -147,5 +147,5 @@ Customize the color of a form-switch element with the [Tailwind color palette](h
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-switch.md#customColors{html}
+<<< ./form-switch.md#customColors{html}
 :::

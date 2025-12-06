@@ -79,7 +79,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
     <!-- #endregion customColors-->
 </div>
 
-<<< @/packages/activity-indicator/docs/activity-indicator.md#customColors{vue}
+<<< ./index.md#customColors{vue}
 
 ## Dots
 
@@ -99,7 +99,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#dots{vue}
+<<< ./index.md#dots{vue}
 :::
 
 ### Tailwind Sizes
@@ -114,7 +114,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#dotsTW{vue}
+<<< ./index.md#dotsTW{vue}
 :::
 
 ### Arbitrary Sizes
@@ -127,7 +127,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#dotsArb{vue}
+<<< ./index.md#dotsArb{vue}
 :::
 
 ## Chase
@@ -143,7 +143,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#chase{vue}
+<<< ./index.md#chase{vue}
 :::
 
 ## Spinner
@@ -159,7 +159,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#spinner{vue}
+<<< ./index.md#spinner{vue}
 :::
 
 ## Square
@@ -175,7 +175,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#square{vue}
+<<< ./index.md#square{vue}
 :::
 
 ## Square Orbit
@@ -191,7 +191,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#square-orbit{vue}
+<<< ./index.md#square-orbit{vue}
 :::
 
 ## Square Fold
@@ -207,7 +207,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#square-fold{vue}
+<<< ./index.md#square-fold{vue}
 :::
 
 ## Circle Fade
@@ -223,7 +223,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#circle-fade{vue}
+<<< ./index.md#circle-fade{vue}
 :::
 
 ## Circle Orbit
@@ -239,7 +239,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#circle-orbit{vue}
+<<< ./index.md#circle-orbit{vue}
 :::
 
 ## Circle Trail
@@ -255,7 +255,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#circle-trail{vue}
+<<< ./index.md#circle-trail{vue}
 :::
 
 ## Pulse
@@ -271,7 +271,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#pulse{vue}
+<<< ./index.md#pulse{vue}
 :::
 
 ## Double Pulse
@@ -287,7 +287,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#double-pulse{vue}
+<<< ./index.md#double-pulse{vue}
 :::
 
 ## Grid
@@ -303,7 +303,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#grid{vue}
+<<< ./index.md#grid{vue}
 :::
 
 ## Facebook
@@ -319,7 +319,7 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#facebook{vue}
+<<< ./index.md#facebook{vue}
 :::
 
 ## Spotify
@@ -335,30 +335,13 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 </div>
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#spotify{vue}
+<<< ./index.md#spotify{vue}
 :::
-
-## Center Indicator
-
-<!-- #region center-indicator -->
-<ActivityIndicator
-  :type="Dots"
-  class="flex items-center justify-center min-h-[500px]"
-  style="background-color: rgba(0, 0, 0, 0.1);"
-/>
-<!-- #endregion center-indicator -->
-
-::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#center-indicator{vue}
-:::
-
 
 ## Absolute Inside Parent
 
 <!-- #region absolute-inside -->
-<div
-  style="min-height: 500px; background-color: rgba(0, 0, 0, 0.1); position: relative;"
->
+<div class="relative h-[500px] bg-black/10">
   <ActivityIndicator
     :type="Dots"
     class="absolute inset-0 flex items-center justify-center"
@@ -367,5 +350,5 @@ To customize the color of the indicator, use the class: `activity-indicator-[col
 <!-- #endregion absolute-inside -->
 
 ::: details Show Code
-<<< @/packages/activity-indicator/docs/activity-indicator.md#absolute-inside{vue}
+<<< ./index.md#absolute-inside{html}
 :::

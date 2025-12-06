@@ -34,7 +34,7 @@ onMounted(() => {
 
 # Button Activity
 
-The `btn-activity` component provides an interactive button with built-in activity indicators for async operations. It extends the standard [button](/packages/btn/docs/btn) and [activity-indicator](/packages/activity-indicator/docs/activity-indicator) components to create these buttons.
+The `btn-activity` component provides an interactive button with built-in activity indicators for async operations. It extends the standard [button](/packages/btn/) aCombine [activity indicators](/packages/activity-indicator/) with `textarea-field` to show a loading icon.s.
 
 ### Installation
 
@@ -62,8 +62,8 @@ npm i @vue-interface/btn-activity
     <!-- #endregion basicUsage -->
 </div>
 
-<<< @/packages/btn-activity/docs/btn-activity.md#basicUsage{html}
-<<< @/packages/btn-activity/docs/btn-activity.md#setup{js}
+<<< ./index.md#basicUsage{html}
+<<< ./index.md#setup{js}
 
 ## Dots
 
@@ -76,7 +76,7 @@ npm i @vue-interface/btn-activity
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#dots{html}
+<<< ./index.md#dots{html}
 :::
 
 ## Spinner
@@ -90,7 +90,7 @@ npm i @vue-interface/btn-activity
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#spinner{html}
+<<< ./index.md#spinner{html}
 :::
 
 ## Pulse
@@ -104,7 +104,7 @@ npm i @vue-interface/btn-activity
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#pulse{html}
+<<< ./index.md#pulse{html}
 :::
 
 ## Orientation
@@ -121,7 +121,7 @@ Control the position of the activity indicator relative to the button label usin
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#orientation{html}
+<<< ./index.md#orientation{html}
 :::
 
 ## Block Activity Buttons
@@ -138,7 +138,7 @@ Full-width buttons with different indicator orientations using the `block` prop.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#block{html}
+<<< ./index.md#block{html}
 :::
 
 ## Variants
@@ -155,7 +155,7 @@ Button activity supports all standard button color variants.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#variants{html}
+<<< ./index.md#variants{html}
 :::
 
 ## Activity Attribute
@@ -174,10 +174,10 @@ Control the activity state programmatically using the `activity` prop.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#activityAttribute{html}
+<<< ./index.md#activityAttribute{html}
 :::
 
-<<< @/packages/btn-activity/docs/btn-activity.md#activity{js}
+<<< ./index.md#activity{js}
 
 ## Disabled State
 
@@ -190,7 +190,7 @@ Buttons can be disabled to prevent user interaction.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#disabled{html}
+<<< ./index.md#disabled{html}
 :::
 
 ## Label Attribute
@@ -204,7 +204,7 @@ Use the `label` prop to set button text without using the default slot.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#labelAttribute{html}
+<<< ./index.md#labelAttribute{html}
 :::
 
 ## Custom Element
@@ -219,7 +219,7 @@ Combine slot content with the label attribute and disabled states.
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#customElement{html}
+<<< ./index.md#customElement{html}
 :::
 
 ## Click Event
@@ -234,5 +234,5 @@ The click event handler receives a toggle function to control the activity state
 </div>
 
 ::: details Show Code
-<<< @/packages/btn-activity/docs/btn-activity.md#clickEvent{html}
+<<< ./index.md#clickEvent{html}
 :::

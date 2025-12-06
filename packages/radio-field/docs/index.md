@@ -42,7 +42,7 @@ npm i @vue-interface/radio-field
 <radio-field v-model="value" name="default" label="Checked" value="checked" checked></radio-field>
 <!-- #endregion basicUsage -->
 
-<<< @/packages/radio-field/docs/radio-field.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 
 ## Custom Colors
 
@@ -62,7 +62,7 @@ Customize the color of a radio button using a Tailwind color using the class: `f
 </div>
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## States
@@ -81,7 +81,7 @@ Customize the color of a radio button using a Tailwind color using the class: `f
 </div>
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#states{html}
+<<< ./index.md#states{html}
 :::
 
 ## Sizes
@@ -105,7 +105,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 <!-- #endregion predeterminedSizes -->
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -120,7 +120,7 @@ For more granular control over sizes, use Tailwind's numeric sizing scale classe
 <!-- #endregion tailwindSizes -->
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -133,7 +133,7 @@ For precise sizing, specify exact pixel values using the syntax `form-check-[Npx
 <!-- #endregion arbitrarySizes -->
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Validation
@@ -149,5 +149,5 @@ For precise sizing, specify exact pixel values using the syntax `form-check-[Npx
 <!-- #endregion validation -->
 
 ::: details Show Code
-<<< @/packages/radio-field/docs/radio-field.md#validation{html}
+<<< ./index.md#validation{html}
 :::

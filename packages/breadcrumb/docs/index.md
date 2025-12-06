@@ -45,7 +45,7 @@ To create a breadcrumb component, use the parent `breadcrumb` class and then add
     <!-- #endregion basicUsage -->
 </div>
 
-<<< @/packages/breadcrumb/docs/breadcrumb.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 
 ## Sizes
 
@@ -106,7 +106,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/breadcrumb/docs/breadcrumb.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -134,7 +134,7 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 </div>
 
 ::: details Show Code
-<<< @/packages/breadcrumb/docs/breadcrumb.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary sizes
@@ -157,7 +157,7 @@ For precise sizing, specify exact pixel values using the syntax `breadcrumb-[Npx
 </div>
 
 ::: details Show Code
-<<< @/packages/breadcrumb/docs/breadcrumb.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Variants
@@ -210,7 +210,7 @@ The breadcrumb component supports eight standard color variants: `primary`, `sec
 </div>
 
 ::: details Show Code
-<<< @/packages/breadcrumb/docs/breadcrumb.md#variants{html}
+<<< ./index.md#variants{html}
 :::
 
 ## Custom Colors
@@ -243,5 +243,5 @@ Customize the color of the `breadcrumb` component with the [Tailwind color palet
 </div>
 
 ::: details Show Code
-<<< @/packages/breadcrumb/docs/breadcrumb.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::

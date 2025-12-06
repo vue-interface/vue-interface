@@ -80,7 +80,7 @@ npm i @vue-interface/select-field
 <!-- #endregion variations -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#variations{html}
+<<< ./index.md#variations{html}
 :::
 
 ## Sizes
@@ -148,7 +148,7 @@ The size can be customized using predetermined `size prop` values: `xs`, `sm`, `
 <!-- #endregion predeterminedSizes -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -176,7 +176,7 @@ For more granular control over sizes, use Tailwind's numeric sizing scale classe
 <!-- #endregion tailwindSizes -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -198,7 +198,7 @@ For precise sizing, specify exact pixel values using the syntax `form-select-[Np
 <!-- #endregion arbitrarySizes -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Icons
@@ -281,12 +281,12 @@ The following `select-field` components combine a select field with a [heroicon]
 <!-- #endregion icons -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#icons{html}
+<<< ./index.md#icons{html}
 :::
 
 ## With Activity
 
-Combine [activity indicators](/packages/activity-indicator/docs/activity-indicator) with `select-field` to show a loading icon.
+Combine [activity indicators](/packages/activity-indicator/) with `select-field` to show a loading icon.
 
 <!-- #region withActivity -->
 <select-field label="Small" size="form-select-sm" :indicator="Dots" indicator-size="xs" :activity="showActivity" class="mb-3">
@@ -313,7 +313,7 @@ Combine [activity indicators](/packages/activity-indicator/docs/activity-indicat
 <!-- #endregion withActivity -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#withActivity{html}
+<<< ./index.md#withActivity{html}
 :::
 
 ## Validation
@@ -372,7 +372,7 @@ Validation classes provides error-checking styling for the select-field componen
 <!-- #endregion validation -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#validation{html}
+<<< ./index.md#validation{html}
 :::
 
 ## Custom Colors
@@ -406,7 +406,7 @@ Customize the color of a select-field component with the [Tailwind color palette
 <!-- #endregion customColors -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## Animated
@@ -437,7 +437,7 @@ The `select-field` animated component combines the tailwind `form-control-animat
 <!-- #endregion animated -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#animated{html}
+<<< ./index.md#animated{html}
 :::
 
 ### With Icons
@@ -543,6 +543,6 @@ Add an [icon](#icons) to the animated select-fields using the steps described ab
 <!-- #endregion animatedIcons -->
 
 ::: details Show Code
-<<< @/packages/select-field/docs/select-field.md#animatedIcons{html}
+<<< ./index.md#animatedIcons{html}
 :::
 

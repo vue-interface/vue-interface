@@ -8,7 +8,7 @@ import '../demo.css'
 
 # Form Select
 
-The `form-select` utility class is a [form component](./forms) that provides a flexible and customizable select dropdown with customizable sizes, states, and colors.
+The `form-select` utility class is a flexible and customizable Tailwind CSS utility to style select fields.
 
 ## Basic Usage
 
@@ -50,7 +50,7 @@ The `form-select` utility class is a [form component](./forms) that provides a f
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#basicUsage{html}
+<<< ./form-select.md#basicUsage{html}
 :::
 
 ## Plaintext
@@ -85,7 +85,7 @@ The `form-select` utility class is a [form component](./forms) that provides a f
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#plaintext{html}
+<<< ./form-select.md#plaintext{html}
 :::
 
 ## Sizes
@@ -129,7 +129,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#predeterminedSizes{html}
+<<< ./form-select.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -151,7 +151,7 @@ For more granular control over select sizes, use Tailwind's numeric sizing scale
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#TWSizes{html}
+<<< ./form-select.md#TWSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -170,7 +170,7 @@ For precise sizing, specify exact pixel values using the syntax `form-select-[Np
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#arbitrarySizes{html}
+<<< ./form-select.md#arbitrarySizes{html}
 :::
 
 ## Validation
@@ -213,7 +213,7 @@ Validation classes provides error-checking styling for the form-select element. 
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#validation{html}
+<<< ./form-select.md#validation{html}
 :::
 
 ## Custom Colors
@@ -250,7 +250,7 @@ Customize the color of a form-select element with the [Tailwind color palette](h
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#customColors{html}
+<<< ./form-select.md#customColors{html}
 :::
 
 ## Animated
@@ -271,7 +271,7 @@ The `form-select` animated component combines the tailwind `form-control-animate
     <!-- #endregion animated -->
 </div>
 
-<<< @/packages/form-control/docs/form-select.md#animated{html}
+<<< ./form-select.md#animated{html}
 
 Use the [size](#sizes) classes described above to customize the size of the animated select fields. 
 
@@ -389,5 +389,5 @@ Use the [size](#sizes) classes described above to customize the size of the anim
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-select.md#animatedSizes{html}
+<<< ./form-select.md#animatedSizes{html}
 :::

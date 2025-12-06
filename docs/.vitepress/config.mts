@@ -2,29 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import fs from 'fs';
 import path from 'path';
 import { defineConfig } from 'vitepress';
-
-// This function automatically generates sidebar items, including nested children
-function generatePackagesSidebar() {
-  	const filePath = path.resolve(__dirname, '../../docs/packages.md')
-  	const lines = fs.readFileSync(filePath, 'utf-8')
-  	  	.split('\n')
-  	  	.filter(l => l.trim().startsWith('-'))
-
-  	const tree: any[] = [], stack: any[] = [{ indent: -1, items: tree }]
-
-  	for (const line of lines) {
-  	  	const indent = line.match(/^\s*/)?.[0].length ?? 0
-  	  	const [, text, link] = line.match(/\[([^\]]+)\]\(([^)]+)\)/) || []
-  	  	const item: any = { text: text || line.replace(/^\s*-\s*/, '').trim(), ...(link && { link: link.replace(/\/packages\/([^\/]+)\/docs\/(.+)/, '/packages/$2') }) }
-
-  	  	while (indent <= stack[stack.length - 1].indent) stack.pop()
-  	  	stack[stack.length - 1].items.push(item)
-  	  	stack.push({ indent, items: (item.items = []) })
-  	}
-
-  	return tree
-}
-
+import { sidebar } from './theme/sidebar';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({	
@@ -33,8 +11,8 @@ export default defineConfig({
 
 	rewrites: {
 		'docs/:slug*': ':slug*',
-		// 'packages/:pkg/docs/:pkg.md': 'packages/:pkg',
-		'packages/:pkg/docs/:slug*': 'packages/:slug*',
+		'packages/:pkg/docs/:slug*': 'packages/:pkg/:slug*',
+		// 'packages/:pkg/docs/:slug*': 'packages/:slug*',
 	},
 
 	vite: {
@@ -108,7 +86,7 @@ export default defineConfig({
 				text: 'Packages',
 				link: '/packages', 
 	  	    	collapsed: false,
-	  	    	items: generatePackagesSidebar()
+	  	    	items: sidebar
 			},
 		],
 

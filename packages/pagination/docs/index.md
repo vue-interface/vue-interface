@@ -72,7 +72,7 @@ The `pagination` component utilizes five [Vue props](https://vuejs.org/guide/com
 <!-- #endregion basicUsage -->
 :::
 
-<<< @/packages/pagination/docs/pagination.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 
 ## Sizes
 
@@ -97,7 +97,7 @@ The size can be customized using predetermined `size prop` values: `xs`, `sm`, `
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -114,7 +114,7 @@ For more granular control over sizes, use Tailwind's numeric sizing scale classe
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#tailwindSizes{html}
+<<< ./index.md#tailwindSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -129,7 +129,7 @@ For precise sizing, specify exact pixel values using the syntax `pagination-[Npx
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#arbitraySizes{html}
+<<< ./index.md#arbitraySizes{html}
 :::
 
 ## Custom Colors
@@ -146,7 +146,7 @@ Customize the color of a `pagination` component with the [Tailwind color palette
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## Alignment
@@ -168,7 +168,7 @@ Customize the alignment of the pagination component on the page using the `align
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#alignment{html}
+<<< ./index.md#alignment{html}
 :::
 
 ## Custom Display Amount
@@ -188,7 +188,7 @@ The value of `show-pages` must be an **even number**
 :::
 
 ::: details Show Code
-<<< @/packages/pagination/docs/pagination.md#customPageNum{html}
+<<< ./index.md#customPageNum{html}
 :::
 
 ## Reactive Page Prop
@@ -201,5 +201,5 @@ The current page is: {{ page }}
 <!-- #endregion reactivePage -->
 :::
 
-<<< @/packages/pagination/docs/pagination.md#reactivePage{html}
-<<< @/packages/pagination/docs/pagination.md#reactive{js}
+<<< ./index.md#reactivePage{html}
+<<< ./index.md#reactive{js}

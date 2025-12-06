@@ -8,7 +8,7 @@ import '../demo.css'
 
 # Form Control
 
-The `form control` utility class is a [form component](./forms) that provides a flexible and customizable input elements with customizable sizes, states, and colors.
+The `form-control` utility class is a flexible and customizable Tailwind CSS utility to style input and textarea elements.
 
 ### Installation
 
@@ -60,7 +60,7 @@ npm i @vue-interface/form-control
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 :::
 
 ## Sizes
@@ -86,7 +86,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -102,7 +102,7 @@ For more granular control over indicator sizes, use Tailwind's numeric sizing sc
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#TWSizes{html}
+<<< ./index.md#TWSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -117,7 +117,7 @@ For precise sizing, specify exact pixel values using the syntax `form-control-[N
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#TWSizes{html}
+<<< ./index.md#TWSizes{html}
 :::
 
 ## Plaintext
@@ -135,7 +135,7 @@ For precise sizing, specify exact pixel values using the syntax `form-control-[N
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#plaintext{html}
+<<< ./index.md#plaintext{html}
 :::
 
 ## Validation
@@ -170,7 +170,7 @@ Validation classes provides error-checking styling for the form-control element.
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#validation{html}
+<<< ./index.md#validation{html}
 :::
 
 ## Custom Colors
@@ -187,7 +187,7 @@ Customize the color of a form-control element with the [Tailwind color palette](
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::
 
 ## Animated
@@ -203,7 +203,7 @@ The `form-control-animated` class provides a custom animated component where the
     <!-- #endregion animated -->
 </div>
 
-<<< @/packages/form-control/docs/form-control.md#animated{html}
+<<< ./index.md#animated{html}
 
 Use the [size](#sizes) classes described above to customize the size of the animated field.
 
@@ -261,7 +261,7 @@ Use the [size](#sizes) classes described above to customize the size of the anim
 </div>
 
 ::: details Show Code
-<<< @/packages/form-control/docs/form-control.md#animatedSizes{html}
+<<< ./index.md#animatedSizes{html}
 :::
 
 ## Custom Components
@@ -279,7 +279,7 @@ Add a color picker to your UI using the `form-control-color` class. This allows 
 <!-- #endregion colorPicker -->
 </div>
 
-<<< @/packages/form-control/docs/form-control.md#colorPicker{html}
+<<< ./index.md#colorPicker{html}
 
 ### Light/Dark Mode Switch
 
@@ -293,4 +293,4 @@ Add this switch to the UI using the the `form-switch-light-dark` class. It is a 
 </div>
 <!-- #endregion customSwitch -->
 
-<<< @/packages/form-control/docs/form-control.md#customSwitch{html}
+<<< ./index.md#customSwitch{html}

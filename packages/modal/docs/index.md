@@ -14,7 +14,7 @@ function onConfirm(button, context) {
 
 # Modal
 
-The `modal` component provides flexible and customizable modals with customizable sizes and colors. The modal component uses a [button](/packages/btn/docs/btn) with an unique `id` to call the modal with a matching `id`. 
+The `modal` component provides flexible and customizable modals with customizable sizes and colors. The modal component uses a [button](/packages/btn/) with an unique `id` to call the modal with a matching `id`. 
 
 ### Installation
 
@@ -51,8 +51,8 @@ npm i @vue-interface/modal
     <!-- #endregion basicUsage -->
 </div>
 
-<<< @/packages/modal/docs/modal.md#basicUsage{html}
-<<< @/packages/modal/index.html#close{js}
+<<< ./index.md#basicUsage{html}
+<<< ../index.html#close{js}
 
 ::: tip 
 Remove the `close-button` boolean prop to remove the "x" close button in the top right corner.
@@ -97,7 +97,7 @@ There are three modal types: `modal`, `confirm`, and `alert`.
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#types{html}
+<<< ./index.md#types{html}
 :::
 
 ## Variants
@@ -153,7 +153,7 @@ There are four variants of modals: `Info`, `Warning`, `Critical`, and `Success`.
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#variants{html}
+<<< ./index.md#variants{html}
 :::
 
 ## Centered
@@ -188,7 +188,7 @@ Centered modals come in two variations: centerd single action or centered double
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#centered{html}
+<<< ./index.md#centered{html}
 :::
 
 ## Sizes
@@ -348,7 +348,7 @@ The size can be customized using predetermined size classes: `2xs`, `xs`, `sm`, 
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#predeterminedSizes{html}
+<<< ./index.md#predeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -413,7 +413,7 @@ For more granular control over modal sizes, use Tailwind's numeric sizing scale 
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#TWSizes{html}
+<<< ./index.md#TWSizes{html}
 :::
 
 ### Arbitrary Sizes
@@ -478,7 +478,7 @@ For precise sizing, specify exact pixel values using the syntax `modal-[Npx]` or
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#arbitrarySizes{html}
+<<< ./index.md#arbitrarySizes{html}
 :::
 
 ## Colors
@@ -490,7 +490,7 @@ Customize the color of modal dialogs using [predetermined colors](#predetermined
 Apply predetermined color variants: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`. Use the syntax: `modal-[color]`.
 
 ::: info 
-These color variants come from the [button](/packages/btn/docs/btn.html#color-variants) component.
+These color variants come from the [button](/packages/btn/#color-variants) component.
 :::
 
 <div class="flex flex-wrap gap-2 mb-3">
@@ -603,7 +603,7 @@ These color variants come from the [button](/packages/btn/docs/btn.html#color-va
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#predeterminedColors{html}
+<<< ./index.md#predeterminedColors{html}
 :::
 
 ### Icon-only Colors
@@ -720,7 +720,7 @@ Apply icon-only color styling with the syntax: `modal-icon-[color]`. Available c
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#iconOnlyColors{html}
+<<< ./index.md#iconOnlyColors{html}
 :::
 
 ### Custom Colors
@@ -785,5 +785,5 @@ Customize the color of a modal element with the [Tailwind color palette](https:/
 </div>
 
 ::: details Show Code
-<<< @/packages/modal/docs/modal.md#customColors{html}
+<<< ./index.md#customColors{html}
 :::

@@ -85,7 +85,7 @@ Tooltips can be positioned at the top, bottom, left, or right of the target elem
 </div>
 
 ::: details Show Code
-<<< @/packages/tooltip/docs/tooltip.md#basicUsage{html}
+<<< ./index.md#basicUsage{html}
 :::
 
 ## Via Plugin
@@ -110,7 +110,7 @@ Use the Tooltip plugin to automatically create tooltips from `title` attributes.
 </div>
 
 ::: details Show Code
-<<< @/packages/tooltip/docs/tooltip.md#viaPlugin{html}
+<<< ./index.md#viaPlugin{html}
 :::
 
 ## Dynamic Elements
@@ -127,7 +127,7 @@ Tooltips work with dynamically mounted and unmounted elements.
 </div>
 
 ::: details Show Code
-<<< @/packages/tooltip/docs/tooltip.md#dynamicElements{html}
+<<< ./index.md#dynamicElements{html}
 :::
 
 ## Via Directive
@@ -168,5 +168,5 @@ Use the `v-tooltip` directive for a more concise syntax.
 </div>
 
 ::: details Show Code
-<<< @/packages/tooltip/docs/tooltip.md#viaDirective{html}
+<<< ./index.md#viaDirective{html}
 :::

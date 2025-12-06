@@ -59,7 +59,7 @@ The button component supports eight standard color variants. Each variant applie
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#colorVariants{html}
+<<< ./index.md#colorVariants{html}
 :::
 
 ## Custom Colors
@@ -76,7 +76,7 @@ You can use any Tailwind color with its shade value using the `btn-[color]-[shad
 </div>
 
 ::: details Show Code
-<<<  @/packages/btn/docs/btn.md#customColors{html}
+<<<  ./index.md#customColors{html}
 :::
 
 ## Color Shades
@@ -99,7 +99,7 @@ Demonstrates the full range of Tailwind color shades (50-900) available for butt
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#colorShades{html}
+<<< ./index.md#colorShades{html}
 :::
 
 ## Outline Buttons
@@ -120,7 +120,7 @@ Outline buttons feature transparent backgrounds with colored borders and text. T
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#outlineButtons{html}
+<<< ./index.md#outlineButtons{html}
 :::
 
 ## Outline Color Shades
@@ -143,7 +143,7 @@ Outline buttons support the same color shade range as solid buttons using the fo
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#outlineColorShades{html}
+<<< ./index.md#outlineColorShades{html}
 :::
 
 ## Block Buttons
@@ -164,7 +164,7 @@ Block buttons span the full width of their container using the `btn-block` class
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#blockButtons{html}
+<<< ./index.md#blockButtons{html}
 :::
 
 ## Sizes
@@ -190,7 +190,7 @@ The size can be customized using predetermined size classes: `xs`, `sm`, `md`, `
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnPredeterminedSizes{html}
+<<< ./index.md#btnPredeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -208,7 +208,7 @@ For more granular control over button sizes, use Tailwind's numeric sizing scale
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnTailwindSizes{html}
+<<< ./index.md#btnTailwindSizes{html}
 :::
 
 ### Arbitrary sizes
@@ -223,7 +223,7 @@ For precise sizing, specify exact pixel values using the syntax `btn-[Npx]` or a
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnArbitrarySizes{html}
+<<< ./index.md#btnArbitrarySizes{html}
 :::
 
 ## Responsive Sizes
@@ -235,7 +235,7 @@ Combine display and size classes with responsive prefixes to create buttons that
 <!-- #endregion responsiveSizes-->
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#responsiveSizes{html}
+<<< ./index.md#responsiveSizes{html}
 :::
 
 ## Block Sizes
@@ -258,7 +258,7 @@ All predefined sizes work with the `btn-block` class to create full-width button
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnBlockPredeterminedSizes{html}
+<<< ./index.md#btnBlockPredeterminedSizes{html}
 :::
 
 ### Tailwind Sizes
@@ -276,7 +276,7 @@ Tailwind numeric sizes can also be combined with `btn-block` for full-width butt
 </div>
 
 ::: details Show Code
-<<<  @/packages/btn/docs/btn.md#btnBlockTailwindSizes{html}
+<<<  ./index.md#btnBlockTailwindSizes{html}
 :::
 
 ### Arbitrary sizes
@@ -291,7 +291,7 @@ Arbitrary pixel sizes work with `btn-block` as well, giving you complete control
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnBlockArbitrarySizes{html}
+<<< ./index.md#btnBlockArbitrarySizes{html}
 :::
 
 ## States
@@ -306,7 +306,7 @@ Buttons support two states: `active` for pressed/selected states and `disabled` 
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnStates{html}
+<<< ./index.md#btnStates{html}
 :::
 
 ## Types
@@ -321,5 +321,5 @@ Standard HTML button types (submit and button) work with the button component. U
 </div>
 
 ::: details Show Code
-<<< @/packages/btn/docs/btn.md#btnTypes{html}
+<<< ./index.md#btnTypes{html}
 :::
